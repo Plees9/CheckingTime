@@ -42,6 +42,7 @@ const createStyles = () =>
 
             text : {
                 fontSize: 15,
+                justifyContent:'flex-end'
             },
             text1 : {
                 fontSize:15,

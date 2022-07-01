@@ -13,7 +13,6 @@ const styles = StyleSheet.create({
     },
     text: {
       fontSize: 42,
-      fontStyle:'italic',
     },
     separate: {
       backgroundColor: '#DFF6FF',

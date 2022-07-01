@@ -3,7 +3,7 @@ import { StyleSheet, Text, SafeAreaView, ScrollView, StatusBar, View, Alert, But
 import { t } from "react-native-tailwindcss";
 import { Icon } from 'react-native-vector-icons/Icon';
 import styles from './styles';
-import { IconButton } from 'react-native-paper';
+import { IconButton} from 'react-native-paper';
 
 
 const Jobs = () => {
@@ -16,7 +16,7 @@ const Jobs = () => {
         </View>
         <View style={{flexDirection: 'row'}}>
           <View style={{justifyContent:'center', alignItems:'center',marginLeft:16}}>
-            <IconButton icon='calendar-account' size={40} onPress={() => Alert.alert('Simple Button pressed') }  />
+            <IconButton icon='calendar-account' color='#47B5FF' size={40} onPress={() => Alert.alert('Simple Button pressed') }  />
             <Text>Bảng công</Text>
           </View>
         </View>
@@ -25,11 +25,11 @@ const Jobs = () => {
         </View>
         <View style={{flexDirection: 'row'}}>
           <View style={{justifyContent:'center', alignItems:'center'}}>
-            <IconButton icon='text-box' size={40} onPress={() => Alert.alert('Simple Button pressed') }  />
+            <IconButton icon='text-box' color='#47B5FF' size={40} onPress={() => Alert.alert('Simple Button pressed') }  />
             <Text>Danh sách đơn từ</Text>
           </View>
           <View style={{justifyContent:'center', alignItems:'center', marginLeft:15}}>
-            <IconButton icon='text-box-plus' size={40} onPress={() => Alert.alert('Simple Button pressed') }  />
+            <IconButton icon='text-box-plus' color='#47B5FF' size={40} onPress={() => Alert.alert('Simple Button pressed') }  />
             <Text>Tạo đơn mới</Text>
           </View>
         </View>
@@ -38,17 +38,19 @@ const Jobs = () => {
         </View>
         <View style={{flexDirection: 'row'}}> 
           <View style={{justifyContent:'center', alignItems:'center'}}>
-            <IconButton icon='office-building' size={40} onPress={() => Alert.alert('Simple Button pressed') }  />
+            <IconButton icon='office-building' color='#47B5FF' size={40} onPress={() => Alert.alert('Simple Button pressed') }  />
             <Text>Thông tin công ty</Text>
           </View>
           <View style={{justifyContent:'center', alignItems:'center', marginLeft:15}}>
-            <IconButton icon='account-group' size={40} onPress={() => Alert.alert('Simple Button pressed') }  />
+            <IconButton icon='account-group' color='#47B5FF' size={40} onPress={() => Alert.alert('Simple Button pressed') }  />
             <Text>Danh sách nhân viên</Text>
           </View>
         </View>
         
       </ScrollView>
     </SafeAreaView>
+
+    
   );
 }
 

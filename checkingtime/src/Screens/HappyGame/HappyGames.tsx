@@ -1,9 +1,7 @@
 import React , { useMemo }  from "react";  
 import {View , Text, Image,ScrollView ,ImageBackground,Alert }   from "react-native";
 import { IconButton } from "react-native-paper";
-
 import createStyles from "../HappyGame/Styles";
-import { NavigationContainer } from '@react-navigation/native';
 import Icon from "react-native-vector-icons/FontAwesome";
 
 
@@ -20,10 +18,10 @@ const HappyGame = () => {
           <View style={{ flex: 3 }}>
             <View style={{ flex: 2, flexDirection: "row" }}>
               <Icon name="user" size={30} />
-
-              <Text style={styles.text1}>baby </Text>
-              <View style={{ flex: 2}}>
-              <Text style={styles.text}>baby </Text>
+              <View style={{ flexDirection:'column' }}>
+                <Text style={styles.text1}>baby </Text>
+               
+                <Text style={styles.text}>baby </Text>
               </View>
             </View>
           </View>
@@ -36,7 +34,7 @@ const HappyGame = () => {
             }}
           >
             <IconButton
-              icon="cellphone"
+              icon="playlist-star"
               size={30}
               onPress={() => Alert.alert("Simple Button pressed")}
             />
@@ -51,7 +49,7 @@ const HappyGame = () => {
             }}
           >
             <IconButton
-              icon="star-crescent"
+              icon="gift-open"
               size={30}
               onPress={() => Alert.alert("Simple Button pressed")}
             />
@@ -65,7 +63,7 @@ const HappyGame = () => {
             <Text>diem hien tai</Text>
           </View>
           <View
-            style={{ flex: 1, justifyContent: "center", alignItems: "center" }}
+            style={{ flex: 1, justifyContent: "center", alignItems: "center",borderLeftWidth:1  }}
           >
             <Text>diem cao nhat</Text>
           </View>
