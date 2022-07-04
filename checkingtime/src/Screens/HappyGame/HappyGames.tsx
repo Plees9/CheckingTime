@@ -17,10 +17,10 @@ const HappyGame = () => {
         <View style={styles.body}>
           <View style={{ flex: 3 }}>
             <View style={{ flex: 2, flexDirection: "row" }}>
-              <Icon name="user" size={30} />
-              <View style={{ flexDirection:'column' }}>
+              <Icon name="user" size={30} color="#46b5ff" />
+              <View style={{ flexDirection: "column" }}>
                 <Text style={styles.text1}>baby </Text>
-               
+
                 <Text style={styles.text}>baby </Text>
               </View>
             </View>
@@ -36,6 +36,7 @@ const HappyGame = () => {
             <IconButton
               icon="playlist-star"
               size={30}
+              color="#46b5ff"
               onPress={() => Alert.alert("Simple Button pressed")}
             />
             <Text style={styles.text}> Nhat ki diem</Text>
@@ -51,6 +52,7 @@ const HappyGame = () => {
             <IconButton
               icon="gift-open"
               size={30}
+              color="#46b5ff"
               onPress={() => Alert.alert("Simple Button pressed")}
             />
             <Text style={styles.text}> Doi qua</Text>
@@ -63,7 +65,12 @@ const HappyGame = () => {
             <Text>diem hien tai</Text>
           </View>
           <View
-            style={{ flex: 1, justifyContent: "center", alignItems: "center",borderLeftWidth:1  }}
+            style={{
+              flex: 1,
+              justifyContent: "center",
+              alignItems: "center",
+              borderLeftWidth: 1,
+            }}
           >
             <Text>diem cao nhat</Text>
           </View>
@@ -71,10 +78,11 @@ const HappyGame = () => {
         <View style={styles.header}>
           <Text style={styles.text}>Danh sach Game </Text>
         </View>
-
         <View style={styles.footer}>
           <ImageBackground source={require("../../../assets/icon.png")}>
-            <Text style={styles.text}>xin chao</Text>
+            <View>
+              <Text style={styles.text}>xin chao</Text>
+            </View>
           </ImageBackground>
         </View>
       </ScrollView>

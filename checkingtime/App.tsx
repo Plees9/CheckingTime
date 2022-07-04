@@ -7,15 +7,16 @@ import HappyGames from './src/Screens/HappyGame/HappyGames';
 import Home from './src/Screens/Home/Home';
 import FormCreated from './src/Screens/FormCreated/index';
 import Form from './src/Screens/Form/Form';
+import HappyGame from './src/Screens/HappyGame/HappyGames';
 
 export default function App() {
   return (
     <View>    
       <NavigationContainer>
         
-        <Home/>
-        <Jobs />
-        <HappyGames/>
+       <Home/>
+       < HappyGames/>
+       <Jobs/>
       </NavigationContainer>
     </View>
 
@@ -26,8 +27,8 @@ export default function App() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
+    backgroundColor: "#79c7ff",
+    alignItems: "center",
+    justifyContent: "center",
   },
 });
