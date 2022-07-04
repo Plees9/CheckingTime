@@ -1,5 +1,5 @@
 import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import { StyleSheet, Text, View, SafeAreaView } from 'react-native';
 import { NavigationContainer } from "@react-navigation/native";
 
 import Jobs from './src/Screens/Jobs';
@@ -8,17 +8,17 @@ import Home from './src/Screens/Home/Home';
 import FormCreated from './src/Screens/FormCreated/index';
 import Form from './src/Screens/Form/Form';
 import HappyGame from './src/Screens/HappyGame/HappyGames';
+import NhatKyDiem from './src/Screens/NhatKyDiem/NhatKyDiem';
 
 export default function App() {
   return (
-    <View>    
+    <SafeAreaView>    
       <NavigationContainer>
         
-       <Home/>
-       < HappyGames/>
-       <Jobs/>
+       <NhatKyDiem/>
+       
       </NavigationContainer>
-    </View>
+    </SafeAreaView>
 
     
   );
