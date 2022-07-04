@@ -40,6 +40,7 @@ const styles = StyleSheet.create({
         marginRight: 20,
         borderWidth: 1,
         borderRadius: 10,
+        justifyContent: "space-between",
       },
   });
 

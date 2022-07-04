@@ -14,7 +14,6 @@ const styles = StyleSheet.create({
     text: {
       fontSize: 42,
       fontWeight: 'bold',
-      color: "#1363DF",
     },
     separate: {
       backgroundColor: '#DFF6FF',

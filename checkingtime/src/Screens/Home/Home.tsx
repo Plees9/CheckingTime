@@ -1,6 +1,7 @@
 import React from "react";
-import { StyleSheet, Text, SafeAreaView, ScrollView, StatusBar, View, Button } from "react-native";
-import  Icon  from "react-native-vector-icons/MaterialIcons";
+import { StyleSheet, Text, SafeAreaView, ScrollView, StatusBar, View, Button, Pressable, Alert } from 'react-native';
+import { ICON_SIZE } from "react-native-paper/lib/typescript/components/TextInput/Adornment/TextInputIcon";
+import  Icon  from "react-native-vector-icons/AntDesign";
 import styles from "./styles";
 
 const Home = () => {
@@ -22,6 +23,15 @@ const Home = () => {
                         <Text>Home1</Text>
                         <Text>Home2</Text>
                     </View>
+                
+                    <Pressable style = {{alignContent :'center', justifyContent : "center",padding: 10,borderRadius:100, backgroundColor: 'red'}}>
+                        <Icon name="reload1" size={20} onPress={() => Alert.alert('Simple Button pressed') }/>
+                    </Pressable>
+                    
+                </View>
+                <Text>Top 5 hôm nay</Text>
+                <View>
+                
                 </View>
             </ScrollView>
         </View>

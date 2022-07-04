@@ -18,7 +18,7 @@ import { createStackNavigator } from '@react-navigation/stack';
 
 const App = () => {
   return (
-      <SafeAreaView style ={styles.root} >
+      <SafeAreaView style={{flex: 1}}>
          {/* <Image source={require('./assets/images/ah.jpg')} style ={styles.image}/> */}
        
         {/* <SignUpScreen/> */}
