@@ -9,13 +9,13 @@ const styles = StyleSheet.create({
       backgroundColor: '#fff',
     },
     scrollView: {
-      marginHorizontal: 20,
+      flex: 1,
     },
     text: {
       fontSize: 42,
       padding: 20,
       justifyContent: "center",
-      
+
       
     },
     separate: {
@@ -32,6 +32,15 @@ const styles = StyleSheet.create({
         width: 200,
         height: 50,
     },
+    item: {
+        flex: 1,
+        flexDirection: "row",
+        marginTop: 30,
+        marginLeft: 20,
+        marginRight: 20,
+        borderWidth: 1,
+        borderRadius: 10,
+      },
   });
 
   export default styles;

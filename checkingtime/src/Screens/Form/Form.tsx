@@ -9,7 +9,7 @@ const DATA = [ {
 ];
 
 const Form = () => {
-    <SafeAreaView>
+    <View>
         <View>
             <Text>Form</Text>
         </View>
@@ -19,7 +19,7 @@ const Form = () => {
             <Text style={styles.text}>Quy định đơn</Text>
             <Text style={styles.text}>...</Text>
         </View>
-    </SafeAreaView>
+    </View>
 
 }
 export default Form;

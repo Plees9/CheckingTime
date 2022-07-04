@@ -1,8 +1,9 @@
 import React , { useMemo }  from "react";  
 import {View , Text, Image,ScrollView ,ImageBackground,Alert }   from "react-native";
 import { IconButton } from "react-native-paper";
-import createStyles from "../HappyGame/Styles";
+
 import Icon from "react-native-vector-icons/FontAwesome";
+import createStyles from "./styles";
 
 
 

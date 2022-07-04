@@ -13,7 +13,8 @@ const styles = StyleSheet.create({
     },
     text: {
       fontSize: 42,
-      fontStyle:"italic",
+      fontWeight: 'bold',
+      color: "#1363DF",
     },
     separate: {
       backgroundColor: '#DFF6FF',
