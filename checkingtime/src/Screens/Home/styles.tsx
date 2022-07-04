@@ -14,6 +14,8 @@ const styles = StyleSheet.create({
     text: {
       fontSize: 42,
       padding: 20,
+      justifyContent: "center",
+      
       
     },
     separate: {

@@ -7,13 +7,14 @@ const Home = () => {
         <SafeAreaView style={styles.container}>
             <ScrollView style={styles.scrollView}>
                 <View style={{flex:1, flexDirection:'row'}}>
-                    <View style={{flex:1, backgroundColor:'red',borderWidth:1, marginVertical:30,marginLeft:40}}>
+                    <View style={{flex:1, backgroundColor:'lightblue',borderWidth:1, padding: 10,marginVertical:30,marginLeft:40, borderRadius:8}}>
                         <Text style={styles.text}>Home</Text>
                     </View>
-                    <View style={{flex:1,marginLeft:4, backgroundColor:'blue',borderWidth:1,marginVertical:30,marginRight:40}}>
+                    <View style={{flex:1,marginLeft:4, backgroundColor:'lightblue',borderWidth:1,padding: 10,marginVertical:30,marginRight:40,borderRadius:8}}>
                         <Text style={styles.text}>Jobs</Text>
                     </View>
                 </View>
+                <Text>Workspace của bạn</Text>
                 <View>
                     
                 </View>
