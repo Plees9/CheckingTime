@@ -1,9 +1,5 @@
 import { StatusBar } from 'expo-status-bar';
-<<<<<<< HEAD
 import { StyleSheet, Text, View, SafeAreaView, Image } from 'react-native';
-=======
-import { StyleSheet, Text, View, SafeAreaView } from 'react-native';
->>>>>>> 8490ebb88ffee333b882e4b6736cf9c8db7103d8
 import { NavigationContainer } from "@react-navigation/native";
 import React from 'react';
 
@@ -21,11 +17,13 @@ import ForgotPasswordScreen from './src/Screens/ForgotPasswordScreen';
 import NewPasswordScreen from './src/Screens/NewPasswordScreen';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import Navigation from './src/navigation';
+import NhatKyDiem from './src/Screens/NhatKyDiem/NhatKyDiem';
+import DoiQua from './src/Screens/DoiQua/DoiQua';
 
 
 const App = () => {
   return (
-      <SafeAreaView style={{flex: 1}}>
+      <SafeAreaView style={styles.root}>
          {/* <Image source={require('./assets/images/ah.jpg')} style ={styles.image}/> */}
          {/* <Image source={require('./assets/images/ah.jpg')} style={styles.image}/>  */}
         {/* <SignUpScreen/> */}
@@ -34,7 +32,7 @@ const App = () => {
         {/* <NewPasswordScreen/> */}
         {/*<Navigation/> */}
         {/* <SignInScreen/> */}
-        <Navigation/>
+        <DoiQua/>
       
       </SafeAreaView>
   );
