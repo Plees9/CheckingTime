@@ -23,8 +23,7 @@ import DoiQua from './src/Screens/DoiQua/DoiQua';
 
 const App = () => {
   return (
-      <SafeAreaView style={styles.root}>
-         {/* <Image source={require('./assets/images/ah.jpg')} style ={styles.image}/> */}
+      <SafeAreaView style ={styles.root} >
          {/* <Image source={require('./assets/images/ah.jpg')} style={styles.image}/>  */}
         {/* <SignUpScreen/> */}
         {/* <ConfirmEmailScreen/> */}
@@ -32,7 +31,8 @@ const App = () => {
         {/* <NewPasswordScreen/> */}
         {/*<Navigation/> */}
         {/* <SignInScreen/> */}
-        <DoiQua/>
+        {/* <Navigation/> */}
+        <Jobs/>
       
       </SafeAreaView>
   );
