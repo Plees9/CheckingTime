@@ -12,19 +12,10 @@ const styles = StyleSheet.create({
       marginHorizontal: 20,
     },
     text: {
-<<<<<<< HEAD
-      fontSize: 42,
-      fontWeight: 'bold',
-=======
-<<<<<<< HEAD
+
       fontSize: 42,
       fontWeight: 'bold',
       color: "#1363DF",
-=======
-      fontSize: 220,
-      fontStyle:"italic",
->>>>>>> b8831ad88b4261cad91cbc1ea37e126667a9c507
->>>>>>> 4de040374094706e771cd69c4569964fcf11ad62
     },
     separate: {
       backgroundColor: '#DFF6FF',
