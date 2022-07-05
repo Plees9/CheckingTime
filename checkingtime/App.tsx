@@ -30,8 +30,8 @@ const App = () => {
         {/* <NewPasswordScreen/> */}
         {/*<Navigation/> */}
         {/* <SignInScreen/> */}
-        <Navigation/>
-      
+        {/* <Navigation/>*/}
+        <Home/>
       </SafeAreaView>
   );
 }
