@@ -17,6 +17,7 @@ import ForgotPasswordScreen from './src/Screens/ForgotPasswordScreen';
 import NewPasswordScreen from './src/Screens/NewPasswordScreen';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import Navigation from './src/navigation';
+import NhatKyDiem from './src/Screens/NhatKyDiem/NhatKyDiem';
 
 
 const App = () => {
@@ -31,6 +32,7 @@ const App = () => {
         {/*<Navigation/> */}
         {/* <SignInScreen/> */}
         {/* <Navigation/> */}
+        <NhatKyDiem/>
       
       </SafeAreaView>
   );
