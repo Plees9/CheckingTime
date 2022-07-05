@@ -1,9 +1,5 @@
 import { StatusBar } from 'expo-status-bar';
-<<<<<<< HEAD
 import { StyleSheet, Text, View, SafeAreaView, Image } from 'react-native';
-=======
-import { StyleSheet, Text, View, SafeAreaView } from 'react-native';
->>>>>>> 8490ebb88ffee333b882e4b6736cf9c8db7103d8
 import { NavigationContainer } from "@react-navigation/native";
 import React from 'react';
 
@@ -34,7 +30,7 @@ const App = () => {
         {/* <NewPasswordScreen/> */}
         {/*<Navigation/> */}
         {/* <SignInScreen/> */}
-        <Navigation/>
+        {/* <Navigation/> */}
       
       </SafeAreaView>
   );
