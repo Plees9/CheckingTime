@@ -5,28 +5,27 @@ import React from 'react';
 
 import Jobs from './src/Screens/Jobs';
 import HappyGames from './src/Screens/HappyGame/HappyGames';
-import Home from './src/Screens/Home/Home';
+
 import FormCreated from './src/Screens/FormCreated/index';
 import Form from './src/Screens/Form/Form';
+import Account from './src/Screens/Account/Account';
 
 import SignInScreen from './src/Screens/SignInScreen';
 import SignUpScreen from './src/Screens/SignUpScreen';
 import ConfirmEmailScreen from './src/Screens/ConfirmEmailScreen';
 import ForgotPasswordScreen from './src/Screens/ForgotPasswordScreen';
 import NewPasswordScreen from './src/Screens/NewPasswordScreen';
-import { createNativeStackNavigator } from '@react-navigation/native-stack';
+
 import Navigation from './src/navigation';
 
 const App = () => {
   return (
       <SafeAreaView style ={styles.root} >
-         {/* <Image source={require('./assets/images/ah.jpg')} style ={styles.image}/> */}
          {/* <Image source={require('./assets/images/ah.jpg')} style={styles.image}/>  */}
         {/* <SignUpScreen/> */}
         {/* <ConfirmEmailScreen/> */}
         {/* <ForgotPasswordScreen/> */}
         {/* <NewPasswordScreen/> */}
-        {/*<Navigation/> */}
         {/* <SignInScreen/> */}
         <Navigation/>
       

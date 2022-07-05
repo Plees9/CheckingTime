@@ -3,15 +3,18 @@ import React, { useState } from 'react'
 import CustomInput from '../../components/CustomInput';
 import CustomButton from '../../components/CustomButton';
 import SocialSignButtons from '../../components/SocialSiginButtons';
+import { useNavigation } from '@react-navigation/native';
 
 const SiginUpScreen = () => {
   const[userName, setUserName] = useState('');
   const[email, setEmail] = useState('');
   const[password, setPassword] = useState('');
   const[passwordRepeat, setPasswordRepeat] = useState('');
+  const navigation = useNavigation();
 
   const onRegisterPressed = () => {
-    console.warn("Register pressed");
+    console.warn("Register pressed"); //ấn Register xong về SignIn
+    navigation.navigate('SignIn');
   }
   
   const onSignInPressed = () => {
