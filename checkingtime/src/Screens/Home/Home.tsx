@@ -1,5 +1,5 @@
 import React from "react";
-import { StyleSheet, Text, SafeAreaView, ScrollView, StatusBar, View, Button, Pressable, Alert, A } from 'react-native';
+import { StyleSheet, Text, SafeAreaView, ScrollView, StatusBar, View, Button, Pressable, Alert } from 'react-native';
 import { ICON_SIZE } from "react-native-paper/lib/typescript/components/TextInput/Adornment/TextInputIcon";
 import  Icon  from "react-native-vector-icons/AntDesign";
 import styles from "./styles";

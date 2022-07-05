@@ -16,8 +16,10 @@ const Jobs = () => {
         </View>
         <View style={{flexDirection: 'row'}}>
           <View style={{justifyContent:'center', alignItems:'center',marginLeft:16}}>
-            <IconButton icon='calendar-account' color='#47B5FF' size={40} onPress={() => Alert.alert('Simple Button pressed') }  />
-            <Text>Bảng công</Text>
+          <IconButton
+            icon="email-outline"
+          /> 
+          <Text>Bảng công</Text>
           </View>
         </View>
         <View>
