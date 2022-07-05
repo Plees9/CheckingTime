@@ -42,6 +42,14 @@ const styles = StyleSheet.create({
         borderRadius: 10,
         justifyContent: "space-between",
       },
+      item2: {
+        flex: 1,
+        marginTop: 30,
+        marginHorizontal: 20,
+        backgroundColor: "pink",
+        borderRadius: 10,
+        justifyContent: "space-between",
+      },
   });
 
   export default styles;
