@@ -13,7 +13,7 @@ const styles = StyleSheet.create({
     },
     text: {
       fontSize: 42,
-      fontWeight: 'bold',
+      fontWeight:"bold",
     },
     separate: {
       backgroundColor: '#DFF6FF',

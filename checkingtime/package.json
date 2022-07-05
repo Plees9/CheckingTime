@@ -12,6 +12,7 @@
   "dependencies": {
     "@react-native-community/masked-view": "^0.1.11",
     "@react-navigation/native": "^6.0.10",
+    "@react-navigation/native-stack": "^6.6.2",
     "@react-navigation/stack": "^6.2.1",
     "@rneui/base": "github:react-native-elements/react-native-elements#base",
     "@rneui/themed": "github:react-native-elements/react-native-elements#themed",
@@ -28,7 +29,8 @@
     "react-native-screens": "~3.11.1",
     "react-native-tailwindcss": "^1.1.11",
     "react-native-vector-icons": "^9.2.0",
-    "react-native-web": "0.17.7"
+    "react-native-web": "0.17.7",
+    "react-navigation": "^4.4.4"
   },
   "devDependencies": {
     "@babel/core": "^7.12.9",
