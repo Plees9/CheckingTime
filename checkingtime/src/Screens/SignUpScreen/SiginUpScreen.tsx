@@ -19,6 +19,7 @@ const SiginUpScreen = () => {
   
   const onSignInPressed = () => {
     console.warn("Sign In pressed");
+    navigation.navigate('HomeScreen');
   }
   const onTermsOfUserPressed = () => {
     console.warn("Terms of user pressed");
