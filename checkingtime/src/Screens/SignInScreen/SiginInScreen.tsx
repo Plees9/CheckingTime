@@ -33,7 +33,7 @@ const SiginInScreen = () => {
   
   return (
     <View style={styles.container}>
-      <Image source={require('../../assets/images/ah.jpg')} style={styles.image}/>
+      {/* <Image source={require('../../assets/images/ah.jpg')} style={styles.image}/> */}
       <Text style ={styles.size} >Welcome</Text>
       <CustomInput 
       placeholder="UserName"

@@ -14,41 +14,34 @@ import SignUpScreen from './src/Screens/SignUpScreen';
 import ConfirmEmailScreen from './src/Screens/ConfirmEmailScreen';
 import ForgotPasswordScreen from './src/Screens/ForgotPasswordScreen';
 import NewPasswordScreen from './src/Screens/NewPasswordScreen';
-import { createStackNavigator } from '@react-navigation/stack';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import Navigation from './src/navigation';
 
 const App = () => {
   return (
       <SafeAreaView style ={styles.root} >
          {/* <Image source={require('./assets/images/ah.jpg')} style ={styles.image}/> */}
-       
+         {/* <Image source={require('./assets/images/ah.jpg')} style={styles.image}/>  */}
         {/* <SignUpScreen/> */}
         {/* <ConfirmEmailScreen/> */}
         {/* <ForgotPasswordScreen/> */}
         {/* <NewPasswordScreen/> */}
         {/*<Navigation/> */}
-         {/* <SignInScreen/> */}
-          <Home/>
-         {/* <Jobs/> */}
-        
-       
+        {/* <SignInScreen/> */}
+        <Navigation/>
+      
       </SafeAreaView>
-    
-
-    
   );
 }
 const styles = StyleSheet.create({
   root: {
-    flex: 1,
-    backgroundColor: "#79c7ff",
-    alignItems: "center",
-    justifyContent: "center",
+    flex: 1,   
   },
   image : {
     height: "40%",
     width: "100%",
     resizeMode: 'contain',
     padding: 10,
-  }
+  },
 });
 export default App;
