@@ -12,13 +12,13 @@ const ConfirmEmailScreen = () => {
 
   const onConfirmPressed = () => {
     console.warn("Confirm Pressed"); // về màn hình đăng nhập
-    navigation.navigate('HomeScreen');
+    navigation.navigate('SignIn');
   }
   
-  const onSignInPressed = () => {
-    console.warn("Sign In pressed");
-    navigation.navigate('HomeScreen');
-  }
+  // const onSignInPressed = () => {
+  //   console.warn("Sign In pressed");
+  //   navigation.navigate('SignIn');
+  // }
   
   const onResendPressed = () => {
     console.warn("Resend Pressed");
@@ -26,7 +26,7 @@ const ConfirmEmailScreen = () => {
   
   return (
     <View style={styles.container}>
-      <Text style ={styles.size} > Confirm your email</Text>
+      <Text style ={styles.size} > Confirm Code</Text>
      
       <CustomInput 
       placeholder="Enter your confirmation code"
@@ -49,12 +49,12 @@ const ConfirmEmailScreen = () => {
       type="Secondary" 
       bgColor={undefined}/>
 
-      <CustomButton
+      {/* <CustomButton
       text="Back to sign in"
       onPress={onSignInPressed}
       fgColor="#000000"
       type="TERTIARY" 
-      bgColor={undefined}/>
+      bgColor={undefined}/> */}
      
     </View>
   );
