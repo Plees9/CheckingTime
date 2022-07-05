@@ -13,6 +13,7 @@ const styles = StyleSheet.create({
     },
     text: {
 <<<<<<< HEAD
+<<<<<<< HEAD
       fontSize: 42,
       fontWeight: 'bold',
       color: "#1363DF",
@@ -20,6 +21,10 @@ const styles = StyleSheet.create({
       fontSize: 220,
       fontStyle:"italic",
 >>>>>>> b8831ad88b4261cad91cbc1ea37e126667a9c507
+=======
+      fontSize: 42,
+      fontWeight: 'bold',
+>>>>>>> 0e1183785781c606a832d35c281f54371a47baf3
     },
     separate: {
       backgroundColor: '#DFF6FF',

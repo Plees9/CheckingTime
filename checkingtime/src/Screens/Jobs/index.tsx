@@ -31,7 +31,7 @@ const Jobs = () => {
             <Text>Danh sách đơn từ</Text>
           </View>
           <View style={{justifyContent:'center', alignItems:'center', marginLeft:15}}>
-            <IconButton icon='text-box-plus' color='#47B5FF' size={40} onPress={() => Alert.alert('Simple Button pressed') }  />
+            <IconButton icon='text-box-plus' color='#47B5FF' size={40} onPress={() => Alert.alert('Phucleedepzai') }  />
             <Text>Tạo đơn mới</Text>
           </View>
         </View>

@@ -40,6 +40,15 @@ const styles = StyleSheet.create({
         marginRight: 20,
         borderWidth: 1,
         borderRadius: 10,
+        justifyContent: "space-between",
+      },
+      item2: {
+        flex: 1,
+        marginTop: 30,
+        marginHorizontal: 20,
+        backgroundColor: "pink",
+        borderRadius: 10,
+        justifyContent: "space-between",
       },
   });
 

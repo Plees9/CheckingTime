@@ -15,18 +15,25 @@ import SignUpScreen from './src/Screens/SignUpScreen';
 import ConfirmEmailScreen from './src/Screens/ConfirmEmailScreen';
 import ForgotPasswordScreen from './src/Screens/ForgotPasswordScreen';
 import NewPasswordScreen from './src/Screens/NewPasswordScreen';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
+
+import NhatKyDiem from './src/Screens/NhatKyDiem/NhatKyDiem';
 
 import Navigation from './src/navigation';
 
 const App = () => {
   return (
       <SafeAreaView style ={styles.root} >
+     
+         {/* <Image source={require('./assets/images/ah.jpg')} style ={styles.image}/> */}
          {/* <Image source={require('./assets/images/ah.jpg')} style={styles.image}/>  */}
         {/* <SignUpScreen/> */}
         {/* <ConfirmEmailScreen/> */}
         {/* <ForgotPasswordScreen/> */}
         {/* <NewPasswordScreen/> */}
         {/* <SignInScreen/> */}
+        {/* <Navigation/> */}
+        {/* <NhatKyDiem/> */}
         <Navigation/>
       
       </SafeAreaView>

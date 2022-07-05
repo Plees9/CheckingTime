@@ -14,11 +14,12 @@ const SiginUpScreen = () => {
 
   const onRegisterPressed = () => {
     console.warn("Register pressed"); //ấn Register xong về SignIn
-    navigation.navigate('SignIn');
+    navigation.navigate('ConfirmEmail');
   }
   
   const onSignInPressed = () => {
-    console.warn("Sign In pressed");
+    console.warn("Sign In pressed"); // quay lại về đăng ký
+    navigation.navigate('SignIn');
   }
   const onTermsOfUserPressed = () => {
     console.warn("Terms of user pressed");

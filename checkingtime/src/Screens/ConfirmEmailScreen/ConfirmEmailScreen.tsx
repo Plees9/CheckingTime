@@ -3,16 +3,21 @@ import React, { useState } from 'react'
 import CustomInput from '../../components/CustomInput';
 import CustomButton from '../../components/CustomButton';
 import SocialSignButtons from '../../components/SocialSiginButtons';
+import { useNavigation } from '@react-navigation/native';
 
 const ConfirmEmailScreen = () => {
   const[code, setCode] = useState('');
 
+  const navigation = useNavigation();
+
   const onConfirmPressed = () => {
-    console.warn("Confirm Pressed");
+    console.warn("Confirm Pressed"); // về màn hình đăng nhập
+    navigation.navigate('HomeScreen');
   }
   
   const onSignInPressed = () => {
     console.warn("Sign In pressed");
+    navigation.navigate('HomeScreen');
   }
   
   const onResendPressed = () => {
