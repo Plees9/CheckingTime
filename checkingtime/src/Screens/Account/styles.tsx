@@ -1,6 +1,6 @@
 import React from 'react';
 import { StyleSheet, Text, SafeAreaView, ScrollView, StatusBar, View, Button } from 'react-native';
-import { t } from "react-native-tailwindcss";
+import { colors, t } from "react-native-tailwindcss";
 
 const styles = StyleSheet.create({
     container: {
@@ -12,9 +12,13 @@ const styles = StyleSheet.create({
       marginHorizontal: 20,
     },
     text: {
-      fontSize: 220,
+      fontSize: 40,
       fontStyle:"italic",
     },
+    text1: {
+        fontSize: 20,
+        fontStyle:"italic",
+      },
     separate: {
       backgroundColor: '#DFF6FF',
       fontSize: 30,
