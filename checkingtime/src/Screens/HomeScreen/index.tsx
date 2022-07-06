@@ -64,7 +64,7 @@ const HomeScreen = () => {
               <Icon
                 name="reload1"
                 size={20}
-                onPress={() => Alert.alert("Simple Button pressed")}
+                onPress={() => Alert.alert("phucleedepzai")}
               />
             </Pressable>
           </View>

@@ -8,9 +8,7 @@ import { useNavigation } from '@react-navigation/native';
 const ConfirmEmailScreen = () => {
   const [code, setCode] = useState("");
 
-  const navigation = useNavigation();
-
-  const navigation = useNavigation();
+  const navigation = useNavigation<any>();
 
   const onConfirmPressed = () => {
     //console.warn("Confirm Pressed"); // về màn hình đăng nhập

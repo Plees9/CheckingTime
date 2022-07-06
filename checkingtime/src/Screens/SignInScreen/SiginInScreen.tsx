@@ -13,8 +13,9 @@ import SocialSiginButtons from '../../components/SocialSiginButtons';
 const SiginInScreen = () => {
 
   const {height}=useWindowDimensions();
-  const navigation = useNavigation();
-
+  const navigation = useNavigation<any>();
+  
+   
   const[userName, setUserName] = useState('');
   const[password, setPassword] = useState('');
 
