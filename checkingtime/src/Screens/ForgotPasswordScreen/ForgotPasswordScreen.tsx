@@ -10,13 +10,13 @@ const ForgotPasswordScreen = () => {
   const navigation = useNavigation();
 
   const onSendPressed = () => {
-    console.warn("Send Pressed");
+    //console.warn("Send Pressed");
     navigation.navigate('NewPassword');
 
   }
   
   const onSignInPressed = () => {
-    console.warn("Sign In pressed");
+    //console.warn("Sign In pressed");
     navigation.navigate('SignIn');
   }
   

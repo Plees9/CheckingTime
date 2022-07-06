@@ -1,5 +1,6 @@
 import { View, Text } from 'react-native'
 import * as React from 'react';
+import 'react-native-gesture-handler';
 
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
@@ -19,8 +20,8 @@ const Stack = createNativeStackNavigator();
 const Navigation = () => {
   return (
     <NavigationContainer >
-    <Stack.Navigator initialRouteName= 'load' > 
-      <Stack.Screen name="SignIn" component={SignInScreen}  />
+    <Stack.Navigator screenOptions={{headerShown:true}} > 
+      <Stack.Screen name="SignIn" component={SignInScreen}  options={{ title: 'Awesome app' }}  />
       <Stack.Screen name="HomeScreen" component={HomeScreen} />
       <Stack.Screen name="SignUp" component={SignUpScreen} />
       <Stack.Screen name="ConfirmEmail" component={ConfirmEmailScreen} />

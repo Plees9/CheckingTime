@@ -11,7 +11,7 @@ const ConfirmEmailScreen = () => {
   const navigation = useNavigation();
 
   const onConfirmPressed = () => {
-    console.warn("Confirm Pressed"); // về màn hình đăng nhập
+    //console.warn("Confirm Pressed"); // về màn hình đăng nhập
     navigation.navigate('SignIn');
   }
   

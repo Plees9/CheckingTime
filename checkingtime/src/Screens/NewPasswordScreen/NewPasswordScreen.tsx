@@ -11,7 +11,7 @@ const ForgotPasswordScreen = () => {
   const navigation = useNavigation();
 
   const onSubmitPressed = () => {
-    console.warn("Submit Pressed");
+    //console.warn("Submit Pressed");
     navigation.navigate('SignIn');
   }
   
