@@ -32,7 +32,7 @@ const App = () => {
         {/*<Navigation/> */}
         {/* <SignInScreen/> */}
         {/* <Navigation/> */}
-        <Jobs/>
+        <Navigation/>
       
       </SafeAreaView>
   );
