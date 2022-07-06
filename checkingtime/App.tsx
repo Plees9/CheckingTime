@@ -17,7 +17,7 @@ import ForgotPasswordScreen from "./src/Screens/ForgotPasswordScreen";
 import NewPasswordScreen from "./src/Screens/NewPasswordScreen";
 import Navigation from "./src/navigation";
 import NhatKyDiem from "./src/Screens/NhatKyDiem/NhatKyDiem";
-import TabsNavigation from "./src/navigation/Tabs";
+import TabsNavigation from './src/navigation/Tabs';
 
 
 const App = () => {
