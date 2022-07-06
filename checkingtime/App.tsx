@@ -16,16 +16,20 @@ import SignUpScreen from './src/Screens/SignUpScreen';
 import ConfirmEmailScreen from './src/Screens/ConfirmEmailScreen';
 import ForgotPasswordScreen from './src/Screens/ForgotPasswordScreen';
 import NewPasswordScreen from './src/Screens/NewPasswordScreen';
-import Navigation from './src/navigation';
+import Navigation from './src/navigation/index';
+import TabsNavigation from './src/Screens/TabBar/tab';
+
 
 
 const App = () => {
   return (
       <SafeAreaView style ={styles.root} >
-       <Image source={require('./assets/images/ah.jpg')} style={styles.image}/> 
+       {/* <Image source={require('./assets/images/ah.jpg')} style={styles.image}/>  */}
         {/* <Jobs/> */}
-        <Navigation/>
-      
+       {/* <Navigation/> */}
+       {/* <Account/> */}
+        <Navigation/> 
+         {/* <TabsNavigation/>  */}
       </SafeAreaView>
   );
 }

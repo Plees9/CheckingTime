@@ -34,7 +34,7 @@ const ForgotPasswordScreen = () => {
       setValue={setUserName}
       secureTextEntry={undefined}
       />
-    
+
       <CustomButton 
       text="Send"
       onPress={onSendPressed}

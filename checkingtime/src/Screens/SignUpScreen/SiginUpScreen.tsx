@@ -18,7 +18,7 @@ const SiginUpScreen = () => {
   }
   
   const onSignInPressed = () => {
-    //console.warn("Sign In pressed"); // quay lại về đăng ký
+    console.warn("Sign In pressed"); // quay lại về đăng ký
     navigation.navigate('SignIn');
   }
   const onTermsOfUserPressed = () => {

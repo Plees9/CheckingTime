@@ -12,7 +12,8 @@ import SignUpScreen from '../Screens/SignUpScreen';
 import ConfirmEmailScreen from '../Screens/ConfirmEmailScreen';
 import ForgotPasswordScreen from '../Screens/ForgotPasswordScreen';
 import NewPasswordScreen from '../Screens/NewPasswordScreen';
-
+import Account from '../Screens/Account/Account';
+import TabsNavigation from '../Screens/TabBar/tab';
 
 
 const Stack = createNativeStackNavigator();
@@ -20,15 +21,19 @@ const Stack = createNativeStackNavigator();
 const Navigation = () => {
   return (
     <NavigationContainer >
-    <Stack.Navigator screenOptions={{headerShown:true}} > 
-      <Stack.Screen name="SignIn" component={SignInScreen}  options={{ title: 'Awesome app' }}  />
-      <Stack.Screen name="HomeScreen" component={HomeScreen} />
-      <Stack.Screen name="SignUp" component={SignUpScreen} />
-      <Stack.Screen name="ConfirmEmail" component={ConfirmEmailScreen} />
-      <Stack.Screen name="ForgotPassword" component={ForgotPasswordScreen} />
-      <Stack.Screen name="NewPassword" component={NewPasswordScreen} />
+    <Stack.Navigator screenOptions={{ headerShown : true}} > 
+      <Stack.Screen name="SignIn" component={SignInScreen}/>
+      <Stack.Screen name="SignUp" component={SignUpScreen}/>
+      <Stack.Screen name="ConfirmEmail" component={ConfirmEmailScreen}/>
+      <Stack.Screen name="ForgotPassword" component={ForgotPasswordScreen}/>
+      <Stack.Screen name="NewPassword" component={NewPasswordScreen}/>
+      <Stack.Screen name="HomeScreen" component={HomeScreen}/>
+      <Stack.Screen name="Account" component={Account}/>
+      <Stack.Screen name="TabsNavigation" component={TabsNavigation}/>
     </Stack.Navigator>
     </NavigationContainer>
   )
 };
-export default Navigation;
+
+
+export default Navigation ;

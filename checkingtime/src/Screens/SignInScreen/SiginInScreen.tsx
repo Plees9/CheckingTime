@@ -7,8 +7,6 @@ import CustomButton from '../../components/CustomButton';
 import { useNavigation } from '@react-navigation/native';
 import SocialSiginButtons from '../../components/SocialSiginButtons';
 
-
-
 //const SiginInScreen:React.FC<IProps> = ({navigation}) => {
 const SiginInScreen = () => {
 
@@ -19,12 +17,12 @@ const SiginInScreen = () => {
   const[password, setPassword] = useState('');
 
   const onSiginInPressed = () => {
-    //console.warn("Sigin in pressed");
+    console.warn("Sigin in pressed");
     navigation.navigate('HomeScreen');
    
   }
   const onForgotPasswordPressed = () => {
-    //console.warn("Forgot password pressed");
+    console.warn("Forgot password pressed");
     navigation.navigate('ForgotPassword');
   }
   const onSiginInFaceBookPressed = () => {
@@ -38,7 +36,7 @@ const SiginInScreen = () => {
     console.warn("Sigin in with phone number pressed");
   }
   const onRegister = () => {
-    //console.warn("Tạo tài khoản mới");
+    console.warn("Tạo tài khoản mới");
     navigation.navigate('SignUp');
   }
   

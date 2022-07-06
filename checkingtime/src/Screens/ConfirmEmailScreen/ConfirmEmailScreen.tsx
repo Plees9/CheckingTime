@@ -13,13 +13,7 @@ const ConfirmEmailScreen = () => {
   const onConfirmPressed = () => {
     //console.warn("Confirm Pressed"); // về màn hình đăng nhập
     navigation.navigate('SignIn');
-  }
-  
-  // const onSignInPressed = () => {
-  //   console.warn("Sign In pressed");
-  //   navigation.navigate('SignIn');
-  // }
-  
+  } 
   const onResendPressed = () => {
     console.warn("Resend Pressed");
   }
@@ -42,20 +36,13 @@ const ConfirmEmailScreen = () => {
       bgColor={undefined} 
       fgColor={undefined}
       />
+      
       <CustomButton
       text="Resend code"
       onPress={onResendPressed}
       fgColor="#000000"
       type="Secondary" 
-      bgColor={undefined}/>
-
-      {/* <CustomButton
-      text="Back to sign in"
-      onPress={onSignInPressed}
-      fgColor="#000000"
-      type="TERTIARY" 
-      bgColor={undefined}/> */}
-     
+      bgColor={undefined}/>   
     </View>
   );
 };
