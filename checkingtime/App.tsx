@@ -16,16 +16,16 @@ import ConfirmEmailScreen from "./src/Screens/ConfirmEmailScreen";
 import ForgotPasswordScreen from "./src/Screens/ForgotPasswordScreen";
 import NewPasswordScreen from "./src/Screens/NewPasswordScreen";
 import Navigation from "./src/navigation";
+import NhatKyDiem from "./src/Screens/NhatKyDiem/NhatKyDiem";
+import TabsNavigation from "./src/navigation/Tabs";
 
 
 const App = () => {
   return (
-      <SafeAreaView style ={styles.root} >
-       <Image source={require('./assets/images/ah.jpg')} style={styles.image}/> 
-        {/* <Jobs/> */}
-        <Navigation/>
+    <SafeAreaView style={styles.root}>
       
-      </SafeAreaView>
+      <TabsNavigation/>
+    </SafeAreaView>
   );
 };
 const styles = StyleSheet.create({

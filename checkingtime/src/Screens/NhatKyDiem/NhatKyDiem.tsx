@@ -136,4 +136,8 @@ const NhatKyDiem = () => {
       </SafeAreaView>
     );
 }
+<<<<<<< HEAD
 export default NhatKyDiem;
+=======
+export default NhatKyDiem;
+>>>>>>> 83ac694d3e88d047c1d1d5c699a6bbd6b4134212
