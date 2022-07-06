@@ -1,31 +1,35 @@
 import { View, Text, Image, StyleSheet, useWindowDimensions, ScrollView, TextInput } from 'react-native';
 import React, { useState } from 'react'
-import { StatusBar } from 'expo-status-bar';
+
 import CustomInput from '../../components/CustomInput';
 import CustomButton from '../../components/CustomButton';
-import { NavigationContainer } from '@react-navigation/native';
+
+import { useNavigation } from '@react-navigation/native';
+import SocialSiginButtons from '../../components/SocialSiginButtons';
 
 
 
+//const SiginInScreen:React.FC<IProps> = ({navigation}) => {
 const SiginInScreen = () => {
 
   const {height}=useWindowDimensions();
-
+  const navigation = useNavigation();
 
   const[userName, setUserName] = useState('');
   const[password, setPassword] = useState('');
 
   const onSiginInPressed = () => {
-    //console.warn("Sigin in pressed");
+    console.warn("Sigin in pressed");
     navigation.navigate('HomeScreen');
    
   }
   const onForgotPasswordPressed = () => {
-    //console.warn("Forgot password pressed");
+    console.warn("Forgot password pressed");
     navigation.navigate('ForgotPassword');
   }
   const onSiginInFaceBookPressed = () => {
     console.warn("Sigin in with facebook pressed");
+   
   }
   const onGooglePressed = () => {
     console.warn("Sigin in with google pressed");
@@ -34,7 +38,7 @@ const SiginInScreen = () => {
     console.warn("Sigin in with phone number pressed");
   }
   const onRegister = () => {
-    //console.warn("Tạo tài khoản mới");
+    console.warn("Tạo tài khoản mới");
     navigation.navigate('SignUp');
   }
   
