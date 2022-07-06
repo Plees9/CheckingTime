@@ -19,6 +19,7 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import Navigation from './src/navigation';
 import NhatKyDiem from './src/Screens/NhatKyDiem/NhatKyDiem';
 import DoiQua from './src/Screens/DoiQua/DoiQua';
+import HappyGame from './src/Screens/HappyGame/HappyGames';
 
 
 const App = () => {
@@ -32,7 +33,10 @@ const App = () => {
         {/* <NewPasswordScreen/> */}
         {/*<Navigation/> */}
         {/* <SignInScreen/> */}
-        <DoiQua/>
+        {/*<Jobs/>*/}
+
+        
+
       
       </SafeAreaView>
   );
