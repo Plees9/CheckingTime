@@ -12,9 +12,6 @@ const HappyGame = () => {
     const styles = useMemo(() => createStyles(), []);
     return (
       <ScrollView style={styles.container}>
-        <View style={styles.header}>
-          <Text style={styles.textHeader}>Happy Game</Text>
-        </View>
         <View style={styles.body}>
           <View style={{ flex: 3 }}>
             <View style={{ flex: 2, flexDirection: "row" }}>
