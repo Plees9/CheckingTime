@@ -18,8 +18,9 @@ import ForgotPasswordScreen from "./src/Screens/ForgotPasswordScreen";
 import NewPasswordScreen from "./src/Screens/NewPasswordScreen";
 import Navigation from "./src/navigation";
 import NhatKyDiem from "./src/Screens/NhatKyDiem/NhatKyDiem";
+import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import TabsNavigation from "./src/navigation/Tabs";
-
+import HomeScreen from './src/Screens/HomeScreen/index';
 const App = () => {
   return (
     <SafeAreaView style={styles.root}>
