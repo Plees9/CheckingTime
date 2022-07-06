@@ -78,10 +78,13 @@ const DoiQua = () => {
           flex: 1,
           marginHorizontal: 20,
           borderRadius: 10,
+          borderWidth: 1,
+          backgroundColor: "white",
+
         }}
       >
         <View style={{ flex: 1, flexDirection: "row" }}>
-          <View
+          <Pressable
             style={{
               flex: 1,
               borderWidth: 1,
@@ -89,34 +92,35 @@ const DoiQua = () => {
               justifyContent: "center",
               alignItems: "center",
             }}
+            onPress={() => Alert.alert("Simple Button pressed")}
           >
-            <Text> CHO A</Text>
-            
-          </View>
-          <View
+            <Text> diem hien tai</Text>
+          </Pressable>
+
+          <Pressable
             style={{
               flex: 1,
               borderWidth: 1,
               borderRadius: 10,
               justifyContent: "center",
               alignItems: "center",
-              backgroundColor: "blue",
             }}
+            onPress={() => Alert.alert("Simple Button pressed")}
           >
-            <Text> cho b</Text>
-          </View>
-          <View
+            <Text> diem </Text>
+          </Pressable>
+          <Pressable
             style={{
               flex: 1,
               borderWidth: 1,
               borderRadius: 10,
               justifyContent: "center",
               alignItems: "center",
-              backgroundColor: "red",
             }}
+            onPress={() => Alert.alert("Simple Button pressed")}
           >
-            <Text> cho c</Text>
-          </View>
+            <Text> hien tai</Text>
+          </Pressable>
         </View>
       </View>
       <View style={{ flex: 8, justifyContent: "center", alignItems: "center" }}>
