@@ -13,10 +13,13 @@ const SiginInScreen = () => {
   const[password, setPassword] = useState('');
 
   const onSiginInPressed = () => {
-    console.warn("Sigin in pressed");
+    //console.warn("Sigin in pressed");
+    navigation.navigate('HomeScreen');
+   
   }
   const onForgotPasswordPressed = () => {
-    console.warn("Forgot password pressed");
+    //console.warn("Forgot password pressed");
+    navigation.navigate('ForgotPassword');
   }
   const onSiginInFaceBookPressed = () => {
     console.warn("Sigin in with facebook pressed");
@@ -28,7 +31,8 @@ const SiginInScreen = () => {
     console.warn("Sigin in with phone number pressed");
   }
   const onRegister = () => {
-    console.warn("Register pressed");
+    //console.warn("Tạo tài khoản mới");
+    navigation.navigate('SignUp');
   }
   
   return (
