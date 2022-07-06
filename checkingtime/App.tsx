@@ -24,21 +24,18 @@ import HappyGame from './src/Screens/HappyGame/HappyGames';
 
 const App = () => {
   return (
-      <SafeAreaView style={styles.root}>
-         {/* <Image source={require('./assets/images/ah.jpg')} style ={styles.image}/> */}
-         {/* <Image source={require('./assets/images/ah.jpg')} style={styles.image}/>  */}
-        {/* <SignUpScreen/> */}
-        {/* <ConfirmEmailScreen/> */}
-        {/* <ForgotPasswordScreen/> */}
-        {/* <NewPasswordScreen/> */}
-        {/*<Navigation/> */}
-        {/* <SignInScreen/> */}
-        {/*<Jobs/>*/}
-
-        
-
-      
-      </SafeAreaView>
+    <SafeAreaView style={styles.root}>
+      {/* <Image source={require('./assets/images/ah.jpg')} style ={styles.image}/> */}
+      {/* <Image source={require('./assets/images/ah.jpg')} style={styles.image}/>  */}
+      {/* <SignUpScreen/> */}
+      {/* <ConfirmEmailScreen/> */}
+      {/* <ForgotPasswordScreen/> */}
+      {/* <NewPasswordScreen/> */}
+      {/*<Navigation/> */}
+      {/* <SignInScreen/> */}
+      {/*<Jobs/>*/}
+      < DoiQua />
+    </SafeAreaView>
   );
 }
 const styles = StyleSheet.create({
