@@ -7,6 +7,9 @@ import HomeScreen from "../Screens/HomeScreen";
 import HappyGame from "../Screens/HappyGame/HappyGames";
 import Jobs from "../Screens/Jobs";    
 import Icon from "react-native-vector-icons/Ionicons";
+import DoiQua from '../Screens/DoiQua/DoiQua';
+import { colors } from 'react-native-tailwindcss';
+
 const Tab = createBottomTabNavigator();
 
 const TabsNavigation = () => {
@@ -27,8 +30,17 @@ const TabsNavigation = () => {
             tabBarIcon: () => <Icon name="mail-sharp" size={30} />,
           }}
         />
+        <Tab.Screen
+          name=" "
+          component={DoiQua}
+          
+          options={{
+            tabBarIcon: () => <Icon name="finger-print" size={30} />
         
-        
+            ,
+          }}
+        />
+
         <Tab.Screen
           name="HappyGames"
           component={HappyGame}

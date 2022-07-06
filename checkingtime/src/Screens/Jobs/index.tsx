@@ -10,7 +10,6 @@ const Jobs = () => {
   return (
     <SafeAreaView style={styles.container}>
       <ScrollView style={styles.scrollView}>
-        <Text style={styles.text}> Công Việc </Text>
         <View>
           <Text style={styles.separate}>Quản lý chấm công</Text>
         </View>
