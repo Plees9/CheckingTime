@@ -4,7 +4,7 @@ import { StatusBar } from 'expo-status-bar';
 import CustomInput from '../../components/CustomInput';
 import CustomButton from '../../components/CustomButton';
 import { NavigationContainer } from '@react-navigation/native';
-import navigation from '../../navigation';
+
 
 
 const SiginInScreen = () => {

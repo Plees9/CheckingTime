@@ -6,24 +6,25 @@ import SocialSignButtons from '../../components/SocialSiginButtons';
 import { useNavigation } from '@react-navigation/native';
 
 const ConfirmEmailScreen = () => {
-  const[code, setCode] = useState('');
+  const [code, setCode] = useState("");
+
+  const navigation = useNavigation();
 
   const navigation = useNavigation();
 
   const onConfirmPressed = () => {
     //console.warn("Confirm Pressed"); // về màn hình đăng nhập
-    navigation.navigate('SignIn');
-  }
-  
+    navigation.navigate("SignIn");
+  };
+
   // const onSignInPressed = () => {
   //   console.warn("Sign In pressed");
   //   navigation.navigate('SignIn');
   // }
-  
   const onResendPressed = () => {
     console.warn("Resend Pressed");
-  }
-  
+  };
+
   return (
     <View style={styles.container}>
       <Text style ={styles.size} > Confirm Code</Text>
@@ -34,20 +35,21 @@ const ConfirmEmailScreen = () => {
       setValue={setCode}
       secureTextEntry={undefined}
       />
-    
-      <CustomButton 
-      text="Confirm"
-      onPress={onConfirmPressed}
-      type={undefined} 
-      bgColor={undefined} 
-      fgColor={undefined}
+
+      <CustomButton
+        text="Confirm"
+        onPress={onConfirmPressed}
+        type={undefined}
+        bgColor={undefined}
+        fgColor={undefined}
       />
       <CustomButton
-      text="Resend code"
-      onPress={onResendPressed}
-      fgColor="#000000"
-      type="Secondary" 
-      bgColor={undefined}/>
+        text="Resend code"
+        onPress={onResendPressed}
+        fgColor="#000000"
+        type="Secondary"
+        bgColor={undefined}
+      />
 
       {/* <CustomButton
       text="Back to sign in"
@@ -63,38 +65,36 @@ const styles = StyleSheet.create({
   logo: {
     height: 150,
     width: 150,
-    resizeMode: 'cover',
+    resizeMode: "cover",
   },
-  container : {
-    justifyContent: 'center',
-    alignItems: 'center',
+  container: {
+    justifyContent: "center",
+    alignItems: "center",
     padding: 10,
     paddingTop: 5,
   },
-  root : {
-    alignItems: 'center',
+  root: {
+    alignItems: "center",
     padding: 20,
   },
-  size : {
+  size: {
     fontSize: 24,
-    fontWeight: 'bold',
-    color: '#FF4949',
-    
+    fontWeight: "bold",
+    color: "#FF4949",
   },
-  text : {
-    color:'gray',
+  text: {
+    color: "gray",
     //marginVertical: 5,
   },
-  title : {
+  title: {
     fontSize: 24,
-    fontWeight: 'bold',
-    color: '#F7EC09',
+    fontWeight: "bold",
+    color: "#F7EC09",
     margin: 10,
   },
-  link : {
-    color: '#FDB075',
+  link: {
+    color: "#FDB075",
   },
-
 });
 
 export default ConfirmEmailScreen;
