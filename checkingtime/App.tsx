@@ -24,7 +24,7 @@ const App = () => {
   return (
     <SafeAreaView style={styles.root}>
       
-      <Navigation/>
+      <TabsNavigation/>
     </SafeAreaView>
   );
 };
