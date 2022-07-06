@@ -13,8 +13,8 @@ const HappyGame = () => {
     return (
       <ScrollView style={styles.container}>
         <View style={styles.body}>
-          <View style={{ flex: 3 }}>
-            <View style={{ flex: 2, flexDirection: "row" }}>
+          <View style={{ flex: 3 ,backgroundColor:"pink" }}>
+            <View style={{ flex: 2, flexDirection: "row" , alignItems : "center"}}>
               <Icon name="user" size={30} color="#46b5ff" />
               <View style={{ flexDirection: "column" }}>
                 <Text style={styles.text1}>baby </Text>
