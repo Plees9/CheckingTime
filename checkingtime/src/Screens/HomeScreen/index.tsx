@@ -26,7 +26,7 @@ const HomeScreen = () => {
                         <Text>Home2</Text>
                     </View>
                 
-                    <Pressable style = {{alignContent :'center', justifyContent : "center",padding: 10,borderRadius:100, backgroundColor: 'lightblue'}}>
+                    <Pressable style = {{alignContent :'center', justifyContent : "center",padding: 12,borderRadius:100, backgroundColor: 'lightblue'}}>
                         <Icon name="reload1" size={20} onPress={() => Alert.alert('Simple Button pressed') }/>
                     </Pressable>
                     

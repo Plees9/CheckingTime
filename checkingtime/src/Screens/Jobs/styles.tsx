@@ -12,8 +12,10 @@ const styles = StyleSheet.create({
       marginHorizontal: 20,
     },
     text: {
+
       fontSize: 42,
-      fontWeight:"bold",
+      fontWeight: 'bold',
+      color: "#1363DF",
     },
     separate: {
       backgroundColor: '#DFF6FF',
