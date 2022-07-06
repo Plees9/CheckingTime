@@ -16,20 +16,32 @@ import SignUpScreen from './src/Screens/SignUpScreen';
 import ConfirmEmailScreen from './src/Screens/ConfirmEmailScreen';
 import ForgotPasswordScreen from './src/Screens/ForgotPasswordScreen';
 import NewPasswordScreen from './src/Screens/NewPasswordScreen';
+
 import Navigation from './src/navigation/index';
 import TabsNavigation from './src/Screens/TabBar/tab';
+
+
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
+
+import NhatKyDiem from './src/Screens/NhatKyDiem/NhatKyDiem';
+import DoiQua from './src/Screens/DoiQua/DoiQua';
 
 
 
 const App = () => {
   return (
+
       <SafeAreaView style ={styles.root} >
-       {/* <Image source={require('./assets/images/ah.jpg')} style={styles.image}/>  */}
-        {/* <Jobs/> */}
-       {/* <Navigation/> */}
-       {/* <Account/> */}
-        <Navigation/> 
-         {/* <TabsNavigation/>  */}
+         {/* <Image source={require('./assets/images/ah.jpg')} style={styles.image}/>  */}
+        {/* <SignUpScreen/> */}
+        {/* <ConfirmEmailScreen/> */}
+        {/* <ForgotPasswordScreen/> */}
+        {/* <NewPasswordScreen/> */}
+        {/* <SignInScreen/> */}
+        {/* <Navigation/> */}
+        <TabsNavigation/>
+      
+
       </SafeAreaView>
   );
 }

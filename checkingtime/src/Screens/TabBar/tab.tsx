@@ -16,7 +16,7 @@ const TabsNavigation = () => {
   return (
       <NavigationContainer>
       <Tab.Navigator >
-        <Tab.Screen name="HomeScreen" component={HomeScreen} options = {{tabBarLabel: 'HomeScreen'}} />
+        <Tab.Screen name="HomeScreen" component={HomeScreen} />
         <Tab.Screen name="Jobs" component={Jobs} />
         <Tab.Screen name="HappyGames" component={HappyGame} />
         <Tab.Screen name="Account" component={Account} />
