@@ -16,12 +16,6 @@ const SiginInScreen = () => {
 
   const {height}=useWindowDimensions();
   const navigation = useNavigation<any>();
-<<<<<<< HEAD
-  
-   
-=======
-
->>>>>>> 099bc49115aaebd97a567850be936ef4ef7f936c
   const[userName, setUserName] = useState('');
   const[password, setPassword] = useState('');
 
