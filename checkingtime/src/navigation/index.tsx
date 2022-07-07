@@ -12,6 +12,8 @@ import SignUpScreen from '../Screens/SignUpScreen';
 import ConfirmEmailScreen from '../Screens/ConfirmEmailScreen';
 import ForgotPasswordScreen from '../Screens/ForgotPasswordScreen';
 import NewPasswordScreen from '../Screens/NewPasswordScreen';
+import Form from '../Screens/Form/Form';
+import TabsNavigation from './Tabs';
 
 
 
@@ -24,9 +26,11 @@ const Navigation = () => {
       <Stack.Screen name="SignIn" component={SignInScreen}  options={{ title: 'Awesome app' }}  />
       <Stack.Screen name="HomeScreen" component={HomeScreen} />
       <Stack.Screen name="SignUp" component={SignUpScreen} />
+      <Stack.Screen name="Form" component={Form} />
       <Stack.Screen name="ConfirmEmail" component={ConfirmEmailScreen} />
       <Stack.Screen name="ForgotPassword" component={ForgotPasswordScreen} />
       <Stack.Screen name="NewPassword" component={NewPasswordScreen} />
+      <Stack.Screen name="TabsNavigation" component={TabsNavigation} />
     </Stack.Navigator>
     </NavigationContainer>
   )
