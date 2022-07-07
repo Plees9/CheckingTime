@@ -22,11 +22,12 @@ import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import TabsNavigation from './src/navigation/Tabs';
 import HomeScreen from './src/Screens/HomeScreen/index';
 import Navigation from "./src/navigation";
+import JobNavigation from "./src/navigation";
 const App = () => {
   return (
     <SafeAreaView style={styles.root}>
       <NavigationContainer>
-        <HappyGameNavigation/>
+        <JobNavigation/>
       </NavigationContainer>
     </SafeAreaView>
   );

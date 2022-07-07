@@ -16,6 +16,8 @@ import TabsNavigation from './Tabs';
 import HappyGame from '../Screens/HappyGame/HappyGames';
 import NhatKyDiem from '../Screens/NhatKyDiem/NhatKyDiem';
 import DoiQua from '../Screens/DoiQua/DoiQua';
+import Form from '../Screens/Form/Form';
+import Jobs from '../Screens/Jobs';
 
 
 
@@ -28,7 +30,6 @@ const Navigation = () => {
     <Stack.Navigator > 
       <Stack.Screen name="SignIn" component={SignInScreen} />
       <Stack.Screen name="SignUp" component={SignUpScreen} />
-      <Stack.Screen name="Form" component={Form} />
       <Stack.Screen name="ConfirmEmail" component={ConfirmEmailScreen} />
       <Stack.Screen name="ForgotPassword" component={ForgotPasswordScreen} />
       <Stack.Screen name="NewPassword" component={NewPasswordScreen} />
@@ -38,6 +39,7 @@ const Navigation = () => {
     </NavigationContainer>
   )
 };
+
 const HappyGameNavigation = () => {
   return (
     <Stack.Navigator >
@@ -47,4 +49,13 @@ const HappyGameNavigation = () => {
     </Stack.Navigator>
   );
 }
-export default HappyGameNavigation ;
+
+const JobNavigation = () => {
+  return (
+    <Stack.Navigator>
+      <Stack.Screen name="Jobs" component={Jobs} />
+      <Stack.Screen name="Form" component={Form} />
+    </Stack.Navigator>
+  );
+}
+export default JobNavigation ;
