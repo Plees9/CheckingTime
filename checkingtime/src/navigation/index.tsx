@@ -11,6 +11,11 @@ import SignUpScreen from '../Screens/SignUpScreen';
 import ConfirmEmailScreen from '../Screens/ConfirmEmailScreen';
 import ForgotPasswordScreen from '../Screens/ForgotPasswordScreen';
 import NewPasswordScreen from '../Screens/NewPasswordScreen';
+import TabsNavigation from './Tabs';
+import HappyGame from '../Screens/HappyGame/HappyGames';
+import NhatKyDiem from '../Screens/NhatKyDiem/NhatKyDiem';
+import DoiQua from '../Screens/DoiQua/DoiQua';
+
 
 
 
@@ -19,17 +24,25 @@ const Stack = createNativeStackNavigator();
 const Navigation = () => {
   return (
     <NavigationContainer>
-    <Stack.Navigator initialRouteName='Back' > 
+    <Stack.Navigator > 
       <Stack.Screen name="SignIn" component={SignInScreen} />
-      <Stack.Screen name="HomeScreen" component={HomeScreen} />
       <Stack.Screen name="SignUp" component={SignUpScreen} />
       <Stack.Screen name="ConfirmEmail" component={ConfirmEmailScreen} />
       <Stack.Screen name="ForgotPassword" component={ForgotPasswordScreen} />
       <Stack.Screen name="NewPassword" component={NewPasswordScreen} />
-      <Stack.Screen name="Home" component={HomeScreen} />
+
 
     </Stack.Navigator>
     </NavigationContainer>
   )
 };
-export default Navigation;
+const HappyGameNavigation = () => {
+  return (
+    <Stack.Navigator >
+      <Stack.Screen name="Happy" component={HappyGame} />
+      <Stack.Screen name="NhatKyDiem" component={NhatKyDiem} />
+      <Stack.Screen name="DoiQua" component={DoiQua} />
+    </Stack.Navigator>
+  );
+}
+export default HappyGameNavigation ;

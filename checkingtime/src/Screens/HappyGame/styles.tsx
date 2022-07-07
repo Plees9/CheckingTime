@@ -1,10 +1,11 @@
-import { StyleSheet } from 'react-native';
+import { StyleSheet, ImageBackground } from 'react-native';
 
 
 const createStyles = () =>
   StyleSheet.create({
     container: {
       flex: 1,
+        
     },
     textHeader: {
       fontSize: 30,
