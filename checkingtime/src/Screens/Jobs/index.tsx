@@ -9,7 +9,7 @@ import Form from '../Form/Form';
 
 
 const Jobs = () => {
-  
+  const {height}=useWindowDimensions();
   const navigation = useNavigation<any>();
   
   return (
