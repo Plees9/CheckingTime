@@ -12,9 +12,7 @@ const HappyGame = () => {
     const styles = useMemo(() => createStyles(), []);
     return (
       <ScrollView style={styles.container}>
-        <View style={styles.header}>
-          <Text style={styles.textHeader}>Happy Game</Text>
-        </View>
+        <ImageBackground source={require("../../../assets/images/ah.jpg")} style={styles.image} />
         <View style={styles.body}>
           <View style={{ flex: 3 }}>
             <View style={{ flex: 2, flexDirection: "row" }}>
@@ -79,10 +77,10 @@ const HappyGame = () => {
         <View style={styles.header}>
           <Text style={styles.text}>Danh sach Game </Text>
         </View>
-        <View style={styles.footer}>
-          <ImageBackground source={require("../../../assets/icon.png")}>
-            <View>
-              <Text style={styles.text}>xin chao</Text>
+        <View style = {styles.footer} >
+          <ImageBackground source={require("../../../assets/icon.png")} style = {styles.image}>
+            <View> 
+              <Text style={styles.text2}>xin chao</Text>
             </View>
           </ImageBackground>
         </View>

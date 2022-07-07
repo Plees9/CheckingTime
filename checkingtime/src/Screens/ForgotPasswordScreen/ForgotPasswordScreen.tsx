@@ -7,7 +7,7 @@ import { useNavigation } from '@react-navigation/native';
 
 const ForgotPasswordScreen = () => {
   const[userName, setUserName] = useState('');
-  const navigation = useNavigation();
+  const navigation = useNavigation<any>();
 
   const onSendPressed = () => {
     //console.warn("Send Pressed");

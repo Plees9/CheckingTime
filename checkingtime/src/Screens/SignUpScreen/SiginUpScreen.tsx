@@ -10,7 +10,7 @@ const SiginUpScreen = () => {
   const[email, setEmail] = useState('');
   const[password, setPassword] = useState('');
   const[passwordRepeat, setPasswordRepeat] = useState('');
-  const navigation = useNavigation();
+  const navigation = useNavigation<any>();
 
   const onRegisterPressed = () => {
     //console.warn("Register pressed"); //ấn Register xong về SignIn
@@ -18,7 +18,7 @@ const SiginUpScreen = () => {
   }
   
   const onSignInPressed = () => {
-    console.warn("Sign In pressed"); // quay lại về đăng ký
+    // console.warn("Sign In pressed"); // quay lại về đăng ký
     navigation.navigate('SignIn');
   }
   const onTermsOfUserPressed = () => {

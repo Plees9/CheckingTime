@@ -42,13 +42,18 @@ const createStyles = () =>
       fontSize: 15,
     },
     image: {
-      flex: 1,
-      justifyContent: "center",
+      width: "100%",
+      height: 250,
+      alignItems: "center",
     },
     footer: {
       flex: 3,
       justifyContent: "flex-end",
-      alignItems: "center",
+      resizeMode: "center",
+    },
+    text2: {
+      fontSize: 15,
+      alignSelf: "center",
     },
   });
 

@@ -6,23 +6,25 @@ import CustomButton from '../../components/CustomButton';
 
 import { useNavigation } from '@react-navigation/native';
 import SocialSiginButtons from '../../components/SocialSiginButtons';
+import Navigation from '../../navigation';
+import StatusBar from '../StatusBar/StatusBar';
 
 //const SiginInScreen:React.FC<IProps> = ({navigation}) => {
 const SiginInScreen = () => {
 
   const {height}=useWindowDimensions();
-  const navigation = useNavigation();
+  const navigation = useNavigation<any>();
 
   const[userName, setUserName] = useState('');
   const[password, setPassword] = useState('');
 
   const onSiginInPressed = () => {
-    console.warn("Sigin in pressed");
+    //console.warn("Sigin in pressed");
     navigation.navigate('HomeScreen');
    
   }
   const onForgotPasswordPressed = () => {
-    console.warn("Forgot password pressed");
+    //console.warn("Forgot password pressed");
     navigation.navigate('ForgotPassword');
   }
   const onSiginInFaceBookPressed = () => {
@@ -36,7 +38,7 @@ const SiginInScreen = () => {
     console.warn("Sigin in with phone number pressed");
   }
   const onRegister = () => {
-    console.warn("Tạo tài khoản mới");
+    //console.warn("Tạo tài khoản mới");
     navigation.navigate('SignUp');
   }
   
@@ -48,7 +50,8 @@ const SiginInScreen = () => {
       placeholder="UserName"
       value={userName}
       setValue={setUserName}
-      secureTextEntry={undefined}/>
+      secureTextEntry={undefined}
+      />
       <CustomInput 
       placeholder="Password" 
       value={password} 
@@ -60,37 +63,43 @@ const SiginInScreen = () => {
       onPress={onSiginInPressed}
       type={undefined} 
       bgColor={undefined} 
-      fgColor={undefined}/>
+      fgColor={undefined}
+      />
       <CustomButton
       text="Forgot password?"
       onPress={onForgotPasswordPressed}
       fgColor="#000000"
       type="TERTIARY" 
-      bgColor={undefined}/>
+      bgColor={undefined}
+      />
       <CustomButton 
       text="Sigin FaceBook"
       onPress={onSiginInFaceBookPressed} 
       bgColor = "#E7EAF4"
       fgColor = "#4765A9"
-      type={undefined}/>
+      type={undefined}
+      />
       <CustomButton 
       text="Google"
       onPress={onGooglePressed} 
       bgColor = "#FAE9EA"
       fgColor = "#DD4D44"
-      type={undefined}/>
+      type={undefined}
+      />
       <CustomButton 
       text="Phone Number"
       onPress={onPhoneNumberPressed} 
       bgColor = "#E3E3E3"
       fgColor = "#363636"
-      type={undefined}/>
+      type={undefined}
+      />
       <CustomButton
       text="Don't have an account? Create one"
       onPress={onRegister}
       fgColor="#000000"
       type="TERTIARY" 
-      bgColor={undefined}/>
+      bgColor={undefined}
+      />
      
     </View>
   );
