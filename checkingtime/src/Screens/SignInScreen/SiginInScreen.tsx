@@ -6,6 +6,8 @@ import CustomButton from '../../components/CustomButton';
 
 import { useNavigation } from '@react-navigation/native';
 import SocialSiginButtons from '../../components/SocialSiginButtons';
+import ForgotPasswordScreen from '../ForgotPasswordScreen';
+import HomeScreen from '../HomeScreen';
 
 
 
@@ -14,8 +16,12 @@ const SiginInScreen = () => {
 
   const {height}=useWindowDimensions();
   const navigation = useNavigation<any>();
+<<<<<<< HEAD
   
    
+=======
+
+>>>>>>> 099bc49115aaebd97a567850be936ef4ef7f936c
   const[userName, setUserName] = useState('');
   const[password, setPassword] = useState('');
 
@@ -26,7 +32,7 @@ const SiginInScreen = () => {
   }
   const onForgotPasswordPressed = () => {
     console.warn("Forgot password pressed");
-    navigation.navigate('ForgotPassword');
+    navigation.navigate('ForgotPasswordScreen');
   }
   const onSiginInFaceBookPressed = () => {
     console.warn("Sigin in with facebook pressed");
@@ -42,6 +48,7 @@ const SiginInScreen = () => {
     console.warn("Tạo tài khoản mới");
     navigation.navigate('SignUp');
   }
+  
   
   return (
     <View style={styles.container}>

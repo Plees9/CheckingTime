@@ -8,11 +8,13 @@ import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import Account from "../Account/Account";
 import HappyGame from "../HappyGame/HappyGames";
 import Jobs from "../Jobs";
+import TabsNavigation from "../../navigation/Tabs";
 const Tab = createBottomTabNavigator();
 const HomeScreen = () => {
     return (
       <View style={styles.container}>
         <ScrollView style={styles.scrollView}>
+        
           <View style={{ flex: 1, flexDirection: "row" }}>
             <View
               style={{
@@ -81,10 +83,7 @@ const HomeScreen = () => {
             </View>
           </View>
         </ScrollView>
-        <View>
-             
-          
-        </View>
+        
       </View>
     );
 }
