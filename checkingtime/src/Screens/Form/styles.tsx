@@ -12,7 +12,7 @@ const styles = StyleSheet.create({
       marginHorizontal: 20,
     },
     text: {
-      fontSize: 42,
+      fontSize: 24,
     },
     separate: {
       backgroundColor: '#DFF6FF',
@@ -28,6 +28,15 @@ const styles = StyleSheet.create({
         width: 200,
         height: 50,
     },
+    header: {
+        justifyContent: "center",
+        alignItems: "center",
+        marginTop: 30,
+        backgroundColor: 'lightblue',
+        fontSize: 30,
+        fontWeight: "bold"
+
+      },
   });
 
   export default styles;

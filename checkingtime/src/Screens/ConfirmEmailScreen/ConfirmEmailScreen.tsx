@@ -1,14 +1,14 @@
-import { View, Text, Image, StyleSheet } from "react-native";
-import React, { useState } from "react";
-import CustomInput from "../../components/CustomInput";
-import CustomButton from "../../components/CustomButton";
-import SocialSignButtons from "../../components/SocialSiginButtons";
-import { useNavigation } from "@react-navigation/native";
+import { View, Text, Image, StyleSheet } from 'react-native';
+import React, { useState } from 'react'
+import CustomInput from '../../components/CustomInput';
+import CustomButton from '../../components/CustomButton';
+import SocialSignButtons from '../../components/SocialSiginButtons';
+import { useNavigation } from '@react-navigation/native';
 
 const ConfirmEmailScreen = () => {
   const [code, setCode] = useState("");
 
-  const navigation = useNavigation();
+  const navigation = useNavigation<any>();
 
   const onConfirmPressed = () => {
     //console.warn("Confirm Pressed"); // về màn hình đăng nhập
@@ -19,20 +19,19 @@ const ConfirmEmailScreen = () => {
   //   console.warn("Sign In pressed");
   //   navigation.navigate('SignIn');
   // }
-
   const onResendPressed = () => {
     console.warn("Resend Pressed");
   };
 
   return (
     <View style={styles.container}>
-      <Text style={styles.size}> Confirm Code</Text>
-
-      <CustomInput
-        placeholder="Enter your confirmation code"
-        value={code}
-        setValue={setCode}
-        secureTextEntry={undefined}
+      <Text style ={styles.size} > Confirm Code</Text>
+     
+      <CustomInput 
+      placeholder="Enter your confirmation code"
+      value={code}
+      setValue={setCode}
+      secureTextEntry={undefined}
       />
 
       <CustomButton
@@ -56,6 +55,7 @@ const ConfirmEmailScreen = () => {
       fgColor="#000000"
       type="TERTIARY" 
       bgColor={undefined}/> */}
+     
     </View>
   );
 };

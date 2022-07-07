@@ -43,9 +43,9 @@ const NhatKyDiem = () => {
               onPress={() => Alert.alert("Simple Button pressed")}
             />
             <View style={{ flexDirection: "column" }}>
-              <Text style={{ fontSize: 15}}> name</Text>
+              <Text style={styles.text}> name</Text>
 
-              <Text style={{ fontSize: 15 }}> ten</Text>
+              <Text style={styles.text}> ten</Text>
             </View>
           </View>
           <View
@@ -77,52 +77,19 @@ const NhatKyDiem = () => {
         >
           <View style={{ flexDirection: "row" }}>
             <View
-              style={{
-                flex: 1,
-                alignItems: "center",
-                borderWidth: 1,
-                borderRadius: 20,
-                paddingVertical: 10,
-                marginHorizontal: 20,
-                marginTop: 10,
-                marginBottom: 10,
-                alignContent: "center",
-                justifyContent: "center",
-              }}
+              style={styles.body}
             >
               <Text> sddka</Text>
               <Text> 0</Text>
             </View>
             <View
-              style={{
-                flex: 1,
-                alignItems: "center",
-                borderWidth: 1,
-                borderRadius: 20,
-                paddingVertical: 10,
-                marginHorizontal: 20,
-                marginTop: 10,
-                marginBottom: 10,
-                alignContent: "center",
-                justifyContent: "center",
-              }}
+              style={styles.body}
             >
               <Text>adadas</Text>
               <Text> 0</Text>
             </View>
             <View
-              style={{
-                flex: 1,
-                alignItems: "center",
-                borderWidth: 1,
-                borderRadius: 20,
-                paddingVertical: 10,
-                marginHorizontal: 20,
-                marginTop: 10,
-                marginBottom: 10,
-                alignContent: "center",
-                justifyContent: "center",
-              }}
+              style={styles.body}
             >
               <Text> sddka</Text>
               <Text> 0</Text>

@@ -1,12 +1,17 @@
 import React from 'react';
-import { StyleSheet, Text, SafeAreaView, ScrollView, StatusBar, View, Alert, Button } from 'react-native';
+import { StyleSheet, Text, SafeAreaView, ScrollView, StatusBar, View, Alert, Button, useWindowDimensions } from 'react-native';
 import { t } from "react-native-tailwindcss";
 import { Icon } from 'react-native-vector-icons/Icon';
 import styles from './styles';
 import { IconButton} from 'react-native-paper';
+import { useNavigation } from '@react-navigation/native';
+import Form from '../Form/Form';
 
 
 const Jobs = () => {
+  const {height}=useWindowDimensions();
+  const navigation = useNavigation<any>();
+  
   return (
     <SafeAreaView style={styles.container}>
       <ScrollView style={styles.scrollView}>
@@ -28,7 +33,7 @@ const Jobs = () => {
             <Text>Danh sách đơn từ</Text>
           </View>
           <View style={{justifyContent:'center', alignItems:'center', marginLeft:15}}>
-            <IconButton icon='text-box-plus' color='#47B5FF' size={40} onPress={() => Alert.alert('Phucleedepzai') }  />
+            <IconButton icon='text-box-plus' color='#47B5FF' size={40} onPress={() => navigation.navigate('Form')}  />
             <Text>Tạo đơn mới</Text>
           </View>
         </View>
@@ -48,6 +53,8 @@ const Jobs = () => {
         
       </ScrollView>
     </SafeAreaView>
+    
+    
 
     
   );

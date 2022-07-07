@@ -3,27 +3,30 @@ import React, { useState } from 'react'
 import CustomInput from '../../components/CustomInput';
 import CustomButton from '../../components/CustomButton';
 import SocialSignButtons from '../../components/SocialSiginButtons';
+import { useNavigation } from '@react-navigation/native';
 
 const ForgotPasswordScreen = () => {
   const[code, setCode] = useState('');
   const[newPassword, setNewPassword] = useState('');
+  const navigation = useNavigation();
 
   const onSubmitPressed = () => {
-    console.warn("Submit Pressed");
+    //console.warn("Submit Pressed");
+    navigation.navigate('SignIn');
   }
   
-  const onSignInPressed = () => {
-    console.warn("Sign In pressed");
-  }
+  // const onSignInPressed = () => {
+  //   console.warn("Sign In pressed");
+  // }
   
   
   return (
     <View style={styles.container}>
       <Text style ={styles.size} > Reset your password</Text>
-      <Text style ={styles.user} > Username</Text>
+
      
       <CustomInput 
-      placeholder="code"
+      placeholder="Enter your code"
       value={code}
       setValue={setCode}
       secureTextEntry={undefined}
@@ -44,12 +47,12 @@ const ForgotPasswordScreen = () => {
       />
       
 
-      <CustomButton
+      {/* <CustomButton
       text="Back to sign in"
       onPress={onSignInPressed}
       fgColor="#000000"
       type="TERTIARY" 
-      bgColor={undefined}/>
+      bgColor={undefined}/> */}
      
     </View>
   );

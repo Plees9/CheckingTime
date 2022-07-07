@@ -6,50 +6,24 @@ const createStyles = () =>
     container: {
       flex: 1,
     },
-    textHeader: {
-      fontSize: 30,
-      fontStyle: "italic",
-    },
-
-    header: {
-      flex: 1,
-      marginTop: 20,
-      marginLeft: 20,
-    },
-    body: {
-      backgroundColor: "dff6ff",
-      flex: 1,
-      flexDirection: "row",
-      marginTop: 30,
-      marginLeft: 20,
-    },
-    body2: {
-      flex: 1,
-      flexDirection: "row",
-      marginTop: 30,
-      marginLeft: 20,
-      marginRight: 20,
-      borderWidth: 1,
-      borderRadius: 10,
-      padding: 5,
-    },
-
     text: {
       fontSize: 15,
-      justifyContent: "flex-end",
+
     },
-    text1: {
-      fontSize: 15,
-    },
-    image: {
+    body: {
       flex: 1,
+      alignItems: "center",
+      borderWidth: 1,
+      borderRadius: 20,
+      paddingVertical: 10,
+      marginHorizontal: 20,
+      marginTop: 10,
+      marginBottom: 10,
+      alignContent: "center",
       justifyContent: "center",
     },
-    footer: {
-      flex: 3,
-      justifyContent: "flex-end",
-      alignItems: "center",
-    },
+
+
   });
 
 export default createStyles;

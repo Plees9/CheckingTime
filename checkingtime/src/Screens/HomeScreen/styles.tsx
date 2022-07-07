@@ -12,7 +12,7 @@ const styles = StyleSheet.create({
       flex: 1,
     },
     text: {
-      fontSize: 42,
+      fontSize: 20,
       padding: 20,
       justifyContent: "center",
 

@@ -1,5 +1,5 @@
 import React from "react";
-import { SafeAreaView, View, FlatList, StyleSheet, Text, StatusBar } from "react-native";
+import { SafeAreaView, View, FlatList, StyleSheet, Text, StatusBar, Button, Alert } from 'react-native';
 import styles from './styles';
 
 const DATA = [ {
@@ -9,17 +9,29 @@ const DATA = [ {
 ];
 
 const Form = () => {
-    <View>
+    return (
+    <View style={{flex: 1,backgroundColor: 'gray'}}>
         <View>
-            <Text>Form</Text>
+            <View style={styles.header}>
+                <Text style={{fontSize:24, fontWeight: 'bold'}}>Form</Text>
+            </View>
         </View>
         <View>
-            <Text style={styles.text}>Mô tả đơn</Text>
-            <Text style={styles.text}>...</Text>
-            <Text style={styles.text}>Quy định đơn</Text>
-            <Text style={styles.text}>...</Text>
+            <View style={{backgroundColor: 'lightblue', marginTop: 10}}>
+                <View style={{marginLeft: 10}}>
+                    <Text style={styles.text}>Mô tả đơn</Text>
+                    <Text style={styles.text}>...</Text>
+                    <Text style={styles.text}>Quy định đơn</Text>
+                    <Text style={styles.text}>...</Text>
+                </View>    
+            </View>
         </View>
+        <View>
+            <View style={{justifyContent: 'flex-end', backgroundColor: 'pink'}}>
+                <Button title="nhấn vào đây" color={'pink'} onPress={() => Alert.alert('Nhấn ok để tắt cửa sổ thông báo')} />
+            </View>
+        </View>    
     </View>
-
-}
+    );
+};
 export default Form;

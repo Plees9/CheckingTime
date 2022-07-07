@@ -1,5 +1,6 @@
 import { View, Text } from 'react-native'
 import * as React from 'react';
+import 'react-native-gesture-handler';
 
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
@@ -15,6 +16,8 @@ import TabsNavigation from './Tabs';
 import HappyGame from '../Screens/HappyGame/HappyGames';
 import NhatKyDiem from '../Screens/NhatKyDiem/NhatKyDiem';
 import DoiQua from '../Screens/DoiQua/DoiQua';
+import Form from '../Screens/Form/Form';
+import Jobs from '../Screens/Jobs';
 
 
 
@@ -36,6 +39,7 @@ const Navigation = () => {
     </NavigationContainer>
   )
 };
+
 const HappyGameNavigation = () => {
   return (
     <Stack.Navigator >
@@ -45,4 +49,13 @@ const HappyGameNavigation = () => {
     </Stack.Navigator>
   );
 }
-export default HappyGameNavigation ;
+
+const JobNavigation = () => {
+  return (
+    <Stack.Navigator>
+      <Stack.Screen name="Jobs" component={Jobs} />
+      <Stack.Screen name="Form" component={Form} />
+    </Stack.Navigator>
+  );
+}
+export default JobNavigation ;
