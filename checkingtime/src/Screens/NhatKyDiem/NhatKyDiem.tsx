@@ -1,4 +1,4 @@
-import { BackHandler } from "react-native";
+import { BackHandler, useWindowDimensions } from "react-native";
 import React, { useMemo } from "react";
 import {
   View,
@@ -12,38 +12,33 @@ import {
 import { IconButton } from "react-native-paper";
 import createStyles from "./styles";
 import Icon from "react-native-vector-icons/FontAwesome";
+import { useNavigation } from "@react-navigation/native";
+import navigation from "../../navigation";
 
 const NhatKyDiem = () => {
+
+  
+  const { height } = useWindowDimensions();
+  const navigation = useNavigation<any>();
+  
     const styles = useMemo(() => createStyles(), []);
     return (
       <SafeAreaView style={{ flex: 1 }}>
-        <View style={{ flexDirection: "row" }}>
-          <View style={{ flex: 1, marginTop: 30 }}>
-            <IconButton
-              icon={() => <Icon name="arrow-left" size={20} color="black" />}
-              onPress={() => Alert.alert("Simple Button pressed")}
-            />
-          </View>
+        <View style={{ flex: 1, flexDirection: "row" }}>
           <View
             style={{
-              flex: 2,
-              justifyContent: "center",
-              alignContent: "center",
+              flex: 1,
+              flexDirection: "row",
               marginTop: 20,
+              marginLeft: 10,
             }}
           >
-            <Text style={{ fontSize: 20 }}>Nhat ky diem</Text>
-          </View>
-        </View>
-
-        <View style={{ flex: 1, flexDirection: "row" }}>
-          <View style={{ flex: 1, flexDirection: "row", marginTop: 20 ,marginLeft :10}}>
             <IconButton
               icon={() => <Icon name="user" size={40} color="black" />}
               onPress={() => Alert.alert("Simple Button pressed")}
             />
             <View style={{ flexDirection: "column" }}>
-              <Text style={{ fontSize: 15}}> name</Text>
+              <Text style={{ fontSize: 15 }}> name</Text>
 
               <Text style={{ fontSize: 15 }}> ten</Text>
             </View>
@@ -54,15 +49,14 @@ const NhatKyDiem = () => {
               alignItems: "flex-end",
               borderRadius: 10,
               marginRight: 20,
-            
             }}
           >
             <IconButton
               icon="gift-open"
               size={30}
-              onPress={() => Alert.alert("Simple Button pressed")}
+              onPress={() => navigation.navigate("DoiQua")}
             />
-            <Text>name   </Text>
+            <Text>name </Text>
           </View>
         </View>
 

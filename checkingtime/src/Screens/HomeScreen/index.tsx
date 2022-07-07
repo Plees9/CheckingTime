@@ -82,9 +82,12 @@ const HomeScreen = () => {
               <Text>Person7</Text>
             </View>
           </View>
-        </ScrollView>
+        </ScrollView> 
+
+        
         
       </View>
+
     );
 }
 

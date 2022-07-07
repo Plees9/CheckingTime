@@ -22,7 +22,7 @@ const SiginInScreen = () => {
 
   const onSiginInPressed = () => {
     console.warn("Sigin in pressed");
-    navigation.navigate('HomeScreen');
+    navigation.navigate('Home');
    
   }
   const onForgotPasswordPressed = () => {

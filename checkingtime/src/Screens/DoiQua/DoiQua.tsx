@@ -19,24 +19,7 @@ const DoiQua = () => {
   const styles = useMemo(() => createStyles(), []);
   return (
     <SafeAreaView style={{ flex: 1 }}>
-      <View style={{ flexDirection: "row" }}>
-        <View style={{ flex: 1, marginTop: 30 }}>
-          <IconButton
-            icon={() => <Icon name="arrow-left" size={20} color="black" />}
-            onPress={() => Alert.alert("Simple Button pressed")}
-          />
-        </View>
-        <View
-          style={{
-            flex: 1.5,
-            justifyContent: "center",
-            alignContent: "center",
-            marginTop: 20,
-          }}
-        >
-          <Text style={{ fontSize: 20 }}>Doi Qua</Text>
-        </View>
-      </View>
+      
 
       <View style={{ flex: 2, flexDirection: "row" }}>
         <View
@@ -68,7 +51,7 @@ const DoiQua = () => {
           <IconButton
             icon="gift-open"
             size={30}
-            onPress={() => Alert.alert("Simple Button pressed")}
+            onPress={() => Alert.alert("Phuc Gay ")}
           />
         </View>
       </View>

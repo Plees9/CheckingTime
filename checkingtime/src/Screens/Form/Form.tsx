@@ -9,6 +9,7 @@ const DATA = [ {
 ];
 
 const Form = () => {
+    return (
     <View>
         <View>
             <Text>Form</Text>
@@ -20,6 +21,8 @@ const Form = () => {
             <Text style={styles.text}>...</Text>
         </View>
     </View>
+    );
+
 
 }
 export default Form;
