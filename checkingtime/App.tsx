@@ -23,10 +23,11 @@ import TabsNavigation from './src/navigation/Tabs';
 import HomeScreen from './src/Screens/HomeScreen/index';
 import Navigation from "./src/navigation";
 import JobNavigation from "./src/navigation";
+import RakingScreen from "./src/Screens/RakingScreen/index";
 const App = () => {
   return (
     <SafeAreaView style={styles.root}>
-      <HomeScreen/>
+      <RakingScreen/>
     </SafeAreaView>
   );
 };
