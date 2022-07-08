@@ -26,9 +26,7 @@ import JobNavigation from "./src/navigation";
 const App = () => {
   return (
     <SafeAreaView style={styles.root}>
-      <NavigationContainer>
-        <JobNavigation/>
-      </NavigationContainer>
+      <HomeScreen/>
     </SafeAreaView>
   );
 };

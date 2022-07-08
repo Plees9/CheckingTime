@@ -3,13 +3,13 @@ import { StyleSheet, Text, SafeAreaView, ScrollView, StatusBar, View, Button, Pr
 import { ICON_SIZE } from "react-native-paper/lib/typescript/components/TextInput/Adornment/TextInputIcon";
 import  Icon  from "react-native-vector-icons/AntDesign";
 import styles from "./styles";
-import { NavigationContainer } from "@react-navigation/native";
-import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
+
+
 import Account from "../Account/Account";
 import HappyGame from "../HappyGame/HappyGames";
 import Jobs from "../Jobs";
 import TabsNavigation from "../../navigation/Tabs";
-const Tab = createBottomTabNavigator();
+
 const HomeScreen = () => {
     return (
       <View style={styles.container}>
@@ -71,15 +71,40 @@ const HomeScreen = () => {
             </Pressable>
           </View>
           <Text>Top 5 hôm nay</Text>
-          <View style={{ marginHorizontal: 20 }}>
-            <View style={styles.item2}>
-              <Text>Person1</Text>
-              <Text>Person2</Text>
-              <Text>Person3</Text>
-              <Text>Person4</Text>
-              <Text>Person5</Text>
-              <Text>Person6</Text>
-              <Text>Person7</Text>
+          <View style={{ flex:1, marginHorizontal: 20, borderWidth:1, borderRadius: 8 }}>
+            <View>
+              <View style={styles.item2}>
+                <Text>01</Text>
+                <Text>Person1</Text>
+                <Text>Xephang</Text>
+              </View>
+
+              <View style={styles.item2}>
+                <Text>02</Text>
+                <Text>Person2</Text>
+                <Text>Xephang</Text>
+              </View>
+
+              <View style={styles.item2}>
+                <Text>03</Text>
+                <Text>Person3</Text>
+                <Text>Xephang</Text>
+              </View>
+
+              <View style={styles.item2}>
+                <Text>04</Text>
+                <Text>Person4</Text>
+                <Text>Xephang</Text>
+              </View>
+
+              <View style={styles.item2}>
+                <Text>05</Text>
+                <Text>Person5</Text>
+                <Text>Xephang</Text>
+              </View>
+              <Pressable onPress={() => Alert.alert('chưa có gì cả')}>
+                <Text style={{justifyContent:'center', alignContent:'center', color: 'orange'}}>Xem thêm</Text>
+              </Pressable>
             </View>
           </View>
         </ScrollView>

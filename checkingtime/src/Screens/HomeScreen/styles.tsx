@@ -44,7 +44,8 @@ const styles = StyleSheet.create({
       },
       item2: {
         flex: 1,
-        marginTop: 30,
+        flexDirection: 'row',
+        borderWidth: 0.5,
         marginHorizontal: 20,
         backgroundColor: "pink",
         borderRadius: 10,
