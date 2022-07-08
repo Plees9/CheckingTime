@@ -11,7 +11,7 @@ import FormCreated from "./src/Screens/FormCreated/index";
 import Form from "./src/Screens/Form/Form";
 import Account from "./src/Screens/Account/Account";
 
-import SignInScreen from "./src/Screens/SignInScreen";
+import SignInScreen from "./src/Screens/SignInScreen/SignInScreen";
 import SignUpScreen from "./src/Screens/SignUpScreen";
 import ConfirmEmailScreen from "./src/Screens/ConfirmEmailScreen";
 import ForgotPasswordScreen from "./src/Screens/ForgotPasswordScreen";
@@ -24,13 +24,12 @@ import Tabs from "./src/navigation/Tabs";
 import HomeScreen from './src/Screens/HomeScreen/index';
 const App = () => {
   return (
-    
-    <SafeAreaView style={styles.root}>
-        {/* <Navigation/>  */}
-       {/* <SignInScreen/>  */}
-       <TabsNavigation/>  
-    </SafeAreaView>
-    
+    <View>
+      
+      <SignInScreen />
+
+    </View>
+  
   );
 };
 const styles = StyleSheet.create({
