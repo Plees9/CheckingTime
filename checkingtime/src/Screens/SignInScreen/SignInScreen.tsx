@@ -6,18 +6,21 @@ import {
   Button,
   Alert,
   TouchableOpacity,
-  
+
 } from "react-native";
 import React, { useMemo, useState } from "react";
 import createStyles from "./style";
 import Icon from "react-native-vector-icons/FontAwesome";
 import { CheckBox } from "@rneui/themed";
+import { useNavigation } from "@react-navigation/native";
 
 const SignInScreen = () => {
   const styles = useMemo(() => createStyles(), []);
   const [userName, setUserName] = useState("");
   const [password, setPassword] = useState("");
   const [isChecked, setIsChecked] = useState(false);
+
+  const navigation = useNavigation<any>();
 
   const hobbies: string[] = [];
 
@@ -38,7 +41,7 @@ const SignInScreen = () => {
       <Text style = {styles.text1}> 
         Chào mừng bạn đến với app của chúng tôi, App đang trong quá trình hoàn thiện nên nếu xảy ra bug vui lòng không quạu.
       </Text>
-
+      
       <View style={styles.styleTT}>
         <View>
           <Icon name="user" size={15} />
@@ -62,7 +65,7 @@ const SignInScreen = () => {
         <View style={{ marginLeft: 10 }}>
           <TextInput
             placeholder={"Mật khẩu"}
-            maxLength={8}
+            maxLength={16}
             secureTextEntry={true}
             returnKeyType="go"
             value={password}
@@ -72,39 +75,27 @@ const SignInScreen = () => {
       </View>
 
       <TouchableOpacity 
-      style={styles.btnForgot}>
+      style={styles.btnForgot}
+      onPress={() =>navigation.navigate("ForgotPassword") }>
       <Text>Quên mật khẩu?</Text>
       </TouchableOpacity>
 
-      <View style={styles.container}>
+      <TouchableOpacity style={styles.container}>
         <CheckBox 
         title= "Lưu mật khẩu" 
         checked= {isChecked} 
         onPress = {() => setIsChecked(!isChecked)}>
         </CheckBox>
-      </View>
-
+      </TouchableOpacity>
+      
         <TouchableOpacity style={styles.btnNext}>
           <Button 
             title={"Tiếp tục"}
             color="#FFC54D"
-            onPress={() => Alert.alert("áa")}
+            onPress={() =>navigation.navigate("HomeScreen") }
+            
           />
         </TouchableOpacity>
-          
-          {/* <View style={styles.row}>
-            <Icon name="facebook" size={30} style={styles.icon} color="white" />
-            <Icon
-              name="google"
-              size={30}
-              style={styles.icon1}
-              color="white"
-            />
-            <Icon name="mobile" size={30} style={styles.icon2} color="white" />
-          </View>
-          <Text style={styles.text}>Bạn chưa có tài khoản? Hãy tạo tài khoản.</Text>
-         */}
-      
     </View>
   );
 };

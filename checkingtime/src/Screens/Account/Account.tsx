@@ -4,7 +4,7 @@ import { t } from "react-native-tailwindcss";
 import { Icon } from 'react-native-vector-icons/Icon';
 import styles from './styles';
 import { IconButton} from 'react-native-paper';
-import CustomButton from '../../components/CustomButton';
+import { useNavigation } from '@react-navigation/native';
 
 const Account = () => {
     const onChangePasswordPressed = () => {
@@ -84,24 +84,7 @@ const Account = () => {
             <Text style={styles.text1}> x </Text>
             </View>
           </View>
-          <View style={{ marginRight: 200 }}>
-            <CustomButton
-              text="change password?"
-              onPress={onChangePasswordPressed}
-              fgColor="#000000"
-              type="TERTIARY"
-              bgColor={undefined}
-            />
-          </View>
-          <View style={{ marginRight: 200 }}>
-            <CustomButton
-              text="logout?"
-              onPress={onLogoutPressed}
-              fgColor="#000000"
-              type="TERTIARY"
-              bgColor={undefined}
-            />
-          </View>
+         
         </ScrollView>
       </SafeAreaView>
     );

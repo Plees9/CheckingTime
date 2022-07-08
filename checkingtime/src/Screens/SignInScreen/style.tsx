@@ -30,6 +30,8 @@ const createStyles = () =>
     container: {
       marginLeft: 30,  
       fontSize: 8,
+      marginHorizontal: 40,
+      
     },
     btn: {
       marginVertical: 10,
@@ -81,7 +83,7 @@ const createStyles = () =>
     },
     styleTT:{
         flexDirection: "row",
-        borderWidth: 0.5,
+        borderWidth: 1,
         marginTop: 10,
         marginHorizontal: 50,
         padding: 5,

@@ -12,10 +12,9 @@ import Form from "./src/Screens/Form/Form";
 import Account from "./src/Screens/Account/Account";
 
 import SignInScreen from "./src/Screens/SignInScreen/SignInScreen";
-import SignUpScreen from "./src/Screens/SignUpScreen";
-import ConfirmEmailScreen from "./src/Screens/ConfirmEmailScreen";
-import ForgotPasswordScreen from "./src/Screens/ForgotPasswordScreen";
-import NewPasswordScreen from "./src/Screens/NewPasswordScreen";
+import ForgotPasswordScreen from "./src/Screens/ForgotPasswordScreen/ForgotPasswordScreen";
+
+
 import Navigation from "./src/navigation";
 import NhatKyDiem from "./src/Screens/NhatKyDiem/NhatKyDiem";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
@@ -24,11 +23,9 @@ import Tabs from "./src/navigation/Tabs";
 import HomeScreen from './src/Screens/HomeScreen/index';
 const App = () => {
   return (
-    <View>
-      
-      <SignInScreen />
-
-    </View>
+    <SafeAreaView style = {styles.root}>
+      <Navigation />
+    </SafeAreaView>
   
   );
 };

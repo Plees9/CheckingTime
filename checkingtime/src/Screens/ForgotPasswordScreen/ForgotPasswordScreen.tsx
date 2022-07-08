@@ -1,97 +1,52 @@
-import { View, Text, Image, StyleSheet } from 'react-native';
-import React, { useState } from 'react'
-import CustomInput from '../../components/CustomInput';
-import CustomButton from '../../components/CustomButton';
-import SocialSignButtons from '../../components/SocialSiginButtons';
-import { useNavigation } from '@react-navigation/native';
+import {
+  View,
+  Text,
+  Image,
+  TextInput,
+  Button,
+  Alert,
+  TouchableOpacity,
+} from "react-native";
+import React, { useMemo, useState } from "react";
+
+import createStyles from "./style";
+import { useNavigation } from "@react-navigation/native";
+import Icon from "react-native-vector-icons/FontAwesome";
 
 const ForgotPasswordScreen = () => {
-  const[userName, setUserName] = useState('');
+  const styles = useMemo(() => createStyles(), []);
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [confirmPassword, setConfirmPassword] = useState("");
+
   const navigation = useNavigation<any>();
 
-  const onSendPressed = () => {
-    //console.warn("Send Pressed");
-    navigation.navigate('NewPassword');
-
-  }
-  
-  const onSignInPressed = () => {
-    //console.warn("Sign In pressed");
-    navigation.navigate('SignIn');
-  }
-  
-  const onResendPressed = () => {
-    console.warn("Resend Pressed");
-  }
-  
   return (
-    <View style={styles.container}>
-      <Text style ={styles.size} > Reset your password</Text>
+    <View style={styles.view}>
+      <Text style={styles.textWelcome}>Forgot Password</Text>
+      <TextInput
+        style={styles.text}
+        value={email}
+        onChangeText={(text) => setEmail(text)}
+        secureTextEntry={undefined}
+        keyboardType={"number-pad"}
+        returnKeyType="done"
+        placeholder={"Enter your phone number"}
+      ></TextInput>
+      <View >
+        <TouchableOpacity
+          style={styles.btn}
+          onPress={() => navigation.navigate("ResetPassword")}>
+          <Text style ={styles.size} >Send</Text>
+        </TouchableOpacity>
+        <TouchableOpacity 
       
-      <CustomInput 
-      placeholder="Enter your email or phone number"
-      value={userName}
-      setValue={setUserName}
-      secureTextEntry={undefined}
-      />
-
-      <CustomButton 
-      text="Send"
-      onPress={onSendPressed}
-      type={undefined} 
-      bgColor={undefined} 
-      fgColor={undefined}
-      />
-      
-
-      <CustomButton
-      text="Back to sign in"
-      onPress={onSignInPressed}
-      fgColor="#000000"
-      type="TERTIARY" 
-      bgColor={undefined}/>
-     
+        onPress={() => navigation.navigate("SignInScreen")}>
+          <Text style={styles.size1}>Back to sign in</Text>
+        </TouchableOpacity>
+      </View>
     </View>
   );
 };
-const styles = StyleSheet.create({
-  logo: {
-    height: 150,
-    width: 150,
-    resizeMode: 'cover',
-  },
-  container : {
-    justifyContent: 'center',
-    alignItems: 'center',
-    padding: 10,
-    paddingTop: 5,
-  },
-  root : {
-    alignItems: 'center',
-    padding: 20,
-  },
-  size : {
-    fontSize: 24,
-    fontWeight: 'bold',
-    color: '#FF4949',
-    
-  },
-  text : {
-    color:'gray',
-    //marginVertical: 5,
-  },
-  title : {
-    fontSize: 24,
-    fontWeight: 'bold',
-    color: '#F7EC09',
-    margin: 10,
-  },
-  link : {
-    color: '#FDB075',
-  },
-  user: {  
-  },
-
-});
 
 export default ForgotPasswordScreen;
