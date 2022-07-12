@@ -6,7 +6,6 @@ import {
   Button,
   Alert,
   TouchableOpacity,
-
 } from "react-native";
 import React, { useMemo, useState } from "react";
 import createStyles from "./style";
@@ -29,29 +28,30 @@ const SignInScreen = () => {
       hobbies.push("check");
       Alert.alert("Please enter your user name" + hobbies.toString());
     }
-  }
+  };
 
   return (
-    <View style = {styles.view} >
+    <View style={styles.view}>
       {/* <Image
         source={require("../../assets/bgr.jpg")}
         style={styles.image}
       /> */}
       <Text style={styles.textWelcome}>Welcome</Text>
-      <Text style = {styles.text1}> 
-        Chào mừng bạn đến với app của chúng tôi, App đang trong quá trình hoàn thiện nên nếu xảy ra bug vui lòng không quạu.
+      <Text style={styles.text1}>
+        Chào mừng bạn đến với app của chúng tôi, App đang trong quá trình hoàn
+        thiện nên nếu xảy ra bug vui lòng không quạu.
       </Text>
-      
+
       <View style={styles.styleTT}>
         <View>
-          <Icon name="user" size={15} />
+          <Icon name="user" size={20} />
         </View>
         <View style={{ marginLeft: 10 }}>
           <TextInput
             placeholder={"Số điện thoại"}
             keyboardType={"number-pad"}
             returnKeyType="done"
-            maxLength = {10}
+            maxLength={10}
             value={userName}
             secureTextEntry={false}
             onChangeText={setUserName}
@@ -60,7 +60,7 @@ const SignInScreen = () => {
       </View>
       <View style={styles.styleTT}>
         <View>
-          <Icon name="lock" size={15} />
+          <Icon name="lock" size={22} />
         </View>
         <View style={{ marginLeft: 10 }}>
           <TextInput
@@ -74,28 +74,28 @@ const SignInScreen = () => {
         </View>
       </View>
 
-      <TouchableOpacity 
-      style={styles.btnForgot}
-      onPress={() =>navigation.navigate("ForgotPassword") }>
-      <Text>Quên mật khẩu?</Text>
+      <TouchableOpacity
+        style={styles.btnForgot}
+        onPress={() => navigation.navigate("ForgotPassword")}
+      >
+        <Text>Quên mật khẩu?</Text>
       </TouchableOpacity>
 
       <TouchableOpacity style={styles.container}>
-        <CheckBox 
-        title= "Lưu mật khẩu" 
-        checked= {isChecked} 
-        onPress = {() => setIsChecked(!isChecked)}>
-        </CheckBox>
+        <CheckBox
+          title="Lưu mật khẩu"
+          checked={isChecked}
+          onPress={() => setIsChecked(!isChecked)}
+        ></CheckBox>
       </TouchableOpacity>
-      
-        <TouchableOpacity style={styles.btnNext}>
-          <Button 
-            title={"Tiếp tục"}
-            color="#FFC54D"
-            onPress={() =>navigation.navigate("HomeScreen") }
-            
-          />
-        </TouchableOpacity>
+
+      <TouchableOpacity style={styles.btnNext}>
+        <Button
+          title={"Tiếp tục"}
+          color="#FFC54D"
+          onPress={() => navigation.navigate("HomeScreen")}
+        />
+      </TouchableOpacity>
     </View>
   );
 };

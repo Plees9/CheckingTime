@@ -23,14 +23,14 @@ const DATA = [
   },
 ];
 // title không nhận kiểu.
-const Item = ( title : {title :string}) => (
+const Item = (title: { title: string }) => (
   <View style={styles.item}>
     <Text style={styles.title}>{title}</Text>
   </View>
 );
 
 const App = () => {
-  const renderItem = ( item ) => <Item title={item.title} />;
+  const renderItem = (item) => <Item title={item.title} />;
 
   return (
     <SafeAreaView style={styles.container}>

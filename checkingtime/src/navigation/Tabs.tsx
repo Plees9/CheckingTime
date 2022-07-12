@@ -1,14 +1,13 @@
-import { View, Text, TextInput, Button } from 'react-native';
+import { View, Text, TextInput, Button } from "react-native";
 import * as React from "react";
 import { NavigationContainer } from "@react-navigation/native";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
-import Account from "../Screens/Account/Account";
 import HomeScreen from "../Screens/HomeScreen";
 import HappyGame from "../Screens/HappyGame/HappyGames";
-import Jobs from "../Screens/Jobs";    
+import Jobs from "../Screens/Jobs";
 import Icon from "react-native-vector-icons/Ionicons";
-import DoiQua from '../Screens/DoiQua/DoiQua';
-import { colors } from 'react-native-tailwindcss';
+import DoiQua from "../Screens/DoiQua/DoiQua";
+import { colors } from "react-native-tailwindcss";
 
 const Tab = createBottomTabNavigator();
 
@@ -33,10 +32,8 @@ const TabsNavigation = () => {
         <Tab.Screen
           name=" "
           component={DoiQua}
-          
           options={{
-            tabBarIcon: () => <Icon name="finger-print" size={30} />
-            ,
+            tabBarIcon: () => <Icon name="finger-print" size={30} />,
           }}
         />
 
@@ -45,13 +42,6 @@ const TabsNavigation = () => {
           component={HappyGame}
           options={{
             tabBarIcon: () => <Icon name="game-controller" size={30} />,
-          }}
-        />
-        <Tab.Screen
-          name="Account"
-          component={Account}
-          options={{
-            tabBarIcon: () => <Icon name="person" size={30} />,
           }}
         />
       </Tab.Navigator>

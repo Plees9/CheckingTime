@@ -33,15 +33,14 @@ const ForgotPasswordScreen = () => {
         returnKeyType="done"
         placeholder={"Enter your phone number"}
       ></TextInput>
-      <View >
+      <View>
         <TouchableOpacity
           style={styles.btn}
-          onPress={() => navigation.navigate("ResetPassword")}>
-          <Text style ={styles.size} >Send</Text>
+          onPress={() => navigation.navigate("ResetPassword")}
+        >
+          <Text style={styles.size}>Send</Text>
         </TouchableOpacity>
-        <TouchableOpacity 
-      
-        onPress={() => navigation.navigate("SignInScreen")}>
+        <TouchableOpacity onPress={() => navigation.navigate("SignInScreen")}>
           <Text style={styles.size1}>Back to sign in</Text>
         </TouchableOpacity>
       </View>
