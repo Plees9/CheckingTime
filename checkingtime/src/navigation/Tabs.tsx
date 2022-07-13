@@ -14,10 +14,10 @@ const Tab = createBottomTabNavigator();
 
 const TabsNavigation = () => {
   return (
-    <NavigationContainer>
-      <Tab.Navigator>
+  
+      <Tab.Navigator screenOptions={{headerShown :false}}>
         <Tab.Screen
-          name="Home"
+          name="HomeScreen"
           component={HomeScreen}
           options={{
             tabBarIcon: () => <Icon name="home" size={30} />,
@@ -30,8 +30,8 @@ const TabsNavigation = () => {
             tabBarIcon: () => <Icon name="mail-sharp" size={30} />,
           }}
         />
-        <Tab.Screen
-          name=" "
+        {/* <Tab.Screen
+          name="DoiQua"
           component={DoiQua}
           
           options={{
@@ -39,10 +39,10 @@ const TabsNavigation = () => {
         
             ,
           }}
-        />
+        />  */}
 
         <Tab.Screen
-          name="HappyGames"
+          name="HappyGame"
           component={HappyGame}
           options={{
             tabBarIcon: () => <Icon name="game-controller" size={30} />,
@@ -56,7 +56,7 @@ const TabsNavigation = () => {
           }}
         />
       </Tab.Navigator>
-    </NavigationContainer>
+    
   );
 };
 export default TabsNavigation;
