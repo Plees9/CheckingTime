@@ -12,8 +12,7 @@ import React, { useMemo } from "react";
 import Icon from "react-native-vector-icons/FontAwesome";
 import { TextInput } from "react-native-gesture-handler";
 import { useNavigation } from "@react-navigation/native";
-
-import createStyles from './styles';
+import createStyles from "./styles";
 
 const Account = () => {
   const styles = useMemo(() => createStyles(), []);
@@ -88,7 +87,7 @@ const Account = () => {
           <Icon
             name="github-square"
             size={35}
-            color="#FF9F29"
+            color="#7858A6"
             style={styles.icon}
           />
           <View>
@@ -112,7 +111,7 @@ const Account = () => {
           <Icon
             name="steam-square"
             size={40}
-            color="#FF9F29"
+            color="#7858A6"
             style={styles.icon}
           />
           <View>
@@ -135,7 +134,7 @@ const Account = () => {
           <Icon
             name="reddit-square"
             size={40}
-            color="#FF9F29"
+            color="#7858A6"
             style={styles.icon}
           />
           <View>
@@ -158,7 +157,7 @@ const Account = () => {
           <Icon
             name="snapchat-square"
             size={40}
-            color="#FF9F29"
+            color="#7858A6"
             style={styles.icon}
           />
           <View>
@@ -181,7 +180,7 @@ const Account = () => {
           <Icon
             name="xing-square"
             size={40}
-            color="#FF9F29"
+            color="#7858A6"
             style={styles.icon}
           />
           <View>
@@ -206,7 +205,7 @@ const Account = () => {
         <View>
           <Text style={styles.text}>Lần đăng nhập cuối</Text>
           <View style={styles.hang}>
-            <Icon name="cube" size={35} color="#FF9F29" style={styles.icon} />
+            <Icon name="cube" size={35} color="#7858A6" style={styles.icon} />
             <View>
               <TextInput
                 style={styles.user}
@@ -233,25 +232,13 @@ const Account = () => {
         </View>
       </View>
       <View>
-        {/* tạo kẻ ngang */}
-        <View style={styles.kengang} />
-        <View style={styles.hang}>
-          <View>
-            <Icon name="key" size={20} color="#FF9F29" style={styles.icon} />
-          </View>
-          <TouchableOpacity
-            onPress={() => navigation.navigate("SignIn")}
-          >
-            <Text>Quên mật khẩu?</Text>
-          </TouchableOpacity>
-        </View>
+        <TouchableOpacity style ={styles.khoangcach} onPress={() => navigation.navigate("ResetPassword")}>
+          <Text style = {styles.chu}>Thay đổi mật khẩu</Text>
+        </TouchableOpacity>
+        <TouchableOpacity onPress={() => navigation.navigate("SignIn")}>
+          <Text style = {styles.chu1}> Đăng xuất! </Text>
+        </TouchableOpacity>
       </View>
-      {/* <TouchableOpacity onPress={() => navigation.navigate("HomeScreen")}>
-        <Text>Quên mật khẩu?</Text>
-      </TouchableOpacity>
-      <TouchableOpacity onPress={() => navigation.navigate("SignInScreen")}>
-        <Text>Đăng ký</Text>
-      </TouchableOpacity>  */}
     </ScrollView>
   );
 };
