@@ -14,7 +14,7 @@ import HappyGame from "./src/Screens/HappyGame/HappyGames";
 
 import SignUpScreen from "./src/Screens/SignUpScreen";
 import ConfirmEmailScreen from "./src/Screens/ConfirmEmailScreen";
-import ForgotPasswordScreen from "./src/Screens/ForgotPasswordScreen";
+import ForgotPasswordScreen from "./src/Screens/ForgotPasswordScreen/styles";
 import NewPasswordScreen from "./src/Screens/NewPasswordScreen";
 import NhatKyDiem from "./src/Screens/NhatKyDiem/NhatKyDiem";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";

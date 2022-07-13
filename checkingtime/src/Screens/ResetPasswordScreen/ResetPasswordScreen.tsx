@@ -13,7 +13,7 @@ import createStyles from "./styles";
 import { useNavigation } from "@react-navigation/native";
 import Icon from "react-native-vector-icons/FontAwesome";
 
-const ForgotPasswordScreen = () => {
+const ResetPasswordScreen = () => {
   const styles = useMemo(() => createStyles(), []);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -23,29 +23,32 @@ const ForgotPasswordScreen = () => {
 
   return (
     <View style={styles.view}>
-      <Text style={styles.textWelcome}>Forgot Password</Text>
+      <Text style={styles.textWelcome}>Reset Password</Text>
+
       <TextInput
         style={styles.text}
-        value={email}
-        onChangeText={(text) => setEmail(text)}
+        value={password}
+        onChangeText={(text) => setPassword(text)}
         secureTextEntry={undefined}
-        keyboardType={"number-pad"}
         returnKeyType="done"
-        placeholder={"Enter your phone number"}
+        placeholder={"Enter your password"}
       ></TextInput>
-      <View>
-        <TouchableOpacity
-          style={styles.btn}
-          onPress={() => navigation.navigate("ResetPassword")}
-        >
-          <Text style={styles.size}>Send</Text>
-        </TouchableOpacity>
-        <TouchableOpacity onPress={() => navigation.navigate("SignInScreen")}>
-          <Text style={styles.size1}>Back to sign in</Text>
-        </TouchableOpacity>
+      <TextInput
+        style={styles.text}
+        value={password}
+        onChangeText={(text) => setPassword(text)}
+        secureTextEntry={undefined}
+        returnKeyType="done"
+        placeholder={"Enter new password"}
+      ></TextInput>
+      <View style={styles.btn}>
+        <Button
+          title="Confirm"
+          onPress={() => navigation.navigate("SignIn")}
+        />
       </View>
     </View>
   );
 };
 
-export default ForgotPasswordScreen;
+export default ResetPasswordScreen;

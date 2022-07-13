@@ -10,7 +10,7 @@ import SignIn from "../Screens/SignIn";
 
 import SignUpScreen from "../Screens/SignUpScreen";
 import ConfirmEmailScreen from "../Screens/ConfirmEmailScreen";
-import ForgotPasswordScreen from "../Screens/ForgotPasswordScreen";
+import ForgotPasswordScreen from "../Screens/ForgotPasswordScreen/styles";
 import NewPasswordScreen from "../Screens/NewPasswordScreen";
 import TabsNavigation from "./Tabs";
 import HappyGame from "../Screens/HappyGame/HappyGames";
