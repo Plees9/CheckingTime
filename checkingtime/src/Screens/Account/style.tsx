@@ -40,10 +40,15 @@ const createStyles = () =>
     cot: {
       flexDirection: "column",
     },
-    hang2: {
-      flexDirection: "row",
-      marginTop: "2%",
+    khoangcach: {
+      marginTop: 15,
+      marginBottom: 15,
+      
     },
+    chu: {
+      fontWeight: "bold",
+    },
+
   });
 
 export default createStyles;

@@ -18,7 +18,7 @@ const Stack = createNativeStackNavigator();
 
 const Navigation = () => {
   return (
-    <Stack.Navigator screenOptions={{ headerShown: true }}>
+    <Stack.Navigator >
       <Stack.Screen name="SignInScreen" component={SignInScreen} options ={{headerShown: false}} />
       <Stack.Screen name="ForgotPasswordScreen" component={ForgotPasswordScreen} options ={{headerShown: false}}/>
       <Stack.Screen name="HomeScreen" component={TabsNavigation} options={{ headerShown: false }}/>
@@ -30,9 +30,9 @@ const NavigationA = () => {
   return (
     <NavigationContainer>
       <Stack.Navigator screenOptions={{ headerShown: false }}>
-        <Stack.Screen name="SignInScreen" component={Navigation} />
+        <Stack.Screen name="SignInScreen" component={Navigation} options={{ headerShown: false }} />
         {/* <Stack.Screen name="Account" component={Account} /> */}
-        <Stack.Screen name="TabsNavigation" component={TabsNavigation} />
+        <Stack.Screen name="TabsNavigation" component={TabsNavigation} options={{ headerShown: false }} />
       </Stack.Navigator>
     </NavigationContainer>
   );
