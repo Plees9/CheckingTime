@@ -10,8 +10,9 @@ import {
   Button,
 } from "react-native";
 import { t } from "react-native-tailwindcss";
-import { Icon } from "react-native-vector-icons/Icon";
+//import { Icon } from "react-native-vector-icons/Icon";
 import styles from "./styles";
+import Icon from "react-native-vector-icons/FontAwesome";
 import { IconButton } from "react-native-paper";
 
 const Jobs = () => {

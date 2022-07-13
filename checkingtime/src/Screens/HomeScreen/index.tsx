@@ -15,11 +15,11 @@ import Icon from "react-native-vector-icons/AntDesign";
 import styles from "./styles";
 import { NavigationContainer } from "@react-navigation/native";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
-import Account from "../Account/Account";
+
 import HappyGame from "../HappyGame/HappyGames";
 import Jobs from "../Jobs";
 
-const Tab = createBottomTabNavigator();
+
 const HomeScreen = () => {
   return (
     <View style={styles.container}>

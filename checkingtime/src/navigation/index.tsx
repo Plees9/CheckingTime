@@ -9,39 +9,33 @@ import HomeScreen from "../Screens/HomeScreen";
 import SignInScreen from "../Screens/SignInScreen/SignInScreen";
 import ForgotPasswordScreen from "../Screens/ForgotPasswordScreen/ForgotPasswordScreen";
 import ResetPasswordScreen from "../Screens/ResetPasswordScreen/ResetPasswordScreen";
-import Account from "../Account/Account";
+import Account from "../Screens/Account/Account";
 
 import Jobs from "../Screens/Jobs";
 import TabsNavigation from "./Tabs";
+
 const Stack = createNativeStackNavigator();
 
 const Navigation = () => {
   return (
+    <Stack.Navigator screenOptions={{ headerShown: true }}>
+      <Stack.Screen name="SignInScreen" component={SignInScreen} options ={{headerShown: false}} />
+      <Stack.Screen name="ForgotPasswordScreen" component={ForgotPasswordScreen} options ={{headerShown: false}}/>
+      <Stack.Screen name="HomeScreen" component={TabsNavigation} options={{ headerShown: false }}/>
+    </Stack.Navigator>
+  );
+};
+
+const NavigationA = () => {
+  return (
     <NavigationContainer>
-      <Stack.Navigator screenOptions={{ headerShown: true }}>
-        <Stack.Screen name="SignInScreen" component={SignInScreen} />
-        <Stack.Screen name="ForgotPassword" component={ForgotPasswordScreen} />
-        <Stack.Screen name="ResetPassword" component={ResetPasswordScreen} />
-        <Stack.Screen name="HomeScreen" component={HomeScreen} />
-        <Stack.Screen name="Account" component={Account} />
-        <Stack.Screen name="Jobs" component={Jobs} />
+      <Stack.Navigator screenOptions={{ headerShown: false }}>
+        <Stack.Screen name="SignInScreen" component={Navigation} />
+        {/* <Stack.Screen name="Account" component={Account} /> */}
         <Stack.Screen name="TabsNavigation" component={TabsNavigation} />
       </Stack.Navigator>
     </NavigationContainer>
   );
 };
 
-// const NavigationA = () => {
-//   return (
-//     <NavigationContainer>
-//       <Stack.Navigator screenOptions={{ headerShown: true }}>
-        
-//         <Stack.Screen name="Account" component={Account} />
-//         <Stack.Screen name="Jobs" component={Jobs} />
-        
-//       </Stack.Navigator>
-//     </NavigationContainer>
-//   );
-// };
-
-export default Navigation; 
+export default NavigationA;
