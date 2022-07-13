@@ -42,11 +42,20 @@ const createStyles = () =>
     },
     khoangcach: {
       marginTop: 15,
-      marginBottom: 15,
+      marginBottom: 25,
       
     },
     chu: {
       fontWeight: "bold",
+      
+    },
+    chu1: {
+      //fontWeight: "bold",
+      fontSize: 20,
+      width: "98%",
+      backgroundColor: "#DDDDDD",
+      textAlign: "center",
+      padding: 10,
     },
 
   });

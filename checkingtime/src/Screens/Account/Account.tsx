@@ -236,7 +236,7 @@ const Account = () => {
           <Text style = {styles.chu}>Thay đổi mật khẩu</Text>
         </TouchableOpacity>
         <TouchableOpacity onPress={() => navigation.navigate("SignInScreen")}>
-          <Text style = {styles.chu}> Đăng xuất! </Text>
+          <Text style = {styles.chu1}> Đăng xuất! </Text>
         </TouchableOpacity>
       </View>
     </ScrollView>
