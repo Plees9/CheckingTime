@@ -47,7 +47,6 @@ const createStyles = () =>
     },
     chu: {
       fontWeight: "bold",
-      
     },
     chu1: {
       //fontWeight: "bold",
