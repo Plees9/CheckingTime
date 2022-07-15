@@ -13,12 +13,15 @@ import HappyGame from "../Screens/HappyGame/HappyGames";
 import NhatKyDiem from "../Screens/NhatKyDiem/NhatKyDiem";
 import DoiQua from "../Screens/DoiQua/DoiQua";
 import Form from "../Screens/Form/Form";
+import FormCreated from "../Screens/FormCreated";
 import Jobs from "../Screens/Jobs";
 
 import Account from "../Screens/Account/Account";
 
 import HappyGameNavigation from "./HappyGameNavigation";
 import ResetPasswordScreen from "../Screens/ResetPasswordScreen/ResetPasswordScreen";
+import TabDonTusNavigation from "./TabDonTu";
+import CuaToi from "../Screens/DonTu/CuaToi/CuaToi";
 
 const Stack = createNativeStackNavigator();
 
@@ -35,23 +38,22 @@ const Navigation = () => {
 
 const JobsNavigation = () => {
   return (
-    <Stack.Navigator>
-      <Stack.Screen name="Jobs" component={Jobs} />
-      <Stack.Screen name="Form" component={Form} />
+    <Stack.Navigator >
+      {/* <Stack.Screen name="Form" component={Form} options= {{headerShown : false }}/> */}
+      <Stack.Screen name="FormCreated" component={FormCreated} options= {{headerShown : false }}/>
     </Stack.Navigator>
   );
 };
-
 const SNavigation = () => {
   return (
     <NavigationContainer>
       <Stack.Navigator screenOptions={{ headerShown: false }}>
         <Stack.Screen name="Navigation" component={Navigation} />
         <Stack.Screen name="NhatKyDiem" component={HappyGameNavigation} />
-        <Stack.Screen name="JobsNavigation" component={JobsNavigation} />
+        <Stack.Screen name="Form" component={JobsNavigation} options= {{headerShown : true }} />
+        <Stack.Screen name="FormCreated" component={JobsNavigation} options= {{headerShown : true }} />
+        <Stack.Screen name="Đơn từ" component={TabDonTusNavigation} options= {{headerShown :true }} />
 
-        {/* <Stack.Screen name="SignIn" component={SignIn} />    */}
-        {/* <Stack.Screen name="HomeScreen" component={HomeScreen} />  */}
       </Stack.Navigator>
     </NavigationContainer>
   );

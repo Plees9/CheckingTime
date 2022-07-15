@@ -26,20 +26,11 @@ const TabsNavigation = () => {
         name="Jobs"
         component={Jobs}
         options={{
+          headerShown: true,
+
           tabBarIcon: () => <Icon name="mail-sharp" size={30} />,
         }}
       />
-      {/* <Tab.Screen
-          name="DoiQua"
-          component={DoiQua}
-          
-          options={{
-            tabBarIcon: () => <Icon name="finger-print" size={30} />
-        
-            ,
-          }}
-        />  */}
-
       <Tab.Screen
         name="HappyGame"
         component={HappyGame}

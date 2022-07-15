@@ -5,11 +5,11 @@ import { t } from "react-native-tailwindcss";
 const styles = StyleSheet.create({
     container: {
       flex: 1,
-      paddingTop: StatusBar.currentHeight,
+      //marginTop: StatusBar.currentHeight,
       backgroundColor: '#fff',
     },
     scrollView: {
-      marginHorizontal: 20,
+      marginLeft: 10,
     },
     text: {
 
@@ -30,6 +30,27 @@ const styles = StyleSheet.create({
         padding: 10,
         width: 200,
         height: 50,
+    },
+    chu11: {
+      //fontWeight: "bold",
+      fontSize: 30,
+      width: "100%",
+      backgroundColor: "#DDDDDD",
+      padding: 5,
+      marginTop: 10,
+      
+    },
+    scrollView1: {
+      flexDirection: "row",
+      marginLeft: 10,
+    },
+    text1: {
+      textAlign: "center",
+      
+    },
+    iconbtn: {
+       alignContent: "center",
+        marginLeft: 15,
     },
   });
 

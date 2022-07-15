@@ -12,6 +12,7 @@ import createStyles from "./styles";
 import Icon from "react-native-vector-icons/FontAwesome";
 import { CheckBox } from "@rneui/themed";
 import { useNavigation } from "@react-navigation/native";
+import { Pressable } from 'react-native';
 
 const SignIn = () => {
   const styles = useMemo(() => createStyles(), []);
@@ -89,13 +90,13 @@ const SignIn = () => {
         ></CheckBox>
       </TouchableOpacity>
 
-      <TouchableOpacity style={styles.btnNext}>
+      <Pressable style={styles.btnNext}>
         <Button
           title={"Tiếp tục"}
           color="#FFC54D"
           onPress={() => navigation.navigate("HomeScreen")}
         />
-      </TouchableOpacity>
+      </Pressable>
     </View>
   );
 };

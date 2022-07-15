@@ -5,11 +5,10 @@ const createStyles = () =>
     container: {
       flex: 1,
       flexDirection: "column",
-      //alignSelf: "flex-start",
-      marginTop: 10,
+      marginTop: 30,
       marginLeft: 10,
-      // margin: 30,
-      paddingTop: StatusBar.currentHeight,
+      marginBottom: 15,
+      //paddingTop: StatusBar.currentHeight,
     },
     user: {
       fontSize: 14,

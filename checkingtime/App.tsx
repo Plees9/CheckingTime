@@ -5,11 +5,18 @@ import React from "react";
 import "react-native-gesture-handler";
 
 import SNavigation from "./src/navigation";
+import FormCreated from "./src/Screens/FormCreated";
+import KhongLuong from "./src/Screens/FormCreated/DonNghiKhongLuong/KhongLuong";
+import KetHon from "./src/Screens/FormCreated/DonNghiBanThanKetHon/KetHon";
+import Account from './src/Screens/Account/Account';
+import CuaToi from "./src/Screens/DonTu/CuaToi/CuaToi";
+import TabDonTu from "./src/navigation/TabDonTu";
 
 const App = () => {
   return (
     <SafeAreaView style={styles.root}>
-      <SNavigation />
+      {/* <SNavigation/> */}
+      <SNavigation/>
     </SafeAreaView>
   );
 };
