@@ -1,5 +1,5 @@
 import React from "react";
-import { StyleSheet, Text, SafeAreaView, ScrollView, StatusBar, View, Button, Pressable, Alert } from 'react-native';
+import { Text, ScrollView, View, Pressable, Alert, ImageBackground } from 'react-native';
 import { ICON_SIZE } from "react-native-paper/lib/typescript/components/TextInput/Adornment/TextInputIcon";
 import  Icon  from "react-native-vector-icons/AntDesign";
 import styles from "./styles";
@@ -12,7 +12,11 @@ import TabsNavigation from "../../navigation/Tabs";
 
 const HomeScreen = () => {
     return (
-      <View style={styles.container}>
+      <ScrollView style={styles.container}>
+        <ImageBackground
+        source={require("../../../assets/images/iii.jpg")}
+        style={styles.image}
+      />
         <ScrollView style={styles.scrollView}>
         
           <View style={{ flex: 1, flexDirection: "row" }}>
@@ -109,7 +113,7 @@ const HomeScreen = () => {
           </View>
         </ScrollView>
         
-      </View>
+      </ScrollView>
     );
 }
 

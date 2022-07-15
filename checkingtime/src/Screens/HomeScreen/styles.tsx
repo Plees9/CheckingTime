@@ -1,15 +1,14 @@
-import React from 'react';
+
 import { StyleSheet, Text, SafeAreaView, ScrollView, StatusBar, View, Button } from 'react-native';
-import { t } from "react-native-tailwindcss";
 
 const styles = StyleSheet.create({
     container: {
       flex: 1,
-      paddingTop: StatusBar.currentHeight,
-      backgroundColor: '#fff',
+      backgroundColor: '#F9F9F9',
     },
     scrollView: {
-      flex: 1,
+      marginTop: 10,
+      
     },
     text: {
       fontSize: 20,
@@ -50,6 +49,18 @@ const styles = StyleSheet.create({
         backgroundColor: "pink",
         borderRadius: 10,
         justifyContent: "space-between",
+      },
+      image: {
+        width: "100%",
+        height: 150,
+        alignItems: "center",
+      },
+      body: {
+        backgroundColor: "dff6ff",
+        flex: 1,
+        flexDirection: "row",
+        marginTop: 30,
+        marginLeft: 20,
       },
   });
 

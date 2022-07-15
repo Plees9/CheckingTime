@@ -13,14 +13,15 @@ import CuaToi from "./src/Screens/DonTu/CuaToi/CuaToi";
 import TabDonTu from "./src/navigation/TabDonTu";
 import ResetPasswordScreen from "./src/Screens/ResetPasswordScreen/ResetPasswordScreen";
 
+
 const App = () => {
   return (
     <SafeAreaView style={styles.root}>
-      {/* <SNavigation/> */}
+       <SNavigation/> 
       {/* <NavigationContainer>
         <ResetPasswordScreen />
       </NavigationContainer> */}
-      <SNavigation />
+      
     </SafeAreaView>
   );
 };
