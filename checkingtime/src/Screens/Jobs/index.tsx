@@ -57,7 +57,7 @@ const Jobs = () => {
               icon="text-box-plus"
               color="#7858A6"
               size={40}
-              onPress={() => navigation.navigate("FormCreated")}/>
+              onPress={() => navigation.navigate("Form Created")}/>
             <Text style={styles.text1}>{'Tạo đơn mới'}</Text> 
           </View>
         </View>

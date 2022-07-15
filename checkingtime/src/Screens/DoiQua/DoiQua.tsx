@@ -1,4 +1,3 @@
-
 import React, { useMemo } from "react";
 import {
   View,
@@ -8,53 +7,35 @@ import {
   ImageBackground,
   Alert,
   SafeAreaView,
-  Pressable
-
+  Pressable,
+  TextInput,
 } from "react-native";
 import { IconButton } from "react-native-paper";
 import createStyles from "./styles";
 import Icon from "react-native-vector-icons/FontAwesome";
+import { Avatar } from "@rneui/themed";
 
 const DoiQua = () => {
   const styles = useMemo(() => createStyles(), []);
   return (
     <SafeAreaView style={{ flex: 1 }}>
-      <View style={{ flexDirection: "row" }}>
-        <View style={{ flex: 1, marginTop: 30 }}>
-          <IconButton
-            icon={() => <Icon name="arrow-left" size={20} color="black" />}
-            onPress={() => Alert.alert("Simple Button pressed")}
-          />
-        </View>
-        <View
-          style={{
-            flex: 1.5,
-            justifyContent: "center",
-            alignContent: "center",
-            marginTop: 20,
-          }}
-        >
-          <Text style={{ fontSize: 20 }}>Doi Qua</Text>
-        </View>
-      </View>
-
       <View style={{ flex: 2, flexDirection: "row" }}>
-        <View
-          style={{
-            flex: 1,
-            flexDirection: "row",
-            marginTop: 20,
-            marginLeft: 10,
-          }}
-        >
-          <IconButton
-            icon={() => <Icon name="user" size={40} color="black" />}
-            onPress={() => Alert.alert("Simple Button pressed")}
-          />
-          <View style={{ flexDirection: "column" }}>
-            <Text style={styles.text}> name</Text>
-
-            <Text style={styles.text}> ten</Text>
+        <View style={styles.hang}>
+          {/* <Image source={require('../../assets/images/midu.jpg')} /> */}
+          {/* <Icon name="user-circle" size={60} color="#DFDFDE" /> */}
+          <Avatar
+            size={70}
+            rounded
+            source={{
+              uri: "https://image2.tin247.news/pictures/2021/09/23/bcd1632409191.jpg",
+            }}
+            containerStyle={{ backgroundColor: "orange" }}
+          >
+            <Avatar.Accessory size={24} />
+          </Avatar>
+          <View>
+            <TextInput style={styles.user} placeholder="Username" />
+            <TextInput style={styles.user} placeholder=" vị trí" />
           </View>
         </View>
         <View
@@ -80,7 +61,6 @@ const DoiQua = () => {
           borderRadius: 10,
           borderWidth: 1,
           backgroundColor: "white",
-
         }}
       >
         <View style={{ flex: 1, flexDirection: "row" }}>

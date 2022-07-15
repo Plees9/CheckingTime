@@ -11,12 +11,13 @@ import KetHon from "./src/Screens/FormCreated/DonNghiBanThanKetHon/KetHon";
 import Account from './src/Screens/Account/Account';
 import CuaToi from "./src/Screens/DonTu/CuaToi/CuaToi";
 import TabDonTu from "./src/navigation/TabDonTu";
+import Info from "./src/Screens/InfoCompany/Info";
 
 const App = () => {
   return (
     <SafeAreaView style={styles.root}>
       {/* <SNavigation/> */}
-      <SNavigation/>
+      < Info />
     </SafeAreaView>
   );
 };

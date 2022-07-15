@@ -5,7 +5,6 @@ const createStyles = () =>
   StyleSheet.create({
     container: {
       flex: 1,
-        
     },
     textHeader: {
       fontSize: 30,
@@ -41,6 +40,16 @@ const createStyles = () =>
     },
     text1: {
       fontSize: 15,
+    },
+    hang: {
+      flexDirection: "row",
+    },
+    user: {
+      fontSize: 14,
+      color: "#7F8487",
+      marginTop: "3%",
+      marginLeft: 15,
+      alignItems: "flex-start",
     },
     image: {
       flex: 1,

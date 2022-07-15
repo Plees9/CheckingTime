@@ -8,7 +8,6 @@ const createStyles = () =>
     },
     text: {
       fontSize: 15,
-
     },
     body: {
       flex: 1,
@@ -22,8 +21,16 @@ const createStyles = () =>
       alignContent: "center",
       justifyContent: "center",
     },
-
-
+    hang: {
+      flexDirection: "row",
+    },
+    user: {
+      fontSize: 14,
+      color: "#7F8487",
+      marginTop: "3%",
+      marginLeft: 15,
+      alignItems: "flex-start",
+    },
   });
 
 export default createStyles;

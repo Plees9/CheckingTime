@@ -16,7 +16,7 @@ const TabsNavigation = () => {
   return (
     <Tab.Navigator screenOptions={{ headerShown: false }}>
       <Tab.Screen
-        name="HomeScreen"
+        name="Home Screen"
         component={HomeScreen}
         options={{
           tabBarIcon: () => <Icon name="home" size={30} />,
