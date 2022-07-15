@@ -96,10 +96,11 @@ const createStyles = () =>
       margin: 15,
     },
     btnNext: {
-      width: 100,
-      height: 50,
+      width: 120,
+      height: 40,
       alignSelf: "center",
-      borderRadius: 20,
+      marginTop: 15,
+      borderRadius: 10,
     },
     btnForgot: {
       alignSelf: "flex-end",

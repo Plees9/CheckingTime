@@ -93,7 +93,7 @@ const SignIn = () => {
       <Pressable style={styles.btnNext}>
         <Button
           title={"Tiếp tục"}
-          color="#FFC54D"
+          color="#7858A6"
           onPress={() => navigation.navigate("HomeScreen")}
         />
       </Pressable>

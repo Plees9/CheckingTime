@@ -33,7 +33,7 @@ const styles = StyleSheet.create({
     },
     chu11: {
       //fontWeight: "bold",
-      fontSize: 30,
+      fontSize: 26,
       width: "100%",
       backgroundColor: "#DDDDDD",
       padding: 5,
