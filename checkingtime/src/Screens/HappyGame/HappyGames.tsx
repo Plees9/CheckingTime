@@ -53,7 +53,7 @@ const HappyGame = () => {
             icon="playlist-star"
             size={30}
             color="#46b5ff"
-            onPress={() => navigation.navigate("NhatKyDiem")}
+            onPress={() => navigation.navigate("Nhat Ky Diem")}
           />
           <Text style={styles.text}> Nhat ky diem</Text>
         </View>
@@ -69,7 +69,7 @@ const HappyGame = () => {
             icon="gift-open"
             size={30}
             color="#46b5ff"
-            onPress={() => navigation.navigate("DoiQua")}
+            onPress={() => navigation.navigate("Doi Qua")}
           />
           <Text style={styles.text}> Doi qua</Text>
         </View>

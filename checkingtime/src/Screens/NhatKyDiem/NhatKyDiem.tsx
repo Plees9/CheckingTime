@@ -69,7 +69,7 @@ const NhatKyDiem = () => {
             <IconButton
               icon="gift-open"
               size={30}
-              onPress={() => () => navigation.navigate("DoiQua")}
+              onPress={ () => navigation.navigate("Doi Qua")}
             />
             <Text>name </Text>
           </View>
