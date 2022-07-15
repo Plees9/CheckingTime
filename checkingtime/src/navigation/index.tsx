@@ -51,7 +51,7 @@ const SNavigation = () => {
         <Stack.Screen name="Navigation" component={Navigation} />
         <Stack.Screen name="NhatKyDiem" component={HappyGameNavigation} />
         <Stack.Screen name="Form" component={JobsNavigation} options= {{headerShown : true }} />
-        <Stack.Screen name="FormCreated" component={JobsNavigation} options= {{headerShown : true }} />
+        <Stack.Screen name="Form Created" component={JobsNavigation} options= {{headerShown : true }} />
         <Stack.Screen name="Đơn từ" component={TabDonTusNavigation} options= {{headerShown :true }} />
 
       </Stack.Navigator>
