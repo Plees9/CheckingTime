@@ -13,7 +13,7 @@ const createStyles = () =>
     },
     row: {
       flexDirection: "row",
-      marginTop: 50,
+      marginTop: 5,
     },
     icon: {
       margin: 10,

@@ -15,7 +15,7 @@ const TabDonTu = createMaterialTopTabNavigator();
 
 const TabDonTusNavigation = () => {
   return (
-    <TabDonTu.Navigator initialRouteName="back">
+    <TabDonTu.Navigator initialRouteName="back" >
       
       <TabDonTu.Screen
         name="Của Tôi"

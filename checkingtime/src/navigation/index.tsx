@@ -28,7 +28,7 @@ const Stack = createNativeStackNavigator();
 const Navigation = () => {
   return (
     <Stack.Navigator screenOptions={{ headerShown: false }}>
-      <Stack.Screen name="SignIn" component={SignIn} options={{ headerShown: false }} />
+      <Stack.Screen name="Sign In" component={SignIn} options={{ headerShown: false }} />
       <Stack.Screen name="ForgotPasswordScreen" component={ForgotPasswordScreen} />
       <Stack.Screen name="HomeScreen" component={TabsNavigation} options={{ headerShown: false }}/>
       <Stack.Screen name= "ResetPassword" component={ResetPasswordScreen} options={{ headerShown: true }} />

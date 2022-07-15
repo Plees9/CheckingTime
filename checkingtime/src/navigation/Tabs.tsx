@@ -16,19 +16,20 @@ const TabsNavigation = () => {
   return (
     <Tab.Navigator screenOptions={{ headerShown: false }}>
       <Tab.Screen
-        name="HomeScreen"
+        name="Home Screen"
         component={HomeScreen}
         options={{
           tabBarIcon: () => <Icon name="home" size={30} />,
         }}
       />
       <Tab.Screen
-        name="Jobs"
+        name="Công Việc"
         component={Jobs}
         options={{
           headerShown: true,
-
-          tabBarIcon: () => <Icon name="mail-sharp" size={30} />,
+          tabBarIcon: () => <Icon name="mail-sharp" size={30}
+           />,
+          
         }}
       />
       <Tab.Screen
@@ -39,9 +40,10 @@ const TabsNavigation = () => {
         }}
       />
       <Tab.Screen
-        name="Account"
+        name="Tài khoản"
         component={Account}
         options={{
+          headerShown: true,
           tabBarIcon: () => <Icon name="person" size={30} />,
         }}
       />
