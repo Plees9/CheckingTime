@@ -103,9 +103,30 @@ const createStyles = () =>
     },
     btnForgot: {
       alignSelf: "flex-end",
-      marginTop: 10,
+      marginTop: 15,
       marginRight: 50,
+      marginBottom: 10,
       fontWeight: "200",
+    },
+    btn2: {
+      width: 120,
+      height: 40,
+      alignSelf: "center",
+      justifyContent: "center",
+      alignItems: "center",
+      borderRadius: 10,
+      backgroundColor: "#7858A6",
+      marginTop: 10,
+    },
+    text22: {
+      fontSize: 18,
+      color: "#FFFFFF",
+      textAlign: "center",
+      justifyContent: "center",
+      alignItems: "center",
+    },
+    text23: {
+      fontSize: 12,
     },
   });
 

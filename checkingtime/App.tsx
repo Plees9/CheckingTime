@@ -13,11 +13,12 @@ import CuaToi from "./src/Screens/DonTu/CuaToi/CuaToi";
 import TabDonTu from "./src/navigation/TabDonTu";
 import Info from "./src/Screens/InfoCompany/Info";
 
+
 const App = () => {
   return (
     <SafeAreaView style={styles.root}>
-      {/* <SNavigation/> */}
-      < Info />
+       <SNavigation/> 
+      {/* < Info /> */}
     </SafeAreaView>
   );
 };

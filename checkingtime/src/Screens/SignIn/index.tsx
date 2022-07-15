@@ -79,7 +79,7 @@ const SignIn = () => {
         style={styles.btnForgot}
         onPress={() => navigation.navigate("ForgotPasswordScreen")}
       >
-        <Text>Quên mật khẩu?</Text>
+        <Text style={styles.text23}>Quên mật khẩu?</Text>
       </TouchableOpacity>
 
       <TouchableOpacity style={styles.container}>
@@ -90,13 +90,12 @@ const SignIn = () => {
         ></CheckBox>
       </TouchableOpacity>
 
-      <Pressable style={styles.btnNext}>
-        <Button
-          title={"Tiếp tục"}
-          color="#FFC54D"
+      <TouchableOpacity
+          style={styles.btn2}
           onPress={() => navigation.navigate("HomeScreen")}
-        />
-      </Pressable>
+        >
+          <Text style={styles.text22}>Tiếp tục</Text>
+        </TouchableOpacity>
     </View>
   );
 };
