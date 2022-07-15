@@ -43,9 +43,9 @@ const JobsNavigation = () => {
     </Stack.Navigator>
   );
 };
-const HappyGameNavigation = () => {
+const NhatKyDiemNavigation = () => {
   return (
-    <Stack.Navigator>
+    <Stack.Navigator screenOptions={{ headerShown: false }}>
       <Stack.Screen name="NhatKyDiem" component={NhatKyDiem} />
       <Stack.Screen name ="DoiQua" component={DoiQuaNavigation} />
     </Stack.Navigator>
@@ -53,7 +53,7 @@ const HappyGameNavigation = () => {
 };
 const DoiQuaNavigation = () => {
   return (
-    <Stack.Navigator>
+    <Stack.Navigator screenOptions={{ headerShown: false }}>
       <Stack.Screen name="DoiQua" component={DoiQua} />
     </Stack.Navigator>
   );
@@ -63,8 +63,8 @@ const SNavigation = () => {
     <NavigationContainer>
       <Stack.Navigator screenOptions={{ headerShown: false }}>
         <Stack.Screen name="Sign In" component={Navigation} />
-        <Stack.Screen name="Nhat Ky Diem" component={HappyGameNavigation} />
-        <Stack.Screen name="Doi Qua" component={DoiQuaNavigation} />
+        <Stack.Screen name="Nhat Ky Diem" component={NhatKyDiemNavigation} options= {{headerShown : true }}  />
+        <Stack.Screen name="Doi Qua" component={DoiQuaNavigation} options= {{headerShown : true }}/>
         <Stack.Screen name="Form" component={JobsNavigation} options= {{headerShown : true }} />
         <Stack.Screen name="Form Created" component={JobsNavigation} options= {{headerShown : true }} />
         <Stack.Screen name="Đơn từ" component={TabDonTusNavigation} options= {{headerShown :true }} />
