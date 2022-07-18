@@ -30,11 +30,17 @@ const HomeScreen = () => {
             </View>
           </TouchableOpacity>
 
-          <View style={{ flex: 1, flexDirection: "row" }}>
+          <View style={{ flexDirection: "row" }}>
             <View style={styles.icon2}>
-              <Text style={styles.text}>Home</Text>
+              <Text style={styles.text}>Hôm nay</Text>
+              <View style={styles.textIcon23} >
+                <Icon name="calendar" size={20} color="white" />
+                <Text> adihd</Text>
+              </View>
+              
+              
             </View>
-            <View style={styles.icon2}>
+            <View style={styles.icon3}>
               <Text style={styles.text}>Jobs</Text>
             </View>
           </View>

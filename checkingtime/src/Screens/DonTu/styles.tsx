@@ -4,6 +4,7 @@ const createStyles = () =>
   StyleSheet.create({
     view: {
       backgroundColor: "white",
+      
     },
     scrollview: {
       backgroundColor: "#f2f2f2",
@@ -13,7 +14,7 @@ const createStyles = () =>
     },
     row: {
       flexDirection: "row",
-      marginTop: 50,
+      marginTop: 8,
     },
     icon: {
       margin: 10,
@@ -28,6 +29,7 @@ const createStyles = () =>
       borderRadius: 10,
       padding: 5,
       backgroundColor: "#f2f2f2",
+      fontWeight: "bold",
     },
     icon3: {
       padding: 5,
