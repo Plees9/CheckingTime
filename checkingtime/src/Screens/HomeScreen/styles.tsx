@@ -18,9 +18,9 @@ const styles = StyleSheet.create({
     flex: 1,
   },
   text: {
-    fontSize: 20,
-    padding: 20,
-    justifyContent: "center",
+    fontSize: 18,
+    fontWeight: "bold",
+    textAlign: "center",
   },
   text1: {
     fontSize: 16,
@@ -79,13 +79,24 @@ const styles = StyleSheet.create({
     padding: 5,
   },
   icon2: {
-    //flex: 1,
-    height: 150,
-    width: 150,
+    flexDirection: "column",
+    height: 120,
+    width: 160,
     backgroundColor: "lightblue",
-    padding: 5,
-    marginVertical: 20,
-    margin: 20,
+    marginTop: 20,
+    marginHorizontal: 20,
+    marginLeft: 20,
+    borderRadius: 8,
+  },
+  textIcon23: {
+    flexDirection: "row",
+  },
+  icon3: {
+    height: 120,
+    width: 160,
+    backgroundColor: "lightblue",
+    marginTop: 20,
+    marginHorizontal: 5,
     borderRadius: 8,
   },
 });
