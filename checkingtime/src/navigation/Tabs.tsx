@@ -4,11 +4,12 @@ import { NavigationContainer } from "@react-navigation/native";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import Account from "../Screens/Account/Account";
 import HomeScreen from "../Screens/HomeScreen";
-import HappyGame from "../Screens/HappyGame/HappyGames";
+
 import Jobs from "../Screens/Jobs";
 import Icon from "react-native-vector-icons/Ionicons";
-import DoiQua from "../Screens/DoiQua/DoiQua";
+
 import { colors } from "react-native-tailwindcss";
+import InfoScreen from "../Screens/InfoCompany/Info";
 
 const Tab = createBottomTabNavigator();
 
@@ -29,13 +30,6 @@ const TabsNavigation = () => {
           headerShown: true,
 
           tabBarIcon: () => <Icon name="mail-sharp" size={30} />,
-        }}
-      />
-      <Tab.Screen
-        name="HappyGame"
-        component={HappyGame}
-        options={{
-          tabBarIcon: () => <Icon name="game-controller" size={30} />,
         }}
       />
       <Tab.Screen

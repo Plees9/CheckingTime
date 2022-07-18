@@ -12,7 +12,7 @@ import createStyles from "./styles";
 import Icon from "react-native-vector-icons/FontAwesome";
 import { CheckBox } from "@rneui/themed";
 import { useNavigation } from "@react-navigation/native";
-import { Pressable } from 'react-native';
+import { Pressable } from "react-native";
 
 const SignIn = () => {
   const styles = useMemo(() => createStyles(), []);
@@ -91,11 +91,19 @@ const SignIn = () => {
       </TouchableOpacity>
 
       <TouchableOpacity
+<<<<<<< HEAD
           style={styles.btn2}
           onPress={() => navigation.navigate("HomeScreen")}
         >
           <Text style={styles.text22}>Tiếp tục</Text>
         </TouchableOpacity>
+=======
+        style={styles.btn2}
+        onPress={() => navigation.navigate("HomeScreen")}
+      >
+        <Text style={styles.text22}>Tiếp tục</Text>
+      </TouchableOpacity>
+>>>>>>> 9169fa3b49abe684d27a2e6eaea97bb2e975aaca
     </View>
   );
 };

@@ -9,13 +9,10 @@ import HomeScreen from "../Screens/HomeScreen";
 import SignIn from "../Screens/SignIn";
 import ForgotPasswordScreen from "../Screens/ForgotPasswordScreen/ForgotPasswordScreen";
 import TabsNavigation from "./Tabs";
-import HappyGame from "../Screens/HappyGame/HappyGames";
-import NhatKyDiem from "../Screens/NhatKyDiem/NhatKyDiem";
-import DoiQua from "../Screens/DoiQua/DoiQua";
 import Form from "../Screens/Form/Form";
 import FormCreated from "../Screens/FormCreated";
 import Jobs from "../Screens/Jobs";
-
+import InfoScreen from "../Screens/InfoCompany/Info";
 import Account from "../Screens/Account/Account";
 
 import ResetPasswordScreen from "../Screens/ResetPasswordScreen/ResetPasswordScreen";
@@ -62,22 +59,15 @@ const JobsNavigation = () => {
     </Stack.Navigator>
   );
 };
-const NhatKyDiemNavigation = () => {
+const InfoScreenNavigation = () => {
   return (
     <Stack.Navigator screenOptions={{ headerShown: false }}>
-      <Stack.Screen name="NhatKyDiem" component={NhatKyDiem} />
-      <Stack.Screen name="DoiQua" component={DoiQuaNavigation} />
+      <Stack.Screen name="Info Screen" component={InfoScreen} />
     </Stack.Navigator>
   );
-};
-const DoiQuaNavigation = () => {
-  return (
-    <Stack.Navigator screenOptions={{ headerShown: false }}>
-      <Stack.Screen name="DoiQua" component={DoiQua} />
-      
-    </Stack.Navigator>
-  );
-};
+}
+
+
 const SNavigation = () => {
   return (
     <NavigationContainer>
@@ -88,18 +78,8 @@ const SNavigation = () => {
         }}
       >
         <Stack.Screen name="Sign In" component={Navigation} />
-        <Stack.Screen
-          name="Nhat Ky Diem"
-          component={NhatKyDiemNavigation}
-          options={{
-            headerShown: true,
-          }}
-        />
-        <Stack.Screen
-          name="Doi Qua"
-          component={DoiQuaNavigation}
-          options={{ headerShown: true }}
-        />
+        
+        
         <Stack.Screen
           name="Form"
           component={JobsNavigation}
@@ -113,6 +93,11 @@ const SNavigation = () => {
         <Stack.Screen
           name="Đơn từ"
           component={TabDonTusNavigation}
+          options={{ headerShown: true }}
+        />
+        <Stack.Screen
+          name="InfoScreen"
+          component={InfoScreenNavigation}
           options={{ headerShown: true }}
         />
       </Stack.Navigator>
