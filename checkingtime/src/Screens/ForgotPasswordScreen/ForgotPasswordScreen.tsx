@@ -38,9 +38,9 @@ const ForgotPasswordScreen = () => {
           style={styles.btn}
           onPress={() => navigation.navigate("ResetPassword")}
         >
-          <Text style={styles.size}>Send</Text>
+          <Text style={styles.size}>Xác nhận</Text>
         </TouchableOpacity>
-        <TouchableOpacity onPress={() => navigation.navigate("SignInScreen")}>
+        <TouchableOpacity onPress={() => navigation.navigate("SignIn")}>
           <Text style={styles.size1}>Back to sign in</Text>
         </TouchableOpacity>
       </View>

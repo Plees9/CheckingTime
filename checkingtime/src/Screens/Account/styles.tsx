@@ -1,13 +1,14 @@
-import { StyleSheet } from "react-native";
+import { StyleSheet, StatusBar } from "react-native";
 
 const createStyles = () =>
   StyleSheet.create({
     container: {
       flex: 1,
       flexDirection: "column",
-      alignSelf: "flex-start",
-      marginTop: "20%",
-      margin: 30,
+      marginTop: 30,
+      marginLeft: 10,
+      marginBottom: 15,
+      //paddingTop: StatusBar.currentHeight,
     },
     user: {
       fontSize: 14,
@@ -38,10 +39,23 @@ const createStyles = () =>
     cot: {
       flexDirection: "column",
     },
-    hang2: {
-      flexDirection: "row",
-      marginTop: "2%",
+    khoangcach: {
+      marginTop: 15,
+      marginBottom: 25,
+      
     },
+    chu: {
+      fontWeight: "bold",
+    },
+    chu1: {
+      //fontWeight: "bold",
+      fontSize: 20,
+      width: "98%",
+      backgroundColor: "#DDDDDD",
+      textAlign: "center",
+      padding: 10,
+    },
+
   });
 
 export default createStyles;
