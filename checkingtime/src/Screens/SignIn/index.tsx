@@ -91,19 +91,11 @@ const SignIn = () => {
       </TouchableOpacity>
 
       <TouchableOpacity
-<<<<<<< HEAD
-          style={styles.btn2}
-          onPress={() => navigation.navigate("HomeScreen")}
-        >
-          <Text style={styles.text22}>Tiếp tục</Text>
-        </TouchableOpacity>
-=======
         style={styles.btn2}
         onPress={() => navigation.navigate("HomeScreen")}
       >
         <Text style={styles.text22}>Tiếp tục</Text>
       </TouchableOpacity>
->>>>>>> 9169fa3b49abe684d27a2e6eaea97bb2e975aaca
     </View>
   );
 };
