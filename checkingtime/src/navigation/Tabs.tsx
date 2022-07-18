@@ -9,6 +9,7 @@ import Jobs from "../Screens/Jobs";
 import Icon from "react-native-vector-icons/Ionicons";
 import DoiQua from "../Screens/DoiQua/DoiQua";
 import { colors } from "react-native-tailwindcss";
+import InfoScreen from "../Screens/InfoCompany/Info";
 
 const Tab = createBottomTabNavigator();
 

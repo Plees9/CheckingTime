@@ -15,7 +15,7 @@ import DoiQua from "../Screens/DoiQua/DoiQua";
 import Form from "../Screens/Form/Form";
 import FormCreated from "../Screens/FormCreated";
 import Jobs from "../Screens/Jobs";
-
+import InfoScreen from "../Screens/InfoCompany/Info";
 import Account from "../Screens/Account/Account";
 
 import ResetPasswordScreen from "../Screens/ResetPasswordScreen/ResetPasswordScreen";
@@ -62,6 +62,13 @@ const JobsNavigation = () => {
     </Stack.Navigator>
   );
 };
+const InfoScreenNavigation = () => {
+  return (
+    <Stack.Navigator screenOptions={{ headerShown: false }}>
+      <Stack.Screen name="Info Screen" component={InfoScreen} />
+    </Stack.Navigator>
+  );
+}
 const NhatKyDiemNavigation = () => {
   return (
     <Stack.Navigator screenOptions={{ headerShown: false }}>
@@ -113,6 +120,11 @@ const SNavigation = () => {
         <Stack.Screen
           name="Đơn từ"
           component={TabDonTusNavigation}
+          options={{ headerShown: true }}
+        />
+        <Stack.Screen
+          name="InfoScreen"
+          component={InfoScreenNavigation}
           options={{ headerShown: true }}
         />
       </Stack.Navigator>
