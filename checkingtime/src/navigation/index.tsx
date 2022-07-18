@@ -9,9 +9,6 @@ import HomeScreen from "../Screens/HomeScreen";
 import SignIn from "../Screens/SignIn";
 import ForgotPasswordScreen from "../Screens/ForgotPasswordScreen/ForgotPasswordScreen";
 import TabsNavigation from "./Tabs";
-import HappyGame from "../Screens/HappyGame/HappyGames";
-import NhatKyDiem from "../Screens/NhatKyDiem/NhatKyDiem";
-import DoiQua from "../Screens/DoiQua/DoiQua";
 import Form from "../Screens/Form/Form";
 import FormCreated from "../Screens/FormCreated";
 import Jobs from "../Screens/Jobs";
@@ -69,22 +66,8 @@ const InfoScreenNavigation = () => {
     </Stack.Navigator>
   );
 }
-const NhatKyDiemNavigation = () => {
-  return (
-    <Stack.Navigator screenOptions={{ headerShown: false }}>
-      <Stack.Screen name="NhatKyDiem" component={NhatKyDiem} />
-      <Stack.Screen name="DoiQua" component={DoiQuaNavigation} />
-    </Stack.Navigator>
-  );
-};
-const DoiQuaNavigation = () => {
-  return (
-    <Stack.Navigator screenOptions={{ headerShown: false }}>
-      <Stack.Screen name="DoiQua" component={DoiQua} />
-      
-    </Stack.Navigator>
-  );
-};
+
+
 const SNavigation = () => {
   return (
     <NavigationContainer>
@@ -95,18 +78,8 @@ const SNavigation = () => {
         }}
       >
         <Stack.Screen name="Sign In" component={Navigation} />
-        <Stack.Screen
-          name="Nhat Ky Diem"
-          component={NhatKyDiemNavigation}
-          options={{
-            headerShown: true,
-          }}
-        />
-        <Stack.Screen
-          name="Doi Qua"
-          component={DoiQuaNavigation}
-          options={{ headerShown: true }}
-        />
+        
+        
         <Stack.Screen
           name="Form"
           component={JobsNavigation}

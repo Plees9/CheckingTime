@@ -12,7 +12,7 @@ import createStyles from "./styles";
 import Icon from "react-native-vector-icons/FontAwesome";
 import { CheckBox } from "@rneui/themed";
 import { useNavigation } from "@react-navigation/native";
-import { Pressable } from 'react-native';
+import { Pressable } from "react-native";
 
 const SignIn = () => {
   const styles = useMemo(() => createStyles(), []);
@@ -79,7 +79,7 @@ const SignIn = () => {
         style={styles.btnForgot}
         onPress={() => navigation.navigate("ForgotPasswordScreen")}
       >
-        <Text>Quên mật khẩu?</Text>
+        <Text style={styles.text23}>Quên mật khẩu?</Text>
       </TouchableOpacity>
 
       <TouchableOpacity style={styles.container}>
@@ -90,13 +90,12 @@ const SignIn = () => {
         ></CheckBox>
       </TouchableOpacity>
 
-      <Pressable style={styles.btnNext}>
-        <Button
-          title={"Tiếp tục"}
-          color="#FFC54D"
-          onPress={() => navigation.navigate("HomeScreen")}
-        />
-      </Pressable>
+      <TouchableOpacity
+        style={styles.btn2}
+        onPress={() => navigation.navigate("HomeScreen")}
+      >
+        <Text style={styles.text22}>Tiếp tục</Text>
+      </TouchableOpacity>
     </View>
   );
 };
