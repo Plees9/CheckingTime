@@ -15,9 +15,8 @@ const createStyles = () =>
     },
 
     container: {
-      
       fontSize: 8,
-      flex :1,
+      flex: 1,
     },
     user: {
       fontWeight: "bold",
@@ -36,8 +35,14 @@ const createStyles = () =>
     },
     btnForgot: {
       marginTop: 10,
-      marginRight: 50,
       fontWeight: "200",
+      borderRadius: 10,
+      borderWidth: 0.5,
+      marginLeft: 10,
+      marginRight: 10,
+      alignItems: "center",
+      flex: 1,
+      borderColor: "#7858A6",
     },
     text: {
       marginTop: 24,
@@ -56,20 +61,23 @@ const createStyles = () =>
       marginTop: 16,
       flexDirection: "row",
     },
+    footer: {
+      marginVertical: 10,
+      flexDirection: "row",
+      marginHorizontal: 20,
+    },
     texta: {
-      
       fontSize: 15,
       color: "black",
       marginTop: "3%",
       marginLeft: 16,
       alignItems: "flex-start",
     },
-    header : {
+    header: {
       fontSize: 30,
       width: "100%",
-      backgroundColor: "#DDDDDD",
-      padding: 5,
-      marginTop: 10,
+      padding: 2,
+      
     },
   });
 

@@ -22,30 +22,48 @@ const ResetPasswordScreen = () => {
   const navigation = useNavigation<any>();
 
   return (
-    <View style={styles.view}>
-      <Text style={styles.textWelcome}>Reset Password</Text>
+    <View style={styles.viewbgr}>
+      <View style={styles.view}>
+        {/* <Text style={styles.textWelcome}>Thay đổi mật khẩu</Text> */}
 
-      <TextInput
-        style={styles.text}
-        value={password}
-        onChangeText={(text) => setPassword(text)}
-        secureTextEntry={undefined}
-        returnKeyType="done"
-        placeholder={"Enter your password"}
-      ></TextInput>
-      <TextInput
-        style={styles.text}
-        value={password}
-        onChangeText={(text) => setPassword(text)}
-        secureTextEntry={undefined}
-        returnKeyType="done"
-        placeholder={"Enter new password"}
-      ></TextInput>
-      <View style={styles.btn}>
-        <Button
-          title="Confirm"
-          onPress={() => navigation.navigate("SignIn")}
-        />
+        <Text style={styles.textTop}> Mật khẩu hiện tại</Text>
+        <TextInput
+          style={styles.text}
+          value={password}
+          onChangeText={(text) => setPassword(text)}
+          secureTextEntry={undefined}
+          returnKeyType="done"
+          placeholder={"Nhập mật khẩu cũ"}
+        ></TextInput>
+
+        <Text style={styles.textTop}> Mật khẩu mới</Text>
+        <TextInput
+          style={styles.text}
+          value={password}
+          onChangeText={(text) => setPassword(text)}
+          secureTextEntry={undefined}
+          returnKeyType="done"
+          placeholder={"Nhập mật khẩu mới"}
+        ></TextInput>
+
+        <Text style={styles.textTop}> Xác nhận mật khẩu</Text>
+        <TextInput
+          style={styles.text}
+          value={password}
+          onChangeText={(text) => setPassword(text)}
+          secureTextEntry={undefined}
+          returnKeyType="done"
+          placeholder={"Xác nhận mật khẩu mới"}
+        ></TextInput>
+
+        <View style={styles.btn}>
+          <TouchableOpacity
+            style={styles.btn22}
+            onPress={() => navigation.navigate("SignIn")}
+          >
+            <Text style={styles.size}>Xác nhận</Text>
+          </TouchableOpacity>
+        </View>
       </View>
     </View>
   );

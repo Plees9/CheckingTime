@@ -13,15 +13,16 @@ import Icon from "react-native-vector-icons/FontAwesome";
 import { IconButton } from "react-native-paper";
 
 
+
 const InfoScreen = () => {
   const styles = useMemo(() => createStyles(), []);
 
   return (
     <SafeAreaView style={styles.container}>
-      <View>
-        <Text style={styles.header}>Quản lý chấm công</Text>
+      <View style={{  backgroundColor: "#DDDDDD" ,padding :10}}>
+        <Text style={styles.header}>Tru so chinh</Text>
       </View>
-      <View style={{marginLeft :30}}>
+      <View style={{ marginLeft: 30 }}>
         <View style={styles.hang}>
           <IconButton
             icon="office-building"
@@ -49,7 +50,9 @@ const InfoScreen = () => {
             />
           </View>
         </View>
-        <View style={styles.kengang}></View>
+      </View>
+      <View style={styles.kengang}></View>
+      <View style={{ marginLeft: 30 }}>
         <View style={styles.hang}>
           <IconButton
             icon="phone"
@@ -78,25 +81,33 @@ const InfoScreen = () => {
         </View>
       </View>
       <View style={styles.kengang}></View>
-      <View style={styles.hang}>
+      <View style={styles.footer}>
         <TouchableOpacity
           style={styles.btnForgot}
           onPress={() => Alert.alert("Simple")}
         >
-          <Text>Giới thiệu</Text>
+          <Text style={{ color: "#7858A6" }}>Giới thiệu</Text>
         </TouchableOpacity>
+
         <TouchableOpacity
           style={styles.btnForgot}
           onPress={() => Alert.alert("Simple Button")}
         >
-          <Text>Website </Text>
+          <Text style={{ color: "#7858A6" }}>Website </Text>
         </TouchableOpacity>
         <TouchableOpacity
           style={styles.btnForgot}
           onPress={() => Alert.alert("Simple Button pressed")}
         >
-          <Text>Fanpage</Text>
+          <Text style={{ color: "#7858A6" }}>Fanpage</Text>
         </TouchableOpacity>
+
+        {/* <TouchableOpacity
+          style={styles.btnForgot}
+          onPress={() => Alert.alert("Simple Button pressed")}
+        >
+          <Text>Fanpage</Text>
+        </TouchableOpacity> */}
       </View>
     </SafeAreaView>
   );
