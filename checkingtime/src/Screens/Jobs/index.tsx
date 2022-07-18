@@ -23,12 +23,12 @@ const Jobs = () => {
 
   return (
     <SafeAreaView style={styles.container}>
-      <ScrollView  >
+      <ScrollView>
         <View>
           <Text style={styles.chu11}>Quản lý chấm công</Text>
         </View>
         <View style={{ flexDirection: "row" }}>
-          <View style ={styles.scrollView}>
+          <View style={styles.scrollView}>
             <IconButton
               icon="calendar-account"
               color="#7858A6"
@@ -39,9 +39,9 @@ const Jobs = () => {
           </View>
         </View>
         <View>
-          <Text style ={styles.chu11}>Quản lý đơn từ</Text>
-        </View >
-        <View style ={styles.scrollView1}>
+          <Text style={styles.chu11}>Quản lý đơn từ</Text>
+        </View>
+        <View style={styles.scrollView1}>
           <View style={{ justifyContent: "center", alignItems: "center" }}>
             <IconButton
               icon="text-box"
@@ -49,20 +49,20 @@ const Jobs = () => {
               size={40}
               onPress={() => navigation.navigate("Đơn từ")}
             />
-             <Text style={styles.text1}>{'Danh sách\nđơn từ'}</Text> 
+            <Text style={styles.text1}>{"Danh sách\nđơn từ"}</Text>
           </View>
           <View style={styles.iconbtn}>
-          
             <IconButton
               icon="text-box-plus"
               color="#7858A6"
               size={40}
-              onPress={() => navigation.navigate("Form Created")}/>
-            <Text style={styles.text1}>{'Tạo đơn mới'}</Text> 
+              onPress={() => navigation.navigate("Form Created")}
+            />
+            <Text style={styles.text1}>{"Tạo đơn mới"}</Text>
           </View>
         </View>
         <View>
-          <Text style ={styles.chu11}>Tổ chức</Text>
+          <Text style={styles.chu11}>Tổ chức</Text>
         </View>
         <View style={styles.scrollView1}>
           <View style={{ justifyContent: "center", alignItems: "center" }}>
@@ -70,9 +70,9 @@ const Jobs = () => {
               icon="office-building"
               color="#7858A6"
               size={40}
-              onPress={() => Alert.alert("Simple Button pressed")}
+              onPress={() => navigation.navigate("InfoScreen")}
             />
-           <Text style={styles.text1}>{'Thông tin\n công ty'}</Text> 
+            <Text style={styles.text1}>{"Thông tin\n công ty"}</Text>
           </View>
           <View style={styles.iconbtn}>
             <IconButton
@@ -81,7 +81,7 @@ const Jobs = () => {
               size={40}
               onPress={() => Alert.alert("Simple Button pressed")}
             />
-            <Text style={styles.text1}>{'Danh sách\n nhân viên'}</Text> 
+            <Text style={styles.text1}>{"Danh sách\n nhân viên"}</Text>
           </View>
         </View>
       </ScrollView>

@@ -17,8 +17,8 @@ import Info from "./src/Screens/InfoCompany/Info";
 const App = () => {
   return (
     <SafeAreaView style={styles.root}>
-       <SNavigation/> 
-      {/* < Info /> */}
+      <SNavigation/> 
+      
     </SafeAreaView>
   );
 };

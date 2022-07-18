@@ -26,7 +26,7 @@ const createStyles = () =>
       alignSelf: "center",
       borderRadius: 5,
       marginTop: 8,
-      padding:5,
+      padding: 5,
       backgroundColor: "#F9F9F9",
     },
     btn: {
@@ -36,7 +36,6 @@ const createStyles = () =>
       marginTop: 20,
       borderRadius: 10,
       marginBottom: 20,
-      
     },
     textTop: {
       marginTop: 10,

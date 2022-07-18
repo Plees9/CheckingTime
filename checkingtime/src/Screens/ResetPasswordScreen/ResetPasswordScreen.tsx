@@ -57,12 +57,12 @@ const ResetPasswordScreen = () => {
         ></TextInput>
 
         <View style={styles.btn}>
-        <TouchableOpacity
-          style={styles.btn22}
-          onPress={() => navigation.navigate("SignIn")}
-        >
-          <Text style={styles.size}>Xác nhận</Text>
-        </TouchableOpacity>
+          <TouchableOpacity
+            style={styles.btn22}
+            onPress={() => navigation.navigate("SignIn")}
+          >
+            <Text style={styles.size}>Xác nhận</Text>
+          </TouchableOpacity>
         </View>
       </View>
     </View>

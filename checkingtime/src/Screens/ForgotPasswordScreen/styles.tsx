@@ -19,9 +19,9 @@ const createStyles = () =>
       alignSelf: "center",
       borderRadius: 5,
       marginTop: 15,
-      padding:5,
+      padding: 5,
       backgroundColor: "#CFD2CF",
-      
+
       margin: 20,
     },
     btn: {
