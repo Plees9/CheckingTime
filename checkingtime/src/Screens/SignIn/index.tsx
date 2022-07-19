@@ -3,7 +3,6 @@ import {
   Text,
   Image,
   TextInput,
-  Button,
   Alert,
   TouchableOpacity,
 } from "react-native";
@@ -12,7 +11,6 @@ import createStyles from "./styles";
 import Icon from "react-native-vector-icons/FontAwesome";
 import { CheckBox } from "@rneui/themed";
 import { useNavigation } from "@react-navigation/native";
-import { Pressable } from "react-native";
 
 const SignIn = () => {
   const styles = useMemo(() => createStyles(), []);
@@ -43,35 +41,44 @@ const SignIn = () => {
         thiện nên nếu xảy ra bug vui lòng không quạu.
       </Text>
 
-      <View style={styles.styleTT}>
-        <View>
-          <Icon name="user" size={20} />
-        </View>
-        <View style={{ marginLeft: 10 }}>
-          <TextInput
-            placeholder={"Số điện thoại"}
-            keyboardType={"number-pad"}
-            returnKeyType="done"
-            maxLength={10}
-            value={userName}
-            secureTextEntry={false}
-            onChangeText={setUserName}
-          />
+      <View>
+        <Text style={styles.styletext}>Tài khoản:</Text>
+        <View style={styles.styleTT}>
+          <View>
+            <Icon name="user" size={24} />
+          </View>
+          <View style={styles.text24}>
+            <TextInput
+              placeholder={"Số điện thoại"}
+              style={styles.text23}
+              keyboardType={"number-pad"}
+              returnKeyType="done"
+              maxLength={10}
+              value={userName}
+              secureTextEntry={false}
+              onChangeText={setUserName}
+            />
+          </View>
         </View>
       </View>
-      <View style={styles.styleTT}>
-        <View>
-          <Icon name="lock" size={22} />
-        </View>
-        <View style={{ marginLeft: 10 }}>
-          <TextInput
-            placeholder={"Mật khẩu"}
-            maxLength={16}
-            secureTextEntry={true}
-            returnKeyType="go"
-            value={password}
-            onChangeText={setPassword}
-          />
+
+      <View>
+        <Text style={styles.styletext}>Mật khẩu:</Text>
+        <View style={styles.styleTT}>
+          <View>
+            <Icon name="lock" size={26} />
+          </View>
+          <View style={styles.text24}>
+            <TextInput
+              placeholder={"Mật khẩu"}
+              style={styles.text23}
+              maxLength={16}
+              secureTextEntry={true}
+              returnKeyType="go"
+              value={password}
+              onChangeText={setPassword}
+            />
+          </View>
         </View>
       </View>
 
@@ -82,7 +89,7 @@ const SignIn = () => {
         <Text style={styles.text23}>Quên mật khẩu?</Text>
       </TouchableOpacity>
 
-      <TouchableOpacity style={styles.container}>
+      <TouchableOpacity>
         <CheckBox
           title="Lưu mật khẩu"
           checked={isChecked}
