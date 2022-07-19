@@ -31,7 +31,7 @@ const createStyles = () =>
       justifyContent: "center",
       alignItems: "center",
       borderRadius: 10,
-      backgroundColor: "#7858A6",
+      backgroundColor: "#7445f6",
     },
     size: {
       fontSize: 18,

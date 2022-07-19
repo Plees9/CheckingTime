@@ -1,25 +1,17 @@
-import {
-  StyleSheet,
-  Text,
-  SafeAreaView,
-  ScrollView,
-  StatusBar,
-  View,
-  Button,
-} from "react-native";
+import Button from "../../Button/index";
+import { StyleSheet, StatusBar } from "react-native";
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
     paddingTop: StatusBar.currentHeight,
-    backgroundColor: "#fff",
+    backgroundColor: "#f9f9f9",
   },
-  scrollView: {
-    flex: 1,
-  },
+
   text: {
-    fontSize: 18,
+    fontSize: 20,
     fontWeight: "bold",
+    color: "#FFFFFF",
     textAlign: "center",
   },
   text1: {
@@ -27,41 +19,28 @@ const styles = StyleSheet.create({
     marginLeft: 10,
     marginTop: 6,
     justifyContent: "center",
-    color: "white",
+    color: "black",
   },
-  separate: {
-    backgroundColor: "#DFF6FF",
-    fontSize: 30,
-    padding: 10,
-    borderRadius: 25,
+  text2: {
+    fontSize: 16,
+    marginLeft: 5,
+    paddingTop: 5,
+    fontWeight: "bold",
+    color: "#FFFFFF",
   },
-  btn: {
-    backgroundColor: "pink",
-    borderRadius: 10,
-    margin: 10,
-    padding: 10,
-    width: 200,
-    height: 50,
+  text3: {
+    fontSize: 16,
+    marginLeft: "58%",
+    color: "#eee9f5",
+    paddingTop: 5,
   },
-  item: {
-    flex: 1,
-    flexDirection: "row",
-    marginTop: 30,
-    marginLeft: 20,
-    marginRight: 20,
-    borderWidth: 1,
-    borderRadius: 10,
-    justifyContent: "space-between",
+  text4: {
+    fontSize: 16,
+    marginLeft: "60%",
+    paddingTop: 5,
+    color: "#eee9f5",
   },
-  item2: {
-    flex: 1,
-    flexDirection: "row",
-    borderWidth: 0.5,
-    marginHorizontal: 20,
-    backgroundColor: "pink",
-    borderRadius: 10,
-    justifyContent: "space-between",
-  },
+
   imagebgr: {
     width: "100%",
     height: 150,
@@ -74,30 +53,102 @@ const styles = StyleSheet.create({
     width: 35,
     height: 35,
     borderRadius: 35 / 2,
-    backgroundColor: "pink",
+    backgroundColor: "#eee9f5",
     alignItems: "center",
-    padding: 5,
+    justifyContent: "center",
+
+    padding: 6,
+  },
+  icon1: {
+    width: 28,
+    height: 28,
+    borderRadius: 28 / 2,
+    backgroundColor: "#eee9f5",
+    padding: 7,
   },
   icon2: {
     flexDirection: "column",
-    height: 120,
-    width: 160,
-    backgroundColor: "lightblue",
-    marginTop: 20,
+    height: 170,
+    width: 350,
+    backgroundColor: "#7445f6",
+    marginTop: 10,
     marginHorizontal: 20,
     marginLeft: 20,
-    borderRadius: 8,
+    borderRadius: 25,
   },
   textIcon23: {
+    //flex: 1,
     flexDirection: "row",
+    margin: 8,
   },
-  icon3: {
-    height: 120,
-    width: 160,
-    backgroundColor: "lightblue",
+
+  row1: {
+    flexDirection: "row",
+    justifyContent: "center",
+  },
+  kengang: {
+    borderBottomColor: "gray",
+    borderBottomWidth: 0.5,
+    width: 350,
+    marginBottom: 5,
+  },
+  view: {
+    flexDirection: "column",
+    alignItems: "center",
     marginTop: 20,
-    marginHorizontal: 5,
+    width: "90%",
+    height: 350,
+    backgroundColor: "#FFFFFF",
     borderRadius: 8,
+  },
+  btn: {
+    flexDirection: "row",
+    justifyContent: "space-around",
+    marginTop: 15,
+  },
+  text5: {
+    fontSize: 13,
+    fontWeight: "bold",
+    color: "#FEB139",
+    marginLeft: 5,
+  },
+  text6: {
+    fontSize: 13,
+    fontWeight: "bold",
+    color: "#FEB139",
+    marginLeft: 15,
+  },
+  text7: {
+    fontSize: 16,
+    fontWeight: "bold",
+    //color: "#FFFFFF",
+    marginTop: 10,
+  },
+  btn1: {
+    flexDirection: "row",
+    justifyContent: "center",
+    alignItems: "center",
+    borderRadius: 8,
+    width: 160,
+    height: 50,
+    fontWeight: "bold",
+    backgroundColor: "#FFFFFF",
+  },
+  vongtron: {
+    width: 40,
+    height: 40,
+    borderRadius: 40 / 2,
+    backgroundColor: "#FEFBF6",
+    alignItems: "center",
+    justifyContent: "center",
+    marginLeft: 10,
+  },
+  boder: {
+    width: 30,
+    height: 30,
+    borderRadius: 30 / 2,
+    backgroundColor: "#eee9f5",
+    padding: 6,
   },
 });
 

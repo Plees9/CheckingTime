@@ -42,8 +42,9 @@ const createStyles = () =>
     },
     tinyLogo: {
       width: 400,
-      height: 550,
+      height: 500,
       alignSelf: "center",
+      
     },
     text1: {
       textAlign: "center",
