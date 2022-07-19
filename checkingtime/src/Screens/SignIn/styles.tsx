@@ -115,7 +115,7 @@ const createStyles = () =>
       justifyContent: "center",
       alignItems: "center",
       borderRadius: 10,
-      backgroundColor: "#7858A6",
+      backgroundColor: "#7445f6",
       marginTop: 10,
     },
     text22: {

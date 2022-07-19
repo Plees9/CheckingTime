@@ -1,131 +1,98 @@
+import { useNavigation } from "@react-navigation/native";
 import React from "react";
 import {
-  StyleSheet,
   Text,
-  SafeAreaView,
-  ScrollView,
-  StatusBar,
   View,
-  Button,
-  Pressable,
   Alert,
   ImageBackground,
   TouchableOpacity,
 } from "react-native";
-import Icon from "react-native-vector-icons/AntDesign";
+import Icon from "react-native-vector-icons/FontAwesome";
 import styles from "./styles";
 
 const HomeScreen = () => {
+  const navigation = useNavigation<any>();
   return (
     <View style={styles.container}>
       <View>
-        <ImageBackground
+        {/* <ImageBackground
           source={require("../../../assets/images/tim.jpg")}
           style={styles.imagebgr}
-        >
-          <TouchableOpacity onPress={() => Alert.alert("image clicked")}>
-            <View style={styles.row}>
-              <Icon name="user" size={26} color="white" style={styles.icon} />
-              <Text style={styles.text1}> Xin chao, "userName"</Text>
+        > */}
+        <TouchableOpacity onPress={() => navigation.navigate("Account")}>
+          <View style={styles.row}>
+            <Icon name="user" size={26} color="#7445f6" style={styles.icon} />
+            <Text style={styles.text1}> Xin chao, "userName"</Text>
+          </View>
+        </TouchableOpacity>
+
+        <View style={{ flexDirection: "row" }}>
+          <View style={styles.icon2}>
+            <Text style={styles.text}>Nhật ký hôm nay</Text>
+            <View>
+              <View style={styles.textIcon23}>
+                <Icon
+                  name="check"
+                  size={18}
+                  color="#7445f6"
+                  style={styles.boder}
+                />
+                <Text style={styles.text2}> Checkin: </Text>
+                <Text style={styles.text4}>N/A</Text>
+              </View>
+              <View style={styles.textIcon23}>
+                <Icon
+                  name="dedent"
+                  size={18}
+                  color="#7445f6"
+                  style={styles.boder}
+                />
+                <Text style={styles.text2}> Checkout:</Text>
+                <Text style={styles.text3}>N/A</Text>
+              </View>
+              <View style={styles.kengang} />
+              <View style={styles.textIcon23}>
+                <Icon
+                  name="line-chart"
+                  size={18}
+                  color="#7445f6"
+                  style={styles.boder}
+                />
+                <Text style={styles.text2}> Xếp hạng:</Text>
+                <Text style={styles.text3}>N/A</Text>
+              </View>
+            </View>
+          </View>
+        </View>
+
+        <View style={styles.btn}>
+          <TouchableOpacity onPress={() => navigation.navigate("InfoScreen")}>
+            <View style={styles.btn1}>
+              <Icon
+                name="building"
+                size={18}
+                color="#7445f6"
+                style={styles.icon1}
+              />
+              <Text style={styles.text5}>Thông tin Công Ty</Text>
             </View>
           </TouchableOpacity>
+          <TouchableOpacity onPress={() => Alert.alert("image clicked")}>
+            <View style={styles.btn1}>
+              <Text style={styles.text6}> Công Tháng</Text>
+              <View style={styles.vongtron}></View>
+            </View>
+          </TouchableOpacity>
+        </View>
 
-          <View style={{ flexDirection: "row" }}>
-            <View style={styles.icon2}>
-              <Text style={styles.text}>Hôm nay</Text>
-              <View style={styles.textIcon23} >
-                <Icon name="calendar" size={20} color="white" />
-                <Text> adihd</Text>
-              </View>
-              
-              
-            </View>
-            <View style={styles.icon3}>
-              <Text style={styles.text}>Jobs</Text>
-            </View>
+        <View style={styles.row1}>
+          <View style={styles.view}>
+            <Text style={styles.text7}>Top 5 hôm nay</Text>
           </View>
-        </ImageBackground>
+        </View>
+
+        {/* </ImageBackground> */}
       </View>
-      <ScrollView style={styles.scrollView}>
-        <Text>Workspace của bạn</Text>
-        <View style={styles.item}>
-          <View style={{ alignContent: "center", justifyContent: "center" }}>
-            <Icon name="home" size={30} color="black" />
-          </View>
-          <View>
-            <Text>Home1</Text>
-            <Text>Home2</Text>
-          </View>
-
-          <Pressable
-            style={{
-              alignContent: "center",
-              justifyContent: "center",
-              padding: 10,
-              borderRadius: 100,
-              backgroundColor: "lightblue",
-            }}
-          >
-            <Icon
-              name="reload1"
-              size={20}
-              onPress={() => Alert.alert("phucleedepzai")}
-            />
-          </Pressable>
-        </View>
-        <Text>Top 5 hôm nay</Text>
-        <View
-          style={{
-            flex: 1,
-            marginHorizontal: 20,
-            borderWidth: 1,
-            borderRadius: 8,
-          }}
-        >
-          <View>
-            <View style={styles.item2}>
-              <Text>01</Text>
-              <Text>Person1</Text>
-              <Text>Xephang</Text>
-            </View>
-
-            <View style={styles.item2}>
-              <Text>02</Text>
-              <Text>Person2</Text>
-              <Text>Xephang</Text>
-            </View>
-
-            <View style={styles.item2}>
-              <Text>03</Text>
-              <Text>Person3</Text>
-              <Text>Xephang</Text>
-            </View>
-
-            <View style={styles.item2}>
-              <Text>04</Text>
-              <Text>Person4</Text>
-              <Text>Xephang</Text>
-            </View>
-
-            <View style={styles.item2}>
-              <Text>05</Text>
-              <Text>Person5</Text>
-              <Text>Xephang</Text>
-            </View>
-<Pressable onPress={() => Alert.alert("chưa có gì cả")}>
-              <Text
-                style={{
-                  justifyContent: "center",
-                  alignContent: "center",
-                  color: "orange",
-                }}
-              >
-                Xem thêm
-              </Text>
-            </Pressable>
-          </View>
-        </View>
-      </ScrollView>
     </View>
   );
 };

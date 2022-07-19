@@ -34,15 +34,17 @@ const createStyles = () =>
       //   borderRadius: 50/2,
     },
     btnForgot: {
-      marginTop: 10,
       fontWeight: "200",
       borderRadius: 10,
-      borderWidth: 0.5,
-      marginLeft: 10,
-      marginRight: 10,
+      backgroundColor: "#FFFFFF",
       alignItems: "center",
+      margin: 15,
       flex: 1,
-      borderColor: "#7858A6",
+    },
+    textend : {
+      textAlign: "center",
+      color: "#FEB139",
+      padding: 5,
     },
     text: {
       marginTop: 24,
@@ -53,18 +55,24 @@ const createStyles = () =>
     kengang: {
       borderBottomColor: "black",
       borderBottomWidth: 0.5,
-      width: 400,
-      marginTop: "4%",
-      marginBottom: "1.5%",
+      width: "100%",
+      marginTop: "3%",
+      //marginBottom: "1.5%",
+    },
+    kengang1: {
+      borderBottomColor: "black",
+      borderBottomWidth: 0.5,
+      width: 300,
+      //marginTop: "3%",
+      //marginBottom: "1.5%",
     },
     hang: {
       marginTop: 16,
       flexDirection: "row",
     },
     footer: {
-      marginVertical: 10,
       flexDirection: "row",
-      marginHorizontal: 20,
+      justifyContent: "space-around",
     },
     texta: {
       fontSize: 15,
@@ -76,8 +84,7 @@ const createStyles = () =>
     header: {
       fontSize: 30,
       width: "100%",
-      padding: 2,
-      
+      fontWeight: "bold",
     },
   });
 

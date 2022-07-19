@@ -48,7 +48,7 @@ const Account = () => {
           <Icon
             name="envelope-square"
             size={40}
-            color="#7858A6"
+            color="#7445f6"
             style={styles.icon}
           />
           <View style={styles.cot}>
@@ -70,7 +70,7 @@ const Account = () => {
             <Icon
               name="phone-square"
               size={40}
-              color="#7858A6"
+              color="#7445f6"
               style={styles.icon}
             />
             <View>
@@ -97,7 +97,7 @@ const Account = () => {
           <Icon
             name="github-square"
             size={35}
-            color="#7858A6"
+            color="#7445f6"
             style={styles.icon}
           />
           <View>
@@ -121,7 +121,7 @@ const Account = () => {
           <Icon
             name="steam-square"
             size={40}
-            color="#7858A6"
+            color="#7445f6"
             style={styles.icon}
           />
           <View>
@@ -144,7 +144,7 @@ const Account = () => {
           <Icon
             name="reddit-square"
             size={40}
-            color="#7858A6"
+            color="#7445f6"
             style={styles.icon}
           />
           <View>
@@ -167,7 +167,7 @@ const Account = () => {
           <Icon
             name="snapchat-square"
             size={40}
-            color="#7858A6"
+            color="#7445f6"
             style={styles.icon}
           />
           <View>
@@ -190,7 +190,7 @@ const Account = () => {
           <Icon
             name="xing-square"
             size={40}
-            color="#7858A6"
+            color="#7445f6"
             style={styles.icon}
           />
           <View>
@@ -215,7 +215,7 @@ const Account = () => {
         <View>
           <Text style={styles.text}>Lần đăng nhập cuối</Text>
           <View style={styles.hang}>
-            <Icon name="cube" size={35} color="#7858A6" style={styles.icon} />
+            <Icon name="cube" size={35} color="#7445f6" style={styles.icon} />
             <View>
               <TextInput
                 style={styles.user}

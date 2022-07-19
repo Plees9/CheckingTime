@@ -31,7 +31,7 @@ const Jobs = () => {
           <View style={styles.scrollView}>
             <IconButton
               icon="calendar-account"
-              color="#7858A6"
+              color="#7445f6"
               size={40}
               onPress={() => Alert.alert("Simple Button pressed")}
             />
@@ -45,7 +45,7 @@ const Jobs = () => {
           <View style={{ justifyContent: "center", alignItems: "center" }}>
             <IconButton
               icon="text-box"
-              color="#7858A6"
+              color="#7445f6"
               size={40}
               onPress={() => navigation.navigate("Đơn từ")}
             />
@@ -54,7 +54,7 @@ const Jobs = () => {
           <View style={styles.iconbtn}>
             <IconButton
               icon="text-box-plus"
-              color="#7858A6"
+              color="#7445f6"
               size={40}
               onPress={() => navigation.navigate("Form Created")}
             />
@@ -68,7 +68,7 @@ const Jobs = () => {
           <View style={{ justifyContent: "center", alignItems: "center" }}>
             <IconButton
               icon="office-building"
-              color="#7858A6"
+              color="#7445f6"
               size={40}
               onPress={() => navigation.navigate("InfoScreen")}
             />
@@ -77,7 +77,7 @@ const Jobs = () => {
           <View style={styles.iconbtn}>
             <IconButton
               icon="account-group"
-              color="#7858A6"
+              color="#7445f6"
               size={40}
               onPress={() => Alert.alert("Simple Button pressed")}
             />
