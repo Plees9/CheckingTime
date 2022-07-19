@@ -7,6 +7,7 @@ import {
   ImageBackground,
   TouchableOpacity,
 } from "react-native";
+import { Avatar } from "@rneui/themed";
 import Icon from "react-native-vector-icons/FontAwesome";
 import styles from "./styles";
 
@@ -26,7 +27,7 @@ const HomeScreen = () => {
           </View>
         </TouchableOpacity>
 
-        <View style={{ flexDirection: "row" }}>
+        <View>
           <View style={styles.icon2}>
             <Text style={styles.text}>Nhật ký hôm nay</Text>
             <View>
@@ -85,9 +86,37 @@ const HomeScreen = () => {
           </TouchableOpacity>
         </View>
 
-        <View style={styles.row1}>
-          <View style={styles.view}>
-            <Text style={styles.text7}>Top 5 hôm nay</Text>
+        <View style={styles.view}>
+          <Text style={styles.text7}>Top 5 hôm nay</Text>
+          <View style={styles.avt}>
+            <Avatar
+              size={60}
+              rounded
+              source={{
+                uri: "https://image2.tin247.news/pictures/2021/09/23/bcd1632409191.jpg",
+              }}
+            ></Avatar>
+          </View>
+
+          <View style={styles.row1}>
+            <Text>stt"1"</Text>
+            <Text>userName</Text>
+            <Text> Time checkin</Text>
+          </View>
+          <View style={styles.row1}>
+            <Text>stt"2"</Text>
+            <Text>userName</Text>
+            <Text> Time checkin</Text>
+          </View>
+          <View style={styles.row1}>
+            <Text>stt"1"</Text>
+            <Text>userName</Text>
+            <Text> Time checkin</Text>
+          </View>
+          <View style={styles.row1}>
+            <Text>stt"1"</Text>
+            <Text>userName</Text>
+            <Text> Time checkin</Text>
           </View>
         </View>
 

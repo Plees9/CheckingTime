@@ -56,7 +56,6 @@ const styles = StyleSheet.create({
     backgroundColor: "#eee9f5",
     alignItems: "center",
     justifyContent: "center",
-
     padding: 6,
   },
   icon1: {
@@ -84,7 +83,8 @@ const styles = StyleSheet.create({
 
   row1: {
     flexDirection: "row",
-    justifyContent: "center",
+    justifyContent: "space-around",
+    marginTop: 10,
   },
   kengang: {
     borderBottomColor: "gray",
@@ -94,11 +94,11 @@ const styles = StyleSheet.create({
   },
   view: {
     flexDirection: "column",
-    alignItems: "center",
     marginTop: 20,
     width: "90%",
     height: 350,
     backgroundColor: "#FFFFFF",
+    marginHorizontal: 20,
     borderRadius: 8,
   },
   btn: {
@@ -119,11 +119,12 @@ const styles = StyleSheet.create({
     marginLeft: 15,
   },
   text7: {
-    fontSize: 16,
+    fontSize: 18,
     fontWeight: "bold",
-    //color: "#FFFFFF",
-    marginTop: 10,
+    textAlign: "center",
+    margin: 10,
   },
+ 
   btn1: {
     flexDirection: "row",
     justifyContent: "center",
@@ -149,6 +150,10 @@ const styles = StyleSheet.create({
     borderRadius: 30 / 2,
     backgroundColor: "#eee9f5",
     padding: 6,
+  },
+  avt: {
+    alignSelf: "center",
+    marginBottom: 10,
   },
 });
 
