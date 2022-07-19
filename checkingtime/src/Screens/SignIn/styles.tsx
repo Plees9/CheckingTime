@@ -1,4 +1,5 @@
 import { StyleSheet } from "react-native";
+import { CheckBox } from '@rneui/themed';
 
 const createStyles = () =>
   StyleSheet.create({
@@ -11,13 +12,17 @@ const createStyles = () =>
       marginBottom: 20,
     },
     view: {
-      marginTop: 80,
+      //marginTop: 60,
       marginHorizontal: 20,
+      flex: 1,
       alignSelf: "center",
+      backgroundColor: "white",
     },
     textWelcome: {
+      marginTop: 100,
+      marginBottom: 20,
       alignSelf: "center",
-      fontSize: 30,
+      fontSize: 40,
       fontWeight: "bold",
       color: "#FF4949",
     },
@@ -25,11 +30,6 @@ const createStyles = () =>
       backgroundColor: "#6E85B7",
       width: "100%",
       height: "100%",
-    },
-    container: {
-      marginLeft: 30,
-      fontSize: 8,
-      marginHorizontal: 40,
     },
     btn: {
       marginVertical: 10,
@@ -82,11 +82,17 @@ const createStyles = () =>
     styleTT: {
       flexDirection: "row",
       borderWidth: 1,
-      marginTop: 10,
-      marginHorizontal: 50,
-      padding: 5,
+      marginTop: 6,
+      marginHorizontal: 10,
+      padding: 10,
       borderRadius: 5,
       alignItems: "center",
+    },
+    styletext: {
+      fontSize: 15,
+      marginHorizontal: 10,
+      marginTop: 10,
+      fontWeight: "bold",
     },
     textInput: {
       color: "#F32424",
@@ -94,7 +100,10 @@ const createStyles = () =>
     text1: {
       fontSize: 12,
       margin: 15,
+      marginHorizontal: 20,
+      textAlign: "center",
     },
+    
     btnNext: {
       width: 100,
       height: 50,
@@ -104,19 +113,18 @@ const createStyles = () =>
     btnForgot: {
       alignSelf: "flex-end",
       marginTop: 15,
-      marginRight: 50,
-      marginBottom: 10,
-      fontWeight: "200",
+      marginRight: "3%",
+      fontWeight: "100",
     },
     btn2: {
-      width: 120,
-      height: 40,
+      width: 350,
+      height: "5%",
       alignSelf: "center",
       justifyContent: "center",
       alignItems: "center",
       borderRadius: 10,
       backgroundColor: "#7445f6",
-      marginTop: 10,
+      marginTop: 20,
     },
     text22: {
       fontSize: 18,
@@ -126,7 +134,12 @@ const createStyles = () =>
       alignItems: "center",
     },
     text23: {
-      fontSize: 12,
+      fontSize: 16,
+    },
+    text24: {
+      marginLeft: 10,
+      width: "100%",
+      fontSize: 14,
     },
   });
 

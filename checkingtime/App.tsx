@@ -12,11 +12,13 @@ import Account from './src/Screens/Account/Account';
 import CuaToi from "./src/Screens/DonTu/CuaToi/CuaToi";
 import TabDonTu from "./src/navigation/TabDonTu";
 import Info from "./src/Screens/InfoCompany/Info";
+import ListStaff from "./src/Screens/ListStaff/ListStaff";
 
 
 const App = () => {
   return (
     <SafeAreaView style={styles.root}>
+
       <SNavigation/> 
       
     </SafeAreaView>
