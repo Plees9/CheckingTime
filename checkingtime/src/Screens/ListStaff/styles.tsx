@@ -4,14 +4,30 @@ const createStyles = () =>
   StyleSheet.create({
     view: {
       backgroundColor: "white",
-      
     },
-    scrollview: {
+    view1: {
       backgroundColor: "#f2f2f2",
-      width: "100%",
       height: "100%",
-      marginTop: 10,
     },
+    view2: {
+      flexDirection: "column",
+       backgroundColor: "#FFFFFF",
+       height: "100%",
+        margin:"3%",
+        borderRadius:10,
+    },
+    view3: {
+      borderWidth: 1,
+      borderRadius: 5,
+      //justifyContent: "center",
+      height:"70%",
+      textAlign: "center",
+      color: "orange",
+      padding: "2%",
+      borderColor: "orange",
+
+    },
+   
     row: {
       flexDirection: "row",
       marginTop: 8,
@@ -40,16 +56,37 @@ const createStyles = () =>
       marginLeft: 10,
       fontSize: 14,
     },
-    tinyLogo: {
-      width: 400,
-      height: 500,
-      alignSelf: "center",
-      
+   
+    hang: {
+      flexDirection: "row",
+      borderRadius: 5,
+      margin: "3%",
+      width: "95%",
     },
-    text1: {
-      textAlign: "center",
-      fontSize: 14,
+    hang2: {
+      flexDirection: "row",
+      justifyContent: "space-between",
+      width: "45%",
+      marginLeft: "3%",
+      borderColor: "orange",
     },
+    user: {
+      fontSize: 16,
+      flexDirection: "column",
+      width: "100%",
+      fontWeight: "bold",
+      marginLeft: "10%",
+      marginTop: "2%",
+    },
+    iconPhone: {
+      marginLeft: "50%",
+      marginTop: "3%",
+      color: "orange",
+    },
+    avt: {
+      marginTop: "1%",
+    },
+
 
   });
 
