@@ -24,7 +24,7 @@ const TabsNavigation = () => {
         }}
       />
       <Tab.Screen
-        name="Jobs"
+        name="Công việc"
         component={Jobs}
         options={{
           headerShown: true,
