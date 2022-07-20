@@ -11,23 +11,24 @@ const createStyles = () =>
     },
     view2: {
       flexDirection: "column",
-       backgroundColor: "#FFFFFF",
-       height: "100%",
-        margin:"3%",
-        borderRadius:10,
+      backgroundColor: "#FFFFFF",
+      //height: "10%",
+      marginTop: "3%",
+      marginLeft: "3%",
+      marginRight: "3%",
+      borderRadius: 10,
     },
     view3: {
       borderWidth: 1,
       borderRadius: 5,
-      //justifyContent: "center",
-      height:"70%",
+      margin: "3%",
+      height: "70%",
       textAlign: "center",
       color: "orange",
       padding: "2%",
       borderColor: "orange",
-
     },
-   
+
     row: {
       flexDirection: "row",
       marginTop: 8,
@@ -49,14 +50,21 @@ const createStyles = () =>
     },
     icon3: {
       padding: 5,
-      color:"gray",
+      color: "gray",
     },
     text: {
       alignItems: "center",
       marginLeft: 10,
       fontSize: 14,
     },
-   
+    text1: {
+      textAlign: "center",
+      fontSize: 14,
+      marginBottom: "2%",
+      marginTop: "1%",
+      color: "orange",
+    },
+
     hang: {
       flexDirection: "row",
       borderRadius: 5,
@@ -65,10 +73,17 @@ const createStyles = () =>
     },
     hang2: {
       flexDirection: "row",
-      justifyContent: "space-between",
+      //justifyContent: "space-between",
       width: "45%",
       marginLeft: "3%",
       borderColor: "orange",
+    },
+    cot1: {
+      flexDirection: "column",
+    },
+    hang3: {
+      flexDirection: "row",
+      justifyContent: "space-around",
     },
     user: {
       fontSize: 16,
@@ -86,8 +101,13 @@ const createStyles = () =>
     avt: {
       marginTop: "1%",
     },
-
-
+    kengang: {
+      borderBottomColor: "#f2f2f2",
+      borderBottomWidth: 3,
+      width: "100%",
+      marginTop: "3%",
+      marginBottom: "1.5%",
+    },
   });
 
 export default createStyles;
