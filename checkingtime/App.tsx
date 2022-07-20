@@ -19,11 +19,10 @@ const App = () => {
   return (
     <SafeAreaView style={styles.root}>
 
-      {/* <SNavigation/>  */}
-      <NavigationContainer>
+       <SNavigation/> 
+      {/* <NavigationContainer>
         <ListStaff />
-
-      </NavigationContainer>
+      </NavigationContainer> */}
       
 
       
