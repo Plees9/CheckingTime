@@ -69,7 +69,7 @@ const styles = StyleSheet.create({
     flexDirection: "column",
     height: 170,
     width: 350,
-    backgroundColor: "#7445f6",
+    backgroundColor: "#764AF1",
     marginTop: 10,
     marginHorizontal: 20,
     marginLeft: 20,
@@ -85,6 +85,7 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     justifyContent: "space-around",
     marginTop: 10,
+    
   },
   kengang: {
     borderBottomColor: "gray",

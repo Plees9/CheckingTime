@@ -117,14 +117,14 @@ const createStyles = () =>
       fontWeight: "100",
     },
     btn2: {
-      width: 350,
+      width: 330,
       height: "5%",
       alignSelf: "center",
       justifyContent: "center",
       alignItems: "center",
       borderRadius: 10,
       backgroundColor: "#7445f6",
-      marginTop: 20,
+      marginTop: 15,
     },
     text22: {
       fontSize: 18,
