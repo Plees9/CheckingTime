@@ -79,7 +79,7 @@ const Jobs = () => {
               icon="account-group"
               color="#7445f6"
               size={40}
-              onPress={() => navigation.navigate("List Staff")}
+              onPress={() => navigation.navigate("DANH SÁCH NHÂN VIÊN")}
             />
             <Text style={styles.text1}>{"Danh sách\n nhân viên"}</Text>
           </View>

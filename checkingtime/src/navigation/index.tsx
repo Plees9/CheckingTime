@@ -109,7 +109,7 @@ const SNavigation = () => {
           options={{ headerShown: true }}
         />
         <Stack.Screen
-          name="List Staff"
+          name="DANH SÁCH NHÂN VIÊN"
           component={ListStaffNavigation}
           options={{ headerShown: true }}
         />

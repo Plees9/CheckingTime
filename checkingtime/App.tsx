@@ -13,16 +13,18 @@ import CuaToi from "./src/Screens/DonTu/CuaToi/CuaToi";
 import TabDonTu from "./src/navigation/TabDonTu";
 import Info from "./src/Screens/InfoCompany/Info";
 import ListStaff from "./src/Screens/ListStaff/ListStaff";
+import EFilter from "./src/Screens/ListFilter/EFilter";
+
 
 
 const App = () => {
   return (
     <SafeAreaView style={styles.root}>
 
-       <SNavigation/> 
-      {/* <NavigationContainer>
-        <ListStaff />
-      </NavigationContainer> */}
+       {/* <SNavigation/>  */}
+      <NavigationContainer>
+        <EFilter />
+      </NavigationContainer>
       
 
       
