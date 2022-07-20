@@ -18,6 +18,7 @@ import Account from "../Screens/Account/Account";
 import ResetPasswordScreen from "../Screens/ResetPasswordScreen/ResetPasswordScreen";
 import TabDonTusNavigation from "./TabDonTu";
 import CuaToi from "../Screens/DonTu/CuaToi/CuaToi";
+import ListStaff from '../Screens/ListStaff/ListStaff';
 
 const Stack = createNativeStackNavigator();
 
@@ -66,6 +67,13 @@ const InfoScreenNavigation = () => {
     </Stack.Navigator>
   );
 }
+const ListStaffNavigation = () => {
+  return (
+    <Stack.Navigator screenOptions={{ headerShown: false }}>
+      <Stack.Screen name="ListStaff" component={ListStaff} />
+    </Stack.Navigator>
+  );
+}
 
 
 const SNavigation = () => {
@@ -98,6 +106,11 @@ const SNavigation = () => {
         <Stack.Screen
           name="InfoScreen"
           component={InfoScreenNavigation}
+          options={{ headerShown: true }}
+        />
+        <Stack.Screen
+          name="DANH SÁCH NHÂN VIÊN"
+          component={ListStaffNavigation}
           options={{ headerShown: true }}
         />
       </Stack.Navigator>

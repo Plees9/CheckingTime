@@ -24,7 +24,7 @@ const ListStaff = () => {
         </View>
       </View>
 
-      <SafeAreaView style={{flex:0}}>
+      <SafeAreaView >
         <ScrollView style={styles.view1}>
           {/*  */}
           <View style={styles.view2}>
