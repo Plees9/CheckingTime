@@ -12,6 +12,7 @@ import React, { useMemo, useState } from "react";
 import createStyles from "./styles";
 import { useNavigation } from "@react-navigation/native";
 import Icon from "react-native-vector-icons/FontAwesome";
+import { LinearGradient } from "expo-linear-gradient";
 
 const ForgotPasswordScreen = () => {
   const styles = useMemo(() => createStyles(), []);
@@ -34,12 +35,24 @@ const ForgotPasswordScreen = () => {
         placeholder={"Enter your phone number"}
       ></TextInput>
       <View>
-        <TouchableOpacity
+
+        {/* <TouchableOpacity
           style={styles.btn}
           onPress={() => navigation.navigate("ResetPassword")}
         >
           <Text style={styles.size}>Xác nhận</Text>
+        </TouchableOpacity> */}
+        <LinearGradient
+        start={{ x: 0, y: 0 }}
+        end={{ x: 1, y: 0 }}
+        colors={["#7F00FF", "#E100FF"]}
+        style={styles.btn}
+      >
+        <TouchableOpacity onPress={() => navigation.navigate("ResetPassword")}>
+          <Text style={styles.size}>Xác nhận</Text>
         </TouchableOpacity>
+      </LinearGradient>
+
         <TouchableOpacity onPress={() => navigation.navigate("SignIn")}>
           <Text style={styles.size1}>Back to sign in</Text>
         </TouchableOpacity>

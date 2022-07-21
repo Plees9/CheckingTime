@@ -102,7 +102,7 @@ const createStyles = () =>
       margin: 15,
       marginHorizontal: 20,
       textAlign: "center",
-      //fontFamily: "VanSans-SemiBold",
+      fontFamily: 'Roboto_400Regular_Italic',
       //fontWeight: "bold",
     },
     
@@ -130,6 +130,7 @@ const createStyles = () =>
     },
     text22: {
       fontSize: 18,
+      width: "100%",
       color: "#FFFFFF",
       textAlign: "center",
       justifyContent: "center",

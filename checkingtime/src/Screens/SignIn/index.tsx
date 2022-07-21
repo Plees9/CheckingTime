@@ -9,8 +9,25 @@ import {
 import React, { useMemo, useState } from "react";
 import createStyles from "./styles";
 import Icon from "react-native-vector-icons/FontAwesome";
+import { LinearGradient } from "expo-linear-gradient";
 import { CheckBox } from "@rneui/themed";
 import { useNavigation } from "@react-navigation/native";
+import { 
+  Roboto_100Thin,
+  Roboto_100Thin_Italic,
+  Roboto_300Light,
+  Roboto_300Light_Italic,
+  Roboto_400Regular,
+  Roboto_400Regular_Italic,
+  Roboto_500Medium,
+  Roboto_500Medium_Italic,
+  Roboto_700Bold,
+  Roboto_700Bold_Italic,
+  Roboto_900Black,
+  Roboto_900Black_Italic 
+} from '@expo-google-fonts/roboto'
+import { useFonts } from "expo-font";
+import AppLoading from "expo-app-loading";
 
 
 const SignIn = () => {
@@ -20,6 +37,25 @@ const SignIn = () => {
   const [isChecked, setIsChecked] = useState(false);
 
   const navigation = useNavigation<any>();
+
+ let [fontsLoaded, error] = useFonts({
+  Roboto_100Thin,
+  Roboto_100Thin_Italic,
+  Roboto_300Light,
+  Roboto_300Light_Italic,
+  Roboto_400Regular,
+  Roboto_400Regular_Italic,
+  Roboto_500Medium,
+  Roboto_500Medium_Italic,
+  Roboto_700Bold,
+  Roboto_700Bold_Italic,
+  Roboto_900Black,
+  Roboto_900Black_Italic
+});
+if(!fontsLoaded) {
+  return <AppLoading />
+}
+
 
   const hobbies: string[] = [];
 
@@ -98,12 +134,16 @@ const SignIn = () => {
         ></CheckBox>
       </TouchableOpacity>
 
-      <TouchableOpacity
+      <LinearGradient
+        start={{ x: 0, y: 0 }}
+        end={{ x: 1, y: 0 }}
+        colors={["#7F00FF", "#E100FF"]}
         style={styles.btn2}
-        onPress={() => navigation.navigate("HomeScreen")}
       >
-        <Text style={styles.text22}>Tiếp tục</Text>
-      </TouchableOpacity>
+        <TouchableOpacity onPress={() => navigation.navigate("HomeScreen")}>
+          <Text style={styles.text22}>Đăng nhập</Text>
+        </TouchableOpacity>
+      </LinearGradient>
     </View>
   );
 };
