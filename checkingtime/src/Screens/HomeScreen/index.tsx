@@ -1,12 +1,6 @@
 import { useNavigation } from "@react-navigation/native";
 import React from "react";
-import {
-  Text,
-  View,
-  Alert,
-  ImageBackground,
-  TouchableOpacity,
-} from "react-native";
+import { Text, View, Alert, TouchableOpacity } from "react-native";
 import { Avatar } from "@rneui/themed";
 import Icon from "react-native-vector-icons/FontAwesome";
 import styles from "./styles";
@@ -16,10 +10,6 @@ const HomeScreen = () => {
   return (
     <View style={styles.container}>
       <View>
-        {/* <ImageBackground
-          source={require("../../../assets/images/tim.jpg")}
-          style={styles.imagebgr}
-        > */}
         <TouchableOpacity onPress={() => navigation.navigate("Account")}>
           <View style={styles.row}>
             <Icon name="user" size={26} color="#DDDDDD" style={styles.icon} />
@@ -67,7 +57,9 @@ const HomeScreen = () => {
         </View>
 
         <View style={styles.btn}>
-          <TouchableOpacity onPress={() => navigation.navigate("Thông tin Công Ty")}>
+          <TouchableOpacity
+            onPress={() => navigation.navigate("Thông tin Công Ty")}
+          >
             <View style={styles.btn1}>
               <Icon
                 name="building"

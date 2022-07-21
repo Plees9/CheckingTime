@@ -1,5 +1,5 @@
-import Button from "../../Button/index";
 import { StyleSheet, StatusBar } from "react-native";
+import { FONTS } from "../../../constants/theme";
 
 const styles = StyleSheet.create({
   container: {
@@ -85,7 +85,6 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     justifyContent: "space-around",
     marginTop: 10,
-    
   },
   kengang: {
     borderBottomColor: "gray",
@@ -125,7 +124,7 @@ const styles = StyleSheet.create({
     textAlign: "center",
     margin: 10,
   },
- 
+
   btn1: {
     flexDirection: "row",
     justifyContent: "center",

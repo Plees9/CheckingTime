@@ -12,7 +12,11 @@ const TheoDoi = () => {
     <View style={styles.view}>
       <View style={styles.row}>
         <View style={styles.icon}>
-          <Icon name="bars" size={20} onPress={() => navigation.navigate("Bộ lọc")} />
+          <Icon
+            name="bars"
+            size={20}
+            onPress={() => navigation.navigate("Bộ lọc")}
+          />
         </View>
         <View style={styles.icon1}>
           <Icon name="search" size={20} style={styles.icon3} />
@@ -24,16 +28,14 @@ const TheoDoi = () => {
         </View>
       </View>
       <ScrollView style={styles.scrollview}>
-      <Image
-        style={styles.tinyLogo}
-        source={{
-          uri: 'https://image-us.24h.com.vn/upload/1-2020/images/2020-02-13/1581553713-66-midu1-1581498876-width660height825.jpg',
-        }}
-      />
-      <Text style={styles.text1}> Không tìm thấy đơn nào!</Text>
-
+        <Image
+          style={styles.tinyLogo}
+          source={{
+            uri: "https://image-us.24h.com.vn/upload/1-2020/images/2020-02-13/1581553713-66-midu1-1581498876-width660height825.jpg",
+          }}
+        />
+        <Text style={styles.text1}> Không tìm thấy đơn nào!</Text>
       </ScrollView>
-      
     </View>
   );
 };

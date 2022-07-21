@@ -1,10 +1,10 @@
 import { StyleSheet, StatusBar } from "react-native";
+import { FONTS } from "../../../constants/theme";
 
 const createStyles = () =>
   StyleSheet.create({
     view: {
       backgroundColor: "white",
-      
     },
     scrollview: {
       backgroundColor: "#f2f2f2",
@@ -33,7 +33,7 @@ const createStyles = () =>
     },
     icon3: {
       padding: 5,
-      color:"gray",
+      color: "gray",
     },
     text: {
       alignItems: "center",
@@ -44,13 +44,11 @@ const createStyles = () =>
       width: 400,
       height: 500,
       alignSelf: "center",
-      
     },
     text1: {
       textAlign: "center",
       fontSize: 14,
     },
-
   });
 
 export default createStyles;
