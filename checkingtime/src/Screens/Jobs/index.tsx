@@ -70,7 +70,7 @@ const Jobs = () => {
               icon="office-building"
               color="#7445f6"
               size={40}
-              onPress={() => navigation.navigate("InfoScreen")}
+              onPress={() => navigation.navigate("Thông tin Công Ty")}
             />
             <Text style={styles.text1}>{"Thông tin\n công ty"}</Text>
           </View>

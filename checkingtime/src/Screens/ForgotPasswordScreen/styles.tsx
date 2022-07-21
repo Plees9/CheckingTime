@@ -20,7 +20,7 @@ const createStyles = () =>
       borderRadius: 5,
       marginTop: 15,
       padding: 5,
-      backgroundColor: "#CFD2CF",
+      backgroundColor: "#EEEEEE",
 
       margin: 20,
     },

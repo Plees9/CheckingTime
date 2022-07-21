@@ -21,10 +21,7 @@ const App = () => {
   return (
     <SafeAreaView style={styles.root}>
 
-       {/* <SNavigation/>  */}
-      <NavigationContainer>
-        <EFilter />
-      </NavigationContainer>
+      <SNavigation />
       
 
       

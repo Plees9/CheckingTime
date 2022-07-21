@@ -18,7 +18,8 @@ import Account from "../Screens/Account/Account";
 import ResetPasswordScreen from "../Screens/ResetPasswordScreen/ResetPasswordScreen";
 import TabDonTusNavigation from "./TabDonTu";
 import CuaToi from "../Screens/DonTu/CuaToi/CuaToi";
-import ListStaff from '../Screens/ListStaff/ListStaff';
+import ListStaff from "../Screens/ListStaff/ListStaff";
+import EFilter from "../Screens/ListFilter/EFilter";
 
 const Stack = createNativeStackNavigator();
 
@@ -66,15 +67,21 @@ const InfoScreenNavigation = () => {
       <Stack.Screen name="Info Screen" component={InfoScreen} />
     </Stack.Navigator>
   );
-}
+};
 const ListStaffNavigation = () => {
   return (
     <Stack.Navigator screenOptions={{ headerShown: false }}>
       <Stack.Screen name="ListStaff" component={ListStaff} />
     </Stack.Navigator>
   );
-}
-
+};
+const ListFilterNavigation = () => {
+  return (
+    <Stack.Navigator screenOptions={{ headerShown: false }}>
+      <Stack.Screen name="ListFilter" component={EFilter} />
+    </Stack.Navigator>
+  );
+};
 
 const SNavigation = () => {
   return (
@@ -82,12 +89,10 @@ const SNavigation = () => {
       <Stack.Navigator
         screenOptions={{
           headerShown: false,
-          
         }}
       >
         <Stack.Screen name="Sign In" component={Navigation} />
-        
-        
+
         <Stack.Screen
           name="Form"
           component={JobsNavigation}
@@ -104,13 +109,18 @@ const SNavigation = () => {
           options={{ headerShown: true }}
         />
         <Stack.Screen
-          name="InfoScreen"
+          name="Thông tin Công Ty"
           component={InfoScreenNavigation}
           options={{ headerShown: true }}
         />
         <Stack.Screen
           name="DANH SÁCH NHÂN VIÊN"
           component={ListStaffNavigation}
+          options={{ headerShown: true }}
+        />
+        <Stack.Screen
+          name="Bộ lọc"
+          component={ListFilterNavigation}
           options={{ headerShown: true }}
         />
       </Stack.Navigator>

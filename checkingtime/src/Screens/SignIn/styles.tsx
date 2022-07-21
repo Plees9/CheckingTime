@@ -102,6 +102,8 @@ const createStyles = () =>
       margin: 15,
       marginHorizontal: 20,
       textAlign: "center",
+      //fontFamily: "VanSans-SemiBold",
+      //fontWeight: "bold",
     },
     
     btnNext: {
@@ -117,14 +119,14 @@ const createStyles = () =>
       fontWeight: "100",
     },
     btn2: {
-      width: 350,
+      width: 330,
       height: "5%",
       alignSelf: "center",
       justifyContent: "center",
       alignItems: "center",
       borderRadius: 10,
       backgroundColor: "#7445f6",
-      marginTop: 20,
+      marginTop: 15,
     },
     text22: {
       fontSize: 18,
@@ -132,6 +134,7 @@ const createStyles = () =>
       textAlign: "center",
       justifyContent: "center",
       alignItems: "center",
+      
     },
     text23: {
       fontSize: 16,
@@ -140,6 +143,11 @@ const createStyles = () =>
       marginLeft: 10,
       width: "100%",
       fontSize: 14,
+    },
+    button: {
+      padding: 15,
+      alignItems: 'center',
+      borderRadius: 5,
     },
   });
 

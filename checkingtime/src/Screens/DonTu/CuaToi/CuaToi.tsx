@@ -3,14 +3,16 @@ import React, { useMemo } from "react";
 import createStyles from "../styles";
 import Icon from "react-native-vector-icons/FontAwesome";
 import { TextInput } from "react-native-gesture-handler";
+import { useNavigation } from "@react-navigation/native";
 
 const CuaToi = () => {
   const styles = useMemo(() => createStyles(), []);
+  const navigation = useNavigation<any>();
   return (
     <View style={styles.view}>
       <View style={styles.row}>
         <View style={styles.icon}>
-          <Icon name="bars" size={20} />
+          <Icon name="bars" size={20} onPress={() => navigation.navigate("Bộ lọc")} />
         </View>
         <View style={styles.icon1}>
           <Icon name="search" size={20} style={styles.icon3} />

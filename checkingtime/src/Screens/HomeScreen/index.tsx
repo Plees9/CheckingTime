@@ -22,7 +22,7 @@ const HomeScreen = () => {
         > */}
         <TouchableOpacity onPress={() => navigation.navigate("Account")}>
           <View style={styles.row}>
-            <Icon name="user" size={26} color="#7445f6" style={styles.icon} />
+            <Icon name="user" size={26} color="#DDDDDD" style={styles.icon} />
             <Text style={styles.text1}> Xin chao, "userName"</Text>
           </View>
         </TouchableOpacity>
@@ -72,7 +72,7 @@ const HomeScreen = () => {
               <Icon
                 name="building"
                 size={18}
-                color="#7445f6"
+                color="#764AF1"
                 style={styles.icon1}
               />
               <Text style={styles.text5}>Thông tin Công Ty</Text>
