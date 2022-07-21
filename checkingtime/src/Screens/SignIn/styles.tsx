@@ -129,12 +129,15 @@ const createStyles = () =>
       marginTop: 15,
     },
     text22: {
+      
       fontSize: 18,
-      width: "100%",
+      width: 330,
+      padding: 5,
+      //backgroundColor: "#7445f6",
+      height: "100%",
       color: "#FFFFFF",
       textAlign: "center",
-      justifyContent: "center",
-      alignItems: "center",
+      
       
     },
     text23: {

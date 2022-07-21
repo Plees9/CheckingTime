@@ -67,7 +67,7 @@ const HomeScreen = () => {
         </View>
 
         <View style={styles.btn}>
-          <TouchableOpacity onPress={() => navigation.navigate("InfoScreen")}>
+          <TouchableOpacity onPress={() => navigation.navigate("Thông tin Công Ty")}>
             <View style={styles.btn1}>
               <Icon
                 name="building"

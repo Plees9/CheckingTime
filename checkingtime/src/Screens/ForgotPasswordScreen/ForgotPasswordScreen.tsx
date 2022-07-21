@@ -35,7 +35,6 @@ const ForgotPasswordScreen = () => {
         placeholder={"Enter your phone number"}
       ></TextInput>
       <View>
-
         {/* <TouchableOpacity
           style={styles.btn}
           onPress={() => navigation.navigate("ResetPassword")}
@@ -43,15 +42,17 @@ const ForgotPasswordScreen = () => {
           <Text style={styles.size}>Xác nhận</Text>
         </TouchableOpacity> */}
         <LinearGradient
-        start={{ x: 0, y: 0 }}
-        end={{ x: 1, y: 0 }}
-        colors={["#7F00FF", "#E100FF"]}
-        style={styles.btn}
-      >
-        <TouchableOpacity onPress={() => navigation.navigate("ResetPassword")}>
-          <Text style={styles.size}>Xác nhận</Text>
-        </TouchableOpacity>
-      </LinearGradient>
+          start={{ x: 0, y: 0 }}
+          end={{ x: 1, y: 0 }}
+          colors={["#7F00FF", "#E100FF"]}
+          style={styles.btn}
+        >
+          <TouchableOpacity
+            onPress={() => navigation.navigate("ResetPassword")}
+          >
+            <Text style={styles.size}>Xác nhận</Text>
+          </TouchableOpacity>
+        </LinearGradient>
 
         <TouchableOpacity onPress={() => navigation.navigate("SignIn")}>
           <Text style={styles.size1}>Back to sign in</Text>

@@ -52,6 +52,9 @@ const createStyles = () =>
     },
     size: {
       fontSize: 18,
+      width: 120,
+      height: 40,
+      padding: 6,
       color: "#FFFFFF",
       textAlign: "center",
     },
