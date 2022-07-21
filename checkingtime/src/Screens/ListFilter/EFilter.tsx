@@ -11,6 +11,7 @@ import { Picker } from "@react-native-picker/picker";
 import createStyles from "./styles";
 import navigation from "../../navigation";
 import { useNavigation } from "@react-navigation/native";
+import { LinearGradient } from "expo-linear-gradient";
 
 const EFilter = () => {
   const styles = useMemo(() => createStyles(), []);
@@ -102,12 +103,24 @@ const EFilter = () => {
           </Picker>
         </View>
 
-        <TouchableOpacity
+        {/* <TouchableOpacity
           style={styles.btn2}
           onPress={() => navigation.navigate("ListStaff")}
         >
           <Text style={styles.text22}>Xác nhận</Text>
-        </TouchableOpacity>
+        </TouchableOpacity> */}
+        <LinearGradient
+          start={{ x: 0, y: 0 }}
+          end={{ x: 1, y: 0 }}
+          colors={["#7F00FF", "#E100FF"]}
+          style={styles.btn2}
+        >
+          <TouchableOpacity
+            onPress={() => navigation.navigate("DANH SÁCH NHÂN VIÊN")}
+          >
+            <Text style={styles.text22}>Xác nhận</Text>
+          </TouchableOpacity>
+        </LinearGradient>
       </View>
     </ScrollView>
   );
