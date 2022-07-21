@@ -12,6 +12,7 @@ import Icon from "react-native-vector-icons/FontAwesome";
 import { CheckBox } from "@rneui/themed";
 import { useNavigation } from "@react-navigation/native";
 
+
 const SignIn = () => {
   const styles = useMemo(() => createStyles(), []);
   const [userName, setUserName] = useState("");
