@@ -1,5 +1,5 @@
-import React from 'react';
 import { StyleSheet, Text, SafeAreaView, ScrollView, StatusBar, View, Button } from 'react-native';
+import { FONTS } from "../../../constants/theme";
 
 const styles = StyleSheet.create({
     container: {

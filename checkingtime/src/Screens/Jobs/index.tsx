@@ -10,15 +10,11 @@ import {
   Button,
   useWindowDimensions,
 } from "react-native";
-import { t } from "react-native-tailwindcss";
-import { Icon } from "react-native-vector-icons/Icon";
 import styles from "./styles";
 import { IconButton } from "react-native-paper";
 import { useNavigation } from "@react-navigation/native";
-import Form from "../Form/Form";
 
 const Jobs = () => {
-  const { height } = useWindowDimensions();
   const navigation = useNavigation<any>();
 
   return (

@@ -1,4 +1,5 @@
 import { StyleSheet, StatusBar } from "react-native";
+import { FONTS } from "../../../constants/theme";
 
 const createStyles = () =>
   StyleSheet.create({
@@ -42,7 +43,6 @@ const createStyles = () =>
     khoangcach: {
       marginTop: 15,
       marginBottom: 25,
-      
     },
     chu: {
       fontWeight: "bold",
@@ -55,7 +55,6 @@ const createStyles = () =>
       textAlign: "center",
       padding: 10,
     },
-
   });
 
 export default createStyles;
