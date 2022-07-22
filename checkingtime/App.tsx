@@ -3,6 +3,9 @@ import React from "react";
 
 import SNavigation from "./src/navigation";
 import { useFonts } from "expo-font";
+import Time from './src/Screens/Time/Time';
+import { NavigationContainer } from '@react-navigation/native';
+
 
 const App = () => {
   const [fontsLoaded] = useFonts({
@@ -29,7 +32,10 @@ const App = () => {
 
   return (
     <SafeAreaView style={styles.root}>
-      <SNavigation />
+      {/* <SNavigation /> */}
+      <NavigationContainer>
+        <Time />
+      </NavigationContainer>
     </SafeAreaView>
   );
 };
