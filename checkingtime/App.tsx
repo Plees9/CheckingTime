@@ -3,6 +3,8 @@ import React from "react";
 
 import SNavigation from "./src/navigation";
 import { useFonts } from "expo-font";
+import { Provider } from "react-redux";
+import store from "./redux/store";
 
 const App = () => {
   const [fontsLoaded] = useFonts({
@@ -28,9 +30,11 @@ const App = () => {
   }
 
   return (
+    <Provider store={store}>
     <SafeAreaView style={styles.root}>
       <SNavigation />
     </SafeAreaView>
+    </Provider>
   );
 };
 const styles = StyleSheet.create({
