@@ -14,7 +14,7 @@ const FormCreated = () => {
         <Text style={styles.chu11}>Loại đơn</Text>
         <View>
           <TouchableOpacity style={styles.textContainer}>
-            <Text>Đơn nghỉ phép năm</Text>
+            <Text style={styles.textDon}>Đơn nghỉ phép năm</Text>
             <Icon name="angle-right" size={20} style={styles.arrow} />
           </TouchableOpacity>
           <View style={styles.kengang} />
@@ -22,7 +22,7 @@ const FormCreated = () => {
 
         <View>
           <TouchableOpacity style={styles.textContainer}>
-            <Text>Đơn nghỉ không lương</Text>
+            <Text style={styles.textDon}>Đơn nghỉ không lương</Text>
             <Icon name="angle-right" size={20} style={styles.arrow} />
           </TouchableOpacity>
           <View style={styles.kengang} />
@@ -30,7 +30,7 @@ const FormCreated = () => {
 
         <View>
           <TouchableOpacity style={styles.textContainer}>
-            <Text>Đơn nghỉ bản thân kết hôn</Text>
+            <Text style={styles.textDon}>Đơn nghỉ bản thân kết hôn</Text>
             <Icon name="angle-right" size={20} style={styles.arrow} />
           </TouchableOpacity>
           <View style={styles.kengang} />
@@ -38,7 +38,7 @@ const FormCreated = () => {
 
         <View>
           <TouchableOpacity style={styles.textContainer}>
-            <Text>Đơn nghỉ con kết hôn</Text>
+            <Text style={styles.textDon}>Đơn nghỉ con kết hôn</Text>
             <Icon name="angle-right" size={20} style={styles.arrow} />
           </TouchableOpacity>
           <View style={styles.kengang} />
@@ -46,7 +46,7 @@ const FormCreated = () => {
 
         <View>
           <TouchableOpacity style={styles.textContainer}>
-            <Text>Đơn nghỉ tang</Text>
+            <Text style={styles.textDon}>Đơn nghỉ tang</Text>
             <Icon name="angle-right" size={20} style={styles.arrow} />
           </TouchableOpacity>
           <View style={styles.kengang} />
@@ -54,7 +54,7 @@ const FormCreated = () => {
 
         <View>
           <TouchableOpacity style={styles.textContainer}>
-            <Text>Đơn nghỉ sửa chấm công</Text>
+            <Text style={styles.textDon}>Đơn nghỉ sửa chấm công</Text>
             <Icon name="angle-right" size={20} style={styles.arrow} />
           </TouchableOpacity>
           <View style={styles.kengang} />
@@ -62,7 +62,7 @@ const FormCreated = () => {
 
         <View>
           <TouchableOpacity style={styles.textContainer}>
-            <Text>Đơn làm thêm giờ</Text>
+            <Text style={styles.textDon}>Đơn làm thêm giờ</Text>
             <Icon name="angle-right" size={20} style={styles.arrow} />
           </TouchableOpacity>
           <View style={styles.kengang} />
@@ -70,7 +70,7 @@ const FormCreated = () => {
 
         <View>
           <TouchableOpacity style={styles.textContainer}>
-            <Text>Đơn làm việc tại nhà</Text>
+            <Text style={styles.textDon}>Đơn làm việc tại nhà</Text>
             <Icon name="angle-right" size={20} style={styles.arrow} />
           </TouchableOpacity>
           <View style={styles.kengang} />
@@ -78,7 +78,7 @@ const FormCreated = () => {
 
         <View>
           <TouchableOpacity style={styles.textContainer}>
-            <Text>Đơn công tác</Text>
+            <Text style={styles.textDon}>Đơn công tác</Text>
             <Icon name="angle-right" size={20} style={styles.arrow} />
           </TouchableOpacity>
           <View style={styles.kengang} />

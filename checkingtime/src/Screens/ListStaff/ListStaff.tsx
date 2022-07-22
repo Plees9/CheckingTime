@@ -63,12 +63,12 @@ const ListStaff = () => {
 
             <View style={styles.hang3}>
               <View style={styles.cot1}>
-                <Text>Loại hình nhân sự</Text>
+                <Text style={styles.textInfo}>Loại hình nhân sự</Text>
                 <TextInput placeholder="Chưa cập nhật"></TextInput>
               </View>
 
               <View style={styles.cot1}>
-                <Text>Trạng thái nhân sự</Text>
+                <Text style={styles.textInfo}>Trạng thái nhân sự</Text>
                 <TextInput placeholder="Chưa làm việc"></TextInput>
               </View>
               

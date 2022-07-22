@@ -1,11 +1,6 @@
 import {
   StyleSheet,
-  Text,
-  SafeAreaView,
-  ScrollView,
   StatusBar,
-  View,
-  Button,
 } from "react-native";
 import { FONTS } from "../../../constants/theme";
 

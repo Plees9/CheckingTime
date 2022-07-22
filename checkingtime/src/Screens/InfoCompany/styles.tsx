@@ -3,37 +3,19 @@ import { FONTS } from "../../../constants/theme";
 
 const createStyles = () =>
   StyleSheet.create({
-    view: {
-      marginTop: 80,
-      marginHorizontal: 20,
-      alignSelf: "center",
-    },
-    textWelcome: {
-      alignSelf: "center",
-      fontSize: 30,
-      fontWeight: "bold",
-      color: "#FF4949",
-    },
-
     container: {
       fontSize: 8,
       flex: 1,
     },
     user: {
-      fontWeight: "bold",
+      fontFamily: FONTS.vanSansSemiBold,
       fontSize: 20,
       color: "black",
       marginTop: "3%",
       marginLeft: 16,
       alignItems: "flex-start",
     },
-    icon: {
-      fontSize: 40,
-      margin: 4,
-      //   width: 50,
-      //   height: 50,
-      //   borderRadius: 50/2,
-    },
+
     btnForgot: {
       fontWeight: "200",
       borderRadius: 10,
@@ -42,30 +24,23 @@ const createStyles = () =>
       margin: 15,
       flex: 1,
     },
-    textend : {
+    textend: {
       textAlign: "center",
       color: "#FEB139",
       padding: 5,
+      fontFamily: FONTS.vanSansMedium,
     },
-    text: {
-      marginTop: 24,
-      fontWeight: "bold",
-      fontSize: 24,
-      marginBottom: 8,
-    },
+
     kengang: {
       borderBottomColor: "black",
       borderBottomWidth: 0.5,
       width: "100%",
       marginTop: "3%",
-      //marginBottom: "1.5%",
     },
     kengang1: {
       borderBottomColor: "black",
       borderBottomWidth: 0.5,
       width: 300,
-      //marginTop: "3%",
-      //marginBottom: "1.5%",
     },
     hang: {
       marginTop: 16,
@@ -85,7 +60,7 @@ const createStyles = () =>
     header: {
       fontSize: 30,
       width: "100%",
-      fontWeight: "bold",
+      fontFamily: FONTS.vanSansSemiBold,
     },
   });
 
