@@ -46,7 +46,7 @@ const SignIn = () => {
         colors={["#fc00ff", "#00dbde"]}
         style={styles.image1}
       >
-        <Text style={[styles.textWelcome, {opacity: 0}]}>Instagram</Text>
+        <Text style={styles.textWelcome}>Instagram</Text>
       </LinearGradient>
       
       
