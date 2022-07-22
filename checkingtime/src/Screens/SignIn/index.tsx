@@ -5,15 +5,16 @@ import {
   TextInput,
   Alert,
   TouchableOpacity,
-  Button,
-  ImageBackground,
+  
 } from "react-native";
 import React, { useMemo, useState } from "react";
 import createStyles from "./styles";
 import Icon from "react-native-vector-icons/FontAwesome";
-import { LinearGradient } from "expo-linear-gradient";
 import { CheckBox } from "@rneui/themed";
 import { useNavigation } from "@react-navigation/native";
+import {LinearGradient} from 'expo-linear-gradient';
+
+
 
 const SignIn = () => {
   const styles = useMemo(() => createStyles(), []);
@@ -38,14 +39,18 @@ const SignIn = () => {
         source={require("../../../assets/images/tim.jpg")}
         style={{flex:1}}
       > */}
-      <Text style={styles.textWelcome}>Welcome</Text>
-      <Text style={styles.text1}>
-        Chào mừng bạn đến với app của chúng tôi, App đang trong quá trình hoàn
-        thiện nên nếu xảy ra bug vui lòng không quạu.
-      </Text>
-
-      <View>
-        <Text style={styles.styletext}>Tài khoản:</Text>
+      
+      <LinearGradient
+        start={{ x: 0, y: 0 }}
+        end={{ x: 1, y: 0 }}
+        colors={["#fc00ff", "#00dbde"]}
+        style={styles.image1}
+      >
+        <Text style={[styles.textWelcome, {opacity: 0}]}>Instagram</Text>
+      </LinearGradient>
+      
+      
+      <View style={{ marginTop: "15%" }}>
         <View style={styles.styleTT}>
           <View>
             <Icon name="user" size={24} />
@@ -66,7 +71,6 @@ const SignIn = () => {
       </View>
 
       <View>
-        <Text style={styles.styletext}>Mật khẩu:</Text>
         <View style={styles.styleTT}>
           <View>
             <Icon name="lock" size={26} />
@@ -85,34 +89,35 @@ const SignIn = () => {
         </View>
       </View>
 
-      <TouchableOpacity
-        style={styles.btnForgot}
-        onPress={() => navigation.navigate("ForgotPasswordScreen")}
-      >
-        <Text style={styles.text23}>Quên mật khẩu?</Text>
-      </TouchableOpacity>
+      
 
       <TouchableOpacity>
         <View style={styles.checkbox}>
-        <CheckBox
-          title="Lưu mật khẩu"
-          checked={isChecked}
-          onPress={() => setIsChecked(!isChecked)}
-        ></CheckBox>
+          <CheckBox
+            title="Lưu mật khẩu"
+            checked={isChecked}
+            onPress={() => setIsChecked(!isChecked)}
+          ></CheckBox>
         </View>
-      
       </TouchableOpacity>
 
       <LinearGradient
         start={{ x: 0, y: 0 }}
         end={{ x: 1, y: 0 }}
-        colors={["#7F00FF", "#E100FF"]}
+        colors={["#fc00ff", "#00dbde"]}
         style={styles.btn2}
       >
         <TouchableOpacity onPress={() => navigation.navigate("HomeScreen")}>
           <Text style={styles.text22}>Đăng nhập</Text>
         </TouchableOpacity>
       </LinearGradient>
+
+      <TouchableOpacity
+        style={styles.btnForgot}
+        onPress={() => navigation.navigate("ForgotPasswordScreen")}
+      >
+        <Text style={styles.text23}>Quên mật khẩu?</Text>
+      </TouchableOpacity>
       {/* </ImageBackground> */}
     </View>
   );
