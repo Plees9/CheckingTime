@@ -160,7 +160,7 @@ const updateProfile = async (req, res) => {
 };
 
 const deleteProfile = async (req, res) => {
-    await PhoneBook.findByIdAndDelete(req.params.id)
+    await User.findByIdAndDelete(req.params.id)
 
     try {
         res.status(204).json({
