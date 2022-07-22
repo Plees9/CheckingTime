@@ -84,6 +84,7 @@ const createStyles = () =>
       color: "#FFFFFF",
       textAlign: "center",
       fontFamily: FONTS.vanSansBold,
+      
     },
   });
 
