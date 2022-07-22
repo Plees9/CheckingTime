@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { Button, View } from "react-native";
 import DateTimePickerModal from "react-native-modal-datetime-picker";
 
-const Time = () => {
+const DateTimePicker = () => {
   const [isDatePickerVisible, setDatePickerVisibility] = useState(false);
 
   const showDatePicker = () => {
@@ -31,4 +31,4 @@ const Time = () => {
   );
 };
 
-export default Time;
+export default DateTimePicker;

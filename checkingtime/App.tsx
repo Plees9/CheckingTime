@@ -3,7 +3,7 @@ import React from "react";
 
 import SNavigation from "./src/navigation";
 import { useFonts } from "expo-font";
-import Time from './src/Screens/Time/Time';
+import Time from './src/Screens/Date/Date';
 import { NavigationContainer } from '@react-navigation/native';
 
 
