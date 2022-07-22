@@ -1,34 +1,11 @@
 import { StyleSheet, StatusBar } from "react-native";
+import { FONTS } from "../../../constants/theme";
 
 const createStyles = () =>
   StyleSheet.create({
     view: {
       backgroundColor: "white",
     },
-    view1: {
-      backgroundColor: "#f2f2f2",
-      height: "100%",
-    },
-    view2: {
-      flexDirection: "column",
-      backgroundColor: "#FFFFFF",
-      //height: "10%",
-      marginTop: "3%",
-      marginLeft: "3%",
-      marginRight: "3%",
-      borderRadius: 10,
-    },
-    view3: {
-      borderWidth: 1,
-      borderRadius: 5,
-      margin: "3%",
-      height: "70%",
-      textAlign: "center",
-      color: "orange",
-      padding: "2%",
-      borderColor: "orange",
-    },
-
     row: {
       flexDirection: "row",
       marginTop: 8,
@@ -57,33 +34,28 @@ const createStyles = () =>
       marginLeft: 10,
       fontSize: 14,
     },
-    text1: {
-      textAlign: "center",
-      fontSize: 14,
-      marginBottom: "2%",
-      marginTop: "1%",
-      color: "orange",
-    },
 
+    view1: {
+      backgroundColor: "#f2f2f2",
+      height: "100%",
+    },
+    view2: {
+      flexDirection: "column",
+      backgroundColor: "#FFFFFF",
+      //height: "10%",
+      marginTop: "3%",
+      marginLeft: "3%",
+      marginRight: "3%",
+      borderRadius: 10,
+    },
     hang: {
       flexDirection: "row",
       borderRadius: 5,
       margin: "3%",
       width: "95%",
     },
-    hang2: {
-      flexDirection: "row",
-      //justifyContent: "space-between",
-      width: "45%",
-      marginLeft: "3%",
-      borderColor: "orange",
-    },
-    cot1: {
-      flexDirection: "column",
-    },
-    hang3: {
-      flexDirection: "row",
-      justifyContent: "space-around",
+    avt: {
+      marginTop: "1%",
     },
     user: {
       fontSize: 16,
@@ -98,8 +70,32 @@ const createStyles = () =>
       marginTop: "3%",
       color: "orange",
     },
-    avt: {
-      marginTop: "1%",
+    hang2: {
+      flexDirection: "row",
+      //justifyContent: "space-between",
+      width: "45%",
+      marginLeft: "3%",
+      borderColor: "orange",
+    },
+    view3: {
+      borderWidth: 1,
+      borderRadius: 5,
+      margin: "3%",
+      height: "70%",
+      textAlign: "center",
+      color: "orange",
+      padding: "2%",
+      borderColor: "orange",
+    },
+    hang3: {
+      flexDirection: "row",
+      justifyContent: "space-around",
+    },
+    cot1: {
+      flexDirection: "column",
+    },
+    textInfo: {
+      fontFamily: FONTS.vanSansSemiBold,
     },
     kengang: {
       borderBottomColor: "#f2f2f2",
@@ -107,6 +103,14 @@ const createStyles = () =>
       width: "100%",
       marginTop: "3%",
       marginBottom: "1.5%",
+    },
+
+    text1: {
+      textAlign: "center",
+      fontSize: 14,
+      marginBottom: "2%",
+      marginTop: "1%",
+      color: "orange",
     },
   });
 

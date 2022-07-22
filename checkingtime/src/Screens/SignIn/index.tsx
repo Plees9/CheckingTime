@@ -5,13 +5,15 @@ import {
   TextInput,
   Alert,
   TouchableOpacity,
+  Button,
+  ImageBackground,
 } from "react-native";
 import React, { useMemo, useState } from "react";
 import createStyles from "./styles";
 import Icon from "react-native-vector-icons/FontAwesome";
+import { LinearGradient } from "expo-linear-gradient";
 import { CheckBox } from "@rneui/themed";
 import { useNavigation } from "@react-navigation/native";
-
 
 const SignIn = () => {
   const styles = useMemo(() => createStyles(), []);
@@ -32,10 +34,10 @@ const SignIn = () => {
 
   return (
     <View style={styles.view}>
-      {/* <Image
-        source={require("../../assets/bgr.jpg")}
-        style={styles.image}
-      /> */}
+      {/* <ImageBackground
+        source={require("../../../assets/images/tim.jpg")}
+        style={{flex:1}}
+      > */}
       <Text style={styles.textWelcome}>Welcome</Text>
       <Text style={styles.text1}>
         Chào mừng bạn đến với app của chúng tôi, App đang trong quá trình hoàn
@@ -91,19 +93,27 @@ const SignIn = () => {
       </TouchableOpacity>
 
       <TouchableOpacity>
+        <View style={styles.checkbox}>
         <CheckBox
           title="Lưu mật khẩu"
           checked={isChecked}
           onPress={() => setIsChecked(!isChecked)}
         ></CheckBox>
+        </View>
+      
       </TouchableOpacity>
 
-      <TouchableOpacity
+      <LinearGradient
+        start={{ x: 0, y: 0 }}
+        end={{ x: 1, y: 0 }}
+        colors={["#7F00FF", "#E100FF"]}
         style={styles.btn2}
-        onPress={() => navigation.navigate("HomeScreen")}
       >
-        <Text style={styles.text22}>Tiếp tục</Text>
-      </TouchableOpacity>
+        <TouchableOpacity onPress={() => navigation.navigate("HomeScreen")}>
+          <Text style={styles.text22}>Đăng nhập</Text>
+        </TouchableOpacity>
+      </LinearGradient>
+      {/* </ImageBackground> */}
     </View>
   );
 };

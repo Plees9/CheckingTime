@@ -1,5 +1,5 @@
-import Button from "../../Button/index";
 import { StyleSheet, StatusBar } from "react-native";
+import { FONTS } from "../../../constants/theme";
 
 const styles = StyleSheet.create({
   container: {
@@ -10,7 +10,8 @@ const styles = StyleSheet.create({
 
   text: {
     fontSize: 20,
-    fontWeight: "bold",
+    //fontWeight: "bold",
+    fontFamily: FONTS.vanSansBold,
     color: "#FFFFFF",
     textAlign: "center",
   },
@@ -19,13 +20,17 @@ const styles = StyleSheet.create({
     marginLeft: 10,
     marginTop: 6,
     justifyContent: "center",
-    color: "black",
+    fontFamily: FONTS.vanSansRegular,
+    //color: "red",
+  },
+  textcolor : {
+    fontFamily: FONTS.vanSansBold,
   },
   text2: {
     fontSize: 16,
     marginLeft: 5,
     paddingTop: 5,
-    fontWeight: "bold",
+    fontFamily: FONTS.vanSansBold,
     color: "#FFFFFF",
   },
   text3: {
@@ -41,10 +46,6 @@ const styles = StyleSheet.create({
     color: "#eee9f5",
   },
 
-  imagebgr: {
-    width: "100%",
-    height: 150,
-  },
   row: {
     flexDirection: "row",
     padding: 10,
@@ -85,7 +86,10 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     justifyContent: "space-around",
     marginTop: 10,
-    
+  },
+  textInfo: {
+    fontFamily: FONTS.vanSansMedium,
+    color: "gray",
   },
   kengang: {
     borderBottomColor: "gray",
@@ -109,23 +113,23 @@ const styles = StyleSheet.create({
   },
   text5: {
     fontSize: 13,
-    fontWeight: "bold",
-    color: "#FEB139",
+    color: "#100F0F",
     marginLeft: 5,
+    fontFamily: FONTS.vanSansBold
   },
   text6: {
     fontSize: 13,
-    fontWeight: "bold",
-    color: "#FEB139",
+    color: "#100F0F",
     marginLeft: 15,
+    fontFamily: FONTS.vanSansBold,
   },
   text7: {
     fontSize: 18,
-    fontWeight: "bold",
     textAlign: "center",
     margin: 10,
+    fontFamily: FONTS.vanSansSemiBold
   },
- 
+
   btn1: {
     flexDirection: "row",
     justifyContent: "center",

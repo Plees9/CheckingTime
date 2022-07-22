@@ -1,12 +1,6 @@
 import { useNavigation } from "@react-navigation/native";
 import React from "react";
-import {
-  Text,
-  View,
-  Alert,
-  ImageBackground,
-  TouchableOpacity,
-} from "react-native";
+import { Text, View, Alert, TouchableOpacity, ImageBackground } from "react-native";
 import { Avatar } from "@rneui/themed";
 import Icon from "react-native-vector-icons/FontAwesome";
 import styles from "./styles";
@@ -15,15 +9,19 @@ const HomeScreen = () => {
   const navigation = useNavigation<any>();
   return (
     <View style={styles.container}>
+      {/* <ImageBackground source={require("../../../assets/images/tim.jpg")} > */}
+
       <View>
-        {/* <ImageBackground
-          source={require("../../../assets/images/tim.jpg")}
-          style={styles.imagebgr}
-        > */}
         <TouchableOpacity onPress={() => navigation.navigate("Account")}>
           <View style={styles.row}>
             <Icon name="user" size={26} color="#DDDDDD" style={styles.icon} />
-            <Text style={styles.text1}> Xin chao, "userName"</Text>
+            <Text style={styles.text1}> Xin chào {''}
+            <Text style={styles.textcolor} >
+              "userName"
+            </Text>
+            
+            
+            </Text>
           </View>
         </TouchableOpacity>
 
@@ -67,7 +65,9 @@ const HomeScreen = () => {
         </View>
 
         <View style={styles.btn}>
-          <TouchableOpacity onPress={() => navigation.navigate("InfoScreen")}>
+          <TouchableOpacity
+            onPress={() => navigation.navigate("Thông tin Công Ty")}
+          >
             <View style={styles.btn1}>
               <Icon
                 name="building"
@@ -99,29 +99,32 @@ const HomeScreen = () => {
           </View>
 
           <View style={styles.row1}>
-            <Text>stt"1"</Text>
-            <Text>userName</Text>
-            <Text> Time checkin</Text>
+            
+            <Text style={styles.textInfo}>stt"1"</Text>
+            <Text style={styles.textInfo}>userName</Text>
+            <Text style={styles.textInfo}> Time checkin</Text>   
+            
           </View>
           <View style={styles.row1}>
-            <Text>stt"2"</Text>
-            <Text>userName</Text>
-            <Text> Time checkin</Text>
+            <Text style={styles.textInfo}>stt"2"</Text>
+            <Text style={styles.textInfo}>userName</Text>
+            <Text style={styles.textInfo}> Time checkin</Text>
           </View>
           <View style={styles.row1}>
-            <Text>stt"1"</Text>
-            <Text>userName</Text>
-            <Text> Time checkin</Text>
+            <Text style={styles.textInfo}>stt"1"</Text>
+            <Text style={styles.textInfo}>userName</Text>
+            <Text style={styles.textInfo}> Time checkin</Text>
           </View>
           <View style={styles.row1}>
-            <Text>stt"1"</Text>
-            <Text>userName</Text>
-            <Text> Time checkin</Text>
+            <Text style={styles.textInfo}>stt"1"</Text>
+            <Text style={styles.textInfo}>userName</Text>
+            <Text style={styles.textInfo}> Time checkin</Text>
           </View>
         </View>
 
         {/* </ImageBackground> */}
       </View>
+      
     </View>
   );
 };

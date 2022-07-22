@@ -1,4 +1,5 @@
 import { StyleSheet } from "react-native";
+import { FONTS } from "../../../constants/theme";
 
 const createStyles = () =>
   StyleSheet.create({
@@ -21,6 +22,10 @@ const createStyles = () =>
     text22: {
       fontSize: 18,
       color: "#FFFFFF",
+      width: 250,
+      height: 45,
+      padding: 8,
+      //backgroundColor: "#7445f6",
       textAlign: "center",
       justifyContent: "center",
       alignItems: "center",

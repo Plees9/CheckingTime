@@ -1,4 +1,5 @@
 import { StyleSheet } from "react-native";
+import { FONTS } from "../../../constants/theme";
 
 const createStyles = () =>
   StyleSheet.create({
@@ -10,8 +11,8 @@ const createStyles = () =>
     textWelcome: {
       alignSelf: "center",
       fontSize: 24,
-      fontWeight: "bold",
       color: "#FC4F4F",
+      fontFamily: FONTS.vanSansBlack,
     },
     text: {
       width: 320,
@@ -35,8 +36,13 @@ const createStyles = () =>
     },
     size: {
       fontSize: 18,
+      width: 120,
+      height: 40,
+      padding: 6,
       color: "#FFFFFF",
+      //backgroundColor: "#7445f6",
       textAlign: "center",
+      fontFamily: FONTS.vanSansBold,
     },
     size1: {
       fontSize: 16,

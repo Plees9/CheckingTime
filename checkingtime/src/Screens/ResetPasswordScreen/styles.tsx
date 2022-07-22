@@ -1,7 +1,12 @@
 import { StyleSheet } from "react-native";
+import { FONTS } from "../../../constants/theme";
 
 const createStyles = () =>
   StyleSheet.create({
+    viewbgr: {
+      backgroundColor: "#F9F9F9",
+      flex: 1,
+    },
     view: {
       marginTop: 30,
       //marginHorizontal: 40,
@@ -9,16 +14,10 @@ const createStyles = () =>
       marginRight: 20,
       backgroundColor: "white",
     },
-    viewbgr: {
-      backgroundColor: "#F9F9F9",
-      flex: 1,
-    },
-    textWelcome: {
-      alignSelf: "center",
-      fontSize: 28,
-      fontWeight: "bold",
-      marginBottom: 20,
-      color: "#FF4949",
+    textTop: {
+      marginTop: 10,
+      fontFamily: FONTS.vanSansSemiBold,
+      color: "#413F42",
     },
     text: {
       width: 320,
@@ -37,10 +36,7 @@ const createStyles = () =>
       borderRadius: 10,
       marginBottom: 20,
     },
-    textTop: {
-      marginTop: 10,
-      color: "#413F42",
-    },
+   
     btn22: {
       width: 120,
       height: 40,
@@ -52,8 +48,12 @@ const createStyles = () =>
     },
     size: {
       fontSize: 18,
+      width: 120,
+      height: 40,
+      padding: 6,
       color: "#FFFFFF",
       textAlign: "center",
+      fontFamily: FONTS.vanSansBold,
     },
   });
 

@@ -1,16 +1,13 @@
 import {
   View,
   Text,
-  Image,
   ScrollView,
-  Button,
-  Alert,
   TouchableOpacity,
   useWindowDimensions,
 } from "react-native";
 import React, { useMemo } from "react";
 
-import { Avatar } from '@rneui/themed';
+import { Avatar } from "@rneui/themed";
 import Icon from "react-native-vector-icons/FontAwesome";
 import { TextInput } from "react-native-gesture-handler";
 import { useNavigation } from "@react-navigation/native";
@@ -29,8 +26,10 @@ const Account = () => {
         <Avatar
           size={70}
           rounded
-          source={{ uri: 'https://image2.tin247.news/pictures/2021/09/23/bcd1632409191.jpg' }}
-          containerStyle={{ backgroundColor: 'orange' }}
+          source={{
+            uri: "https://image2.tin247.news/pictures/2021/09/23/bcd1632409191.jpg",
+          }}
+          containerStyle={{ backgroundColor: "orange" }}
         >
           <Avatar.Accessory size={24} />
         </Avatar>

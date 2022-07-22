@@ -11,7 +11,10 @@
   },
   "dependencies": {
     "@expo-google-fonts/adamina": "^0.2.2",
+    "@expo-google-fonts/baloo-bhai-2": "^0.2.2",
     "@expo-google-fonts/inter": "^0.2.2",
+    "@expo-google-fonts/open-sans-condensed": "^0.2.2",
+    "@expo-google-fonts/roboto": "^0.2.2",
     "@react-native-community/masked-view": "^0.1.11",
     "@react-native-picker/picker": "2.4.0",
     "@react-navigation/bottom-tabs": "^6.3.2",
@@ -53,7 +56,7 @@
   },
   "rnpm": {
     "asset": [
-      "./asset/fonts"
+      "./asset/fonts/"
     ]
   },
   "private": true

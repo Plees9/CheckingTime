@@ -1,16 +1,10 @@
 import React, { useState, useMemo } from "react";
-import {
-  View,
-  Text,
-  StyleSheet,
-  TouchableOpacity,
-  Alert,
-  ScrollView,
-} from "react-native";
+import { View, Text, TouchableOpacity, ScrollView } from "react-native";
 import { Picker } from "@react-native-picker/picker";
 import createStyles from "./styles";
-import navigation from "../../navigation";
+
 import { useNavigation } from "@react-navigation/native";
+import { LinearGradient } from "expo-linear-gradient";
 
 const EFilter = () => {
   const styles = useMemo(() => createStyles(), []);
@@ -19,8 +13,6 @@ const EFilter = () => {
   return (
     <ScrollView style={styles.viewbgr}>
       <View style={styles.view}>
-        {/* <Text style={styles.textWelcome}>Thay đổi mật khẩu</Text> */}
-
         <Text style={styles.textTop}> Phòng ban</Text>
 
         <View style={styles.style}>
@@ -102,12 +94,18 @@ const EFilter = () => {
           </Picker>
         </View>
 
-        <TouchableOpacity
+        <LinearGradient
+          start={{ x: 0, y: 0 }}
+          end={{ x: 1, y: 0 }}
+          colors={["#7F00FF", "#E100FF"]}
           style={styles.btn2}
-          onPress={() => navigation.navigate("ListStaff")}
         >
-          <Text style={styles.text22}>Xác nhận</Text>
-        </TouchableOpacity>
+          <TouchableOpacity
+            onPress={() => navigation.navigate("DANH SÁCH NHÂN VIÊN")}
+          >
+            <Text style={styles.text22}>Xác nhận</Text>
+          </TouchableOpacity>
+        </LinearGradient>
       </View>
     </ScrollView>
   );

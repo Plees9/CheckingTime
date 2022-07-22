@@ -12,7 +12,11 @@ const CuaToi = () => {
     <View style={styles.view}>
       <View style={styles.row}>
         <View style={styles.icon}>
-          <Icon name="bars" size={20} onPress={() => navigation.navigate("Bộ lọc")} />
+          <Icon
+            name="bars"
+            size={20}
+            onPress={() => navigation.navigate("Bộ lọc")}
+          />
         </View>
         <View style={styles.icon1}>
           <Icon name="search" size={20} style={styles.icon3} />
@@ -24,16 +28,14 @@ const CuaToi = () => {
         </View>
       </View>
       <ScrollView style={styles.scrollview}>
-      <Image
-        style={styles.tinyLogo}
-        source={{
-          uri: 'https://image2.tin247.news/pictures/2021/09/23/bcd1632409191.jpg',
-        }}
-      />
-      <Text style={styles.text1}> Không tìm thấy đơn nào!</Text>
-
+        <Image
+          style={styles.tinyLogo}
+          source={{
+            uri: "https://image2.tin247.news/pictures/2021/09/23/bcd1632409191.jpg",
+          }}
+        />
+        <Text style={styles.text1}> Không tìm thấy đơn nào!</Text>
       </ScrollView>
-      
     </View>
   );
 };
