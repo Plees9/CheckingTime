@@ -31,11 +31,12 @@ const styles = StyleSheet.create({
   },
   chu11: {
     //fontWeight: "bold",
-    fontSize: 30,
+    fontSize: 28,
     width: "100%",
     backgroundColor: "#DDDDDD",
     padding: 5,
     marginTop: 10,
+    fontFamily: FONTS.vanSansSemiBold,
   },
   scrollView1: {
     flexDirection: "row",
@@ -43,6 +44,8 @@ const styles = StyleSheet.create({
   },
   text1: {
     textAlign: "center",
+    fontFamily: FONTS.vanSansMedium,
+    color: "#00092C",
   },
   iconbtn: {
     alignContent: "center",

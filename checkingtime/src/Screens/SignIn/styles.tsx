@@ -62,7 +62,7 @@ const createStyles = () =>
     },
     checkbox: {
       fontFamily: FONTS.vanSansMedium,
-      width: "40%",
+      width: "45%",
     },
     btn2: {
       width: 350,

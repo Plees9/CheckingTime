@@ -6,6 +6,7 @@ import {
   Alert,
   TouchableOpacity,
   Button,
+  ImageBackground,
 } from "react-native";
 import React, { useMemo, useState } from "react";
 import createStyles from "./styles";
@@ -33,10 +34,10 @@ const SignIn = () => {
 
   return (
     <View style={styles.view}>
-      {/* <Image
-        source={require("../../assets/bgr.jpg")}
-        style={styles.image}
-      /> */}
+      {/* <ImageBackground
+        source={require("../../../assets/images/tim.jpg")}
+        style={{flex:1}}
+      > */}
       <Text style={styles.textWelcome}>Welcome</Text>
       <Text style={styles.text1}>
         Chào mừng bạn đến với app của chúng tôi, App đang trong quá trình hoàn
@@ -112,6 +113,7 @@ const SignIn = () => {
           <Text style={styles.text22}>Đăng nhập</Text>
         </TouchableOpacity>
       </LinearGradient>
+      {/* </ImageBackground> */}
     </View>
   );
 };

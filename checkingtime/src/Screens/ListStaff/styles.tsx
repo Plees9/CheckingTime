@@ -94,6 +94,9 @@ const createStyles = () =>
     cot1: {
       flexDirection: "column",
     },
+    textInfo: {
+      fontFamily: FONTS.vanSansSemiBold,
+    },
     kengang: {
       borderBottomColor: "#f2f2f2",
       borderBottomWidth: 3,

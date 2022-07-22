@@ -4,27 +4,28 @@ import { FONTS } from "../../../constants/theme";
 const createStyles = () =>
   StyleSheet.create({
     chu11: {
-      fontWeight: "bold",
+      fontFamily: FONTS.vanSansSemiBold,
       fontSize: 20,
       width: "100%",
       backgroundColor: "#DDDDDD",
-      padding: 10,
-      marginTop: 10,
+      padding: 8,
     },
     scrollView: {
       width: "100%",
-      marginTop: 20,
     },
     textContainer: {
       flexDirection: "row",
       margin: 10,
+    },
+    textDon: {
+      fontFamily: FONTS.vanSansMedium,
     },
     arrow: {
       marginLeft: "auto",
     },
     kengang: {
       borderBottomColor: "#F0EBE3",
-      borderBottomWidth: 0.5,
+      borderBottomWidth: 1,
       width: 400,
       marginTop: "1.5%",
       marginBottom: "1.5%",

@@ -26,9 +26,9 @@ const createStyles = () =>
       marginBottom: "1.5%",
     },
     text: {
-      fontWeight: "bold",
       fontSize: 20,
       marginBottom: 8,
+      fontFamily: FONTS.vanSansSemiBold,
     },
     icon: {
       fontSize: 40,
@@ -45,7 +45,7 @@ const createStyles = () =>
       marginBottom: 25,
     },
     chu: {
-      fontWeight: "bold",
+      fontFamily: FONTS.vanSansSemiBold,
     },
     chu1: {
       //fontWeight: "bold",
@@ -54,6 +54,7 @@ const createStyles = () =>
       backgroundColor: "#DDDDDD",
       textAlign: "center",
       padding: 10,
+      fontFamily: FONTS.vanSansMedium,
     },
   });
 
