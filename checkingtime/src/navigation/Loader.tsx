@@ -12,7 +12,7 @@ const Loader = () => {
                 alignItems: "center",
             }}
         >
-            <ActivityIndicator animating={true} size={100} color="#7445f6" />
+            <ActivityIndicator animating={true} size={100} color="#F806CC" />
         </View>
     )
 }

@@ -24,6 +24,7 @@ const SignIn = () => {
   const [userName, setUserName] = useState("");
   const [password, setPassword] = useState("");
   const [isChecked, setIsChecked] = useState(false);
+
   const loginHandler = () => {
     dispatch<any>(login(userName, password));
   };
@@ -113,6 +114,7 @@ const SignIn = () => {
         style={styles.btn2}
       >
         <TouchableOpacity onPress={loginHandler}>
+        {/* <TouchableOpacity onPress={() => navigation.navigate("HomeScreen")}> */}
           <Text style={styles.text22}>Đăng nhập</Text>
         </TouchableOpacity>
       </LinearGradient>

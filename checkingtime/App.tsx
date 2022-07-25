@@ -2,6 +2,8 @@ import { StyleSheet, Text, View, SafeAreaView, Image } from "react-native";
 import React from "react";
 
 import SNavigation from "./src/navigation";
+import DateTimePicker from "./src/Screens/Date/Date";
+import CustomDatePicker from "./src/Screens/Date/CustomDatePicker";
 import { useFonts } from "expo-font";
 import { Provider } from "react-redux";
 import store from "./redux/store";
@@ -34,10 +36,15 @@ const App = () => {
   return (
     <Provider store={store}>
     <SafeAreaView style={styles.root}>
+<<<<<<< HEAD
       <SNavigation />
       {/* <NavigationContainer>
         <HomeScreen/>
       </NavigationContainer> */}
+=======
+       <SNavigation /> 
+      {/* <CustomDatePicker /> */}
+>>>>>>> e2c5dc919b5ccf40ffc0c86c1d025036ca25959b
     </SafeAreaView>
     </Provider>
   );

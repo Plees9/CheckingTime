@@ -1,4 +1,4 @@
-const Company = require("../models/companies")
+const Company = require("../models/Company")
 
 const create = async (req, res) => {
     try {

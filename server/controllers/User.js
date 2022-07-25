@@ -1,4 +1,4 @@
-const User = require("../models/users")
+const User = require("../models/User")
 const sendMail = require("../utils/sendMail")
 const sendToken = require("../utils/sendToken")
 //const cloudinary = require("cloudinary")
@@ -160,7 +160,7 @@ const updateProfile = async (req, res) => {
 };
 
 const deleteProfile = async (req, res) => {
-    await PhoneBook.findByIdAndDelete(req.params.id)
+    await User.findByIdAndDelete(req.params.id)
 
     try {
         res.status(204).json({
@@ -259,4 +259,4 @@ const resetPassword = async (req, res) => {
     }
 };
 
-module.exports = { register, verify, login, logout, getProfile, updateProfile, deleteProfile, updatePassword, forgetPassword, resetPassword } 
+module.exports = { register, verify, login, logout, getProfile, updateProfile, deleteProfile, updatePassword, forgetPassword, resetPassword }

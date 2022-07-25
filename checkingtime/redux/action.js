@@ -1,14 +1,14 @@
 import axios from "axios";
 
-const serverUrl = "https://happytime-01.herokuapp.com/api/v1";
+const serverUrl = "https://timekeeper-01.herokuapp.com/api/v1";
 
-export const login = (email, password) => async (dispatch) => {
+export const login = (phoneNumber, password) => async (dispatch) => {
   try {
     dispatch({ type: "loginRequest" });
 
     const { data } = await axios.post(
-      `${serverUrl}/login`,
-      { email, password },
+      `${serverUrl}/user/login`,
+      { phoneNumber, password },
       {
         headers: {
           "Content-Type": "application/json",
