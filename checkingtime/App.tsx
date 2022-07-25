@@ -5,6 +5,8 @@ import SNavigation from "./src/navigation";
 import { useFonts } from "expo-font";
 import { Provider } from "react-redux";
 import store from "./redux/store";
+import { NavigationContainer } from "@react-navigation/native";
+import HomeScreen from "./src/Screens/HomeScreen";
 
 const App = () => {
   const [fontsLoaded] = useFonts({
@@ -33,6 +35,9 @@ const App = () => {
     <Provider store={store}>
     <SafeAreaView style={styles.root}>
       <SNavigation />
+      {/* <NavigationContainer>
+        <HomeScreen/>
+      </NavigationContainer> */}
     </SafeAreaView>
     </Provider>
   );

@@ -21,14 +21,14 @@ const ResetPasswordScreen = () => {
   return (
     <View style={styles.viewbgr}>
       <View style={styles.view}>
-        <Text style={styles.textTop}> Mật khẩu hiện tại</Text>
+        <Text style={styles.textTop}> Nhập mã OTP</Text>
         <TextInput
           style={styles.text}
           value={password}
           onChangeText={(text) => setPassword(text)}
           secureTextEntry={undefined}
           returnKeyType="done"
-          placeholder={"Nhập mật khẩu cũ"}
+          placeholder={"Nhập mã OTP"}
         ></TextInput>
 
         <Text style={styles.textTop}> Mật khẩu mới</Text>

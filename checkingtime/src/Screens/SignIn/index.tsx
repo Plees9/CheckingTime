@@ -5,19 +5,19 @@ import {
   TextInput,
   Alert,
   TouchableOpacity,
-  Button,
-  ImageBackground,
 } from "react-native";
 import React, { useMemo, useState, useEffect } from "react";
 import createStyles from "./styles";
 import Icon from "react-native-vector-icons/FontAwesome";
-import { LinearGradient } from "expo-linear-gradient";
 import { CheckBox } from "@rneui/themed";
 import { useNavigation } from "@react-navigation/native";
-import { useDispatch, useSelector } from 'react-redux'
-import { login } from '../../../redux/action'
+import { useDispatch, useSelector } from "react-redux";
+import { login } from "../../../redux/action";
+import { LinearGradient } from "expo-linear-gradient";
+import GradientText from "../../component/GradientText";
+
 const SignIn = () => {
-  const { error } = useSelector<any>(state => state.auth)
+  const { error } = useSelector<any>((state) => state.auth);
 
   const dispatch = useDispatch();
   const styles = useMemo(() => createStyles(), []);
@@ -25,19 +25,20 @@ const SignIn = () => {
   const [password, setPassword] = useState("");
   const [isChecked, setIsChecked] = useState(false);
   const loginHandler = () => {
-    dispatch<any>(login(userName, password))
-}
+    dispatch<any>(login(userName, password));
+  };
 
-useEffect(() => {
+  useEffect(() => {
     if (error) {
-        alert(error)
-        dispatch({ type: "clearError" })
+      alert(error);
+      dispatch({ type: "clearError" });
     }
-
-}, [error, dispatch, alert,])
+  }, [error, dispatch, alert]);
   const navigation = useNavigation<any>();
 
   const hobbies: string[] = [];
+
+  const image = require("../../../assets/images/viking_logo.png");
 
   const Click = () => {
     if (isChecked === true) {
@@ -48,18 +49,16 @@ useEffect(() => {
 
   return (
     <View style={styles.view}>
-      {/* <ImageBackground
-        source={require("../../../assets/images/tim.jpg")}
-        style={{flex:1}}
-      > */}
-      <Text style={styles.textWelcome}>Welcome</Text>
-      <Text style={styles.text1}>
-        Chào mừng bạn đến với app của chúng tôi, App đang trong quá trình hoàn
-        thiện nên nếu xảy ra bug vui lòng không quạu.
-      </Text>
+      <View style={styles.image1}>
+        <GradientText
+          colors={["#f12711", "#f5af19"]}
+          style={styles.textWelcome}
+        >
+          Valhalica
+        </GradientText>
+      </View>
 
-      <View>
-        <Text style={styles.styletext}>Tài khoản:</Text>
+      <View style={{ marginTop: "15%" }}>
         <View style={styles.styleTT}>
           <View>
             <Icon name="user" size={24} />
@@ -79,7 +78,6 @@ useEffect(() => {
       </View>
 
       <View>
-        <Text style={styles.styletext}>Mật khẩu:</Text>
         <View style={styles.styleTT}>
           <View>
             <Icon name="lock" size={26} />
@@ -98,34 +96,33 @@ useEffect(() => {
         </View>
       </View>
 
-      <TouchableOpacity
-        style={styles.btnForgot}
-        onPress={() => navigation.navigate("ForgotPasswordScreen")}
-      >
-        <Text style={styles.text23}>Quên mật khẩu?</Text>
-      </TouchableOpacity>
-
       <TouchableOpacity>
         <View style={styles.checkbox}>
-        <CheckBox
-          title="Lưu mật khẩu"
-          checked={isChecked}
-          onPress={() => setIsChecked(!isChecked)}
-        ></CheckBox>
+          <CheckBox
+            title="Lưu mật khẩu"
+            checked={isChecked}
+            onPress={() => setIsChecked(!isChecked)}
+          ></CheckBox>
         </View>
-      
       </TouchableOpacity>
 
       <LinearGradient
         start={{ x: 0, y: 0 }}
         end={{ x: 1, y: 0 }}
-        colors={["#7F00FF", "#E100FF"]}
+        colors={["#f12711", "#f5af19"]}
         style={styles.btn2}
       >
         <TouchableOpacity onPress={loginHandler}>
           <Text style={styles.text22}>Đăng nhập</Text>
         </TouchableOpacity>
       </LinearGradient>
+
+      <TouchableOpacity
+        style={styles.btnForgot}
+        onPress={() => navigation.navigate("ForgotPasswordScreen")}
+      >
+        <Text style={styles.text23}>Quên mật khẩu?</Text>
+      </TouchableOpacity>
       {/* </ImageBackground> */}
     </View>
   );
