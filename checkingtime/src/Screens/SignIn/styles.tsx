@@ -11,7 +11,7 @@ const createStyles = () =>
       backgroundColor: "white",
     },
     image1:{
-      borderRadius:10,
+      // borderRadius:10,
       //height:"100%",
       // marginBottom:"3%",
       // marginTop:"3%",
@@ -23,7 +23,7 @@ const createStyles = () =>
       alignSelf: "center",
       fontSize: 50,
       textAlign: "center",
-      padding:"16%",
+      // padding:"15%",
       color: "#fff",
       fontFamily: FONTS.vanSansBlack,
     },

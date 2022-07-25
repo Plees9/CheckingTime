@@ -13,6 +13,7 @@ import Icon from "react-native-vector-icons/FontAwesome";
 import { CheckBox } from "@rneui/themed";
 import { useNavigation } from "@react-navigation/native";
 import {LinearGradient} from 'expo-linear-gradient';
+import GradientText from '../../component/GradientText';
 
 
 
@@ -25,6 +26,8 @@ const SignIn = () => {
   const navigation = useNavigation<any>();
 
   const hobbies: string[] = [];
+
+  const image = require('../../../assets/images/viking-logo_4x.png')
 
   const Click = () => {
     if (isChecked === true) {
@@ -40,14 +43,13 @@ const SignIn = () => {
         style={{flex:1}}
       > */}
       
-      <LinearGradient
-        start={{ x: 0, y: 0 }}
-        end={{ x: 1, y: 0 }}
-        colors={["#fc00ff", "#00dbde"]}
-        style={styles.image1}
-      >
-        <Text style={styles.textWelcome}>Instagram</Text>
-      </LinearGradient>
+      
+      <View style={styles.image1}>
+      {/* <Image source={image} /> */}
+      <GradientText colors={["#f12711","#f5af19"]} style={styles.textWelcome}>
+        Valhalla
+      </GradientText>
+      </View>
       
       
       <View style={{ marginTop: "15%" }}>
@@ -104,7 +106,7 @@ const SignIn = () => {
       <LinearGradient
         start={{ x: 0, y: 0 }}
         end={{ x: 1, y: 0 }}
-        colors={["#fc00ff", "#00dbde"]}
+        colors={["#f12711","#f5af19"]}
         style={styles.btn2}
       >
         <TouchableOpacity onPress={() => navigation.navigate("HomeScreen")}>
