@@ -4,7 +4,7 @@ import { FONTS } from "../../../constants/theme";
 const createStyles = () =>
   StyleSheet.create({
     viewbgr: {
-      backgroundColor: "#F9F9F9",
+      backgroundColor: "#fff",
       flex: 1,
     },
     view: {
@@ -56,7 +56,6 @@ const createStyles = () =>
       justifyContent: "center",
       alignItems: "center",
       borderRadius: 10,
-      backgroundColor: "#7445f6",
     },
     size: {
       fontSize: 18,
