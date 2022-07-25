@@ -1,16 +1,23 @@
 import React, { useState, useMemo } from "react";
-import { ScrollView,View, Text, StyleSheet, Button, TouchableOpacity ,Alert} from "react-native";
+import {
+  ScrollView,
+  View,
+  Text,
+  
+  Button,
+
+  Alert,
+} from "react-native";
 import { Picker } from "@react-native-picker/picker";
 import createStyles from "./styles";
 import CustomDatePicker from "../Moment/DatePicker";
 import { LinearGradient } from "expo-linear-gradient";
 
-const Dates = () => {
+const FDontu = () => {
   const styles = useMemo(() => createStyles(), []);
   const [selectedValue, setSelectedValue] = useState("");
   const [date, setDate] = useState("09-10-2020");
 
-  
   return (
     <ScrollView style={styles.viewbgr}>
       <View style={styles.view}>
@@ -52,7 +59,10 @@ const Dates = () => {
             <Picker.Item label="Đã từ chối" value="3" />
             <Picker.Item label="Đã phê duyệt" value="4" />
             <Picker.Item label="Đã huỷ" value="5" />
-            <Picker.Item label="Hệ thống huỷ đơn do lịch làm việc không còn phù hơp" value="6" />
+            <Picker.Item
+              label="Hệ thống huỷ đơn do lịch làm việc không còn phù hơp"
+              value="6"
+            />
             <Picker.Item
               label="Hệ thống huỷ đơn do quá hạn chốt đơn"
               value="7"
@@ -69,7 +79,6 @@ const Dates = () => {
             }
           >
             <Picker.Item label="Tất cả chi nhánh" value="tat" />
-            
           </Picker>
         </View>
 
@@ -155,4 +164,4 @@ const Dates = () => {
   );
 };
 
-export default Dates;
+export default FDontu;

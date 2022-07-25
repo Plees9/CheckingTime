@@ -53,7 +53,7 @@ const createStyles = () =>
     calendar: {
       marginTop: "3%",
       backgroundColor: "white",
-      
+
       flex: 1,
     },
   });

@@ -3,9 +3,10 @@ import React from "react";
 
 import SNavigation from "./src/navigation";
 import { useFonts } from "expo-font";
-import  Date from "./src/Screens/Date/Date";
+
 import { NavigationContainer } from '@react-navigation/native';
 import CustomDatePicker from "./src/Screens/Moment/DatePicker";
+import Dates from "./src/Screens/Dates/Dates";
 
 
 import EFilter from "./src/Screens/ListFilter/EFilter";
@@ -36,9 +37,8 @@ const App = () => {
 
   return (
     <SafeAreaView style={styles.root}>
-      {/* <SNavigation /> */}
-      {/* <CustomDatePicker /> */}
-      <Date />
+      <SNavigation />
+      
      
     </SafeAreaView>
   );
