@@ -1,8 +1,9 @@
 import React, { useState, useMemo } from "react";
-import { View, Text, StyleSheet, Button, TouchableOpacity ,Alert} from "react-native";
+import { ScrollView,View, Text, StyleSheet, Button, TouchableOpacity ,Alert} from "react-native";
 import { Picker } from "@react-native-picker/picker";
 import createStyles from "./styles";
 import CustomDatePicker from "../Moment/DatePicker";
+import { LinearGradient } from "expo-linear-gradient";
 
 const Dates = () => {
   const styles = useMemo(() => createStyles(), []);
@@ -11,110 +12,146 @@ const Dates = () => {
 
   
   return (
-    <View style={styles.viewbgr}>
+    <ScrollView style={styles.viewbgr}>
       <View style={styles.view}>
         <Text style={styles.textTop}> Loại đơn từ</Text>
-        <Picker
-          selectedValue={selectedValue}
-          style={{
-            borderWidth: 1,
-            borderRadius: 10,
 
-            alignItems: "center",
-          }}
-          onValueChange={(itemValue, itemIndex) => setSelectedValue(itemValue)}
-        >
-          <Picker.Item label="Java" value="java" />
-          <Picker.Item label="JavaScript" value="js" />
-        </Picker>
-        <Text style={styles.textTop}>Trạng thái đơn từ </Text>
-        <Picker
-          selectedValue={selectedValue}
-          style={{
-            borderWidth: 1,
-            borderRadius: 10,
-
-            alignItems: "center",
-          }}
-          onValueChange={(itemValue, itemIndex) => setSelectedValue(itemValue)}
-        >
-          <Picker.Item label="Java" value="java" />
-          <Picker.Item label="JavaScript" value="js" />
-        </Picker>
-        <Text style={styles.textTop}> Chi nhánh</Text>
-        <Picker
-          selectedValue={selectedValue}
-          style={{
-            borderWidth: 1,
-          }}
-          onValueChange={(itemValue, itemIndex) => setSelectedValue(itemValue)}
-        >
-          <Picker.Item label="Java" value="java" />
-          <Picker.Item label="JavaScript" value="js" />
-        </Picker>
-      </View>
-
-      <View style={styles.calendar}>
-        <View style={{ flexDirection: "column" }}>
-          <Text style={styles.textTop}> Thoi gian tao</Text>
-
-          <View
-            style={{ flexDirection: "row", marginTop: 10, marginBottom: 10 }}
+        <View style={styles.style}>
+          <Picker
+            selectedValue={selectedValue}
+            onValueChange={(itemValue, itemIndex) =>
+              setSelectedValue(itemValue)
+            }
           >
-            <CustomDatePicker
-              defaultDate={new Date()}
-              onDateChange={(value: any) => console.log(value)}
+            <Picker.Item label="Tất cả đơn từ" value="đơn từ" />
+
+            <Picker.Item label="Đơn nghỉ bản thân kết hôn" value="1" />
+            <Picker.Item label="Đơn nghỉ con kết hôn" value="2" />
+            <Picker.Item label="Đơn nghỉ tang" value="3" />
+            <Picker.Item label="Đơn nghỉ phép năm" value="4" />
+            <Picker.Item label="Đơn nghỉ phép năm trước" value="5" />
+            <Picker.Item label="Đơn nghỉ không lương" value="6" />
+            <Picker.Item label="Đơn làm theo giờ" value="7" />
+            <Picker.Item label="đơn work from home" value="8" />
+            <Picker.Item label="Đơn sửa chấm công" value="9" />
+            <Picker.Item label="Đơn công tác" value="10" />
+          </Picker>
+        </View>
+
+        <Text style={styles.textTop2}> Trạng thái đơn từ</Text>
+        <View style={styles.style}>
+          <Picker
+            selectedValue={selectedValue}
+            onValueChange={(itemValue, itemIndex) =>
+              setSelectedValue(itemValue)
+            }
+          >
+            <Picker.Item label="Tất cả trạng thái" value="tat ca" />
+            <Picker.Item label="Chờ xử lý" value="1" />
+            <Picker.Item label="Đang xử lý" value="2" />
+            <Picker.Item label="Đã từ chối" value="3" />
+            <Picker.Item label="Đã phê duyệt" value="4" />
+            <Picker.Item label="Đã huỷ" value="5" />
+            <Picker.Item label="Hệ thống huỷ đơn do lịch làm việc không còn phù hơp" value="6" />
+            <Picker.Item
+              label="Hệ thống huỷ đơn do quá hạn chốt đơn"
+              value="7"
             />
-            <View style={{ justifyContent: "center", alignItems: "center" }}>
-              <Text> - </Text>
+          </Picker>
+        </View>
+
+        <Text style={styles.textTop2}>Chi nhánh</Text>
+        <View style={styles.style}>
+          <Picker
+            selectedValue={selectedValue}
+            onValueChange={(itemValue, itemIndex) =>
+              setSelectedValue(itemValue)
+            }
+          >
+            <Picker.Item label="Tất cả chi nhánh" value="tat" />
+            
+          </Picker>
+        </View>
+
+        <View style={styles.calendar}>
+          <View style={{ flexDirection: "column" }}>
+            <Text style={styles.textTop2}> Thoi gian tao</Text>
+
+            <View
+              style={{
+                flexDirection: "row",
+                marginTop: "3%",
+                marginLeft: "8%",
+                marginRight: "8%",
+                width: "100%",
+                backgroundColor: "#f2f2f2",
+                borderRadius: 10,
+
+                justifyContent: "center",
+                alignSelf: "center",
+              }}
+            >
+              <CustomDatePicker
+                defaultDate={new Date()}
+                onDateChange={(value: any) => console.log(value)}
+              />
+              <View style={{ justifyContent: "center", alignItems: "center" }}>
+                <Text> - </Text>
+              </View>
+              <CustomDatePicker
+                defaultDate={new Date()}
+                onDateChange={(value: any) => console.log(value)}
+              />
             </View>
-            <CustomDatePicker
-              defaultDate={new Date()}
-              onDateChange={(value: any) => console.log(value)}
-            />
-          </View>
 
-          <Text style={styles.textTop}> Thoi gian ap dung</Text>
+            <Text style={styles.textTop2}> Thoi gian ap dung</Text>
 
-          <View
-            style={{
-              flexDirection: "row",
-              marginTop: 10,
-              marginBottom: 10,
-            }}
-          >
-            <CustomDatePicker
-              defaultDate={new Date()}
-              onDateChange={(value: any) => console.log(value)}
-            />
-            <View style={{ justifyContent: "center", alignItems: "center" }}>
-              <Text> - </Text>
+            <View
+              style={{
+                flexDirection: "row",
+                marginTop: "3%",
+                marginLeft: "8%",
+                marginRight: "8%",
+                width: "100%",
+                backgroundColor: "#f2f2f2",
+                borderRadius: 10,
+
+                justifyContent: "center",
+                alignSelf: "center",
+              }}
+            >
+              <CustomDatePicker
+                defaultDate={new Date()}
+                onDateChange={(value: any) => console.log(value)}
+              />
+              <View style={{ justifyContent: "center", alignItems: "center" }}>
+                <Text> - </Text>
+              </View>
+              <CustomDatePicker
+                defaultDate={new Date()}
+                onDateChange={(value: any) => console.log(value)}
+              />
             </View>
-            <CustomDatePicker
-              defaultDate={new Date()}
-              onDateChange={(value: any) => console.log(value)}
-            />
-          </View>
 
-          <View
-            style={{
-              flexDirection: "row",
-              marginTop: 50,
-             
-              justifyContent: "center",
-              alignItems: "center",
-            }}
-          >
-            <Button
+            <View
+              style={{
+                flexDirection: "row",
+                marginTop: 50,
 
-            title=" Lọc đơn từ "
-            color="orange"
-            onPress={() => Alert.alert("Đang xử lý")}
-            />
+                justifyContent: "center",
+                alignItems: "center",
+              }}
+            >
+              <Button
+                title=" Lọc đơn từ "
+                color="orange"
+                onPress={() => Alert.alert("Đang xử lý")}
+              />
+            </View>
           </View>
         </View>
       </View>
-    </View>
+    </ScrollView>
   );
 };
 

@@ -1,83 +1,61 @@
 import { StyleSheet } from "react-native";
+import { FONTS } from "../../../constants/theme";
 
 const createStyles = () =>
   StyleSheet.create({
     view: {
-      marginTop: 30,
-      //marginHorizontal: 40,
-      marginLeft: 20,
-      marginRight: 20,
-      backgroundColor: "white",
-    },
-    view1: {
-      backgroundColor: "white",
-      marginTop: 5,
-      flex: 1,
-
-      //marginHorizontal: 40,
-      marginLeft: 20,
-      marginRight: 20,
+      margin: "6%",
     },
     viewbgr: {
-      backgroundColor: "#F9F9F9",
-      flex: 1,
-    },
-    textWelcome: {
-      alignSelf: "center",
-      fontSize: 28,
-      fontWeight: "bold",
-      marginBottom: 20,
-      color: "#FF4949",
-    },
-    text: {
-      width: 320,
-      height: 35,
-      alignSelf: "center",
-      borderRadius: 5,
-      marginTop: 8,
-      padding: 5,
-      backgroundColor: "#F9F9F9",
-    },
-    btn: {
-      alignSelf: "center",
-      justifyContent: "center",
-      width: 250,
-      marginTop: 20,
-      borderRadius: 10,
-      marginBottom: 20,
+      backgroundColor: "#FFFFFF",
     },
     textTop: {
-      marginTop: 10,
+      fontSize: 14,
       color: "#413F42",
     },
-    btn22: {
-      width: 120,
-      height: 40,
+    textTop2: {
+      marginTop: "3%",
+      fontSize: 14,
+      color: "#413F42",
+    },
+    text22: {
+      fontSize: 18,
+      color: "#FFFFFF",
+      width: 250,
+      height: 45,
+      padding: 8,
+      //backgroundColor: "#7445f6",
+      textAlign: "center",
+      justifyContent: "center",
+      alignItems: "center",
+    },
+    btn2: {
+      width: 250,
+      height: 45,
       alignSelf: "center",
       justifyContent: "center",
       alignItems: "center",
-      borderRadius: 10,
+      borderRadius: 5,
       backgroundColor: "#7445f6",
+      marginTop: 30,
     },
-    size: {
-      fontSize: 18,
-      color: "#FFFFFF",
-      textAlign: "center",
-    },
-    datePickerStyle: {
-      width: 200,
-      marginTop: 20,
+    style: {
+      marginTop: "3%",
+      marginLeft: "8%",
+      marginRight: "8%",
+      width: "100%",
+      backgroundColor: "#f2f2f2",
+      borderRadius: 10,
+      fontSize: 8,
+      justifyContent: "center",
+      alignSelf: "center",
     },
     calendar: {
+      marginTop: "3%",
       backgroundColor: "white",
-      marginTop: 5,
+      
       flex: 1,
-    
-      //marginHorizontal: 40,
-      marginLeft: 20,
-      marginRight: 20,
     },
   });
-
 
 export default createStyles;
