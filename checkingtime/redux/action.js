@@ -20,7 +20,6 @@ export const login = (phoneNumber, password) => async (dispatch) => {
     dispatch({ type: "loginFailure", payload: error.response.data.message });
   }
 };
-
 export const loadUser = () => async (dispatch) => {
   try {
     dispatch({ type: "loadUserRequest" });
