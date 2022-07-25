@@ -16,7 +16,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { login } from "../../../redux/action";
 
 const SignIn = () => {
-  // const { error } = useSelector<any>(state => state.auth)
+  const { error } = useSelector<any>(state => state.auth)
 
   const dispatch = useDispatch();
   const styles = useMemo(() => createStyles(), []);
@@ -28,13 +28,13 @@ const SignIn = () => {
     dispatch<any>(login(userName, password));
   };
 
-  // useEffect(() => {
-  //     if (error) {
-  //         alert(error)
-  //         dispatch({ type: "clearError" })
-  //     }
+  useEffect(() => {
+      if (error) {
+          alert(error)
+          dispatch({ type: "clearError" })
+      }
 
-  // }, [error, dispatch, alert,])
+  }, [error, dispatch, alert,])
 
   const navigation = useNavigation<any>();
 
@@ -122,8 +122,8 @@ const SignIn = () => {
         colors={["#7F00FF", "#E100FF"]}
         style={styles.btn2}
       >
-        {/* <TouchableOpacity onPress={loginHandler}> */}
-        <TouchableOpacity onPress={() => navigation.navigate("HomeScreen")}>
+        <TouchableOpacity onPress={loginHandler}>
+        {/* <TouchableOpacity onPress={() => navigation.navigate("HomeScreen")}> */}
           <Text style={styles.text22}>Đăng nhập</Text>
         </TouchableOpacity>
       </LinearGradient>
