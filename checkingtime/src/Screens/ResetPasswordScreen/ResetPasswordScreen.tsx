@@ -31,9 +31,13 @@ const ResetPasswordScreen = () => {
           returnKeyType="done"
           placeholder={"Vui lòng nhập mã OTP trong vòng 5 phút"}
         ></TextInput>
-        <TouchableOpacity onPress={() => Alert.alert("Mã OTP nào đó")}>
-          <Text style={styles.textOTP}>Gửi lại mã</Text>
+        <View style={{flexDirection: 'row', justifyContent:'space-between'}}>
+          <Text style={styles.textnote}>Xin đợi 1 phút trước khi yêu cầu gửi lại OTP</Text>
+          <TouchableOpacity onPress={() => Alert.alert("Mã OTP nào đó")}>
+          <Text style={styles.textOTP}>Gửi lại OTP</Text>
         </TouchableOpacity>
+        </View>
+        
 
         <Text style={styles.textTop}> Mật khẩu mới</Text>
         <TextInput

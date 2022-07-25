@@ -20,11 +20,14 @@ const createStyles = () =>
       color: "#413F42",
     },
     textOTP:{
-      marginRight:5,
-      fontSize:17,
+      fontSize:15,
       color:"orange",
-      alignSelf:'flex-end',
       fontFamily: FONTS.vanSansExtraBold,
+    },
+    textnote:{
+      fontSize: 11,
+      color:"red",
+      fontFamily: FONTS.vanSansBold,
     },
     text: {
       width: 320,
