@@ -1,116 +1,132 @@
+import { useNavigation } from "@react-navigation/native";
 import React from "react";
-import { StyleSheet, Text, SafeAreaView, ScrollView, StatusBar, View, Button, Pressable, Alert } from 'react-native';
-import { ICON_SIZE } from "react-native-paper/lib/typescript/components/TextInput/Adornment/TextInputIcon";
-import  Icon  from "react-native-vector-icons/AntDesign";
+import { Text, View, Alert, TouchableOpacity, ImageBackground } from "react-native";
+import { Avatar } from "@rneui/themed";
+import Icon from "react-native-vector-icons/FontAwesome";
 import styles from "./styles";
 
-
-import Account from "../Account/Account";
-import HappyGame from "../HappyGame/HappyGames";
-import Jobs from "../Jobs";
-import TabsNavigation from "../../navigation/Tabs";
-
 const HomeScreen = () => {
-    return (
-      <View style={styles.container}>
-        <ScrollView style={styles.scrollView}>
-        
-          <View style={{ flex: 1, flexDirection: "row" }}>
-            <View
-              style={{
-                flex: 1,
-                backgroundColor: "lightblue",
-                borderWidth: 1,
-                padding: 10,
-                marginVertical: 30,
-                marginLeft: 40,
-                borderRadius: 8,
-              }}
-            >
-              <Text style={styles.text}>Home</Text>
-            </View>
-            <View
-              style={{
-                flex: 1,
-                marginLeft: 4,
-                backgroundColor: "lightblue",
-                borderWidth: 1,
-                padding: 10,
-                marginVertical: 30,
-                marginRight: 40,
-                borderRadius: 8,
-              }}
-            >
-              <Text style={styles.text}>Jobs</Text>
+  const navigation = useNavigation<any>();
+  return (
+    <View style={styles.container}>
+      {/* <ImageBackground source={require("../../../assets/images/tim.jpg")} > */}
+
+      <View>
+        <TouchableOpacity onPress={() => navigation.navigate("Account")}>
+          <View style={styles.row}>
+            <Icon name="user" size={26} color="#DDDDDD" style={styles.icon} />
+            <Text style={styles.text1}> Xin chào {''}
+            <Text style={styles.textcolor} >
+              "userName"
+            </Text>
+            
+            
+            </Text>
+          </View>
+        </TouchableOpacity>
+
+        <View>
+          <View style={styles.icon2}>
+            <Text style={styles.text}>Nhật ký hôm nay</Text>
+            <View>
+              <View style={styles.textIcon23}>
+                <Icon
+                  name="check"
+                  size={18}
+                  color="#7445f6"
+                  style={styles.boder}
+                />
+                <Text style={styles.text2}> Checkin: </Text>
+                <Text style={styles.text4}>N/A</Text>
+              </View>
+              <View style={styles.textIcon23}>
+                <Icon
+                  name="dedent"
+                  size={18}
+                  color="#7445f6"
+                  style={styles.boder}
+                />
+                <Text style={styles.text2}> Checkout:</Text>
+                <Text style={styles.text3}>N/A</Text>
+              </View>
+              <View style={styles.kengang} />
+              <View style={styles.textIcon23}>
+                <Icon
+                  name="line-chart"
+                  size={18}
+                  color="#7445f6"
+                  style={styles.boder}
+                />
+                <Text style={styles.text2}> Xếp hạng:</Text>
+                <Text style={styles.text3}>N/A</Text>
+              </View>
             </View>
           </View>
-          <Text>Workspace của bạn</Text>
-          <View style={styles.item}>
-            <View style={{ alignContent: "center", justifyContent: "center" }}>
-              <Icon name="home" size={30} color="black" />
-            </View>
-            <View>
-              <Text>Home1</Text>
-              <Text>Home2</Text>
-            </View>
+        </View>
 
-            <Pressable
-              style={{
-                alignContent: "center",
-                justifyContent: "center",
-                padding: 10,
-                borderRadius: 100,
-                backgroundColor: "lightblue",
-              }}
-            >
+        <View style={styles.btn}>
+          <TouchableOpacity
+            onPress={() => navigation.navigate("Thông tin Công Ty")}
+          >
+            <View style={styles.btn1}>
               <Icon
-                name="reload1"
-                size={20}
-                onPress={() => Alert.alert("phucleedepzai")}
+                name="building"
+                size={18}
+                color="#764AF1"
+                style={styles.icon1}
               />
-            </Pressable>
-          </View>
-          <Text>Top 5 hôm nay</Text>
-          <View style={{ flex:1, marginHorizontal: 20, borderWidth:1, borderRadius: 8 }}>
-            <View>
-              <View style={styles.item2}>
-                <Text>01</Text>
-                <Text>Person1</Text>
-                <Text>Xephang</Text>
-              </View>
-
-              <View style={styles.item2}>
-                <Text>02</Text>
-                <Text>Person2</Text>
-                <Text>Xephang</Text>
-              </View>
-
-              <View style={styles.item2}>
-                <Text>03</Text>
-                <Text>Person3</Text>
-                <Text>Xephang</Text>
-              </View>
-
-              <View style={styles.item2}>
-                <Text>04</Text>
-                <Text>Person4</Text>
-                <Text>Xephang</Text>
-              </View>
-
-              <View style={styles.item2}>
-                <Text>05</Text>
-                <Text>Person5</Text>
-                <Text>Xephang</Text>
-              </View>
-              <Pressable onPress={() => Alert.alert('chưa có gì cả')}>
-                <Text style={{justifyContent:'center', alignContent:'center', color: 'orange'}}>Xem thêm</Text>
-              </Pressable>
+              <Text style={styles.text5}>Thông tin Công Ty</Text>
             </View>
+          </TouchableOpacity>
+          <TouchableOpacity onPress={() => Alert.alert("image clicked")}>
+            <View style={styles.btn1}>
+              <Text style={styles.text6}> Công Tháng</Text>
+              <View style={styles.vongtron}></View>
+            </View>
+          </TouchableOpacity>
+        </View>
+
+        <View style={styles.view}>
+          <Text style={styles.text7}>Top 5 hôm nay</Text>
+          <View style={styles.avt}>
+            <Avatar
+              size={60}
+              rounded
+              source={{
+                uri: "https://image2.tin247.news/pictures/2021/09/23/bcd1632409191.jpg",
+              }}
+            ></Avatar>
           </View>
-        </ScrollView>
-        
+
+          <View style={styles.row1}>
+            
+            <Text style={styles.textInfo}>stt"1"</Text>
+            <Text style={styles.textInfo}>userName</Text>
+            <Text style={styles.textInfo}> Time checkin</Text>   
+            
+          </View>
+          <View style={styles.row1}>
+            <Text style={styles.textInfo}>stt"2"</Text>
+            <Text style={styles.textInfo}>userName</Text>
+            <Text style={styles.textInfo}> Time checkin</Text>
+          </View>
+          <View style={styles.row1}>
+            <Text style={styles.textInfo}>stt"1"</Text>
+            <Text style={styles.textInfo}>userName</Text>
+            <Text style={styles.textInfo}> Time checkin</Text>
+          </View>
+          <View style={styles.row1}>
+            <Text style={styles.textInfo}>stt"1"</Text>
+            <Text style={styles.textInfo}>userName</Text>
+            <Text style={styles.textInfo}> Time checkin</Text>
+          </View>
+        </View>
+
+        {/* </ImageBackground> */}
       </View>
-    );
-}
+      
+    </View>
+  );
+};
 
 export default HomeScreen;

@@ -1,62 +1,91 @@
-import React from "react";
-import {
-  SafeAreaView,
-  View,
-  FlatList,
-  StyleSheet,
-  Text,
-  StatusBar,
-} from "react-native";
+import { View, Text, ScrollView, TouchableOpacity, Alert } from "react-native";
+import React, { useMemo } from "react";
+import { useNavigation } from "@react-navigation/native";
+import createStyles from "./styles";
+import Icon from "react-native-vector-icons/FontAwesome";
 
-const DATA = [
-  {
-    id: "bd7acbea-c1b1-46c2-aed5-3ad53abb28ba",
-    title: "First Item",
-  },
-  {
-    id: "3ac68afc-c605-48d3-a4f8-fbd91aa97f63",
-    title: "Second Item",
-  },
-  {
-    id: "58694a0f-3da1-471f-bd96-145571e29d72",
-    title: "Third Item",
-  },
-];
-// title không nhận kiểu.
-const Item = ( title : {title :string}) => (
-  <View style={styles.item}>
-    <Text style={styles.title}>{title}</Text>
-  </View>
-);
-
-const App = () => {
-  const renderItem = ( item ) => <Item title={item.title} />;
+const FormCreated = () => {
+  const styles = useMemo(() => createStyles(), []);
+  //const navigation = useNavigation<any>();
 
   return (
-    <SafeAreaView style={styles.container}>
-      <FlatList
-        data={DATA}
-        renderItem={renderItem}
-        keyExtractor={(item) => item.id}
-      />
-    </SafeAreaView>
+    <ScrollView style={styles.scrollView}>
+      <View>
+        <Text style={styles.chu11}>Loại đơn</Text>
+        <View>
+          <TouchableOpacity style={styles.textContainer}>
+            <Text style={styles.textDon}>Đơn nghỉ phép năm</Text>
+            <Icon name="angle-right" size={20} style={styles.arrow} />
+          </TouchableOpacity>
+          <View style={styles.kengang} />
+        </View>
+
+        <View>
+          <TouchableOpacity style={styles.textContainer}>
+            <Text style={styles.textDon}>Đơn nghỉ không lương</Text>
+            <Icon name="angle-right" size={20} style={styles.arrow} />
+          </TouchableOpacity>
+          <View style={styles.kengang} />
+        </View>
+
+        <View>
+          <TouchableOpacity style={styles.textContainer}>
+            <Text style={styles.textDon}>Đơn nghỉ bản thân kết hôn</Text>
+            <Icon name="angle-right" size={20} style={styles.arrow} />
+          </TouchableOpacity>
+          <View style={styles.kengang} />
+        </View>
+
+        <View>
+          <TouchableOpacity style={styles.textContainer}>
+            <Text style={styles.textDon}>Đơn nghỉ con kết hôn</Text>
+            <Icon name="angle-right" size={20} style={styles.arrow} />
+          </TouchableOpacity>
+          <View style={styles.kengang} />
+        </View>
+
+        <View>
+          <TouchableOpacity style={styles.textContainer}>
+            <Text style={styles.textDon}>Đơn nghỉ tang</Text>
+            <Icon name="angle-right" size={20} style={styles.arrow} />
+          </TouchableOpacity>
+          <View style={styles.kengang} />
+        </View>
+
+        <View>
+          <TouchableOpacity style={styles.textContainer}>
+            <Text style={styles.textDon}>Đơn nghỉ sửa chấm công</Text>
+            <Icon name="angle-right" size={20} style={styles.arrow} />
+          </TouchableOpacity>
+          <View style={styles.kengang} />
+        </View>
+
+        <View>
+          <TouchableOpacity style={styles.textContainer}>
+            <Text style={styles.textDon}>Đơn làm thêm giờ</Text>
+            <Icon name="angle-right" size={20} style={styles.arrow} />
+          </TouchableOpacity>
+          <View style={styles.kengang} />
+        </View>
+
+        <View>
+          <TouchableOpacity style={styles.textContainer}>
+            <Text style={styles.textDon}>Đơn làm việc tại nhà</Text>
+            <Icon name="angle-right" size={20} style={styles.arrow} />
+          </TouchableOpacity>
+          <View style={styles.kengang} />
+        </View>
+
+        <View>
+          <TouchableOpacity style={styles.textContainer}>
+            <Text style={styles.textDon}>Đơn công tác</Text>
+            <Icon name="angle-right" size={20} style={styles.arrow} />
+          </TouchableOpacity>
+          <View style={styles.kengang} />
+        </View>
+      </View>
+    </ScrollView>
   );
 };
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    marginTop: StatusBar.currentHeight || 0,
-  },
-  item: {
-    backgroundColor: "#f9c2ff",
-    padding: 20,
-    marginVertical: 8,
-    marginHorizontal: 16,
-  },
-  title: {
-    fontSize: 32,
-  },
-});
-
-export default App;
+export default FormCreated;

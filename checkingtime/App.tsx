@@ -1,56 +1,53 @@
-import { StatusBar } from "expo-status-bar";
 import { StyleSheet, Text, View, SafeAreaView, Image } from "react-native";
-import { NavigationContainer, TabActions } from "@react-navigation/native";
-import React from 'react';
-import 'react-native-gesture-handler';
+import React from "react";
 
-import Jobs from "./src/Screens/Jobs";
-import HappyGames from "./src/Screens/HappyGame/HappyGames";
-
-import FormCreated from "./src/Screens/FormCreated/index";
-import Form from "./src/Screens/Form/Form";
-import Account from "./src/Screens/Account/Account";
-import HappyGame from "./src/Screens/HappyGame/HappyGames";
-
-import SignUpScreen from "./src/Screens/SignUpScreen";
-import ConfirmEmailScreen from "./src/Screens/ConfirmEmailScreen";
-import ForgotPasswordScreen from "./src/Screens/ForgotPasswordScreen/styles";
-import NewPasswordScreen from "./src/Screens/NewPasswordScreen";
-import NhatKyDiem from "./src/Screens/NhatKyDiem/NhatKyDiem";
-import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
-import TabsNavigation from './src/navigation/Tabs';
-import HomeScreen from './src/Screens/HomeScreen/index';
-import Navigation from "./src/navigation";
 import SNavigation from "./src/navigation";
+import DateTimePicker from "./src/Screens/Date/Date";
+import CustomDatePicker from "./src/Screens/Date/CustomDatePicker";
+import AddStaff from "./src/Screens/AddStaff/AddStaff";
+import { useFonts } from "expo-font";
+import { Provider } from "react-redux";
+import store from "./redux/store";
+import { NavigationContainer } from "@react-navigation/native";
 
-import JobNavigation from "./src/navigation";
-import RakingScreen from "./src/Screens/RakingScreen/index";
-import HappyGameNavigation from "./src/navigation/HappyGameNavigation";
 const App = () => {
+  const [fontsLoaded] = useFonts({
+    VanSansBold: require("./assets/fonts/VanSans-Bold.otf"),
+    VanSansBlack: require("./assets/fonts/VanSans-Black.otf"),
+    VanSansBlackItalic: require("./assets/fonts/VanSans-BlackItalic.otf"),
+    VanSansBoldItalic: require("./assets/fonts/VanSans-BoldItalic.otf"),
+    VanSansExtraBold: require("./assets/fonts/VanSans-ExtraBold.otf"),
+    VanSansExtraBoldItalic: require("./assets/fonts/VanSans-ExtraBoldItalic.otf"),
+    VanSansLight: require("./assets/fonts/VanSans-Light.otf"),
+    VanSansLightItalic: require("./assets/fonts/VanSans-LightItalic.otf"),
+    VanSansMedium: require("./assets/fonts/VanSans-Medium.otf"),
+    VanSansMediumItalic: require("./assets/fonts/VanSans-MediumItalic.otf"),
+    VanSansRegular: require("./assets/fonts/VanSans-Regular.otf"),
+    VanSansRegularItalic: require("./assets/fonts/VanSans-RegularItalic.otf"),
+    VanSansSemiBold: require("./assets/fonts/VanSans-SemiBold.otf"),
+    VanSansSemiBoldItalic: require("./assets/fonts/VanSans-SemiBoldItalic.otf"),
+    VanSansThin: require("./assets/fonts/VanSans-Thin.otf"),
+    VanSansThinItalic: require("./assets/fonts/VanSans-ThinItalic.otf"),
+  });
+  if (!fontsLoaded) {
+    return null;
+  }
+
   return (
+    <Provider store={store}>
     <SafeAreaView style={styles.root}>
+       <SNavigation /> 
+       {/* <NavigationContainer>
+       <AddStaff />
+       </NavigationContainer> */}
       
-    <SNavigation />
-      
-
-      
-
-   
- 
-      
-     
     </SafeAreaView>
+    </Provider>
   );
 };
 const styles = StyleSheet.create({
   root: {
     flex: 1,
-  },
-  image: {
-    height: "40%",
-    width: "100%",
-    resizeMode: "contain",
-    padding: 10,
   },
 });
 export default App;
