@@ -4,7 +4,7 @@ const connectDatabase = require("./config/database")
 const cloudinary = require("cloudinary")
 
 dotenv.config({
-    path:"./config/config.env"
+    path: "./config/config.env"
 })
 cloudinary.config({
     cloud_name: process.env.CLOUD_NAME,
@@ -12,6 +12,6 @@ cloudinary.config({
     api_secret: process.env.CLOUD_API_SECRET
 })
 connectDatabase()
-app.listen(process.env.PORT , () => {
+app.listen(process.env.PORT, () => {
     console.log("Server is running on port " + process.env.PORT)
 })
