@@ -12,7 +12,8 @@ const createStyles = () =>
     view1: {
       backgroundColor: "white",
       marginTop: 5,
-     
+      flex: 1,
+
       //marginHorizontal: 40,
       marginLeft: 20,
       marginRight: 20,
@@ -67,6 +68,16 @@ const createStyles = () =>
       width: 200,
       marginTop: 20,
     },
+    calendar: {
+      backgroundColor: "white",
+      marginTop: 5,
+      flex: 1,
+    
+      //marginHorizontal: 40,
+      marginLeft: 20,
+      marginRight: 20,
+    },
   });
+
 
 export default createStyles;

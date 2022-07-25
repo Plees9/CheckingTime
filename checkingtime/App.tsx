@@ -5,6 +5,9 @@ import SNavigation from "./src/navigation";
 import { useFonts } from "expo-font";
 import  Date from "./src/Screens/Date/Date";
 import { NavigationContainer } from '@react-navigation/native';
+import CustomDatePicker from "./src/Screens/Moment/DatePicker";
+import MainDate from "./src/Screens/Moment/MainDate";
+import Dates from "./src/Screens/Date/Date";
 
 
 const App = () => {
@@ -33,9 +36,9 @@ const App = () => {
   return (
     <SafeAreaView style={styles.root}>
       {/* <SNavigation /> */}
-      <NavigationContainer>
-        <Date/>
-      </NavigationContainer>
+      {/* <CustomDatePicker /> */}
+      {/* <MainDate /> */}
+      <Dates />
     </SafeAreaView>
   );
 };
