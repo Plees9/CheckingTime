@@ -1,9 +1,4 @@
-import {
-  View,
-  Text,
-  TextInput,
-  TouchableOpacity,
-} from "react-native";
+import { View, Text, TextInput, Alert, TouchableOpacity } from "react-native";
 import React, { useMemo, useState } from "react";
 
 import createStyles from "./styles";
@@ -28,8 +23,11 @@ const ResetPasswordScreen = () => {
           onChangeText={(text) => setPassword(text)}
           secureTextEntry={undefined}
           returnKeyType="done"
-          placeholder={"Nhập mã OTP"}
+          placeholder={"Vui lòng nhập mã OTP trong vòng 5 phút"}
         ></TextInput>
+        <Text style={styles.textnote}>
+          Xin đợi 1 phút trước khi yêu cầu gửi lại OTP
+        </Text>
 
         <Text style={styles.textTop}> Mật khẩu mới</Text>
         <TextInput
@@ -62,6 +60,10 @@ const ResetPasswordScreen = () => {
               <Text style={styles.size}>Xác nhận</Text>
             </TouchableOpacity>
           </LinearGradient>
+
+          <TouchableOpacity onPress={() => Alert.alert("Mã OTP nào đó")}>
+            <Text style={styles.textOTP}>Gửi lại OTP</Text>
+          </TouchableOpacity>
         </View>
       </View>
     </View>
