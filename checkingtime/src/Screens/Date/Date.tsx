@@ -1,8 +1,9 @@
 import React, { useState } from "react";
-import { Button, View } from "react-native";
+import { Button, TouchableHighlight, View, Text } from "react-native";
 import DateTimePickerModal from "react-native-modal-datetime-picker";
+import moment from 'moment'
 
-const Time = () => {
+const DateTimePicker = () => {
   const [isDatePickerVisible, setDatePickerVisibility] = useState(false);
 
   const showDatePicker = () => {
@@ -27,8 +28,14 @@ const Time = () => {
         onConfirm={handleConfirm}
         onCancel={hideDatePicker}
       />
+       <TouchableHighlight
+      activeOpacity={0}
+      onPress={showDatePicker}
+       >
+        <Text> {moment().format('YYYY-MM-DD')}</Text>
+      </TouchableHighlight>
     </View>
   );
 };
 
-export default Time;
+export default DateTimePicker;

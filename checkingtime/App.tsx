@@ -2,10 +2,11 @@ import { StyleSheet, Text, View, SafeAreaView, Image } from "react-native";
 import React from "react";
 
 import SNavigation from "./src/navigation";
+import DateTimePicker from "./src/Screens/Date/Date";
+import CustomDatePicker from "./src/Screens/Date/CustomDatePicker";
 import { useFonts } from "expo-font";
-import Time from './src/Screens/Time/Time';
-import { NavigationContainer } from '@react-navigation/native';
-
+import { Provider } from "react-redux";
+import store from "./redux/store";
 
 const App = () => {
   const [fontsLoaded] = useFonts({
@@ -31,12 +32,12 @@ const App = () => {
   }
 
   return (
+    <Provider store={store}>
     <SafeAreaView style={styles.root}>
       {/* <SNavigation /> */}
-      <NavigationContainer>
-        <Time />
-      </NavigationContainer>
+      <CustomDatePicker />
     </SafeAreaView>
+    </Provider>
   );
 };
 const styles = StyleSheet.create({
