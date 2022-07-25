@@ -109,7 +109,7 @@ const SNavigation = () => {
         options={{ headerShown: false }}
       />
         <Stack.Screen name="Sign In" component={Navigation} /> 
-
+        <Stack.Screen name="Account" component={TabsNavigation} />
         <Stack.Screen
           name="Form"
           component={JobsNavigation}

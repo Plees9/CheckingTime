@@ -5,29 +5,18 @@ import {
   TouchableOpacity,
   useWindowDimensions,
 } from "react-native";
-import React, { useMemo, useState } from "react";
+import React, { useMemo } from "react";
 
 import { Avatar } from "@rneui/themed";
 import Icon from "react-native-vector-icons/FontAwesome";
 import { TextInput } from "react-native-gesture-handler";
 import { useNavigation } from "@react-navigation/native";
 import createStyles from "./styles";
-import { useDispatch } from "react-redux";
-import { logout } from "../../../redux/action";
 
 const Account = () => {
   const styles = useMemo(() => createStyles(), []);
-  
-
-  const dispatch = useDispatch();
+  const { height } = useWindowDimensions();
   const navigation = useNavigation<any>();
-  const [userName, setUserName] = useState("");
-  const [password, setPassword] = useState("");
-
-  const logoutHandler = () => {
-    dispatch<any>(logout(userName, password));
-  }
-
 
   return (
     <ScrollView style={styles.container}>
@@ -258,7 +247,7 @@ const Account = () => {
         >
           <Text style={styles.chu}>Thay đổi mật khẩu</Text>
         </TouchableOpacity>
-        <TouchableOpacity onPress={() => navigation.navigate("SignIn")}>
+        <TouchableOpacity onPress={() => navigation.navigate("Sign In")}>
           <Text style={styles.chu1}> Đăng xuất </Text>
         </TouchableOpacity>
       </View>

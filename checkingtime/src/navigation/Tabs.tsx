@@ -8,9 +8,6 @@ import HomeScreen from "../Screens/HomeScreen";
 import Jobs from "../Screens/Jobs";
 import Icon from "react-native-vector-icons/Ionicons";
 
-import { colors } from "react-native-tailwindcss";
-import InfoScreen from "../Screens/InfoCompany/Info";
-
 const Tab = createBottomTabNavigator();
 
 const TabsNavigation = () => {

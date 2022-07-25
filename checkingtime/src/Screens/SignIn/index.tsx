@@ -69,7 +69,7 @@ const SignIn = () => {
             <TextInput
               placeholder={"Số điện thoại"}
               style={styles.text23}
-              keyboardType={"number-pad"}
+              //keyboardType={"number-pad"}
               returnKeyType="done"
               value={userName}
               secureTextEntry={false}
