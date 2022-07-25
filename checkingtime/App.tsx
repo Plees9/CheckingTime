@@ -3,7 +3,7 @@ import React from "react";
 
 import SNavigation from "./src/navigation";
 import { useFonts } from "expo-font";
-import Time from './src/Screens/Time/Time';
+import  Date from "./src/Screens/Date/Date";
 import { NavigationContainer } from '@react-navigation/native';
 
 
@@ -34,7 +34,7 @@ const App = () => {
     <SafeAreaView style={styles.root}>
       {/* <SNavigation /> */}
       <NavigationContainer>
-        <Time />
+        <Date/>
       </NavigationContainer>
     </SafeAreaView>
   );
