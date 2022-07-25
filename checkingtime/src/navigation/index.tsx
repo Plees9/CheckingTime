@@ -140,6 +140,15 @@ const SNavigation = () => {
           component={ListFilterNavigation}
           options={{ headerShown: true }}
         />
+        <Stack.Screen
+        name="ForgotPasswordScreen"
+        component={ForgotPasswordScreen}
+      />
+      <Stack.Screen
+        name="ResetPassword"
+        component={ResetPasswordScreen}
+        options={{ headerShown: true }}
+      />
       </Stack.Navigator>
     </NavigationContainer>
   );

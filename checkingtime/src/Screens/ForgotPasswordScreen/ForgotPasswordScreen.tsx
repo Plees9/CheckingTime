@@ -9,15 +9,19 @@ import React, { useMemo, useState } from "react";
 import createStyles from "./styles";
 import { useNavigation } from "@react-navigation/native";
 import { LinearGradient } from "expo-linear-gradient";
-
+import { useDispatch, useSelector } from "react-redux";
+import { forgetPassword } from "../../../redux/action";
 const ForgotPasswordScreen = () => {
   const styles = useMemo(() => createStyles(), []);
   const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const [confirmPassword, setConfirmPassword] = useState("");
-
   const navigation = useNavigation<any>();
+    const dispatch = useDispatch()
 
+    const forgetHandler = async () => {
+        await dispatch<any>(forgetPassword(email))
+        navigation.navigate("ResetPassword")
+
+    }
   return (
     <View style={styles.view}>
       <Text style={styles.textWelcome}>Forgot Password</Text>
@@ -28,7 +32,7 @@ const ForgotPasswordScreen = () => {
         secureTextEntry={undefined}
         keyboardType={"number-pad"}
         returnKeyType="done"
-        placeholder={"Enter your phone number"}
+        placeholder={"Enter your email"}
       ></TextInput>
       <View>
         <LinearGradient
@@ -38,7 +42,7 @@ const ForgotPasswordScreen = () => {
           style={styles.btn}
         >
           <TouchableOpacity
-            onPress={() => navigation.navigate("ResetPassword")}
+            onPress={forgetHandler}
           >
             <Text style={styles.size}>Xác nhận</Text>
           </TouchableOpacity>
