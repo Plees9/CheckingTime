@@ -5,18 +5,29 @@ import {
   TouchableOpacity,
   useWindowDimensions,
 } from "react-native";
-import React, { useMemo } from "react";
+import React, { useMemo, useState } from "react";
 
 import { Avatar } from "@rneui/themed";
 import Icon from "react-native-vector-icons/FontAwesome";
 import { TextInput } from "react-native-gesture-handler";
 import { useNavigation } from "@react-navigation/native";
 import createStyles from "./styles";
+import { useDispatch } from "react-redux";
+import { logout } from "../../../redux/action";
 
 const Account = () => {
   const styles = useMemo(() => createStyles(), []);
-  const { height } = useWindowDimensions();
+  
+
+  const dispatch = useDispatch();
   const navigation = useNavigation<any>();
+  const [userName, setUserName] = useState("");
+  const [password, setPassword] = useState("");
+
+  const logoutHandler = () => {
+    dispatch<any>(logout(userName, password));
+  }
+
 
   return (
     <ScrollView style={styles.container}>

@@ -1,12 +1,10 @@
 import {
   View,
   Text,
-  Image,
   TextInput,
   Alert,
   TouchableOpacity,
-  Button,
-  ImageBackground,
+
 } from "react-native";
 import React, { useMemo, useState, useEffect } from "react";
 import createStyles from "./styles";

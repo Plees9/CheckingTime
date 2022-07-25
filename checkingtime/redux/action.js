@@ -20,6 +20,24 @@ export const login = (email, password) => async (dispatch) => {
     dispatch({ type: "loginFailure", payload: error.response.data.message });
   }
 };
+export const logout = (email, password) => async (dispatch) => {
+  try {
+    dispatch({ type: "logoutRequest" });
+
+    const { data } = await axios.post(
+      `${serverUrl}/logout`,
+      { email, password },
+      {
+        headers: {
+          "Content-Type": "application/json",
+        },
+      }
+    );
+    dispatch({ type: "logoutSuccess", payload: data });
+  } catch (error) {
+    dispatch({ type: "logoutFailure", payload: error.response.data.message });
+  }
+};
 
 export const loadUser = () => async (dispatch) => {
   try {
