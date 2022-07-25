@@ -2,7 +2,6 @@ import React, { useState, useMemo } from "react";
 import { View, Text, TouchableOpacity, ScrollView } from "react-native";
 import { Picker } from "@react-native-picker/picker";
 import createStyles from "./styles";
-
 import { useNavigation } from "@react-navigation/native";
 import { LinearGradient } from "expo-linear-gradient";
 
@@ -14,7 +13,6 @@ const EFilter = () => {
     <ScrollView style={styles.viewbgr}>
       <View style={styles.view}>
         <Text style={styles.textTop}> Phòng ban</Text>
-
         <View style={styles.style}>
           <Picker
             selectedValue={selectedValue}
