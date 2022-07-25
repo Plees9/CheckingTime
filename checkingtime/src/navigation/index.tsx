@@ -14,7 +14,7 @@ import FormCreated from "../Screens/FormCreated";
 import Jobs from "../Screens/Jobs";
 import InfoScreen from "../Screens/InfoCompany/Info";
 import Account from "../Screens/Account/Account";
-import FDontu from "../Screens/BolocdonTu/FDontu";
+import FDontu from "../Screens/Bolocdontu/FDontu";
 import ResetPasswordScreen from "../Screens/ResetPasswordScreen/ResetPasswordScreen";
 import TabDonTusNavigation from "./TabDonTu";
 import CuaToi from "../Screens/DonTu/CuaToi/CuaToi";
@@ -85,7 +85,7 @@ const ListFilterNavigation = () => {
 const FDontuNavigation = () => {
   return (
     <Stack.Navigator screenOptions={{ headerShown: false }}>
-      <Stack.Screen name="Dates" component={FDontu} />
+      <Stack.Screen name="FDontu" component={FDontu} />
     </Stack.Navigator>
   );
 };

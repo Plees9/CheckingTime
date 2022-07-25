@@ -3,17 +3,19 @@ import {
   ScrollView,
   View,
   Text,
-  
+  TouchableOpacity,
   Button,
 
   Alert,
 } from "react-native";
 import { Picker } from "@react-native-picker/picker";
 import createStyles from "./styles";
+import { useNavigation } from "@react-navigation/native";
 import CustomDatePicker from "../Moment/DatePicker";
 import { LinearGradient } from "expo-linear-gradient";
 
 const FDontu = () => {
+  const navigation = useNavigation<any>();
   const styles = useMemo(() => createStyles(), []);
   const [selectedValue, setSelectedValue] = useState("");
   const [date, setDate] = useState("09-10-2020");
@@ -84,7 +86,7 @@ const FDontu = () => {
 
         <View style={styles.calendar}>
           <View style={{ flexDirection: "column" }}>
-            <Text style={styles.textTop2}> Thoi gian tao</Text>
+            <Text style={styles.textTop2}> Thời gian tạo</Text>
 
             <View
               style={{
@@ -113,7 +115,7 @@ const FDontu = () => {
               />
             </View>
 
-            <Text style={styles.textTop2}> Thoi gian ap dung</Text>
+            <Text style={styles.textTop2}> Thời gian áp dụng</Text>
 
             <View
               style={{
@@ -151,11 +153,18 @@ const FDontu = () => {
                 alignItems: "center",
               }}
             >
-              <Button
-                title=" Lọc đơn từ "
-                color="orange"
-                onPress={() => Alert.alert("Đang xử lý")}
-              />
+              <LinearGradient
+                start={{ x: 0, y: 0 }}
+                end={{ x: 1, y: 0 }}
+                colors={["#7F00FF", "#E100FF"]}
+                style={styles.btn2}
+              >
+                <TouchableOpacity
+                  onPress={() => navigation.navigate("Đơn từ")}
+                >
+                  <Text style={styles.text22}>Xác nhận</Text>
+                </TouchableOpacity>
+              </LinearGradient>
             </View>
           </View>
         </View>

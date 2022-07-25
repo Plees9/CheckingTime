@@ -80,7 +80,7 @@ const CustomDatePicker = (props: any) => {
                     borderTopColor: "#E9E9E9",
                     borderTopWidth: 1,
                   }}
-                  onPress={() => console.log("asadd")}
+                  onPress={() => console.log("DatePicker")}
                 >
                   <View style={styles.style2}>
                     <View style={{ marginTop: 20 }}>
