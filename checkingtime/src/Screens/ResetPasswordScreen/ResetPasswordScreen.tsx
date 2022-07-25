@@ -42,8 +42,8 @@ const ResetPasswordScreen = () => {
         <Text style={styles.textTop}> Xác nhận mật khẩu</Text>
         <TextInput
           style={styles.text}
-          value={password}
-          onChangeText={(text) => setPassword(text)}
+          value={confirmPassword}
+          onChangeText={(text) => setConfirmPassword(text)}
           secureTextEntry={undefined}
           returnKeyType="done"
           placeholder={"Xác nhận mật khẩu mới"}
