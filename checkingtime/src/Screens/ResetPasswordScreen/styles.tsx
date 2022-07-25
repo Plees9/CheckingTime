@@ -19,6 +19,13 @@ const createStyles = () =>
       fontFamily: FONTS.vanSansSemiBold,
       color: "#413F42",
     },
+    textOTP:{
+      marginRight:5,
+      fontSize:17,
+      color:"orange",
+      alignSelf:'flex-end',
+      fontFamily: FONTS.vanSansExtraBold,
+    },
     text: {
       width: 320,
       height: 35,
