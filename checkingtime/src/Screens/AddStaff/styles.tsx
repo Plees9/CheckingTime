@@ -33,6 +33,41 @@ const createStyles = () =>
       fontFamily: FONTS.vanSansMedium,
       marginRight: "3%",
     },
+    row : {
+      flexDirection: "row",
+      justifyContent: "space-around",
+      marginTop: "3%",
+    },
+    row1: {
+      flexDirection: "row",
+      alignItems: "center",
+      textAlign: "center",
+      width: 150,
+      height: 40,
+      marginTop: "3%",
+      borderWidth: 1,
+      borderColor: "gray",
+      borderRadius: 5,
+    },
+    row3: {
+      
+      width: 150,
+      height: 40,
+      borderRadius: 5,
+    },
+    row2 : {
+      flexDirection: "row",
+      textAlign: "center",
+      marginTop: "3%",
+      width: 150,
+      borderWidth: 1,
+      borderRadius: 5,
+      
+    },
+    styleIcon: {
+      marginLeft: "5%",
+    },
+    
   });
 
 export default createStyles;

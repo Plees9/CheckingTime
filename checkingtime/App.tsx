@@ -36,10 +36,10 @@ const App = () => {
   return (
     <Provider store={store}>
     <SafeAreaView style={styles.root}>
-       <SNavigation /> 
-       {/* <NavigationContainer>
+       {/* <SNavigation />  */}
+       <NavigationContainer>
        <AddStaff />
-       </NavigationContainer> */}
+       </NavigationContainer>
       
     </SafeAreaView>
     </Provider>
