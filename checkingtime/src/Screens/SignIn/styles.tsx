@@ -14,7 +14,6 @@ const createStyles = () =>
       flex: 0.5,
       justifyContent: "flex-end",
     },
-
     textWelcome: {
       fontSize: 50,
       textAlign: "center",

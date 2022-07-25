@@ -30,7 +30,7 @@ const HomeScreen = () => {
           </View>
         </TouchableOpacity>
 
-        <View>
+        <View style={{alignItems: 'center'}}>
           <View style={styles.icon2}>
             <Text style={styles.text}>Nhật ký hôm nay</Text>
             <View>

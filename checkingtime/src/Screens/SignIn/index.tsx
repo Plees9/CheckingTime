@@ -1,10 +1,4 @@
-import {
-  View,
-  Text,
-  TextInput,
-  Alert,
-  TouchableOpacity,
-} from "react-native";
+import { View, Text, TextInput, Alert, TouchableOpacity, Image } from "react-native";
 import React, { useMemo, useState, useEffect } from "react";
 import createStyles from "./styles";
 import Icon from "react-native-vector-icons/FontAwesome";
@@ -38,7 +32,7 @@ const SignIn = () => {
 
   const hobbies: string[] = [];
 
-  const image = require("../../../assets/images/viking_logo.png");
+  const image = require("../../../assets/images/viking-logo_4x.png");
 
   const Click = () => {
     if (isChecked === true) {
@@ -54,11 +48,11 @@ const SignIn = () => {
           colors={["#f12711", "#f5af19"]}
           style={styles.textWelcome}
         >
-          Valhalica
+          Vikings
         </GradientText>
       </View>
 
-      <View style={{ marginTop: "15%" }}>
+      <View style={{ marginTop: "7%" }}>
         <View style={styles.styleTT}>
           <View>
             <Icon name="user" size={24} />
@@ -113,7 +107,7 @@ const SignIn = () => {
         style={styles.btn2}
       >
         <TouchableOpacity onPress={loginHandler}>
-        {/* <TouchableOpacity onPress={() => navigation.navigate("HomeScreen")}> */}
+          {/* <TouchableOpacity onPress={() => navigation.navigate("HomeScreen")}> */}
           <Text style={styles.text22}>Đăng nhập</Text>
         </TouchableOpacity>
       </LinearGradient>
