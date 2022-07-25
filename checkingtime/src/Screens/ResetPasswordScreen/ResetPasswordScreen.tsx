@@ -1,9 +1,4 @@
-import {
-  View,
-  Text,
-  TextInput,
-  TouchableOpacity,
-} from "react-native";
+import { View, Text, TextInput, Alert, TouchableOpacity } from "react-native";
 import React, { useMemo, useState } from "react";
 
 import createStyles from "./styles";
@@ -21,15 +16,18 @@ const ResetPasswordScreen = () => {
   return (
     <View style={styles.viewbgr}>
       <View style={styles.view}>
-        <Text style={styles.textTop}> Mật khẩu hiện tại</Text>
+        <Text style={styles.textTop}> Nhập mã OTP</Text>
         <TextInput
           style={styles.text}
           value={password}
           onChangeText={(text) => setPassword(text)}
           secureTextEntry={undefined}
           returnKeyType="done"
-          placeholder={"Nhập mật khẩu cũ"}
+          placeholder={"Vui lòng nhập mã OTP trong vòng 5 phút"}
         ></TextInput>
+        <Text style={styles.textnote}>
+          Xin đợi 1 phút trước khi yêu cầu gửi lại OTP
+        </Text>
 
         <Text style={styles.textTop}> Mật khẩu mới</Text>
         <TextInput
@@ -44,8 +42,8 @@ const ResetPasswordScreen = () => {
         <Text style={styles.textTop}> Xác nhận mật khẩu</Text>
         <TextInput
           style={styles.text}
-          value={password}
-          onChangeText={(text) => setPassword(text)}
+          value={confirmPassword}
+          onChangeText={(text) => setConfirmPassword(text)}
           secureTextEntry={undefined}
           returnKeyType="done"
           placeholder={"Xác nhận mật khẩu mới"}
@@ -55,13 +53,17 @@ const ResetPasswordScreen = () => {
           <LinearGradient
             start={{ x: 0, y: 0 }}
             end={{ x: 1, y: 0 }}
-            colors={["#7F00FF", "#E100FF"]}
+            colors={["#f12711", "#f5af19"]}
             style={styles.btn22}
           >
             <TouchableOpacity onPress={() => navigation.navigate("SignIn")}>
               <Text style={styles.size}>Xác nhận</Text>
             </TouchableOpacity>
           </LinearGradient>
+
+          <TouchableOpacity onPress={() => Alert.alert("Mã OTP nào đó")}>
+            <Text style={styles.textOTP}>Gửi lại OTP</Text>
+          </TouchableOpacity>
         </View>
       </View>
     </View>
