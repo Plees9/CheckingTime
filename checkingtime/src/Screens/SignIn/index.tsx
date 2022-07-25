@@ -8,18 +8,35 @@ import {
   Button,
   ImageBackground,
 } from "react-native";
-import React, { useMemo, useState } from "react";
+import React, { useMemo, useState, useEffect } from "react";
 import createStyles from "./styles";
 import Icon from "react-native-vector-icons/FontAwesome";
 import { LinearGradient } from "expo-linear-gradient";
 import { CheckBox } from "@rneui/themed";
 import { useNavigation } from "@react-navigation/native";
+import { useDispatch, useSelector } from "react-redux";
+import { login } from "../../../redux/action";
 
 const SignIn = () => {
+  // const { error } = useSelector<any>(state => state.auth)
+
+  const dispatch = useDispatch();
   const styles = useMemo(() => createStyles(), []);
   const [userName, setUserName] = useState("");
   const [password, setPassword] = useState("");
   const [isChecked, setIsChecked] = useState(false);
+
+  const loginHandler = () => {
+    dispatch<any>(login(userName, password));
+  };
+
+  // useEffect(() => {
+  //     if (error) {
+  //         alert(error)
+  //         dispatch({ type: "clearError" })
+  //     }
+
+  // }, [error, dispatch, alert,])
 
   const navigation = useNavigation<any>();
 
@@ -56,7 +73,6 @@ const SignIn = () => {
               style={styles.text23}
               keyboardType={"number-pad"}
               returnKeyType="done"
-              maxLength={10}
               value={userName}
               secureTextEntry={false}
               onChangeText={setUserName}
@@ -94,13 +110,12 @@ const SignIn = () => {
 
       <TouchableOpacity>
         <View style={styles.checkbox}>
-        <CheckBox
-          title="Lưu mật khẩu"
-          checked={isChecked}
-          onPress={() => setIsChecked(!isChecked)}
-        ></CheckBox>
+          <CheckBox
+            title="Lưu mật khẩu"
+            checked={isChecked}
+            onPress={() => setIsChecked(!isChecked)}
+          ></CheckBox>
         </View>
-      
       </TouchableOpacity>
 
       <LinearGradient
@@ -109,6 +124,7 @@ const SignIn = () => {
         colors={["#7F00FF", "#E100FF"]}
         style={styles.btn2}
       >
+        {/* <TouchableOpacity onPress={loginHandler}> */}
         <TouchableOpacity onPress={() => navigation.navigate("HomeScreen")}>
           <Text style={styles.text22}>Đăng nhập</Text>
         </TouchableOpacity>
