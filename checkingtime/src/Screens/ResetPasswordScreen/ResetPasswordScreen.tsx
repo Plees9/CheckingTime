@@ -55,7 +55,7 @@ const ResetPasswordScreen = () => {
           <LinearGradient
             start={{ x: 0, y: 0 }}
             end={{ x: 1, y: 0 }}
-            colors={["#7F00FF", "#E100FF"]}
+            colors={["#f12711", "#f5af19"]}
             style={styles.btn22}
           >
             <TouchableOpacity onPress={() => navigation.navigate("SignIn")}>
