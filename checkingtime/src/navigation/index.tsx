@@ -14,13 +14,15 @@ import FormCreated from "../Screens/FormCreated";
 import Jobs from "../Screens/Jobs";
 import InfoScreen from "../Screens/InfoCompany/Info";
 import Account from "../Screens/Account/Account";
-import { loadUser } from '../../redux/action'
+import FDontu from "../Screens/Bolocdontu/FDontu";
 import ResetPasswordScreen from "../Screens/ResetPasswordScreen/ResetPasswordScreen";
 import TabDonTusNavigation from "./TabDonTu";
 import CuaToi from "../Screens/DonTu/CuaToi/CuaToi";
 import ListStaff from "../Screens/ListStaff/ListStaff";
 import EFilter from "../Screens/ListFilter/EFilter";
 import Loader from "./Loader"
+import { loadUser } from "../../redux/action";
+
 const Stack = createNativeStackNavigator();
 
 const Navigation = () => {
@@ -82,6 +84,13 @@ const ListFilterNavigation = () => {
     </Stack.Navigator>
   );
 };
+const FDontuNavigation = () => {
+  return (
+    <Stack.Navigator screenOptions={{ headerShown: false }}>
+      <Stack.Screen name="FDontu" component={FDontu} />
+    </Stack.Navigator>
+  );
+};
 
 const SNavigation = () => {
   const dispatch = useDispatch()
@@ -138,6 +147,11 @@ const SNavigation = () => {
         <Stack.Screen
           name="Bộ lọc"
           component={ListFilterNavigation}
+          options={{ headerShown: true }}
+        />
+        <Stack.Screen
+          name="Bộ lọc đơn từ"
+          component={FDontuNavigation}
           options={{ headerShown: true }}
         />
       </Stack.Navigator>

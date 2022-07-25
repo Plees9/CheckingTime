@@ -1,4 +1,5 @@
 {
+<<<<<<< HEAD
    "cSpell.words": [
       "checkingtime",
       "Đăng",
@@ -11,4 +12,12 @@
       "tatca"
    ],
    "java.configuration.updateBuildConfiguration": "interactive"
+=======
+    "cSpell.words": [
+        "Bolocdon",
+        "Dontu",
+        "selectbox"
+    ],
+    "compile-hero.disable-compile-files-on-did-save-code": false
+>>>>>>> a30e90341f62d853ddc9797390882fa55813ff93
 }
