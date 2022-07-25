@@ -34,8 +34,8 @@ const App = () => {
   return (
     <Provider store={store}>
     <SafeAreaView style={styles.root}>
-      {/* <SNavigation /> */}
-      <CustomDatePicker />
+       <SNavigation /> 
+      {/* <CustomDatePicker /> */}
     </SafeAreaView>
     </Provider>
   );
