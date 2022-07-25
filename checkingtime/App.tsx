@@ -6,7 +6,7 @@ import { useFonts } from "expo-font";
 
 import { NavigationContainer } from '@react-navigation/native';
 import CustomDatePicker from "./src/Screens/Moment/DatePicker";
-import Dates from "./src/Screens/Dates/Dates";
+
 
 
 import EFilter from "./src/Screens/ListFilter/EFilter";
@@ -38,6 +38,7 @@ const App = () => {
   return (
     <SafeAreaView style={styles.root}>
       <SNavigation />
+      
       
      
     </SafeAreaView>
