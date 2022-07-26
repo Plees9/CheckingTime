@@ -23,12 +23,12 @@ const Jobs = () => {
   const navigation = useNavigation<any>();
 
   return (
-    <SafeAreaView style={styles.container}>
+    <ScrollView style={styles.container}>
       <View style={styles.viewHeader}>
-        <Text style={styles.textHeader}>Thông tin chung</Text>
+        <Text style={styles.textHeader}>Quản lí</Text>
       </View>
 
-      <ScrollView
+      <View
         style={{ backgroundColor: "#f2f2f2", margin: 10, borderRadius: 20 }}
       >
         {/* <View>
@@ -112,8 +112,8 @@ const Jobs = () => {
             </View>
           </TouchableOpacity>
         </View>
-      </ScrollView>
-    </SafeAreaView>
+      </View>
+    </ScrollView>
   );
 };
 

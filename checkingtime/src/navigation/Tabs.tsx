@@ -4,39 +4,43 @@ import { NavigationContainer } from "@react-navigation/native";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import Account from "../Screens/Account/Account";
 import HomeScreen from "../Screens/HomeScreen";
+import { ColorfulTabBar } from "react-navigation-tabbar-collection";
 
 import Jobs from "../Screens/Jobs";
-import Icon from "react-native-vector-icons/Ionicons";
+import Icon from "react-native-vector-icons/Feather";
 
 const Tab = createBottomTabNavigator();
 
 const TabsNavigation = () => {
   return (
-    <Tab.Navigator screenOptions={{ headerShown: false }}>
-      <Tab.Screen
-        name="Home Screen"
-        component={HomeScreen}
-        options={{
-          tabBarIcon: () => <Icon name="home" size={30} />,
-        }}
-      />
-      <Tab.Screen
-        name="Công việc"
-        component={Jobs}
-        options={{
-          // headerShown: true,
+      <Tab.Navigator
+        initialRouteName="Home"
+        tabBar={(props) => <ColorfulTabBar {...props} />}
+      >
+        <Tab.Screen
+          name="Trang chủ"
+          component={HomeScreen}
+          options={{
+            tabBarIcon: () => <Icon name="home" size={20} />,
+          }}
+        />
+        <Tab.Screen
+          name="Quản lí"
+          component={Jobs}
+          options={{
+            // headerShown: true,
 
-          tabBarIcon: () => <Icon name="mail-sharp" size={30} />,
-        }}
-      />
-      <Tab.Screen
-        name="Account"
-        component={Account}
-        options={{
-          tabBarIcon: () => <Icon name="person" size={30} />,
-        }}
-      />
-    </Tab.Navigator>
+            tabBarIcon: () => <Icon name="briefcase" size={20} />,
+          }}
+        />
+        <Tab.Screen
+          name="Tài khoản"
+          component={Account}
+          options={{
+            tabBarIcon: () => <Icon name="user" size={20} />,
+          }}
+        />
+      </Tab.Navigator>
   );
 };
 export default TabsNavigation;
