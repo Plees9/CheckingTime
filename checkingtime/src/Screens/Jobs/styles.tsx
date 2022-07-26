@@ -1,4 +1,4 @@
-import {StyleSheet} from "react-native";
+import { StyleSheet } from "react-native";
 import { FONTS } from "../../../constants/theme";
 
 const styles = StyleSheet.create({
@@ -27,10 +27,10 @@ const styles = StyleSheet.create({
     marginLeft: 10,
   },
   viewHeader: {
-      borderRadius: 10,
-          marginRight: 10,
-          marginTop: 40,
-          marginLeft: 20,
+    borderRadius: 10,
+    marginRight: 10,
+    marginTop: 40,
+    marginLeft: 20,
   },
   text: {
     fontSize: 42,
@@ -74,30 +74,31 @@ const styles = StyleSheet.create({
     color: "#00092C",
   },
   textHeader: {
-    fontSize: 20, fontFamily: FONTS.vanSansMedium 
+    fontSize: 20,
+    fontFamily: FONTS.vanSansMedium,
   },
-  Touch1 :{
-            backgroundColor: "white",
-            borderRadius: 10,
-            marginTop: 5,
-            marginBottom: 5,
-            marginRight: 10,
-            flexDirection: "row",
-            marginLeft: 10,
-          },
-Touch2 :{
-   backgroundColor: "white",
-              borderRadius: 10,
-              marginTop: 10,
-              marginBottom: 5,
-              marginRight: 10,
-              flexDirection: "row",
-},
-viewText: {
-  justifyContent: "center",
-                alignItems: "flex-start",
-                marginRight: 20,
-},
+  Touch1: {
+    backgroundColor: "white",
+    borderRadius: 10,
+    marginTop: 5,
+    marginBottom: 5,
+    marginRight: 10,
+    flexDirection: "row",
+    marginLeft: 10,
+  },
+  Touch2: {
+    backgroundColor: "white",
+    borderRadius: 10,
+    marginTop: 10,
+    marginBottom: 5,
+    marginRight: 10,
+    flexDirection: "row",
+  },
+  viewText: {
+    justifyContent: "center",
+    alignItems: "flex-start",
+    marginRight: 20,
+  },
 
   iconbtn: {
     alignContent: "center",

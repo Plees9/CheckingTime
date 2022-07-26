@@ -6,7 +6,9 @@ import { useNavigation } from "@react-navigation/native";
 import { LinearGradient } from "expo-linear-gradient";
 import { useDispatch, useSelector } from "react-redux";
 import { resetPassword } from "../../../redux/action";
+
 const ResetPasswordScreen = () => {
+  
   const dispatch = useDispatch()
   const { message, error } = useSelector<any>(state => state.message)
   const styles = useMemo(() => createStyles(), []);
