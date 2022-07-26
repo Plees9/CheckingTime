@@ -1,4 +1,11 @@
-import { View, Text, TextInput, Alert, TouchableOpacity, Image } from "react-native";
+import {
+  View,
+  Text,
+  TextInput,
+  Alert,
+  TouchableOpacity,
+  Image,
+} from "react-native";
 import React, { useMemo, useState, useEffect } from "react";
 import createStyles from "./styles";
 import Icon from "react-native-vector-icons/FontAwesome";
@@ -17,6 +24,7 @@ const SignIn = () => {
   const [userName, setUserName] = useState("");
   const [password, setPassword] = useState("");
   const [isChecked, setIsChecked] = useState(false);
+  const [isHided, setIsHided] = useState(true);
 
   const loginHandler = () => {
     dispatch<any>(login(userName, password));
@@ -57,7 +65,7 @@ const SignIn = () => {
           <View>
             <Icon name="user" size={24} />
           </View>
-          <View style={styles.text24}>
+          <View style={styles.text21}>
             <TextInput
               placeholder={"Số điện thoại"}
               style={styles.text23}
@@ -81,12 +89,17 @@ const SignIn = () => {
               placeholder={"Mật khẩu"}
               style={styles.text23}
               maxLength={16}
-              secureTextEntry={true}
+              secureTextEntry={isHided}
               returnKeyType="go"
               value={password}
               onChangeText={setPassword}
             />
           </View>
+          <TouchableOpacity onPressIn={() => setIsHided(false)} onPressOut={() => setIsHided(true)}>
+            <View>
+            {isHided ? <Icon name="eye" size={26} /> : <Icon name="eye-slash" size={26} />}
+            </View>
+          </TouchableOpacity>
         </View>
       </View>
 
@@ -98,7 +111,6 @@ const SignIn = () => {
             onPress={() => setIsChecked(!isChecked)}
           ></CheckBox>
         </View>
-        <Text>CheckBox selected: {isChecked ? "😂" : "🙂"}</Text>
       </TouchableOpacity>
 
       <LinearGradient

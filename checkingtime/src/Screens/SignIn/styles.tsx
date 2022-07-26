@@ -46,6 +46,11 @@ const createStyles = () =>
     },
     text24: {
       marginLeft: 10,
+      width: "84%",
+      fontSize: 14,
+    },
+    text21: {
+      marginLeft: 10,
       width: "100%",
       fontSize: 14,
     },
