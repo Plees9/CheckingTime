@@ -1,16 +1,36 @@
 import { View, Text, TextInput, Alert, TouchableOpacity } from "react-native";
-import React, { useMemo, useState } from "react";
+import React, { useMemo, useState, useEffect } from "react";
 
 import createStyles from "./styles";
 import { useNavigation } from "@react-navigation/native";
 import { LinearGradient } from "expo-linear-gradient";
+import { useDispatch, useSelector } from "react-redux";
+import { resetPassword } from "../../../redux/action";
 
 const ResetPasswordScreen = () => {
+  
+  const dispatch = useDispatch()
+  const { message, error } = useSelector<any>(state => state.message)
   const styles = useMemo(() => createStyles(), []);
-  const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [otp, setotp] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
-  const [otp,setOtp] = useState("");
+
+  const changePasswordHandler = async () => {
+    await dispatch<any>(resetPassword(otp, password, confirmPassword));
+    navigation.navigate("login");
+}
+
+useEffect(() => {
+    if (message) {
+        alert(message);
+        dispatch({ type: "clearMessage" })
+    }
+    if (error) {
+        alert(error);
+        dispatch({ type: "clearError" })
+    }
+}, [alert, message, dispatch, error])
 
   const navigation = useNavigation<any>();
 
@@ -21,7 +41,7 @@ const ResetPasswordScreen = () => {
         <TextInput
           style={styles.text}
           value={otp}
-          onChangeText={(text) => setOtp(text)}
+          onChangeText={(text) => setotp(text)}
           secureTextEntry={undefined}
           returnKeyType="done"
           placeholder={"Vui lòng nhập mã OTP trong vòng 5 phút"}
@@ -57,7 +77,7 @@ const ResetPasswordScreen = () => {
             colors={["#f12711", "#f5af19"]}
             style={styles.btn22}
           >
-            <TouchableOpacity onPress={() => navigation.navigate("SignIn")}>
+            <TouchableOpacity onPress={changePasswordHandler}>
               <Text style={styles.size}>Xác nhận</Text>
             </TouchableOpacity>
           </LinearGradient>
