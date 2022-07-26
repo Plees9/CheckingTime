@@ -97,7 +97,7 @@ const SignIn = () => {
           </View>
           <TouchableOpacity onPressIn={() => setIsHided(false)} onPressOut={() => setIsHided(true)}>
             <View>
-            {isHided ? <Icon name="eye" size={26} /> : <Icon name="eye-slash" size={26} />}
+            {isHided == true ? <Icon name="eye" size={26} /> : <Icon name="eye-slash" size={26} />}
             </View>
           </TouchableOpacity>
         </View>
