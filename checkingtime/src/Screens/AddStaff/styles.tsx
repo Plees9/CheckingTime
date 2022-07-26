@@ -9,7 +9,7 @@ const createStyles = () =>
       backgroundColor: "white",
     },
     textWelcome: {
-      marginTop: "10%",
+      marginTop: "20%",
       alignSelf: "center",
       fontSize: 40,
       color: "#FF4949",
@@ -33,7 +33,7 @@ const createStyles = () =>
       fontFamily: FONTS.vanSansMedium,
       marginRight: "3%",
     },
-    row : {
+    row: {
       flexDirection: "row",
       justifyContent: "space-around",
       marginTop: "3%",
@@ -46,28 +46,46 @@ const createStyles = () =>
       height: 40,
       marginTop: "3%",
       borderWidth: 1,
-      borderColor: "gray",
+      borderColor: "#CFD2CF",
       borderRadius: 5,
     },
     row3: {
-      
       width: 150,
       height: 40,
       borderRadius: 5,
     },
-    row2 : {
+    row2: {
       flexDirection: "row",
       textAlign: "center",
       marginTop: "3%",
+      
       width: 150,
+      borderColor: "#CFD2CF",
       borderWidth: 1,
       borderRadius: 5,
-      
     },
     styleIcon: {
-      marginLeft: "5%",
+      marginTop: "5%",
+      marginRight: "5%",
+      marginBottom: "5%",
+      
     },
-    
+    text22: {
+      fontSize: 20,
+      padding: 5,
+      width: "100%",
+      color: "#FFFFFF",
+      textAlign: "center",
+      fontFamily: FONTS.vanSansBold,
+    },
+    btn2: {
+      width: "90%",
+      height: "6%",
+      alignSelf: "center",
+      justifyContent: "center",
+      borderRadius: 10,
+       marginTop: "10%",
+    },
   });
 
 export default createStyles;
