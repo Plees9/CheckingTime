@@ -24,7 +24,7 @@ const TabsNavigation = () => {
         name="Công việc"
         component={Jobs}
         options={{
-          headerShown: true,
+          // headerShown: true,
 
           tabBarIcon: () => <Icon name="mail-sharp" size={30} />,
         }}

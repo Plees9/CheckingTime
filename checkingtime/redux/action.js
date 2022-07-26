@@ -71,7 +71,7 @@ export const forgetPassword = (email) => async (dispatch) => {
     dispatch({ type: "forgetPasswordRequest" });
 
     const { data } = await axios.post(
-      `${serverUrl}/forgetpassword`,
+      `${serverUrl}/user/forgetpassword`,
       { email },
       {
         headers: {
@@ -88,13 +88,13 @@ export const forgetPassword = (email) => async (dispatch) => {
   }
 };
 
-export const resetPassword = (otp, newPassword) => async (dispatch) => {
+export const resetPassword = (otp, newPassword, rewritePassword) => async (dispatch) => {
   try {
     dispatch({ type: "resetPasswordRequest" });
 
     const { data } = await axios.put(
-      `${serverUrl}/resetpassword`,
-      { otp, newPassword },
+      `${serverUrl}/user/resetpassword`,
+      { otp, newPassword, rewritePassword },
       {
         headers: {
           "Content-Type": "application/json",
