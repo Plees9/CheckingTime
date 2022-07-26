@@ -5,39 +5,39 @@ const createStyles = () =>
   StyleSheet.create({
     view: {
       //marginTop: 60,
-      marginHorizontal: 20,
+      // marginHorizontal: 20,
       flex: 1,
       alignSelf: "center",
       backgroundColor: "white",
     },
-
+    image1: {
+      flex: 0.5,
+      justifyContent: "flex-end",
+    },
     textWelcome: {
-      marginTop: 100,
-      marginBottom: 20,
-      alignSelf: "center",
       fontSize: 50,
-      //fontWeight: "bold",
-      color: "#FF4949",
+      textAlign: "center",
+      color: "#fff",
       fontFamily: FONTS.vanSansBlack,
     },
     text1: {
       fontSize: 14,
       margin: 15,
-      marginHorizontal: 20,
+      marginHorizontal: 10,
       textAlign: "center",
       fontFamily: FONTS.vanSansRegular,
       fontWeight: "bold",
     },
     styletext: {
       fontSize: 16,
-      marginHorizontal: 10,
+      marginHorizontal: 20,
       marginTop: 10,
       fontFamily: FONTS.vanSansSemiBold,
     },
     styleTT: {
       flexDirection: "row",
       borderWidth: 1,
-      marginTop: 6,
+      marginTop: 10,
       //height: 45,
       marginHorizontal: 20,
       padding: 10,
@@ -50,7 +50,7 @@ const createStyles = () =>
       fontSize: 14,
     },
     btnForgot: {
-      alignSelf: "flex-end",
+      alignSelf: "center",
       marginTop: 15,
       marginRight: "3%",
       fontWeight: "100",
@@ -62,7 +62,8 @@ const createStyles = () =>
     },
     checkbox: {
       fontFamily: FONTS.vanSansMedium,
-      width: "45%",
+      width: "42%",
+      //backgroundColor:"red"
     },
     btn2: {
       width: 350,

@@ -70,10 +70,8 @@ const styles = StyleSheet.create({
     flexDirection: "column",
     height: 170,
     width: 350,
-    backgroundColor: "#764AF1",
     marginTop: 10,
-    marginHorizontal: 20,
-    marginLeft: 20,
+    backgroundColor: "#764AF1",
     borderRadius: 25,
   },
   textIcon23: {
