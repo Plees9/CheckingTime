@@ -9,6 +9,8 @@ import { useFonts } from "expo-font";
 import { Provider } from "react-redux";
 import store from "./redux/store";
 import { NavigationContainer } from "@react-navigation/native";
+import Jobs from "./src/Screens/Jobs";
+
 
 const App = () => {
   const [fontsLoaded] = useFonts({
@@ -36,10 +38,11 @@ const App = () => {
   return (
     <Provider store={store}>
     <SafeAreaView style={styles.root}>
-       <SNavigation /> 
-       {/* <NavigationContainer>
-       <AddStaff />
-       </NavigationContainer> */}
+       {/* <SNavigation />  */}
+       <NavigationContainer>
+       <Jobs />
+       </NavigationContainer>
+      
       
     </SafeAreaView>
     </Provider>
