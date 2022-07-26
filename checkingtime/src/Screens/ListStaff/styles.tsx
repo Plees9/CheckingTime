@@ -16,6 +16,10 @@ const createStyles = () =>
       padding: 10,
       backgroundColor: "#f2f2f2",
     },
+    iconPlus: {
+      margin: 10,
+      
+    },
     icon1: {
       flexDirection: "row",
       flex: 1,

@@ -24,6 +24,11 @@ const ListStaff = () => {
             returnKeyType="done"
           ></TextInput>
         </View>
+        <View style={styles.iconPlus} >
+        <Icon name="plus-circle" size={40} color ="orange" onPress={() => navigation.navigate("Thêm nhân viên")}  />
+
+        </View>
+        
       </View>
 
       <SafeAreaView >
