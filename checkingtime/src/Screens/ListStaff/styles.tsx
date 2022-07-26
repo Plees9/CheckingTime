@@ -13,7 +13,8 @@ const createStyles = () =>
     icon: {
       margin: 10,
       borderRadius: 10,
-      padding: 10,
+      padding: "2.5%",
+      justifyContent: "center",
       backgroundColor: "#f2f2f2",
     },
     icon1: {
@@ -21,7 +22,7 @@ const createStyles = () =>
       flex: 1,
       margin: 10,
       borderRadius: 10,
-      padding: 5,
+      padding: "2.5%",
       backgroundColor: "#f2f2f2",
       fontWeight: "bold",
     },

@@ -6,6 +6,7 @@ import { TextInput } from "react-native-gesture-handler";
 import { Avatar } from "@rneui/themed";
 import createStyles from "./styles";
 import { useNavigation } from "@react-navigation/native";
+import { IconButton } from "react-native-paper";
 
 const ListStaff = () => {
   const styles = useMemo(() => createStyles(), []);
@@ -23,6 +24,14 @@ const ListStaff = () => {
             placeholder="Tìm kiếm"
             returnKeyType="done"
           ></TextInput>
+        </View>
+        <View >
+        <IconButton
+              icon="plus-circle"
+              color="orange"
+              size={35}
+              onPress={() => navigation.navigate("Thêm nhân viên")}
+            />
         </View>
       </View>
 

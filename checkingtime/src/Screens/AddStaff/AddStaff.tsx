@@ -2,8 +2,9 @@ import {
   View,
   Text,
   TextInput,
-  ScrollView,
+  ToastAndroid,
   TouchableOpacity,
+  Alert,
 } from "react-native";
 import React, { useMemo, useState, useEffect, Component } from "react";
 import createStyles from "./styles";
@@ -14,21 +15,37 @@ import CustomDatePicker from "../Moment/DatePicker";
 import Icon from "react-native-vector-icons/FontAwesome";
 import { LinearGradient } from "expo-linear-gradient";
 
+//import PassMeter from "react-native-passmeter";
+import { PasswordMeter } from "react-native-password-meter";
+
 const AddStaff = () => {
   const styles = useMemo(() => createStyles(), []);
   const [userName, setUserName] = useState("");
   const [email, setEmail] = useState("");
   const [numberPhone, setNumberPhone] = useState("");
-  const [password, setPassword] = useState("");
+
+  const [password, setPassword] = React.useState({ value: "", error: "" });
+  const [passwordScore, setPasswordScore] = React.useState(0);
+  const _updateScore = (val: any) => {
+    setPasswordScore(val);
+  };
+
   const [confirmPassword, setConfirmPassword] = useState("");
 
   const navigation = useNavigation<any>();
 
   const [country, setCountry] = useState("Unknown");
+  function showToast() {
+    ToastAndroid.show("Xác nhận đăng ký thành công", ToastAndroid.SHORT);
+  }
+
+  // const MAX_LEN = 16,
+  //   MIN_LEN = 8,
+  //   PASS_LABELS = ["Too Short", "Weak", "Normal", "Strong", "Secure"];
 
   return (
     <View style={styles.view}>
-      <Text style={styles.textWelcome}>Đăng ký</Text>
+      <Text style={styles.textWelcome}>Đăng ký thành viên</Text>
       <View>
         <View style={styles.styleTT}>
           <View style={styles.text24}>
@@ -78,12 +95,28 @@ const AddStaff = () => {
               placeholder={"Enter your password"}
               style={styles.text23}
               returnKeyType="done"
-              value={password}
+              maxLength={16}
+              value={password.value}
               secureTextEntry={true}
-              onChangeText={setPassword}
+              onChangeText={(text) => setPassword({ value: text, error: "" })}
             />
           </View>
         </View>
+        <PasswordMeter
+          password={password.value}
+          onResult={(val: any) => {
+            _updateScore(val);
+          }}
+        />
+        {/* <PassMeter
+          showLabels
+          password={password}
+          maxLength={MAX_LEN}
+          minLength={MIN_LEN}
+          labels={PASS_LABELS}
+        /> */}
+
+        <Text style={styles.textExemple}>8-16 ký tự ví dụ: eX@mpL3*</Text>
         <View style={styles.styleTT}>
           <View style={styles.text24}>
             <TextInput
@@ -163,8 +196,8 @@ const AddStaff = () => {
         style={styles.btn2}
       >
         {/* <TouchableOpacity onPress={loginHandler}> */}
-        <TouchableOpacity onPress={() => navigation.navigate("HomeScreen")}>
-          <Text style={styles.text22}>Đăng nhập</Text>
+        <TouchableOpacity onPress={showToast}>
+          <Text style={styles.text22}>Đăng ký</Text>
         </TouchableOpacity>
       </LinearGradient>
     </View>

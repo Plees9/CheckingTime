@@ -4,15 +4,14 @@ import { FONTS } from "../../../constants/theme";
 const createStyles = () =>
   StyleSheet.create({
     view: {
-      marginHorizontal: 20,
       flex: 1,
       backgroundColor: "white",
     },
     textWelcome: {
-      marginTop: "20%",
+      marginTop: "3%",
       alignSelf: "center",
-      fontSize: 40,
-      color: "#FF4949",
+      fontSize: 35,
+      color: "#FF9F29",
       fontFamily: FONTS.vanSansBlack,
     },
     styleTT: {
@@ -27,6 +26,12 @@ const createStyles = () =>
       marginLeft: 10,
       width: "100%",
       fontSize: 14,
+    },
+    textExemple: {
+      color:"#EB1D36", 
+      fontSize: 12,
+      marginHorizontal: 25,
+      fontFamily: FONTS.vanSansBold,
     },
     text23: {
       fontSize: 16,
