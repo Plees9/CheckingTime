@@ -98,6 +98,7 @@ const SignIn = () => {
             onPress={() => setIsChecked(!isChecked)}
           ></CheckBox>
         </View>
+        <Text>CheckBox selected: {isChecked ? "😂" : "🙂"}</Text>
       </TouchableOpacity>
 
       <LinearGradient

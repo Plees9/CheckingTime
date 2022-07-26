@@ -10,6 +10,7 @@ const ResetPasswordScreen = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
+  const [otp,setOtp] = useState("");
 
   const navigation = useNavigation<any>();
 
@@ -19,8 +20,8 @@ const ResetPasswordScreen = () => {
         <Text style={styles.textTop}> Nhập mã OTP</Text>
         <TextInput
           style={styles.text}
-          value={password}
-          onChangeText={(text) => setPassword(text)}
+          value={otp}
+          onChangeText={(text) => setOtp(text)}
           secureTextEntry={undefined}
           returnKeyType="done"
           placeholder={"Vui lòng nhập mã OTP trong vòng 5 phút"}
@@ -34,7 +35,7 @@ const ResetPasswordScreen = () => {
           style={styles.text}
           value={password}
           onChangeText={(text) => setPassword(text)}
-          secureTextEntry={undefined}
+          secureTextEntry={true}
           returnKeyType="done"
           placeholder={"Nhập mật khẩu mới"}
         ></TextInput>
@@ -44,7 +45,7 @@ const ResetPasswordScreen = () => {
           style={styles.text}
           value={confirmPassword}
           onChangeText={(text) => setConfirmPassword(text)}
-          secureTextEntry={undefined}
+          secureTextEntry={true}
           returnKeyType="done"
           placeholder={"Xác nhận mật khẩu mới"}
         ></TextInput>
