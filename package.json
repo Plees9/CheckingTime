@@ -1,5 +1,6 @@
 {
   "dependencies": {
-    "react-native-multiple-select": "^0.5.9"
+    "react-native-multiple-select": "^0.5.9",
+    "react-native-passmeter": "^0.0.5"
   }
 }
