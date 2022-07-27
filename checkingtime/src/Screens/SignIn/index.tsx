@@ -15,6 +15,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { login } from "../../../redux/action";
 import { LinearGradient } from "expo-linear-gradient";
 import GradientText from "../../component/GradientText";
+import Icon_1 from "react-native-vector-icons/Ionicons";
 
 const SignIn = () => {
   const { error } = useSelector<any>((state) => state.auth);
@@ -95,7 +96,7 @@ const SignIn = () => {
           </View>
           <TouchableOpacity onPressIn={() => setIsHided(false)} onPressOut={() => setIsHided(true)}>
             <View>
-            {isHided == true ? <Icon name="eye" size={26} /> : <Icon name="eye-slash" size={26} />}
+            {isHided == true ? <Icon_1 name="eye" size={26} color={'#595959'} /> : <Icon_1 name="eye-off" size={26} color={'#595959'} />}
             </View>
           </TouchableOpacity>
         </View>
