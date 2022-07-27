@@ -55,8 +55,8 @@ const styles = StyleSheet.create({
     height: 40,
     borderRadius: 35 / 2,
     backgroundColor: "#eee9f5",
-    alignItems: "center",
-    //justifyContent: "center",
+    // alignItems: "center",
+    // justifyContent: "center",
     padding: 10,
   },
   icon1: {
@@ -71,7 +71,7 @@ const styles = StyleSheet.create({
     height: 170,
     width: 350,
     marginTop: 10,
-    backgroundColor: "#FFCD38",
+    backgroundColor: "#FF8C32",
     borderRadius: 25,
   },
   textIcon23: {
