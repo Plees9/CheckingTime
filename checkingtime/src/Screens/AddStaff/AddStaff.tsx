@@ -11,13 +11,12 @@ import createStyles from "./styles";
 import { useNavigation } from "@react-navigation/native";
 
 import { Picker } from "@react-native-picker/picker";
-
 import Icon from "react-native-vector-icons/FontAwesome";
 import { LinearGradient } from "expo-linear-gradient";
 
-
 //import { PasswordMeter } from 'react-native-password-meter';
-import PassMeter from "react-native-passmeter";
+//import PassMeter from "react-native-passmeter";
+
 import CustomDatePicker from "../Moment/DatePicker";
 
 const AddStaff = () => {
@@ -94,19 +93,19 @@ const AddStaff = () => {
               returnKeyType="done"
               maxLength={16}
               //value={password.value}
-secureTextEntry={true}
+              secureTextEntry={true}
               onChangeText={password => setPassword(password)}
             />
           </View>
         </View>
-        
-        <PassMeter
+
+        {/* <PassMeter
           showLabels
           password={password}
           maxLength={MAX_LEN}
           minLength={MIN_LEN}
           labels={PASS_LABELS}
-        />
+        /> */}
 
         <Text style={styles.textExemple}>8-16 ký tự ví dụ: eX@mpL3*</Text>
         <View style={styles.styleTT}>
@@ -181,7 +180,7 @@ secureTextEntry={true}
           </Picker>
         </View>
       </View>
-<LinearGradient
+      <LinearGradient
         start={{ x: 0, y: 0 }}
         end={{ x: 1, y: 0 }}
         colors={["#f12711", "#f5af19"]}

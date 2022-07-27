@@ -24,9 +24,9 @@ const Jobs = () => {
 
   return (
     <ScrollView style={styles.container}>
-      <View style={styles.viewHeader}>
+      {/* <View style={styles.viewHeader}>
         <Text style={styles.textHeader}>Quản lí</Text>
-      </View>
+      </View> */}
 
       <View
         style={{ backgroundColor: "#f2f2f2", margin: 10, borderRadius: 20 }}
