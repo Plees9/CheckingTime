@@ -1,12 +1,13 @@
 import { StyleSheet, StatusBar } from "react-native";
 import { FONTS } from "../../../constants/theme";
+import {Color_Icon} from "../../../constants/theme";
 
 const createStyles = () =>
   StyleSheet.create({
     container: {
       flex: 1,
       flexDirection: "column",
-      marginTop: 30,
+      marginTop: "3%",
       marginLeft: 10,
       marginBottom: 15,
       //paddingTop: StatusBar.currentHeight,
@@ -42,19 +43,20 @@ const createStyles = () =>
     },
     khoangcach: {
       marginTop: 15,
-      marginBottom: 25,
+      marginBottom: 15,
     },
     chu: {
       fontFamily: FONTS.vanSansSemiBold,
     },
     chu1: {
-      //fontWeight: "bold",
-      fontSize: 20,
+      fontSize: 24,
       width: "98%",
       backgroundColor: "#DDDDDD",
       textAlign: "center",
-      padding: 10,
-      fontFamily: FONTS.vanSansMedium,
+      padding: 8,
+      borderRadius: 10,
+      color: "#F32424",
+      fontFamily: FONTS.vanSansBold,
     },
   });
 

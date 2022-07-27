@@ -5,23 +5,20 @@ import {
   View,
   Alert,
   TouchableOpacity,
-  ImageBackground,
 } from "react-native";
 import { Avatar } from "@rneui/themed";
 import Icon from "react-native-vector-icons/FontAwesome";
 import styles from "./styles";
-import GradientText from "../../component/GradientText";
+
 
 const HomeScreen = () => {
   const navigation = useNavigation<any>();
   return (
     <View style={styles.container}>
-      {/* <ImageBackground source={require("../../../assets/images/tim.jpg")} > */}
-
       <View>
         <TouchableOpacity onPress={() => navigation.navigate("Account")}>
           <View style={styles.row}>
-            <Icon name="user" size={26} color="#DDDDDD" style={styles.icon} />
+            <Icon name="user" size={26} color="#f49218" style={styles.icon} />
             <Text style={styles.text1}>
               {" "}
               Xin chào, {""}
@@ -38,7 +35,7 @@ const HomeScreen = () => {
                 <Icon
                   name="check"
                   size={18}
-                  color="#7445f6"
+                  color="#f49218"
                   style={styles.boder}
                 />
                 <Text style={styles.text2}> Checkin: </Text>
@@ -48,7 +45,7 @@ const HomeScreen = () => {
                 <Icon
                   name="dedent"
                   size={18}
-                  color="#7445f6"
+                  color="#f49218"
                   style={styles.boder}
                 />
                 <Text style={styles.text2}> Checkout:</Text>
@@ -59,7 +56,7 @@ const HomeScreen = () => {
                 <Icon
                   name="line-chart"
                   size={18}
-                  color="#7445f6"
+                  color="#f49218"
                   style={styles.boder}
                 />
                 <Text style={styles.text2}> Xếp hạng:</Text>
@@ -77,7 +74,7 @@ const HomeScreen = () => {
               <Icon
                 name="building"
                 size={18}
-                color="#764AF1"
+                color="#f49218"
                 style={styles.icon1}
               />
               <Text style={styles.text5}>Thông tin Công Ty</Text>

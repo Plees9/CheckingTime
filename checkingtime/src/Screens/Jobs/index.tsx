@@ -1,19 +1,13 @@
 import React from "react";
 import {
-  StyleSheet,
   Text,
-  SafeAreaView,
   ScrollView,
-  StatusBar,
   View,
   Alert,
-  TextInput,
-  Button,
-  useWindowDimensions,
   TouchableOpacity,
 } from "react-native";
 import styles from "./styles";
-import { Avatar } from "@rneui/themed";
+
 import Icon from "react-native-vector-icons/FontAwesome";
 import { IconButton } from "react-native-paper";
 
@@ -24,15 +18,8 @@ const Jobs = () => {
 
   return (
     <ScrollView style={styles.container}>
-      
-
       <View
-        style={{ backgroundColor: "#f2f2f2", margin: 10, borderRadius: 20 }}
-      >
-        {/* <View>
-          <Text style={styles.chu11}>Quản lý chấm công</Text>
-        </View> */}
-
+        style={{ backgroundColor: "#f2f2f2", margin: 10,  borderRadius: 20 }}>
         <TouchableOpacity
           style={styles.Touch1}
           onPress={() => Alert.alert("Simple Button pressed")}
@@ -45,15 +32,10 @@ const Jobs = () => {
           </View>
         </TouchableOpacity>
 
-        {/* <View>
-          <Text style={styles.chu11}>Quản lý chấm công</Text>
-        </View> */}
-
         <View style={styles.scrollView}>
           <TouchableOpacity
             style={styles.Touch2}
-            onPress={() => navigation.navigate("Đơn từ")}
-          >
+            onPress={() => navigation.navigate("Đơn từ")}>
             <View style={{ alignContent: "center" }}>
               <IconButton icon="text-box" color="#f49218" size={50} />
             </View>
