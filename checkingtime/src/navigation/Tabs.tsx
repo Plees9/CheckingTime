@@ -35,6 +35,11 @@ const TabsNavigation = () => {
 
             tabBarIcon: () => <Icon name="briefcase" size={20} />,
             headerTitleAlign: "center",
+            headerStatusBarHeight: 25,
+            headerTitleStyle: {
+              fontSize: 20,
+              fontFamily: FONTS.vanSansSemiBold,
+            },
           }}
         />
         <Tab.Screen

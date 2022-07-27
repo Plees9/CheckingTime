@@ -10,7 +10,7 @@ const styles = StyleSheet.create({
 
   text: {
     fontSize: 20,
-    //fontWeight: "bold",
+    
     fontFamily: FONTS.vanSansBold,
     color: "#FFFFFF",
     textAlign: "center",
@@ -21,7 +21,7 @@ const styles = StyleSheet.create({
     marginTop: 6,
     justifyContent: "center",
     fontFamily: FONTS.vanSansRegular,
-    //color: "red",
+   
   },
   textcolor : {
     fontFamily: FONTS.vanSansBold,
@@ -51,13 +51,13 @@ const styles = StyleSheet.create({
     padding: 10,
   },
   icon: {
-    width: 35,
-    height: 35,
+    width: 40,
+    height: 40,
     borderRadius: 35 / 2,
     backgroundColor: "#eee9f5",
     alignItems: "center",
-    justifyContent: "center",
-    padding: 6,
+    //justifyContent: "center",
+    padding: 10,
   },
   icon1: {
     width: 28,
@@ -71,7 +71,7 @@ const styles = StyleSheet.create({
     height: 170,
     width: 350,
     marginTop: 10,
-    backgroundColor: "#764AF1",
+    backgroundColor: "#FFCD38",
     borderRadius: 25,
   },
   textIcon23: {
