@@ -40,8 +40,6 @@ const SignIn = () => {
 
   const hobbies: string[] = [];
 
-  const image = require("../../../assets/images/viking-logo_4x.png");
-
   const Click = () => {
     if (isChecked === true) {
       hobbies.push("check");
@@ -127,7 +125,7 @@ const SignIn = () => {
 
       <TouchableOpacity
         style={styles.btnForgot}
-        onPress={() => navigation.navigate("ForgotPasswordScreen")}
+        onPress={() => navigation.navigate("Quên mật khẩu")}
       >
         <Text style={styles.text23}>Quên mật khẩu?</Text>
       </TouchableOpacity>

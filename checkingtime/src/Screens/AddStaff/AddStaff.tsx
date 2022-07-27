@@ -17,7 +17,7 @@ import { LinearGradient } from "expo-linear-gradient";
 //import { PasswordMeter } from 'react-native-password-meter';
 //import PassMeter from "react-native-passmeter";
 
-import CustomDatePicker from "../Moment/DatePicker";
+// import CustomDatePicker from "../Moment/DatePicker";
 
 const AddStaff = () => {
   const styles = useMemo(() => createStyles(), []);

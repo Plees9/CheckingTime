@@ -4,7 +4,7 @@ import { FONTS } from "../../../constants/theme";
 const createStyles = () =>
   StyleSheet.create({
     view: {
-      marginTop: 80,
+      marginTop: 45,
       marginHorizontal: 20,
       alignSelf: "center",
     },
@@ -16,11 +16,13 @@ const createStyles = () =>
     },
     text: {
       width: 320,
-      height: 35,
+      height: 45,
       alignSelf: "center",
       borderRadius: 5,
-      marginTop: 15,
+      marginTop: 25,
       padding: 5,
+      fontSize: 16,
+      fontFamily: FONTS.vanSansMedium,
       backgroundColor: "#EEEEEE",
 
       margin: 20,
@@ -32,7 +34,6 @@ const createStyles = () =>
       justifyContent: "center",
       alignItems: "center",
       borderRadius: 10,
-      backgroundColor: "#7445f6",
     },
     size: {
       fontSize: 18,
@@ -40,7 +41,6 @@ const createStyles = () =>
       height: 40,
       padding: 6,
       color: "#FFFFFF",
-      //backgroundColor: "#7445f6",
       textAlign: "center",
       fontFamily: FONTS.vanSansBold,
     },
@@ -49,6 +49,17 @@ const createStyles = () =>
       alignSelf: "center",
       marginTop: 10,
       fontWeight: "bold",
+    },
+    image: {
+      height: 200,
+      width: 200,
+      alignSelf: "center",
+    },
+    textnote: {
+      marginTop: 25,
+      fontSize: 15,
+      fontFamily: FONTS.vanSansMedium,
+      alignSelf: "center",
     },
   });
 

@@ -33,8 +33,9 @@ const Navigation = () => {
         options={{ headerShown: false }}
       />
       <Stack.Screen
-        name="ForgotPasswordScreen"
+        name="Quên mật khẩu"
         component={ForgotPasswordScreen}
+        options={{ headerShown: true }}
       />
       <Stack.Screen
         name="HomeScreen"
@@ -42,7 +43,7 @@ const Navigation = () => {
         options={{ headerShown: false }}
       />
       <Stack.Screen
-        name="ResetPassword"
+        name="Cài lại mật khẩu"
         component={ResetPasswordScreen}
         options={{ headerShown: true }}
       />
@@ -149,11 +150,11 @@ const SNavigation = () => {
           options={{ headerShown: true }}
         />
         <Stack.Screen
-        name="ForgotPasswordScreen"
+        name="Quên mật khẩu"
         component={ForgotPasswordScreen}
       />
       <Stack.Screen
-        name="ResetPassword"
+        name="Cài lại mật khẩu"
         component={ResetPasswordScreen}
         options={{ headerShown: true }}
       />
