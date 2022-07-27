@@ -1,9 +1,16 @@
 import { useNavigation } from "@react-navigation/native";
 import React from "react";
-import { Text, View, Alert, TouchableOpacity, ImageBackground } from "react-native";
+import {
+  Text,
+  View,
+  Alert,
+  TouchableOpacity,
+  ImageBackground,
+} from "react-native";
 import { Avatar } from "@rneui/themed";
 import Icon from "react-native-vector-icons/FontAwesome";
 import styles from "./styles";
+import GradientText from "../../component/GradientText";
 
 const HomeScreen = () => {
   const navigation = useNavigation<any>();
@@ -15,17 +22,15 @@ const HomeScreen = () => {
         <TouchableOpacity onPress={() => navigation.navigate("Account")}>
           <View style={styles.row}>
             <Icon name="user" size={26} color="#DDDDDD" style={styles.icon} />
-            <Text style={styles.text1}> Xin chào {''}
-            <Text style={styles.textcolor} >
-              "userName"
-            </Text>
-            
-            
+            <Text style={styles.text1}>
+              {" "}
+              Xin chào, {""}
+              <Text style={styles.textcolor}>userName</Text>
             </Text>
           </View>
         </TouchableOpacity>
 
-        <View>
+        <View style={{alignItems: 'center'}}>
           <View style={styles.icon2}>
             <Text style={styles.text}>Nhật ký hôm nay</Text>
             <View>
@@ -99,11 +104,9 @@ const HomeScreen = () => {
           </View>
 
           <View style={styles.row1}>
-            
             <Text style={styles.textInfo}>stt"1"</Text>
             <Text style={styles.textInfo}>userName</Text>
-            <Text style={styles.textInfo}> Time checkin</Text>   
-            
+            <Text style={styles.textInfo}> Time checkin</Text>
           </View>
           <View style={styles.row1}>
             <Text style={styles.textInfo}>stt"2"</Text>
@@ -124,7 +127,6 @@ const HomeScreen = () => {
 
         {/* </ImageBackground> */}
       </View>
-      
     </View>
   );
 };

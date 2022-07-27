@@ -6,7 +6,7 @@ const createStyles = () =>
     container: {
       flex: 1,
       flexDirection: "column",
-      marginTop: 30,
+      marginTop: "3%",
       marginLeft: 10,
       marginBottom: 15,
       //paddingTop: StatusBar.currentHeight,

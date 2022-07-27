@@ -21,6 +21,7 @@ import CuaToi from "../Screens/DonTu/CuaToi/CuaToi";
 import ListStaff from "../Screens/ListStaff/ListStaff";
 import EFilter from "../Screens/ListFilter/EFilter";
 import Loader from "./Loader"
+import AddStaff from '../Screens/AddStaff/AddStaff';
 const Stack = createNativeStackNavigator();
 
 const Navigation = () => {
@@ -79,6 +80,13 @@ const ListFilterNavigation = () => {
   return (
     <Stack.Navigator screenOptions={{ headerShown: false }}>
       <Stack.Screen name="ListFilter" component={EFilter} />
+    </Stack.Navigator>
+  );
+};
+const AddStaffNavigation = () => {
+  return (
+    <Stack.Navigator screenOptions={{ headerShown: false }}>
+      <Stack.Screen name="AddStaff" component={AddStaff} />
     </Stack.Navigator>
   );
 };
@@ -147,6 +155,11 @@ const SNavigation = () => {
       <Stack.Screen
         name="ResetPassword"
         component={ResetPasswordScreen}
+        options={{ headerShown: true }}
+      />
+      <Stack.Screen
+        name="Thêm nhân viên"
+        component={AddStaffNavigation}
         options={{ headerShown: true }}
       />
       </Stack.Navigator>
