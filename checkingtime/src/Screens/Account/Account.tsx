@@ -14,7 +14,11 @@ import { useNavigation } from "@react-navigation/native";
 import createStyles from "./styles";
 import { useDispatch, useSelector } from "react-redux";
 import { logout } from "../../../redux/action";
+import {Color_Icon} from "../../../constants/theme";
+import { LinearGradient } from "expo-linear-gradient";
+
 const Account = () => {
+  
   const styles = useMemo(() => createStyles(), []);
   const { height } = useWindowDimensions();
   const navigation = useNavigation<any>();
@@ -52,7 +56,8 @@ const Account = () => {
           <Icon
             name="envelope-square"
             size={40}
-            color="#7445f6"
+            //color={Color_Icon.options}
+            color="#f49218"
             style={styles.icon}
           />
           <View style={styles.cot}>
@@ -74,7 +79,7 @@ const Account = () => {
             <Icon
               name="phone-square"
               size={40}
-              color="#7445f6"
+              color="#f49218"
               style={styles.icon}
             />
             <View>
@@ -101,7 +106,7 @@ const Account = () => {
           <Icon
             name="github-square"
             size={35}
-            color="#7445f6"
+            color="#f49218"
             style={styles.icon}
           />
           <View>
@@ -125,7 +130,7 @@ const Account = () => {
           <Icon
             name="steam-square"
             size={40}
-            color="#7445f6"
+            color="#f49218"
             style={styles.icon}
           />
           <View>
@@ -148,7 +153,7 @@ const Account = () => {
           <Icon
             name="reddit-square"
             size={40}
-            color="#7445f6"
+            color="#f49218"
             style={styles.icon}
           />
           <View>
@@ -171,7 +176,7 @@ const Account = () => {
           <Icon
             name="snapchat-square"
             size={40}
-            color="#7445f6"
+            color="#f49218"
             style={styles.icon}
           />
           <View>
@@ -194,7 +199,7 @@ const Account = () => {
           <Icon
             name="xing-square"
             size={40}
-            color="#7445f6"
+            color="#f49218"
             style={styles.icon}
           />
           <View>
@@ -219,7 +224,7 @@ const Account = () => {
         <View>
           <Text style={styles.text}>Lần đăng nhập cuối</Text>
           <View style={styles.hang}>
-            <Icon name="cube" size={35} color="#7445f6" style={styles.icon} />
+            <Icon name="cube" size={35} color="#f49218" style={styles.icon} />
             <View>
               <TextInput
                 style={styles.user}
@@ -252,9 +257,20 @@ const Account = () => {
         >
           <Text style={styles.chu}>Thay đổi mật khẩu</Text>
         </TouchableOpacity>
+       
+        <LinearGradient
+        start={{ x: 0, y: 0 }}
+        end={{ x: 1, y: 0 }}
+        colors={["#f12711", "#f5af19"]}
+        style={styles.btn2}
+      >
+        {/* <TouchableOpacity onPress={loginHandler}> */}
         <TouchableOpacity onPress={logoutHandler}>
-          <Text style={styles.chu1}> Đăng xuất </Text>
+          <Text style={styles.text22}> Đăng xuất </Text>
         </TouchableOpacity>
+          
+      </LinearGradient>
+
       </View>
     </ScrollView>
   );
