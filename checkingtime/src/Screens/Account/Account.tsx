@@ -26,8 +26,6 @@ const Account = () => {
   return (
     <ScrollView style={styles.container}>
       <View style={styles.hang}>
-        {/* <Image source={require('../../assets/images/midu.jpg')} /> */}
-        {/* <Icon name="user-circle" size={60} color="#DFDFDE" /> */}
         <Avatar
           size={70}
           rounded
