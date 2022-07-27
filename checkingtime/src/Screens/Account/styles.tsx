@@ -43,39 +43,20 @@ const createStyles = () =>
     },
     khoangcach: {
       marginTop: 15,
-      marginBottom: 20,
+      marginBottom: 15,
     },
     chu: {
       fontFamily: FONTS.vanSansSemiBold,
     },
-    // Dang xuat cu
     chu1: {
-      //fontWeight: "bold",
-      fontSize: 20,
+      fontSize: 24,
       width: "98%",
       backgroundColor: "#DDDDDD",
       textAlign: "center",
-      padding: 10,
-      borderRadius: 10,
-      fontFamily: FONTS.vanSansMedium,
-    },
-    btn2: {
-      fontSize: 20,
-      width: "98%",
-      
-      padding: 5,
-      borderRadius: 10,
-      
-    },
-    text22: {
-      fontSize: 20,
-      width: "100%",
       padding: 8,
-      //backgroundColor: "#7445f6",
-      color: "#FFFFFF",
-      textAlign: "center",
-      fontFamily: FONTS.vanSansSemiBold,
-      
+      borderRadius: 10,
+      color: "#F32424",
+      fontFamily: FONTS.vanSansBold,
     },
   });
 

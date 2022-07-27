@@ -258,19 +258,11 @@ const Account = () => {
           <Text style={styles.chu}>Thay đổi mật khẩu</Text>
         </TouchableOpacity>
        
-        <LinearGradient
-        start={{ x: 0, y: 0 }}
-        end={{ x: 1, y: 0 }}
-        colors={["#f12711", "#f5af19"]}
-        style={styles.btn2}
-      >
-        {/* <TouchableOpacity onPress={loginHandler}> */}
+       
         <TouchableOpacity onPress={logoutHandler}>
-          <Text style={styles.text22}> Đăng xuất </Text>
+          <Text style={styles.chu1}> Đăng xuất </Text>
         </TouchableOpacity>
           
-      </LinearGradient>
-
       </View>
     </ScrollView>
   );
