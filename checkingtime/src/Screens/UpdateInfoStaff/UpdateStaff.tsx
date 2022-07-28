@@ -5,6 +5,7 @@ import {
   ToastAndroid,
   TouchableOpacity,
   Alert,
+  ImageBackground,
 } from "react-native";
 import React, { useMemo, useState, useEffect, Component } from "react";
 import createStyles from "./styles";
@@ -14,47 +15,65 @@ import { Picker } from "@react-native-picker/picker";
 import Icon from "react-native-vector-icons/FontAwesome";
 import { LinearGradient } from "expo-linear-gradient";
 
-//import { PasswordMeter } from 'react-native-password-meter';
-//import PassMeter from "react-native-passmeter";
-
 import CustomDatePicker from "../Moment/DatePicker";
+import { Avatar } from "@rneui/themed";
 
-const AddStaff = () => {
+const UpdateStaff = () => {
   const styles = useMemo(() => createStyles(), []);
   const [userName, setUserName] = useState("");
   const [email, setEmail] = useState("");
   const [numberPhone, setNumberPhone] = useState("");
+  const [date, setDate] = useState("");
+  const [address, setAddress] = useState("");
 
-  const [password, setPassword] = useState("");
-  const [confirmPassword, setConfirmPassword] = useState("");
+  const imageBgr = require("../../../assets/images/ah.jpg");
 
   const navigation = useNavigation<any>();
 
   const [country, setCountry] = useState("Unknown");
   function showToast() {
-    ToastAndroid.show("Xác nhận đăng ký thành công", ToastAndroid.SHORT);
+    ToastAndroid.show("Đã update thông tin thành công ", ToastAndroid.SHORT);
   }
-
-  const MAX_LEN = 16,
-    MIN_LEN = 8,
-    PASS_LABELS = ["Too Short", "Weak", "Normal", "Strong", "Secure"];
 
   return (
     <View style={styles.view}>
-      {/* <Text style={styles.textWelcome}>Đăng ký thành viên</Text> */}
+      {/* <Text style={styles.textWelcome}>Thay đổi thông tin</Text> */}
+      {/* <ImageBackground source={imageBgr} resizeMode="cover" style={styles.image}> */}
+
+      <View style={styles.avatar}>
+        <Avatar
+          size={80}
+          rounded
+          icon={{ name: "adb", type: "material" }}
+          containerStyle={{ backgroundColor: "orange" }}
+        >
+          <Avatar.Accessory size={24} />
+        </Avatar>
+      </View>
+      <View style={styles.textuserName}>
+        <TextInput
+          placeholder={"Họ và tên"}
+          style={styles.text23_1}
+          returnKeyType="done"
+          value={userName}
+          secureTextEntry={false}
+          onChangeText={setUserName}
+        ></TextInput>
+      </View>
+
+      <View style={{ alignItems: "center" }}>
+        <TextInput
+          style={styles.text23_1}
+          placeholder={"Giới tính"}
+          returnKeyType="done"
+          value={date}
+          onChangeText={setDate}
+          secureTextEntry={false}
+        />
+      </View>
+      {/* </ImageBackground> */}
+
       <View>
-        <View style={styles.styleTT}>
-          <View style={styles.text24}>
-            <TextInput
-              placeholder={"Họ và tên"}
-              style={styles.text23}
-              returnKeyType="done"
-              value={userName}
-              secureTextEntry={false}
-              onChangeText={setUserName}
-            />
-          </View>
-        </View>
         {/* Email */}
         <View style={styles.styleTT}>
           <View style={styles.text24}>
@@ -67,6 +86,9 @@ const AddStaff = () => {
               onChangeText={setEmail}
             />
           </View>
+          {/* <View style={styles.text24_1}>
+            <TextInput placeholder={"Ngày sinh"} />
+          </View> */}
         </View>
         {/* Số điện thoại */}
         <View>
@@ -82,47 +104,42 @@ const AddStaff = () => {
                 onChangeText={setNumberPhone}
               />
             </View>
+            {/* <View style={styles.text24_1}>
+              <TextInput placeholder={"Vị trí"} />
+            </View> */}
           </View>
         </View>
-        {/* PassWord */}
-        <View style={styles.styleTT}>
-          <View style={styles.text24}>
-            <TextInput
-              placeholder={"Enter your password"}
-              style={styles.text23}
-              returnKeyType="done"
-              maxLength={16}
-              //value={password.value}
-              secureTextEntry={true}
-              onChangeText={password => setPassword(password)}
-            />
+        <View>
+          <View style={styles.styleTT}>
+            <View style={styles.text24}>
+              <TextInput
+                placeholder={"Địa chỉ"}
+                style={styles.text23}
+                returnKeyType="done"
+                value={address}
+                secureTextEntry={false}
+                onChangeText={setAddress}
+              />
+            </View>
+            {/* <View style={styles.text24_1}>
+              <TextInput placeholder={"Vị trí"} />
+            </View> */}
           </View>
         </View>
-
-        {/* <PassMeter
-          showLabels
-          password={password}
-          maxLength={MAX_LEN}
-          minLength={MIN_LEN}
-          labels={PASS_LABELS}
-        /> */}
-
-        <Text style={styles.textExemple}>8-16 ký tự ví dụ: eX@mpL3*</Text>
-        
       </View>
+
       <View style={styles.row}>
         <View style={styles.row1}>
-          <Picker
-            selectedValue={country}
-            onValueChange={(value, index) => setCountry(value)}
-            mode="dropdown"
-            style={styles.row3}
-          >
-            <Picker.Item label="Cấp quyền" value="Unknow" />
-            <Picker.Item label="Người dùng" value="1" />
-            <Picker.Item label="Quản lý" value="2" />
-            <Picker.Item label="Quản trị viên" value="3" />
-          </Picker>
+          <CustomDatePicker
+            defaultDate={new Date()}
+            onDateChange={(value: any) => console.log(value)}
+          />
+           <Icon
+            style={styles.styleIcon}
+            name="birthday-cake"
+            size={20}
+            color="black"
+          />
         </View>
         <View style={styles.row2}>
           <CustomDatePicker
@@ -131,7 +148,7 @@ const AddStaff = () => {
           />
           <Icon
             style={styles.styleIcon}
-            name="calendar"
+            name="briefcase"
             size={20}
             color="black"
           />
@@ -175,13 +192,13 @@ const AddStaff = () => {
         colors={["#f12711", "#f5af19"]}
         style={styles.btn2}
       >
-        {/* <TouchableOpacity onPress={loginHandler}> */}
         <TouchableOpacity onPress={showToast}>
-          <Text style={styles.text22}>Đăng ký</Text>
+          <Text style={styles.text22}>Cập nhật</Text>
         </TouchableOpacity>
       </LinearGradient>
+      {/* </ImageBackground> */}
     </View>
   );
 };
 
-export default AddStaff;
+export default UpdateStaff;

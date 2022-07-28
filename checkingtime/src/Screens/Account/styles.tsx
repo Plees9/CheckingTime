@@ -42,8 +42,8 @@ const createStyles = () =>
       flexDirection: "column",
     },
     khoangcach: {
-      marginTop: 15,
-      marginBottom: 15,
+      marginTop: 10,
+      marginBottom: 10,
     },
     chu: {
       fontFamily: FONTS.vanSansSemiBold,

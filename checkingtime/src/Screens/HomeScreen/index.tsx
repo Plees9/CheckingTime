@@ -10,13 +10,12 @@ import { Avatar } from "@rneui/themed";
 import Icon from "react-native-vector-icons/FontAwesome";
 import styles from "./styles";
 
-
 const HomeScreen = () => {
   const navigation = useNavigation<any>();
   return (
     <View style={styles.container}>
       <View>
-        <TouchableOpacity onPress={() => navigation.navigate("Account")}>
+        <TouchableOpacity onPress={() => navigation.navigate("Tài khoản")}>
           <View style={styles.row}>
             <Icon name="user" size={26} color="#f49218" style={styles.icon} />
             <Text style={styles.text1}>

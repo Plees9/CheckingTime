@@ -55,7 +55,7 @@ const CustomDatePicker = (props: any) => {
      
       <TouchableHighlight activeOpacity={0} onPress={() => setShow(true)}>
         <>
-          <Text style={styles.datePicker}> {date.format("MM/DD/YYYY")}</Text>
+          <Text style={styles.datePicker}> {date.format("DD/MM/YYYY")}</Text>
         {Platform.OS !==  "ios"  && show && renderDatePicker()}
         
         {Platform.OS === "ios" && (
