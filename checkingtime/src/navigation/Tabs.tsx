@@ -35,7 +35,7 @@ const TabsNavigation = () => {
 
             tabBarIcon: () => <Icon name="briefcase" size={20} />,
             headerTitleAlign: "center",
-            headerStatusBarHeight: 25,
+            headerStatusBarHeight: 20,
             headerTitleStyle: {
               fontSize: 20,
               fontFamily: FONTS.vanSansSemiBold,
@@ -48,7 +48,7 @@ const TabsNavigation = () => {
           options={{
             tabBarIcon: () => <Icon name="user" size={20} />,
             headerTitleAlign: "center",
-            headerStatusBarHeight: 25,
+            headerStatusBarHeight: 20,
             headerTitleStyle: {
               fontSize: 20,
               fontFamily: FONTS.vanSansSemiBold,

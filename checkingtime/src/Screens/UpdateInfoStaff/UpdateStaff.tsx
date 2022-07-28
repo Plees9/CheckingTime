@@ -15,8 +15,25 @@ import { Picker } from "@react-native-picker/picker";
 import Icon from "react-native-vector-icons/FontAwesome";
 import { LinearGradient } from "expo-linear-gradient";
 
+import { Dropdown } from "react-native-element-dropdown";
+import AntDesign from "react-native-vector-icons/AntDesign";
+
 import CustomDatePicker from "../Moment/DatePicker";
 import { Avatar } from "@rneui/themed";
+
+const data_2 = [
+  { label: "Chính thức", value: "5" },
+  { label: "Thử việc", value: "6" },
+  { label: "Thực tập sinh", value: "7" },
+];
+const data_3 = [
+  { label: "Developer", value: "9" },
+  { label: "Tester", value: "10" },
+  { label: "Quản lý", value: "11" },
+  { label: "Giám đốc", value: "12" },
+  { label: "Hành chính", value: "13" },
+  { label: "Kế toán", value: "14" },
+];
 
 const UpdateStaff = () => {
   const styles = useMemo(() => createStyles(), []);
@@ -26,7 +43,12 @@ const UpdateStaff = () => {
   const [date, setDate] = useState("");
   const [address, setAddress] = useState("");
 
-  const imageBgr = require("../../../assets/images/ah.jpg");
+  const [value_2, setValue_2] = useState(null);
+  const [value_3, setValue_3] = useState(null);
+  const [isFocus_2, setIsFocus_2] = useState(false);
+  const [isFocus_3, setIsFocus_3] = useState(false);
+
+ 
 
   const navigation = useNavigation<any>();
 
@@ -37,9 +59,7 @@ const UpdateStaff = () => {
 
   return (
     <View style={styles.view}>
-      {/* <Text style={styles.textWelcome}>Thay đổi thông tin</Text> */}
-      {/* <ImageBackground source={imageBgr} resizeMode="cover" style={styles.image}> */}
-
+      
       <View style={styles.avatar}>
         <Avatar
           size={80}
@@ -63,7 +83,7 @@ const UpdateStaff = () => {
 
       <View style={{ alignItems: "center" }}>
         <TextInput
-          style={styles.text23_1}
+          style={styles.text23_2}
           placeholder={"Giới tính"}
           returnKeyType="done"
           value={date}
@@ -71,9 +91,8 @@ const UpdateStaff = () => {
           secureTextEntry={false}
         />
       </View>
-      {/* </ImageBackground> */}
 
-      <View>
+      <View style={styles.khoi}>
         {/* Email */}
         <View style={styles.styleTT}>
           <View style={styles.text24}>
@@ -86,9 +105,6 @@ const UpdateStaff = () => {
               onChangeText={setEmail}
             />
           </View>
-          {/* <View style={styles.text24_1}>
-            <TextInput placeholder={"Ngày sinh"} />
-          </View> */}
         </View>
         {/* Số điện thoại */}
         <View>
@@ -104,9 +120,6 @@ const UpdateStaff = () => {
                 onChangeText={setNumberPhone}
               />
             </View>
-            {/* <View style={styles.text24_1}>
-              <TextInput placeholder={"Vị trí"} />
-            </View> */}
           </View>
         </View>
         <View>
@@ -121,9 +134,6 @@ const UpdateStaff = () => {
                 onChangeText={setAddress}
               />
             </View>
-            {/* <View style={styles.text24_1}>
-              <TextInput placeholder={"Vị trí"} />
-            </View> */}
           </View>
         </View>
       </View>
@@ -134,11 +144,11 @@ const UpdateStaff = () => {
             defaultDate={new Date()}
             onDateChange={(value: any) => console.log(value)}
           />
-           <Icon
+          <Icon
             style={styles.styleIcon}
             name="birthday-cake"
             size={20}
-            color="black"
+            color="orange"
           />
         </View>
         <View style={styles.row2}>
@@ -150,40 +160,72 @@ const UpdateStaff = () => {
             style={styles.styleIcon}
             name="briefcase"
             size={20}
-            color="black"
+            color="orange"
           />
         </View>
       </View>
       {/* Tình trạng hợp đồng, Loại hình nhân viên */}
       <View style={styles.row}>
-        <View style={styles.row1}>
-          <Picker
-            selectedValue={country}
-            onValueChange={(value, index) => setCountry(value)}
-            mode="dropdown"
-            style={styles.row3}
-          >
-            <Picker.Item label="Hợp đồng" value="Un" />
-            <Picker.Item label="Chính thức" value="4" />
-            <Picker.Item label="Thử việc" value="5" />
-            <Picker.Item label="Thực tập sinh" value="6" />
-          </Picker>
-        </View>
-        <View style={styles.row1}>
-          <Picker
-            selectedValue={country}
-            onValueChange={(value, index) => setCountry(value)}
-            mode="dropdown"
-            style={styles.row3}
-          >
-            <Picker.Item label="Loại hình nhân viên" value="NV" />
-            <Picker.Item label="Developer" value="7" />
-            <Picker.Item label="Tester" value="8" />
-            <Picker.Item label="Quản lý" value="9" />
-            <Picker.Item label="Giám đốc" value="10" />
-            <Picker.Item label="Hành chính" value="11" />
-            <Picker.Item label="Kế toán" value="12" />
-          </Picker>
+        <View style={styles.khoi_2}>
+          <Dropdown
+            style={styles.dropdown}
+            placeholderStyle={styles.placeholderStyle}
+            selectedTextStyle={styles.selectedTextStyle}
+            inputSearchStyle={styles.inputSearchStyle}
+            iconStyle={styles.iconStyle}
+            data={data_2}
+            search
+            maxHeight={300}
+            searchPlaceholder="Search..."
+            labelField="label"
+            valueField="value"
+            placeholder="Hợp đồng"
+            onFocus={() => setIsFocus_2(true)}
+            onBlur={() => setIsFocus_2(false)}
+            value={value_2}
+            onChange={(item) => {
+              setValue_2(item.value);
+              setIsFocus_2(false);
+            }}
+            renderRightIcon={() => (
+              <AntDesign
+                style={styles.icon}
+                color="orange"
+                name={isFocus_2 ? 'up' : 'down'}
+                size={20}
+              />
+            )}
+          />
+          <Dropdown
+            style={styles.dropdown_1}
+            placeholderStyle={styles.placeholderStyle}
+            selectedTextStyle={styles.selectedTextStyle}
+            inputSearchStyle={styles.inputSearchStyle}
+            iconStyle={styles.iconStyle}
+            data={data_3}
+            search
+            maxHeight={300}
+            searchPlaceholder="Search..."
+            labelField="label"
+            valueField="value"
+            placeholder="Loại hình..."
+            
+            onFocus={() => setIsFocus_3(true)}
+            onBlur={() => setIsFocus_3(false)}
+            value={value_3}
+            onChange={(item) => {
+              setValue_3(item.value);
+              setIsFocus_3(false);
+            }}
+            renderRightIcon={() => (
+              <AntDesign
+                style={styles.icon}
+                color="orange"
+                name={isFocus_3 ? 'up' : 'down'}
+                size={20}
+              />
+            )}
+          />
         </View>
       </View>
       <LinearGradient
