@@ -13,6 +13,7 @@ const createStyles = () =>
     image1: {
       flex: 0.5,
       justifyContent: "flex-end",
+      // backgroundColor: 'pink'
     },
     textWelcome: {
       fontSize: 50,

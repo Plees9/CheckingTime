@@ -22,8 +22,8 @@ const SignIn = () => {
 
   const dispatch = useDispatch();
   const styles = useMemo(() => createStyles(), []);
-  const [userName, setUserName] = useState("");
-  const [password, setPassword] = useState("");
+  const [userName, setUserName] = useState("0913005145");
+  const [password, setPassword] = useState("1234567Aa@");
   const [isChecked, setIsChecked] = useState(false);
   const [isHided, setIsHided] = useState(true);
 
@@ -59,7 +59,8 @@ const SignIn = () => {
         </GradientText>
       </View>
 
-      <View style={{ marginTop: "7%" }}>
+      
+      <View style={{marginTop:'15%'}}>
         <View style={styles.styleTT}>
           <View>
             <Icon name="user" size={24} />
@@ -94,9 +95,16 @@ const SignIn = () => {
               onChangeText={setPassword}
             />
           </View>
-          <TouchableOpacity onPressIn={() => setIsHided(false)} onPressOut={() => setIsHided(true)}>
+          <TouchableOpacity
+            onPressIn={() => setIsHided(false)}
+            onPressOut={() => setIsHided(true)}
+          >
             <View>
-            {isHided == true ? <Icon_1 name="eye" size={26} color={'#595959'} /> : <Icon_1 name="eye-off" size={26} color={'#595959'} />}
+              {isHided == true ? (
+                <Icon_1 name="eye" size={26} color={"#595959"} />
+              ) : (
+                <Icon_1 name="eye-off" size={26} color={"#595959"} />
+              )}
             </View>
           </TouchableOpacity>
         </View>
@@ -130,7 +138,6 @@ const SignIn = () => {
       >
         <Text style={styles.text23}>Quên mật khẩu?</Text>
       </TouchableOpacity>
-      {/* </ImageBackground> */}
     </View>
   );
 };
