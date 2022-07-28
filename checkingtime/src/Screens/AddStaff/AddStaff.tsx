@@ -14,10 +14,33 @@ import { Picker } from "@react-native-picker/picker";
 import Icon from "react-native-vector-icons/FontAwesome";
 import { LinearGradient } from "expo-linear-gradient";
 
+import { Dropdown } from "react-native-element-dropdown";
+import AntDesign from "react-native-vector-icons/AntDesign";
+
 //import { PasswordMeter } from 'react-native-password-meter';
 //import PassMeter from "react-native-passmeter";
 
 import CustomDatePicker from "../Moment/DatePicker";
+
+const data_1 = [
+  { label: "Người dùng", value: "1" },
+  { label: "Quản lý", value: "2" },
+  { label: "Quản trị viên", value: "3" },
+];
+const data_2 = [
+
+  { label: "Chính thức", value: "5" },
+  { label: "Thử việc", value: "6" },
+  { label: "Thực tập sinh", value: "7" },
+];
+const data_3 = [
+  { label: "Developer", value: "9" },
+  { label: "Tester", value: "10" },
+  { label: "Quản lý", value: "11" },
+  { label: "Giám đốc", value: "12" },
+  { label: "Hành chính", value: "13" },
+  { label: "Kế toán", value: "14" },
+];
 
 const AddStaff = () => {
   const styles = useMemo(() => createStyles(), []);
@@ -27,6 +50,13 @@ const AddStaff = () => {
 
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
+  
+  const [value_1, setValue_1] = useState(null);
+  const [value_2, setValue_2] = useState(null);
+  const [value_3, setValue_3] = useState(null);
+  const [isFocus_1, setIsFocus_1] = useState(false);
+  const [isFocus_2, setIsFocus_2] = useState(false);
+  const [isFocus_3, setIsFocus_3] = useState(false);
 
   const navigation = useNavigation<any>();
 
@@ -94,7 +124,7 @@ const AddStaff = () => {
               maxLength={16}
               //value={password.value}
               secureTextEntry={true}
-              onChangeText={password => setPassword(password)}
+              onChangeText={(password) => setPassword(password)}
             />
           </View>
         </View>
@@ -108,21 +138,39 @@ const AddStaff = () => {
         /> */}
 
         <Text style={styles.textExemple}>8-16 ký tự ví dụ: eX@mpL3*</Text>
-        
       </View>
       <View style={styles.row}>
-        <View style={styles.row1}>
-          <Picker
-            selectedValue={country}
-            onValueChange={(value, index) => setCountry(value)}
-            mode="dropdown"
-            style={styles.row3}
-          >
-            <Picker.Item label="Cấp quyền" value="Unknow" />
-            <Picker.Item label="Người dùng" value="1" />
-            <Picker.Item label="Quản lý" value="2" />
-            <Picker.Item label="Quản trị viên" value="3" />
-          </Picker>
+        <View>
+          <Dropdown
+            style={styles.dropdown}
+            placeholderStyle={styles.placeholderStyle}
+            selectedTextStyle={styles.selectedTextStyle}
+            inputSearchStyle={styles.inputSearchStyle}
+            iconStyle={styles.iconStyle}
+            data={data_1}
+            search
+            maxHeight={300}
+            labelField="label"
+            valueField="value"
+            placeholder="Cấp quyền"
+            searchPlaceholder="Search..."
+            onFocus={() => setIsFocus_1(true)}
+            onBlur={() => setIsFocus_1(false)}
+            value={value_1}
+            onChange={(item) => {
+              setValue_1(item.value);
+              setIsFocus_1(false);
+            }}
+            renderRightIcon={() => (
+              <AntDesign
+                style={styles.icon}
+                color="orange"
+                name={isFocus_1 ? 'up' : 'down'}
+                size={20}
+              />
+            )}
+            // // renderItem={renderItem}
+          />
         </View>
         <View style={styles.row2}>
           <CustomDatePicker
@@ -133,42 +181,78 @@ const AddStaff = () => {
             style={styles.styleIcon}
             name="calendar"
             size={20}
-            color="black"
+            color="orange"
           />
         </View>
       </View>
       {/* Tình trạng hợp đồng, Loại hình nhân viên */}
       <View style={styles.row}>
-        <View style={styles.row1}>
-          <Picker
-            selectedValue={country}
-            onValueChange={(value, index) => setCountry(value)}
-            mode="dropdown"
-            style={styles.row3}
-          >
-            <Picker.Item label="Hợp đồng" value="Un" />
-            <Picker.Item label="Chính thức" value="4" />
-            <Picker.Item label="Thử việc" value="5" />
-            <Picker.Item label="Thực tập sinh" value="6" />
-          </Picker>
+        <View>
+          <Dropdown
+            style={styles.dropdown}
+            placeholderStyle={styles.placeholderStyle}
+            selectedTextStyle={styles.selectedTextStyle}
+            inputSearchStyle={styles.inputSearchStyle}
+            iconStyle={styles.iconStyle}
+            data={data_2}
+            search
+            maxHeight={300}
+            labelField="label"
+            valueField="value"
+            placeholder="Hợp đồng"
+            searchPlaceholder="Search..."
+            onFocus={() => setIsFocus_2(true)}
+            onBlur={() => setIsFocus_2(false)}
+            value={value_2}
+            onChange={(item) => {
+              setValue_2(item.value);
+              setIsFocus_2(false);
+            }}
+            renderRightIcon={() => (
+              <AntDesign
+                style={styles.icon}
+                color="orange"
+                name={isFocus_2 ? 'up' : 'down'}
+                size={20}
+              />
+            )}
+           
+          />
         </View>
-        <View style={styles.row1}>
-          <Picker
-            selectedValue={country}
-            onValueChange={(value, index) => setCountry(value)}
-            mode="dropdown"
-            style={styles.row3}
-          >
-            <Picker.Item label="Loại hình nhân viên" value="NV" />
-            <Picker.Item label="Developer" value="7" />
-            <Picker.Item label="Tester" value="8" />
-            <Picker.Item label="Quản lý" value="9" />
-            <Picker.Item label="Giám đốc" value="10" />
-            <Picker.Item label="Hành chính" value="11" />
-            <Picker.Item label="Kế toán" value="12" />
-          </Picker>
+        <View>
+          <Dropdown
+            style={styles.dropdown}
+            placeholderStyle={styles.placeholderStyle}
+            selectedTextStyle={styles.selectedTextStyle}
+            inputSearchStyle={styles.inputSearchStyle}
+            iconStyle={styles.iconStyle}
+            data={data_3}
+            search
+            maxHeight={300}
+            labelField="label"
+            valueField="value"
+            placeholder="Loại hình..."
+            searchPlaceholder="Search..."
+            onFocus={() => setIsFocus_3(true)}
+            onBlur={() => setIsFocus_3(false)}
+            value={value_3}
+            onChange={(item) => {
+              setValue_3(item.value);
+              setIsFocus_3(false);
+            }}
+            renderRightIcon={() => (
+              <AntDesign
+                style={styles.icon}
+                color="orange"
+                name={isFocus_3 ? 'up' : 'down'}
+                size={20}
+              />
+            )}
+            // // renderItem={renderItem}
+          />
         </View>
       </View>
+   
       <LinearGradient
         start={{ x: 0, y: 0 }}
         end={{ x: 1, y: 0 }}
