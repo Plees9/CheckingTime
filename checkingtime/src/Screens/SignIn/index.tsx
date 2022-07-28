@@ -59,8 +59,7 @@ const SignIn = () => {
         </GradientText>
       </View>
 
-      
-      <View style={{marginTop:'15%'}}>
+      <View style={{ marginTop: "15%" }}>
         <View style={styles.styleTT}>
           <View>
             <Icon name="user" size={24} />
@@ -100,11 +99,11 @@ const SignIn = () => {
             onPressOut={() => setIsHided(true)}
           >
             <View>
-              {isHided == true ? (
-                <Icon_1 name="eye" size={26} color={"#595959"} />
-              ) : (
-                <Icon_1 name="eye-off" size={26} color={"#595959"} />
-              )}
+              <Icon_1
+                name={isHided == true ? "eye" : "eye-off"}
+                size={26}
+                color={"#595959"}
+              />
             </View>
           </TouchableOpacity>
         </View>

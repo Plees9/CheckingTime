@@ -26,8 +26,6 @@ const UpdateStaff = () => {
   const [date, setDate] = useState("");
   const [address, setAddress] = useState("");
 
-  const imageBgr = require("../../../assets/images/ah.jpg");
-
   const navigation = useNavigation<any>();
 
   const [country, setCountry] = useState("Unknown");
@@ -37,8 +35,7 @@ const UpdateStaff = () => {
 
   return (
     <View style={styles.view}>
-      {/* <Text style={styles.textWelcome}>Thay đổi thông tin</Text> */}
-      {/* <ImageBackground source={imageBgr} resizeMode="cover" style={styles.image}> */}
+      
 
       <View style={styles.avatar}>
         <Avatar

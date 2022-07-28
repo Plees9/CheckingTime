@@ -6,7 +6,7 @@ import { useNavigation } from "@react-navigation/native";
 import { LinearGradient } from "expo-linear-gradient";
 import { useDispatch, useSelector } from "react-redux";
 import { forgetPassword } from "../../../redux/action";
-import { FONTS } from '../../../constants/theme';
+import { FONTS } from "../../../constants/theme";
 const ForgotPasswordScreen = () => {
   const image = require("../../../assets/images/forgot-password.png");
 
@@ -22,7 +22,9 @@ const ForgotPasswordScreen = () => {
   return (
     <View style={styles.view}>
       <Image style={styles.image} source={image} />
-      <Text style={styles.textnote}>Vui lòng cung cấp thông tin cần thiết để yêu cầu cấp lại mật khẩu.</Text>
+      <Text style={styles.textnote}>
+        Vui lòng cung cấp thông tin cần thiết để yêu cầu cấp lại mật khẩu.
+      </Text>
       <TextInput
         style={styles.text}
         value={email}

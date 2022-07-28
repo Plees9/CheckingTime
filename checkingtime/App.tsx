@@ -12,7 +12,6 @@ import { NavigationContainer } from "@react-navigation/native";
 import Jobs from "./src/Screens/Jobs";
 import UpdateStaff from "./src/Screens/UpdateInfoStaff/UpdateStaff";
 
-
 const App = () => {
   const [fontsLoaded] = useFonts({
     VanSansBold: require("./assets/fonts/VanSans-Bold.otf"),
@@ -38,15 +37,12 @@ const App = () => {
 
   return (
     <Provider store={store}>
-    <SafeAreaView style={styles.root}>
-       <SNavigation /> 
-       {/* <NavigationContainer>
+      <SafeAreaView style={styles.root}>
+        <SNavigation />
+        {/* <NavigationContainer>
        <UpdateStaff/>
        </NavigationContainer> */}
-
-      
-      
-    </SafeAreaView>
+      </SafeAreaView>
     </Provider>
   );
 };

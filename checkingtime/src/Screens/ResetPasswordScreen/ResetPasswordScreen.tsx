@@ -69,11 +69,11 @@ const ResetPasswordScreen = () => {
             onPressOut={() => setIsHided(true)}
           >
             <View>
-              {isHided == true ? (
-                <Icon_1 name="eye" size={26} color={"#595959"} />
-              ) : (
-                <Icon_1 name="eye-off" size={26} color={"#595959"} />
-              )}
+              <Icon_1
+                name={isHided == true ? "eye" : "eye-off"}
+                size={26}
+                color={"#595959"}
+              />
             </View>
           </TouchableOpacity>
         </View>

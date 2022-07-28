@@ -10,7 +10,7 @@ const styles = StyleSheet.create({
 
   text: {
     fontSize: 20,
-    
+
     fontFamily: FONTS.vanSansBold,
     color: "#FFFFFF",
     textAlign: "center",
@@ -21,9 +21,8 @@ const styles = StyleSheet.create({
     marginTop: 6,
     justifyContent: "center",
     fontFamily: FONTS.vanSansRegular,
-   
   },
-  textcolor : {
+  textcolor: {
     fontFamily: FONTS.vanSansBold,
   },
   text2: {
@@ -113,7 +112,7 @@ const styles = StyleSheet.create({
     fontSize: 13,
     color: "#100F0F",
     marginLeft: 5,
-    fontFamily: FONTS.vanSansBold
+    fontFamily: FONTS.vanSansBold,
   },
   text6: {
     fontSize: 13,
@@ -125,7 +124,7 @@ const styles = StyleSheet.create({
     fontSize: 18,
     textAlign: "center",
     margin: 10,
-    fontFamily: FONTS.vanSansSemiBold
+    fontFamily: FONTS.vanSansSemiBold,
   },
 
   btn1: {
