@@ -18,7 +18,7 @@ import GradientText from "../../component/GradientText";
 import Icon_1 from "react-native-vector-icons/Ionicons";
 
 const SignIn = () => {
-  const { error } = useSelector<any>((state) => state.auth);
+  const { error } = useSelector<any, any>((state) => state.auth);
 
   const dispatch = useDispatch();
   const styles = useMemo(() => createStyles(), []);

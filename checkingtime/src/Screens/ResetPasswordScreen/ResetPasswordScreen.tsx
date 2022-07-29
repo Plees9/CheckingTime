@@ -11,7 +11,7 @@ import Icon_1 from "react-native-vector-icons/Ionicons";
 
 const ResetPasswordScreen = () => {
   const dispatch = useDispatch();
-  const { message, error } = useSelector<any>((state) => state.message);
+  const { message, error } = useSelector<any, any>((state) => state.message);
   const styles = useMemo(() => createStyles(), []);
   const [password, setPassword] = useState("");
   const [otp, setotp] = useState("");
@@ -20,7 +20,7 @@ const ResetPasswordScreen = () => {
 
   const changePasswordHandler = async () => {
     await dispatch<any>(resetPassword(otp, password, confirmPassword));
-    navigation.navigate("login");
+    navigation.navigate("SignIn");
   };
 
   useEffect(() => {
@@ -32,7 +32,7 @@ const ResetPasswordScreen = () => {
       alert(error);
       dispatch({ type: "clearError" });
     }
-  }, [alert, message, dispatch, error]);
+  }, [alert, dispatch, error]);
 
   const navigation = useNavigation<any>();
 
