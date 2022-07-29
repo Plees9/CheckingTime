@@ -10,6 +10,7 @@ import { Provider } from "react-redux";
 import store from "./redux/store";
 import { NavigationContainer } from "@react-navigation/native";
 import Jobs from "./src/Screens/Jobs";
+import Account from './src/Screens/Account/Account';
 
 
 const App = () => {
@@ -38,10 +39,10 @@ const App = () => {
   return (
     <Provider store={store}>
     <SafeAreaView style={styles.root}>
-       {/* <SNavigation />  */}
-       <NavigationContainer>
-       <Jobs />
-       </NavigationContainer>
+       <SNavigation /> 
+       {/* <NavigationContainer>
+       <Account />
+       </NavigationContainer> */}
       
       
     </SafeAreaView>

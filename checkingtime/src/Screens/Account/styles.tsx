@@ -5,10 +5,8 @@ const createStyles = () =>
   StyleSheet.create({
     container: {
       flex: 1,
-      flexDirection: "column",
-      marginTop: 30,
-      marginLeft: 10,
-      marginBottom: 15,
+
+      backgroundColor: "#f2f2f2",
       //paddingTop: StatusBar.currentHeight,
     },
     user: {
@@ -42,19 +40,47 @@ const createStyles = () =>
     },
     khoangcach: {
       marginTop: 15,
-      marginBottom: 25,
+      marginBottom: 15,
     },
     chu: {
       fontFamily: FONTS.vanSansSemiBold,
     },
     chu1: {
-      //fontWeight: "bold",
-      fontSize: 20,
+      fontSize: 24,
       width: "98%",
       backgroundColor: "#DDDDDD",
       textAlign: "center",
-      padding: 10,
+      padding: 8,
+      borderRadius: 10,
+      color: "#F32424",
+      fontFamily: FONTS.vanSansBold,
+    },
+    text1: {
+      textAlign: "center",
       fontFamily: FONTS.vanSansMedium,
+      color: "#00092C",
+    },
+    textHeader: {
+      fontSize: 20,
+      fontFamily: FONTS.vanSansMedium,
+    },
+    Touch1: {
+      backgroundColor: "white",
+      marginTop: 5,
+      flexDirection: "row",
+    },
+    Touch2: {
+      backgroundColor: "white",
+
+      marginTop: 10,
+      marginBottom: 5,
+
+      flexDirection: "row",
+    },
+    viewText: {
+      justifyContent: "center",
+      alignItems: "flex-start",
+      marginRight: 20,
     },
   });
 
