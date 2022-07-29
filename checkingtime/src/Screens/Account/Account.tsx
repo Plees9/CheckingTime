@@ -227,7 +227,7 @@ const Account = () => {
         </TouchableOpacity>
         <TouchableOpacity
           style={styles.khoangcach}
-          onPress={() => navigation.navigate("ResetPassword")}
+          onPress={() => navigation.navigate("Cài lại mật khẩu")}
         >
           <Text style={styles.chu}>Thay đổi mật khẩu</Text>
         </TouchableOpacity>
