@@ -32,7 +32,7 @@ const TabsNavigation = () => {
             tabBarActiveTintColor: '#FF7600',
             tabBarIcon: () => <Icon name="briefcase" size={20} />,
             headerTitleAlign: "center",
-            headerStatusBarHeight: 25,
+            headerStatusBarHeight: 20,
             headerTitleStyle: {
               fontSize: 20,
               fontFamily: FONTS.vanSansSemiBold,
@@ -46,7 +46,7 @@ const TabsNavigation = () => {
             tabBarIcon: () => <Icon name="user" size={20} />,
             tabBarActiveTintColor:'#FF7600',
             headerTitleAlign: "center",
-            headerStatusBarHeight: 25,
+            headerStatusBarHeight: 20,
             headerTitleStyle: {
               fontSize: 20,
               fontFamily: FONTS.vanSansSemiBold,
