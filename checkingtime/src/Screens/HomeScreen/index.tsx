@@ -1,11 +1,6 @@
 import { useNavigation } from "@react-navigation/native";
 import React from "react";
-import {
-  Text,
-  View,
-  Alert,
-  TouchableOpacity,
-} from "react-native";
+import { Text, View, Alert, TouchableOpacity } from "react-native";
 import { Avatar } from "@rneui/themed";
 import Icon from "react-native-vector-icons/FontAwesome";
 import styles from "./styles";
@@ -26,7 +21,7 @@ const HomeScreen = () => {
           </View>
         </TouchableOpacity>
 
-        <View style={{alignItems: 'center'}}>
+        <View style={{ alignItems: "center" }}>
           <View style={styles.icon2}>
             <Text style={styles.text}>Nhật ký hôm nay</Text>
             <View>

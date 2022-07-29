@@ -48,10 +48,7 @@ const App = () => {
        {/* <NavigationContainer>
        
        </NavigationContainer> */}
-
-      
-      
-    </SafeAreaView>
+      </SafeAreaView>
     </Provider>
   );
 };

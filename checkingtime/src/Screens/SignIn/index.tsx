@@ -15,14 +15,15 @@ import { useDispatch, useSelector } from "react-redux";
 import { login } from "../../../redux/action";
 import { LinearGradient } from "expo-linear-gradient";
 import GradientText from "../../component/GradientText";
+import Icon_1 from "react-native-vector-icons/Ionicons";
 
 const SignIn = () => {
   const { error } = useSelector<any>((state) => state.auth);
 
   const dispatch = useDispatch();
   const styles = useMemo(() => createStyles(), []);
-  const [userName, setUserName] = useState("");
-  const [password, setPassword] = useState("");
+  const [userName, setUserName] = useState("0913005145");
+  const [password, setPassword] = useState("1234567Aa@");
   const [isChecked, setIsChecked] = useState(false);
   const [isHided, setIsHided] = useState(true);
 
@@ -39,8 +40,6 @@ const SignIn = () => {
   const navigation = useNavigation<any>();
 
   const hobbies: string[] = [];
-
-  const image = require("../../../assets/images/viking-logo_4x.png");
 
   const Click = () => {
     if (isChecked === true) {
@@ -60,7 +59,7 @@ const SignIn = () => {
         </GradientText>
       </View>
 
-      <View style={{ marginTop: "7%" }}>
+      <View style={{ marginTop: "15%" }}>
         <View style={styles.styleTT}>
           <View>
             <Icon name="user" size={24} />
@@ -95,9 +94,16 @@ const SignIn = () => {
               onChangeText={setPassword}
             />
           </View>
-          <TouchableOpacity onPressIn={() => setIsHided(false)} onPressOut={() => setIsHided(true)}>
+          <TouchableOpacity
+            onPressIn={() => setIsHided(false)}
+            onPressOut={() => setIsHided(true)}
+          >
             <View>
-            {isHided == true ? <Icon name="eye" size={26} /> : <Icon name="eye-slash" size={26} />}
+              <Icon_1
+                name={isHided == true ? "eye" : "eye-off"}
+                size={20}
+                color={"#595959"}
+              />
             </View>
           </TouchableOpacity>
         </View>
@@ -127,11 +133,10 @@ const SignIn = () => {
 
       <TouchableOpacity
         style={styles.btnForgot}
-        onPress={() => navigation.navigate("ForgotPasswordScreen")}
+        onPress={() => navigation.navigate("Quên mật khẩu")}
       >
         <Text style={styles.text23}>Quên mật khẩu?</Text>
       </TouchableOpacity>
-      {/* </ImageBackground> */}
     </View>
   );
 };

@@ -1,4 +1,11 @@
-import { View, Text, ScrollView, Image, Alert, SafeAreaView } from "react-native";
+import {
+  View,
+  Text,
+  ScrollView,
+  Image,
+  Alert,
+  SafeAreaView,
+} from "react-native";
 import React, { useMemo } from "react";
 
 import Icon from "react-native-vector-icons/FontAwesome";
@@ -14,7 +21,11 @@ const ListStaff = () => {
     <View style={styles.view}>
       <View style={styles.row}>
         <View style={styles.icon}>
-          <Icon name="bars" size={20} onPress={() => navigation.navigate("Bộ lọc")} />
+          <Icon
+            name="bars"
+            size={20}
+            onPress={() => navigation.navigate("Bộ lọc")}
+          />
         </View>
         <View style={styles.icon1}>
           <Icon name="search" size={20} style={styles.icon3} />
@@ -25,11 +36,16 @@ const ListStaff = () => {
           ></TextInput>
         </View>
         <View style={styles.iconPlus}>
-          <Icon name="plus-circle" size={40} color="orange" onPress={() => navigation.navigate("Thêm nhân viên")} />
+          <Icon
+            name="plus-circle"
+            size={40}
+            color="orange"
+            onPress={() => navigation.navigate("Thêm nhân viên")}
+          />
         </View>
       </View>
 
-      <SafeAreaView >
+      <SafeAreaView>
         <ScrollView style={styles.view1}>
           {/*  */}
           <View style={styles.view2}>
@@ -74,7 +90,6 @@ const ListStaff = () => {
                 <Text style={styles.textInfo}>Trạng thái nhân sự</Text>
                 <TextInput placeholder="Chưa làm việc"></TextInput>
               </View>
-              
             </View>
             <View style={styles.kengang} />
             <Text style={styles.text1}>Bắt đầu vào làm ngày 01/01/2001 </Text>
@@ -122,7 +137,6 @@ const ListStaff = () => {
                 <Text>Trạng thái nhân sự</Text>
                 <TextInput placeholder="Chưa làm việc"></TextInput>
               </View>
-              
             </View>
             <View style={styles.kengang} />
             <Text style={styles.text1}>Bắt đầu vào làm ngày 01/01/2001 </Text>
@@ -169,55 +183,6 @@ const ListStaff = () => {
                 <Text>Trạng thái nhân sự</Text>
                 <TextInput placeholder="Chưa làm việc"></TextInput>
               </View>
-              
-            </View>
-            <View style={styles.kengang} />
-            <Text style={styles.text1}>Bắt đầu vào làm ngày 01/01/2001 </Text>
-          </View>
-
-          <View style={styles.view2}>
-            <View style={styles.hang}>
-              <View style={styles.avt}>
-                <Avatar
-                  size={50}
-                  rounded
-                  source={{
-                    uri: "https://hoanghapc.vn/media/news/0510_hinh_nen_phong_canh4.jpg",
-                  }}
-                ></Avatar>
-              </View>
-
-              <View>
-                <TextInput style={styles.user} placeholder="Username" />
-                <TextInput style={styles.user} placeholder=" vị trí" />
-              </View>
-              <Icon
-                name="phone"
-                size={20}
-                style={styles.iconPhone}
-                onPress={() => Alert.alert("Simple Button pressed")}
-              />
-            </View>
-            <View style={styles.hang2}>
-              <TextInput style={styles.view3} placeholder="01"></TextInput>
-              <TextInput style={styles.view3} placeholder="gender"></TextInput>
-              <TextInput
-                style={styles.view3}
-                placeholder="01/01/2001"
-              ></TextInput>
-            </View>
-
-            <View style={styles.hang3}>
-              <View style={styles.cot1}>
-                <Text>Loại hình nhân sự</Text>
-                <TextInput placeholder="Chưa cập nhật"></TextInput>
-              </View>
-
-              <View style={styles.cot1}>
-                <Text>Trạng thái nhân sự</Text>
-                <TextInput placeholder="Chưa làm việc"></TextInput>
-              </View>
-              
             </View>
             <View style={styles.kengang} />
             <Text style={styles.text1}>Bắt đầu vào làm ngày 01/01/2001 </Text>
@@ -265,7 +230,6 @@ const ListStaff = () => {
                 <Text>Trạng thái nhân sự</Text>
                 <TextInput placeholder="Chưa làm việc"></TextInput>
               </View>
-              
             </View>
             <View style={styles.kengang} />
             <Text style={styles.text1}>Bắt đầu vào làm ngày 01/01/2001 </Text>
@@ -313,7 +277,6 @@ const ListStaff = () => {
                 <Text>Trạng thái nhân sự</Text>
                 <TextInput placeholder="Chưa làm việc"></TextInput>
               </View>
-              
             </View>
             <View style={styles.kengang} />
             <Text style={styles.text1}>Bắt đầu vào làm ngày 01/01/2001 </Text>
@@ -361,15 +324,59 @@ const ListStaff = () => {
                 <Text>Trạng thái nhân sự</Text>
                 <TextInput placeholder="Chưa làm việc"></TextInput>
               </View>
-              
             </View>
             <View style={styles.kengang} />
             <Text style={styles.text1}>Bắt đầu vào làm ngày 01/01/2001 </Text>
           </View>
-          
+
+          <View style={styles.view2}>
+            <View style={styles.hang}>
+              <View style={styles.avt}>
+                <Avatar
+                  size={50}
+                  rounded
+                  source={{
+                    uri: "https://hoanghapc.vn/media/news/0510_hinh_nen_phong_canh4.jpg",
+                  }}
+                ></Avatar>
+              </View>
+
+              <View>
+                <TextInput style={styles.user} placeholder="Username" />
+                <TextInput style={styles.user} placeholder=" vị trí" />
+              </View>
+              <Icon
+                name="phone"
+                size={20}
+                style={styles.iconPhone}
+                onPress={() => Alert.alert("Simple Button pressed")}
+              />
+            </View>
+            <View style={styles.hang2}>
+              <TextInput style={styles.view3} placeholder="01"></TextInput>
+              <TextInput style={styles.view3} placeholder="gender"></TextInput>
+              <TextInput
+                style={styles.view3}
+                placeholder="01/01/2001"
+              ></TextInput>
+            </View>
+
+            <View style={styles.hang3}>
+              <View style={styles.cot1}>
+                <Text>Loại hình nhân sự</Text>
+                <TextInput placeholder="Chưa cập nhật"></TextInput>
+              </View>
+
+              <View style={styles.cot1}>
+                <Text>Trạng thái nhân sự</Text>
+                <TextInput placeholder="Chưa làm việc"></TextInput>
+              </View>
+            </View>
+            <View style={styles.kengang} />
+            <Text style={styles.text1}>Bắt đầu vào làm ngày 01/01/2001 </Text>
+          </View>
         </ScrollView>
       </SafeAreaView>
-      
     </View>
   );
 };
