@@ -5,29 +5,23 @@ import {
   ToastAndroid,
   TouchableOpacity,
   Alert,
+  ImageBackground,
 } from "react-native";
 import React, { useMemo, useState, useEffect, Component } from "react";
 import createStyles from "./styles";
 import { useNavigation } from "@react-navigation/native";
 
-
+import { Picker } from "@react-native-picker/picker";
 import Icon from "react-native-vector-icons/FontAwesome";
 import { LinearGradient } from "expo-linear-gradient";
 
 import { Dropdown } from "react-native-element-dropdown";
 import AntDesign from "react-native-vector-icons/AntDesign";
 
-
-
 import CustomDatePicker from "../Moment/DatePicker";
+import { Avatar } from "@rneui/themed";
 
-const data_1 = [
-  { label: "Người dùng", value: "1" },
-  { label: "Quản lý", value: "2" },
-  { label: "Quản trị viên", value: "3" },
-];
 const data_2 = [
-
   { label: "Chính thức", value: "5" },
   { label: "Thử việc", value: "6" },
   { label: "Thực tập sinh", value: "7" },
@@ -41,56 +35,66 @@ const data_3 = [
   { label: "Kế toán", value: "14" },
 ];
 
-const AddStaff = () => {
-
-  const [password, setPassword] = React.useState({ value: '', error: '' });
-  const [passwordScore, setPasswordScore] = React.useState(0);
-  const _updateScore = (val: any) => {
-    setPasswordScore(val);
-  };
+const UpdateStaff = () => {
   const styles = useMemo(() => createStyles(), []);
   const [userName, setUserName] = useState("");
   const [email, setEmail] = useState("");
   const [numberPhone, setNumberPhone] = useState("");
+  const [date_Birth, setDate_Birth] = useState("");
   const [date, setDate] = useState("");
 
-  // const [password, setPassword] = useState("");
-  const [confirmPassword, setConfirmPassword] = useState("");
-  
-  const [value_1, setValue_1] = useState(null);
+  const [address, setAddress] = useState("");
+
   const [value_2, setValue_2] = useState(null);
   const [value_3, setValue_3] = useState(null);
-  const [isFocus_1, setIsFocus_1] = useState(false);
   const [isFocus_2, setIsFocus_2] = useState(false);
   const [isFocus_3, setIsFocus_3] = useState(false);
+
+ 
 
   const navigation = useNavigation<any>();
 
   const [country, setCountry] = useState("Unknown");
   function showToast() {
-    ToastAndroid.show("Xác nhận đăng ký thành công", ToastAndroid.SHORT);
+    ToastAndroid.show("Đã update thông tin thành công ", ToastAndroid.SHORT);
   }
-
-  const MAX_LEN = 16,
-    MIN_LEN = 8,
-    PASS_LABELS = ["Too Short", "Weak", "Normal", "Strong", "Secure"];
 
   return (
     <View style={styles.view}>
-      {/* <Text style={styles.textWelcome}>Đăng ký thành viên</Text> */}
-      <View>
-        <View style={styles.styleTT}>
-          <View style={styles.text24}>
-            <TextInput
-              placeholder={"Họ và tên"}
-              style={styles.text23}
-              returnKeyType="done"
-              value={userName}
-              secureTextEntry={false}
-              onChangeText={setUserName}
-            />
-          </View>
-        </View>
+      
+      <View style={styles.avatar}>
+        <Avatar
+          size={80}
+          rounded
+          icon={{ name: "adb", type: "material" }}
+          containerStyle={{ backgroundColor: "orange" }}
+        >
+          <Avatar.Accessory size={24} />
+        </Avatar>
+      </View>
+      <View style={styles.textuserName}>
+        <TextInput
+          placeholder={"Họ và tên"}
+          style={styles.text23_1}
+          returnKeyType="done"
+          value={userName}
+          secureTextEntry={false}
+          onChangeText={setUserName}
+        ></TextInput>
+      </View>
+
+      <View style={{ alignItems: "center" }}>
+        <TextInput
+          style={styles.text23_2}
+          placeholder={"Giới tính"}
+          returnKeyType="done"
+          value={date}
+          onChangeText={setDate}
+          secureTextEntry={false}
+        />
+      </View>
+
+      <View style={styles.khoi}>
         {/* Email */}
         <View style={styles.styleTT}>
           <View style={styles.text24}>
@@ -120,67 +124,43 @@ const AddStaff = () => {
             </View>
           </View>
         </View>
-        {/* PassWord */}
-        <View style={styles.styleTT}>
-          <View style={styles.text24}>
-            <TextInput
-              placeholder={"Enter your password"}
-              style={styles.text23}
-              returnKeyType="done"
-              maxLength={16}
-              value={password.value}
-              secureTextEntry={true}
-              onChangeText={password => setPassword({ value: password, error: '' })}
-            />
+        <View>
+          <View style={styles.styleTT}>
+            <View style={styles.text24}>
+              <TextInput
+                placeholder={"Địa chỉ"}
+                style={styles.text23}
+                returnKeyType="done"
+                value={address}
+                secureTextEntry={false}
+                onChangeText={setAddress}
+              />
+            </View>
           </View>
         </View>
-
-   
-
-        <Text style={styles.textExemple}>8-16 ký tự ví dụ: eX@mpL3*</Text>
       </View>
+
       <View style={styles.row}>
-        <View>
-          <Dropdown
-            style={styles.dropdown}
-            placeholderStyle={styles.placeholderStyle}
-            selectedTextStyle={styles.selectedTextStyle}
-            inputSearchStyle={styles.inputSearchStyle}
-            iconStyle={styles.iconStyle}
-            data={data_1}
-            search
-            maxHeight={300}
-            labelField="label"
-            valueField="value"
-            placeholder="Cấp quyền"
-            searchPlaceholder="Search..."
-            onFocus={() => setIsFocus_1(true)}
-            onBlur={() => setIsFocus_1(false)}
-            value={value_1} 
-            onChange={(item) => {
-              setValue_1(item.value);
-              setIsFocus_1(false);
-            }}
-            renderRightIcon={() => (
-              <AntDesign
-                style={styles.icon}
-                color="orange"
-                name={isFocus_1 ? 'up' : 'down'}
-                size={20}
-              />
-            )}
-            // // renderItem={renderItem}
+        <View style={styles.row1}>
+          <CustomDatePicker
+            defaultDate={new Date()}
+            onDateChange={(value: any) => console.log(value)}
+          />
+          <Icon
+            style={styles.styleIcon}
+            name="birthday-cake"
+            size={20}
+            color="orange"
           />
         </View>
         <View style={styles.row2}>
           <CustomDatePicker
-            value = {date}
-            onChangeText={(value: any) => setDate(value)}
-            minimumDate={new Date(2010, 1, 1)}
+            defaultDate={new Date()}
+            onDateChange={(value: any) => console.log(value)}
           />
           <Icon
             style={styles.styleIcon}
-            name="calendar"
+            name="briefcase"
             size={20}
             color="orange"
           />
@@ -188,7 +168,7 @@ const AddStaff = () => {
       </View>
       {/* Tình trạng hợp đồng, Loại hình nhân viên */}
       <View style={styles.row}>
-        <View>
+        <View style={styles.khoi_2}>
           <Dropdown
             style={styles.dropdown}
             placeholderStyle={styles.placeholderStyle}
@@ -198,10 +178,10 @@ const AddStaff = () => {
             data={data_2}
             search
             maxHeight={300}
+            searchPlaceholder="Search..."
             labelField="label"
             valueField="value"
             placeholder="Hợp đồng"
-            searchPlaceholder="Search..."
             onFocus={() => setIsFocus_2(true)}
             onBlur={() => setIsFocus_2(false)}
             value={value_2}
@@ -217,12 +197,9 @@ const AddStaff = () => {
                 size={20}
               />
             )}
-           
           />
-        </View>
-        <View>
           <Dropdown
-            style={styles.dropdown}
+            style={styles.dropdown_1}
             placeholderStyle={styles.placeholderStyle}
             selectedTextStyle={styles.selectedTextStyle}
             inputSearchStyle={styles.inputSearchStyle}
@@ -230,10 +207,11 @@ const AddStaff = () => {
             data={data_3}
             search
             maxHeight={300}
+            searchPlaceholder="Search..."
             labelField="label"
             valueField="value"
             placeholder="Loại hình..."
-            searchPlaceholder="Search..."
+            
             onFocus={() => setIsFocus_3(true)}
             onBlur={() => setIsFocus_3(false)}
             value={value_3}
@@ -249,24 +227,22 @@ const AddStaff = () => {
                 size={20}
               />
             )}
-            // // renderItem={renderItem}
           />
         </View>
       </View>
-   
       <LinearGradient
         start={{ x: 0, y: 0 }}
         end={{ x: 1, y: 0 }}
         colors={["#f12711", "#f5af19"]}
         style={styles.btn2}
       >
-        {/* <TouchableOpacity onPress={loginHandler}> */}
         <TouchableOpacity onPress={showToast}>
-          <Text style={styles.text22}>Đăng ký</Text>
+          <Text style={styles.text22}>Cập nhật</Text>
         </TouchableOpacity>
       </LinearGradient>
+      {/* </ImageBackground> */}
     </View>
   );
 };
 
-export default AddStaff;
+export default UpdateStaff;

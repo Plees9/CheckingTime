@@ -21,6 +21,8 @@ import CuaToi from "../Screens/DonTu/CuaToi/CuaToi";
 import ListStaff from "../Screens/ListStaff/ListStaff";
 import EFilter from "../Screens/ListFilter/EFilter";
 import Loader from "./Loader"
+import AddStaff from '../Screens/AddStaff/AddStaff';
+import UpdateStaff from '../Screens/UpdateInfoStaff/UpdateStaff';
 const Stack = createNativeStackNavigator();
 
 const Navigation = () => {
@@ -32,8 +34,9 @@ const Navigation = () => {
         options={{ headerShown: false }}
       />
       <Stack.Screen
-        name="ForgotPasswordScreen"
+        name="Quên mật khẩu"
         component={ForgotPasswordScreen}
+        options={{ headerShown: true }}
       />
       <Stack.Screen
         name="HomeScreen"
@@ -41,7 +44,7 @@ const Navigation = () => {
         options={{ headerShown: false }}
       />
       <Stack.Screen
-        name="ResetPassword"
+        name="Cài lại mật khẩu"
         component={ResetPasswordScreen}
         options={{ headerShown: true }}
       />
@@ -79,6 +82,20 @@ const ListFilterNavigation = () => {
   return (
     <Stack.Navigator screenOptions={{ headerShown: false }}>
       <Stack.Screen name="ListFilter" component={EFilter} />
+    </Stack.Navigator>
+  );
+};
+const AddStaffNavigation = () => {
+  return (
+    <Stack.Navigator screenOptions={{ headerShown: false }}>
+      <Stack.Screen name="AddStaff" component={AddStaff} />
+    </Stack.Navigator>
+  );
+};
+const UpdateStaffNavigation = () => {
+  return (
+    <Stack.Navigator screenOptions={{ headerShown: false }}>
+      <Stack.Screen name="UpdateStaff" component={UpdateStaff} />
     </Stack.Navigator>
   );
 };
@@ -140,13 +157,24 @@ const SNavigation = () => {
           component={ListFilterNavigation}
           options={{ headerShown: true }}
         />
-        <Stack.Screen
-        name="ForgotPasswordScreen"
+        
+      <Stack.Screen
+        name="Cài lại mật khẩu"
+        component={ResetPasswordScreen}
+        options={{ headerShown: true }}
+      />
+      <Stack.Screen
+        name="Quên mật khẩu"
         component={ForgotPasswordScreen}
       />
       <Stack.Screen
-        name="ResetPassword"
-        component={ResetPasswordScreen}
+        name="Thêm nhân viên"
+        component={AddStaffNavigation}
+        options={{ headerShown: true }}
+      />
+      <Stack.Screen
+        name="Cập nhật thông tin nhân viên"
+        component={UpdateStaffNavigation}
         options={{ headerShown: true }}
       />
       </Stack.Navigator>
