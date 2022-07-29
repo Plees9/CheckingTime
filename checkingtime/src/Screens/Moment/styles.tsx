@@ -9,9 +9,7 @@ const createStyles = () =>
     datePicker: {
       marginTop: 10,
       marginBottom: 10,
-      
-    
-     
+
       //height: "100%",
       borderWidth: 0.1,
     },
@@ -24,11 +22,10 @@ const createStyles = () =>
     style2: {
       backgroundColor: "white",
       overflow: "hidden",
-     
     },
     btnText: {
       position: "absolute",
-      
+
       flexDirection: "row",
       alignItems: "center",
       justifyContent: "center",

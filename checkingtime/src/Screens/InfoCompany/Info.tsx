@@ -24,7 +24,7 @@ const InfoScreen = () => {
           <IconButton
             icon="office-building"
             size={30}
-            color="#7445f6"
+            color="#f49218"
             style={{
               width: 50,
               height: 50,
@@ -54,7 +54,7 @@ const InfoScreen = () => {
           <IconButton
             icon="phone"
             size={20}
-            color="#7445f6"
+            color="#f49218"
             style={{
               width: 50,
               height: 50,
