@@ -13,7 +13,8 @@ import Jobs from "./src/Screens/Jobs";
 import UpdateStaff from "./src/Screens/UpdateInfoStaff/UpdateStaff";
 
 import EFilter from "./src/Screens/ListFilter/EFilter";
-import MatKhau from "./src/Screens/MatKhau/MatKhau";
+import FDontu from "./src/Screens/Bolocdontu/FDontu";
+
 
 
 
@@ -45,11 +46,11 @@ const App = () => {
     <Provider store={store}>
 
     <SafeAreaView style={styles.root}>
-       <SNavigation /> 
-       {/* <NavigationContainer>
-        <MatKhau />
+       {/* <SNavigation />  */}
+       <NavigationContainer>
+        <FDontu />
        
-       </NavigationContainer> */}
+       </NavigationContainer>
       </SafeAreaView>
     </Provider>
   );
