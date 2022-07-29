@@ -110,3 +110,20 @@ export const resetPassword = (otp, newPassword, rewritePassword) => async (dispa
     });
   }
 };
+export const register = (formData) => async (dispatch) => {
+  try {
+    dispatch({ type: "registerRequest" });
+
+    const { data } = await axios.post(`${serverUrl}/user/register`, formData, {
+      headers: {
+        "Content-Type": "multipart/form-data",
+      },
+    });
+    dispatch({ type: "registerSuccess", payload: data });
+  } catch (error) {
+    dispatch({
+      type: "registerFailure",
+      payload: error.response.data.message,
+    });
+  }
+};
