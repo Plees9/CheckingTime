@@ -29,15 +29,7 @@ const CustomDatePicker = (props: any) => {
       props.onDateChange(moment(selectedDate));
     }
   };
-  const onCancelPress = () => {
-    setDate(moment(defaultDate));
-    setShow(false);
-  };
-  const onDonePress = () => {
-    props.onDateChange(date);
-    setShow(false);
-    Text;
-  };
+ 
   const renderDatePicker = () => {
     return (
       <DateTimePicker

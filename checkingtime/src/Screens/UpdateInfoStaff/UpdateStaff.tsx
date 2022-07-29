@@ -40,7 +40,9 @@ const UpdateStaff = () => {
   const [userName, setUserName] = useState("");
   const [email, setEmail] = useState("");
   const [numberPhone, setNumberPhone] = useState("");
+  const [date_Birth, setDate_Birth] = useState("");
   const [date, setDate] = useState("");
+
   const [address, setAddress] = useState("");
 
   const [value_2, setValue_2] = useState(null);

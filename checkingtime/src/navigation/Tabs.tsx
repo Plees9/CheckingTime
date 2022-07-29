@@ -2,7 +2,7 @@ import * as React from "react";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import Account from "../Screens/Account/Account";
 import HomeScreen from "../Screens/HomeScreen";
-import { ColorfulTabBar } from "react-navigation-tabbar-collection";
+import { CleanTabBar } from "react-navigation-tabbar-collection";
 import Jobs from "../Screens/Jobs";
 import Icon from "react-native-vector-icons/Feather";
 
@@ -13,7 +13,7 @@ const TabsNavigation = () => {
   return (
       <Tab.Navigator
         initialRouteName="Home"
-        tabBar={(props) => <ColorfulTabBar {...props} />}
+        tabBar={(props) => <CleanTabBar {...props} />}
       >
         <Tab.Screen
           name="Trang chủ"

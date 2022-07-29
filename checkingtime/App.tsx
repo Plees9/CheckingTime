@@ -13,6 +13,7 @@ import Jobs from "./src/Screens/Jobs";
 import UpdateStaff from "./src/Screens/UpdateInfoStaff/UpdateStaff";
 
 import EFilter from "./src/Screens/ListFilter/EFilter";
+import MatKhau from "./src/Screens/MatKhau/MatKhau";
 
 
 
@@ -46,6 +47,7 @@ const App = () => {
     <SafeAreaView style={styles.root}>
        <SNavigation /> 
        {/* <NavigationContainer>
+        <MatKhau />
        
        </NavigationContainer> */}
       </SafeAreaView>
