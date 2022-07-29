@@ -101,7 +101,7 @@ const SignIn = () => {
             <View>
               <Icon_1
                 name={isHided == true ? "eye" : "eye-off"}
-                size={26}
+                size={20}
                 color={"#595959"}
               />
             </View>
