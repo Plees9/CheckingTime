@@ -8,6 +8,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { resetPassword } from "../../../redux/action";
 import Icon from "react-native-vector-icons/AntDesign";
 import Icon_1 from "react-native-vector-icons/Ionicons";
+import { isNull } from "lodash";
 
 const ResetPasswordScreen = () => {
   const dispatch = useDispatch();
@@ -67,6 +68,7 @@ const ResetPasswordScreen = () => {
           <TouchableOpacity
             onPressIn={() => setIsHided(false)}
             onPressOut={() => setIsHided(true)}
+            style={styles.icon_confirmPassword}
           >
             <View>
               <Icon_1
@@ -89,10 +91,10 @@ const ResetPasswordScreen = () => {
             placeholder={"Xác nhận mật khẩu mới"}
           />
           <View style={styles.icon_confirmPassword}>
-            {confirmPassword === password ? (
-              <Icon name="checkcircle" size={18} color="#51c92b" />
+            {password === "" || confirmPassword !== password ? (
+              <Icon name="exclamationcircle" size={17} color="#d22d2c" />
             ) : (
-              <Icon name="exclamationcircle" size={18} color="#d22d2c" />
+              <Icon name="checkcircle" size={17} color="#51c92b" />
             )}
           </View>
         </View>

@@ -64,7 +64,7 @@ const createStyles = () =>
     },
     confirmPassword: {
       flexDirection: "row",
-      width: 320,
+      // width: 320,
       height: 45,
       borderRadius: 5,
       marginTop: 8,
