@@ -14,7 +14,11 @@ import { useNavigation } from "@react-navigation/native";
 import createStyles from "./styles";
 import { useDispatch, useSelector } from "react-redux";
 import { logout } from "../../../redux/action";
+import {Color_Icon} from "../../../constants/theme";
+import { LinearGradient } from "expo-linear-gradient";
+
 const Account = () => {
+  
   const styles = useMemo(() => createStyles(), []);
   const { height } = useWindowDimensions();
   const navigation = useNavigation<any>();
@@ -26,8 +30,6 @@ const Account = () => {
   return (
     <ScrollView style={styles.container}>
       <View style={styles.hang}>
-        {/* <Image source={require('../../assets/images/midu.jpg')} /> */}
-        {/* <Icon name="user-circle" size={60} color="#DFDFDE" /> */}
         <Avatar
           size={70}
           rounded
@@ -52,7 +54,8 @@ const Account = () => {
           <Icon
             name="envelope-square"
             size={40}
-            color="#7445f6"
+            //color={Color_Icon.options}
+            color="#f49218"
             style={styles.icon}
           />
           <View style={styles.cot}>
@@ -74,7 +77,7 @@ const Account = () => {
             <Icon
               name="phone-square"
               size={40}
-              color="#7445f6"
+              color="#f49218"
               style={styles.icon}
             />
             <View>
@@ -101,7 +104,7 @@ const Account = () => {
           <Icon
             name="github-square"
             size={35}
-            color="#7445f6"
+            color="#f49218"
             style={styles.icon}
           />
           <View>
@@ -125,7 +128,7 @@ const Account = () => {
           <Icon
             name="steam-square"
             size={40}
-            color="#7445f6"
+            color="#f49218"
             style={styles.icon}
           />
           <View>
@@ -148,7 +151,7 @@ const Account = () => {
           <Icon
             name="reddit-square"
             size={40}
-            color="#7445f6"
+            color="#f49218"
             style={styles.icon}
           />
           <View>
@@ -171,7 +174,7 @@ const Account = () => {
           <Icon
             name="snapchat-square"
             size={40}
-            color="#7445f6"
+            color="#f49218"
             style={styles.icon}
           />
           <View>
@@ -194,7 +197,7 @@ const Account = () => {
           <Icon
             name="xing-square"
             size={40}
-            color="#7445f6"
+            color="#f49218"
             style={styles.icon}
           />
           <View>
@@ -212,46 +215,24 @@ const Account = () => {
           </View>
         </View>
       </View>
-      {/*  */}
+      {/* Tao ke ngang */}
+      <View style={styles.kengang} />
+      
       <View>
-        {/* tạo kẻ ngang */}
-        <View style={styles.kengang} />
-        <View>
-          <Text style={styles.text}>Lần đăng nhập cuối</Text>
-          <View style={styles.hang}>
-            <Icon name="cube" size={35} color="#7445f6" style={styles.icon} />
-            <View>
-              <TextInput
-                style={styles.user}
-                keyboardType="default"
-                placeholder="Tên thiết bị"
-                returnKeyType="done"
-                maxLength={4}
-                //value={userName}
-                secureTextEntry={false}
-                //onChangeText={setUserName}
-              />
-              <TextInput
-                style={styles.user}
-                keyboardType="default"
-                placeholder="18:01 - 01/01/2020"
-                returnKeyType="done"
-                maxLength={20}
-                //value={userName}
-                secureTextEntry={false}
-                //onChangeText={setUserName}
-              />
-            </View>
-          </View>
-        </View>
-      </View>
-      <View>
+      <TouchableOpacity
+          style={{marginTop: "2%"}}
+          onPress={() => navigation.navigate("Cập nhật thông tin nhân viên")}
+        >
+          <Text style={styles.chu}> Thay đổi thông tin cá nhân</Text>
+        </TouchableOpacity>
         <TouchableOpacity
           style={styles.khoangcach}
           onPress={() => navigation.navigate("ResetPassword")}
         >
           <Text style={styles.chu}>Thay đổi mật khẩu</Text>
         </TouchableOpacity>
+       
+       
         <TouchableOpacity onPress={logoutHandler}>
           <Text style={styles.chu1}> Đăng xuất </Text>
         </TouchableOpacity>

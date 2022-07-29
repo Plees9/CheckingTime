@@ -10,6 +10,11 @@ import { Provider } from "react-redux";
 import store from "./redux/store";
 import { NavigationContainer } from "@react-navigation/native";
 import Jobs from "./src/Screens/Jobs";
+import UpdateStaff from "./src/Screens/UpdateInfoStaff/UpdateStaff";
+
+import EFilter from "./src/Screens/ListFilter/EFilter";
+
+
 
 
 const App = () => {
@@ -38,13 +43,11 @@ const App = () => {
   return (
     <Provider store={store}>
     <SafeAreaView style={styles.root}>
-       {/* <SNavigation />  */}
-       <NavigationContainer>
-       <Jobs />
-       </NavigationContainer>
-      
-      
-    </SafeAreaView>
+       <SNavigation /> 
+       {/* <NavigationContainer>
+       
+       </NavigationContainer> */}
+      </SafeAreaView>
     </Provider>
   );
 };
