@@ -16,11 +16,12 @@ import { LinearGradient } from "expo-linear-gradient";
 
 import { Dropdown } from "react-native-element-dropdown";
 import AntDesign from "react-native-vector-icons/AntDesign";
+import moment from "moment";
+import DateTimePicker from '@react-native-community/datetimepicker';
 
-
-
-import CustomDatePicker from "../Moment/DatePicker";
-
+//import CustomDatePicker from "../Moment/DatePicker";
+import { useDispatch } from 'react-redux';
+import { register } from '../../../redux/action';
 const data_1 = [
   { label: "Người dùng", value: "1" },
   { label: "Quản lý", value: "2" },
@@ -42,8 +43,9 @@ const data_3 = [
 ];
 
 const AddStaff = () => {
+  const dispatch = useDispatch()
 
-  const [password, setPassword] = React.useState({ value: '', error: '' });
+  const [password, setPassword] = useState("");
   const [passwordScore, setPasswordScore] = React.useState(0);
   const _updateScore = (val: any) => {
     setPasswordScore(val);
@@ -52,17 +54,31 @@ const AddStaff = () => {
   const [userName, setUserName] = useState("");
   const [email, setEmail] = useState("");
   const [numberPhone, setNumberPhone] = useState("");
-  const [date, setDate] = useState("");
-
+  const [date, setDate] = useState(new Date());
   // const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
   
-  const [value_1, setValue_1] = useState(null);
-  const [value_2, setValue_2] = useState(null);
-  const [value_3, setValue_3] = useState(null);
+  const [value_1, setValue_1] = useState("");
+  const [value_2, setValue_2] = useState("");
+  const [value_3, setValue_3] = useState("");
   const [isFocus_1, setIsFocus_1] = useState(false);
   const [isFocus_2, setIsFocus_2] = useState(false);
   const [isFocus_3, setIsFocus_3] = useState(false);
+  const registerHandler = () => {
+    const myForm = new FormData();
+    
+    myForm.append("name", userName);
+    myForm.append("email", email);
+    myForm.append("phoneNumber", numberPhone);
+    myForm.append("password", password);
+    myForm.append("role", value_1);
+    const Sdate = String(date)
+    myForm.append("startWorkingDate", Sdate);
+    myForm.append("contractStatus", value_2);
+    myForm.append("typeOfEmployee", value_3);
+
+    dispatch<any>(register(myForm));
+}
 
   const navigation = useNavigation<any>();
 
@@ -98,6 +114,7 @@ const AddStaff = () => {
               placeholder={"E-mail"}
               style={styles.text23}
               returnKeyType="done"
+              keyboardType='email-address'
               value={email}
               secureTextEntry={false}
               onChangeText={setEmail}
@@ -128,9 +145,9 @@ const AddStaff = () => {
               style={styles.text23}
               returnKeyType="done"
               maxLength={16}
-              value={password.value}
+              value={password}
               secureTextEntry={true}
-              onChangeText={password => setPassword({ value: password, error: '' })}
+              onChangeText={setPassword}
             />
           </View>
         </View>
@@ -173,10 +190,11 @@ const AddStaff = () => {
           />
         </View>
         <View style={styles.row2}>
-          <CustomDatePicker
-            value = {date}
-            onChangeText={(value: any) => setDate(value)}
-            minimumDate={new Date(2010, 1, 1)}
+          < DateTimePicker
+            value={date}
+            // onChange={(event, newDate) => {
+            //   setDate(newDate)
+            // }} 
           />
           <Icon
             style={styles.styleIcon}
@@ -261,7 +279,7 @@ const AddStaff = () => {
         style={styles.btn2}
       >
         {/* <TouchableOpacity onPress={loginHandler}> */}
-        <TouchableOpacity onPress={showToast}>
+        <TouchableOpacity onPress={registerHandler}>
           <Text style={styles.text22}>Đăng ký</Text>
         </TouchableOpacity>
       </LinearGradient>
