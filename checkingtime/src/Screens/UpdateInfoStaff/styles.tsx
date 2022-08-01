@@ -24,7 +24,7 @@ const createStyles = () =>
       alignItems: "center",
     },
     khoi: {
-      marginLeft: "3%",
+      marginLeft: "1%",
       marginRight: "3%",
     },
     khoi_2: {

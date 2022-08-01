@@ -66,7 +66,7 @@ const ListStaff = () => {
               </View>
               <Icon
                 name="phone"
-                size={20}
+                size={25}
                 style={styles.iconPhone}
                 onPress={() => Alert.alert("Simple Button pressed")}
               />
@@ -113,7 +113,7 @@ const ListStaff = () => {
               </View>
               <Icon
                 name="phone"
-                size={20}
+                size={25}
                 style={styles.iconPhone}
                 onPress={() => Alert.alert("Simple Button pressed")}
               />
@@ -159,7 +159,7 @@ const ListStaff = () => {
               </View>
               <Icon
                 name="phone"
-                size={20}
+                size={25}
                 style={styles.iconPhone}
                 onPress={() => Alert.alert("Simple Button pressed")}
               />

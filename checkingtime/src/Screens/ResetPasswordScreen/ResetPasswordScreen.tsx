@@ -89,10 +89,10 @@ const ResetPasswordScreen = () => {
             placeholder={"Xác nhận mật khẩu mới"}
           />
           <View style={styles.icon_confirmPassword}>
-            {confirmPassword === password ? (
-              <Icon name="checkcircle" size={18} color="#51c92b" />
+          {password === "" || confirmPassword !== password ? (
+              <Icon name="exclamationcircle" size={17} color="#d22d2c" />
             ) : (
-              <Icon name="exclamationcircle" size={18} color="#d22d2c" />
+              <Icon name="checkcircle" size={17} color="#51c92b" />
             )}
           </View>
         </View>

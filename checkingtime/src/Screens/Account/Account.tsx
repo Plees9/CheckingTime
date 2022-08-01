@@ -4,8 +4,9 @@ import {
   ScrollView,
   TouchableOpacity,
   useWindowDimensions,
+  Alert,
 } from "react-native";
-import React, { useMemo, useEffect } from "react";
+import React, { useState,useMemo, useEffect } from "react";
 
 import { Avatar } from "@rneui/themed";
 import Icon from "react-native-vector-icons/FontAwesome";
@@ -14,18 +15,71 @@ import { useNavigation } from "@react-navigation/native";
 import createStyles from "./styles";
 import { useDispatch, useSelector } from "react-redux";
 import { logout } from "../../../redux/action";
-import {Color_Icon} from "../../../constants/theme";
-import { LinearGradient } from "expo-linear-gradient";
+import * as ImagePicker from "expo-image-picker";
 
 const Account = () => {
   
   const styles = useMemo(() => createStyles(), []);
   const { height } = useWindowDimensions();
   const navigation = useNavigation<any>();
+  const [image, setImage] = useState<any>(null);
   const dispatch = useDispatch()
   const logoutHandler = () => {
     dispatch<any>(logout())
 }
+
+const pickImage = async () => {
+  // No permissions request is necessary for launching the image library
+  let result = await ImagePicker.launchImageLibraryAsync({
+    mediaTypes: ImagePicker.MediaTypeOptions.All,
+    allowsEditing: true,
+    aspect: [4, 3],
+    quality: 1,
+  });
+
+  console.log(result);
+
+  if (!result.cancelled) {
+    setImage(result.uri);
+  }
+};
+const takeImage = async () => {
+  // No permissions request is necessary for launching the image library
+  //Permissions.askAsync (Permissions.CAMERA_ROLL)
+  let result = await ImagePicker.launchCameraAsync({
+    mediaTypes: ImagePicker.MediaTypeOptions.All,
+    allowsEditing: true,
+    aspect: [4, 3],
+    quality: 1,
+  });
+
+  console.log(result);
+
+  if (!result.cancelled) {
+    setImage(result.uri);
+  }
+};
+
+const addAvatar = () => {
+  Alert.alert("Thay đổi ảnh đại diện", "Bạn có muốn thay đổi ảnh đại diện không?",
+   [ 
+     { 
+      text: "Chụp ảnh",
+      onPress: takeImage
+        
+      },
+      {
+        text: "Chọn ảnh",
+        onPress: pickImage
+    }, 
+    {
+      text: "Hủy",
+      onPress: () => console.log("Cancel Pressed"),
+  },
+  ]
+  );
+}
+
 
   return (
     <ScrollView style={styles.container}>
@@ -33,13 +87,11 @@ const Account = () => {
         <Avatar
           size={70}
           rounded
-          source={{
-            uri: "https://image2.tin247.news/pictures/2021/09/23/bcd1632409191.jpg",
-          }}
+          source={{uri: image}}
           containerStyle={{ backgroundColor: "orange" }}
+          onPress={() => addAvatar()}
         >
-          <Avatar.Accessory size={24} />
-        </Avatar>
+          </Avatar>
         <View>
           <TextInput style={styles.user} placeholder="Username" />
           <TextInput style={styles.user} placeholder=" vị trí" />
@@ -59,7 +111,7 @@ const Account = () => {
             style={styles.icon}
           />
           <View style={styles.cot}>
-            <TextInput
+<TextInput
               style={styles.user}
               keyboardType="email-address"
               placeholder="abc@gmail.com"
@@ -83,7 +135,7 @@ const Account = () => {
             <View>
               <TextInput
                 style={styles.user}
-                keyboardType="number-pad"
+keyboardType="number-pad"
                 placeholder="+84 987 654 321"
                 returnKeyType="done"
                 maxLength={12}
@@ -161,7 +213,7 @@ const Account = () => {
               placeholder="Đang làm việc/Đã nghỉ"
               returnKeyType="done"
               maxLength={100}
-              //value={userName}
+//value={userName}
               secureTextEntry={false}
               //onChangeText={setUserName}
             />
@@ -184,7 +236,7 @@ const Account = () => {
               placeholder="Nhân viên chính thức/ thử việc/ TTS"
               returnKeyType="done"
               maxLength={100}
-              //value={userName}
+//value={userName}
               secureTextEntry={false}
               //onChangeText={setUserName}
             />
