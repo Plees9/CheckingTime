@@ -157,14 +157,15 @@ const SNavigation = () => {
           component={ListFilterNavigation}
           options={{ headerShown: true }}
         />
-        <Stack.Screen
-        name="Quên mật khẩu"
-        component={ForgotPasswordScreen}
-      />
+        
       <Stack.Screen
         name="Cài lại mật khẩu"
         component={ResetPasswordScreen}
         options={{ headerShown: true }}
+      />
+      <Stack.Screen
+        name="Quên mật khẩu"
+        component={ForgotPasswordScreen}
       />
       <Stack.Screen
         name="Thêm nhân viên"

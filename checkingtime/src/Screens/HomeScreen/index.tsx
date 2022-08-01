@@ -1,12 +1,22 @@
 import { useNavigation } from "@react-navigation/native";
-import React from "react";
-import { Text, View, Alert, TouchableOpacity } from "react-native";
+import React, { useState } from "react";
+import { Text, View, Alert, TouchableOpacity, TextInput, ToastAndroid } from "react-native";
 import { Avatar } from "@rneui/themed";
 import Icon from "react-native-vector-icons/FontAwesome";
 import styles from "./styles";
 
+import { FAB, Input } from "react-native-elements";
+
 const HomeScreen = () => {
   const navigation = useNavigation<any>();
+  const [userName, setUserName] = useState("");
+
+  //const [isCheckin, setIsCheckin] = useState(false);
+
+  const pressHandler = () => {
+    ToastAndroid.show("Bạn" + " " + userName + " " + "đã chấm công!", ToastAndroid.SHORT);
+  };
+
   return (
     <View style={styles.container}>
       <View>
@@ -15,10 +25,10 @@ const HomeScreen = () => {
             <Icon name="user" size={26} color="#f49218" style={styles.icon} />
             <Text style={styles.text1}>
               {" "}
-              Xin chào, {""}
-              <Text style={styles.textcolor}>userName</Text>
+              Xin chào, {userName}
             </Text>
           </View>
+
         </TouchableOpacity>
 
         <View style={{ alignItems: "center" }}>
@@ -115,9 +125,25 @@ const HomeScreen = () => {
             <Text style={styles.textInfo}> Time checkin</Text>
           </View>
         </View>
-
-        {/* </ImageBackground> */}
       </View>
+      <FAB
+        // onPress={() => {
+        //   setIsCheckin(!isCheckin);
+        //   {
+        //     isCheckin == true
+        //       ? Alert.alert("Checkin thành công")
+        //       : Alert.alert("Checkout thành công");
+        //   }
+        // }}
+        // title={isCheckin ? "Checkin" : "Checkout"}
+        // color={isCheckin ? "#FF8C32" : "#F55353"}
+        title="Chấm công"
+        placement="right"
+        size="small"
+        color="#FF8C32"
+        buttonStyle={styles.fab}
+        onPress={pressHandler}
+      />
     </View>
   );
 };

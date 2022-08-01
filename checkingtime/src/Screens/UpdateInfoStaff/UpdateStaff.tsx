@@ -40,7 +40,9 @@ const UpdateStaff = () => {
   const [userName, setUserName] = useState("");
   const [email, setEmail] = useState("");
   const [numberPhone, setNumberPhone] = useState("");
+  const [date_Birth, setDate_Birth] = useState("");
   const [date, setDate] = useState("");
+
   const [address, setAddress] = useState("");
 
   const [value_2, setValue_2] = useState(null);
@@ -141,8 +143,9 @@ const UpdateStaff = () => {
       <View style={styles.row}>
         <View style={styles.row1}>
           <CustomDatePicker
-            defaultDate={new Date()}
-            onDateChange={(value: any) => console.log(value)}
+          value={date_Birth}
+          onChange={setDate_Birth}
+            
           />
           <Icon
             style={styles.styleIcon}
@@ -153,8 +156,9 @@ const UpdateStaff = () => {
         </View>
         <View style={styles.row2}>
           <CustomDatePicker
-            defaultDate={new Date()}
-            onDateChange={(value: any) => console.log(value)}
+            value={date}
+            onChange={setDate}
+           
           />
           <Icon
             style={styles.styleIcon}

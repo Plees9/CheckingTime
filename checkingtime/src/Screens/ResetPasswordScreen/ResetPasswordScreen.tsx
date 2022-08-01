@@ -21,7 +21,7 @@ const ResetPasswordScreen = () => {
 
   const changePasswordHandler = async () => {
     await dispatch<any>(resetPassword(otp, password, confirmPassword));
-    navigation.navigate("login");
+    navigation.navigate("SignIn");
   };
 
   useEffect(() => {
@@ -33,7 +33,7 @@ const ResetPasswordScreen = () => {
       alert(error);
       dispatch({ type: "clearError" });
     }
-  }, [alert, message, dispatch, error]);
+  }, [alert, dispatch, error]);
 
   const navigation = useNavigation<any>();
 

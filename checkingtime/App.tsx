@@ -13,6 +13,8 @@ import Jobs from "./src/Screens/Jobs";
 import UpdateStaff from "./src/Screens/UpdateInfoStaff/UpdateStaff";
 
 import EFilter from "./src/Screens/ListFilter/EFilter";
+import FDontu from "./src/Screens/Bolocdontu/FDontu";
+
 
 
 
@@ -42,11 +44,13 @@ const App = () => {
 
   return (
     <Provider store={store}>
+
     <SafeAreaView style={styles.root}>
-       <SNavigation /> 
-       {/* <NavigationContainer>
+       {/* <SNavigation />  */}
+       <NavigationContainer>
+        <FDontu />
        
-       </NavigationContainer> */}
+       </NavigationContainer>
       </SafeAreaView>
     </Provider>
   );

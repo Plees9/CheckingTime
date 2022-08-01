@@ -66,11 +66,11 @@ const createStyles = () =>
       flexDirection: "row",
       justifyContent: "space-around",
       marginTop: "3%",
+     
     },
     row1: {
       flexDirection: "row",
       textAlign: "center",
-      
       width: 150,
       height: 40,
       marginTop: "1%",
