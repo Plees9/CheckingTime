@@ -9,13 +9,18 @@ import CanDuyet from "../Screens/DonTu/CanDuyet/CanDuyet";
 import CuaToi from "../Screens/DonTu/CuaToi/CuaToi";
 import QuanLy from "../Screens/DonTu/QuanLy/QuanLy";
 import TheoDoi from "../Screens/DonTu/TheoDoi/TheoDoi";
+import { FONTS } from "../../constants/theme";
 
 
 const TabDonTu = createMaterialTopTabNavigator();
 
 const TabDonTusNavigation = () => {
   return (
-    <TabDonTu.Navigator initialRouteName="back">
+    <TabDonTu.Navigator initialRouteName="back"
+    screenOptions={{
+      tabBarStyle:  { height: 45 },
+      tabBarLabelStyle: { fontSize: 11, alignItems: 'center', fontFamily: FONTS.vanSansSemiBold },
+    }}>
       
       <TabDonTu.Screen
         name="Của Tôi"

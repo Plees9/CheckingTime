@@ -30,9 +30,9 @@ const ForgotPasswordScreen = () => {
         value={email}
         onChangeText={(text) => setEmail(text)}
         secureTextEntry={undefined}
-        keyboardType={"number-pad"}
+        keyboardType={"email-address"}
         returnKeyType="done"
-        placeholder={"Số điện thoại đăng nhập"}
+        placeholder={"Nhập địa chỉ email"}
       ></TextInput>
       <View>
         <LinearGradient

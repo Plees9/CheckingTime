@@ -114,7 +114,7 @@ const AddStaff = () => {
               placeholder={"E-mail"}
               style={styles.text23}
               returnKeyType="done"
-              keyboardType='email-address'
+              keyboardType="email-address"
               value={email}
               secureTextEntry={false}
               onChangeText={setEmail}
