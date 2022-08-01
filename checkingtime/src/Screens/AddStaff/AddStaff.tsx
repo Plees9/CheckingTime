@@ -4,22 +4,20 @@ import {
   TextInput,
   ToastAndroid,
   TouchableOpacity,
-  Alert,
+
 } from "react-native";
 import React, { useMemo, useState, useEffect, Component } from "react";
 import createStyles from "./styles";
 import { useNavigation } from "@react-navigation/native";
 
-
 import Icon from "react-native-vector-icons/FontAwesome";
 import { LinearGradient } from "expo-linear-gradient";
-
 import { Dropdown } from "react-native-element-dropdown";
 import AntDesign from "react-native-vector-icons/AntDesign";
 
-
-
 import CustomDatePicker from "../Moment/DatePicker";
+//import CustomDatePicker from "../Date/CustomDatePicker";
+
 
 const data_1 = [
   { label: "Người dùng", value: "1" },
@@ -44,19 +42,13 @@ const data_3 = [
 const AddStaff = () => {
 
   const [password, setPassword] = React.useState({ value: '', error: '' });
-  const [passwordScore, setPasswordScore] = React.useState(0);
-  const _updateScore = (val: any) => {
-    setPasswordScore(val);
-  };
+  
   const styles = useMemo(() => createStyles(), []);
   const [userName, setUserName] = useState("");
   const [email, setEmail] = useState("");
   const [numberPhone, setNumberPhone] = useState("");
   const [date, setDate] = useState("");
 
-  // const [password, setPassword] = useState("");
-  const [confirmPassword, setConfirmPassword] = useState("");
-  
   const [value_1, setValue_1] = useState(null);
   const [value_2, setValue_2] = useState(null);
   const [value_3, setValue_3] = useState(null);
@@ -135,8 +127,6 @@ const AddStaff = () => {
           </View>
         </View>
 
-   
-
         <Text style={styles.textExemple}>8-16 ký tự ví dụ: eX@mpL3*</Text>
       </View>
       <View style={styles.row}>
@@ -169,14 +159,13 @@ const AddStaff = () => {
                 size={20}
               />
             )}
-            // // renderItem={renderItem}
+    
           />
         </View>
         <View style={styles.row2}>
           <CustomDatePicker
             value = {date}
-            onChangeText={(value: any) => setDate(value)}
-            minimumDate={new Date(2010, 1, 1)}
+            onChangeText={setDate}
           />
           <Icon
             style={styles.styleIcon}

@@ -1,16 +1,21 @@
 import { useNavigation } from "@react-navigation/native";
 import React, { useState } from "react";
-import { Text, View, Alert, TouchableOpacity } from "react-native";
+import { Text, View, Alert, TouchableOpacity, TextInput, ToastAndroid } from "react-native";
 import { Avatar } from "@rneui/themed";
 import Icon from "react-native-vector-icons/FontAwesome";
 import styles from "./styles";
-import { FloatingAction } from "react-native-floating-action";
-import {FAB} from "react-native-elements";
+
+import { FAB, Input } from "react-native-elements";
 
 const HomeScreen = () => {
   const navigation = useNavigation<any>();
+  const [userName, setUserName] = useState("");
 
-  const [isCheckin, setIsCheckin] = useState(false);
+  //const [isCheckin, setIsCheckin] = useState(false);
+
+  const pressHandler = () => {
+    ToastAndroid.show("Bạn" + " " + userName + " " + "đã chấm công!", ToastAndroid.SHORT);
+  };
 
   return (
     <View style={styles.container}>
@@ -20,10 +25,10 @@ const HomeScreen = () => {
             <Icon name="user" size={26} color="#f49218" style={styles.icon} />
             <Text style={styles.text1}>
               {" "}
-              Xin chào, {""}
-              <Text style={styles.textcolor}>userName</Text>
+              Xin chào, {userName}
             </Text>
           </View>
+
         </TouchableOpacity>
 
         <View style={{ alignItems: "center" }}>
@@ -120,23 +125,25 @@ const HomeScreen = () => {
             <Text style={styles.textInfo}> Time checkin</Text>
           </View>
         </View>
-
-        {/* </ImageBackground> */}
       </View>
       <FAB
-      onPress={() => setIsCheckin(!isCheckin)}
-      title = {(isCheckin ? "Checkin" : "Checkout")}
-      color = {(isCheckin ? "#f49218" : "#f498")}
-      
-      placement="right"
-      size= "small"
-      //icon = "check"
-      icon={<Icon name="check" size={18} color="#f49218" style={styles.icon} />}
-      //onPress = {() => navigation.navigate("Checkin")}
-
-      
+        // onPress={() => {
+        //   setIsCheckin(!isCheckin);
+        //   {
+        //     isCheckin == true
+        //       ? Alert.alert("Checkin thành công")
+        //       : Alert.alert("Checkout thành công");
+        //   }
+        // }}
+        // title={isCheckin ? "Checkin" : "Checkout"}
+        // color={isCheckin ? "#FF8C32" : "#F55353"}
+        title="Chấm công"
+        placement="right"
+        size="small"
+        color="#FF8C32"
+        buttonStyle={styles.fab}
+        onPress={pressHandler}
       />
-      
     </View>
   );
 };

@@ -24,6 +24,7 @@ const styles = StyleSheet.create({
   },
   textcolor: {
     fontFamily: FONTS.vanSansBold,
+    
   },
   text2: {
     fontSize: 16,
@@ -156,6 +157,14 @@ const styles = StyleSheet.create({
   avt: {
     alignSelf: "center",
     marginBottom: 10,
+  },
+  fab: {
+    width: 130,
+    height: 50,
+    //borderRadius: 100/2,
+    // borderStyle: "solid",
+   
+
   },
 });
 

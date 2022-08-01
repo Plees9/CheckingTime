@@ -58,6 +58,8 @@ const createStyles = () =>
       borderColor: "#CFD2CF",
       borderWidth: 1,
       borderRadius: 5,
+      
+      
     },
     styleIcon: {
       marginTop: "5%",
@@ -80,6 +82,7 @@ const createStyles = () =>
       borderRadius: 10,
       marginTop: "10%",
     },
+   
     dropdown: {
       margin: "3%",
       //height: 50,
