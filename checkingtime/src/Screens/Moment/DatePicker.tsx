@@ -15,32 +15,32 @@ import createStyles from "./styles";
 const CustomDatePicker = (props: any) => {
   const styles = useMemo(() => createStyles(), []);
 
-  const { defaultDate } = props;
-  const [date, setDate] = useState(moment(defaultDate));
+ 
+  const [date, setDate] = useState(new Date());
   const [show, setShow] = useState(false);
 
-  const onChange = (e: any, selectedDate: any) => {
-    setDate(moment(selectedDate));
-  };
-  const onAndroidChange = (e: any, selectedDate: any) => {
-    setShow(false);
-    if (selectedDate) {
-      setDate(moment(selectedDate));
-      props.onDateChange(moment(selectedDate));
-    }
-  };
  
+ 
+
   const renderDatePicker = () => {
     return (
       <DateTimePicker
         mode="date"
         timeZoneOffsetInMinutes={0}
-        value={new Date(date.format())}
-        minimumDate={
-          new Date(moment().subtract(120, "years").format("YYYY-MM-DD"))
-        }
-        maximumDate={new Date(moment().format("YYYY-MM-DD"))}
-        onChange={Platform.OS === "ios" ? onChange : onAndroidChange}
+        value={date}
+        
+        
+        
+        is24Hour={true}
+        display="default"
+
+      
+      
+        // minimumDate={
+        //   new Date(moment().subtract(120, "years").format("YYYY-MM-DD"))
+        // }
+        //maximumDate={new Date(3000, 12, 31)}
+        //onChange={Platform.OS === "ios" ? onChange : onAndroidChange}
       />
     );
   };
@@ -49,7 +49,7 @@ const CustomDatePicker = (props: any) => {
     <View style={styles.flex}>
       <TouchableHighlight activeOpacity={0} onPress={() => setShow(true)}>
         <>
-          <Text style={styles.datePicker}> {date.format("DD/MM/YYYY")}</Text>
+          <Text style={styles.datePicker}> {date.getDate}</Text>
           {Platform.OS !== "ios" && show && renderDatePicker()}
 
           {Platform.OS === "ios" && (
@@ -64,7 +64,6 @@ const CustomDatePicker = (props: any) => {
                 <TouchableHighlight
                   style={styles.style1}
                   activeOpacity={1}
-                  //visible={show}
                   onPress={() => setShow(false)}
                 >
                   <TouchableHighlight
