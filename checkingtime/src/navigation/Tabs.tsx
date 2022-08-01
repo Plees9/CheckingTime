@@ -12,7 +12,7 @@ const Tab = createBottomTabNavigator();
 const TabsNavigation = () => {
   return (
       <Tab.Navigator
-        initialRouteName="Home"
+        initialRouteName="Trang chủ"
         tabBar={(props) => <CleanTabBar {...props} />}
       >
         <Tab.Screen

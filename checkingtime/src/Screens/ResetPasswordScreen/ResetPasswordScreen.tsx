@@ -12,7 +12,7 @@ import { isNull } from "lodash";
 
 const ResetPasswordScreen = () => {
   const dispatch = useDispatch();
-  const { message, error } = useSelector<any>((state) => state.message);
+  const { message, error } = useSelector<any, any>((state) => state.message);
   const styles = useMemo(() => createStyles(), []);
   const [password, setPassword] = useState("");
   const [otp, setotp] = useState("");
