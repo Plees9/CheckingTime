@@ -46,11 +46,10 @@ const App = () => {
     <Provider store={store}>
 
     <SafeAreaView style={styles.root}>
-       {/* <SNavigation />  */}
-       <NavigationContainer>
+       <SNavigation /> 
+       {/* <NavigationContainer>
         <FDontu />
-       
-       </NavigationContainer>
+       </NavigationContainer> */}
       </SafeAreaView>
     </Provider>
   );
