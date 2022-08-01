@@ -1,4 +1,4 @@
-import { View, Text, TouchableHighlight, Modal } from "react-native";
+import { View, Text, TouchableHighlight, TouchableOpacity,Modal } from "react-native";
 import React, { useMemo, useState } from "react";
 import DateTimePicker from "@react-native-community/datetimepicker";
 
@@ -28,7 +28,7 @@ const CustomDatePicker = (props: any) => {
     
     <View style={styles.flex}>
       <Text>Pickker</Text>
-      <TouchableHighlight activeOpacity={0} onPress={() => setShow(true)}>
+      <TouchableOpacity activeOpacity={0} onPress={() => setShow(true)}>
         <View>
           <Text style={styles.datePicker}> {date.format("MMMM DD, YYYY")}</Text>
           <Modal
@@ -85,7 +85,7 @@ const CustomDatePicker = (props: any) => {
             </View>
           </Modal>
         </View>
-      </TouchableHighlight>
+      </TouchableOpacity>
     </View>
   );
 };

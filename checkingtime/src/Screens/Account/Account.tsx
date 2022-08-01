@@ -15,6 +15,11 @@ import { useNavigation } from "@react-navigation/native";
 import createStyles from "./styles";
 import { useDispatch, useSelector } from "react-redux";
 import { logout } from "../../../redux/action";
+<<<<<<< HEAD
+=======
+import {Color_Icon} from "../../../constants/theme";
+import { LinearGradient } from "expo-linear-gradient";
+>>>>>>> ba71d555e7f1ee4d37a40775f2a1999a905b8e78
 import * as ImagePicker from "expo-image-picker";
 
 const Account = () => {
@@ -45,7 +50,10 @@ const pickImage = async () => {
 };
 const takeImage = async () => {
   // No permissions request is necessary for launching the image library
+<<<<<<< HEAD
   //Permissions.askAsync (Permissions.CAMERA_ROLL)
+=======
+>>>>>>> ba71d555e7f1ee4d37a40775f2a1999a905b8e78
   let result = await ImagePicker.launchCameraAsync({
     mediaTypes: ImagePicker.MediaTypeOptions.All,
     allowsEditing: true,
