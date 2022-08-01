@@ -51,6 +51,7 @@ const createStyles = () =>
     row2: {
       flexDirection: "row",
       textAlign: "center",
+      justifyContent: "space-around",
       width: 150,
       height: 40,
       marginRight: "5%",
@@ -58,13 +59,10 @@ const createStyles = () =>
       borderColor: "#CFD2CF",
       borderWidth: 1,
       borderRadius: 5,
-      
-      
     },
     styleIcon: {
-      marginTop: "5%",
-      marginRight: "5%",
-      marginBottom: "5%",
+      alignSelf: "center",
+      justifyContent: "flex-end",
     },
     text22: {
       fontSize: 20,
@@ -82,7 +80,7 @@ const createStyles = () =>
       borderRadius: 10,
       marginTop: "10%",
     },
-   
+
     dropdown: {
       margin: "3%",
       //height: 50,

@@ -159,12 +159,9 @@ const styles = StyleSheet.create({
     marginBottom: 10,
   },
   fab: {
-    width: 130,
+    width: 150,
     height: 50,
-    //borderRadius: 100/2,
-    // borderStyle: "solid",
    
-
   },
 });
 
