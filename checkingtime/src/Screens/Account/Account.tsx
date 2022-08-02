@@ -102,11 +102,7 @@ const Account = () => {
           onPress={() => addAvatar()}
         ></Avatar>
         <View>
-          <TextInput
-            style={styles.user}
-            placeholder="Username"
-            value={userName}
-          />
+          <Text style={styles.user}>{userName}</Text>
           <Text style={styles.user_1}>{role}</Text>
         </View>
       </View>
@@ -173,7 +169,7 @@ const Account = () => {
           />
           <View>
             <Text style={styles.user}>Ngày bắt đầu làm việc </Text>
-            <TextInput style={styles.user_1}>{date}</TextInput>
+            <Text style={styles.user_1}>{date}</Text>
           </View>
         </View>
       </View>
