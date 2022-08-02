@@ -22,9 +22,6 @@ import moment from "moment";
 
 import { useDispatch } from "react-redux";
 import { register } from "../../../redux/action";
-
-import PassMeter from "../../../node_modules/react-native-passmeter";
-
 const data_1 = [
   { label: "Người dùng", value: "Người dùng" },
   { label: "Quản lý", value: "Quản lý" },
@@ -85,8 +82,8 @@ const AddStaff = () => {
     myForm.append("privilege", value_1);
     const Sdate = String(date);
     myForm.append("startWorkingDate", Sdate);
-    myForm.append("contractStatus", value_2);
-    myForm.append("typeOfEmployee", value_4);
+    myForm.append("contractStatus", value_4);
+    myForm.append("typeOfEmployee", value_2);
     myForm.append("role", value_3);
     console.log(Sdate)
 
@@ -174,15 +171,6 @@ const AddStaff = () => {
             </View>
           </TouchableOpacity>
           </View>
-        </View>
-        <View>
-          <PassMeter
-            showLabels
-            password={password}
-            maxLength={MAX_LEN}
-            minLength={MIN_LEN}
-            labels={PASS_LABELS}
-          />
         </View>
         <View style={styles.styleTT}>
           <View style={styles.text24}>
