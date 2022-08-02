@@ -38,6 +38,7 @@ const createStyles = () =>
       fontSize: 16,
       fontFamily: FONTS.vanSansMedium,
       marginRight: "3%",
+      width: "90%",
     },
     row: {
       flexDirection: "row",

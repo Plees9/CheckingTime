@@ -12,6 +12,7 @@ import { useNavigation } from "@react-navigation/native";
 
 import Icon from "react-native-vector-icons/FontAwesome";
 import Icon_1 from "react-native-vector-icons/Ionicons";
+import Icon_2 from "react-native-vector-icons/AntDesign";
 import { LinearGradient } from "expo-linear-gradient";
 
 import { Dropdown } from "react-native-element-dropdown";
@@ -23,7 +24,7 @@ import moment from "moment";
 import { useDispatch } from "react-redux";
 import { register } from "../../../redux/action";
 
-import PassMeter from "../../../node_modules/react-native-passmeter";
+//import PassMeter from "../../../node_modules/react-native-passmeter";
 
 const data_1 = [
   { label: "Người dùng", value: "Người dùng" },
@@ -108,7 +109,7 @@ const AddStaff = () => {
     <View style={styles.view}>
       <View>
         <View style={styles.styleTT}>
-          <View style={styles.text24}>
+          
             <TextInput
               placeholder={"Họ và tên"}
               style={styles.text23}
@@ -117,11 +118,11 @@ const AddStaff = () => {
               secureTextEntry={false}
               onChangeText={setUserName}
             />
-          </View>
+          
         </View>
         {/* Email */}
         <View style={styles.styleTT}>
-          <View style={styles.text24}>
+          
             <TextInput
               placeholder={"E-mail"}
               style={styles.text23}
@@ -131,12 +132,12 @@ const AddStaff = () => {
               secureTextEntry={false}
               onChangeText={setEmail}
             />
-          </View>
+          
         </View>
         {/* Số điện thoại */}
         <View>
           <View style={styles.styleTT}>
-            <View style={styles.text24}>
+            
               <TextInput
                 placeholder={"Số điện thoại"}
                 style={styles.text23}
@@ -146,12 +147,12 @@ const AddStaff = () => {
                 secureTextEntry={false}
                 onChangeText={setNumberPhone}
               />
-            </View>
+            
           </View>
         </View>
         {/* PassWord */}
         <View style={styles.styleTT}>
-          <View style={styles.text24}>
+          
             <TextInput
               placeholder={"Mật khẩu"}
               style={styles.text23}
@@ -165,17 +166,15 @@ const AddStaff = () => {
             onPressOut={() => setIsHided(true)}
             
           >
-            <View>
               <Icon_1
                 name={isHided == true ? "eye" : "eye-off"}
                 size={20}
                 color={"#595959"}
               />
-            </View>
           </TouchableOpacity>
-          </View>
+          
         </View>
-        <View>
+        {/* <View>
           <PassMeter
             showLabels
             password={password}
@@ -183,9 +182,9 @@ const AddStaff = () => {
             minLength={MIN_LEN}
             labels={PASS_LABELS}
           />
-        </View>
+        </View> */}
         <View style={styles.styleTT}>
-          <View style={styles.text24}>
+          
             <TextInput
               placeholder={"Nhập lại mật khẩu"}
               style={styles.text23}
@@ -193,9 +192,14 @@ const AddStaff = () => {
               maxLength={16}
               value={confirmPassword}
               secureTextEntry={true}
-              onChangeText={setConfirmPassword}
+              onChangeText={(text) => setConfirmPassword(text)}
             />
-          </View>
+            {password === "" || confirmPassword !== password ? (
+              <Icon_2 name="exclamationcircle" size={17} color="#d22d2c" />
+            ) : (
+              <Icon_2 name="checkcircle" size={17} color="#51c92b" />
+            )}
+          
         </View>
 
         <Text style={styles.textExemple}>8-16 ký tự ví dụ: eX@mpL3*</Text>
