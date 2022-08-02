@@ -1,31 +1,37 @@
 import { useNavigation } from "@react-navigation/native";
-import React from "react";
-import { Text, View, Alert, TouchableOpacity, ImageBackground } from "react-native";
+import React, { useState } from "react";
+import { Text, View, Alert, TouchableOpacity, TextInput, ToastAndroid } from "react-native";
 import { Avatar } from "@rneui/themed";
 import Icon from "react-native-vector-icons/FontAwesome";
 import styles from "./styles";
 
+import { FAB, Input } from "react-native-elements";
+
 const HomeScreen = () => {
   const navigation = useNavigation<any>();
+  const [userName, setUserName] = useState("");
+
+  //const [isCheckin, setIsCheckin] = useState(false);
+
+  const pressHandler = () => {
+    ToastAndroid.show("Bạn" + " " + userName + " " + "đã chấm công!", ToastAndroid.SHORT);
+  };
+
   return (
     <View style={styles.container}>
-      {/* <ImageBackground source={require("../../../assets/images/tim.jpg")} > */}
-
       <View>
-        <TouchableOpacity onPress={() => navigation.navigate("Account")}>
+        <TouchableOpacity onPress={() => navigation.navigate("Tài khoản")}>
           <View style={styles.row}>
-            <Icon name="user" size={26} color="#DDDDDD" style={styles.icon} />
-            <Text style={styles.text1}> Xin chào {''}
-            <Text style={styles.textcolor} >
-              "userName"
-            </Text>
-            
-            
+            <Icon name="user" size={26} color="#f49218" style={styles.icon} />
+            <Text style={styles.text1}>
+              {" "}
+              Xin chào, {userName}
             </Text>
           </View>
+
         </TouchableOpacity>
 
-        <View>
+        <View style={{ alignItems: "center" }}>
           <View style={styles.icon2}>
             <Text style={styles.text}>Nhật ký hôm nay</Text>
             <View>
@@ -33,7 +39,7 @@ const HomeScreen = () => {
                 <Icon
                   name="check"
                   size={18}
-                  color="#7445f6"
+                  color="#f49218"
                   style={styles.boder}
                 />
                 <Text style={styles.text2}> Checkin: </Text>
@@ -43,7 +49,7 @@ const HomeScreen = () => {
                 <Icon
                   name="dedent"
                   size={18}
-                  color="#7445f6"
+                  color="#f49218"
                   style={styles.boder}
                 />
                 <Text style={styles.text2}> Checkout:</Text>
@@ -54,7 +60,7 @@ const HomeScreen = () => {
                 <Icon
                   name="line-chart"
                   size={18}
-                  color="#7445f6"
+                  color="#f49218"
                   style={styles.boder}
                 />
                 <Text style={styles.text2}> Xếp hạng:</Text>
@@ -72,7 +78,7 @@ const HomeScreen = () => {
               <Icon
                 name="building"
                 size={18}
-                color="#764AF1"
+                color="#f49218"
                 style={styles.icon1}
               />
               <Text style={styles.text5}>Thông tin Công Ty</Text>
@@ -99,11 +105,9 @@ const HomeScreen = () => {
           </View>
 
           <View style={styles.row1}>
-            
             <Text style={styles.textInfo}>stt"1"</Text>
             <Text style={styles.textInfo}>userName</Text>
-            <Text style={styles.textInfo}> Time checkin</Text>   
-            
+            <Text style={styles.textInfo}> Time checkin</Text>
           </View>
           <View style={styles.row1}>
             <Text style={styles.textInfo}>stt"2"</Text>
@@ -121,10 +125,25 @@ const HomeScreen = () => {
             <Text style={styles.textInfo}> Time checkin</Text>
           </View>
         </View>
-
-        {/* </ImageBackground> */}
       </View>
-      
+      <FAB
+        // onPress={() => {
+        //   setIsCheckin(!isCheckin);
+        //   {
+        //     isCheckin == true
+        //       ? Alert.alert("Checkin thành công")
+        //       : Alert.alert("Checkout thành công");
+        //   }
+        // }}
+        // title={isCheckin ? "Checkin" : "Checkout"}
+        // color={isCheckin ? "#FF8C32" : "#F55353"}
+        title="Chấm công"
+        placement="right"
+        size="small"
+        color="#FF8C32"
+        buttonStyle={styles.fab}
+        onPress={pressHandler}
+      />
     </View>
   );
 };

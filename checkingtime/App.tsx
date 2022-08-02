@@ -2,15 +2,13 @@ import { StyleSheet, Text, View, SafeAreaView, Image } from "react-native";
 import React from "react";
 
 import SNavigation from "./src/navigation";
-import DateTimePicker from "./src/Screens/Date/Date";
-import CustomDatePicker from "./src/Screens/Date/CustomDatePicker";
+
 import AddStaff from "./src/Screens/AddStaff/AddStaff";
 import { useFonts } from "expo-font";
 import { Provider } from "react-redux";
 import store from "./redux/store";
 import { NavigationContainer } from "@react-navigation/native";
-import Jobs from "./src/Screens/Jobs";
-
+import UpdateStaff from "./src/Screens/UpdateInfoStaff/UpdateStaff";
 
 const App = () => {
   const [fontsLoaded] = useFonts({
@@ -37,14 +35,13 @@ const App = () => {
 
   return (
     <Provider store={store}>
+
     <SafeAreaView style={styles.root}>
-       {/* <SNavigation />  */}
-       <NavigationContainer>
-       <Jobs />
-       </NavigationContainer>
-      
-      
-    </SafeAreaView>
+       <SNavigation /> 
+       {/* <NavigationContainer>
+        <UpdateStaff />
+       </NavigationContainer> */}
+      </SafeAreaView>
     </Provider>
   );
 };

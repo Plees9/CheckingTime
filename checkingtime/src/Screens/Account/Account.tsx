@@ -4,8 +4,9 @@ import {
   ScrollView,
   TouchableOpacity,
   useWindowDimensions,
+  Alert,
 } from "react-native";
-import React, { useMemo, useEffect } from "react";
+import React, { useState, useMemo, useEffect } from "react";
 
 import { Avatar } from "@rneui/themed";
 import Icon from "react-native-vector-icons/FontAwesome";
@@ -14,30 +15,81 @@ import { useNavigation } from "@react-navigation/native";
 import createStyles from "./styles";
 import { useDispatch, useSelector } from "react-redux";
 import { logout } from "../../../redux/action";
+import * as ImagePicker from "expo-image-picker";
+
 const Account = () => {
   const styles = useMemo(() => createStyles(), []);
   const { height } = useWindowDimensions();
   const navigation = useNavigation<any>();
-  const dispatch = useDispatch()
+  const [image, setImage] = useState<any>(null);
+  const dispatch = useDispatch();
   const logoutHandler = () => {
-    dispatch<any>(logout())
-}
+    dispatch<any>(logout());
+  };
+
+  const pickImage = async () => {
+    // No permissions request is necessary for launching the image library
+    let result = await ImagePicker.launchImageLibraryAsync({
+      mediaTypes: ImagePicker.MediaTypeOptions.All,
+      allowsEditing: true,
+      aspect: [4, 3],
+      quality: 1,
+    });
+
+    console.log(result);
+
+    if (!result.cancelled) {
+      setImage(result.uri);
+    }
+  };
+  const takeImage = async () => {
+    // No permissions request is necessary for launching the image library
+    //Permissions.askAsync (Permissions.CAMERA_ROLL)
+    let result = await ImagePicker.launchCameraAsync({
+      mediaTypes: ImagePicker.MediaTypeOptions.All,
+      allowsEditing: true,
+      aspect: [4, 3],
+      quality: 1,
+    });
+
+    console.log(result);
+
+    if (!result.cancelled) {
+      setImage(result.uri);
+    }
+  };
+
+  const addAvatar = () => {
+    Alert.alert(
+      "Thay đổi ảnh đại diện",
+      "Bạn có muốn thay đổi ảnh đại diện không?",
+      [
+        {
+          text: "Chụp ảnh",
+          onPress: takeImage,
+        },
+        {
+          text: "Chọn ảnh",
+          onPress: pickImage,
+        },
+        {
+          text: "Hủy",
+          onPress: () => console.log("Cancel Pressed"),
+        },
+      ]
+    );
+  };
 
   return (
     <ScrollView style={styles.container}>
       <View style={styles.hang}>
-        {/* <Image source={require('../../assets/images/midu.jpg')} /> */}
-        {/* <Icon name="user-circle" size={60} color="#DFDFDE" /> */}
         <Avatar
           size={70}
           rounded
-          source={{
-            uri: "https://image2.tin247.news/pictures/2021/09/23/bcd1632409191.jpg",
-          }}
+          source={{ uri: image }}
           containerStyle={{ backgroundColor: "orange" }}
-        >
-          <Avatar.Accessory size={24} />
-        </Avatar>
+          onPress={() => addAvatar()}
+        ></Avatar>
         <View>
           <TextInput style={styles.user} placeholder="Username" />
           <TextInput style={styles.user} placeholder=" vị trí" />
@@ -52,7 +104,8 @@ const Account = () => {
           <Icon
             name="envelope-square"
             size={40}
-            color="#7445f6"
+            //color={Color_Icon.options}
+            color="#f49218"
             style={styles.icon}
           />
           <View style={styles.cot}>
@@ -74,7 +127,7 @@ const Account = () => {
             <Icon
               name="phone-square"
               size={40}
-              color="#7445f6"
+              color="#f49218"
               style={styles.icon}
             />
             <View>
@@ -101,7 +154,7 @@ const Account = () => {
           <Icon
             name="github-square"
             size={35}
-            color="#7445f6"
+            color="#f49218"
             style={styles.icon}
           />
           <View>
@@ -125,7 +178,7 @@ const Account = () => {
           <Icon
             name="steam-square"
             size={40}
-            color="#7445f6"
+            color="#f49218"
             style={styles.icon}
           />
           <View>
@@ -148,7 +201,7 @@ const Account = () => {
           <Icon
             name="reddit-square"
             size={40}
-            color="#7445f6"
+            color="#f49218"
             style={styles.icon}
           />
           <View>
@@ -171,7 +224,7 @@ const Account = () => {
           <Icon
             name="snapchat-square"
             size={40}
-            color="#7445f6"
+            color="#f49218"
             style={styles.icon}
           />
           <View>
@@ -194,7 +247,7 @@ const Account = () => {
           <Icon
             name="xing-square"
             size={40}
-            color="#7445f6"
+            color="#f49218"
             style={styles.icon}
           />
           <View>
@@ -212,46 +265,23 @@ const Account = () => {
           </View>
         </View>
       </View>
-      {/*  */}
-      <View>
-        {/* tạo kẻ ngang */}
-        <View style={styles.kengang} />
-        <View>
-          <Text style={styles.text}>Lần đăng nhập cuối</Text>
-          <View style={styles.hang}>
-            <Icon name="cube" size={35} color="#7445f6" style={styles.icon} />
-            <View>
-              <TextInput
-                style={styles.user}
-                keyboardType="default"
-                placeholder="Tên thiết bị"
-                returnKeyType="done"
-                maxLength={4}
-                //value={userName}
-                secureTextEntry={false}
-                //onChangeText={setUserName}
-              />
-              <TextInput
-                style={styles.user}
-                keyboardType="default"
-                placeholder="18:01 - 01/01/2020"
-                returnKeyType="done"
-                maxLength={20}
-                //value={userName}
-                secureTextEntry={false}
-                //onChangeText={setUserName}
-              />
-            </View>
-          </View>
-        </View>
-      </View>
+      {/* Tao ke ngang */}
+      <View style={styles.kengang} />
+
       <View>
         <TouchableOpacity
+          style={{ marginTop: "2%" }}
+          onPress={() => navigation.navigate("Cập nhật thông tin nhân viên")}
+        >
+          <Text style={styles.chu}> Thay đổi thông tin cá nhân</Text>
+        </TouchableOpacity>
+        <TouchableOpacity
           style={styles.khoangcach}
-          onPress={() => navigation.navigate("ResetPassword")}
+          onPress={() => navigation.navigate("Cài lại mật khẩu")}
         >
           <Text style={styles.chu}>Thay đổi mật khẩu</Text>
         </TouchableOpacity>
+
         <TouchableOpacity onPress={logoutHandler}>
           <Text style={styles.chu1}> Đăng xuất </Text>
         </TouchableOpacity>

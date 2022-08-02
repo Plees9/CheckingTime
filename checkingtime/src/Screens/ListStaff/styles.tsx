@@ -8,13 +8,19 @@ const createStyles = () =>
     },
     row: {
       flexDirection: "row",
-      marginTop: 8,
+      marginTop: "3%",
     },
     icon: {
       margin: 10,
       borderRadius: 10,
       padding: 10,
       backgroundColor: "#f2f2f2",
+    },
+    iconPlus: {
+      margin: 10,
+      // borderRadius: 10,
+      // padding: 10,
+      // backgroundColor: "#f2f2f2",
     },
     icon1: {
       flexDirection: "row",
@@ -66,7 +72,7 @@ const createStyles = () =>
       marginTop: "2%",
     },
     iconPhone: {
-      marginLeft: "50%",
+      marginLeft: "45%",
       marginTop: "3%",
       color: "orange",
     },

@@ -6,29 +6,34 @@ import { useNavigation } from "@react-navigation/native";
 import { LinearGradient } from "expo-linear-gradient";
 import { useDispatch, useSelector } from "react-redux";
 import { resetPassword } from "../../../redux/action";
+import Icon from "react-native-vector-icons/AntDesign";
+import Icon_1 from "react-native-vector-icons/Ionicons";
+import { isNull } from "lodash";
+
 const ResetPasswordScreen = () => {
-  const dispatch = useDispatch()
-  const { message, error } = useSelector<any>(state => state.message)
+  const dispatch = useDispatch();
+  const { message, error } = useSelector<any, any>((state) => state.message);
   const styles = useMemo(() => createStyles(), []);
   const [password, setPassword] = useState("");
   const [otp, setotp] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
+  const [isHided, setIsHided] = useState(true);
 
   const changePasswordHandler = async () => {
     await dispatch<any>(resetPassword(otp, password, confirmPassword));
-    navigation.navigate("login");
-}
+    navigation.navigate("SignIn");
+  };
 
-useEffect(() => {
+  useEffect(() => {
     if (message) {
-        alert(message);
-        dispatch({ type: "clearMessage" })
+      alert(message);
+      dispatch({ type: "clearMessage" });
     }
     if (error) {
-        alert(error);
-        dispatch({ type: "clearError" })
+      alert(error);
+      dispatch({ type: "clearError" });
     }
-}, [alert, message, dispatch, error])
+  }, [alert, dispatch, error]);
 
   const navigation = useNavigation<any>();
 
@@ -36,37 +41,63 @@ useEffect(() => {
     <View style={styles.viewbgr}>
       <View style={styles.view}>
         <Text style={styles.textTop}> Nhập mã OTP</Text>
-        <TextInput
-          style={styles.text}
-          value={otp}
-          onChangeText={(text) => setotp(text)}
-          secureTextEntry={undefined}
-          returnKeyType="done"
-          placeholder={"Vui lòng nhập mã OTP trong vòng 5 phút"}
-        ></TextInput>
+        <View style={styles.inputBox}>
+          <TextInput
+            style={styles.text}
+            value={otp}
+            onChangeText={(text) => setotp(text)}
+            secureTextEntry={undefined}
+            returnKeyType="done"
+            placeholder={"Vui lòng nhập mã OTP trong vòng 5 phút"}
+          />
+        </View>
         <Text style={styles.textnote}>
           Xin đợi 1 phút trước khi yêu cầu gửi lại OTP
         </Text>
 
         <Text style={styles.textTop}> Mật khẩu mới</Text>
-        <TextInput
-          style={styles.text}
-          value={password}
-          onChangeText={(text) => setPassword(text)}
-          secureTextEntry={true}
-          returnKeyType="done"
-          placeholder={"Nhập mật khẩu mới"}
-        ></TextInput>
+        <View style={styles.confirmPassword}>
+          <TextInput
+            style={styles.text}
+            value={password}
+            onChangeText={(text) => setPassword(text)}
+            secureTextEntry={isHided}
+            returnKeyType="done"
+            placeholder={"Nhập mật khẩu mới"}
+          />
+          <TouchableOpacity
+            onPressIn={() => setIsHided(false)}
+            onPressOut={() => setIsHided(true)}
+            style={styles.icon_confirmPassword}
+          >
+            <View>
+              <Icon_1
+                name={isHided == true ? "eye" : "eye-off"}
+                size={20}
+                color={"#595959"}
+              />
+            </View>
+          </TouchableOpacity>
+        </View>
 
         <Text style={styles.textTop}> Xác nhận mật khẩu</Text>
-        <TextInput
-          style={styles.text}
-          value={confirmPassword}
-          onChangeText={(text) => setConfirmPassword(text)}
-          secureTextEntry={true}
-          returnKeyType="done"
-          placeholder={"Xác nhận mật khẩu mới"}
-        ></TextInput>
+        <View style={styles.confirmPassword}>
+          <TextInput
+            style={styles.text}
+            value={confirmPassword}
+            onChangeText={(text) => setConfirmPassword(text)}
+            secureTextEntry={true}
+            returnKeyType="done"
+            placeholder={"Xác nhận mật khẩu mới"}
+          />
+          <View style={styles.icon_confirmPassword}>
+          {password === "" || confirmPassword !== password ? (
+              <Icon name="exclamationcircle" size={17} color="#d22d2c" />
+            ) : (
+              <Icon name="checkcircle" size={17} color="#51c92b" />
+            )}
+          </View>
+        </View>
 
         <View style={styles.btn}>
           <LinearGradient
