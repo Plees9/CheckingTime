@@ -30,7 +30,8 @@ const createStyles = () =>
     khoi_2: {
       flexDirection: "row",
       justifyContent: "space-around",
-      margin: "3%",
+      marginTop: "3%",
+      //marginLeft: "3%",
       
     },
     styleTT: {
@@ -82,6 +83,19 @@ const createStyles = () =>
     
     row2: {
       flexDirection: "row",
+      justifyContent: "space-around",
+      textAlign: "center",
+      width: 150,
+      height: 40,
+      marginRight: "3%",
+      marginTop: "1%",
+      borderColor: "#CFD2CF",
+      borderWidth: 1,
+      borderRadius: 5,
+    },
+    row3: {
+      flexDirection: "row",
+      justifyContent: "space-around",
       textAlign: "center",
       width: 150,
       height: 40,
@@ -115,8 +129,9 @@ const createStyles = () =>
       marginLeft: "5%",
     },
     dropdown: {
-      marginLeft: "1%",
-      marginRight: "5%",
+      marginLeft: "5%",
+
+      
       width: 150,
       height: 40,
       backgroundColor: "white",
@@ -134,8 +149,7 @@ const createStyles = () =>
       elevation: 2,
     },
     dropdown_1: {
-      marginLeft: "5%",
-    
+      marginRight: "5%",
       width: 150,
       height: 40,
       backgroundColor: "white",
