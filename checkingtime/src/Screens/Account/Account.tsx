@@ -6,7 +6,7 @@ import {
   useWindowDimensions,
   Alert,
 } from "react-native";
-import React, { useState,useMemo, useEffect } from "react";
+import React, { useState, useMemo, useEffect } from "react";
 
 import { Avatar } from "@rneui/themed";
 import Icon from "react-native-vector-icons/FontAwesome";
@@ -15,72 +15,69 @@ import { useNavigation } from "@react-navigation/native";
 import createStyles from "./styles";
 import { useDispatch, useSelector } from "react-redux";
 import { logout } from "../../../redux/action";
-import {Color_Icon} from "../../../constants/theme";
-import { LinearGradient } from "expo-linear-gradient";
 import * as ImagePicker from "expo-image-picker";
 
 const Account = () => {
-  
   const styles = useMemo(() => createStyles(), []);
   const { height } = useWindowDimensions();
   const navigation = useNavigation<any>();
   const [image, setImage] = useState<any>(null);
-  const dispatch = useDispatch()
+  const dispatch = useDispatch();
   const logoutHandler = () => {
-    dispatch<any>(logout())
-}
+    dispatch<any>(logout());
+  };
 
-const pickImage = async () => {
-  // No permissions request is necessary for launching the image library
-  let result = await ImagePicker.launchImageLibraryAsync({
-    mediaTypes: ImagePicker.MediaTypeOptions.All,
-    allowsEditing: true,
-    aspect: [4, 3],
-    quality: 1,
-  });
+  const pickImage = async () => {
+    // No permissions request is necessary for launching the image library
+    let result = await ImagePicker.launchImageLibraryAsync({
+      mediaTypes: ImagePicker.MediaTypeOptions.All,
+      allowsEditing: true,
+      aspect: [4, 3],
+      quality: 1,
+    });
 
-  console.log(result);
+    console.log(result);
 
-  if (!result.cancelled) {
-    setImage(result.uri);
-  }
-};
-const takeImage = async () => {
-  // No permissions request is necessary for launching the image library
-  let result = await ImagePicker.launchCameraAsync({
-    mediaTypes: ImagePicker.MediaTypeOptions.All,
-    allowsEditing: true,
-    aspect: [4, 3],
-    quality: 1,
-  });
+    if (!result.cancelled) {
+      setImage(result.uri);
+    }
+  };
+  const takeImage = async () => {
+    // No permissions request is necessary for launching the camera
+    let result = await ImagePicker.launchCameraAsync({
+      mediaTypes: ImagePicker.MediaTypeOptions.All,
+      allowsEditing: true,
+      aspect: [4, 3],
+      quality: 1,
+    });
 
-  console.log(result);
+    console.log(result);
 
-  if (!result.cancelled) {
-    setImage(result.uri);
-  }
-};
+    if (!result.cancelled) {
+      setImage(result.uri);
+    }
+  };
 
-const addAvatar = () => {
-  Alert.alert("Thay đổi ảnh đại diện", "Bạn có muốn thay đổi ảnh đại diện không?",
-   [ 
-     { 
-      text: "Chụp ảnh",
-      onPress: takeImage
-        
-      },
-      {
-        text: "Chọn ảnh",
-        onPress: pickImage
-    }, 
-    {
-      text: "Hủy",
-      onPress: () => console.log("Cancel Pressed"),
-  },
-  ]
-  );
-}
-
+  const addAvatar = () => {
+    Alert.alert(
+      "Thay đổi ảnh đại diện",
+      "Bạn có muốn thay đổi ảnh đại diện không?",
+      [
+        {
+          text: "Hủy",
+          onPress: () => console.log("Cancel Pressed"),
+        },
+        {
+          text: "Chụp ảnh",
+          onPress: takeImage,
+        },
+        {
+          text: "Chọn ảnh",
+          onPress: pickImage,
+        },
+      ]
+    );
+  };
 
   return (
     <ScrollView style={styles.container}>
@@ -88,11 +85,10 @@ const addAvatar = () => {
         <Avatar
           size={70}
           rounded
-          source={{uri: image}}
+          source={{ uri: image }}
           containerStyle={{ backgroundColor: "orange" }}
           onPress={() => addAvatar()}
-        >
-          </Avatar>
+        ></Avatar>
         <View>
           <TextInput style={styles.user} placeholder="Username" />
           <TextInput style={styles.user} placeholder=" vị trí" />
@@ -136,7 +132,7 @@ const addAvatar = () => {
             <View>
               <TextInput
                 style={styles.user}
-keyboardType="number-pad"
+                keyboardType="number-pad"
                 placeholder="+84 987 654 321"
                 returnKeyType="done"
                 maxLength={12}
@@ -237,7 +233,7 @@ keyboardType="number-pad"
               placeholder="Nhân viên chính thức/ thử việc/ TTS"
               returnKeyType="done"
               maxLength={100}
-//value={userName}
+              //value={userName}
               secureTextEntry={false}
               //onChangeText={setUserName}
             />
@@ -270,10 +266,10 @@ keyboardType="number-pad"
       </View>
       {/* Tao ke ngang */}
       <View style={styles.kengang} />
-      
+
       <View>
-      <TouchableOpacity
-          style={{marginTop: "2%"}}
+        <TouchableOpacity
+          style={{ marginTop: "2%" }}
           onPress={() => navigation.navigate("Cập nhật thông tin nhân viên")}
         >
           <Text style={styles.chu}> Thay đổi thông tin cá nhân</Text>
@@ -284,8 +280,7 @@ keyboardType="number-pad"
         >
           <Text style={styles.chu}>Thay đổi mật khẩu</Text>
         </TouchableOpacity>
-       
-       
+
         <TouchableOpacity onPress={logoutHandler}>
           <Text style={styles.chu1}> Đăng xuất </Text>
         </TouchableOpacity>

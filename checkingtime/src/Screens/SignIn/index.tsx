@@ -22,8 +22,8 @@ const SignIn = () => {
 
   const dispatch = useDispatch();
   const styles = useMemo(() => createStyles(), []);
-  const [userName, setUserName] = useState("0913005145");
-  const [password, setPassword] = useState("1234567@aA");
+  const [userName, setUserName] = useState("0357692654");
+  const [password, setPassword] = useState("123456Aa@");
   const [isChecked, setIsChecked] = useState(false);
   const [isHided, setIsHided] = useState(true);
 

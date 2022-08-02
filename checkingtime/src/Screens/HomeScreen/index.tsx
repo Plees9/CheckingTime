@@ -1,34 +1,57 @@
 import { useNavigation } from "@react-navigation/native";
 import React, { useState } from "react";
-import { Text, View, Alert, TouchableOpacity, TextInput, ToastAndroid } from "react-native";
+import {
+  RefreshControl,
+  ScrollView,
+  Text,
+  View,
+  Alert,
+  TouchableOpacity,
+  TextInput,
+  ToastAndroid,
+} from "react-native";
 import { Avatar } from "@rneui/themed";
 import Icon from "react-native-vector-icons/FontAwesome";
 import styles from "./styles";
 
 import { FAB, Input } from "react-native-elements";
 
+const wait = (timeout) => {
+  return new Promise((resolve) => setTimeout(resolve, timeout));
+};
+
 const HomeScreen = () => {
   const navigation = useNavigation<any>();
   const [userName, setUserName] = useState("");
+  const [refreshing, setRefreshing] = React.useState(false);
 
   //const [isCheckin, setIsCheckin] = useState(false);
 
   const pressHandler = () => {
-    ToastAndroid.show("Bạn" + " " + userName + " " + "đã chấm công!", ToastAndroid.SHORT);
+    ToastAndroid.show(
+      "Bạn" + " " + userName + " " + "đã chấm công!",
+      ToastAndroid.SHORT
+    );
   };
+
+  const onRefresh = React.useCallback(() => {
+    setRefreshing(true);
+    wait(2000).then(() => setRefreshing(false));
+  }, []);
 
   return (
     <View style={styles.container}>
-      <View>
+      <ScrollView
+        style={{ flex: 1 }}
+        refreshControl={
+          <RefreshControl refreshing={refreshing} onRefresh={onRefresh} />
+        }
+      >
         <TouchableOpacity onPress={() => navigation.navigate("Tài khoản")}>
           <View style={styles.row}>
             <Icon name="user" size={26} color="#f49218" style={styles.icon} />
-            <Text style={styles.text1}>
-              {" "}
-              Xin chào, {userName}
-            </Text>
+            <Text style={styles.text1}> Xin chào, {userName}</Text>
           </View>
-
         </TouchableOpacity>
 
         <View style={{ alignItems: "center" }}>
@@ -125,7 +148,7 @@ const HomeScreen = () => {
             <Text style={styles.textInfo}> Time checkin</Text>
           </View>
         </View>
-      </View>
+      </ScrollView>
       <FAB
         // onPress={() => {
         //   setIsCheckin(!isCheckin);
