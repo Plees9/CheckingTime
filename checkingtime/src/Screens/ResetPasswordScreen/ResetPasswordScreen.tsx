@@ -19,7 +19,7 @@ const ResetPasswordScreen = () => {
   const [otp, setotp] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
   const [isHided, setIsHided] = useState(true);
-  const email1 = route.params.email
+  const email1 = route.params.email;
   const changePasswordHandler = async () => {
     await dispatch<any>(resetPassword(otp, password, confirmPassword));
     navigation.navigate("SignIn");
