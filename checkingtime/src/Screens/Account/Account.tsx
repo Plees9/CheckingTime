@@ -76,16 +76,16 @@ const Account = () => {
       "Bạn có muốn thay đổi ảnh đại diện không?",
       [
         {
+          text: "Hủy",
+          onPress: () => console.log("Cancel Pressed"),
+        },
+        {
           text: "Chụp ảnh",
           onPress: takeImage,
         },
         {
           text: "Chọn ảnh",
           onPress: pickImage,
-        },
-        {
-          text: "Hủy",
-          onPress: () => console.log("Cancel Pressed"),
         },
       ]
     );
