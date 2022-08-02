@@ -19,7 +19,7 @@ import { logout } from "../../../redux/action";
 import * as ImagePicker from "expo-image-picker";
 
 const Account = () => {
-  const { user, loading } = useSelector<any, any>(state => state.auth)
+  const { user, loading } = useSelector<any, any>((state) => state.auth);
   const styles = useMemo(() => createStyles(), []);
   const { height } = useWindowDimensions();
   const navigation = useNavigation<any>();
@@ -32,7 +32,7 @@ const Account = () => {
   const [date, setDate] = useState(user.startWorkingDate);
   const [privilege, setPrivilege] = useState(user.privilege);
   const [typeOfEmployee, setTypeOfEmployee] = useState(user.typeOfEmployee);
-  const [role, setRole] = useState(user.role)
+  const [role, setRole] = useState(user.role);
   const [contractStatus, setContractStatus] = useState(user.contractStatus);
   const logoutHandler = () => {
     dispatch<any>(logout());
@@ -102,8 +102,12 @@ const Account = () => {
           onPress={() => addAvatar()}
         ></Avatar>
         <View>
-          <TextInput style={styles.user} placeholder="Username" value = {userName} />
-          <TextInput style={styles.user} placeholder=" vị trí" value = {role} />
+          <TextInput
+            style={styles.user}
+            placeholder="Username"
+            value={userName}
+          />
+          <Text style={styles.user_1}>{role}</Text>
         </View>
       </View>
       {/* tạo kẻ ngang */}
@@ -119,18 +123,10 @@ const Account = () => {
             color="#f49218"
             style={styles.icon}
           />
+
           <View style={styles.cot}>
-            <TextInput
-              style={styles.user}
-              keyboardType="email-address"
-              placeholder="abc@gmail.com"
-              returnKeyType="done"
-              maxLength={60}
-              value={email}
-              secureTextEntry={false}
-              //onChangeText={setUserName}
-            />
             <Text style={styles.user}> Email </Text>
+            <Text style={styles.user_1}>{email}</Text>
           </View>
         </View>
         <View>
@@ -141,18 +137,10 @@ const Account = () => {
               color="#f49218"
               style={styles.icon}
             />
+
             <View>
-              <TextInput
-                style={styles.user}
-                keyboardType="number-pad"
-                placeholder="+84 987 654 321"
-                returnKeyType="done"
-                maxLength={12}
-                value={numberPhone}
-                secureTextEntry={false}
-                //onChangeText={setUserName}
-              />
               <Text style={styles.user}> Số điện thoại </Text>
+              <Text style={styles.user_1}>{numberPhone} </Text>
             </View>
           </View>
         </View>
@@ -169,17 +157,8 @@ const Account = () => {
             style={styles.icon}
           />
           <View>
-            <TextInput
-              style={styles.user}
-              keyboardType="number-pad"
-              placeholder="1234"
-              returnKeyType="done"
-              maxLength={4}
-              value={userId}
-              secureTextEntry={false}
-              //onChangeText={setUserName}
-            />
             <Text style={styles.user}>Mã nhân viên </Text>
+            <Text style={styles.user_1}>{userId}</Text>
           </View>
         </View>
       </View>
@@ -193,17 +172,8 @@ const Account = () => {
             style={styles.icon}
           />
           <View>
-            <TextInput
-              style={styles.user}
-              keyboardType="default"
-              placeholder="01/01/2022"
-              returnKeyType="done"
-              maxLength={10}
-              value={date}
-              secureTextEntry={false}
-              //onChangeText={setUserName}
-            />
             <Text style={styles.user}>Ngày bắt đầu làm việc </Text>
+            <TextInput style={styles.user_1}>{date}</TextInput>
           </View>
         </View>
       </View>
@@ -216,17 +186,8 @@ const Account = () => {
             style={styles.icon}
           />
           <View>
-            <TextInput
-              style={styles.user}
-              keyboardType="default"
-              placeholder="Đang làm việc/Đã nghỉ"
-              returnKeyType="done"
-              maxLength={100}
-              value={contractStatus}
-              secureTextEntry={false}
-              //onChangeText={setUserName}
-            />
             <Text style={styles.user}>Trạng thái hợp đồng </Text>
+            <Text style={styles.user_1}>{contractStatus}</Text>
           </View>
         </View>
       </View>
@@ -239,43 +200,12 @@ const Account = () => {
             style={styles.icon}
           />
           <View>
-            <TextInput
-              style={styles.user}
-              keyboardType="default"
-              placeholder="Nhân viên chính thức/ thử việc/ TTS"
-              returnKeyType="done"
-              maxLength={100}
-              value={typeOfEmployee}
-              secureTextEntry={false}
-              //onChangeText={setUserName}
-            />
             <Text style={styles.user}>Loại hình nhân sự </Text>
+            <Text style={styles.user_1}>{typeOfEmployee}</Text>
           </View>
         </View>
       </View>
-      <View>
-        <View style={styles.hang}>
-          <Icon
-            name="xing-square"
-            size={40}
-            color="#f49218"
-            style={styles.icon}
-          />
-          <View>
-            <TextInput
-              style={styles.user}
-              keyboardType="default"
-              placeholder="123AB - 456CD- 789EF"
-              returnKeyType="done"
-              maxLength={100}
-              //value={userName}
-              secureTextEntry={false}
-              //onChangeText={setUserName}
-            />
-            <Text style={styles.user}>Device ID </Text>
-          </View>
-        </View>
-      </View>
+      <View></View>
 
       {/* Tao ke ngang */}
       <View style={styles.kengang} />
