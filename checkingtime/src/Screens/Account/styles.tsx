@@ -32,7 +32,8 @@ const createStyles = () =>
       fontFamily: FONTS.vanSansSemiBold,
     },
     icon: {
-      fontSize: 40,
+      fontSize: 35,
+      alignSelf: 'center',
       margin: 4,
     },
     hang: {
@@ -49,12 +50,7 @@ const createStyles = () =>
       fontFamily: FONTS.vanSansSemiBold,
     },
     chu1: {
-      fontSize: 24,
-      width: "98%",
-      backgroundColor: "#DDDDDD",
-      textAlign: "center",
-      padding: 8,
-      borderRadius: 10,
+      fontSize: 16,
       color: "#F32424",
       fontFamily: FONTS.vanSansSemiBold,
     },

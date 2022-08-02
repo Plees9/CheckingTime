@@ -10,6 +10,7 @@ import React, { useState, useMemo, useEffect } from "react";
 
 import { Avatar } from "@rneui/themed";
 import Icon from "react-native-vector-icons/FontAwesome";
+import Icon_1 from "react-native-vector-icons/MaterialIcons";
 import { TextInput } from "react-native-gesture-handler";
 import { useNavigation } from "@react-navigation/native";
 import createStyles from "./styles";
@@ -59,7 +60,7 @@ const Account = () => {
     }
   };
 
-  // Pop thông báo chọn chụp ảnh/chọn ảnh
+  // Popup thông báo chọn chụp ảnh/chọn ảnh
   const addAvatar = () => {
     Alert.alert(
       "Thay đổi ảnh đại diện",
@@ -79,6 +80,19 @@ const Account = () => {
         },
       ]
     );
+  };
+
+  const accessLogout = () => {
+    Alert.alert("Đăng xuất", "Bạn có chắc chắn muốn đăng xuất không?", [
+      {
+        text: "Đăng xuất",
+        onPress: logoutHandler,
+      },
+      {
+        text: "Hủy",
+        onPress: () => console.log("Cancel Pressed"),
+      },
+    ]);
   };
 
   return (
@@ -266,6 +280,7 @@ const Account = () => {
           </View>
         </View>
       </View>
+
       {/* Tao ke ngang */}
       <View style={styles.kengang} />
 
@@ -280,11 +295,15 @@ const Account = () => {
           style={styles.khoangcach}
           onPress={() => navigation.navigate("Cài lại mật khẩu")}
         >
-          <Text style={styles.chu}>Thay đổi mật khẩu</Text>
+          <Text style={styles.chu}> Thay đổi mật khẩu</Text>
         </TouchableOpacity>
 
-        <TouchableOpacity onPress={logoutHandler}>
-          <Text style={styles.chu1}> Đăng xuất </Text>
+        <TouchableOpacity
+          style={{ flexDirection: "row", alignItems: "center" }}
+          onPress={accessLogout}
+        >
+          <Icon_1 name="logout" size={16} />
+          <Text style={styles.chu1}> Đăng xuất</Text>
         </TouchableOpacity>
       </View>
     </ScrollView>

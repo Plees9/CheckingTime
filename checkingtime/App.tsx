@@ -14,6 +14,7 @@ import UpdateStaff from "./src/Screens/UpdateInfoStaff/UpdateStaff";
 
 import EFilter from "./src/Screens/ListFilter/EFilter";
 import FDontu from "./src/Screens/Bolocdontu/FDontu";
+import Account from './src/Screens/Account/Account';
 
 
 
@@ -48,7 +49,7 @@ const App = () => {
     <SafeAreaView style={styles.root}>
        <SNavigation /> 
        {/* <NavigationContainer>
-        <FDontu />
+        <Account />
        </NavigationContainer> */}
       </SafeAreaView>
     </Provider>

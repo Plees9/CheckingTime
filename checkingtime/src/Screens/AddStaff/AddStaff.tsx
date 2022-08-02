@@ -4,11 +4,10 @@ import {
   TextInput,
   ToastAndroid,
   TouchableOpacity,
-<<<<<<< HEAD
-  Pressable,
-=======
   Alert,
->>>>>>> ba71d555e7f1ee4d37a40775f2a1999a905b8e78
+  Pressable,
+  Modal,
+  Platform,
 } from "react-native";
 import React, { useMemo, useState, useEffect, Component } from "react";
 import createStyles from "./styles";
@@ -20,30 +19,20 @@ import { LinearGradient } from "expo-linear-gradient";
 
 import { Dropdown } from "react-native-element-dropdown";
 import AntDesign from "react-native-vector-icons/AntDesign";
-import moment from "moment";
+
 import DateTimePicker from '@react-native-community/datetimepicker';
-
-<<<<<<< HEAD
-import DateTimePicker from "@react-native-community/datetimepicker";
 import moment from "moment";
-
-import { useDispatch } from "react-redux";
-import { register } from "../../../redux/action";
-
-import PassMeter from "../../../node_modules/react-native-passmeter";
-
-
-=======
 //import CustomDatePicker from "../Moment/DatePicker";
 import { useDispatch } from 'react-redux';
 import { register } from '../../../redux/action';
->>>>>>> ba71d555e7f1ee4d37a40775f2a1999a905b8e78
+import { TouchableHighlight } from 'react-native';
 const data_1 = [
   { label: "Người dùng", value: "Người dùng" },
   { label: "Quản lý", value: "Quản lý" },
   { label: "Quản trị viên", value: "Quản trị viện" },
 ];
 const data_2 = [
+
   { label: "Chính thức", value: "Chính thức" },
   { label: "Thử việc", value: "Thử việc" },
   { label: "Thực tập sinh", value: "Thực tập sinh" },
@@ -57,87 +46,65 @@ const data_3 = [
   { label: "Kế toán", value: "Kế toán" },
 ];
 const data_4 = [
-  { label: "Đang làm việc", value: "Đang làm việc" },
-  { label: "Đã nghỉ việc", value: "Đã nghỉ việc" },
-  { label: "Nghỉ có phép", value: "Nghỉ có phép" },
-  { label: "Nghỉ không phép", value: "Nghỉ không phép" },
+  { label: "Đang làm việc", value: "15" },
+  { label: "Đã nghỉ việc", value: "16" },
+  { label: "Nghỉ có phép", value: "17" },
+  { label: "Nghỉ không phép", value: "18" },
 ];
 
 const AddStaff = () => {
-<<<<<<< HEAD
-  const dispatch = useDispatch();
-
-  const [password, setPassword] = useState("");
-
-=======
   const dispatch = useDispatch()
+
+  
 
   const [password, setPassword] = useState("");
   const [passwordScore, setPasswordScore] = React.useState(0);
   const _updateScore = (val: any) => {
     setPasswordScore(val);
   };
->>>>>>> ba71d555e7f1ee4d37a40775f2a1999a905b8e78
   const styles = useMemo(() => createStyles(), []);
   const [userName, setUserName] = useState("");
   const [email, setEmail] = useState("");
   const [numberPhone, setNumberPhone] = useState("");
-<<<<<<< HEAD
-
+  
+  
+  
   const [date, setDate] = useState(moment());
   const [show, setShow] = useState(false);
+ 
+  const showDatepicker = () => {
+    setShow(true);
+  };
 
-  const [value_1, setValue_1] = useState("");
-  const [value_2, setValue_2] = useState("");
-  const [value_3, setValue_3] = useState("");
-  const [value_4, setValue_4] = useState("");
-
-  const [isFocus_1, setIsFocus_1] = useState(false);
-  const [isFocus_2, setIsFocus_2] = useState(false);
-  const [isFocus_3, setIsFocus_3] = useState(false);
-  const [isFocus_4, setIsFocus_4] = useState(false);
-
-  const registerHandler = () => {
-    const myForm = new FormData();
-
-=======
-  const [date, setDate] = useState(new Date());
+ 
+  
   // const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
   
   const [value_1, setValue_1] = useState("");
   const [value_2, setValue_2] = useState("");
   const [value_3, setValue_3] = useState("");
+  const [value_4, setValue_4] = useState("");
   const [isFocus_1, setIsFocus_1] = useState(false);
   const [isFocus_2, setIsFocus_2] = useState(false);
   const [isFocus_3, setIsFocus_3] = useState(false);
+  const [isFocus_4, setIsFocus_4] = useState(false);
   const registerHandler = () => {
     const myForm = new FormData();
     
->>>>>>> ba71d555e7f1ee4d37a40775f2a1999a905b8e78
     myForm.append("name", userName);
     myForm.append("email", email);
     myForm.append("phoneNumber", numberPhone);
-    myForm.append("password", password);
+myForm.append("password", password);
     myForm.append("role", value_1);
-<<<<<<< HEAD
-    const Sdate = String(date);
+    const Sdate = String(date)
     myForm.append("startWorkingDate", Sdate);
     myForm.append("contractStatus", value_2);
     myForm.append("typeOfEmployee", value_3);
     myForm.append("resignationForm", value_4);
 
     dispatch<any>(register(myForm));
-  };
-=======
-    const Sdate = String(date)
-    myForm.append("startWorkingDate", Sdate);
-    myForm.append("contractStatus", value_2);
-    myForm.append("typeOfEmployee", value_3);
-
-    dispatch<any>(register(myForm));
 }
->>>>>>> ba71d555e7f1ee4d37a40775f2a1999a905b8e78
 
   const navigation = useNavigation<any>();
 
@@ -150,8 +117,10 @@ const AddStaff = () => {
     MIN_LEN = 8,
     PASS_LABELS = ["Too Short", "Weak", "Normal", "Strong", "Secure"];
 
+    
   return (
     <View style={styles.view}>
+      {/* <Text style={styles.textWelcome}>Đăng ký thành viên</Text> */}
       <View>
         <View style={styles.styleTT}>
           <View style={styles.text24}>
@@ -209,17 +178,6 @@ const AddStaff = () => {
             />
           </View>
         </View>
-        <View>
-          <PassMeter
-            showLabels
-            password={password}
-            maxLength={MAX_LEN}
-            minLength={MIN_LEN}
-            labels={PASS_LABELS}
-          />
-        </View>
-
-   
 
         <Text style={styles.textExemple}>8-16 ký tự ví dụ: eX@mpL3*</Text>
       </View>
@@ -233,7 +191,7 @@ const AddStaff = () => {
             iconStyle={styles.iconStyle}
             data={data_1}
             search
-            maxHeight={300}
+maxHeight={300}
             labelField="label"
             valueField="value"
             placeholder="Cấp quyền"
@@ -253,46 +211,40 @@ const AddStaff = () => {
                 size={20}
               />
             )}
-<<<<<<< HEAD
-          />
-        </View>
-
-        <Pressable style={styles.row2} onPress={() => setShow(true)}>
-          <View style={{ justifyContent: "center", alignContent: "center" }}>
-            <Text>{date.format("DD/MM/YYYY")}</Text>
-            {show && (
-              <DateTimePicker
-                value={new Date(date.format("YYYY/MM/DD"))}
-                mode={"date"}
-                display="default"
-                onChange={(event, selectedDate) => {
-                  setDate(moment(selectedDate));
-                  setShow(false);
-                  console.log(selectedDate);
-                }}
-              />
-            )}
-          </View>
-
-=======
             // // renderItem={renderItem}
           />
         </View>
-        <View style={styles.row2}>
-          < DateTimePicker
-            value={date}
-            // onChange={(event, newDate) => {
-            //   setDate(newDate)
-            // }} 
-          />
->>>>>>> ba71d555e7f1ee4d37a40775f2a1999a905b8e78
+        
+        <Pressable style={styles.row2} onPress={()=> setShow(true)}>
+          <View style={{justifyContent:"center", alignContent:"center"}}>
+          <Text>{date.format("DD/MM/YYYY")}</Text>
+          {show && (
+            <DateTimePicker
+              value={new Date(date.format("YYYY/MM/DD"))}
+              mode={"date"}
+              disabled = {show}
+              display="default"
+              onChange={(event, selectedDate) => {
+              
+                 setDate(moment(selectedDate));
+                  setShow(false);
+                  console.log(selectedDate);
+
+                
+              }}
+            />
+          )}
+          </View>
+
           <Icon
             style={styles.styleIcon}
             name="calendar"
             size={20}
             color="orange"
           />
+          
         </Pressable>
+        
       </View>
       {/* Tình trạng hợp đồng, Loại hình nhân viên */}
       <View style={styles.row}>
@@ -335,7 +287,7 @@ const AddStaff = () => {
             inputSearchStyle={styles.inputSearchStyle}
             iconStyle={styles.iconStyle}
             data={data_3}
-            search
+search
             maxHeight={300}
             labelField="label"
             valueField="value"
@@ -356,6 +308,7 @@ const AddStaff = () => {
                 size={20}
               />
             )}
+            // // renderItem={renderItem}
           />
         </View>
       </View>
@@ -388,6 +341,7 @@ const AddStaff = () => {
               size={20}
             />
           )}
+          // // renderItem={renderItem}
         />
       </View>
 
@@ -397,10 +351,7 @@ const AddStaff = () => {
         colors={["#f12711", "#f5af19"]}
         style={styles.btn2}
       >
-<<<<<<< HEAD
-=======
         {/* <TouchableOpacity onPress={loginHandler}> */}
->>>>>>> ba71d555e7f1ee4d37a40775f2a1999a905b8e78
         <TouchableOpacity onPress={registerHandler}>
           <Text style={styles.text22}>Đăng ký</Text>
         </TouchableOpacity>
