@@ -1,5 +1,5 @@
 import { View, Text, ScrollView, Image } from "react-native";
-import React, { useMemo } from "react";
+import React, { useMemo, useState } from "react";
 import createStyles from "../styles";
 import Icon from "react-native-vector-icons/FontAwesome";
 import { TextInput } from "react-native-gesture-handler";
@@ -7,6 +7,7 @@ import { useNavigation } from "@react-navigation/native";
 
 const CuaToi = () => {
   const styles = useMemo(() => createStyles(), []);
+  const [search, setSearch] = useState("");
   const navigation = useNavigation<any>();
   return (
     <View style={styles.view}>
@@ -24,6 +25,8 @@ const CuaToi = () => {
             style={styles.text}
             placeholder="Mã đơn, lý do tạo đơn"
             returnKeyType="done"
+            value={search}
+            onChangeText={setSearch}
           ></TextInput>
         </View>
       </View>

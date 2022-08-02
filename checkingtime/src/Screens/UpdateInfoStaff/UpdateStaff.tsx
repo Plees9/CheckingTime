@@ -4,15 +4,12 @@ import {
   TextInput,
   ToastAndroid,
   TouchableOpacity,
-  Alert,
-  ImageBackground,
   Pressable,
 } from "react-native";
 import React, { useMemo, useState, useEffect, Component } from "react";
 import createStyles from "./styles";
 import { useNavigation } from "@react-navigation/native";
 
-import { Picker } from "@react-native-picker/picker";
 import Icon from "react-native-vector-icons/FontAwesome";
 import { LinearGradient } from "expo-linear-gradient";
 
@@ -25,17 +22,17 @@ import moment from "moment";
 import { Avatar } from "@rneui/themed";
 
 const data_2 = [
-  { label: "Chính thức", value: "5" },
-  { label: "Thử việc", value: "6" },
-  { label: "Thực tập sinh", value: "7" },
+  { label: "Chính thức", value: "Chính thức" },
+  { label: "Thử việc", value: "Thử việc" },
+  { label: "Thực tập sinh", value: "Thực tập sinh" },
 ];
 const data_3 = [
-  { label: "Developer", value: "9" },
-  { label: "Tester", value: "10" },
-  { label: "Quản lý", value: "11" },
-  { label: "Giám đốc", value: "12" },
-  { label: "Hành chính", value: "13" },
-  { label: "Kế toán", value: "14" },
+  { label: "Developer", value: "Developer" },
+  { label: "Tester", value: "Tester" },
+  { label: "Quản lý", value: "Quản lý" },
+  { label: "Giám đốc", value: "Giám đốc" },
+  { label: "Hành chính", value: "Hành chính" },
+  { label: "Kế toán", value: "Kế toán" },
 ];
 
 const UpdateStaff = () => {
@@ -43,7 +40,7 @@ const UpdateStaff = () => {
   const [userName, setUserName] = useState("");
   const [email, setEmail] = useState("");
   const [numberPhone, setNumberPhone] = useState("");
-  const [date_Birth, setDate_Birth] = useState("");
+  const [date_Birth, setDate_Birth] = useState(moment());
   const [date, setDate] = useState(moment());
   const [date_Gender, setDate_Gender] = useState("");
 
@@ -96,7 +93,7 @@ const UpdateStaff = () => {
         />
       </View>
 
-      <View style={styles.khoi}>
+      <View >
         {/* Email */}
         <View style={styles.styleTT}>
           <View style={styles.text24}>
@@ -143,17 +140,19 @@ const UpdateStaff = () => {
       </View>
 
       <View style={styles.row}>
+        <View style={styles.row1}>
+
         
           <Pressable style={styles.row2} onPress={() => setShow(true)}>
             <View style={{ justifyContent: "center", alignContent: "center" }}>
               <Text>{date.format("DD/MM/YYYY")}</Text>
               {show && (
                 <DateTimePicker
-                  value={new Date(date.format("YYYY/MM/DD"))}
+                  value={new Date(date_Birth.format("YYYY/MM/DD"))}
                   mode={"date"}
                   display="default"
                   onChange={(event, selectedDate) => {
-                    setDate(moment(selectedDate));
+                    setDate_Birth(moment(selectedDate));
                     setShow(false);
                     console.log(selectedDate);
                   }}
@@ -193,8 +192,9 @@ const UpdateStaff = () => {
               color="orange"
             />
           </Pressable>
+          </View>
         
-      </View>
+      
       {/* Tình trạng hợp đồng, Loại hình nhân viên */}
       
         <View style={styles.khoi_2}>
@@ -256,6 +256,7 @@ const UpdateStaff = () => {
               />
             )}
           />
+        </View>
         </View>
       
       <LinearGradient
