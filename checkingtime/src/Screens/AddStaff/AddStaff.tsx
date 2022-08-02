@@ -29,7 +29,7 @@ import { register } from "../../../redux/action";
 const data_1 = [
   { label: "Người dùng", value: "Người dùng" },
   { label: "Quản lý", value: "Quản lý" },
-  { label: "Quản trị viên", value: "Quản trị viện" },
+  { label: "Quản trị viên", value: "Quản trị viên" },
 ];
 const data_2 = [
   { label: "Chính thức", value: "Chính thức" },

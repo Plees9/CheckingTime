@@ -16,16 +16,14 @@ import styles from "./styles";
 
 import { FAB, Input } from "react-native-elements";
 
-const wait = (timeout) => {
+const wait = (timeout: number | undefined) => {
   return new Promise((resolve) => setTimeout(resolve, timeout));
 };
 
 const HomeScreen = () => {
   const navigation = useNavigation<any>();
-  const [userName, setUserName] = useState("");
+  const [userName, setUserName] = useState("Bá Kiến");
   const [refreshing, setRefreshing] = React.useState(false);
-
-  //const [isCheckin, setIsCheckin] = useState(false);
 
   const pressHandler = () => {
     ToastAndroid.show(
