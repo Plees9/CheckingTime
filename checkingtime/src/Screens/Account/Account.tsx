@@ -27,6 +27,7 @@ const Account = () => {
     dispatch<any>(logout());
   };
 
+  // Chọn ảnh từ máy
   const pickImage = async () => {
     // No permissions request is necessary for launching the image library
     let result = await ImagePicker.launchImageLibraryAsync({
@@ -42,6 +43,8 @@ const Account = () => {
       setImage(result.uri);
     }
   };
+
+  // Chụp ảnh
   const takeImage = async () => {
     // No permissions request is necessary for launching the camera
     let result = await ImagePicker.launchCameraAsync({
@@ -51,13 +54,12 @@ const Account = () => {
       quality: 1,
     });
 
-    console.log(result);
-
     if (!result.cancelled) {
       setImage(result.uri);
     }
   };
 
+  // Pop thông báo chọn chụp ảnh/chọn ảnh
   const addAvatar = () => {
     Alert.alert(
       "Thay đổi ảnh đại diện",

@@ -17,6 +17,7 @@ import { LinearGradient } from "expo-linear-gradient";
 import GradientText from "../../component/GradientText";
 import Icon_1 from "react-native-vector-icons/Ionicons";
 
+
 const SignIn = () => {
   const { error } = useSelector<any, any>((state) => state.auth);
 
@@ -93,7 +94,11 @@ const SignIn = () => {
               value={password}
               onChangeText={setPassword}
             />
+           
           </View>
+         
+          
+
           <TouchableOpacity
             onPressIn={() => setIsHided(false)}
             onPressOut={() => setIsHided(true)}
@@ -107,6 +112,7 @@ const SignIn = () => {
             </View>
           </TouchableOpacity>
         </View>
+        
       </View>
 
       <TouchableOpacity>
