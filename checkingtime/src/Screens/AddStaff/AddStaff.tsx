@@ -11,6 +11,7 @@ import createStyles from "./styles";
 import { useNavigation } from "@react-navigation/native";
 
 import Icon from "react-native-vector-icons/FontAwesome";
+import Icon_1 from "react-native-vector-icons/Ionicons";
 import { LinearGradient } from "expo-linear-gradient";
 
 import { Dropdown } from "react-native-element-dropdown";
@@ -53,11 +54,13 @@ const AddStaff = () => {
   const dispatch = useDispatch()
 
   const [password, setPassword] = useState("");
+  const [confirmPassword, setConfirmPassword] = useState("");
   
   const styles = useMemo(() => createStyles(), []);
   const [userName, setUserName] = useState("");
   const [email, setEmail] = useState("");
   const [numberPhone, setNumberPhone] = useState("");
+  const [isHided, setIsHided] = useState(true);
 
   const [date, setDate] = useState(moment());
   const [show, setShow] = useState(false);
@@ -83,8 +86,8 @@ const AddStaff = () => {
     const Sdate = String(date);
     myForm.append("startWorkingDate", Sdate);
     myForm.append("contractStatus", value_2);
-    myForm.append("typeOfEmployee", value_3);
-    myForm.append("role", value_4);
+    myForm.append("typeOfEmployee", value_4);
+    myForm.append("role", value_3);
     console.log(Sdate)
 
     dispatch<any>(register(myForm));
@@ -150,14 +153,26 @@ const AddStaff = () => {
         <View style={styles.styleTT}>
           <View style={styles.text24}>
             <TextInput
-              placeholder={"Enter your password"}
+              placeholder={"Mật khẩu"}
               style={styles.text23}
               returnKeyType="done"
-              maxLength={16}
               value={password}
-              secureTextEntry={true}
-              onChangeText={setPassword}
+              secureTextEntry={isHided}
+              onChangeText={(text) => setPassword(text)}
             />
+            <TouchableOpacity
+            onPressIn={() => setIsHided(false)}
+            onPressOut={() => setIsHided(true)}
+            
+          >
+            <View>
+              <Icon_1
+                name={isHided == true ? "eye" : "eye-off"}
+                size={20}
+                color={"#595959"}
+              />
+            </View>
+          </TouchableOpacity>
           </View>
         </View>
         <View>
@@ -168,6 +183,19 @@ const AddStaff = () => {
             minLength={MIN_LEN}
             labels={PASS_LABELS}
           />
+        </View>
+        <View style={styles.styleTT}>
+          <View style={styles.text24}>
+            <TextInput
+              placeholder={"Nhập lại mật khẩu"}
+              style={styles.text23}
+              returnKeyType="done"
+              maxLength={16}
+              value={confirmPassword}
+              secureTextEntry={true}
+              onChangeText={setConfirmPassword}
+            />
+          </View>
         </View>
 
         <Text style={styles.textExemple}>8-16 ký tự ví dụ: eX@mpL3*</Text>

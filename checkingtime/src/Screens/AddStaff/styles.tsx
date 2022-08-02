@@ -15,6 +15,7 @@ const createStyles = () =>
       fontFamily: FONTS.vanSansBlack,
     },
     styleTT: {
+      flexDirection: "row",
       backgroundColor: "#f2f2f2",
       marginTop: "3%",
       marginHorizontal: 10,
@@ -23,8 +24,8 @@ const createStyles = () =>
       alignItems: "center",
     },
     text24: {
-      marginLeft: 10,
       width: "100%",
+      marginLeft: 10,
       fontSize: 14,
     },
     textExemple: {
