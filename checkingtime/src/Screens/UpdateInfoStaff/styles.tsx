@@ -109,10 +109,12 @@ const createStyles = () =>
     text22: {
       fontSize: 20,
       padding: 5,
-      width: "100%",
+      width: 320,
+      height: 50,
       color: "#FFFFFF",
       textAlign: "center",
       fontFamily: FONTS.vanSansBold,
+      
     },
     btn2: {
       width: "80%",
