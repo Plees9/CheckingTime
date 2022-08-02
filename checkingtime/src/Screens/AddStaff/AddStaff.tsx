@@ -28,6 +28,7 @@ const data_1 = [
   { label: "Quản trị viên", value: "Quản trị viện" },
 ];
 const data_2 = [
+
   { label: "Chính thức", value: "Chính thức" },
   { label: "Thử việc", value: "Thử việc" },
   { label: "Thực tập sinh", value: "Thực tập sinh" },
@@ -41,14 +42,16 @@ const data_3 = [
   { label: "Kế toán", value: "Kế toán" },
 ];
 const data_4 = [
-  { label: "Đang làm việc", value: "Đang làm việc" },
-  { label: "Đã nghỉ việc", value: "Đã nghỉ việc" },
-  { label: "Nghỉ có phép", value: "Nghỉ có phép" },
-  { label: "Nghỉ không phép", value: "Nghỉ không phép" },
+  { label: "Đang làm việc", value: "15" },
+  { label: "Đã nghỉ việc", value: "16" },
+  { label: "Nghỉ có phép", value: "17" },
+  { label: "Nghỉ không phép", value: "18" },
 ];
 
 const AddStaff = () => {
   const dispatch = useDispatch()
+
+  
 
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
@@ -61,12 +64,15 @@ const AddStaff = () => {
 
   const [date, setDate] = useState(moment());
   const [show, setShow] = useState(false);
+ 
+  const showDatepicker = () => {
+    setShow(true);
+  };
 
   const [value_1, setValue_1] = useState("");
   const [value_2, setValue_2] = useState("");
   const [value_3, setValue_3] = useState("");
   const [value_4, setValue_4] = useState("");
-
   const [isFocus_1, setIsFocus_1] = useState(false);
   const [isFocus_2, setIsFocus_2] = useState(false);
   const [isFocus_3, setIsFocus_3] = useState(false);
@@ -101,8 +107,10 @@ const AddStaff = () => {
     MIN_LEN = 8,
     PASS_LABELS = ["Too Short", "Weak", "Normal", "Strong", "Secure"];
 
+    
   return (
     <View style={styles.view}>
+      {/* <Text style={styles.textWelcome}>Đăng ký thành viên</Text> */}
       <View>
         <View style={styles.styleTT}>
           <View style={styles.text24}>
@@ -198,7 +206,7 @@ const AddStaff = () => {
             iconStyle={styles.iconStyle}
             data={data_1}
             search
-            maxHeight={300}
+maxHeight={300}
             labelField="label"
             valueField="value"
             placeholder="Cấp quyền"
@@ -220,22 +228,26 @@ const AddStaff = () => {
             )}
           />
         </View>
-
-        <Pressable style={styles.row2} onPress={() => setShow(true)}>
-          <View style={{ justifyContent: "center", alignContent: "center" }}>
-            <Text>{date.format("DD/MM/YYYY")}</Text>
-            {show && (
-              <DateTimePicker
-                value={new Date(date.format("YYYY/MM/DD"))}
-                mode={"date"}
-                display="default"
-                onChange={(event, selectedDate) => {
-                  setDate(moment(selectedDate));
+        
+        <Pressable style={styles.row2} onPress={()=> setShow(true)}>
+          <View style={{justifyContent:"center", alignContent:"center"}}>
+          <Text>{date.format("DD/MM/YYYY")}</Text>
+          {show && (
+            <DateTimePicker
+              value={new Date(date.format("YYYY/MM/DD"))}
+              mode={"date"}
+              disabled = {show}
+              display="default"
+              onChange={(event, selectedDate) => {
+              
+                 setDate(moment(selectedDate));
                   setShow(false);
                   console.log(selectedDate);
-                }}
-              />
-            )}
+
+                
+              }}
+            />
+          )}
           </View>
 
           <Icon
@@ -244,7 +256,9 @@ const AddStaff = () => {
             size={20}
             color="orange"
           />
+          
         </Pressable>
+        
       </View>
       {/* Tình trạng hợp đồng, Loại hình nhân viên */}
       <View style={styles.row}>
@@ -287,7 +301,7 @@ const AddStaff = () => {
             inputSearchStyle={styles.inputSearchStyle}
             iconStyle={styles.iconStyle}
             data={data_3}
-            search
+search
             maxHeight={300}
             labelField="label"
             valueField="value"
@@ -308,6 +322,7 @@ const AddStaff = () => {
                 size={20}
               />
             )}
+            // // renderItem={renderItem}
           />
         </View>
       </View>
@@ -340,6 +355,7 @@ const AddStaff = () => {
               size={20}
             />
           )}
+          // // renderItem={renderItem}
         />
       </View>
 
