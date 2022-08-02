@@ -23,23 +23,25 @@ const createStyles = () =>
     textuserName: {
       alignItems: "center",
     },
-    khoi: {
-      marginLeft: "1%",
-      marginRight: "3%",
-    },
+   
     khoi_2: {
       flexDirection: "row",
-      justifyContent: "space-around",
-      margin: "3%",
+      justifyContent: "space-around", 
+      marginRight: "6%",
+      marginLeft: "1%",
+      marginTop: "3%",
+      //marginLeft: "3%",
       
     },
     styleTT: {
       backgroundColor: "#f2f2f2",
       marginTop: "3%",
-      marginHorizontal: 10,
+      marginRight: "3%",
+      marginLeft: "3%",
       padding: 10,
       borderRadius: 10,
       alignItems: "center",
+      width: "88%",
     },
     text24: {
       marginLeft: 10,
@@ -63,25 +65,33 @@ const createStyles = () =>
       fontFamily: FONTS.vanSansMedium,
     },
     row: {
-      flexDirection: "row",
+      flexDirection: "column",
       justifyContent: "space-around",
       marginTop: "3%",
      
     },
     row1: {
       flexDirection: "row",
-      textAlign: "center",
-      width: 150,
-      height: 40,
-      marginTop: "1%",
+      justifyContent: "space-around", 
+      marginRight: "6%",
       marginLeft: "3%",
-      borderColor: "#CFD2CF",
-      borderWidth: 1,
-      borderRadius: 5,
     },
     
     row2: {
       flexDirection: "row",
+      justifyContent: "space-around",
+      textAlign: "center",
+      width: 150,
+      height: 40,
+      marginRight: "3%",
+      marginTop: "1%",
+      borderColor: "#CFD2CF",
+      borderWidth: 1,
+      borderRadius: 5,
+    },
+    row3: {
+      flexDirection: "row",
+      justifyContent: "space-around",
       textAlign: "center",
       width: 150,
       height: 40,
@@ -109,14 +119,14 @@ const createStyles = () =>
       height: "7%",
       alignSelf: "center",
       justifyContent: "center",
+      alignItems: "center",
       borderRadius: 10,
       marginTop: "8%",
       marginRight: "5%",
-      marginLeft: "5%",
+      
     },
     dropdown: {
-      marginLeft: "1%",
-      marginRight: "5%",
+      
       width: 150,
       height: 40,
       backgroundColor: "white",
@@ -134,8 +144,7 @@ const createStyles = () =>
       elevation: 2,
     },
     dropdown_1: {
-      marginLeft: "5%",
-    
+      marginRight: "0.8%",
       width: 150,
       height: 40,
       backgroundColor: "white",

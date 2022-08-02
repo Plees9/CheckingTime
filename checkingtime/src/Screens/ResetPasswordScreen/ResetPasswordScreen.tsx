@@ -2,15 +2,16 @@ import { View, Text, TextInput, Alert, TouchableOpacity } from "react-native";
 import React, { useMemo, useState, useEffect } from "react";
 
 import createStyles from "./styles";
-import { useNavigation } from "@react-navigation/native";
+import { useNavigation, useRoute } from "@react-navigation/native";
 import { LinearGradient } from "expo-linear-gradient";
 import { useDispatch, useSelector } from "react-redux";
 import { resetPassword } from "../../../redux/action";
 import Icon from "react-native-vector-icons/AntDesign";
 import Icon_1 from "react-native-vector-icons/Ionicons";
 import { isNull } from "lodash";
-
+import { forgetPassword } from "../../../redux/action";
 const ResetPasswordScreen = () => {
+  const route = useRoute() 
   const dispatch = useDispatch();
   const { message, error } = useSelector<any, any>((state) => state.message);
   const styles = useMemo(() => createStyles(), []);
@@ -18,12 +19,14 @@ const ResetPasswordScreen = () => {
   const [otp, setotp] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
   const [isHided, setIsHided] = useState(true);
-
+  const email1 = route.params.email;
   const changePasswordHandler = async () => {
     await dispatch<any>(resetPassword(otp, password, confirmPassword));
     navigation.navigate("SignIn");
   };
-
+  const forgetHandler = async () => {
+    await dispatch<any>(forgetPassword(email1));
+  };
   useEffect(() => {
     if (message) {
       alert(message);
@@ -91,7 +94,7 @@ const ResetPasswordScreen = () => {
             placeholder={"Xác nhận mật khẩu mới"}
           />
           <View style={styles.icon_confirmPassword}>
-            {password === "" || confirmPassword !== password ? (
+          {password === "" || confirmPassword !== password ? (
               <Icon name="exclamationcircle" size={17} color="#d22d2c" />
             ) : (
               <Icon name="checkcircle" size={17} color="#51c92b" />
@@ -111,7 +114,7 @@ const ResetPasswordScreen = () => {
             </TouchableOpacity>
           </LinearGradient>
 
-          <TouchableOpacity onPress={() => Alert.alert("Mã OTP nào đó")}>
+          <TouchableOpacity onPress={forgetHandler}>
             <Text style={styles.textOTP}>Gửi lại OTP</Text>
           </TouchableOpacity>
         </View>

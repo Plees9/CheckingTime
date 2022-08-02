@@ -17,7 +17,7 @@ const ForgotPasswordScreen = () => {
 
   const forgetHandler = async () => {
     await dispatch<any>(forgetPassword(email));
-    navigation.navigate("Cài lại mật khẩu");
+    navigation.navigate("Cài lại mật khẩu", {email});
   };
   return (
     <View style={styles.view}>

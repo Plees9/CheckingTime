@@ -19,16 +19,25 @@ import { logout } from "../../../redux/action";
 import * as ImagePicker from "expo-image-picker";
 
 const Account = () => {
+  const { user, loading } = useSelector<any, any>(state => state.auth)
   const styles = useMemo(() => createStyles(), []);
   const { height } = useWindowDimensions();
   const navigation = useNavigation<any>();
   const [image, setImage] = useState<any>(null);
   const dispatch = useDispatch();
+  const [userName, setUserName] = useState(user.name);
+  const [email, setEmail] = useState(user.email);
+  const [numberPhone, setNumberPhone] = useState(user.phoneNumber);
+  const [userId, setuserId] = useState(String(user.userId));
+  const [date, setDate] = useState(user.startWorkingDate);
+  const [privilege, setPrivilege] = useState(user.privilege);
+  const [typeOfEmployee, setTypeOfEmployee] = useState(user.typeOfEmployee);
+  const [role, setRole] = useState(user.role)
+  const [contractStatus, setContractStatus] = useState(user.contractStatus);
   const logoutHandler = () => {
     dispatch<any>(logout());
   };
 
-  // Chọn ảnh từ máy
   const pickImage = async () => {
     // No permissions request is necessary for launching the image library
     let result = await ImagePicker.launchImageLibraryAsync({
@@ -44,10 +53,9 @@ const Account = () => {
       setImage(result.uri);
     }
   };
-
-  // Chụp ảnh
   const takeImage = async () => {
-    // No permissions request is necessary for launching the camera
+    // No permissions request is necessary for launching the image library
+    //Permissions.askAsync (Permissions.CAMERA_ROLL)
     let result = await ImagePicker.launchCameraAsync({
       mediaTypes: ImagePicker.MediaTypeOptions.All,
       allowsEditing: true,
@@ -55,21 +63,18 @@ const Account = () => {
       quality: 1,
     });
 
+    console.log(result);
+
     if (!result.cancelled) {
       setImage(result.uri);
     }
   };
 
-  // Popup thông báo chọn chụp ảnh/chọn ảnh
   const addAvatar = () => {
     Alert.alert(
       "Thay đổi ảnh đại diện",
       "Bạn có muốn thay đổi ảnh đại diện không?",
       [
-        {
-          text: "Hủy",
-          onPress: () => console.log("Cancel Pressed"),
-        },
         {
           text: "Chụp ảnh",
           onPress: takeImage,
@@ -78,21 +83,12 @@ const Account = () => {
           text: "Chọn ảnh",
           onPress: pickImage,
         },
+        {
+          text: "Hủy",
+          onPress: () => console.log("Cancel Pressed"),
+        },
       ]
     );
-  };
-
-  const accessLogout = () => {
-    Alert.alert("Đăng xuất", "Bạn có chắc chắn muốn đăng xuất không?", [
-      {
-        text: "Đăng xuất",
-        onPress: logoutHandler,
-      },
-      {
-        text: "Hủy",
-        onPress: () => console.log("Cancel Pressed"),
-      },
-    ]);
   };
 
   return (
@@ -106,8 +102,8 @@ const Account = () => {
           onPress={() => addAvatar()}
         ></Avatar>
         <View>
-          <TextInput style={styles.user} placeholder="Username" />
-          <TextInput style={styles.user} placeholder=" vị trí" />
+          <TextInput style={styles.user} placeholder="Username" value = {userName} />
+          <TextInput style={styles.user} placeholder=" vị trí" value = {role} />
         </View>
       </View>
       {/* tạo kẻ ngang */}
@@ -130,7 +126,7 @@ const Account = () => {
               placeholder="abc@gmail.com"
               returnKeyType="done"
               maxLength={60}
-              //value={userName}
+              value={email}
               secureTextEntry={false}
               //onChangeText={setUserName}
             />
@@ -152,7 +148,7 @@ const Account = () => {
                 placeholder="+84 987 654 321"
                 returnKeyType="done"
                 maxLength={12}
-                //value={userName}
+                value={numberPhone}
                 secureTextEntry={false}
                 //onChangeText={setUserName}
               />
@@ -179,7 +175,7 @@ const Account = () => {
               placeholder="1234"
               returnKeyType="done"
               maxLength={4}
-              //value={userName}
+              value={userId}
               secureTextEntry={false}
               //onChangeText={setUserName}
             />
@@ -203,7 +199,7 @@ const Account = () => {
               placeholder="01/01/2022"
               returnKeyType="done"
               maxLength={10}
-              //value={userName}
+              value={date}
               secureTextEntry={false}
               //onChangeText={setUserName}
             />
@@ -226,7 +222,7 @@ const Account = () => {
               placeholder="Đang làm việc/Đã nghỉ"
               returnKeyType="done"
               maxLength={100}
-              //value={userName}
+              value={contractStatus}
               secureTextEntry={false}
               //onChangeText={setUserName}
             />
@@ -249,7 +245,7 @@ const Account = () => {
               placeholder="Nhân viên chính thức/ thử việc/ TTS"
               returnKeyType="done"
               maxLength={100}
-              //value={userName}
+              value={typeOfEmployee}
               secureTextEntry={false}
               //onChangeText={setUserName}
             />
@@ -298,12 +294,8 @@ const Account = () => {
           <Text style={styles.chu}> Thay đổi mật khẩu</Text>
         </TouchableOpacity>
 
-        <TouchableOpacity
-          style={{ flexDirection: "row", alignItems: "center" }}
-          onPress={accessLogout}
-        >
-          <Icon_1 name="logout" size={16} />
-          <Text style={styles.chu1}> Đăng xuất</Text>
+        <TouchableOpacity onPress={logoutHandler}>
+          <Text style={styles.chu1}> Đăng xuất </Text>
         </TouchableOpacity>
       </View>
     </ScrollView>

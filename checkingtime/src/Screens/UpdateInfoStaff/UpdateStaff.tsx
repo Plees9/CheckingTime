@@ -4,35 +4,35 @@ import {
   TextInput,
   ToastAndroid,
   TouchableOpacity,
-  Alert,
-  ImageBackground,
+  Pressable,
 } from "react-native";
 import React, { useMemo, useState, useEffect, Component } from "react";
 import createStyles from "./styles";
 import { useNavigation } from "@react-navigation/native";
 
-import { Picker } from "@react-native-picker/picker";
 import Icon from "react-native-vector-icons/FontAwesome";
 import { LinearGradient } from "expo-linear-gradient";
 
 import { Dropdown } from "react-native-element-dropdown";
 import AntDesign from "react-native-vector-icons/AntDesign";
 
-import CustomDatePicker from "../Moment/DatePicker";
+//import CustomDatePicker from "../Moment/DatePicker";
+import DateTimePicker from "@react-native-community/datetimepicker";
+import moment from "moment";
 import { Avatar } from "@rneui/themed";
 
 const data_2 = [
-  { label: "Chính thức", value: "5" },
-  { label: "Thử việc", value: "6" },
-  { label: "Thực tập sinh", value: "7" },
+  { label: "Chính thức", value: "Chính thức" },
+  { label: "Thử việc", value: "Thử việc" },
+  { label: "Thực tập sinh", value: "Thực tập sinh" },
 ];
 const data_3 = [
-  { label: "Developer", value: "9" },
-  { label: "Tester", value: "10" },
-  { label: "Quản lý", value: "11" },
-  { label: "Giám đốc", value: "12" },
-  { label: "Hành chính", value: "13" },
-  { label: "Kế toán", value: "14" },
+  { label: "Developer", value: "Developer" },
+  { label: "Tester", value: "Tester" },
+  { label: "Quản lý", value: "Quản lý" },
+  { label: "Giám đốc", value: "Giám đốc" },
+  { label: "Hành chính", value: "Hành chính" },
+  { label: "Kế toán", value: "Kế toán" },
 ];
 
 const UpdateStaff = () => {
@@ -40,17 +40,17 @@ const UpdateStaff = () => {
   const [userName, setUserName] = useState("");
   const [email, setEmail] = useState("");
   const [numberPhone, setNumberPhone] = useState("");
-  const [date_Birth, setDate_Birth] = useState("");
-  const [date, setDate] = useState("");
+  const [date_Birth, setDate_Birth] = useState(moment());
+  const [date, setDate] = useState(moment());
+  const [date_Gender, setDate_Gender] = useState("");
 
   const [address, setAddress] = useState("");
+  const [show, setShow] = useState(false);
 
   const [value_2, setValue_2] = useState(null);
   const [value_3, setValue_3] = useState(null);
   const [isFocus_2, setIsFocus_2] = useState(false);
   const [isFocus_3, setIsFocus_3] = useState(false);
-
- 
 
   const navigation = useNavigation<any>();
 
@@ -61,7 +61,6 @@ const UpdateStaff = () => {
 
   return (
     <View style={styles.view}>
-      
       <View style={styles.avatar}>
         <Avatar
           size={80}
@@ -88,13 +87,13 @@ const UpdateStaff = () => {
           style={styles.text23_2}
           placeholder={"Giới tính"}
           returnKeyType="done"
-          value={date}
-          onChangeText={setDate}
+          value={date_Gender}
+          onChangeText={setDate_Gender}
           secureTextEntry={false}
         />
       </View>
 
-      <View style={styles.khoi}>
+      <View >
         {/* Email */}
         <View style={styles.styleTT}>
           <View style={styles.text24}>
@@ -142,34 +141,62 @@ const UpdateStaff = () => {
 
       <View style={styles.row}>
         <View style={styles.row1}>
-          <CustomDatePicker
-          value={date_Birth}
-          onChange={setDate_Birth}
-            
-          />
-          <Icon
-            style={styles.styleIcon}
-            name="birthday-cake"
-            size={20}
-            color="orange"
-          />
-        </View>
-        <View style={styles.row2}>
-          <CustomDatePicker
-            value={date}
-            onChange={setDate}
-           
-          />
-          <Icon
-            style={styles.styleIcon}
-            name="briefcase"
-            size={20}
-            color="orange"
-          />
-        </View>
-      </View>
+
+        
+          <Pressable style={styles.row2} onPress={() => setShow(true)}>
+            <View style={{ justifyContent: "center", alignContent: "center" }}>
+              <Text>{date.format("DD/MM/YYYY")}</Text>
+              {show && (
+                <DateTimePicker
+                  value={new Date(date_Birth.format("YYYY/MM/DD"))}
+                  mode={"date"}
+                  display="default"
+                  onChange={(event, selectedDate) => {
+                    setDate_Birth(moment(selectedDate));
+                    setShow(false);
+                    console.log(selectedDate);
+                  }}
+                />
+              )}
+            </View>
+
+            <Icon
+              style={styles.styleIcon}
+              name="birthday-cake"
+              size={20}
+              color="orange"
+            />
+          </Pressable>
+        
+          <Pressable style={styles.row2} onPress={() => setShow(true)}>
+            <View style={{ justifyContent: "center", alignContent: "center" }}>
+              <Text>{date.format("DD/MM/YYYY")}</Text>
+              {show && (
+                <DateTimePicker
+                  value={new Date(date.format("YYYY/MM/DD"))}
+                  mode={"date"}
+                  display="default"
+                  onChange={(event, selectedDate) => {
+                    setDate(moment(selectedDate));
+                    setShow(false);
+                    console.log(selectedDate);
+                  }}
+                />
+              )}
+            </View>
+
+            <Icon
+              style={styles.styleIcon}
+              name="briefcase"
+              size={20}
+              color="orange"
+            />
+          </Pressable>
+          </View>
+        
+      
       {/* Tình trạng hợp đồng, Loại hình nhân viên */}
-      <View style={styles.row}>
+      
         <View style={styles.khoi_2}>
           <Dropdown
             style={styles.dropdown}
@@ -195,7 +222,7 @@ const UpdateStaff = () => {
               <AntDesign
                 style={styles.icon}
                 color="orange"
-                name={isFocus_2 ? 'up' : 'down'}
+                name={isFocus_2 ? "up" : "down"}
                 size={20}
               />
             )}
@@ -213,7 +240,6 @@ const UpdateStaff = () => {
             labelField="label"
             valueField="value"
             placeholder="Loại hình..."
-            
             onFocus={() => setIsFocus_3(true)}
             onBlur={() => setIsFocus_3(false)}
             value={value_3}
@@ -225,13 +251,14 @@ const UpdateStaff = () => {
               <AntDesign
                 style={styles.icon}
                 color="orange"
-                name={isFocus_3 ? 'up' : 'down'}
+                name={isFocus_3 ? "up" : "down"}
                 size={20}
               />
             )}
           />
         </View>
-      </View>
+        </View>
+      
       <LinearGradient
         start={{ x: 0, y: 0 }}
         end={{ x: 1, y: 0 }}
