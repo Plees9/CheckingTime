@@ -123,7 +123,17 @@ export const authReducer = createReducer(
         state.loading = false;
         state.error = action.payload;
       },
-  
+      updateAvatarRequest: (state) => {
+        state.loading = true;
+      },
+      updateAvatarSuccess: (state, action) => {
+        state.loading = false;
+        state.message = action.payload;
+      },
+      updateAvatarFailure: (state, action) => {
+        state.loading = false;
+        state.error = action.payload;
+      },
       clearError: (state) => {
         state.error = null;
       },
