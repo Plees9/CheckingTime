@@ -1,7 +1,16 @@
 import axios from "axios";
 
 const serverUrl = "https://timekeeper-01.herokuapp.com/api/v1";
+export const loadCompany = () => async (dispatch) => {
+  try {
+    dispatch({ type: "companyRequest" });
 
+    const { data } = await axios.get(`${serverUrl}/company/information`);
+    dispatch({ type: "companySuccess", payload: data });
+  } catch (error) {
+    dispatch({ type: "companyFailure", payload: error.response.data.message });
+  }
+}
 export const login = (phoneNumber, password) => async (dispatch) => {
   try {
     dispatch({ type: "loginRequest" });

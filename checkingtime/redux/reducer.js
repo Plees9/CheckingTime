@@ -1,5 +1,24 @@
 import { createReducer } from "@reduxjs/toolkit";
+export const companyReducer = createReducer ({}, {
+  companyRequest: (state) => {
+    state.loading = true;
+  },
+  companySuccess: (state, action) => {
+    state.loading = false;
+    state.company = action.payload;
+  },
+  companyFailure: (state, action) => {
+    state.loading = false;
+    state.error = action.payload;
+  },
+  clearError: (state) => {
+    state.error = null;
+  },
 
+  clearMessage: (state) => {
+    state.message = null;
+  },
+});
 export const authReducer = createReducer(
   {},
   {
@@ -114,4 +133,3 @@ export const authReducer = createReducer(
       },
     }
   );
-  
