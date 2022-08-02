@@ -52,11 +52,11 @@ const data_4 = [
 ];
 
 const AddStaff = () => {
-  const dispatch = useDispatch()
+  const dispatch = useDispatch();
 
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
-  
+
   const styles = useMemo(() => createStyles(), []);
   const [userName, setUserName] = useState("");
   const [email, setEmail] = useState("");
@@ -89,7 +89,7 @@ const AddStaff = () => {
     myForm.append("contractStatus", value_2);
     myForm.append("typeOfEmployee", value_4);
     myForm.append("role", value_3);
-    console.log(Sdate)
+    console.log(Sdate);
 
     dispatch<any>(register(myForm));
   };
@@ -109,70 +109,61 @@ const AddStaff = () => {
     <View style={styles.view}>
       <View>
         <View style={styles.styleTT}>
-          
-            <TextInput
-              placeholder={"Họ và tên"}
-              style={styles.text23}
-              returnKeyType="done"
-              value={userName}
-              secureTextEntry={false}
-              onChangeText={setUserName}
-            />
-          
+          <TextInput
+            placeholder={"Họ và tên"}
+            style={styles.text23}
+            returnKeyType="done"
+            value={userName}
+            secureTextEntry={false}
+            onChangeText={setUserName}
+          />
         </View>
         {/* Email */}
         <View style={styles.styleTT}>
-          
-            <TextInput
-              placeholder={"E-mail"}
-              style={styles.text23}
-              returnKeyType="done"
-              keyboardType="email-address"
-              value={email}
-              secureTextEntry={false}
-              onChangeText={setEmail}
-            />
-          
+          <TextInput
+            placeholder={"E-mail"}
+            style={styles.text23}
+            returnKeyType="done"
+            keyboardType="email-address"
+            value={email}
+            secureTextEntry={false}
+            onChangeText={setEmail}
+          />
         </View>
         {/* Số điện thoại */}
         <View>
           <View style={styles.styleTT}>
-            
-              <TextInput
-                placeholder={"Số điện thoại"}
-                style={styles.text23}
-                keyboardType={"number-pad"}
-                returnKeyType="done"
-                value={numberPhone}
-                secureTextEntry={false}
-                onChangeText={setNumberPhone}
-              />
-            
+            <TextInput
+              placeholder={"Số điện thoại"}
+              style={styles.text23}
+              keyboardType={"number-pad"}
+              returnKeyType="done"
+              value={numberPhone}
+              secureTextEntry={false}
+              onChangeText={setNumberPhone}
+            />
           </View>
         </View>
         {/* PassWord */}
         <View style={styles.styleTT}>
-          
-            <TextInput
-              placeholder={"Mật khẩu"}
-              style={styles.text23}
-              returnKeyType="done"
-              value={password}
-              secureTextEntry={isHided}
-              onChangeText={(text) => setPassword(text)}
-            />
-            <TouchableOpacity
+          <TextInput
+            placeholder={"Mật khẩu"}
+            style={styles.text23}
+            returnKeyType="done"
+            value={password}
+            secureTextEntry={isHided}
+            onChangeText={(text) => setPassword(text)}
+          />
+          <TouchableOpacity
             onPressIn={() => setIsHided(false)}
             onPressOut={() => setIsHided(true)}
-            
           >
-              <Icon_1
-                name={isHided == true ? "eye" : "eye-off"}
-                size={20}
-                color={"#595959"}
-              />
+            <Icon_1
+              name={isHided == true ? "eye" : "eye-off"}
+              size={20}
+              color={"#595959"}
+            />
           </TouchableOpacity>
-          
         </View>
         {/* <View>
           <PassMeter
@@ -184,22 +175,20 @@ const AddStaff = () => {
           />
         </View> */}
         <View style={styles.styleTT}>
-          
-            <TextInput
-              placeholder={"Nhập lại mật khẩu"}
-              style={styles.text23}
-              returnKeyType="done"
-              maxLength={16}
-              value={confirmPassword}
-              secureTextEntry={true}
-              onChangeText={(text) => setConfirmPassword(text)}
-            />
-            {password === "" || confirmPassword !== password ? (
-              <Icon_2 name="exclamationcircle" size={17} color="#d22d2c" />
-            ) : (
-              <Icon_2 name="checkcircle" size={17} color="#51c92b" />
-            )}
-          
+          <TextInput
+            placeholder={"Nhập lại mật khẩu"}
+            style={styles.text23}
+            returnKeyType="done"
+            maxLength={16}
+            value={confirmPassword}
+            secureTextEntry={true}
+            onChangeText={(text) => setConfirmPassword(text)}
+          />
+          {password === "" || confirmPassword !== password ? (
+            <Icon_2 name="exclamationcircle" size={17} color="#d22d2c" />
+          ) : (
+            <Icon_2 name="checkcircle" size={17} color="#51c92b" />
+          )}
         </View>
 
         <Text style={styles.textExemple}>8-16 ký tự ví dụ: eX@mpL3*</Text>
@@ -358,7 +347,7 @@ const AddStaff = () => {
           )}
         />
       </View>
-
+      
       <LinearGradient
         start={{ x: 0, y: 0 }}
         end={{ x: 1, y: 0 }}
