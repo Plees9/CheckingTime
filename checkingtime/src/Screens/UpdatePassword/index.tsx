@@ -10,7 +10,7 @@ import Icon from "react-native-vector-icons/AntDesign";
 import Icon_1 from "react-native-vector-icons/Ionicons";
 import { isNull } from "lodash";
 import { forgetPassword } from "../../../redux/action";
-const updatePassword = () => {
+const UpdatePassword = () => {
   const route = useRoute() 
   const dispatch = useDispatch();
   const { message, error } = useSelector<any, any>((state) => state.message);
@@ -116,4 +116,4 @@ const updatePassword = () => {
   );
 };
 
-export default updatePassword;
+export default UpdatePassword;
