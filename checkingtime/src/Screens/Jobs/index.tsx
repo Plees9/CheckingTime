@@ -12,10 +12,16 @@ import Icon from "react-native-vector-icons/FontAwesome";
 import { IconButton } from "react-native-paper";
 
 import { useNavigation } from "@react-navigation/native";
-
+import { loadCompany } from "../../../redux/action";
+import { useDispatch, useSelector } from "react-redux";
 const Jobs = () => {
   const navigation = useNavigation<any>();
+  const dispatch = useDispatch();
 
+  const companyHandler = async () => {
+    await dispatch<any>(loadCompany());
+    navigation.navigate("Thông tin Công Ty");
+  };
   return (
     <ScrollView style={styles.container}>
       <View
@@ -62,7 +68,7 @@ const Jobs = () => {
         <View style={styles.scrollView}>
           <TouchableOpacity
             style={styles.Touch2}
-            onPress={() => navigation.navigate("Thông tin Công Ty")}
+            onPress={companyHandler}
           >
             <View style={{ alignContent: "center" }}>
               <IconButton icon="office-building" color="#f49218" size={50} />

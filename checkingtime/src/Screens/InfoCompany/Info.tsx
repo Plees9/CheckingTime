@@ -8,10 +8,14 @@ import {
 } from "react-native";
 import React, { useMemo, useState } from "react";
 import createStyles from "./styles";
-
+import { useDispatch, useSelector } from "react-redux";
 import { IconButton } from "react-native-paper";
 
 const InfoScreen = () => {
+  const { company , loading } = useSelector<any, any>(state => ({ ...state.company}))
+  const { user } = useSelector<any, any>(state => ({ ...state.auth}))
+  console.log(company)
+  console.log(user)
   const styles = useMemo(() => createStyles(), []);
 
   return (
@@ -34,14 +38,14 @@ const InfoScreen = () => {
           />
 
           <View>
-            <Text style={styles.user}> Tên công ty </Text>
+            <Text style={styles.user}> {company.company.name} </Text>
             <TextInput
               style={styles.texta}
               keyboardType="default"
               placeholder="25-99 nhân viên   "
               returnKeyType="done"
               maxLength={12}
-              //value={userName}
+              value={company.company.size}
               secureTextEntry={false}
               //onChangeText={setUserName}
             />
@@ -70,7 +74,7 @@ const InfoScreen = () => {
               placeholder="+12345678  "
               returnKeyType="done"
               maxLength={12}
-              //value={userName}
+              value={company.company.hotline}
               secureTextEntry={false}
               //onChangeText={setUserName}
             />
@@ -82,14 +86,14 @@ const InfoScreen = () => {
       <View style={styles.footer}>
         <TouchableOpacity
           style={styles.btnForgot}
-          onPress={() => Alert.alert("Simple")}
+          onPress={() => Alert.alert(company.company.introduction)}
         >
           <Text style={styles.textend}>Giới thiệu</Text>
         </TouchableOpacity>
 
         <TouchableOpacity
           style={styles.btnForgot}
-          onPress={() => Alert.alert("Simple Button")}
+          onPress={() => Alert.alert("")}
         >
           <Text style={styles.textend}>Website </Text>
         </TouchableOpacity>

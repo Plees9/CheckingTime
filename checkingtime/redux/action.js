@@ -1,7 +1,33 @@
 import axios from "axios";
 
 const serverUrl = "https://timekeeper-01.herokuapp.com/api/v1";
+export const updateAvatar = (formData) => async (dispatch) => {
+  try {
+    dispatch({ type: "updateAvatarRequest" });
 
+    const { data } = await axios.put(`${serverUrl}/user/updateavatar`, formData, {
+      headers: {
+        "Content-Type": "multipart/form-data",
+      },
+    });
+    dispatch({ type: "updateAvatarSuccess", payload: data.message });
+  } catch (error) {
+    dispatch({
+      type: "updateAvatarFailure",
+      payload: error.response.data.message,
+    });
+  }
+};
+export const loadCompany = () => async (dispatch) => {
+  try {
+    dispatch({ type: "companyRequest" });
+
+    const { data } = await axios.get(`${serverUrl}/company/information`);
+    dispatch({ type: "companySuccess", payload: data });
+  } catch (error) {
+    dispatch({ type: "companyFailure", payload: error.response.data.message });
+  }
+}
 export const login = (phoneNumber, password) => async (dispatch) => {
   try {
     dispatch({ type: "loginRequest" });

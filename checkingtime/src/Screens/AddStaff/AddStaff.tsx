@@ -21,7 +21,7 @@ import AntDesign from "react-native-vector-icons/AntDesign";
 import DateTimePicker from "@react-native-community/datetimepicker";
 import moment from "moment";
 
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { register } from "../../../redux/action";
 const data_1 = [
   { label: "Người dùng", value: "Người dùng" },
@@ -95,8 +95,9 @@ const AddStaff = () => {
     console.log(Sdate)
 
     dispatch<any>(register(myForm));
+    navigation.navigate("AddStaff");
   };
-
+  const { message, error } = useSelector<any, any>((state) => state.message);
   const navigation = useNavigation<any>();
 
   const [country, setCountry] = useState("Unknown");
@@ -108,7 +109,16 @@ const AddStaff = () => {
     MIN_LEN = 8,
     PASS_LABELS = ["Too Short", "Weak", "Normal", "Strong", "Secure"];
 
-    
+    useEffect(() => {
+      if (message) {
+        alert(message);
+        dispatch({ type: "clearMessage" });
+      }
+      if (error) {
+        alert(error);
+        dispatch({ type: "clearError" });
+      }
+    }, [alert, dispatch, error]);
   return (
     <View style={styles.view}>
       {/* <Text style={styles.textWelcome}>Đăng ký thành viên</Text> */}
