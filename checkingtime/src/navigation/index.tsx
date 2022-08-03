@@ -23,7 +23,7 @@ import EFilter from "../Screens/ListFilter/EFilter";
 import Loader from "./Loader"
 import AddStaff from '../Screens/AddStaff/AddStaff';
 import UpdateStaff from '../Screens/UpdateInfoStaff/UpdateStaff';
-import updatePassword from "../Screens/UpdatePassword";
+import UpdatePassword from "../Screens/UpdatePassword";
 const Stack = createNativeStackNavigator();
 
 const Navigation = () => {
@@ -51,7 +51,7 @@ const Navigation = () => {
       />
       <Stack.Screen
         name="Thay đổi mật khẩu"
-        component={updatePassword}
+        component={UpdatePassword}
         options={{ headerShown: true }}
       />
     </Stack.Navigator>
@@ -185,7 +185,7 @@ const SNavigation = () => {
       />
       <Stack.Screen
         name="Thay đổi mật khẩu"
-        component={updatePassword}
+        component={UpdatePassword}
         options={{ headerShown: true }}
       />
       </Stack.Navigator>
