@@ -76,6 +76,11 @@ const createStyles = () =>
       marginTop: "3%",
       color: "orange",
     },
+    trash: {
+      marginLeft: "70%",
+      marginTop: "3%",
+      color: "orange",
+    },
     hang2: {
       flexDirection: "row",
       //justifyContent: "space-between",

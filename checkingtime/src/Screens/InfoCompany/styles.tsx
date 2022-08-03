@@ -10,9 +10,8 @@ const createStyles = () =>
     user: {
       fontFamily: FONTS.vanSansSemiBold,
       fontSize: 20,
-      color: "black",
       marginTop: "3%",
-      marginLeft: 16,
+      marginLeft: "2%",
       alignItems: "flex-start",
     },
 
@@ -43,7 +42,7 @@ const createStyles = () =>
       width: 300,
     },
     hang: {
-      marginTop: 16,
+      marginTop: "3%",
       flexDirection: "row",
     },
     footer: {
@@ -54,8 +53,9 @@ const createStyles = () =>
       fontSize: 15,
       color: "black",
       marginTop: "3%",
-      marginLeft: 16,
+      marginLeft: "2%",
       alignItems: "flex-start",
+      
     },
     header: {
       fontSize: 30,

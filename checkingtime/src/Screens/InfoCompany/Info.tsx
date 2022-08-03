@@ -23,7 +23,7 @@ const InfoScreen = () => {
       <View style={{ backgroundColor: "#DDDDDD", padding: 10 }}>
         <Text style={styles.header}>Trụ sở chính</Text>
       </View>
-      <View style={{ marginLeft: 15 }}>
+      <View style={{ marginLeft: 10 }}>
         <View style={styles.hang}>
           <IconButton
             icon="office-building"
@@ -38,22 +38,23 @@ const InfoScreen = () => {
           />
 
           <View>
-            <Text style={styles.user}> {company.company.name} </Text>
-            <TextInput
+            <Text style={styles.user}>{company.company.name}</Text>
+            {/* <TextInput
               style={styles.texta}
               keyboardType="default"
-              placeholder="25-99 nhân viên   "
+              placeholder="25-99 nhân viên"
               returnKeyType="done"
               maxLength={12}
               value={company.company.size}
               secureTextEntry={false}
               //onChangeText={setUserName}
-            />
+            /> */}
+            <Text style={styles.texta}>{company.company.size}</Text>
           </View>
         </View>
       </View>
       <View style={styles.kengang}></View>
-      <View style={{ marginLeft: 15 }}>
+      <View style={{ marginLeft: 10 }}>
         <View style={styles.hang}>
           <IconButton
             icon="phone"
@@ -67,8 +68,8 @@ const InfoScreen = () => {
             }}
           />
           <View>
-            <Text style={styles.user}> Hotline </Text>
-            <TextInput
+            <Text style={styles.user}>Hotline</Text>
+            {/* <TextInput
               style={styles.texta}
               keyboardType="number-pad"
               placeholder="+12345678  "
@@ -77,7 +78,8 @@ const InfoScreen = () => {
               value={company.company.hotline}
               secureTextEntry={false}
               //onChangeText={setUserName}
-            />
+            /> */}
+            <Text style={styles.texta}>{company.company.hotline}</Text>
             <View style={styles.kengang1}></View>
           </View>
         </View>
