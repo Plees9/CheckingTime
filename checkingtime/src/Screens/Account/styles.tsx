@@ -1,6 +1,6 @@
 import { StyleSheet, StatusBar } from "react-native";
 import { FONTS } from "../../../constants/theme";
-import {Color_Icon} from "../../../constants/theme";
+import { Color_Icon } from "../../../constants/theme";
 
 const createStyles = () =>
   StyleSheet.create({
@@ -12,19 +12,18 @@ const createStyles = () =>
       marginBottom: 15,
       //paddingTop: StatusBar.currentHeight,
     },
+    down: {
+      flexDirection: "column",
+      marginTop: "3%",
+      marginLeft: "5%",
+    },
+    sizeText: {
+      fontSize: 18,
+    },
     user: {
       fontSize: 14,
       color: "#7F8487",
       marginTop: "3%",
-      fontFamily: FONTS.vanSansSemiBold,
-      marginLeft: 15,
-      alignItems: "flex-start",
-    },
-    user_1: {
-      fontSize: 14,
-      color: "#7F8487",
-      marginTop: "1%",
-      fontFamily: FONTS.vanSansMedium,
       marginLeft: 15,
       alignItems: "flex-start",
     },
@@ -41,8 +40,7 @@ const createStyles = () =>
       fontFamily: FONTS.vanSansSemiBold,
     },
     icon: {
-      fontSize: 35,
-      alignSelf: 'center',
+      fontSize: 40,
       margin: 4,
     },
     hang: {
@@ -59,7 +57,12 @@ const createStyles = () =>
       fontFamily: FONTS.vanSansSemiBold,
     },
     chu1: {
-      fontSize: 16,
+      fontSize: 24,
+      width: "98%",
+      backgroundColor: "#DDDDDD",
+      textAlign: "center",
+      padding: 8,
+      borderRadius: 10,
       color: "#F32424",
       fontFamily: FONTS.vanSansSemiBold,
     },

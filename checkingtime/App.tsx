@@ -9,6 +9,7 @@ import { Provider } from "react-redux";
 import store from "./redux/store";
 import { NavigationContainer } from "@react-navigation/native";
 import UpdateStaff from "./src/Screens/UpdateInfoStaff/UpdateStaff";
+import Account from './src/Screens/Account/Account';
 
 const App = () => {
   const [fontsLoaded] = useFonts({
@@ -39,7 +40,7 @@ const App = () => {
     <SafeAreaView style={styles.root}>
        <SNavigation /> 
        {/* <NavigationContainer>
-        <UpdateStaff />
+       <Account />
        </NavigationContainer> */}
       </SafeAreaView>
     </Provider>

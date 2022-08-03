@@ -41,6 +41,8 @@
     "react-native": "0.68.2",
     "react-native-animated-progress": "^1.0.2",
     "react-native-badge-avatar": "^1.1.2",
+    "react-native-bottomsheet-reanimated": "^0.2.0",
+    "react-native-btr": "^2.2.0",
     "react-native-date-picker": "^4.2.5",
     "react-native-datepicker": "^1.7.2",
     "react-native-drop-down-item": "^1.1.0",
@@ -67,7 +69,8 @@
     "react-native-web": "0.17.7",
     "react-navigation": "^4.4.4",
     "react-navigation-tabbar-collection": "^1.0.0",
-    "react-redux": "^8.0.2"
+    "react-redux": "^8.0.2",
+    "reanimated-bottom-sheet": "^1.0.0-alpha.22"
   },
   "devDependencies": {
     "@babel/core": "^7.12.9",

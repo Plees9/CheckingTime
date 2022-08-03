@@ -18,13 +18,14 @@ import GradientText from "../../component/GradientText";
 import Icon_1 from "react-native-vector-icons/Ionicons";
 
 
+
 const SignIn = () => {
   const { error } = useSelector<any, any>((state) => state.auth);
 
   const dispatch = useDispatch();
   const styles = useMemo(() => createStyles(), []);
-  const [userName, setUserName] = useState("");
-  const [password, setPassword] = useState("");
+  const [userName, setUserName] = useState("0966656821");
+  const [password, setPassword] = useState("Quanvippro!23");
   const [isChecked, setIsChecked] = useState(false);
   const [isHided, setIsHided] = useState(true);
 
