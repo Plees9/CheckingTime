@@ -118,7 +118,6 @@ const AddStaff = () => {
         dispatch({ type: "clearError" });
       }
     }, [alert, dispatch, error]);
-  
   return (
     <View style={styles.view}>
       {/* <Text style={styles.textWelcome}>Đăng ký thành viên</Text> */}
