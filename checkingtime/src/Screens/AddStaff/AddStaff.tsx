@@ -105,7 +105,10 @@ const AddStaff = () => {
     MIN_LEN = 8,
     PASS_LABELS = ["Too Short", "Weak", "Normal", "Strong", "Secure"];
 
-  const startReload = () => RNRestart.Restart();
+  const startReload = () => {
+    RNRestart.Restart();
+    console.log("reload pressd");
+  };
 
   return (
     <View style={styles.view}>
@@ -356,7 +359,13 @@ const AddStaff = () => {
         colors={["#f12711", "#f5af19"]}
         style={styles.btn2}
       >
-        <TouchableOpacity onPress={() => {registerHandler;startReload}}>
+        <TouchableOpacity
+          onPress={() => {
+            registerHandler;
+            console.log("abc")
+            startReload;
+          }}
+        >
           <Text style={styles.text22}>Đăng ký</Text>
         </TouchableOpacity>
       </LinearGradient>
