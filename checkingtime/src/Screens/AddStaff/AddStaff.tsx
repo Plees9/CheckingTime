@@ -20,7 +20,6 @@ import AntDesign from "react-native-vector-icons/AntDesign";
 
 import DateTimePicker from "@react-native-community/datetimepicker";
 import moment from "moment";
-import RNRestart from "react-native-restart";
 import { useDispatch } from "react-redux";
 import { register } from "../../../redux/action";
 
@@ -104,11 +103,6 @@ const AddStaff = () => {
   const MAX_LEN = 16,
     MIN_LEN = 8,
     PASS_LABELS = ["Too Short", "Weak", "Normal", "Strong", "Secure"];
-
-  const startReload = () => {
-    RNRestart.Restart();
-    console.log("reload pressd");
-  };
 
   return (
     <View style={styles.view}>
@@ -359,13 +353,7 @@ const AddStaff = () => {
         colors={["#f12711", "#f5af19"]}
         style={styles.btn2}
       >
-        <TouchableOpacity
-          onPress={() => {
-            registerHandler;
-            console.log("abc")
-            startReload;
-          }}
-        >
+        <TouchableOpacity onPress={registerHandler}>
           <Text style={styles.text22}>Đăng ký</Text>
         </TouchableOpacity>
       </LinearGradient>
