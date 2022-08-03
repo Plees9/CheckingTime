@@ -12,10 +12,12 @@ import { useDispatch, useSelector } from "react-redux";
 import { IconButton } from "react-native-paper";
 
 const InfoScreen = () => {
-  const { company , loading } = useSelector<any, any>(state => ({ ...state.company}))
-  const { user } = useSelector<any, any>(state => ({ ...state.auth}))
-  console.log(company)
-  console.log(user)
+  const { company, loading } = useSelector<any, any>((state) => ({
+    ...state.company,
+  }));
+  const { user } = useSelector<any, any>((state) => ({ ...state.auth }));
+  console.log(company);
+  console.log(user);
   const styles = useMemo(() => createStyles(), []);
 
   return (
@@ -37,18 +39,10 @@ const InfoScreen = () => {
             }}
           />
 
-          <View>
-            <Text style={styles.user}>{company.company.name}</Text>
-            {/* <TextInput
-              style={styles.texta}
-              keyboardType="default"
-              placeholder="25-99 nhân viên"
-              returnKeyType="done"
-              maxLength={12}
-              value={company.company.size}
-              secureTextEntry={false}
-              //onChangeText={setUserName}
-            /> */}
+          <View style={styles.khoiInfo}>
+             <Text style={styles.user}>{company.company.name}</Text> 
+           
+
             <Text style={styles.texta}>{company.company.size}</Text>
           </View>
         </View>
@@ -68,17 +62,8 @@ const InfoScreen = () => {
             }}
           />
           <View>
-            <Text style={styles.user}>Hotline</Text>
-            {/* <TextInput
-              style={styles.texta}
-              keyboardType="number-pad"
-              placeholder="+12345678  "
-              returnKeyType="done"
-              maxLength={12}
-              value={company.company.hotline}
-              secureTextEntry={false}
-              //onChangeText={setUserName}
-            /> */}
+            <Text style={styles.user_1}>Hotline</Text>
+
             <Text style={styles.texta}>{company.company.hotline}</Text>
             <View style={styles.kengang1}></View>
           </View>

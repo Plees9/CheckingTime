@@ -1,5 +1,6 @@
 import { StyleSheet, StatusBar } from "react-native";
 import { FONTS } from "../../../constants/theme";
+import MaskedView from '@react-native-masked-view/masked-view';
 
 const createStyles = () =>
   StyleSheet.create({
@@ -18,9 +19,6 @@ const createStyles = () =>
     },
     iconPlus: {
       margin: 10,
-      // borderRadius: 10,
-      // padding: 10,
-      // backgroundColor: "#f2f2f2",
     },
     icon1: {
       flexDirection: "row",
@@ -48,53 +46,77 @@ const createStyles = () =>
     view2: {
       flexDirection: "column",
       backgroundColor: "#FFFFFF",
-      //height: "10%",
+      width: "100%",
       marginTop: "3%",
-      marginLeft: "3%",
-      marginRight: "3%",
       borderRadius: 10,
     },
     hang: {
       flexDirection: "row",
       borderRadius: 5,
       margin: "3%",
-      width: "95%",
     },
     avt: {
       marginTop: "1%",
     },
+    khoiUser: {
+      flexDirection: "column",
+      textAlign: "flex-start",
+      marginLeft: "5%",
+      marginRight: "3%",
+      width: "70%",
+    },
     user: {
       fontSize: 16,
-      flexDirection: "column",
-      width: "100%",
       fontWeight: "bold",
-      marginLeft: "10%",
       marginTop: "2%",
     },
     iconPhone: {
-      marginLeft: "45%",
       marginTop: "3%",
       color: "orange",
     },
     trash: {
-      marginLeft: "70%",
-      marginTop: "3%",
+      marginLeft: "27%",
+      marginBottom: "3%",
       color: "orange",
     },
     hang2: {
       flexDirection: "row",
-      //justifyContent: "space-between",
-      width: "45%",
+      justifyContent: "space-between",
+      width: "60%",
+      marginBottom: "3%",
       marginLeft: "3%",
-      borderColor: "orange",
+    },
+    hang4: {
+      flexDirection: "row",
     },
     view3: {
       borderWidth: 1,
       borderRadius: 5,
-      margin: "3%",
-      height: "70%",
+      width: "25%",
+      height: "80%",
       textAlign: "center",
-      color: "orange",
+      fontFamily: FONTS.vanSansMedium,
+      padding: "2%",
+      borderColor: "orange",
+      
+    },
+    view3_1: {
+      borderWidth: 1,
+      borderRadius: 5,
+      fontFamily: FONTS.vanSansMedium,
+      width: "20%",
+      height: "80%",
+      textAlign: "center",
+      padding: "2%",
+      borderColor: "orange",
+    },
+    view3_2: {
+      borderWidth: 1,
+      borderRadius: 5,
+      width: "40%",
+      height: "80%",
+      textAlign: "center",
+      fontFamily: FONTS.vanSansMedium,
       padding: "2%",
       borderColor: "orange",
     },
@@ -123,6 +145,11 @@ const createStyles = () =>
       marginTop: "1%",
       color: "orange",
     },
+    itemText: {
+      fontSize: 26,
+      color: 'black',
+      textTransform: 'capitalize'
+    }
   });
 
 export default createStyles;

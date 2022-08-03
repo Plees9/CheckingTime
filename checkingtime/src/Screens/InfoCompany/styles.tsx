@@ -7,11 +7,23 @@ const createStyles = () =>
       fontSize: 8,
       flex: 1,
     },
+    khoiInfo: {
+      flexDirection: "column",
+      marginTop: "-6%",
+      flex: 1,
+    },
     user: {
       fontFamily: FONTS.vanSansSemiBold,
-      fontSize: 20,
-      marginTop: "3%",
-      marginLeft: "2%",
+      fontSize: 18,
+      marginTop: "5%",
+      marginLeft: "3%",
+      alignItems: "flex-start",
+      
+    },
+    user_1: {
+      fontFamily: FONTS.vanSansSemiBold,
+      fontSize: 18,
+      marginLeft: "3%",
       alignItems: "flex-start",
     },
 
@@ -31,10 +43,10 @@ const createStyles = () =>
     },
 
     kengang: {
+    
       borderBottomColor: "black",
       borderBottomWidth: 0.5,
       width: "100%",
-      marginTop: "3%",
     },
     kengang1: {
       borderBottomColor: "black",
@@ -43,7 +55,10 @@ const createStyles = () =>
     },
     hang: {
       marginTop: "3%",
+      width: "99%",
+     
       flexDirection: "row",
+      
     },
     footer: {
       flexDirection: "row",
@@ -52,10 +67,8 @@ const createStyles = () =>
     texta: {
       fontSize: 15,
       color: "black",
-      marginTop: "3%",
-      marginLeft: "2%",
-      alignItems: "flex-start",
-      
+      marginTop: "1%",
+      marginLeft: "3%",
     },
     header: {
       fontSize: 30,
