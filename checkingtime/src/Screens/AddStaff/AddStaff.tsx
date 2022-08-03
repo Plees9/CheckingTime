@@ -92,9 +92,7 @@ const AddStaff = () => {
     myForm.append("typeOfEmployee", value_2);
     myForm.append("role", value_3);
     console.log(Sdate)
-
     dispatch<any>(register(myForm));
-    useEffect
     navigation.navigate("AddStaff");
   };
   const { message, error } = useSelector<any, any>((state) => state.message);
