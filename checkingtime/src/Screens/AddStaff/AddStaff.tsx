@@ -1,4 +1,5 @@
 import {
+  RefreshControl,
   View,
   Text,
   TextInput,
@@ -365,7 +366,7 @@ search
         colors={["#f12711", "#f5af19"]}
         style={styles.btn2}
       >
-        <TouchableOpacity onPress={registerHandler}>
+        <TouchableOpacity onPress={registerHandler} >
           <Text style={styles.text22}>Đăng ký</Text>
         </TouchableOpacity>
       </LinearGradient>
