@@ -210,7 +210,7 @@ style={{ marginTop: "2%" }}
         </TouchableOpacity>
         <TouchableOpacity
           style={styles.khoangcach}
-          onPress={() => navigation.navigate("Cài lại mật khẩu")}
+          onPress={() => navigation.navigate("Thay đổi mật khẩu")}
         >
           <Text style={styles.chu}>Thay đổi mật khẩu</Text>
         </TouchableOpacity>
