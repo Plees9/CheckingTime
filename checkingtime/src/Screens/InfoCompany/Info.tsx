@@ -5,20 +5,40 @@ import {
   SafeAreaView,
   Alert,
   TouchableOpacity,
+  Linking,
+  Platform,
 } from "react-native";
 import React, { useMemo, useState } from "react";
 import createStyles from "./styles";
 import { useDispatch, useSelector } from "react-redux";
 import { IconButton } from "react-native-paper";
 
+const introduction = "https://vkg.vn/services";
+const website = "https://vkg.vn/";
+const fanpage = "https://www.facebook.com/vikinology";
+
+
 const InfoScreen = () => {
+
   const { company, loading } = useSelector<any, any>((state) => ({
     ...state.company,
   }));
   const { user } = useSelector<any, any>((state) => ({ ...state.auth }));
   console.log(company);
   console.log(user);
+
+  //
   const styles = useMemo(() => createStyles(), []);
+
+  const openUrl = async (url: string) => {
+    const isSupported = await Linking.canOpenURL(url);
+    if (isSupported) { 
+      await Linking.openURL(url);
+    } else {
+      Alert.alert(`Don't know how to open this URL: ${url}`); 
+    }
+  }
+ 
 
   return (
     <SafeAreaView style={styles.container}>
@@ -71,20 +91,20 @@ const InfoScreen = () => {
       <View style={styles.footer}>
         <TouchableOpacity
           style={styles.btnForgot}
-          onPress={() => Alert.alert(company.company.introduction)}
+          onPress={() => openUrl(introduction)}
         >
           <Text style={styles.textend}>Giới thiệu</Text>
         </TouchableOpacity>
 
         <TouchableOpacity
           style={styles.btnForgot}
-          onPress={() => Alert.alert("")}
+          onPress={() => openUrl(website)}
         >
           <Text style={styles.textend}>Website </Text>
         </TouchableOpacity>
         <TouchableOpacity
           style={styles.btnForgot}
-          onPress={() => Alert.alert("Simple Button pressed")}
+          onPress={() => openUrl(fanpage)}
         >
           <Text style={styles.textend}>Fanpage</Text>
         </TouchableOpacity>

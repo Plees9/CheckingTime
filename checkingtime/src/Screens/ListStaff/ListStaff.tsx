@@ -2,10 +2,11 @@ import {
   View,
   Text,
   ScrollView,
-  Image,
   Alert,
   SafeAreaView,
   FlatList,
+  Platform,
+  Linking,
 } from "react-native";
 import React, { useMemo, useState } from "react";
 
@@ -29,6 +30,14 @@ const ListStaff = () => {
   const [numberPhone, setNumberPhone] = useState("0383286615"); //sodienthoai
   const [gender, setGender] = useState(""); //gioitinh
 
+  const dialCall = (numberPhone_1: any) => {
+    let phoneNumber = '';
+    if (Platform.OS === 'android') { phoneNumber = `tel:${numberPhone_1}`; }
+    else {phoneNumber = `telprompt:${numberPhone_1}`; }
+    Linking.openURL(phoneNumber);
+ };
+
+
   const [data, setData] = useState([
     {
       id: 1,
@@ -39,7 +48,7 @@ const ListStaff = () => {
       contractStatus_1: "Da nghi",
       date_1: "23/01/2121",
       date_Birth_1: "18/01/2001",
-      numberPhone_1: "025689154",
+      numberPhone_1: "0966656821",
       gender_1: "Nam",
     },
     {
@@ -51,7 +60,7 @@ const ListStaff = () => {
       contractStatus_1: "Dang lam viec",
       date_1: "20/10/2020",
       date_Birth_1: "02/11/2020",
-      numberPhone_1: "0256688578",
+      numberPhone_1: "0858424564",
       gender_1: "Nam",
     },
     {
@@ -63,7 +72,7 @@ const ListStaff = () => {
       contractStatus_1: "Dang lam viec",
       date_1: "14/12/2024",
       date_Birth_1: "14/12/2024",
-      numberPhone_1: "0123456789",
+      numberPhone_1: "0988409901",
       gender_1: "nu",
     },
     {
@@ -89,8 +98,9 @@ const ListStaff = () => {
     contractStatus_1: any,
     date_1: undefined,
     date_Birth_1: undefined,
-    gender_1: any,
-    numberPhone_1: number
+    numberPhone_1: number,
+    gender_1: any
+    
   ) => {
     Alert.alert(
       "Số điện thoại của nhân viên " + name_1.toUpperCase(),
@@ -104,8 +114,9 @@ const ListStaff = () => {
         {
           text: "Call",
           onPress: () => {
-            console.log("Call Pressed");
-          },
+            dialCall(numberPhone_1);
+          }
+          
         },
       ]
     );
