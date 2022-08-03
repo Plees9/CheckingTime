@@ -41,8 +41,6 @@ const InfoScreen = () => {
 
           <View style={styles.khoiInfo}>
              <Text style={styles.user}>{company.company.name}</Text> 
-           
-
             <Text style={styles.texta}>{company.company.size}</Text>
           </View>
         </View>

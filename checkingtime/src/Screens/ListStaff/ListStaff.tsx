@@ -25,6 +25,7 @@ const ListStaff = () => {
   const [typeOfEmployee, setTypeOfEmployee] = useState(""); //Loaihinhnhansu
   const [contractStatus, setContractStatus] = useState(""); //trangthaihopdong
   const [date, setDate] = useState(""); //ngayvaolam
+  const [date_Birth, setDate_Birth] = useState(""); //ngaysinh
   const [numberPhone, setNumberPhone] = useState("0383286615"); //sodienthoai
   const [gender, setGender] = useState(""); //gioitinh
 
@@ -34,10 +35,11 @@ const ListStaff = () => {
       name_1: "Nguyen Van A",
       role_1: "Nhan vien",
       userId_1: "NV001",
-      typeOfEmployee_1: "Nhan vien",
-      contractStatus_1: "Dang lam viec",
-      date_1: "20/10/2020",
-      numberPhone_1: "0383286615",
+      typeOfEmployee_1: "Giam doc",
+      contractStatus_1: "Da nghi",
+      date_1: "23/01/2121",
+      date_Birth_1: "18/01/2001",
+      numberPhone_1: "025689154",
       gender_1: "Nam",
     },
     {
@@ -48,8 +50,9 @@ const ListStaff = () => {
       typeOfEmployee_1: "Nhan vien",
       contractStatus_1: "Dang lam viec",
       date_1: "20/10/2020",
+      date_Birth_1: "02/11/2020",
       numberPhone_1: "0256688578",
-      gender_1: "Nu",
+      gender_1: "Nam",
     },
     {
       id: 3,
@@ -59,8 +62,9 @@ const ListStaff = () => {
       typeOfEmployee_1: "Nhan vien",
       contractStatus_1: "Dang lam viec",
       date_1: "14/12/2024",
+      date_Birth_1: "14/12/2024",
       numberPhone_1: "0123456789",
-      gender_1: "bede",
+      gender_1: "nu",
     },
     {
       id: 4,
@@ -70,6 +74,7 @@ const ListStaff = () => {
       typeOfEmployee_1: "nhan vien",
       contractStatus_1: "Dang lam viec",
       date_1: "02/11/2222",
+      date_Birth_1: "02/11/2222",
       numberPhone_1: "0123456789",
       gender_1: "bede",
     },
@@ -83,6 +88,7 @@ const ListStaff = () => {
     typeOfEmployee_1: any,
     contractStatus_1: any,
     date_1: undefined,
+    date_Birth_1: undefined,
     gender_1: any,
     numberPhone_1: number
   ) => {
@@ -113,6 +119,7 @@ const ListStaff = () => {
     typeOfEmployee_1: any,
     contractStatus_1: any,
     date_1: undefined,
+    date_Birth_1: undefined,
     numberPhone_1: number,
     gender_1: any
   ) => {
@@ -142,6 +149,7 @@ const ListStaff = () => {
     typeOfEmployee_1,
     contractStatus_1,
     date_1,
+    date_Birth_1,
     numberPhone_1,
     gender_1,
   }) => (
@@ -178,6 +186,7 @@ const ListStaff = () => {
                   typeOfEmployee_1,
                   contractStatus_1,
                   date_1,
+                  date_Birth_1,
                   numberPhone_1,
                   gender_1
                 )
@@ -188,10 +197,8 @@ const ListStaff = () => {
             <View style={styles.hang2}>
               <Text style={styles.view3}>{userID_1}</Text>
               <Text style={styles.view3_1}>{gender_1}</Text>
-              <TextInput
-                style={styles.view3_2}
-                placeholder="01/01/2001"
-              ></TextInput>
+              <Text style={styles.view3_2}>{date_Birth_1}</Text>
+              
             </View>
             <Icon
               name="trash"
@@ -206,6 +213,7 @@ const ListStaff = () => {
                   typeOfEmployee_1,
                   contractStatus_1,
                   date_1,
+                  date_Birth_1,
                   numberPhone_1,
                   gender_1
                 )
@@ -272,6 +280,7 @@ const ListStaff = () => {
                 typeOfEmployee_1={item.typeOfEmployee_1}
                 contractStatus_1={item.contractStatus_1}
                 date_1={item.date_1}
+                date_Birth_1={item.date_Birth_1}
                 numberPhone_1={item.numberPhone_1}
                 gender_1={item.gender_1}
               />

@@ -6,6 +6,7 @@ const createStyles = () =>
   StyleSheet.create({
     view: {
       backgroundColor: "white",
+      flex: 1,
     },
     row: {
       flexDirection: "row",
@@ -42,6 +43,7 @@ const createStyles = () =>
     view1: {
       backgroundColor: "#f2f2f2",
       height: "100%",
+      
     },
     view2: {
       flexDirection: "column",
