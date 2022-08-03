@@ -42,10 +42,10 @@ const data_3 = [
   { label: "Kế toán", value: "Kế toán" },
 ];
 const data_4 = [
-  { label: "Đang làm việc", value: "15" },
-  { label: "Đã nghỉ việc", value: "16" },
-  { label: "Nghỉ có phép", value: "17" },
-  { label: "Nghỉ không phép", value: "18" },
+  { label: "Đang làm việc", value: "Đang làm việc" },
+  { label: "Đã nghỉ việc", value: "Đã nghỉ việc" },
+  { label: "Nghỉ có phép", value: "Nghỉ có phép" },
+  { label: "Nghỉ không phép", value: "Nghỉ không phép" },
 ];
 
 const AddStaff = () => {
@@ -94,6 +94,7 @@ const AddStaff = () => {
     console.log(Sdate)
 
     dispatch<any>(register(myForm));
+    useEffect
     navigation.navigate("AddStaff");
   };
   const { message, error } = useSelector<any, any>((state) => state.message);
