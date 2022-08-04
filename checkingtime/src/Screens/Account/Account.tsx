@@ -114,6 +114,7 @@ const Account = () => {
             color="#f49218"
             style={styles.icon}
           />
+
           <View style={styles.cot}>
             <Text style={styles.user}> Email </Text>
             <TextInput
@@ -246,9 +247,9 @@ const Account = () => {
         </TouchableOpacity>
         <TouchableOpacity
           style={styles.khoangcach}
-          onPress={() => navigation.navigate("Thay đổi mật khẩu")}
+          onPress={() => navigation.navigate("Cài lại mật khẩu")}
         >
-          <Text style={styles.chu}>Thay đổi mật khẩu</Text>
+          <Text style={styles.chu}> Thay đổi mật khẩu</Text>
         </TouchableOpacity>
 
         <TouchableOpacity onPress={logoutHandler}>

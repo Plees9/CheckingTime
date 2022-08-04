@@ -63,11 +63,11 @@ const AddStaff = () => {
   const [userName, setUserName] = useState("");
   const [email, setEmail] = useState("");
   const [numberPhone, setNumberPhone] = useState("");
+ 
   const [isHided, setIsHided] = useState(true);
 
   const [date, setDate] = useState(moment());
   const [show, setShow] = useState(false);
-
   const [value_1, setValue_1] = useState("");
   const [value_2, setValue_2] = useState("");
   const [value_3, setValue_3] = useState("");
@@ -86,12 +86,12 @@ const AddStaff = () => {
     myForm.append("phoneNumber", numberPhone);
     myForm.append("password", password);
     myForm.append("privilege", value_1);
-    const Sdate = String(date);
+    const Sdate = moment(date).format("YYYY-MM-DD"); //chu y lam lai ngay thang nam
     myForm.append("startWorkingDate", Sdate);
     myForm.append("contractStatus", value_2);
     myForm.append("typeOfEmployee", value_4);
     myForm.append("role", value_3);
-    console.log(Sdate)
+    console.log(Sdate);
     dispatch<any>(register(myForm));
     navigation.navigate("AddStaff");
   };
@@ -103,9 +103,7 @@ const AddStaff = () => {
     ToastAndroid.show("Xác nhận đăng ký thành công", ToastAndroid.SHORT);
   }
 
-  const MAX_LEN = 16,
-    MIN_LEN = 8,
-    PASS_LABELS = ["Too Short", "Weak", "Normal", "Strong", "Secure"];
+ 
 
   return (
     <View style={styles.view}>
