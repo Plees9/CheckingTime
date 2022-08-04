@@ -27,7 +27,7 @@ const InfoScreen = () => {
   console.log(company);
   console.log(user);
 
-  //
+  
   const styles = useMemo(() => createStyles(), []);
 
   const openUrl = async (url: string) => {
@@ -39,7 +39,6 @@ const InfoScreen = () => {
     }
   }
  
-
   return (
     <SafeAreaView style={styles.container}>
       <View style={{ backgroundColor: "#DDDDDD", padding: 10 }}>

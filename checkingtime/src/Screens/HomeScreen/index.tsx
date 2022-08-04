@@ -15,6 +15,7 @@ import Icon from "react-native-vector-icons/FontAwesome";
 import styles from "./styles";
 
 import { FAB, Input } from "react-native-elements";
+import { useSelector } from "react-redux";
 
 const wait = (timeout: number | undefined) => {
   return new Promise((resolve) => setTimeout(resolve, timeout));
@@ -22,7 +23,8 @@ const wait = (timeout: number | undefined) => {
 
 const HomeScreen = () => {
   const navigation = useNavigation<any>();
-  const [userName, setUserName] = useState("Bá Kiến");
+  const { user, loading } = useSelector<any, any>(state => state.auth)
+  const [userName, setUserName] = useState(user.name);
   const [refreshing, setRefreshing] = React.useState(false);
 
   const pressHandler = () => {
