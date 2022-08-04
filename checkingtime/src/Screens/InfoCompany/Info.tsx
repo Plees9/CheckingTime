@@ -12,25 +12,11 @@ import React, { useMemo, useState } from "react";
 import createStyles from "./styles";
 import { useDispatch, useSelector } from "react-redux";
 import { IconButton } from "react-native-paper";
-
-const introduction = "https://vkg.vn/services";
-const website = "https://vkg.vn/";
-const fanpage = "https://www.facebook.com/vikinology";
-
-
 const InfoScreen = () => {
 
-  const { company, loading } = useSelector<any, any>((state) => ({
-    ...state.company,
-  }));
-  const { user } = useSelector<any, any>((state) => ({ ...state.auth }));
-  console.log(company);
-  console.log(user);
-
-  
+  const { company, loading } = useSelector<any, any>((state) =>state.company)
   const styles = useMemo(() => createStyles(), []);
-
-  const openUrl = async (url: string) => {
+const openUrl = async (url: string) => {
     const isSupported = await Linking.canOpenURL(url);
     if (isSupported) { 
       await Linking.openURL(url);
@@ -90,20 +76,20 @@ const InfoScreen = () => {
       <View style={styles.footer}>
         <TouchableOpacity
           style={styles.btnForgot}
-          onPress={() => openUrl(introduction)}
+          onPress={() => openUrl(company.company.introduction)}
         >
           <Text style={styles.textend}>Giới thiệu</Text>
         </TouchableOpacity>
 
         <TouchableOpacity
           style={styles.btnForgot}
-          onPress={() => openUrl(website)}
+          onPress={() => openUrl(company.company.website)}
         >
           <Text style={styles.textend}>Website </Text>
         </TouchableOpacity>
         <TouchableOpacity
           style={styles.btnForgot}
-          onPress={() => openUrl(fanpage)}
+          onPress={() => openUrl(company.company.fanpage)}
         >
           <Text style={styles.textend}>Fanpage</Text>
         </TouchableOpacity>

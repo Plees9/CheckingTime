@@ -14,7 +14,7 @@ import FormCreated from "../Screens/FormCreated";
 import Jobs from "../Screens/Jobs";
 import InfoScreen from "../Screens/InfoCompany/Info";
 import Account from "../Screens/Account/Account";
-import { loadUser } from '../../redux/action'
+import { loadCompany, loadUser } from '../../redux/action'
 import ResetPasswordScreen from "../Screens/ResetPasswordScreen/ResetPasswordScreen";
 import TabDonTusNavigation from "./TabDonTu";
 import CuaToi from "../Screens/DonTu/CuaToi/CuaToi";
@@ -120,7 +120,7 @@ const SNavigation = () => {
 
   useEffect(() => {
       dispatch<any>(loadUser())
-
+      dispatch<any>(loadCompany())
   }, [dispatch])
 
 

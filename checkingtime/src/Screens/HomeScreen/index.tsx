@@ -31,7 +31,6 @@ const HomeScreen = () => {
   const [refreshing, setRefreshing] = React.useState(false);
   const dispatch = useDispatch();
   const companyHandler = async () => {
-    await dispatch<any>(loadCompany());
     navigation.navigate("Thông tin Công Ty");
   };
   const pressHandler = () => {
