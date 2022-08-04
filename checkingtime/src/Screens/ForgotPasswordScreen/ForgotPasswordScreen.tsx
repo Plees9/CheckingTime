@@ -28,8 +28,6 @@ const ForgotPasswordScreen = () => {
   if (message != null || message != "Invalid mail") {
     check = message
   }
-  console.log(message + "*******")
-  console.log(check)
   const forgetHandler = async () => {
     await dispatch<any>(forgetPassword(email));
  
