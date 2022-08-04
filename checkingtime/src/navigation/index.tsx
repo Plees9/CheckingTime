@@ -23,6 +23,8 @@ import EFilter from "../Screens/ListFilter/EFilter";
 import Loader from "./Loader"
 import AddStaff from '../Screens/AddStaff/AddStaff';
 import UpdateStaff from '../Screens/UpdateInfoStaff/UpdateStaff';
+import UpdatePassword from "../Screens/UpdatePassword";
+import Camera from "../Screens/Account/Camera"
 const Stack = createNativeStackNavigator();
 
 const Navigation = () => {
@@ -46,6 +48,11 @@ const Navigation = () => {
       <Stack.Screen
         name="Cài lại mật khẩu"
         component={ResetPasswordScreen}
+        options={{ headerShown: true }}
+      />
+      <Stack.Screen
+        name="Thay đổi mật khẩu"
+        component={UpdatePassword}
         options={{ headerShown: true }}
       />
     </Stack.Navigator>
@@ -177,6 +184,16 @@ const SNavigation = () => {
         component={UpdateStaffNavigation}
         options={{ headerShown: true }}
       />
+      <Stack.Screen
+        name="Thay đổi mật khẩu"
+        component={UpdatePassword}
+        options={{ headerShown: true }}
+      />
+      <Stack.Screen
+         name="Camera"
+         component={Camera}
+         options={{ headerShown: true}}
+        />
       </Stack.Navigator>
     </NavigationContainer>
   );
