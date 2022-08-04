@@ -6,7 +6,7 @@ import {
   TouchableOpacity,
   Pressable,
 } from "react-native";
-import React, { useMemo, useState, useEffect, Component } from "react";
+import React, { useCallback,useMemo, useState, useEffect, Component } from "react";
 import createStyles from "./styles";
 import { useNavigation } from "@react-navigation/native";
 
@@ -52,6 +52,9 @@ const data_4 = [
 
 const AddStaff = () => {
   const dispatch = useDispatch();
+
+  const [count, setCount] = useState(0)
+	const handleClick = useCallback(() => setCount(count + 1), [count]);
 
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
@@ -353,7 +356,7 @@ const AddStaff = () => {
         colors={["#f12711", "#f5af19"]}
         style={styles.btn2}
       >
-        <TouchableOpacity onPress={registerHandler}>
+        <TouchableOpacity onPress={handleClick}>
           <Text style={styles.text22}>Đăng ký</Text>
         </TouchableOpacity>
       </LinearGradient>
@@ -361,4 +364,5 @@ const AddStaff = () => {
   );
 };
 
-export default AddStaff;
+
+export default React.memo(AddStaff);
