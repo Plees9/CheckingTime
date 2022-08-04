@@ -284,11 +284,11 @@ const Account = () => {
           style={styles.khoangcach}
           onPress={() => navigation.navigate("Thay đổi mật khẩu")}
         >
-          <Text style={styles.chu}>Thay đổi mật khẩu</Text>
+          <Text style={styles.chu}> Thay đổi mật khẩu</Text>
         </TouchableOpacity>
 
         <TouchableOpacity onPress={logoutHandler}>
-          <Text style={styles.chu1}> Đăng xuất </Text>
+          <Text style={styles.chu1}> Đăng xuất</Text>
         </TouchableOpacity>
       </View>
     </ScrollView>
