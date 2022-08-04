@@ -10,6 +10,7 @@ import React, { useState, useMemo, useEffect } from "react";
 
 import { Avatar } from "@rneui/themed";
 import Icon from "react-native-vector-icons/FontAwesome";
+import Icon1 from "react-native-vector-icons/Ionicons";
 import { TextInput } from "react-native-gesture-handler";
 import {
   NavigationHelpersContext,
@@ -106,14 +107,15 @@ const Account = () => {
       <View>
         <Text style={styles.text}>Thông tin cá nhân</Text>
         <View style={styles.hang}>
-          <Icon
-            name="envelope-square"
+          <Icon1
+            name="mail-unread"
             size={40}
             //color={Color_Icon.options}
             color="#f49218"
             style={styles.icon}
           />
           <View style={styles.cot}>
+            <Text style={styles.user}> Email </Text>
             <TextInput
               style={styles.user}
               keyboardType="email-address"
@@ -124,18 +126,13 @@ const Account = () => {
               secureTextEntry={false}
               //onChangeText={setUserName}
             />
-            <Text style={styles.user}> Email </Text>
           </View>
         </View>
         <View>
           <View style={{ flexDirection: "row" }}>
-            <Icon
-              name="phone-square"
-              size={40}
-              color="#f49218"
-              style={styles.icon}
-            />
+            <Icon1 name="call" size={40} color="#f49218" style={styles.icon} />
             <View>
+              <Text style={styles.user}> Số điện thoại </Text>
               <TextInput
                 style={styles.user}
                 keyboardType="number-pad"
@@ -146,7 +143,6 @@ const Account = () => {
                 secureTextEntry={false}
                 //onChangeText={setUserName}
               />
-              <Text style={styles.user}> Số điện thoại </Text>
             </View>
           </View>
         </View>
@@ -156,13 +152,9 @@ const Account = () => {
       <View>
         <Text style={styles.text}>Thông tin công việc</Text>
         <View style={styles.hang}>
-          <Icon
-            name="github-square"
-            size={35}
-            color="#f49218"
-            style={styles.icon}
-          />
+          <Icon1 name="card" size={35} color="#f49218" style={styles.icon} />
           <View>
+            <Text style={styles.user}>Mã nhân viên </Text>
             <TextInput
               style={styles.user}
               keyboardType="number-pad"
@@ -173,20 +165,20 @@ const Account = () => {
               secureTextEntry={false}
               //onChangeText={setUserName}
             />
-            <Text style={styles.user}>Mã nhân viên </Text>
           </View>
         </View>
       </View>
 
       <View>
         <View style={styles.hang}>
-          <Icon
-            name="steam-square"
+          <Icon1
+            name="calendar"
             size={40}
             color="#f49218"
             style={styles.icon}
           />
           <View>
+            <Text style={styles.user}>Ngày bắt đầu làm việc </Text>
             <TextInput
               style={styles.user}
               keyboardType="default"
@@ -197,19 +189,19 @@ const Account = () => {
               secureTextEntry={false}
               //onChangeText={setUserName}
             />
-            <Text style={styles.user}>Ngày bắt đầu làm việc </Text>
           </View>
         </View>
       </View>
       <View>
         <View style={styles.hang}>
-          <Icon
-            name="reddit-square"
+          <Icon1
+            name="hourglass"
             size={40}
             color="#f49218"
             style={styles.icon}
           />
           <View>
+            <Text style={styles.user}>Trạng thái hợp đồng </Text>
             <TextInput
               style={styles.user}
               keyboardType="default"
@@ -220,19 +212,14 @@ const Account = () => {
               secureTextEntry={false}
               //onChangeText={setUserName}
             />
-            <Text style={styles.user}>Trạng thái hợp đồng </Text>
           </View>
         </View>
       </View>
       <View>
         <View style={styles.hang}>
-          <Icon
-            name="snapchat-square"
-            size={40}
-            color="#f49218"
-            style={styles.icon}
-          />
+          <Icon1 name="people" size={40} color="#f49218" style={styles.icon} />
           <View>
+            <Text style={styles.user}>Loại hình nhân sự </Text>
             <TextInput
               style={styles.user}
               keyboardType="default"
@@ -243,33 +230,10 @@ const Account = () => {
               secureTextEntry={false}
               //onChangeText={setUserName}
             />
-            <Text style={styles.user}>Loại hình nhân sự </Text>
           </View>
         </View>
       </View>
-      <View>
-        <View style={styles.hang}>
-          <Icon
-            name="xing-square"
-            size={40}
-            color="#f49218"
-            style={styles.icon}
-          />
-          <View>
-            <TextInput
-              style={styles.user}
-              keyboardType="default"
-              placeholder="123AB - 456CD- 789EF"
-              returnKeyType="done"
-              maxLength={100}
-              //value={userName}
-              secureTextEntry={false}
-              //onChangeText={setUserName}
-            />
-            <Text style={styles.user}>Device ID </Text>
-          </View>
-        </View>
-      </View>
+      
       {/* Tao ke ngang */}
       <View style={styles.kengang} />
 
@@ -284,11 +248,11 @@ const Account = () => {
           style={styles.khoangcach}
           onPress={() => navigation.navigate("Thay đổi mật khẩu")}
         >
-          <Text style={styles.chu}> Thay đổi mật khẩu</Text>
+          <Text style={styles.chu}>Thay đổi mật khẩu</Text>
         </TouchableOpacity>
 
         <TouchableOpacity onPress={logoutHandler}>
-          <Text style={styles.chu1}> Đăng xuất</Text>
+          <Text style={styles.chu1}> Đăng xuất </Text>
         </TouchableOpacity>
       </View>
     </ScrollView>
