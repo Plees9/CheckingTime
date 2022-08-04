@@ -1,6 +1,5 @@
 import { StyleSheet, StatusBar } from "react-native";
 import { FONTS } from "../../../constants/theme";
-import { Color_Icon } from "../../../constants/theme";
 
 const createStyles = () =>
   StyleSheet.create({
