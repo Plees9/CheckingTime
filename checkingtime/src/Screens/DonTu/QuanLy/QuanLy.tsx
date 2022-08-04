@@ -16,7 +16,7 @@ const QuanLy = () => {
           <Icon
             name="bars"
             size={20}
-            onPress={() => navigation.navigate("Bộ lọc")}
+            onPress={() => navigation.navigate("Bộ lọc đơn từ")}
           />
         </View>
         <View style={styles.icon1}>

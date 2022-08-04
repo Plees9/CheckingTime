@@ -6,12 +6,13 @@ import {
   TouchableOpacity,
   Pressable,
 } from "react-native";
-import React, { useMemo, useState, useEffect, Component } from "react";
+import React, { useCallback,useMemo, useState, useEffect, Component } from "react";
 import createStyles from "./styles";
 import { useNavigation } from "@react-navigation/native";
 
 import Icon from "react-native-vector-icons/FontAwesome";
 import Icon_1 from "react-native-vector-icons/Ionicons";
+import Icon_2 from "react-native-vector-icons/AntDesign";
 import { LinearGradient } from "expo-linear-gradient";
 
 import { Dropdown } from "react-native-element-dropdown";
@@ -19,16 +20,17 @@ import AntDesign from "react-native-vector-icons/AntDesign";
 
 import DateTimePicker from "@react-native-community/datetimepicker";
 import moment from "moment";
-
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { register } from "../../../redux/action";
+
+//import PassMeter from "../../../node_modules/react-native-passmeter";
+
 const data_1 = [
   { label: "Người dùng", value: "Người dùng" },
   { label: "Quản lý", value: "Quản lý" },
   { label: "Quản trị viên", value: "Quản trị viên" },
 ];
 const data_2 = [
-
   { label: "Chính thức", value: "Chính thức" },
   { label: "Thử việc", value: "Thử việc" },
   { label: "Thực tập sinh", value: "Thực tập sinh" },
@@ -49,7 +51,10 @@ const data_4 = [
 ];
 
 const AddStaff = () => {
-  const dispatch = useDispatch()
+  const dispatch = useDispatch();
+
+  const [count, setCount] = useState(0)
+	const handleClick = useCallback(() => setCount(count + 1), [count]);
 
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
@@ -63,11 +68,11 @@ const AddStaff = () => {
 
   const [date, setDate] = useState(moment());
   const [show, setShow] = useState(false);
- 
   const [value_1, setValue_1] = useState("");
   const [value_2, setValue_2] = useState("");
   const [value_3, setValue_3] = useState("");
   const [value_4, setValue_4] = useState("");
+
   const [isFocus_1, setIsFocus_1] = useState(false);
   const [isFocus_2, setIsFocus_2] = useState(false);
   const [isFocus_3, setIsFocus_3] = useState(false);
@@ -83,14 +88,14 @@ const AddStaff = () => {
     myForm.append("privilege", value_1);
     const Sdate = moment(date).format("YYYY-MM-DD"); //chu y lam lai ngay thang nam
     myForm.append("startWorkingDate", Sdate);
-    myForm.append("contractStatus", value_4);
-    myForm.append("typeOfEmployee", value_2);
+    myForm.append("contractStatus", value_2);
+    myForm.append("typeOfEmployee", value_4);
     myForm.append("role", value_3);
     console.log(Sdate);
     dispatch<any>(register(myForm));
     navigation.navigate("AddStaff");
   };
-  const { message, error } = useSelector<any, any>((state) => state.message);
+
   const navigation = useNavigation<any>();
 
   const [country, setCountry] = useState("Unknown");
@@ -100,100 +105,90 @@ const AddStaff = () => {
 
  
 
-    useEffect(() => {
-      if (message) {
-        alert(message);
-        dispatch({ type: "clearMessage" });
-      }
-      if (error) {
-        alert(error);
-        dispatch({ type: "clearError" });
-      }
-    }, [alert, dispatch, error]);
   return (
     <View style={styles.view}>
-     
       <View>
         <View style={styles.styleTT}>
-          <View style={styles.text24}>
-            <TextInput
-              placeholder={"Họ và tên"}
-              style={styles.text23}
-              returnKeyType="done"
-              value={userName}
-              secureTextEntry={false}
-              onChangeText={setUserName}
-            />
-          </View>
+          <TextInput
+            placeholder={"Họ và tên"}
+            style={styles.text23}
+            returnKeyType="done"
+            value={userName}
+            secureTextEntry={false}
+            onChangeText={setUserName}
+          />
         </View>
         {/* Email */}
         <View style={styles.styleTT}>
-          <View style={styles.text24}>
-            <TextInput
-              placeholder={"E-mail"}
-              style={styles.text23}
-              returnKeyType="done"
-              keyboardType="email-address"
-              value={email}
-              secureTextEntry={false}
-              onChangeText={setEmail}
-            />
-          </View>
+          <TextInput
+            placeholder={"E-mail"}
+            style={styles.text23}
+            returnKeyType="done"
+            keyboardType="email-address"
+            value={email}
+            secureTextEntry={false}
+            onChangeText={setEmail}
+          />
         </View>
         {/* Số điện thoại */}
         <View>
           <View style={styles.styleTT}>
-            <View style={styles.text24}>
-              <TextInput
-                placeholder={"Số điện thoại"}
-                style={styles.text23}
-                keyboardType={"number-pad"}
-                returnKeyType="done"
-                value={numberPhone}
-                secureTextEntry={false}
-                onChangeText={setNumberPhone}
-              />
-            </View>
+            <TextInput
+              placeholder={"Số điện thoại"}
+              style={styles.text23}
+              keyboardType={"number-pad"}
+              returnKeyType="done"
+              value={numberPhone}
+              secureTextEntry={false}
+              onChangeText={setNumberPhone}
+            />
           </View>
         </View>
         {/* PassWord */}
         <View style={styles.styleTT}>
-          <View style={styles.text24}>
-            <TextInput
-              placeholder={"Mật khẩu"}
-              style={styles.text23}
-              returnKeyType="done"
-              value={password}
-              secureTextEntry={isHided}
-              onChangeText={(text) => setPassword(text)}
-            />
-            <TouchableOpacity
+          <TextInput
+            placeholder={"Mật khẩu"}
+            style={styles.text23}
+            returnKeyType="done"
+            value={password}
+            secureTextEntry={isHided}
+            onChangeText={(text) => setPassword(text)}
+          />
+          <TouchableOpacity
             onPressIn={() => setIsHided(false)}
             onPressOut={() => setIsHided(true)}
-            
           >
-            <View>
-              <Icon_1
-                name={isHided == true ? "eye" : "eye-off"}
-                size={20}
-                color={"#595959"}
-              />
-            </View>
-          </TouchableOpacity>
-          </View>
-        </View>
-        <View style={styles.styleTT}>
-          <View style={styles.text24}>
-            <TextInput
-              placeholder={"Nhập lại mật khẩu"}
-              style={styles.text23}
-              returnKeyType="done"
-              maxLength={16}
-              value={confirmPassword}
-              secureTextEntry={true}
-              onChangeText={setConfirmPassword}
+            <Icon_1
+              name={isHided == true ? "eye" : "eye-off"}
+              size={20}
+              color={"#595959"}
             />
-          </View>
+          </TouchableOpacity>
+        </View>
+        {/* <View>
+          <PassMeter
+            showLabels
+            password={password}
+            maxLength={MAX_LEN}
+            minLength={MIN_LEN}
+            labels={PASS_LABELS}
+          />
+        </View> */}
+        <View style={styles.styleTT}>
+          <TextInput
+            placeholder={"Nhập lại mật khẩu"}
+            style={styles.text23}
+            returnKeyType="done"
+            maxLength={16}
+            value={confirmPassword}
+            secureTextEntry={true}
+            onChangeText={(text) => setConfirmPassword(text)}
+          />
+          {password === "" || confirmPassword !== password ? (
+            <Icon_2 name="exclamationcircle" size={17} color="#d22d2c" />
+          ) : (
+            <Icon_2 name="checkcircle" size={17} color="#51c92b" />
+          )}
         </View>
 
         <Text style={styles.textExemple}>8-16 ký tự ví dụ: eX@mpL3*</Text>
@@ -208,7 +203,7 @@ const AddStaff = () => {
             iconStyle={styles.iconStyle}
             data={data_1}
             search
-maxHeight={300}
+            maxHeight={300}
             labelField="label"
             valueField="value"
             placeholder="Cấp quyền"
@@ -230,26 +225,22 @@ maxHeight={300}
             )}
           />
         </View>
-        
-        <Pressable style={styles.row2} onPress={()=> setShow(true)}>
-          <View style={{justifyContent:"center", alignContent:"center"}}>
-          <Text>{date.format("DD/MM/YYYY")}</Text>
-          {show && (
-            <DateTimePicker
-              value={new Date(date.format("YYYY/MM/DD"))}
-              mode={"date"}
-              disabled = {show}
-              display="default"
-              onChange={(event, selectedDate) => {
-              
-                 setDate(moment(selectedDate));
+
+        <Pressable style={styles.row2} onPress={() => setShow(true)}>
+          <View style={{ justifyContent: "center", alignContent: "center" }}>
+            <Text>{date.format("DD/MM/YYYY")}</Text>
+            {show && (
+              <DateTimePicker
+                value={new Date(date.format("YYYY/MM/DD"))}
+                mode={"date"}
+                display="default"
+                onChange={(event, selectedDate) => {
+                  setDate(moment(selectedDate));
                   setShow(false);
                   console.log(selectedDate);
-
-                
-              }}
-            />
-          )}
+                }}
+              />
+            )}
           </View>
 
           <Icon
@@ -258,9 +249,7 @@ maxHeight={300}
             size={20}
             color="orange"
           />
-          
         </Pressable>
-        
       </View>
       {/* Tình trạng hợp đồng, Loại hình nhân viên */}
       <View style={styles.row}>
@@ -303,7 +292,7 @@ maxHeight={300}
             inputSearchStyle={styles.inputSearchStyle}
             iconStyle={styles.iconStyle}
             data={data_3}
-search
+            search
             maxHeight={300}
             labelField="label"
             valueField="value"
@@ -324,7 +313,6 @@ search
                 size={20}
               />
             )}
-            // // renderItem={renderItem}
           />
         </View>
       </View>
@@ -357,7 +345,6 @@ search
               size={20}
             />
           )}
-          // // renderItem={renderItem}
         />
       </View>
 
@@ -367,7 +354,7 @@ search
         colors={["#f12711", "#f5af19"]}
         style={styles.btn2}
       >
-        <TouchableOpacity onPress={registerHandler}>
+        <TouchableOpacity onPress={handleClick}>
           <Text style={styles.text22}>Đăng ký</Text>
         </TouchableOpacity>
       </LinearGradient>
@@ -375,4 +362,5 @@ search
   );
 };
 
-export default AddStaff;
+
+export default React.memo(AddStaff);
