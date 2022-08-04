@@ -20,7 +20,7 @@ import AntDesign from "react-native-vector-icons/AntDesign";
 
 import DateTimePicker from "@react-native-community/datetimepicker";
 import moment from "moment";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { register } from "../../../redux/action";
 
 //import PassMeter from "../../../node_modules/react-native-passmeter";
@@ -52,9 +52,10 @@ const data_4 = [
 
 const AddStaff = () => {
   const dispatch = useDispatch();
-
+  const { message, error } = useSelector<any, any>((state) => state.message);
+  console.log(message)
   const [count, setCount] = useState(0)
-	const handleClick = useCallback(() => setCount(count + 1), [count]);
+	// const handleClick = useCallback(() => setCount(count + 1), [count]);
 
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
@@ -94,7 +95,6 @@ const AddStaff = () => {
     myForm.append("role", value_3);
     console.log(Sdate);
     dispatch<any>(register(myForm));
-    navigation.navigate("AddStaff");
   };
 
   const navigation = useNavigation<any>();
@@ -104,7 +104,16 @@ const AddStaff = () => {
     ToastAndroid.show("Xác nhận đăng ký thành công", ToastAndroid.SHORT);
   }
 
- 
+  useEffect(() => {
+    if (message) {
+      alert(message);
+      dispatch({ type: "clearMessage" });
+    }
+    if (error) {
+      alert(error);
+      dispatch({ type: "clearError" });
+     }
+  }, [alert, dispatch, error, message]);
 
   return (
     <View style={styles.view}>
@@ -355,7 +364,7 @@ const AddStaff = () => {
         colors={["#f12711", "#f5af19"]}
         style={styles.btn2}
       >
-        <TouchableOpacity onPress={handleClick}>
+        <TouchableOpacity onPress={registerHandler}>
           <Text style={styles.text22}>Đăng ký</Text>
         </TouchableOpacity>
       </LinearGradient>

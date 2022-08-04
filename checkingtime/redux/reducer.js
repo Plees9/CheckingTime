@@ -117,13 +117,13 @@ export const authReducer = createReducer(
       },
       registerSuccess: (state, action) => {
         state.loading = false;
-        state.isAuthenticated = true;
+        //state.isAuthenticated = true;
         state.user = action.payload.user;
         state.message = action.payload.message;
       },
       registerFailure: (state, action) => {
         state.loading = false;
-        state.isAuthenticated = true;
+        //state.isAuthenticated = false;
         state.error = action.payload;
         state.message = action.payload.message;
       },

@@ -29,7 +29,7 @@ const ListStaff = () => {
   const [userId, setUserId] = useState(user.userId); //MaNV
   const [typeOfEmployee, setTypeOfEmployee] = useState(user.typeOfEmployee); //Loaihinhnhansu
   const [contractStatus, setContractStatus] = useState(user.contractStatus); //trangthaihopdong
-  const [date, setDate] = useState(moment(user.startWorkingDate).format("DD/MM/YYYY")); //ngayvaolam
+  const [date, setDate] = useState(moment(new Date(user.startWorkingDate)).format("DD/MM/YYYY")); //ngayvaolam
   const [birth, setDate_Birth] = useState(user.birth); //ngaysinh
   const [numberPhone, setNumberPhone] = useState(user.phoneNumber); //sodienthoai
   const [gender, setGender] = useState(user.gender); //gioitinh
