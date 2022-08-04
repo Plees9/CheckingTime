@@ -9,7 +9,7 @@ import { forgetPassword } from "../../../redux/action";
 import { FONTS } from "../../../constants/theme";
 const ForgotPasswordScreen = () => {
   const image = require("../../../assets/images/forgot-password.png");
-
+  const { message, error } = useSelector<any, any>((state) => state.message);
   const styles = useMemo(() => createStyles(), []);
   const [email, setEmail] = useState("");
   const navigation = useNavigation<any>();
@@ -17,7 +17,9 @@ const ForgotPasswordScreen = () => {
 
   const forgetHandler = async () => {
     await dispatch<any>(forgetPassword(email));
-    navigation.navigate("Cài lại mật khẩu", {email});
+    if (email != "" && !error ) {
+      navigation.navigate("Cài lại mật khẩu", {email});
+    }
   };
   return (
     <View style={styles.view}>
