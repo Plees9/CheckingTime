@@ -68,6 +68,24 @@ const createStyles = () =>
       color: "#F32424",
       fontFamily: FONTS.vanSansSemiBold,
     },
+    Touch1: {
+      backgroundColor: "#FFFFFF",
+      borderRadius: 10,
+      marginTop: 5,
+      marginBottom: 5,
+      marginRight: 10,
+      flexDirection: "row",
+      marginLeft: 10,
+    },
+    viewText: {
+      justifyContent: "center",
+      alignItems: "flex-start",
+      marginRight: 20,
+    },
+    text1: {
+      textAlign: "center",
+      fontFamily: FONTS.vanSansMedium,
+    },
    
   });
 

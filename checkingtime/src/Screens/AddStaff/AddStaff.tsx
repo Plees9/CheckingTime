@@ -91,9 +91,9 @@ const AddStaff = () => {
     myForm.append("contractStatus", value_2);
     myForm.append("typeOfEmployee", value_4);
     myForm.append("role", value_3);
-    console.log(Sdate);
-
+    console.log(Sdate)
     dispatch<any>(register(myForm));
+    navigation.navigate("AddStaff");
   };
 
   const navigation = useNavigation<any>();
