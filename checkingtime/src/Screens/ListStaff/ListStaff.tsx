@@ -15,20 +15,23 @@ import { TextInput } from "react-native-gesture-handler";
 import { Avatar } from "@rneui/themed";
 import createStyles from "./styles";
 import { useNavigation } from "@react-navigation/native";
+import { useSelector } from "react-redux";
 
 const ListStaff = () => {
   const styles = useMemo(() => createStyles(), []);
   const navigation = useNavigation<any>();
 
-  const [userName, setUserName] = useState(""); //name
-  const [role, setRole] = useState(""); //vitri
-  const [userId, setUserId] = useState(""); //MaNV
-  const [typeOfEmployee, setTypeOfEmployee] = useState(""); //Loaihinhnhansu
-  const [contractStatus, setContractStatus] = useState(""); //trangthaihopdong
-  const [date, setDate] = useState(""); //ngayvaolam
-  const [date_Birth, setDate_Birth] = useState(""); //ngaysinh
-  const [numberPhone, setNumberPhone] = useState("0383286615"); //sodienthoai
-  const [gender, setGender] = useState(""); //gioitinh
+  const { user, loading } = useSelector<any, any>(state => state.auth)
+
+  const [userName, setUserName] = useState(user.name); //name
+  const [role, setRole] = useState(user.role); //vitri
+  const [userId, setUserId] = useState(user.userId); //MaNV
+  const [typeOfEmployee, setTypeOfEmployee] = useState(user.typeOfEmployee); //Loaihinhnhansu
+  const [contractStatus, setContractStatus] = useState(user.contractStatus); //trangthaihopdong
+  const [date, setDate] = useState(user.startWorkingDate); //ngayvaolam
+  const [birth, setDate_Birth] = useState(user.birth); //ngaysinh
+  const [numberPhone, setNumberPhone] = useState(user.phoneNumber); //sodienthoai
+  const [gender, setGender] = useState(user.gender); //gioitinh
 
   const dialCall = (numberPhone_1: any) => {
     let phoneNumber = '';
@@ -39,54 +42,22 @@ const ListStaff = () => {
 
 
   const [data, setData] = useState([
+   
     {
       id: 1,
-      name_1: "Nguyen Van A",
-      role_1: "Nhan vien",
-      userId_1: "NV001",
-      typeOfEmployee_1: "Giam doc",
-      contractStatus_1: "Da nghi",
-      date_1: "23/01/2121",
-      date_Birth_1: "18/01/2001",
-      numberPhone_1: "0966656821",
-      gender_1: "Nam",
+      name_1: userName,
+      role_1: role,
+      userId_1: userId,
+      typeOfEmployee_1: typeOfEmployee,
+      contractStatus_1: contractStatus,
+      date_1: date,
+      date_Birth_1: birth,
+      numberPhone_1: numberPhone,
+      gender_1: gender,
     },
-    {
-      id: 2,
-      name_1: "Nguyen Van B",
-      role_1: "Nhan vien",
-      userId_1: "NV002",
-      typeOfEmployee_1: "Nhan vien",
-      contractStatus_1: "Dang lam viec",
-      date_1: "20/10/2020",
-      date_Birth_1: "02/11/2020",
-      numberPhone_1: "0858424564",
-      gender_1: "Nam",
-    },
-    {
-      id: 3,
-      name_1: "Nguyen Van C",
-      role_1: "Nhan vien",
-      userId_1: "NV003",
-      typeOfEmployee_1: "Nhan vien",
-      contractStatus_1: "Dang lam viec",
-      date_1: "14/12/2024",
-      date_Birth_1: "14/12/2024",
-      numberPhone_1: "0988409901",
-      gender_1: "nu",
-    },
-    {
-      id: 4,
-      name_1: "Nguyen Van d",
-      role_1: "Giam doc",
-      userId_1: "NV003",
-      typeOfEmployee_1: "nhan vien",
-      contractStatus_1: "Dang lam viec",
-      date_1: "02/11/2222",
-      date_Birth_1: "02/11/2222",
-      numberPhone_1: "0123456789",
-      gender_1: "bede",
-    },
+   
+
+   
   ]);
 
   const NumberPhone = (
