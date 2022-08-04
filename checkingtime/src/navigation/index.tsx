@@ -190,7 +190,7 @@ const SNavigation = () => {
         options={{ headerShown: true }}
       />
       <Stack.Screen
-         name="Camera"
+         name="Đổi ảnh đại diện"
          component={Camera}
          options={{ headerShown: true}}
         />

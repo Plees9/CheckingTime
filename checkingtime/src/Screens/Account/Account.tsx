@@ -43,7 +43,7 @@ const Account = () => {
     dispatch<any>(logout());
   };
   const cameraHandler = () => {
-    navigation.navigate("Camera");
+    navigation.navigate("Đổi ảnh đại diện");
   };
   console.log(user.avatar.url)
   const route = useRoute();
