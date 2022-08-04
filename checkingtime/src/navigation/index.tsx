@@ -25,6 +25,7 @@ import AddStaff from '../Screens/AddStaff/AddStaff';
 import UpdateStaff from '../Screens/UpdateInfoStaff/UpdateStaff';
 import UpdatePassword from "../Screens/UpdatePassword";
 import Camera from "../Screens/Account/Camera"
+import FDontu from "../Screens/Bolocdontu/FDontu";
 const Stack = createNativeStackNavigator();
 
 const Navigation = () => {
@@ -106,6 +107,13 @@ const UpdateStaffNavigation = () => {
     </Stack.Navigator>
   );
 };
+const FDontuNavigation = () => {
+  return (
+    <Stack.Navigator screenOptions={{ headerShown: false }}>
+      <Stack.Screen name="FDontu" component={FDontu} />
+    </Stack.Navigator>
+  );
+}
 
 const SNavigation = () => {
   const dispatch = useDispatch()
@@ -190,7 +198,12 @@ const SNavigation = () => {
         options={{ headerShown: true }}
       />
       <Stack.Screen
-         name="Camera"
+         name="Bộ lọc đơn từ"
+         component={FDontu}
+         options={{ headerShown: true}}
+        />
+      <Stack.Screen
+         name="Đổi ảnh đại diện"
          component={Camera}
          options={{ headerShown: true}}
         />
