@@ -62,7 +62,7 @@ const Account = () => {
     })) )
     console.log (myForm)
     await dispatch<any>(updateAvatar(myForm))
-    //dispatch<any>(loadUser())
+    // await dispatch<any>(loadUser())
 
   }
   console.log(flag1 + "-------")

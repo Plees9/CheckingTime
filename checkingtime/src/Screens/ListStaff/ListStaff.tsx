@@ -32,6 +32,7 @@ const ListStaff = () => {
   const [birth, setDate_Birth] = useState(user.birth); //ngaysinh
   const [numberPhone, setNumberPhone] = useState(user.phoneNumber); //sodienthoai
   const [gender, setGender] = useState(user.gender); //gioitinh
+  const [avatar, setAvatar] = useState(user.avatar.url);
 
   const dialCall = (numberPhone_1: any) => {
     let phoneNumber = '';
@@ -56,7 +57,6 @@ const ListStaff = () => {
       gender_1: gender,
     },
    
-
    
   ]);
 
@@ -124,16 +124,7 @@ const ListStaff = () => {
     );
   };
   const ItemRender = ({
-    id,
-    name_1,
-    role_1,
-    userID_1,
-    typeOfEmployee_1,
-    contractStatus_1,
-    date_1,
-    date_Birth_1,
-    numberPhone_1,
-    gender_1,
+    id,name_1,role_1,userID_1,typeOfEmployee_1,contractStatus_1,date_1,date_Birth_1,numberPhone_1,gender_1,
   }) => (
     <View style={{ padding: 10, flex: 1 }}>
       {/* nhan vien  */}
@@ -145,9 +136,7 @@ const ListStaff = () => {
               <Avatar
                 size={50}
                 rounded
-                source={{
-                  uri: "https://hoanghapc.vn/media/news/0510_hinh_nen_phong_canh4.jpg",
-                }}
+                source={{ uri: avatar }}
               ></Avatar>
             </View>
 

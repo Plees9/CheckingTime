@@ -13,6 +13,8 @@ import {
 import { Avatar } from "@rneui/themed";
 import Icon from "react-native-vector-icons/FontAwesome";
 import styles from "./styles";
+ 
+import { loadUser } from "../../../redux/action";
 
 import { FAB, Input } from "react-native-elements";
 import { useSelector } from "react-redux";
@@ -23,8 +25,9 @@ const wait = (timeout: number | undefined) => {
 
 const HomeScreen = () => {
   const navigation = useNavigation<any>();
-  const { user, loading } = useSelector<any, any>(state => state.auth)
+  const { user } = useSelector<any, any>((state) => state.auth);
   const [userName, setUserName] = useState(user.name);
+  const [avatar, loading] = useState(user.avatar.url);
   const [refreshing, setRefreshing] = React.useState(false);
 
   const pressHandler = () => {
@@ -49,7 +52,11 @@ const HomeScreen = () => {
       >
         <TouchableOpacity onPress={() => navigation.navigate("Tài khoản")}>
           <View style={styles.row}>
-            <Icon name="user" size={26} color="#f49218" style={styles.icon} />
+            <Avatar 
+                       
+            rounded source={{ uri: avatar }} 
+            size={40}
+            ></Avatar>
             <Text style={styles.text1}> Xin chào, {userName}</Text>
           </View>
         </TouchableOpacity>
