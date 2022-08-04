@@ -45,7 +45,10 @@ const UpdateStaff = () => {
   const [date_Gender, setDate_Gender] = useState("");
 
   const [address, setAddress] = useState("");
-  const [show, setShow] = useState(false);
+  
+  const [show_birth, setShow_birth] = useState(false);
+  const [show, setShow] =useState(false);
+
 
   const [value_2, setValue_2] = useState(null);
   const [value_3, setValue_3] = useState(null);
@@ -143,18 +146,18 @@ const UpdateStaff = () => {
         <View style={styles.row1}>
 
         
-          <Pressable style={styles.row2} onPress={() => setShow(true)}>
+          <Pressable style={styles.row2} onPress={() => setShow_birth(true)}>
             <View style={{ justifyContent: "center", alignContent: "center" }}>
-              <Text>{date.format("DD/MM/YYYY")}</Text>
-              {show && (
+              <Text>{date_Birth.format("DD/MM/YYYY")}</Text>
+              {show_birth && (
                 <DateTimePicker
                   value={new Date(date_Birth.format("YYYY/MM/DD"))}
                   mode={"date"}
                   display="default"
-                  onChange={(event, selectedDate) => {
-                    setDate_Birth(moment(selectedDate));
-                    setShow(false);
-                    console.log(selectedDate);
+                  onChange={(event_birth, selectedDate_birth) => {
+                    setDate_Birth(moment(selectedDate_birth));
+                    setShow_birth(false);
+                    console.log(selectedDate_birth);
                   }}
                 />
               )}

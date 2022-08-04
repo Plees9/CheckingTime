@@ -207,6 +207,7 @@ const SNavigation = () => {
          component={Camera}
          options={{ headerShown: true}}
         />
+        
       </Stack.Navigator>
     </NavigationContainer>
   );

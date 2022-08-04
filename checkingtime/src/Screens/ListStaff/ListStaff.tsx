@@ -16,6 +16,7 @@ import { Avatar } from "@rneui/themed";
 import createStyles from "./styles";
 import { useNavigation } from "@react-navigation/native";
 import { useSelector } from "react-redux";
+import moment  from "moment";
 
 const ListStaff = () => {
   const styles = useMemo(() => createStyles(), []);
@@ -28,7 +29,7 @@ const ListStaff = () => {
   const [userId, setUserId] = useState(user.userId); //MaNV
   const [typeOfEmployee, setTypeOfEmployee] = useState(user.typeOfEmployee); //Loaihinhnhansu
   const [contractStatus, setContractStatus] = useState(user.contractStatus); //trangthaihopdong
-  const [date, setDate] = useState(user.startWorkingDate); //ngayvaolam
+  const [date, setDate] = useState(moment(user.startWorkingDate).format("DD/MM/YYYY")); //ngayvaolam
   const [birth, setDate_Birth] = useState(user.birth); //ngaysinh
   const [numberPhone, setNumberPhone] = useState(user.phoneNumber); //sodienthoai
   const [gender, setGender] = useState(user.gender); //gioitinh

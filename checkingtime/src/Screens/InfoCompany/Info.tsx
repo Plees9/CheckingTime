@@ -24,6 +24,14 @@ const openUrl = async (url: string) => {
       Alert.alert(`Don't know how to open this URL: ${url}`); 
     }
   }
+
+  // CALL phone number
+  const dialCall = (hotline: any) => {
+    let phoneNumber = '';
+    if (Platform.OS === 'android') { phoneNumber = `tel:${hotline}`; }
+    else {phoneNumber = `telprompt:${hotline}`; }
+    Linking.openURL(phoneNumber);
+ };
  
   return (
     <SafeAreaView style={styles.container}>
@@ -67,7 +75,10 @@ const openUrl = async (url: string) => {
           <View>
             <Text style={styles.user_1}>Hotline</Text>
 
-            <Text style={styles.texta}>{company.company.hotline}</Text>
+            
+            <TouchableOpacity>
+              <Text style={styles.texta} onPress={() => dialCall(company.company.hotline)}>{company.company.hotline}</Text>
+            </TouchableOpacity>
             <View style={styles.kengang1}></View>
           </View>
         </View>
