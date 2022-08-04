@@ -22,6 +22,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { logout, loadUser, updateAvatar } from "../../../redux/action";
 import * as ImagePicker from "expo-image-picker";
 import mime from "mime";
+import moment from "moment";
 const Account = () => {
   const { user, loading } = useSelector<any, any>((state) => state.auth);
   const styles = useMemo(() => createStyles(), []);
@@ -33,7 +34,7 @@ const Account = () => {
   const [numberPhone, setNumberPhone] = useState(user.phoneNumber);
   const [userId, setuserId] = useState(String(user.userId));
   const [avatar, setAvatar] = useState(user.avatar.url);
-  const [date, setDate] = useState(user.startWorkingDate);
+  const [date, setDate] = useState(moment(user.startWorkingDate).format("DD/MM/YYYY"));
   const [privilege, setPrivilege] = useState(user.privilege);
   const [typeOfEmployee, setTypeOfEmployee] = useState(user.typeOfEmployee);
   const [role, setRole] = useState(user.role);
@@ -193,7 +194,7 @@ const Account = () => {
         </TouchableOpacity>
         <TouchableOpacity
           style={styles.khoangcach}
-          onPress={() => navigation.navigate("Cài lại mật khẩu")}
+          onPress={() => navigation.navigate("Thay đổi mật khẩu")}
         >
           <Text style={styles.chu}> Thay đổi mật khẩu</Text>
         </TouchableOpacity>
