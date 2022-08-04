@@ -49,9 +49,6 @@ const Account = () => {
         }
       }      
 }, [route])
-  console.log(avatar)
-  console.log(flag1 + "*******")
-
   const { message, error } = useSelector<any, any>((state) => state.message);
    const imageHandler =  async () => {
     const myForm = new FormData() 
@@ -65,23 +62,10 @@ const Account = () => {
     //dispatch<any>(loadUser())
 
   }
-  console.log(flag1 + "-------")
   if (flag1 == 1) {
     imageHandler()
     setFlag1(0)
   }
-  
-  useEffect(() => {
-    if (message) {
-      alert(message);
-      dispatch({ type: "clearMessage" });
-    }
-    if (error) {
-      alert(error);
-      dispatch({ type: "clearError" });
-    }
-  }, [alert, dispatch, error]);
-
   return (
     <ScrollView style={styles.container}>
       <View style={styles.hang}>

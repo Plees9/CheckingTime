@@ -19,8 +19,6 @@ const CameraComponent = () => {
           aspect: [9, 16],
           quality: 1,
         });
-        
-        console.log(result)
         if (!result.cancelled) {
             image = result.uri
             flag = 1
