@@ -11,14 +11,18 @@ import React, { useState, useMemo, useEffect } from "react";
 import { Avatar } from "@rneui/themed";
 import Icon from "react-native-vector-icons/FontAwesome";
 import { TextInput } from "react-native-gesture-handler";
-import { NavigationHelpersContext, useNavigation, useRoute } from "@react-navigation/native";
+import {
+  NavigationHelpersContext,
+  useNavigation,
+  useRoute,
+} from "@react-navigation/native";
 import createStyles from "./styles";
 import { useDispatch, useSelector } from "react-redux";
 import { logout, loadUser, updateAvatar } from "../../../redux/action";
 import * as ImagePicker from "expo-image-picker";
-import mime from "mime"
+import mime from "mime";
 const Account = () => {
-  const { user, loading } = useSelector<any, any>(state => state.auth)
+  const { user, loading } = useSelector<any, any>((state) => state.auth);
   const styles = useMemo(() => createStyles(), []);
   const { height } = useWindowDimensions();
   const navigation = useNavigation<any>();
@@ -27,74 +31,73 @@ const Account = () => {
   const [email, setEmail] = useState(user.email);
   const [numberPhone, setNumberPhone] = useState(user.phoneNumber);
   const [userId, setuserId] = useState(String(user.userId));
-  const [avatar, setAvatar] = useState(user.avatar.url)
+  const [avatar, setAvatar] = useState(user.avatar.url);
   const [date, setDate] = useState(user.startWorkingDate);
   const [privilege, setPrivilege] = useState(user.privilege);
   const [typeOfEmployee, setTypeOfEmployee] = useState(user.typeOfEmployee);
-  const [role, setRole] = useState(user.role)
+  const [role, setRole] = useState(user.role);
   const [contractStatus, setContractStatus] = useState(user.contractStatus);
-  const [flag1, setFlag1] = useState()
+  const { message, error } = useSelector<any, any>((state) => state.message);
+  const [flag1, setFlag1] = useState();
   const logoutHandler = () => {
     dispatch<any>(logout());
   };
   const cameraHandler = () => {
-    navigation.navigate("Camera")
-  }
-  const route = useRoute()
+    navigation.navigate("Đổi ảnh đại diện");
+  };
+  console.log(user.avatar.url)
+  const route = useRoute();
   useEffect(() => {
     if (route.params) {
-        if (route.params.image) {
-            setAvatar(route.params.image)
-            setFlag1(route.params.flag)
-        }
-      }      
-}, [route])
-  console.log(avatar)
-  console.log(flag1 + "*******")
-
-  const { message, error } = useSelector<any, any>((state) => state.message);
-   const imageHandler =  async () => {
-    const myForm = new FormData() 
-    myForm.append("avatar", JSON.parse(JSON.stringify({
-      uri: avatar ,
-      type: mime.getType(avatar),
-      name: avatar.split("/").pop()
-    })) )
-    console.log (myForm)
-    await dispatch<any>(updateAvatar(myForm))
+      if (route.params.image) {
+        setAvatar(route.params.image);
+        setFlag1(route.params.flag);
+      }
+    }
+    
+  }, [route]);
+  const imageHandler = async () => {
+    const myForm = new FormData();
+    myForm.append(
+      "avatar",
+      JSON.parse(
+        JSON.stringify({
+          uri: avatar,
+          type: mime.getType(avatar),
+          name: avatar.split("/").pop(),
+        })
+      )
+    );
+    console.log(myForm);
+    await dispatch<any>(updateAvatar(myForm));
     //dispatch<any>(loadUser())
-
-  }
-  console.log(flag1 + "-------")
+  };
   if (flag1 == 1) {
-    imageHandler()
-    setFlag1(0)
+    imageHandler();
+    setFlag1(0);
   }
-  
+
   useEffect(() => {
-    if (message) {
-      alert(message);
-      dispatch({ type: "clearMessage" });
-    }
-    if (error) {
-      alert(error);
-      dispatch({ type: "clearError" });
-    }
-  }, [alert, dispatch, error]);
+    
+  }, []);
 
   return (
     <ScrollView style={styles.container}>
       <View style={styles.hang}>
-       <Avatar
+        <Avatar
           size={70}
           rounded
           source={{ uri: avatar }}
           containerStyle={{ backgroundColor: "orange" }}
           onPress={cameraHandler}
-        /> 
+        />
         <View>
-          <TextInput style={styles.user} placeholder="Username" value = {userName} />
-          <TextInput style={styles.user} placeholder=" vị trí" value = {role} />
+          <TextInput
+            style={styles.user}
+            placeholder="Username"
+            value={userName}
+          />
+          <TextInput style={styles.user} placeholder=" vị trí" value={role} />
         </View>
       </View>
       {/* tạo kẻ ngang */}
@@ -281,11 +284,11 @@ const Account = () => {
           style={styles.khoangcach}
           onPress={() => navigation.navigate("Thay đổi mật khẩu")}
         >
-          <Text style={styles.chu}>Thay đổi mật khẩu</Text>
+          <Text style={styles.chu}> Thay đổi mật khẩu</Text>
         </TouchableOpacity>
 
         <TouchableOpacity onPress={logoutHandler}>
-          <Text style={styles.chu1}> Đăng xuất </Text>
+          <Text style={styles.chu1}> Đăng xuất</Text>
         </TouchableOpacity>
       </View>
     </ScrollView>
