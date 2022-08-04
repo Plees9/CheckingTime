@@ -83,6 +83,32 @@ export const authReducer = createReducer(
       },
     }
   );
+  export const passwordReducer = createReducer (
+    {} ,
+    {forgetPasswordRequest: (state) => {
+      state.loading = true;
+    },
+    forgetPasswordSuccess: (state, action) => {
+      state.loading = false;
+      state.message = action.payload;
+    },
+    forgetPasswordFailure: (state, action) => {
+      state.loading = false;
+      state.error = action.payload;
+    },
+
+    resetPasswordRequest: (state) => {
+      state.loading = true;
+    },
+    resetPasswordSuccess: (state, action) => {
+      state.loading = false;
+      state.message = action.payload;
+    },
+    resetPasswordFailure: (state, action) => {
+      state.loading = false;
+      state.error = action.payload;
+    },}
+  )
   export const messageReducer = createReducer(
     {},
     {
@@ -100,30 +126,6 @@ export const authReducer = createReducer(
         state.isAuthenticated = true;
         state.error = action.payload;
         state.message = action.payload.message;
-      },
-      
-      forgetPasswordRequest: (state) => {
-        state.loading = true;
-      },
-      forgetPasswordSuccess: (state, action) => {
-        state.loading = false;
-        state.message = action.payload;
-      },
-      forgetPasswordFailure: (state, action) => {
-        state.loading = false;
-        state.error = action.payload;
-      },
-  
-      resetPasswordRequest: (state) => {
-        state.loading = true;
-      },
-      resetPasswordSuccess: (state, action) => {
-        state.loading = false;
-        state.message = action.payload;
-      },
-      resetPasswordFailure: (state, action) => {
-        state.loading = false;
-        state.error = action.payload;
       },
       updateAvatarRequest: (state) => {
         state.loading = true;

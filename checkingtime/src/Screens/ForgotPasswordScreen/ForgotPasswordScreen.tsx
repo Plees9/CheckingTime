@@ -9,7 +9,7 @@ import { forgetPassword } from "../../../redux/action";
 import { FONTS } from "../../../constants/theme";
 const ForgotPasswordScreen = () => {
   const image = require("../../../assets/images/forgot-password.png");
-  const { message, error } = useSelector<any, any>((state) => state.message);
+  const { message, error } = useSelector<any, any>((state) => state.password);
   const styles = useMemo(() => createStyles(), []);
   const [email, setEmail] = useState("");
   const navigation = useNavigation<any>();

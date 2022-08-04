@@ -72,7 +72,8 @@ const Account = () => {
     );
     console.log(myForm);
     await dispatch<any>(updateAvatar(myForm));
-    await dispatch<any>(loadUser())
+    dispatch<any>(loadUser())
+    
   };
   if (flag1 == 1) {
     imageHandler();
