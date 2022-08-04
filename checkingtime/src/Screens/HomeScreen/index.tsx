@@ -17,8 +17,8 @@ import styles from "./styles";
 import { loadUser } from "../../../redux/action";
 
 import { FAB, Input } from "react-native-elements";
-import { useSelector } from "react-redux";
-
+import { useDispatch, useSelector } from "react-redux";
+import { loadCompany } from "../../../redux/action";
 const wait = (timeout: number | undefined) => {
   return new Promise((resolve) => setTimeout(resolve, timeout));
 };
@@ -29,7 +29,11 @@ const HomeScreen = () => {
   const [userName, setUserName] = useState(user.name);
   const [avatar, loading] = useState(user.avatar.url);
   const [refreshing, setRefreshing] = React.useState(false);
-
+  const dispatch = useDispatch();
+  const companyHandler = async () => {
+    await dispatch<any>(loadCompany());
+    navigation.navigate("Thông tin Công Ty");
+  };
   const pressHandler = () => {
     ToastAndroid.show(
       "Bạn" + " " + userName + " " + "đã chấm công!",
@@ -102,7 +106,7 @@ const HomeScreen = () => {
 
         <View style={styles.btn}>
           <TouchableOpacity
-            onPress={() => navigation.navigate("Thông tin Công Ty")}
+            onPress={companyHandler}
           >
             <View style={styles.btn1}>
               <Icon
