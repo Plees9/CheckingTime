@@ -21,16 +21,25 @@ import { useDispatch, useSelector } from "react-redux";
 import DateTimePicker from "@react-native-community/datetimepicker";
 import moment from "moment";
 import { Avatar } from "@rneui/themed";
+
+
+
 import { loadUser, updateProfile } from "../../../redux/action";
 import mime from "mime";
+
 const data_2 = [
   { label: "Nam", value: "Nam" },
   { label: "Nữ", value: "Nữ" },
 ];
 
 const UpdateStaff = () => {
-  const { user, loading } = useSelector<any, any>((state) => state.auth);
+  
   const styles = useMemo(() => createStyles(), []);
+
+  const { user, loading } = useSelector<any, any>((state) => state.auth);
+  
+
+
   const dispatch = useDispatch();
   const [userName, setUserName] = useState(user.name);
   const [email, setEmail] = useState(user.email);
@@ -38,6 +47,7 @@ const UpdateStaff = () => {
   const [date_Birth, setDate_Birth] = useState(moment(new Date(user.birth)))
   const [address, setAddress] = useState(user.address);
   const route = useRoute();
+
   const [show_birth, setShow_birth] = useState(false);
   const [show, setShow] = useState(false);
   const [avatar, setAvatar] = useState(user.avatar.url);
@@ -103,9 +113,8 @@ const UpdateStaff = () => {
         <Avatar
           size={80}
           rounded
-          icon={{ name: "adb", type: "material" }}
-          containerStyle={{ backgroundColor: "orange" }}
           source={{ uri: avatar }}
+          containerStyle={{ backgroundColor: "orange" }}
           onPress={() => navigation.navigate("Đổi ảnh đại diện")}
         >
           <Avatar.Accessory size={24} />
@@ -169,6 +178,9 @@ const UpdateStaff = () => {
 
       <View style={styles.row}>
         <View style={styles.row1}>
+
+
+
           <Pressable style={styles.row2} onPress={() => setShow_birth(true)}>
             <View style={{ justifyContent: "center", alignContent: "center" }}>
               <Text>{date_Birth.format("DD/MM/YYYY")}</Text>

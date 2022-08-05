@@ -49,7 +49,7 @@ const createStyles = () =>
       flexDirection: "column",
       backgroundColor: "#FFFFFF",
       width: "100%",
-      marginTop: "3%",
+      marginTop: "1%",
       borderRadius: 10,
     },
     hang: {
@@ -77,7 +77,7 @@ const createStyles = () =>
       color: "orange",
     },
     trash: {
-      marginLeft: "27%",
+      marginLeft: "10%",
       marginBottom: "3%",
       color: "orange",
     },
@@ -98,10 +98,9 @@ const createStyles = () =>
       height: "90%",
       textAlign: "center",
       alignItems: "center",
-      
       fontFamily: FONTS.vanSansMedium,
       //padding: "2%",
-      borderColor: "orange",
+      borderColor: "#FBB454",
       
     },
     view3_1: {
@@ -112,7 +111,7 @@ const createStyles = () =>
       height: "90%",
       textAlign: "center",
       //padding: "2%",
-      borderColor: "orange",
+      borderColor: "#FBB454",
     },
     view3_2: {
       borderWidth: 1,
@@ -122,7 +121,7 @@ const createStyles = () =>
       textAlign: "center",
       fontFamily: FONTS.vanSansMedium,
       //padding: "2%",
-      borderColor: "orange",
+      borderColor: "#FBB454",
     },
     hang3: {
       flexDirection: "row",

@@ -22,6 +22,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { logout, loadUser, updateAvatar } from "../../../redux/action";
 import * as ImagePicker from "expo-image-picker";
 import mime from "mime";
+import moment from "moment";
 const Account = () => {
   const [visible, setVisible] = useState(false);
   const { user, loading } = useSelector<any, any>((state) => state.auth);
