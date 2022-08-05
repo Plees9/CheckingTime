@@ -7,7 +7,7 @@ import {
   Alert,
 } from "react-native";
 import React, { useState, useMemo, useEffect } from "react";
-
+import PopupModal from "../../component/PopupModal";
 import { Avatar } from "@rneui/themed";
 import Icon from "react-native-vector-icons/FontAwesome";
 import { TextInput } from "react-native-gesture-handler";
@@ -21,7 +21,10 @@ import { useDispatch, useSelector } from "react-redux";
 import { logout, loadUser, updateAvatar } from "../../../redux/action";
 import * as ImagePicker from "expo-image-picker";
 import mime from "mime";
+import showAlert, { hideAlert } from "react-native-easy-alert";
+
 const Account = () => {
+  const [visible, setVisible] = useState(false);
   const { user, loading } = useSelector<any, any>((state) => state.auth);
   const styles = useMemo(() => createStyles(), []);
   const { height } = useWindowDimensions();
@@ -45,7 +48,7 @@ const Account = () => {
   const cameraHandler = () => {
     navigation.navigate("Đổi ảnh đại diện");
   };
-  console.log(user.avatar.url)
+  console.log(user.avatar.url);
   const route = useRoute();
   useEffect(() => {
     if (route.params) {
@@ -54,7 +57,6 @@ const Account = () => {
         setFlag1(route.params.flag);
       }
     }
-    
   }, [route]);
   const imageHandler = async () => {
     const myForm = new FormData();
@@ -77,9 +79,9 @@ const Account = () => {
     setFlag1(0);
   }
 
-  useEffect(() => {
-    
-  }, []);
+  useEffect(() => {}, []);
+
+  console.log(visible);
 
   return (
     <ScrollView style={styles.container}>
@@ -287,9 +289,38 @@ const Account = () => {
           <Text style={styles.chu}> Thay đổi mật khẩu</Text>
         </TouchableOpacity>
 
-        <TouchableOpacity onPress={logoutHandler}>
+        <TouchableOpacity onPress={()=> setVisible(true)}
+        >
           <Text style={styles.chu1}> Đăng xuất</Text>
         </TouchableOpacity>
+       
+        <PopupModal
+          visible={visible}
+          title="Đăng xuất"
+          message="Bạn có chắc chắn muốn đăng xuất?"
+          confirmText={"Đăng xuất"}
+          cancelText={"Hủy"}
+          onConfirm={() => {
+            logoutHandler();
+            setVisible(false);
+
+            
+          }
+          }
+          onCancel={() => {
+            
+            setVisible(false);
+
+          }
+        
+        }
+        
+
+        />
+            
+          
+         
+        
       </View>
     </ScrollView>
   );
