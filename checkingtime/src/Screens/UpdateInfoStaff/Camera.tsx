@@ -2,7 +2,7 @@ import React, { useState, useEffect, useMemo } from "react";
 import { StyleSheet, Text, View, TouchableOpacity } from "react-native";
 import Icon from "react-native-vector-icons/MaterialIcons";
 import { IconButton } from "react-native-paper";
-import createStyles from "./styles";
+import createStyles from "../Account/styles";
 import * as ImagePicker from "expo-image-picker";
 import { useNavigation } from "@react-navigation/native";
 const CameraComponent = () => {
@@ -20,12 +20,9 @@ const CameraComponent = () => {
       aspect: [9, 16],
       quality: 1,
     });
-
-    console.log(result);
     if (!result.cancelled) {
       image = result.uri;
-      flag = 1;
-      navigation.navigate("Tài khoản", { image, flag });
+      navigation.navigate("UpdateStaff", { image });
     }
   };
   const takeImage = async () => {
@@ -39,8 +36,7 @@ const CameraComponent = () => {
     });
     if (!result.cancelled) {
       image = result.uri;
-      flag = 1;
-      navigation.navigate("Tài khoản", { image, flag });
+      navigation.navigate("UpdateStaff", { image });
     }
 
     //navigation.navigate("Account");

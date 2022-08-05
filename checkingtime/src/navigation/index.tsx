@@ -24,9 +24,12 @@ import Loader from "./Loader"
 import AddStaff from '../Screens/AddStaff/AddStaff';
 import UpdateStaff from '../Screens/UpdateInfoStaff/UpdateStaff';
 import UpdatePassword from "../Screens/UpdatePassword";
-import Camera from "../Screens/Account/Camera"
 import FDontu from "../Screens/Bolocdontu/FDontu";
+
 import UpdateStaff_Admin from "../Screens/UpdateInFoStaff_NV/UpdateInfoStaff_NV";
+
+import Camera from "../Screens/UpdateInfoStaff/Camera"
+
 const Stack = createNativeStackNavigator();
 
 const Navigation = () => {
@@ -133,7 +136,6 @@ const SNavigation = () => {
 
 
   const { isAuthenticated, loading } = useSelector<any, any>(state => state.auth)
-  console.log(isAuthenticated)
   return (
     loading ? <Loader /> : 
     <NavigationContainer>

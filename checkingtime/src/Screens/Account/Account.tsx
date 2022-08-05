@@ -7,7 +7,7 @@ import {
   Alert,
 } from "react-native";
 import React, { useState, useMemo, useEffect } from "react";
-
+import PopupModal from "../../component/PopupModal";
 import { Avatar } from "@rneui/themed";
 import Icon from "react-native-vector-icons/FontAwesome";
 import Icon1 from "react-native-vector-icons/Ionicons";
@@ -24,6 +24,7 @@ import * as ImagePicker from "expo-image-picker";
 import mime from "mime";
 import moment from "moment";
 const Account = () => {
+  const [visible, setVisible] = useState(false);
   const { user, loading } = useSelector<any, any>((state) => state.auth);
   const styles = useMemo(() => createStyles(), []);
   
@@ -39,48 +40,10 @@ const Account = () => {
   const [typeOfEmployee, setTypeOfEmployee] = useState(user.typeOfEmployee);
   const [role, setRole] = useState(user.role);
   const [contractStatus, setContractStatus] = useState(user.contractStatus);
-  const { message, error } = useSelector<any, any>((state) => state.message);
   const [flag1, setFlag1] = useState();
   const logoutHandler = () => {
     dispatch<any>(logout());
   };
-  const cameraHandler = () => {
-    navigation.navigate("Đổi ảnh đại diện");
-  };
-  console.log(user.avatar.url)
-  const route = useRoute();
-  useEffect(() => {
-    if (route.params) {
-      if (route.params.image) {
-        setAvatar(route.params.image);
-        setFlag1(route.params.flag);
-      }
-    }
-    
-  }, [route]);
-  const imageHandler = async () => {
-    const myForm = new FormData();
-    myForm.append(
-      "avatar",
-      JSON.parse(
-        JSON.stringify({
-          uri: avatar,
-          type: mime.getType(avatar),
-          name: avatar.split("/").pop(),
-        })
-      )
-    );
-    console.log(myForm);
-    await dispatch<any>(updateAvatar(myForm));
-    dispatch<any>(loadUser())
-    
-  };
-  if (flag1 == 1) {
-    imageHandler();
-    setFlag1(0);
-  }
-  useEffect(() => {
-  }, []);
 
   return (
     <ScrollView style={styles.container}>
@@ -90,7 +53,6 @@ const Account = () => {
           rounded
           source={{ uri: avatar }}
           containerStyle={{ backgroundColor: "orange" }}
-          onPress={cameraHandler}
         />
         <View>
          
@@ -201,8 +163,36 @@ const Account = () => {
         </TouchableOpacity>
 
         <TouchableOpacity onPress={logoutHandler}>
-          <Text style={styles.chu1}> Đăng xuất </Text>
+          <Text style={styles.chu1}> Đăng xuất</Text>
         </TouchableOpacity>
+       
+        <PopupModal
+          visible={visible}
+          title="Đăng xuất"
+          message="Bạn có chắc chắn muốn đăng xuất?"
+          confirmText={"Đăng xuất"}
+          cancelText={"Hủy"}
+          onConfirm={() => {
+            logoutHandler();
+            setVisible(false);
+
+            
+          }
+          }
+          onCancel={() => {
+            
+            setVisible(false);
+
+          }
+        
+        }
+        
+
+        />
+            
+          
+         
+        
       </View>
     </ScrollView>
   );
