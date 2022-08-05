@@ -44,6 +44,7 @@
     "react-native-badge-avatar": "^1.1.2",
     "react-native-date-picker": "^4.2.5",
     "react-native-datepicker": "^1.7.2",
+    "react-native-dialog-input": "^1.0.8",
     "react-native-drop-down-item": "^1.1.0",
     "react-native-element": "^1.2.1",
     "react-native-element-dropdown": "^2.1.0",

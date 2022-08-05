@@ -42,7 +42,6 @@ const ListStaff = () => {
     Linking.openURL(phoneNumber);
  };
 
-
   const [data, setData] = useState([
    
     {
@@ -191,6 +190,7 @@ const ListStaff = () => {
                 )
               }
             ></Icon>
+            <Icon name="edit" size={25} style={styles.trash}onPress={() => navigation.navigate("Cập nhật thông tin nhân viên _Admin")} ></Icon>
           </View>
 
           <View style={styles.hang3}>

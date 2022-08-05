@@ -20,7 +20,7 @@ import AntDesign from "react-native-vector-icons/AntDesign";
 
 import DateTimePicker from "@react-native-community/datetimepicker";
 import moment from "moment";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { register } from "../../../redux/action";
 
 //import PassMeter from "../../../node_modules/react-native-passmeter";
@@ -58,6 +58,7 @@ const AddStaff = () => {
 
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
+  const [birth, setBirth] = useState("");
 
   const styles = useMemo(() => createStyles(), []);
   const [userName, setUserName] = useState("");
@@ -80,6 +81,7 @@ const AddStaff = () => {
 
   const registerHandler = () => {
     const myForm = new FormData();
+    const { user, loading } = useSelector<any, any>(state => state.auth)
 
     myForm.append("name", userName);
     myForm.append("email", email);
@@ -87,12 +89,15 @@ const AddStaff = () => {
     myForm.append("password", password);
     myForm.append("privilege", value_1);
     
-    const Sdate = moment(date).format("YYYY-MM-DD"); //chu y lam lai ngay thang nam
+    const [birthDay] = useState(moment(new Date(user.birth)).format("DD/MM/YYYY")); 
+    myForm.append("birthDay", birthDay);
+    const [Sdate] = useState(moment(new Date(user.startWorkingDate)).format("DD/MM/YYYY")); 
     myForm.append("startWorkingDate", Sdate);
     myForm.append("contractStatus", value_2);
     myForm.append("typeOfEmployee", value_4);
+
     myForm.append("role", value_3);
-    console.log(Sdate);
+    console.log(birthDay);
     dispatch<any>(register(myForm));
     navigation.navigate("AddStaff");
   };

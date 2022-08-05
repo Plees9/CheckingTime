@@ -1,6 +1,7 @@
 {
   "dependencies": {
     "@react-native-picker/picker": "^2.4.2",
+    "react-native-dialog-input": "^1.0.8",
     "react-native-multiple-select": "^0.5.9",
     "react-native-passmeter": "^0.0.5"
   }
