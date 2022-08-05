@@ -34,7 +34,7 @@ const Account = () => {
   const [numberPhone, setNumberPhone] = useState(user.phoneNumber);
   const [userId, setuserId] = useState(String(user.userId));
   const [avatar, setAvatar] = useState(user.avatar.url);
-  const [date, setDate] = useState(moment(user.startWorkingDate).format("DD/MM/YYYY"));
+  const [date, setDate] = useState(moment(new Date(user.startWorkingDate)).format("DD/MM/YYYY"));
   const [privilege, setPrivilege] = useState(user.privilege);
   const [typeOfEmployee, setTypeOfEmployee] = useState(user.typeOfEmployee);
   const [role, setRole] = useState(user.role);
