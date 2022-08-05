@@ -7,7 +7,7 @@ import {
   Alert,
 } from "react-native";
 import React, { useState, useMemo, useEffect } from "react";
-
+import PopupModal from "../../component/PopupModal";
 import { Avatar } from "@rneui/themed";
 import Icon from "react-native-vector-icons/FontAwesome";
 import Icon1 from "react-native-vector-icons/Ionicons";
@@ -22,8 +22,8 @@ import { useDispatch, useSelector } from "react-redux";
 import { logout, loadUser, updateAvatar } from "../../../redux/action";
 import * as ImagePicker from "expo-image-picker";
 import mime from "mime";
-import moment from "moment";
 const Account = () => {
+  const [visible, setVisible] = useState(false);
   const { user, loading } = useSelector<any, any>((state) => state.auth);
   const styles = useMemo(() => createStyles(), []);
   
@@ -43,6 +43,7 @@ const Account = () => {
   const logoutHandler = () => {
     dispatch<any>(logout());
   };
+
   return (
     <ScrollView style={styles.container}>
       <View style={styles.hang}>
@@ -161,8 +162,36 @@ const Account = () => {
         </TouchableOpacity>
 
         <TouchableOpacity onPress={logoutHandler}>
-          <Text style={styles.chu1}> Đăng xuất </Text>
+          <Text style={styles.chu1}> Đăng xuất</Text>
         </TouchableOpacity>
+       
+        <PopupModal
+          visible={visible}
+          title="Đăng xuất"
+          message="Bạn có chắc chắn muốn đăng xuất?"
+          confirmText={"Đăng xuất"}
+          cancelText={"Hủy"}
+          onConfirm={() => {
+            logoutHandler();
+            setVisible(false);
+
+            
+          }
+          }
+          onCancel={() => {
+            
+            setVisible(false);
+
+          }
+        
+        }
+        
+
+        />
+            
+          
+         
+        
       </View>
     </ScrollView>
   );
