@@ -28,6 +28,23 @@ export const loadCompany = () => async (dispatch) => {
     dispatch({ type: "companyFailure", payload: error.response.data.message });
   }
 }
+export const updateProfile = (formData) => async (dispatch) => {
+  try {
+    dispatch({ type: "updateProfileRequest" });
+
+    const { data } = await axios.put(`${serverUrl}/user/updateprofile`, formData, {
+      headers: {
+        "Content-Type": "multipart/form-data",
+      },
+    });
+    dispatch({ type: "updateProfileSuccess", payload: data.message });
+  } catch (error) {
+    dispatch({
+      type: "updateProfileFailure",
+      payload: error.response.data.message,
+    });
+  }
+};
 export const login = (phoneNumber, password) => async (dispatch) => {
   try {
     dispatch({ type: "loginRequest" });
@@ -48,8 +65,8 @@ export const login = (phoneNumber, password) => async (dispatch) => {
 };
 export const loadUser = () => async (dispatch) => {
   try {
+    dispatch({ type: "updateProfileReset"})
     dispatch({ type: "loadUserRequest" });
-
     const { data } = await axios.get(`${serverUrl}/user/myprofile`);
     dispatch({ type: "loadUserSuccess", payload: data });
   } catch (error) {

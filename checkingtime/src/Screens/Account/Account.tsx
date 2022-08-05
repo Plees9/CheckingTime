@@ -39,49 +39,10 @@ const Account = () => {
   const [typeOfEmployee, setTypeOfEmployee] = useState(user.typeOfEmployee);
   const [role, setRole] = useState(user.role);
   const [contractStatus, setContractStatus] = useState(user.contractStatus);
-  const { message, error } = useSelector<any, any>((state) => state.message);
   const [flag1, setFlag1] = useState();
   const logoutHandler = () => {
     dispatch<any>(logout());
   };
-  const cameraHandler = () => {
-    navigation.navigate("Đổi ảnh đại diện");
-  };
-  console.log(user.avatar.url)
-  const route = useRoute();
-  useEffect(() => {
-    if (route.params) {
-      if (route.params.image) {
-        setAvatar(route.params.image);
-        setFlag1(route.params.flag);
-      }
-    }
-    
-  }, [route]);
-  const imageHandler = async () => {
-    const myForm = new FormData();
-    myForm.append(
-      "avatar",
-      JSON.parse(
-        JSON.stringify({
-          uri: avatar,
-          type: mime.getType(avatar),
-          name: avatar.split("/").pop(),
-        })
-      )
-    );
-    console.log(myForm);
-    await dispatch<any>(updateAvatar(myForm));
-    dispatch<any>(loadUser())
-    
-  };
-  if (flag1 == 1) {
-    imageHandler();
-    setFlag1(0);
-  }
-  useEffect(() => {
-  }, []);
-
   return (
     <ScrollView style={styles.container}>
       <View style={styles.hang}>
@@ -90,7 +51,6 @@ const Account = () => {
           rounded
           source={{ uri: avatar }}
           containerStyle={{ backgroundColor: "orange" }}
-          onPress={cameraHandler}
         />
         <View>
          
