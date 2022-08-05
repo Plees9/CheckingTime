@@ -20,7 +20,7 @@ import AntDesign from "react-native-vector-icons/AntDesign";
 
 import DateTimePicker from "@react-native-community/datetimepicker";
 import moment from "moment";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { register } from "../../../redux/action";
 
 //import PassMeter from "../../../node_modules/react-native-passmeter";
@@ -52,9 +52,10 @@ const data_4 = [
 
 const AddStaff = () => {
   const dispatch = useDispatch();
-
+  const { message, error } = useSelector<any, any>((state) => state.message);
+  console.log(message)
   const [count, setCount] = useState(0)
-	const handleClick = useCallback(() => setCount(count + 1), [count]);
+	// const handleClick = useCallback(() => setCount(count + 1), [count]);
 
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
@@ -63,11 +64,11 @@ const AddStaff = () => {
   const [userName, setUserName] = useState("");
   const [email, setEmail] = useState("");
   const [numberPhone, setNumberPhone] = useState("");
+ 
   const [isHided, setIsHided] = useState(true);
 
   const [date, setDate] = useState(moment());
   const [show, setShow] = useState(false);
-
   const [value_1, setValue_1] = useState("");
   const [value_2, setValue_2] = useState("");
   const [value_3, setValue_3] = useState("");
@@ -86,14 +87,14 @@ const AddStaff = () => {
     myForm.append("phoneNumber", numberPhone);
     myForm.append("password", password);
     myForm.append("privilege", value_1);
-    const Sdate = String(date);
+    
+    const Sdate = moment(date).format("YYYY-MM-DD"); //chu y lam lai ngay thang nam
     myForm.append("startWorkingDate", Sdate);
     myForm.append("contractStatus", value_2);
     myForm.append("typeOfEmployee", value_4);
     myForm.append("role", value_3);
-    console.log(Sdate)
+    console.log(Sdate);
     dispatch<any>(register(myForm));
-    navigation.navigate("AddStaff");
   };
 
   const navigation = useNavigation<any>();
@@ -103,9 +104,16 @@ const AddStaff = () => {
     ToastAndroid.show("Xác nhận đăng ký thành công", ToastAndroid.SHORT);
   }
 
-  const MAX_LEN = 16,
-    MIN_LEN = 8,
-    PASS_LABELS = ["Too Short", "Weak", "Normal", "Strong", "Secure"];
+  useEffect(() => {
+    if (message) {
+      alert(message);
+      dispatch({ type: "clearMessage" });
+    }
+    if (error) {
+      alert(error);
+      dispatch({ type: "clearError" });
+     }
+  }, [alert, dispatch, error, message]);
 
   return (
     <View style={styles.view}>
@@ -356,7 +364,7 @@ const AddStaff = () => {
         colors={["#f12711", "#f5af19"]}
         style={styles.btn2}
       >
-        <TouchableOpacity onPress={handleClick}>
+        <TouchableOpacity onPress={registerHandler}>
           <Text style={styles.text22}>Đăng ký</Text>
         </TouchableOpacity>
       </LinearGradient>

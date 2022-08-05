@@ -14,7 +14,7 @@ import FormCreated from "../Screens/FormCreated";
 import Jobs from "../Screens/Jobs";
 import InfoScreen from "../Screens/InfoCompany/Info";
 import Account from "../Screens/Account/Account";
-import { loadUser } from '../../redux/action'
+import { loadCompany, loadUser } from '../../redux/action'
 import ResetPasswordScreen from "../Screens/ResetPasswordScreen/ResetPasswordScreen";
 import TabDonTusNavigation from "./TabDonTu";
 import CuaToi from "../Screens/DonTu/CuaToi/CuaToi";
@@ -24,8 +24,8 @@ import Loader from "./Loader"
 import AddStaff from '../Screens/AddStaff/AddStaff';
 import UpdateStaff from '../Screens/UpdateInfoStaff/UpdateStaff';
 import UpdatePassword from "../Screens/UpdatePassword";
-import Camera from "../Screens/Account/Camera"
 import FDontu from "../Screens/Bolocdontu/FDontu";
+import Camera from "../Screens/UpdateInfoStaff/Camera"
 const Stack = createNativeStackNavigator();
 
 const Navigation = () => {
@@ -120,12 +120,11 @@ const SNavigation = () => {
 
   useEffect(() => {
       dispatch<any>(loadUser())
-
+      dispatch<any>(loadCompany())
   }, [dispatch])
 
 
   const { isAuthenticated, loading } = useSelector<any, any>(state => state.auth)
-  console.log(isAuthenticated)
   return (
     loading ? <Loader /> : 
     <NavigationContainer>
@@ -207,6 +206,7 @@ const SNavigation = () => {
          component={Camera}
          options={{ headerShown: true}}
         />
+        
       </Stack.Navigator>
     </NavigationContainer>
   );

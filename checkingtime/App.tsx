@@ -10,6 +10,7 @@ import store from "./redux/store";
 import { NavigationContainer } from "@react-navigation/native";
 import UpdateStaff from "./src/Screens/UpdateInfoStaff/UpdateStaff";
 
+
 const App = () => {
   const [fontsLoaded] = useFonts({
     VanSansBold: require("./assets/fonts/VanSans-Bold.otf"),
@@ -39,7 +40,7 @@ const App = () => {
     <SafeAreaView style={styles.root}>
        <SNavigation /> 
        {/* <NavigationContainer>
-        <UpdateStaff />
+        <Test />
        </NavigationContainer> */}
       </SafeAreaView>
     </Provider>

@@ -1,5 +1,5 @@
 import { View, Text, TextInput, TouchableOpacity, Image } from "react-native";
-import React, { useMemo, useState } from "react";
+import React, { useMemo, useState, useEffect } from "react";
 
 import createStyles from "./styles";
 import { useNavigation } from "@react-navigation/native";
@@ -9,18 +9,32 @@ import { forgetPassword } from "../../../redux/action";
 import { FONTS } from "../../../constants/theme";
 const ForgotPasswordScreen = () => {
   const image = require("../../../assets/images/forgot-password.png");
-  const { message, error } = useSelector<any, any>((state) => state.message);
+  const { message, error } = useSelector<any, any>((state) => state.password);
   const styles = useMemo(() => createStyles(), []);
   const [email, setEmail] = useState("");
   const navigation = useNavigation<any>();
   const dispatch = useDispatch();
-
+  let check = ""
+  useEffect(() => {
+    if (message) {
+      alert(message);
+      dispatch({ type: "clearMessage" });
+    }
+    if (error) {
+      alert(error);
+      dispatch({ type: "clearError" });
+    }
+  }, [alert, dispatch, error]);
+  if (message != null || message != "Invalid mail") {
+    check = message
+  }
   const forgetHandler = async () => {
     await dispatch<any>(forgetPassword(email));
-    if (email != "" && !error ) {
-      navigation.navigate("Cài lại mật khẩu", {email});
-    }
+ 
   };
+  if (email != "" && check ==  `OTP has been sent to ${email}` ) {
+    navigation.navigate("Cài lại mật khẩu", {email});
+  }
   return (
     <View style={styles.view}>
       <Image style={styles.image} source={image} />

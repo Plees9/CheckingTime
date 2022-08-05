@@ -13,20 +13,26 @@ import {
 import { Avatar } from "@rneui/themed";
 import Icon from "react-native-vector-icons/FontAwesome";
 import styles from "./styles";
+ 
+import { loadUser } from "../../../redux/action";
 
 import { FAB, Input } from "react-native-elements";
-
-const wait = (timeout) => {
+import { useDispatch, useSelector } from "react-redux";
+import { loadCompany } from "../../../redux/action";
+const wait = (timeout: number | undefined) => {
   return new Promise((resolve) => setTimeout(resolve, timeout));
 };
 
 const HomeScreen = () => {
   const navigation = useNavigation<any>();
-  const [userName, setUserName] = useState("");
+  const { user } = useSelector<any, any>((state) => state.auth);
+  const [userName, setUserName] = useState(user.name);
+  const [avatar, loading] = useState(user.avatar.url);
   const [refreshing, setRefreshing] = React.useState(false);
-
-  //const [isCheckin, setIsCheckin] = useState(false);
-
+  const dispatch = useDispatch();
+  const companyHandler = async () => {
+    navigation.navigate("Thông tin Công Ty");
+  };
   const pressHandler = () => {
     ToastAndroid.show(
       "Bạn" + " " + userName + " " + "đã chấm công!",
@@ -49,7 +55,11 @@ const HomeScreen = () => {
       >
         <TouchableOpacity onPress={() => navigation.navigate("Tài khoản")}>
           <View style={styles.row}>
-            <Icon name="user" size={26} color="#f49218" style={styles.icon} />
+            <Avatar 
+                       
+            rounded source={{ uri: avatar }} 
+            size={40}
+            ></Avatar>
             <Text style={styles.text1}> Xin chào, {userName}</Text>
           </View>
         </TouchableOpacity>
@@ -95,7 +105,7 @@ const HomeScreen = () => {
 
         <View style={styles.btn}>
           <TouchableOpacity
-            onPress={() => navigation.navigate("Thông tin Công Ty")}
+            onPress={companyHandler}
           >
             <View style={styles.btn1}>
               <Icon

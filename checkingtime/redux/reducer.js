@@ -29,7 +29,7 @@ export const authReducer = createReducer(
       state.loading = false;
       state.isAuthenticated = true;
       state.user = action.payload.user;
-      state.message = action.payload.message;
+      state.message = action.payload.message
     },
     loginFailure: (state, action) => {
       state.loading = false;
@@ -83,47 +83,64 @@ export const authReducer = createReducer(
       },
     }
   );
+  export const passwordReducer = createReducer (
+    {} ,
+    {forgetPasswordRequest: (state) => {
+      state.loading = true;
+    },
+    forgetPasswordSuccess: (state, action) => {
+      state.loading = false;
+      state.message = action.payload;
+    },
+    forgetPasswordFailure: (state, action) => {
+      state.loading = false;
+      state.error = action.payload;
+    },
+
+    resetPasswordRequest: (state) => {
+      state.loading = true;
+    },
+    resetPasswordSuccess: (state, action) => {
+      state.loading = false;
+      state.message = action.payload;
+    },
+    resetPasswordFailure: (state, action) => {
+      state.loading = false;
+      state.error = action.payload;
+    },}
+  )
   export const messageReducer = createReducer(
     {},
     {
+      updateProfileRequest: (state) => {
+        state.loading = true;
+      },
+      updateProfileSuccess: (state, action) => {
+        state.loading = false;
+        state.message = action.payload;
+        state.isUpdated = true;
+      },
+      updateProfileReset: (state) => {
+        state.isUpdated = false ;
+      },
+      updateProfileFailure: (state, action) => {
+        state.loading = false;
+        state.error = action.payload;
+      },
       registerRequest: (state) => {
         state.loading = true;
       },
       registerSuccess: (state, action) => {
         state.loading = false;
-        state.isAuthenticated = true;
+        //state.isAuthenticated = true;
         state.user = action.payload.user;
         state.message = action.payload.message;
       },
       registerFailure: (state, action) => {
         state.loading = false;
-        state.isAuthenticated = true;
+        //state.isAuthenticated = false;
         state.error = action.payload;
         state.message = action.payload.message;
-      },
-      
-      forgetPasswordRequest: (state) => {
-        state.loading = true;
-      },
-      forgetPasswordSuccess: (state, action) => {
-        state.loading = false;
-        state.message = action.payload;
-      },
-      forgetPasswordFailure: (state, action) => {
-        state.loading = false;
-        state.error = action.payload;
-      },
-  
-      resetPasswordRequest: (state) => {
-        state.loading = true;
-      },
-      resetPasswordSuccess: (state, action) => {
-        state.loading = false;
-        state.message = action.payload;
-      },
-      resetPasswordFailure: (state, action) => {
-        state.loading = false;
-        state.error = action.payload;
       },
       updateAvatarRequest: (state) => {
         state.loading = true;

@@ -5,7 +5,7 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     paddingTop: StatusBar.currentHeight,
-    backgroundColor: "#f9f9f9",
+    backgroundColor: "#f2f2f2",
   },
 
   text: {
@@ -57,7 +57,7 @@ const styles = StyleSheet.create({
     backgroundColor: "#eee9f5",
     // alignItems: "center",
     // justifyContent: "center",
-    padding: 10,
+    
   },
   icon1: {
     width: 28,

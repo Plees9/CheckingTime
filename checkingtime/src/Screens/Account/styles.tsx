@@ -1,6 +1,5 @@
 import { StyleSheet, StatusBar } from "react-native";
 import { FONTS } from "../../../constants/theme";
-import { Color_Icon } from "../../../constants/theme";
 
 const createStyles = () =>
   StyleSheet.create({
@@ -25,6 +24,15 @@ const createStyles = () =>
       fontSize: 14,
       color: "#7F8487",
       marginTop: "3%",
+      fontFamily: FONTS.vanSansSemiBold,
+      marginLeft: 15,
+      alignItems: "flex-start",
+    },
+    user_1: {
+      fontSize: 14,
+      color: "#7F8487",
+      marginTop: "1%",
+      fontFamily: FONTS.vanSansMedium,
       marginLeft: 15,
       alignItems: "flex-start",
     },
@@ -44,7 +52,8 @@ const createStyles = () =>
     },
 
     icon: {
-      fontSize: 40,
+      fontSize: 35,
+      alignSelf: 'center',
       margin: 4,
     },
 
