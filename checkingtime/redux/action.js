@@ -18,6 +18,26 @@ export const updateAvatar = (formData) => async (dispatch) => {
     });
   }
 };
+export const loadTimesheet = () => async (dispatch) => {
+  try {
+    dispatch({ type: "timmesheetRequest" });
+
+    const { data } = await axios.get(`${serverUrl}/user/timesheetinfo`);
+    dispatch({ type: "timesheetSuccess", payload: data });
+  } catch (error) {
+    dispatch({ type: "timesheetFailure", payload: error.response.data.message });
+  }
+}
+export const getmyrank = () => async (dispatch) => {
+  try {
+    dispatch({ type: "getmyrankRequet" });
+
+    const { data } = await axios.get(`${serverUrl}/user/rank`);
+    dispatch({ type: "getmyrankSuccess", payload: data });
+  } catch (error) {
+    dispatch({ type: "getmyrankFailure", payload: error.response.data.message });
+  }
+}
 export const loadCompany = () => async (dispatch) => {
   try {
     dispatch({ type: "companyRequest" });

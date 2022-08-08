@@ -39,12 +39,12 @@ const UpdateStaff = () => {
   const [userName, setUserName] = useState(user.name);
   const [email, setEmail] = useState(user.email);
   const [numberPhone, setNumberPhone] = useState(user.phoneNumber);
-  const [date_Birth, setDate_Birth] = useState(moment())
+  const [date_Birth, setDate_Birth] = useState(moment(new Date(user.birth)))
   const [address, setAddress] = useState(user.address);
   const route = useRoute();
 
   const [show_birth, setShow_birth] = useState(false);
-  const [show, setShow] = useState(false);
+
   const [avatar, setAvatar] = useState(user.avatar.url);
   const [value_2, setValue_2] = useState(user.gender);
   const [isFocus_2, setIsFocus_2] = useState(false);
@@ -75,12 +75,12 @@ const UpdateStaff = () => {
         })
       )
     );
-
+    const Sdate = moment(date_Birth)
     myForm.append("name", userName)
     myForm.append("email", email)
     myForm.append("phoneNumber", numberPhone)
     myForm.append("address", address)
-    myForm.append("birth", String(date_Birth))
+    myForm.append("birth", String(Sdate))
     myForm.append("gender", value_2)
     await dispatch<any>(updateProfile(myForm))
     if (message == "Profile updated successfully") {
@@ -113,7 +113,7 @@ const UpdateStaff = () => {
           containerStyle={{ backgroundColor: "orange" }}
           onPress={() => navigation.navigate("Đổi ảnh đại diện")}
         >
-          <Avatar.Accessory size={24} />
+          
         </Avatar>
       </View>
       <View style={styles.textuserName}>
@@ -174,21 +174,17 @@ const UpdateStaff = () => {
 
       <View style={styles.row}>
         <View style={styles.row1}>
-
-
-
-          <Pressable style={styles.row2} onPress={() => setShow_birth(true)}>
+        <Pressable style={styles.row2} onPress={() => setShow_birth(true)}>
             <View style={{ justifyContent: "center", alignContent: "center" }}>
               <Text>{moment(date_Birth).format("DD/MM/YYYY")}</Text>
               {show_birth && (
                 <DateTimePicker
-                  value={new Date(date_Birth.format("DD/MM/YYYY"))}
+                  value={new Date(date_Birth.format("YYYY/MM/DD"))}
                   mode={"date"}
                   display="default"
-                  onChange={(event_birth, selectedDate_birth) => {
-                    setDate_Birth(moment(selectedDate_birth));
+                  onChange={(event, selectedDate) => {
+                    setDate_Birth(moment(selectedDate));
                     setShow_birth(false);
-                    console.log(selectedDate_birth)
                   }}
                 />
               )}
@@ -201,11 +197,6 @@ const UpdateStaff = () => {
               color="orange"
             />
           </Pressable>
-        </View>
-
-        {/* Tình trạng hợp đồng, Loại hình nhân viên */}
-
-        <View style={styles.khoi_2}>
           <Dropdown
             style={styles.dropdown}
             placeholderStyle={styles.placeholderStyle}
@@ -248,7 +239,7 @@ const UpdateStaff = () => {
           <Text style={styles.text22}>Cập nhật</Text>
         </TouchableOpacity>
       </LinearGradient>
-      {/* </ImageBackground> */}
+     
       <InputModal visible={visible}
       title='Xác nhận mật khẩu của bạn'
       confirmText="Xác nhận"
