@@ -5,15 +5,7 @@ const createStyles = () =>
   StyleSheet.create({
     view: {
       flex: 1,
-      
       backgroundColor: "white",
-    },
-    textWelcome: {
-      marginTop: "3%",
-      alignSelf: "center",
-      fontSize: 35,
-      color: "#FF9F29",
-      fontFamily: FONTS.vanSansBlack,
     },
     avatar: {
       alignItems: "center",
@@ -21,18 +13,17 @@ const createStyles = () =>
       marginBottom: "3%",
     },
     textuserName: {
+      justifyContent: "center",
+      borderBottomWidth: 1,
+      borderColor: "#f2f2f2",
       alignItems: "center",
+      alignSelf: "center",
+      borderRadius: 5,
+      width: "90%",
+      height: "5%",
     },
    
-    khoi_2: {
-      flexDirection: "row",
-      justifyContent: "space-around", 
-      marginRight: "6%",
-      marginLeft: "1%",
-      marginTop: "3%",
-      //marginLeft: "3%",
-      
-    },
+  
     styleTT: {
       backgroundColor: "#f2f2f2",
       marginTop: "3%",
@@ -41,7 +32,7 @@ const createStyles = () =>
       padding: 10,
       borderRadius: 10,
       alignItems: "center",
-      width: "88%",
+      width: "94%",
     },
     text24: {
       marginLeft: 10,
@@ -55,26 +46,25 @@ const createStyles = () =>
     text23_1: {
       fontSize: 18,
       textAlign: "center",
-      width: "100%",
-      fontFamily: FONTS.vanSansBoldItalic,
+      width: "90%",
+      fontFamily: FONTS.vanSansBold,
     },
-    text23_2: {
-      fontSize: 14,
-      textAlign: "center",
-      width: "100%",
-      fontFamily: FONTS.vanSansMedium,
+    khoi_2: {
+      flexDirection: "row",
+      justifyContent: "space-around", 
+      marginRight: "6%",
+      marginLeft: "1%",
+      marginTop: "3%",
     },
+   
     row: {
       flexDirection: "column",
       justifyContent: "space-around",
       marginTop: "3%",
-     
     },
     row1: {
       flexDirection: "row",
       justifyContent: "space-around", 
-      marginRight: "6%",
-      marginLeft: "3%",
     },
     
     row2: {
@@ -83,27 +73,16 @@ const createStyles = () =>
       textAlign: "center",
       width: 150,
       height: 40,
-      marginRight: "3%",
+      marginRight: "1%",
       marginTop: "1%",
       borderColor: "#CFD2CF",
       borderWidth: 1,
       borderRadius: 5,
     },
-    row3: {
-      flexDirection: "row",
-      justifyContent: "space-around",
-      textAlign: "center",
-      width: 150,
-      height: 40,
-      marginRight: "3%",
-      marginTop: "1%",
-      borderColor: "#CFD2CF",
-      borderWidth: 1,
-      borderRadius: 5,
-    },
+  
     styleIcon: {
       marginTop: "5%",
-      marginRight: "5%",
+      marginRight: "0.5%",
       marginBottom: "5%",
     },
     text22: {
@@ -125,45 +104,26 @@ const createStyles = () =>
       borderRadius: 10,
       marginTop: "8%",
       marginRight: "5%",
-      
-    },
-    dropdown: {
-      
-      width: 150,
-      height: 40,
-      backgroundColor: "white",
-      borderRadius: 5,
-      borderColor: "#CFD2CF",
-      borderWidth: 1,
-      padding: 8,
-      shadowColor: "#000",
-      shadowOffset: {
-        width: 0,
-        height: 1,
-      },
-      shadowOpacity: 0.2,
-      shadowRadius: 1.41,
-      elevation: 2,
-    },
-    dropdown_1: {
-      marginRight: "0.8%",
-      width: 150,
-      height: 40,
-      backgroundColor: "white",
-      borderRadius: 5,
-      borderColor: "#CFD2CF",
-      borderWidth: 1,
-      padding: 8,
-      shadowColor: "#000",
-      shadowOffset: {
-        width: 0,
-        height: 1,
-      },
-      shadowOpacity: 0.2,
-      shadowRadius: 1.41,
-      elevation: 2,
     },
     
+    dropdown: {
+      width: 150,
+      height: 40,
+      backgroundColor: "white",
+      borderRadius: 5,
+      borderColor: "#CFD2CF",
+      borderWidth: 1,
+      padding: 8,
+      shadowColor: "#000",
+      shadowOffset: {
+        width: 0,
+        height: 1,
+      },
+      shadowOpacity: 0.2,
+      shadowRadius: 1.41,
+      elevation: 2,
+    },
+   
     icon: {
       marginRight: 5,
     },
@@ -175,13 +135,15 @@ const createStyles = () =>
     },
     textItem: {
       flex: 1,
-      fontSize: 16,
+      fontSize: 14,
     },
     placeholderStyle: {
-      fontSize: 16,
+      fontSize: 14,
     },
     selectedTextStyle: {
       fontSize: 16,
+      borderRadius: 10,
+      
     },
     iconStyle: {
       width: 20,
@@ -189,8 +151,9 @@ const createStyles = () =>
     },
     inputSearchStyle: {
       height: 40,
-      fontSize: 16,
+      fontSize: 14,
     },
   });
+
 
 export default createStyles;
