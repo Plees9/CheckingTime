@@ -98,7 +98,7 @@ const AddStaff = () => {
     myForm.append("typeOfEmployee", value_4);
 
     myForm.append("role", value_3);
-    console.log(birthDay);
+    console.log(Sdate);
     dispatch<any>(register(myForm));
   };
 
