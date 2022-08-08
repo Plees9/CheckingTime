@@ -49,6 +49,13 @@ const createStyles = () =>
       width: "90%",
       fontFamily: FONTS.vanSansBold,
     },
+    khoi_2: {
+      flexDirection: "row",
+      justifyContent: "space-around", 
+      marginRight: "6%",
+      marginLeft: "1%",
+      marginTop: "3%",
+    },
    
     row: {
       flexDirection: "column",
@@ -147,5 +154,6 @@ const createStyles = () =>
       fontSize: 14,
     },
   });
+
 
 export default createStyles;

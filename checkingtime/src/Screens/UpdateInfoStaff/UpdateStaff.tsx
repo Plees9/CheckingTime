@@ -5,13 +5,10 @@ import {
   ToastAndroid,
   TouchableOpacity,
   Pressable,
-  Alert,
-  Platform,
 } from "react-native";
 import React, { useMemo, useState, useEffect, Component } from "react";
 import createStyles from "./styles";
-import { useNavigation } from "@react-navigation/native";
-
+import { useNavigation, useRoute } from "@react-navigation/native";
 
 import Icon from "react-native-vector-icons/FontAwesome";
 import { LinearGradient } from "expo-linear-gradient";
@@ -19,102 +16,95 @@ import { LinearGradient } from "expo-linear-gradient";
 import { Dropdown } from "react-native-element-dropdown";
 import AntDesign from "react-native-vector-icons/AntDesign";
 
+import { useDispatch, useSelector } from "react-redux";
+//import CustomDatePicker from "../Moment/DatePicker";
 import DateTimePicker from "@react-native-community/datetimepicker";
 import moment from "moment";
 import { Avatar } from "@rneui/themed";
-import { useSelector } from "react-redux";
+import InputModal from "../../component/InputModal";
 
 
-const data_contractStatus = [
-  { label: "Chính thức", value: "Chính thức" },
-  { label: "Thử việc", value: "Thử việc" },
-  { label: "Thực tập sinh", value: "Thực tập sinh" },
-];
-const data_typeOfEmployee = [
-  { label: "Developer", value: "Developer" },
-  { label: "Tester", value: "Tester" },
-  { label: "Quản lý", value: "Quản lý" },
-  { label: "Giám đốc", value: "Giám đốc" },
-  { label: "Hành chính", value: "Hành chính" },
-  { label: "Kế toán", value: "Kế toán" },
-];
-const data_gender = [
+import { loadUser, updateProfile } from "../../../redux/action";
+import mime from "mime";
+
+const data_2 = [
   { label: "Nam", value: "Nam" },
   { label: "Nữ", value: "Nữ" },
 ];
-const data_role = [
-  { label: "Developer", value: "Developer" },
-  { label: "Tester", value: "Tester" },
-  { label: "Quản lý", value: "Quản lý" },
-  { label: "Giám đốc", value: "Giám đốc" },
-  { label: "Hành chính", value: "Hành chính" },
-  { label: "Kế toán", value: "Kế toán" },
-];
 
-const UpdateStaff_Admin = () => {
+const UpdateStaff = () => {
+  
   const styles = useMemo(() => createStyles(), []);
-  const { user, loading } = useSelector<any, any>((state) => state.auth);
 
+  const { user, loading } = useSelector<any, any>((state) => state.auth);
+  
+
+  const [visible,setVisible] = useState(false)
+  const dispatch = useDispatch();
   const [userName, setUserName] = useState(user.name);
   const [email, setEmail] = useState(user.email);
   const [numberPhone, setNumberPhone] = useState(user.phoneNumber);
   const [date_Birth, setDate_Birth] = useState(moment());
   
-  //const [date_Birth, setDate_Birth] = useState(moment(new Date(user.birth)).format("DD/MM/YYYY")); // birthday
-  //const [date, setDate] = useState(moment(new Date(user.startWorkingDate)).format("DD/MM/YYYY")); //start working date
- 
-  const [avatar, setAvatar] = useState(user.avatar.url);
   const [address, setAddress] = useState(user.address);
+  const route = useRoute();
+
   const [show_birth, setShow_birth] = useState(false);
- 
-  const [value_gender, setValue_gender] = useState(null);
-  const [isFocus_gender, setIsFocus_gender] = useState(false);
-  
 
+  const [avatar, setAvatar] = useState(user.avatar.url);
+  const [value_2, setValue_2] = useState(user.gender);
+  const [isFocus_2, setIsFocus_2] = useState(false);
   const navigation = useNavigation<any>();
-
+  let { message, error, isUpdated } = useSelector<any, any>((state) => state.message);
   const [country, setCountry] = useState("Unknown");
+  let flag = 2
   function showToast() {
     ToastAndroid.show("Đã update thông tin thành công ", ToastAndroid.SHORT);
   }
-  
-  let prompt = () => {
-    Alert.prompt("xac nhan mat khau", "", (password) => {
-      if (password === user.password) {
-        navigation.navigate("HomeScreen");
-      } else {
-        ToastAndroid.show("Mật khẩu không đúng", ToastAndroid.SHORT);
+  useEffect(() => {
+    if (route.params) {
+      if (route.params.image) {
+        setAvatar(route.params.image)
       }
-    });
-  }
-
-
-  const UpdateInfoConfirm = async () => {
-    Alert.alert(
-      "Cập nhật thông tin",
-      "Bạn có chắc chắn muốn cập nhật thông tin không?",
-      [
-        {
-          text: "Hủy",
-          onPress: () => console.log("Cancel Pressed" ),
-          style: "cancel",
-        },
-        { text: "Đồng ý", onPress: () => {
-          prompt();
-          showToast();
-        }
-        },
-      ],
-
+    }
+  }, [route]);
+  const updateHandler = async () => {
+    const myForm = new FormData();
+    myForm.append(
+      "avatar",
+      JSON.parse(
+        JSON.stringify({
+          uri: avatar,
+          type: mime.getType(avatar),
+          name: avatar.split("/").pop(),
+        })
+      )
     );
-  }
-  
-
-  const cameraHandler = () => {
-    navigation.navigate("Đổi ảnh đại diện");
-  };
     
-
+    myForm.append("name", userName)
+    myForm.append("email", email)
+    myForm.append("phoneNumber", numberPhone)
+    myForm.append("address", address)
+    myForm.append("dateOfBirth", date_Birth.toISOString())
+    myForm.append("gender", value_2)
+    await dispatch<any>(updateProfile(myForm))
+  }
+  useEffect(() => {
+    if (message) {
+      alert(message);
+      dispatch({ type: "clearMessage" });
+    }   
+    if (error) {
+      alert(error);
+      dispatch({ type: "clearError" });
+      navigation.navigate("UpdateStaff")
+    }
+    if (isUpdated) {
+      dispatch <any>(loadUser());    
+   }
+  }, [alert, dispatch, error, isUpdated]);
+  console.log(isUpdated + "******")
+  console.log(message)
   return (
     <View style={styles.view}>
       <View style={styles.avatar}>
@@ -122,15 +112,22 @@ const UpdateStaff_Admin = () => {
           size={80}
           rounded
           source={{ uri: avatar }}
-          onPress={cameraHandler}
+          containerStyle={{ backgroundColor: "orange" }}
+          onPress={() => navigation.navigate("Đổi ảnh đại diện")}
         >
+          
         </Avatar>
       </View>
       <View style={styles.textuserName}>
-        <Text style={styles.text23_1}>{userName}</Text>
-        
+        <TextInput
+          placeholder={"Họ và tên"}
+          style={styles.text23_1}
+          returnKeyType="done"
+          value={userName}
+          secureTextEntry={false}
+          onChangeText={setUserName}
+        ></TextInput>
       </View>
-
       <View>
         {/* Email */}
         <View style={styles.styleTT}>
@@ -181,17 +178,19 @@ const UpdateStaff_Admin = () => {
         <View style={styles.row1}>
         <Pressable style={styles.row2} onPress={() => setShow_birth(true)}>
             <View style={{ justifyContent: "center", alignContent: "center" }}>
-              <Text>{moment(date_Birth).format("DD/MM/YYYY")}</Text>
+              <Text>{date_Birth.format("DD/MM/YYYY")}</Text>
               {show_birth && (
                 <DateTimePicker
-                  value={new Date(date_Birth.format("YYYY-MM-DD"))}
+                  value={new Date(date_Birth.format("YYYY/MM/DD"))}
                   mode={"date"}
                   display="default"
-                  onChange={(event_birth, selectedDate_birth) => {
-                    setDate_Birth(moment(selectedDate_birth));
+                  onChange={(event, selectedDate) => {
+                    setDate_Birth(moment(selectedDate));
                     setShow_birth(false);
-                    console.log(selectedDate_birth);
-                  }}
+                    console.log(selectedDate);
+                  }
+                  
+                  }
                 />
               )}
             </View>
@@ -209,44 +208,52 @@ const UpdateStaff_Admin = () => {
             selectedTextStyle={styles.selectedTextStyle}
             inputSearchStyle={styles.inputSearchStyle}
             iconStyle={styles.iconStyle}
-            data={data_gender}
+            data={data_2}
+            search
             maxHeight={300}
+            searchPlaceholder="Search..."
             labelField="label"
             valueField="value"
             placeholder="Giới tính"
-            onFocus={() => setIsFocus_gender(true)}
-            onBlur={() => setIsFocus_gender(false)}
-            value={value_gender}
+            onFocus={() => setIsFocus_2(true)}
+            onBlur={() => setIsFocus_2(false)}
+            value={value_2}
             onChange={(item) => {
-              setValue_gender(item.value);
-              setIsFocus_gender(false);
+              setValue_2(item.value);
+              setIsFocus_2(false);
             }}
             renderRightIcon={() => (
               <AntDesign
                 style={styles.icon}
                 color="orange"
-                name={isFocus_gender ? "up" : "down"}
+                name={isFocus_2 ? "up" : "down"}
                 size={20}
               />
             )}
           />
         </View>
-
       </View>
-      
+
       <LinearGradient
         start={{ x: 0, y: 0 }}
         end={{ x: 1, y: 0 }}
         colors={["#f12711", "#f5af19"]}
         style={styles.btn2}
       >
-        <TouchableOpacity onPress={UpdateInfoConfirm}>
+        <TouchableOpacity onPress={() => setVisible(true)}>
           <Text style={styles.text22}>Cập nhật</Text>
         </TouchableOpacity>
       </LinearGradient>
-      
+     
+      <InputModal visible={visible}
+      title='Xác nhận mật khẩu của bạn'
+      confirmText="Xác nhận"
+      onConfirm={updateHandler}
+      cancelText="Hủy"
+      onCancel={() => setVisible(false)}
+      inputText="Nhập mật khẩu"/>
     </View>
   );
 };
 
-export default UpdateStaff_Admin;
+export default UpdateStaff;
