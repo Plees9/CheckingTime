@@ -1,4 +1,35 @@
 import { createReducer } from "@reduxjs/toolkit";
+export const timesheetReducer = createReducer({}, {
+  timesheetRequest: (state) => {
+    state.loading = true;
+  },
+  timesheetSuccess: (state, action) => {
+    state.loading = false;
+    state.timesheet = action.payload;
+  },
+  timesheetFailure: (state, action) => {
+    state.loading = false;
+    state.error = action.payload;
+  },
+  getmyrankRequest: (state) => {
+    state.loading = true;
+  },
+  getmyrankSuccess: (state, action) => {
+    state.loading = false;
+    state.number = action.payload;
+  },
+  getmyrankFailure: (state, action) => {
+    state.loading = false;
+    state.error = action.payload;
+  },
+  clearError: (state) => {
+    state.error = null;
+  },
+  
+  clearMessage: (state) => {
+    state.message = null;
+  },
+});
 export const companyReducer = createReducer ({}, {
   companyRequest: (state) => {
     state.loading = true;
@@ -109,6 +140,7 @@ export const authReducer = createReducer(
       state.error = action.payload;
     },}
   )
+
   export const messageReducer = createReducer(
     {},
     {

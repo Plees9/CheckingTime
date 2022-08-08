@@ -28,10 +28,12 @@ const styles = StyleSheet.create({
   },
   text2: {
     fontSize: 16,
-    marginLeft: 5,
+    marginLeft: 10,
     paddingTop: 5,
     fontFamily: FONTS.vanSansBold,
     color: "#FFFFFF",
+    
+
   },
   text3: {
     fontSize: 16,
@@ -41,9 +43,10 @@ const styles = StyleSheet.create({
   },
   text4: {
     fontSize: 16,
-    marginLeft: "60%",
+   
     paddingTop: 5,
     color: "#eee9f5",
+    alignSelf: "flex-end",
   },
 
   row: {
@@ -69,15 +72,21 @@ const styles = StyleSheet.create({
   icon2: {
     flexDirection: "column",
     height: 180,
-    width: 350,
+    width: 340,
     marginTop: 10,
     backgroundColor: "#FF8C32",
     borderRadius: 25,
+    
+    
   },
   textIcon23: {
     //flex: 1,
     flexDirection: "row",
-    margin: 8,
+    marginTop: 10,
+    marginBottom: 5,
+    marginLeft: 10,
+    marginRight: 10,
+    
   },
 
   row1: {
@@ -99,7 +108,7 @@ const styles = StyleSheet.create({
     flexDirection: "column",
     marginTop: 20,
     width: "90%",
-    height: 350,
+    height: 390,
     backgroundColor: "#FFFFFF",
     marginHorizontal: 20,
     borderRadius: 8,

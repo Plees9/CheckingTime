@@ -141,7 +141,7 @@ const SignIn = () => {
         style={styles.btnForgot}
         onPress={() => navigation.navigate("Quên mật khẩu")}
       >
-        <Text style={styles.text23}>Quên mật khẩu?</Text>
+        <Text style={styles.text23}>    Quên mật khẩu ?</Text>
       </TouchableOpacity>
     </View>
   );
