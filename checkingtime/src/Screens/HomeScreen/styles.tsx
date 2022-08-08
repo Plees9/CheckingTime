@@ -163,6 +163,12 @@ const styles = StyleSheet.create({
     height: 50,
    
   },
+  text_name: {
+    fontSize: 16,
+    marginTop: 6,
+    justifyContent: "center",
+    fontFamily: FONTS.vanSansSemiBold,
+  },
 });
 
 export default styles;

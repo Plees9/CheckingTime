@@ -60,7 +60,8 @@ const HomeScreen = () => {
             rounded source={{ uri: avatar }} 
             size={40}
             ></Avatar>
-            <Text style={styles.text1}> Xin chào, {userName}</Text>
+            <Text style={styles.text1}>Xin chào,</Text>
+            <Text style={styles.text_name}> {userName}</Text>
           </View>
         </TouchableOpacity>
 

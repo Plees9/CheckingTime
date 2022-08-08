@@ -44,8 +44,8 @@ export default class InputModal extends React.Component<InputModalProps> {
       <Modal
         transparent={true}
         visible={this.props.visible}
-        animationType="fade"
-
+        animationType='fade'
+        onRequestClose={this.close}
         
       >
         <View style={styles.container}>
