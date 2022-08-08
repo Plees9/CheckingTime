@@ -23,6 +23,7 @@ import moment from "moment";
 import { Avatar } from "@rneui/themed";
 import { loadUser, updateProfile } from "../../../redux/action";
 import mime from "mime";
+import InputModal from "../../component/InputModal";
 const data_2 = [
   { label: "Nam", value: "Nam" },
   { label: "Nữ", value: "Nữ" },
@@ -31,11 +32,12 @@ const data_2 = [
 const UpdateStaff = () => {
   const { user, loading } = useSelector<any, any>((state) => state.auth);
   const styles = useMemo(() => createStyles(), []);
+  const [visible,setVisible] = useState(false)
   const dispatch = useDispatch();
   const [userName, setUserName] = useState(user.name);
   const [email, setEmail] = useState(user.email);
   const [numberPhone, setNumberPhone] = useState(user.phoneNumber);
-  const [date_Birth, setDate_Birth] = useState(moment(new Date(user.birth)))
+  const [date_Birth, setDate_Birth] = useState(moment())
   const [address, setAddress] = useState(user.address);
   const route = useRoute();
   const [show_birth, setShow_birth] = useState(false);
@@ -43,6 +45,7 @@ const UpdateStaff = () => {
   const [avatar, setAvatar] = useState(user.avatar.url);
   const [value_2, setValue_2] = useState(user.gender);
   const [isFocus_2, setIsFocus_2] = useState(false);
+  const [count, setCount] = useState(0);
   const navigation = useNavigation<any>();
   let { message, error, isUpdated } = useSelector<any, any>((state) => state.message);
   const [country, setCountry] = useState("Unknown");
@@ -50,6 +53,20 @@ const UpdateStaff = () => {
   function showToast() {
     ToastAndroid.show("Đã update thông tin thành công ", ToastAndroid.SHORT);
   }
+  useEffect(() => {
+    if (message) {
+      alert(message);
+      dispatch({ type: "clearMessage" });
+    }   
+    if (error) {
+      alert(error);
+      dispatch({ type: "clearError" });
+      navigation.navigate("UpdateStaff")
+    }
+    if (isUpdated) {
+        dispatch <any>(loadUser());
+    }
+  }, [alert, dispatch, error, isUpdated]);
   useEffect(() => {
     if (route.params) {
       if (route.params.image) {
@@ -69,32 +86,19 @@ const UpdateStaff = () => {
         })
       )
     );
-    const Sdate = moment(date_Birth)
+
     myForm.append("name", userName)
     myForm.append("email", email)
     myForm.append("phoneNumber", numberPhone)
     myForm.append("address", address)
-    myForm.append("birth", String(Sdate))
+    myForm.append("birth", String(date_Birth))
     myForm.append("gender", value_2)
     await dispatch<any>(updateProfile(myForm))
     if (message == "Profile updated successfully") {
         await dispatch <any> (loadUser)
     }
   }
-  useEffect(() => {
-    if (message) {
-      alert(message);
-      dispatch({ type: "clearMessage" });
-    }   
-    if (error) {
-      alert(error);
-      dispatch({ type: "clearError" });
-      navigation.navigate("UpdateStaff")
-    }
-    if (isUpdated) {
-        dispatch <any>(loadUser());
-    }
-  }, [alert, dispatch, error, isUpdated]);
+  
   console.log(isUpdated + "******")
   console.log(message)
   return (
@@ -171,7 +175,7 @@ const UpdateStaff = () => {
         <View style={styles.row1}>
           <Pressable style={styles.row2} onPress={() => setShow_birth(true)}>
             <View style={{ justifyContent: "center", alignContent: "center" }}>
-              <Text>{date_Birth.format("DD/MM/YYYY")}</Text>
+              <Text>{moment(date_Birth).format("DD/MM/YYYY")}</Text>
               {show_birth && (
                 <DateTimePicker
                   value={new Date(date_Birth.format("DD/MM/YYYY"))}
@@ -180,6 +184,7 @@ const UpdateStaff = () => {
                   onChange={(event_birth, selectedDate_birth) => {
                     setDate_Birth(moment(selectedDate_birth));
                     setShow_birth(false);
+                    console.log(selectedDate_birth)
                   }}
                 />
               )}
@@ -240,7 +245,15 @@ const UpdateStaff = () => {
         </TouchableOpacity>
       </LinearGradient>
       {/* </ImageBackground> */}
+      <InputModal visible={visible}
+      title='Xác nhận mật khẩu của bạn'
+      confirmText="Xác nhận"
+      onConfirm={updateHandler}
+      cancelText="Hủy"
+      onCancel={() => setVisible(false)}
+      inputText="Nhập mật khẩu"/>
     </View>
+    
   );
 };
 

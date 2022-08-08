@@ -6,6 +6,7 @@ import {
   useWindowDimensions,
   Alert,
 } from "react-native";
+import moment from "moment";
 import React, { useState, useMemo, useEffect } from "react";
 import PopupModal from "../../component/PopupModal";
 import { Avatar } from "@rneui/themed";
@@ -161,7 +162,7 @@ const Account = () => {
           <Text style={styles.chu}> Thay đổi mật khẩu</Text>
         </TouchableOpacity>
 
-        <TouchableOpacity onPress={logoutHandler}>
+        <TouchableOpacity onPress={() => {setVisible(true)}}>
           <Text style={styles.chu1}> Đăng xuất</Text>
         </TouchableOpacity>
        

@@ -115,16 +115,6 @@ const SignIn = () => {
         
       </View>
 
-      <TouchableOpacity>
-        <View style={styles.checkbox}>
-          <CheckBox
-            title="Lưu mật khẩu"
-            checked={isChecked}
-            onPress={() => setIsChecked(!isChecked)}
-          ></CheckBox>
-        </View>
-      </TouchableOpacity>
-
       <LinearGradient
         start={{ x: 0, y: 0 }}
         end={{ x: 1, y: 0 }}
@@ -141,7 +131,7 @@ const SignIn = () => {
         style={styles.btnForgot}
         onPress={() => navigation.navigate("Quên mật khẩu")}
       >
-        <Text style={styles.text23}>Quên mật khẩu?</Text>
+        <Text style={styles.text23}>    Quên mật khẩu ?</Text>
       </TouchableOpacity>
     </View>
   );

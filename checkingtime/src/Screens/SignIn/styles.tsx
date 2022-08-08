@@ -56,7 +56,7 @@ const createStyles = () =>
       fontSize: 14,
     },
     btnForgot: {
-      alignSelf: "center",
+      alignItems: "center",
       marginTop: 15,
       marginRight: "3%",
       fontWeight: "100",
@@ -64,7 +64,6 @@ const createStyles = () =>
     text23: {
       fontSize: 16,
       fontFamily: FONTS.vanSansMedium,
-      marginRight: "3%",
     },
     checkbox: {
       fontFamily: FONTS.vanSansMedium,
@@ -73,14 +72,14 @@ const createStyles = () =>
     },
     btn2: {
       width: 350,
-      height: "6%",
+      height: 45,
       alignSelf: "center",
       marginHorizontal: 20,
       justifyContent: "center",
       alignItems: "center",
       borderRadius: 10,
       backgroundColor: "#7445f6",
-      marginTop: 15,
+      marginTop: 65
     },
     text22: {
       fontSize: 20,
