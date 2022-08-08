@@ -21,9 +21,11 @@ import { useDispatch, useSelector } from "react-redux";
 import DateTimePicker from "@react-native-community/datetimepicker";
 import moment from "moment";
 import { Avatar } from "@rneui/themed";
+import InputModal from "../../component/InputModal";
+
+
 import { loadUser, updateProfile } from "../../../redux/action";
 import mime from "mime";
-import InputModal from "../../component/InputModal";
 const data_2 = [
   { label: "Nam", value: "Nam" },
   { label: "Nữ", value: "Nữ" },
@@ -40,6 +42,7 @@ const UpdateStaff = () => {
   const [date_Birth, setDate_Birth] = useState(moment())
   const [address, setAddress] = useState(user.address);
   const route = useRoute();
+
   const [show_birth, setShow_birth] = useState(false);
   const [show, setShow] = useState(false);
   const [avatar, setAvatar] = useState(user.avatar.url);
@@ -53,20 +56,6 @@ const UpdateStaff = () => {
   function showToast() {
     ToastAndroid.show("Đã update thông tin thành công ", ToastAndroid.SHORT);
   }
-  useEffect(() => {
-    if (message) {
-      alert(message);
-      dispatch({ type: "clearMessage" });
-    }   
-    if (error) {
-      alert(error);
-      dispatch({ type: "clearError" });
-      navigation.navigate("UpdateStaff")
-    }
-    if (isUpdated) {
-        dispatch <any>(loadUser());
-    }
-  }, [alert, dispatch, error, isUpdated]);
   useEffect(() => {
     if (route.params) {
       if (route.params.image) {
@@ -98,7 +87,20 @@ const UpdateStaff = () => {
         await dispatch <any> (loadUser)
     }
   }
-  
+  useEffect(() => {
+    if (message) {
+      alert(message);
+      dispatch({ type: "clearMessage" });
+    }   
+    if (error) {
+      alert(error);
+      dispatch({ type: "clearError" });
+      navigation.navigate("UpdateStaff")
+    }
+    if (isUpdated) {
+        dispatch <any>(loadUser());
+    }
+  }, [alert, dispatch, error, isUpdated]);
   console.log(isUpdated + "******")
   console.log(message)
   return (
@@ -107,9 +109,8 @@ const UpdateStaff = () => {
         <Avatar
           size={80}
           rounded
-          icon={{ name: "adb", type: "material" }}
-          containerStyle={{ backgroundColor: "orange" }}
           source={{ uri: avatar }}
+          containerStyle={{ backgroundColor: "orange" }}
           onPress={() => navigation.navigate("Đổi ảnh đại diện")}
         >
           <Avatar.Accessory size={24} />
@@ -173,6 +174,9 @@ const UpdateStaff = () => {
 
       <View style={styles.row}>
         <View style={styles.row1}>
+
+
+
           <Pressable style={styles.row2} onPress={() => setShow_birth(true)}>
             <View style={{ justifyContent: "center", alignContent: "center" }}>
               <Text>{moment(date_Birth).format("DD/MM/YYYY")}</Text>
@@ -240,7 +244,7 @@ const UpdateStaff = () => {
         colors={["#f12711", "#f5af19"]}
         style={styles.btn2}
       >
-        <TouchableOpacity onPress={updateHandler}>
+        <TouchableOpacity onPress={() => setVisible(true)}>
           <Text style={styles.text22}>Cập nhật</Text>
         </TouchableOpacity>
       </LinearGradient>

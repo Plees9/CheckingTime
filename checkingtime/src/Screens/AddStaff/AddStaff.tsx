@@ -88,8 +88,8 @@ const AddStaff = () => {
     myForm.append("password", password);
     myForm.append("privilege", value_1);
     
-    const Sdate = moment(date).format("YYYY-MM-DD"); //chu y lam lai ngay thang nam
-    myForm.append("startWorkingDate", Sdate);
+    const Sdate = moment(date); //chu y lam lai ngay thang nam
+    myForm.append("startWorkingDate", String(Sdate));
     myForm.append("contractStatus", value_2);
     myForm.append("typeOfEmployee", value_4);
     myForm.append("role", value_3);
