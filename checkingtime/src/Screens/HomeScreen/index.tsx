@@ -12,6 +12,7 @@ import {
 } from "react-native";
 import { Avatar } from "@rneui/themed";
 import Icon from "react-native-vector-icons/FontAwesome";
+import Icon1 from "react-native-vector-icons/Ionicons";
 import styles from "./styles";
  
 import { loadUser } from "../../../redux/action";
@@ -79,9 +80,9 @@ const HomeScreen = () => {
                 <Text style={styles.text4}>N/A</Text>
               </View>
               <View style={styles.textIcon23}>
-                <Icon
-                  name="dedent"
-                  size={18}
+                <Icon1
+                  name="log-out-outline"
+                  size={20}
                   color="#f49218"
                   style={styles.boder}
                 />

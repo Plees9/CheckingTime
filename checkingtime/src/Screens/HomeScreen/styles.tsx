@@ -69,7 +69,8 @@ const styles = StyleSheet.create({
   icon2: {
     flexDirection: "column",
     height: 180,
-    width: 350,
+    width: "89%",
+    marginHorizontal: 20,
     marginTop: 10,
     backgroundColor: "#FF8C32",
     borderRadius: 25,

@@ -20,9 +20,11 @@ import { Dropdown } from "react-native-element-dropdown";
 import AntDesign from "react-native-vector-icons/AntDesign";
 
 import DateTimePicker from "@react-native-community/datetimepicker";
+import InputModal from "../../component/InputModal";
 import moment from "moment";
 import { Avatar } from "@rneui/themed";
 import { useSelector } from "react-redux";
+import mime from "mime";
 
 const data_privilege = [
   {label: "Người dùng", value: "Người dùng"},
@@ -62,10 +64,9 @@ const UpdateStaff_Admin = () => {
   const [email, setEmail] = useState(user.email);
   const [numberPhone, setNumberPhone] = useState(user.phoneNumber);
   const [date, setDate] = useState(moment());
-  //const [date_Birth, setDate_Birth] = useState(moment(new Date(user.birth)).format("DD/MM/YYYY")); // birthday
-  //const [date, setDate] = useState(moment(new Date(user.startWorkingDate)).format("DD/MM/YYYY")); //start working date
+  
   const [avatar, setAvatar] = useState(user.avatar.url);
-  const [show_birth, setShow_birth] = useState(false);
+  
   const [show, setShow] = useState(false);
   const [value_privilege, setValue_Privilege] = useState(null)
   const [value_contractStatus, setValue_contractStatus] = useState(null);
@@ -75,6 +76,8 @@ const UpdateStaff_Admin = () => {
   const [isFocus_contractStatus, setIsFocus_contractStatus] = useState(false);
   const [isFocus_typeOfEmployee, setIsFocus_typeOfEmployee] = useState(false);
   const [isFocus_role, setIsFocus_role] = useState(false);
+
+  const [visible,setVisible] = useState(false)
 
   const navigation = useNavigation<any>();
 
@@ -113,6 +116,22 @@ const UpdateStaff_Admin = () => {
 
     );
   }
+  const updateHandler = async () => {
+    const myForm = new FormData();
+    myForm.append(
+      "avatar",
+      JSON.parse(
+        JSON.stringify({
+          uri: avatar,
+          type: mime.getType(avatar),
+          name: avatar.split("/").pop(),
+        })
+      )
+    );
+  }
+  
+
+
   return (
     <View style={styles.view}>
       <View style={styles.avatar}>
@@ -174,10 +193,9 @@ const UpdateStaff_Admin = () => {
       <View style={styles.row}>
         <View style={styles.row1}>
         
-
           <Pressable style={styles.row2} onPress={() => setShow(true)}>
             <View style={{ justifyContent: "center", alignContent: "center" }}>
-              <Text>{date.format("DD/MM/YYYY")}</Text>
+              <Text style={styles.textDate}>{date.format("DD/MM/YYYY")}</Text>
               {show && (
                 <DateTimePicker
                   value={new Date(date.format("YYYY/MM/DD"))}
@@ -201,12 +219,14 @@ const UpdateStaff_Admin = () => {
               color="orange"
             />
           </Pressable>
+          
         </View>
 
         {/* Tình trạng hợp đồng, Loại hình nhân viên */}
 
+       
         <View style={styles.khoi_2}>
-          <Dropdown
+        <Dropdown
             style={styles.dropdown_1}
             placeholderStyle={styles.placeholderStyle}
             selectedTextStyle={styles.selectedTextStyle}
@@ -233,8 +253,6 @@ const UpdateStaff_Admin = () => {
               />
             )}
           />
-        </View>
-        <View style={styles.khoi_2}>
           <Dropdown
             style={styles.dropdown_1}
             placeholderStyle={styles.placeholderStyle}
@@ -327,13 +345,22 @@ const UpdateStaff_Admin = () => {
         colors={["#f12711", "#f5af19"]}
         style={styles.btn2}
       >
-        <TouchableOpacity onPress={UpdateInfoConfirm}>
+        <TouchableOpacity onPress={() => setVisible(true)}>
           <Text style={styles.text22}>Cập nhật</Text>
         </TouchableOpacity>
       </LinearGradient>
-      {/* </ImageBackground> */}
+     
+      <InputModal visible={visible}
+      title='Xác nhận mật khẩu của bạn'
+      confirmText="Xác nhận"
+      onConfirm={updateHandler}
+      cancelText="Hủy"
+      onCancel={() => setVisible(false)}
+      inputText="Nhập mật khẩu"/>
     </View>
+
   );
 };
+
 
 export default UpdateStaff_Admin;

@@ -10,7 +10,8 @@
       "rneui",
       "selectbox",
       "Sigin",
-      "tatca"
+      "tatca",
+      "timesheet"
    ],
    "java.configuration.updateBuildConfiguration": "interactive"
 }

@@ -52,7 +52,7 @@ const ListStaff = () => {
       typeOfEmployee_1: typeOfEmployee,
       contractStatus_1: contractStatus,
       date_1: date,
-      date_Birth_1: birth,
+      date_Birth_1: moment(new Date(birth)).format("DD/MM/YYYY"),
       numberPhone_1: numberPhone,
       gender_1: gender,
     },
