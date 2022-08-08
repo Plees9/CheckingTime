@@ -21,7 +21,7 @@ import { useDispatch, useSelector } from "react-redux";
 import DateTimePicker from "@react-native-community/datetimepicker";
 import moment from "moment";
 import { Avatar } from "@rneui/themed";
-
+import InputModal from "../../component/InputModal";
 
 
 import { loadUser, updateProfile } from "../../../redux/action";
@@ -39,7 +39,7 @@ const UpdateStaff = () => {
   const { user, loading } = useSelector<any, any>((state) => state.auth);
   
 
-
+  const [visible,setVisible] = useState(false)
   const dispatch = useDispatch();
   const [userName, setUserName] = useState(user.name);
   const [email, setEmail] = useState(user.email);
@@ -87,9 +87,6 @@ const UpdateStaff = () => {
     myForm.append("birth", String(Sdate))
     myForm.append("gender", value_2)
     await dispatch<any>(updateProfile(myForm))
-    if (message == "Profile updated successfully") {
-        await dispatch <any> (loadUser)
-    }
   }
   useEffect(() => {
     if (message) {
@@ -102,8 +99,8 @@ const UpdateStaff = () => {
       navigation.navigate("UpdateStaff")
     }
     if (isUpdated) {
-        dispatch <any>(loadUser());
-    }
+      dispatch <any>(loadUser());    
+   }
   }, [alert, dispatch, error, isUpdated]);
   console.log(isUpdated + "******")
   console.log(message)
@@ -247,11 +244,18 @@ const UpdateStaff = () => {
         colors={["#f12711", "#f5af19"]}
         style={styles.btn2}
       >
-        <TouchableOpacity onPress={updateHandler}>
+        <TouchableOpacity onPress={() => setVisible(true)}>
           <Text style={styles.text22}>Cập nhật</Text>
         </TouchableOpacity>
       </LinearGradient>
       {/* </ImageBackground> */}
+      <InputModal visible={visible}
+      title='Xác nhận mật khẩu của bạn'
+      confirmText="Xác nhận"
+      onConfirm={updateHandler}
+      cancelText="Hủy"
+      onCancel={() => setVisible(false)}
+      inputText="Nhập mật khẩu"/>
     </View>
   );
 };
