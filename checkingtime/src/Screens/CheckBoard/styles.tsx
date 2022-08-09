@@ -167,6 +167,7 @@ const createStyles = () =>
       marginTop: "3%",
     },
     userID_1: {
+      marginLeft: "3%",
       width: "15%",
       alignItems: "center",
       alignSelf: "center",
@@ -176,7 +177,7 @@ const createStyles = () =>
       alignSelf: "center",
     },
     Board_1: {
-      width: "18%",
+      width: "12%",
       alignSelf: "center",
     },
   });

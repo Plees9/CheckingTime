@@ -1,4 +1,4 @@
-import { View, Text, Image } from "react-native";
+import { View, Text, Image, SafeAreaView } from "react-native";
 import React, { useMemo, useState } from "react";
 
 import Icon from "react-native-vector-icons/FontAwesome";
@@ -23,6 +23,18 @@ const BangCong_NhanVien = () => {
   const [data, setData] = useState([
     {
       id: 1,
+      name_1: userName,
+      userId_1: userId,
+      number_1: number,
+    },
+    {
+      id: 2,
+      name_1: userName,
+      userId_1: userId,
+      number_1: number,
+    },
+    {
+      id: 3,
       name_1: userName,
       userId_1: userId,
       number_1: number,
@@ -57,8 +69,13 @@ const BangCong_NhanVien = () => {
             Chọn nhân viên để xem bảng công tương ứng
           </Text>
         </View>
-
-        <ItemRender />
+        <SafeAreaView>
+          <FlatList
+            data={data}
+            renderItem={ItemRender}
+            keyExtractor={(item) => item.id.toString()}
+          ></FlatList>
+        </SafeAreaView>
       </View>
     </View>
   );

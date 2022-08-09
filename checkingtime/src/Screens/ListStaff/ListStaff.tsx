@@ -16,34 +16,38 @@ import { Avatar } from "@rneui/themed";
 import createStyles from "./styles";
 import { useNavigation } from "@react-navigation/native";
 import { useSelector } from "react-redux";
-import moment  from "moment";
+import moment from "moment";
 
 const ListStaff = () => {
   const styles = useMemo(() => createStyles(), []);
   const navigation = useNavigation<any>();
 
-  const { user, loading } = useSelector<any, any>(state => state.auth)
+  const { user, loading } = useSelector<any, any>((state) => state.auth);
 
   const [userName, setUserName] = useState(user.name); //name
   const [role, setRole] = useState(user.role); //vitri
   const [userId, setUserId] = useState(user.userId); //MaNV
   const [typeOfEmployee, setTypeOfEmployee] = useState(user.typeOfEmployee); //Loaihinhnhansu
   const [contractStatus, setContractStatus] = useState(user.contractStatus); //trangthaihopdong
-  const [date, setDate] = useState(moment(new Date(user.startWorkingDate)).format("DD/MM/YYYY")); //ngayvaolam
+  const [date, setDate] = useState(
+    moment(new Date(user.startWorkingDate)).format("DD/MM/YYYY")
+  ); //ngayvaolam
   const [birth, setDate_Birth] = useState(user.birth); //ngaysinh
   const [numberPhone, setNumberPhone] = useState(user.phoneNumber); //sodienthoai
   const [gender, setGender] = useState(user.gender); //gioitinh
   const [avatar, setAvatar] = useState(user.avatar.url);
 
   const dialCall = (numberPhone_1: any) => {
-    let phoneNumber = '';
-    if (Platform.OS === 'android') { phoneNumber = `tel:${numberPhone_1}`; }
-    else {phoneNumber = `telprompt:${numberPhone_1}`; }
+    let phoneNumber = "";
+    if (Platform.OS === "android") {
+      phoneNumber = `tel:${numberPhone_1}`;
+    } else {
+      phoneNumber = `telprompt:${numberPhone_1}`;
+    }
     Linking.openURL(phoneNumber);
- };
+  };
 
   const [data, setData] = useState([
-   
     {
       id: 1,
       name_1: userName,
@@ -56,8 +60,6 @@ const ListStaff = () => {
       numberPhone_1: numberPhone,
       gender_1: gender,
     },
-   
-   
   ]);
 
   const NumberPhone = (
@@ -71,7 +73,6 @@ const ListStaff = () => {
     date_Birth_1: undefined,
     numberPhone_1: number,
     gender_1: any
-    
   ) => {
     Alert.alert(
       "Số điện thoại của nhân viên " + name_1.toUpperCase(),
@@ -86,8 +87,7 @@ const ListStaff = () => {
           text: "Call",
           onPress: () => {
             dialCall(numberPhone_1);
-          }
-          
+          },
         },
       ]
     );
@@ -124,7 +124,16 @@ const ListStaff = () => {
     );
   };
   const ItemRender = ({
-    id,name_1,role_1,userID_1,typeOfEmployee_1,contractStatus_1,date_1,date_Birth_1,numberPhone_1,gender_1,
+    id,
+    name_1,
+    role_1,
+    userID_1,
+    typeOfEmployee_1,
+    contractStatus_1,
+    date_1,
+    date_Birth_1,
+    numberPhone_1,
+    gender_1,
   }) => (
     <View style={{ padding: 10, flex: 1 }}>
       {/* nhan vien  */}
@@ -133,11 +142,7 @@ const ListStaff = () => {
         <View style={styles.view2}>
           <View style={styles.hang}>
             <View style={styles.avt}>
-              <Avatar
-                size={50}
-                rounded
-                source={{ uri: avatar }}
-              ></Avatar>
+              <Avatar size={50} rounded source={{ uri: avatar }}></Avatar>
             </View>
 
             <View style={styles.khoiUser}>
@@ -169,7 +174,6 @@ const ListStaff = () => {
               <Text style={styles.view3}>{userID_1}</Text>
               <Text style={styles.view3_1}>{gender_1}</Text>
               <Text style={styles.view3_2}>{date_Birth_1}</Text>
-              
             </View>
             <Icon
               name="trash"
@@ -190,7 +194,14 @@ const ListStaff = () => {
                 )
               }
             ></Icon>
-            <Icon name="edit" size={25} style={styles.trash}onPress={() => navigation.navigate("Cập nhật thông tin nhân viên _Admin")} ></Icon>
+            <Icon
+              name="edit"
+              size={25}
+              style={styles.trash}
+              onPress={() =>
+                navigation.navigate("Cập nhật thông tin nhân viên _Admin")
+              }
+            ></Icon>
           </View>
 
           <View style={styles.hang3}>
@@ -202,7 +213,6 @@ const ListStaff = () => {
             <View style={styles.cot1}>
               <Text style={styles.textInfo}>Trạng thái hợp đồng</Text>
               <Text>{contractStatus_1}</Text>
-              
             </View>
           </View>
           <View style={styles.kengang} />

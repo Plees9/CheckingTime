@@ -12,8 +12,7 @@ import React, { useMemo } from "react";
 import Icon from "react-native-vector-icons/FontAwesome";
 import { TextInput } from "react-native-gesture-handler";
 
-
-import { Table, Row, Rows, Col } from 'react-native-table-component';
+import { Table, Row, Rows, Col } from "react-native-table-component";
 import createStyles from "./styles";
 
 const CONTENT = {
