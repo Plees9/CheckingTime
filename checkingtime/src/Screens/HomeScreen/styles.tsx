@@ -6,6 +6,7 @@ const styles = StyleSheet.create({
     flex: 1,
     paddingTop: StatusBar.currentHeight,
     backgroundColor: "#f2f2f2",
+    
   },
 
   text: {
@@ -24,11 +25,10 @@ const styles = StyleSheet.create({
   },
   textcolor: {
     fontFamily: FONTS.vanSansBold,
-    
   },
   text2: {
     fontSize: 16,
-    marginLeft: 5,
+    marginLeft: 10,
     paddingTop: 5,
     fontFamily: FONTS.vanSansBold,
     color: "#FFFFFF",
@@ -41,9 +41,10 @@ const styles = StyleSheet.create({
   },
   text4: {
     fontSize: 16,
-    marginLeft: "60%",
+
     paddingTop: 5,
     color: "#eee9f5",
+    alignSelf: "flex-end",
   },
 
   row: {
@@ -57,7 +58,6 @@ const styles = StyleSheet.create({
     backgroundColor: "#eee9f5",
     // alignItems: "center",
     // justifyContent: "center",
-    
   },
   icon1: {
     width: 28,
@@ -69,8 +69,7 @@ const styles = StyleSheet.create({
   icon2: {
     flexDirection: "column",
     height: 180,
-    width: "89%",
-    marginHorizontal: 20,
+    width: "94%",
     marginTop: 10,
     backgroundColor: "#FF8C32",
     borderRadius: 25,
@@ -78,13 +77,20 @@ const styles = StyleSheet.create({
   textIcon23: {
     //flex: 1,
     flexDirection: "row",
-    margin: 8,
+    marginTop: 10,
+    marginBottom: 5,
+    marginLeft: 10,
+    marginRight: 10,
   },
 
   row1: {
     flexDirection: "row",
     justifyContent: "space-around",
-    marginTop: 10,
+    width: "99%",
+    // backgroundColor: "red",
+    marginTop: "-2%",
+    height: 55,
+    //alignItems:'center'
   },
   textInfo: {
     fontFamily: FONTS.vanSansMedium,
@@ -99,11 +105,12 @@ const styles = StyleSheet.create({
   view: {
     flexDirection: "column",
     marginTop: 20,
-    width: "90%",
-    height: 350,
+    width: "94%",
+    height: "100%",
     backgroundColor: "#FFFFFF",
-    marginHorizontal: 20,
-    borderRadius: 8,
+    marginHorizontal: 10,
+    borderRadius: 10,
+    
   },
   btn: {
     flexDirection: "row",
@@ -163,6 +170,32 @@ const styles = StyleSheet.create({
     width: 150,
     height: 50,
    
+  },
+  btnFab: {
+    marginVertical: "-3.5%",
+    
+  },
+  text_name: {
+    fontSize: 16,
+    marginTop: 6,
+    justifyContent: "center",
+    fontFamily: FONTS.vanSansSemiBold,
+  },
+  avt2: {
+    width: "15%",
+    alignItems: "center",
+    alignSelf: "center",
+  },
+  name2: {
+    width: "60%",
+    fontFamily: FONTS.vanSansSemiBold,
+    alignSelf: "center",
+  },
+  checkin2: {
+    width: "18%",
+    //fontFamily: FONTS.vanSansMedium,
+    color: "#FF8C32",
+    alignSelf: "center",
   },
 });
 
