@@ -124,16 +124,7 @@ const ListStaff = () => {
     );
   };
   const ItemRender = ({
-    id,
-    name_1,
-    role_1,
-    userID_1,
-    typeOfEmployee_1,
-    contractStatus_1,
-    date_1,
-    date_Birth_1,
-    numberPhone_1,
-    gender_1,
+    id,name_1,role_1,userID_1,typeOfEmployee_1,contractStatus_1,date_1,date_Birth_1,numberPhone_1,gender_1,
   }) => (
     <View style={{ padding: 10, flex: 1 }}>
       {/* nhan vien  */}

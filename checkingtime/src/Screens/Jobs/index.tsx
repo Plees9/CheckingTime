@@ -25,10 +25,10 @@ const Jobs = () => {
           onPress={() => navigation.navigate("Bảng chấm công")}
         >
           <View style={{ alignContent: "center" }}>
-            <IconButton icon="calendar-account" color="#f49218" size={50} />
+            <IconButton icon="clipboard-list" color="#f49218" size={50} />
           </View>
           <View style={styles.viewText}>
-            <Text style={styles.text1}>Bảng công</Text>
+            <Text style={styles.text1}>Công việc cần làm</Text>
           </View>
         </TouchableOpacity>
 
