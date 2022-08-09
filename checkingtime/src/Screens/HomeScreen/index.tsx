@@ -1,5 +1,5 @@
 import { useNavigation } from "@react-navigation/native";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import {
   RefreshControl,
   ScrollView,
@@ -16,25 +16,38 @@ import Icon1 from "react-native-vector-icons/Ionicons"
 import styles from "./styles";
 import TimekeepModal from "../../component/TimekeepModal";
 import { loadUser } from "../../../redux/action";
-
+import { AnimatedCircularProgress } from "react-native-circular-progress";
 import { FAB, Input } from "react-native-elements";
 import { useDispatch, useSelector } from "react-redux";
-import { loadCompany } from "../../../redux/action";
+import { getmyrank,  loadTimesheet,  loadCompany } from "../../../redux/action";
 const wait = (timeout: number | undefined) => {
   return new Promise((resolve) => setTimeout(resolve, timeout));
 };
 
 const HomeScreen = () => {
+  const dispatch = useDispatch()
+  useEffect(() => {
+    dispatch<any>(loadCompany())
+    dispatch<any>(loadTimesheet())
+    dispatch<any>(getmyrank())
+}, [dispatch])
   const navigation = useNavigation<any>();
   const [showTimekeep, setShowTimekeep] = useState(false);
   const { user } = useSelector<any, any>((state) => state.auth);
-  // const { timesheet, number } = useSelector<any, any>(
-  //   (state) => state.timesheet
-  // );
+  const { timesheet, number } = useSelector<any, any>((state) => state.timesheet)
+  const maxPoint = 25;
+  const currentProcess = 20.5;
+  let checkout 
+  let checkin
+  let numberstr
+  if (typeof timesheet !== 'undefined' && typeof number !== 'number' && timesheet !== null && number !== null) {
+    checkin = timesheet.Object.checkinTime;
+    checkout = timesheet.Object.checkoutTime;
+    numberstr = number.number
+}
   const [userName, setUserName] = useState(user.name);
   const [avatar, loading] = useState(user.avatar.url);
   const [refreshing, setRefreshing] = React.useState(false);
-  const dispatch = useDispatch();
   const companyHandler = async () => {
     navigation.navigate("Thông tin Công Ty");
   };
@@ -91,7 +104,7 @@ const HomeScreen = () => {
                   <Text style={styles.text2}>Checkin: </Text>
                 </View>
                 <View style={{ justifyContent: "flex-end", flex: 1 }}>
-                  {/* <Text style={styles.text4}>{timesheet.Object.checkinTime}</Text> */}
+                  <Text style={styles.text4}>{checkin}</Text>
                 </View>
               </View>
               <View style={styles.textIcon23}>
@@ -112,7 +125,7 @@ const HomeScreen = () => {
                   <Text style={styles.text2}>Checkout: </Text>
                 </View>
                 <View style={{ justifyContent: "flex-end", flex: 1 }}>
-                  {/* <Text style={styles.text4}>{timesheet.Object.checkoutTime}</Text> */}
+                  <Text style={styles.text4}>{checkout}</Text>
                 </View>
               </View>
 
@@ -134,7 +147,7 @@ const HomeScreen = () => {
                   <Text style={styles.text2}>Xếp hạng: </Text>
                 </View>
                 <View style={{ justifyContent: "flex-end", flex: 1 }}>
-                  {/* <Text style={styles.text4}>{number.number}</Text> */}
+                  <Text style={styles.text4}>{numberstr}</Text>
                 </View>
               </View>
             </View>
@@ -156,7 +169,15 @@ const HomeScreen = () => {
           <TouchableOpacity onPress={() => setShowTimekeep(true)}>
             <View style={styles.btn1}>
               <Text style={styles.text6}> Công Tháng</Text>
-              <View style={styles.vongtron}></View>
+              <View style={styles.vongtron}><AnimatedCircularProgress
+              size={35}
+              width={4}
+              fill={Math.round((currentProcess/maxPoint) * 100)}
+              tintColor="#00e0ff"
+              backgroundColor="#3d5875"
+            />
+              
+            </View>
             </View>
           </TouchableOpacity>
         </View>
@@ -211,16 +232,6 @@ const HomeScreen = () => {
         </View>
       </ScrollView>
       <FAB
-        // onPress={() => {
-        //   setIsCheckin(!isCheckin);
-        //   {
-        //     isCheckin == true
-        //       ? Alert.alert("Checkin thành công")
-        //       : Alert.alert("Checkout thành công");
-        //   }
-        // }}
-        // title={isCheckin ? "Checkin" : "Checkout"}
-        // color={isCheckin ? "#FF8C32" : "#F55353"}
         title="Chấm công"
         placement="right"
         size="small"
@@ -230,13 +241,14 @@ const HomeScreen = () => {
       />
       <TimekeepModal
       visible={showTimekeep}
+      maxPoint={maxPoint}
       title='Bảng công'
-      fill={25}
+      fill={currentProcess}
       cancelText='Đóng'
       onCancel={() => setShowTimekeep(false)}
       size={70}
       process={10}
-      width={3}/>
+      width={4}/>
     </View>
   );
 };

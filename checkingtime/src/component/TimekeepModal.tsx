@@ -21,17 +21,19 @@ interface TimekeepModalProps {
   size: number;
   width: number;
   fill: number;
+  maxPoint: number;
   process: number;
   cancelText: string;
   onCancel: () => void;
 }
-const MAX_POINTS = 100;
+
 export default class TimekeepModal extends React.Component<TimekeepModalProps> {
   constructor(props: any) {
     super(props);
     this.state = {
       visible: props.visible,
       title: props.title,
+      maxPoint: props.maxPoint,
       fill: props.fill,
       onCancel: props.onCancel,
       size: props.size,
@@ -58,11 +60,11 @@ export default class TimekeepModal extends React.Component<TimekeepModalProps> {
             <AnimatedCircularProgress
               size={this.props.size}
               width={this.props.width}
-              fill={this.props.fill}
+              fill={Math.round((this.props.fill/this.props.maxPoint) * 100)}
               tintColor="#00e0ff"
               backgroundColor="#3d5875"
             >
-              {fill => <Text style={styles.points}>{Math.round((MAX_POINTS * fill) / 100)}</Text>}
+              {fill => <Text style={styles.points}>{this.props.fill}/{this.props.maxPoint}</Text>}
             </AnimatedCircularProgress>
             <View style={styles.box_button}>
               <View style={styles.cancel_button}>
@@ -97,7 +99,7 @@ const styles = StyleSheet.create({
   points: {
     textAlign: 'center',
     color: '#7591af',
-    fontSize: 25,
+    fontSize: 17,
     fontWeight: '100',
   },
   confirm_button: {
