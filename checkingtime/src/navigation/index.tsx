@@ -135,9 +135,7 @@ const SNavigation = () => {
       dispatch<any>(loadTimesheet())
       dispatch<any>(getmyrank())
   }, [dispatch])
-
-
-  const { isAuthenticated, loading } = useSelector<any, any>(state => state.auth)
+  const { isAuthenticated, loading, user } = useSelector<any, any>(state => state.auth)
   return (
     loading ? <Loader /> : 
     <NavigationContainer>

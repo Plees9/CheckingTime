@@ -1,5 +1,5 @@
 import { useNavigation } from "@react-navigation/native";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import {
   RefreshControl,
   ScrollView,
@@ -19,21 +19,28 @@ import { loadUser } from "../../../redux/action";
 
 import { FAB, Input } from "react-native-elements";
 import { useDispatch, useSelector } from "react-redux";
-import { loadCompany } from "../../../redux/action";
+import { getmyrank,  loadTimesheet,  loadCompany } from "../../../redux/action";
 const wait = (timeout: number | undefined) => {
   return new Promise((resolve) => setTimeout(resolve, timeout));
 };
 
 const HomeScreen = () => {
+  const dispatch = useDispatch()
   const navigation = useNavigation<any>();
   const { user } = useSelector<any, any>((state) => state.auth);
-  const { timesheet, number } = useSelector<any, any>(
-    (state) => state.timesheet
-  );
+  const { timesheet, number } = useSelector<any, any>((state) => state.timesheet)
+  let checkout 
+  let checkin
+  let numberstr
+  if (typeof timesheet !== 'undefined' && typeof number !== 'number') {
+    checkin = timesheet.Object.checkoutTime;
+    checkout = timesheet.Object.checkinTime;
+    numberstr = number.number
+}
+
   const [userName, setUserName] = useState(user.name);
   const [avatar, loading] = useState(user.avatar.url);
   const [refreshing, setRefreshing] = React.useState(false);
-  const dispatch = useDispatch();
   const companyHandler = async () => {
     navigation.navigate("Thông tin Công Ty");
   };
@@ -86,7 +93,7 @@ const HomeScreen = () => {
                   <Text style={styles.text2}>Checkin: </Text>
                 </View>
                 <View style={{ justifyContent: "flex-end", flex: 1 }}>
-                  <Text style={styles.text4}>{timesheet.Object.checkinTime}</Text>
+                  <Text style={styles.text4}>{checkin}</Text>
                 </View>
               </View>
               <View style={styles.textIcon23}>
@@ -107,7 +114,7 @@ const HomeScreen = () => {
                   <Text style={styles.text2}>Checkout: </Text>
                 </View>
                 <View style={{ justifyContent: "flex-end", flex: 1 }}>
-                  <Text style={styles.text4}>{timesheet.Object.checkoutTime}</Text>
+                  <Text style={styles.text4}>{checkout}</Text>
                 </View>
               </View>
 
@@ -129,7 +136,7 @@ const HomeScreen = () => {
                   <Text style={styles.text2}>Xếp hạng: </Text>
                 </View>
                 <View style={{ justifyContent: "flex-end", flex: 1 }}>
-                  <Text style={styles.text4}>{number.number}</Text>
+                  <Text style={styles.text4}>{numberstr}</Text>
                 </View>
               </View>
             </View>
