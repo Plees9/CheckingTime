@@ -5,13 +5,15 @@
       "datetimepicker",
       "Doiqua",
       "fontawesome",
+      "Nhan",
       "Nhat",
       "phòng",
       "rneui",
       "selectbox",
       "Sigin",
       "tatca",
-      "timesheet"
+      "timesheet",
+      "Vien"
    ],
    "java.configuration.updateBuildConfiguration": "interactive"
 }

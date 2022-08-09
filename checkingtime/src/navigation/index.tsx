@@ -25,6 +25,8 @@ import AddStaff from '../Screens/AddStaff/AddStaff';
 import UpdateStaff from '../Screens/UpdateInfoStaff/UpdateStaff';
 import UpdatePassword from "../Screens/UpdatePassword";
 import FDontu from "../Screens/Bolocdontu/FDontu";
+import BangCong_Navigation from "./BangCong";
+
 
 import UpdateStaff_Admin from "../Screens/UpdateInFoStaff_NV/UpdateInfoStaff_NV";
 
@@ -165,6 +167,11 @@ const SNavigation = () => {
         <Stack.Screen
           name="Đơn từ"
           component={TabDonTusNavigation}
+          options={{ headerShown: true }}
+        />
+        <Stack.Screen
+          name="Bảng chấm công"
+          component={BangCong_Navigation}
           options={{ headerShown: true }}
         />
         <Stack.Screen

@@ -27,7 +27,7 @@ const Jobs = () => {
         style={{ backgroundColor: "#f2f2f2", margin: 10,  borderRadius: 20 }}>
         <TouchableOpacity
           style={styles.Touch1}
-          onPress={() => Alert.alert("Simple Button pressed")}
+          onPress={() => navigation.navigate("Bảng chấm công")}
         >
           <View style={{ alignContent: "center" }}>
             <IconButton icon="calendar-account" color="#f49218" size={50} />
