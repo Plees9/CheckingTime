@@ -15,7 +15,7 @@ import Icon from "react-native-vector-icons/FontAwesome";
 import Icon1 from "react-native-vector-icons/Ionicons"
 import styles from "./styles";
 
-import { loadUser } from "../../../redux/action";
+import { checking, loadUser } from "../../../redux/action";
 
 import { FAB, Input } from "react-native-elements";
 import { useDispatch, useSelector } from "react-redux";
@@ -26,6 +26,9 @@ const wait = (timeout: number | undefined) => {
 
 const HomeScreen = () => {
   const dispatch = useDispatch()
+  let checkout 
+  let checkin
+  let numberstr
   useEffect(() => {
     dispatch<any>(loadCompany())
     dispatch<any>(loadTimesheet())
@@ -34,10 +37,8 @@ const HomeScreen = () => {
   const navigation = useNavigation<any>();
   const { user } = useSelector<any, any>((state) => state.auth);
   const { timesheet, number } = useSelector<any, any>((state) => state.timesheet)
-  let checkout 
-  let checkin
-  let numberstr
-  if (typeof timesheet !== 'undefined' && typeof number !== 'number' && timesheet !== null && number !== null) {
+ 
+  if (typeof timesheet !== 'undefined' && typeof number !== 'undefined' && timesheet !== null && number !== null) {
     checkin = timesheet.Object.checkinTime;
     checkout = timesheet.Object.checkoutTime;
     numberstr = number.number
@@ -49,7 +50,9 @@ const HomeScreen = () => {
   const companyHandler = async () => {
     navigation.navigate("Thông tin Công Ty");
   };
-  const pressHandler = () => {
+  const pressHandler = async () => {
+    await dispatch<any>(checking())
+    dispatch<any>(loadTimesheet())
     ToastAndroid.show(
       "Bạn" + " " + userName + " " + "đã chấm công!",
       ToastAndroid.SHORT

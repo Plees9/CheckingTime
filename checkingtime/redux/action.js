@@ -1,6 +1,16 @@
 import axios from "axios";
 
 const serverUrl = "https://timekeeper-01.herokuapp.com/api/v1";
+export const checking = () => async (dispatch) => {
+  try {
+    dispatch({ type: "checkingRequest" });
+
+    const { data } = await axios.post(`${serverUrl}/user/checking`);
+    dispatch({ type: "checkingSuccess", payload: data.message });
+  } catch (error) {
+    dispatch({ type: "checkingFailure", payload: error.response.data.message });
+  }
+}
 export const updateAvatar = (formData) => async (dispatch) => {
   try {
     dispatch({ type: "updateAvatarRequest" });
