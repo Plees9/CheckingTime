@@ -27,9 +27,9 @@ const wait = (timeout: number | undefined) => {
 const HomeScreen = () => {
   const navigation = useNavigation<any>();
   const { user } = useSelector<any, any>((state) => state.auth);
-  const { timesheet, number } = useSelector<any, any>(
-    (state) => state.timesheet
-  );
+  // // const { timesheet, number } = useSelector<any, any>(
+  // //   (state) => state.timesheet
+  // );
   const [userName, setUserName] = useState(user.name);
   const [avatar, loading] = useState(user.avatar.url);
   const [refreshing, setRefreshing] = React.useState(false);
@@ -64,7 +64,7 @@ const HomeScreen = () => {
           </View>
         </TouchableOpacity>
 
-        <View style={{ alignItems: "center"  }}>
+        <View style={{ alignItems: "center" }}>
           <View style={styles.icon2}>
             <Text style={styles.text}>Nhật ký hôm nay</Text>
             <View>
@@ -86,7 +86,7 @@ const HomeScreen = () => {
                   <Text style={styles.text2}>Checkin: </Text>
                 </View>
                 <View style={{ justifyContent: "flex-end", flex: 1 }}>
-                  <Text style={styles.text4}>{timesheet.Object.checkinTime}</Text>
+                  {/* <Text style={styles.text4}>{timesheet.Object.checkinTime}</Text> */}
                 </View>
               </View>
               <View style={styles.textIcon23}>
@@ -107,7 +107,7 @@ const HomeScreen = () => {
                   <Text style={styles.text2}>Checkout: </Text>
                 </View>
                 <View style={{ justifyContent: "flex-end", flex: 1 }}>
-                  <Text style={styles.text4}>{timesheet.Object.checkoutTime}</Text>
+                  {/* <Text style={styles.text4}>{timesheet.Object.checkoutTime}</Text> */}
                 </View>
               </View>
 
@@ -129,7 +129,7 @@ const HomeScreen = () => {
                   <Text style={styles.text2}>Xếp hạng: </Text>
                 </View>
                 <View style={{ justifyContent: "flex-end", flex: 1 }}>
-                  <Text style={styles.text4}>{number.number}</Text>
+                  {/* <Text style={styles.text4}>{number.number}</Text> */}
                 </View>
               </View>
             </View>
@@ -158,29 +158,29 @@ const HomeScreen = () => {
 
         <View style={styles.view}>
           <Text style={styles.text7}>Top 5 hôm nay</Text>
-          
+
           <View style={styles.row1}>
             <Avatar rounded source={{ uri: avatar }} size={40} />
             <Text style={styles.textInfo}>userName</Text>
             <Text style={styles.textInfo}> Time checkin</Text>
           </View>
           <View style={styles.row1}>
-          <Avatar rounded source={{ uri: avatar }} size={40} />
+            <Avatar rounded source={{ uri: avatar }} size={40} />
             <Text style={styles.textInfo}>userName</Text>
             <Text style={styles.textInfo}> Time checkin</Text>
           </View>
           <View style={styles.row1}>
-          <Avatar rounded source={{ uri: avatar }} size={40} />
+            <Avatar rounded source={{ uri: avatar }} size={40} />
             <Text style={styles.textInfo}>userName</Text>
             <Text style={styles.textInfo}> Time checkin</Text>
           </View>
           <View style={styles.row1}>
-          <Avatar rounded source={{ uri: avatar }} size={40} />
+            <Avatar rounded source={{ uri: avatar }} size={40} />
             <Text style={styles.textInfo}>userName</Text>
             <Text style={styles.textInfo}> Time checkin</Text>
           </View>
           <View style={styles.row1}>
-          <Avatar rounded source={{ uri: avatar }} size={40} />
+            <Avatar rounded source={{ uri: avatar }} size={40} />
             <Text style={styles.textInfo}>userName</Text>
             <Text style={styles.textInfo}> Time checkin</Text>
           </View>
