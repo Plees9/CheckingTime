@@ -14,9 +14,10 @@ import { Avatar } from "@rneui/themed";
 import Icon from "react-native-vector-icons/FontAwesome";
 import Icon1 from "react-native-vector-icons/Ionicons"
 import styles from "./styles";
+import TimekeepModal from "../../component/TimekeepModal";
+import { AnimatedCircularProgress } from "react-native-circular-progress";
 
-import { loadUser } from "../../../redux/action";
-
+import { checking, loadUser } from "../../../redux/action";
 import { FAB, Input } from "react-native-elements";
 import { useDispatch, useSelector } from "react-redux";
 import { getmyrank,  loadTimesheet,  loadCompany } from "../../../redux/action";
