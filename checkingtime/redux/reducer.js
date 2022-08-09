@@ -1,5 +1,16 @@
 import { createReducer } from "@reduxjs/toolkit";
 export const timesheetReducer = createReducer({}, {
+  rankRequest: (state) => {
+    state.loading = true;
+  },
+  rankSuccess: (state, action) => {
+    state.loading = false;
+    state.array = action.payload;
+  },
+  rankFailure: (state, action) => {
+    state.loading = false;
+    state.error = action.payload;
+  },
   checkingRequest: (state) => {
     state.loading = true;
   },
