@@ -14,7 +14,7 @@ import { Avatar } from "@rneui/themed";
 import Icon from "react-native-vector-icons/FontAwesome";
 import Icon1 from "react-native-vector-icons/Ionicons"
 import styles from "./styles";
-
+import TimekeepModal from "../../component/TimekeepModal";
 import { loadUser } from "../../../redux/action";
 
 import { FAB, Input } from "react-native-elements";
@@ -26,10 +26,11 @@ const wait = (timeout: number | undefined) => {
 
 const HomeScreen = () => {
   const navigation = useNavigation<any>();
+  const [showTimekeep, setShowTimekeep] = useState(false);
   const { user } = useSelector<any, any>((state) => state.auth);
-  const { timesheet, number } = useSelector<any, any>(
-    (state) => state.timesheet
-  );
+  // const { timesheet, number } = useSelector<any, any>(
+  //   (state) => state.timesheet
+  // );
   const [userName, setUserName] = useState(user.name);
   const [avatar, loading] = useState(user.avatar.url);
   const [refreshing, setRefreshing] = React.useState(false);
@@ -90,7 +91,7 @@ const HomeScreen = () => {
                   <Text style={styles.text2}>Checkin: </Text>
                 </View>
                 <View style={{ justifyContent: "flex-end", flex: 1 }}>
-                  <Text style={styles.text4}>{timesheet.Object.checkinTime}</Text>
+                  {/* <Text style={styles.text4}>{timesheet.Object.checkinTime}</Text> */}
                 </View>
               </View>
               <View style={styles.textIcon23}>
@@ -111,7 +112,7 @@ const HomeScreen = () => {
                   <Text style={styles.text2}>Checkout: </Text>
                 </View>
                 <View style={{ justifyContent: "flex-end", flex: 1 }}>
-                  <Text style={styles.text4}>{timesheet.Object.checkoutTime}</Text>
+                  {/* <Text style={styles.text4}>{timesheet.Object.checkoutTime}</Text> */}
                 </View>
               </View>
 
@@ -133,7 +134,7 @@ const HomeScreen = () => {
                   <Text style={styles.text2}>Xếp hạng: </Text>
                 </View>
                 <View style={{ justifyContent: "flex-end", flex: 1 }}>
-                  <Text style={styles.text4}>{number.number}</Text>
+                  {/* <Text style={styles.text4}>{number.number}</Text> */}
                 </View>
               </View>
             </View>
@@ -152,7 +153,7 @@ const HomeScreen = () => {
               <Text style={styles.text5}>Thông tin Công Ty</Text>
             </View>
           </TouchableOpacity>
-          <TouchableOpacity onPress={() => Alert.alert("image clicked")}>
+          <TouchableOpacity onPress={() => setShowTimekeep(true)}>
             <View style={styles.btn1}>
               <Text style={styles.text6}> Công Tháng</Text>
               <View style={styles.vongtron}></View>
@@ -227,6 +228,15 @@ const HomeScreen = () => {
         buttonStyle={styles.fab}
         onPress={pressHandler}
       />
+      <TimekeepModal
+      visible={showTimekeep}
+      title='Bảng công'
+      fill={25}
+      cancelText='Đóng'
+      onCancel={() => setShowTimekeep(false)}
+      size={70}
+      process={10}
+      width={3}/>
     </View>
   );
 };
