@@ -12,7 +12,7 @@ import Icon from "react-native-vector-icons/FontAwesome";
 import { CheckBox } from "@rneui/themed";
 import { useNavigation } from "@react-navigation/native";
 import { useDispatch, useSelector } from "react-redux";
-import { login } from "../../../redux/action";
+import { getmyrank, loadCompany, loadTimesheet, login } from "../../../redux/action";
 import { LinearGradient } from "expo-linear-gradient";
 import GradientText from "../../component/GradientText";
 import Icon_1 from "react-native-vector-icons/Ionicons";
@@ -141,7 +141,7 @@ const SignIn = () => {
         style={styles.btnForgot}
         onPress={() => navigation.navigate("Quên mật khẩu")}
       >
-        <Text style={styles.text23}>Quên mật khẩu?</Text>
+        <Text style={styles.text23}>    Quên mật khẩu ?</Text>
       </TouchableOpacity>
     </View>
   );

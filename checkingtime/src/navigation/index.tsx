@@ -14,7 +14,7 @@ import FormCreated from "../Screens/FormCreated";
 import Jobs from "../Screens/Jobs";
 import InfoScreen from "../Screens/InfoCompany/Info";
 import Account from "../Screens/Account/Account";
-import { loadCompany, loadUser } from '../../redux/action'
+import { getmyrank, loadCompany, loadTimesheet, loadUser } from '../../redux/action'
 import ResetPasswordScreen from "../Screens/ResetPasswordScreen/ResetPasswordScreen";
 import TabDonTusNavigation from "./TabDonTu";
 import CuaToi from "../Screens/DonTu/CuaToi/CuaToi";
@@ -133,11 +133,8 @@ const SNavigation = () => {
 
   useEffect(() => {
       dispatch<any>(loadUser())
-      dispatch<any>(loadCompany())
   }, [dispatch])
-
-
-  const { isAuthenticated, loading } = useSelector<any, any>(state => state.auth)
+  const { isAuthenticated, loading, user } = useSelector<any, any>(state => state.auth)
   return (
     loading ? <Loader /> : 
     <NavigationContainer>

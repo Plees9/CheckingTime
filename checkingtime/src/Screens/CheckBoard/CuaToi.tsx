@@ -17,7 +17,7 @@ import { Table, Row, Rows, Col } from 'react-native-table-component';
 import createStyles from "./styles";
 
 const CONTENT = {
-  //tableHead: ["ngay"],
+  tableHead: ["ngay"],
   tableHead1: ["01/08", "02/08", "03/08", "04/08", "05/08", "06/08", "07/08"],
   tableHead2: ["check in", "check out", "di muon", "ve som", "so gio ot"],
 
@@ -36,7 +36,7 @@ const BangCong_Cuatoi = () => {
   const styles = useMemo(() => createStyles(), []);
   //const navigation = useNavigation<any>();
   return (
-    <View>
+    <View style={styles.bgr}>
       <TouchableOpacity
         style={styles.icon1}
         onPress={() => Alert.alert("Simple Button")}

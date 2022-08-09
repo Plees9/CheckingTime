@@ -18,6 +18,26 @@ export const updateAvatar = (formData) => async (dispatch) => {
     });
   }
 };
+export const loadTimesheet = () => async (dispatch) => {
+  try {
+    dispatch({ type: "timmesheetRequest" });
+
+    const { data } = await axios.get(`${serverUrl}/user/timesheetinfo`);
+    dispatch({ type: "timesheetSuccess", payload: data });
+  } catch (error) {
+    dispatch({ type: "timesheetFailure", payload: error.response.data.message });
+  }
+}
+export const getmyrank = () => async (dispatch) => {
+  try {
+    dispatch({ type: "getmyrankRequet" });
+
+    const { data } = await axios.get(`${serverUrl}/user/rank`);
+    dispatch({ type: "getmyrankSuccess", payload: data });
+  } catch (error) {
+    dispatch({ type: "getmyrankFailure", payload: error.response.data.message });
+  }
+}
 export const loadCompany = () => async (dispatch) => {
   try {
     dispatch({ type: "companyRequest" });
@@ -59,6 +79,9 @@ export const login = (phoneNumber, password) => async (dispatch) => {
       }
     );
     dispatch({ type: "loginSuccess", payload: data });
+    // dispatch({ type: "timesheetSuccess", payload: data });
+    // dispatch({ type: "getmyrankSuccess", payload: data });
+    // dispatch({ type: "companySuccess", payload: data });
   } catch (error) {
     dispatch({ type: "loginFailure", payload: error.response.data.message });
   }
@@ -78,6 +101,8 @@ export const logout = () => async (dispatch) => {
     dispatch({ type: "logoutRequest" });
 
     await axios.post(`${serverUrl}/user/logout`);
+    dispatch({type: "logoutTimesheet"})
+    dispatch({type: "logoutCompany"})
     dispatch({ type: "logoutSuccess" });
   } catch (error) {
     dispatch({

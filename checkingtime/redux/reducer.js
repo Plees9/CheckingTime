@@ -1,4 +1,40 @@
 import { createReducer } from "@reduxjs/toolkit";
+export const timesheetReducer = createReducer({}, {
+  timesheetRequest: (state) => {
+    state.loading = true;
+  },
+  timesheetSuccess: (state, action) => {
+    state.loading = false;
+    state.timesheet = action.payload;
+  },
+  timesheetFailure: (state, action) => {
+    state.loading = false;
+    state.error = action.payload;
+  },
+  logoutTimesheet: (state) => {
+    state.loading = false
+    state.timesheet = null
+    state.number = null 
+  },
+  getmyrankRequest: (state) => {
+    state.loading = true;
+  },
+  getmyrankSuccess: (state, action) => {
+    state.loading = false;
+    state.number = action.payload;
+  },
+  getmyrankFailure: (state, action) => {
+    state.loading = false;
+    state.error = action.payload;
+  },
+  clearError: (state) => {
+    state.error = null;
+  },
+  
+  clearMessage: (state) => {
+    state.message = null;
+  },
+});
 export const companyReducer = createReducer ({}, {
   companyRequest: (state) => {
     state.loading = true;
@@ -10,6 +46,10 @@ export const companyReducer = createReducer ({}, {
   companyFailure: (state, action) => {
     state.loading = false;
     state.error = action.payload;
+  },
+  logoutCompany: (state) => {
+    state.loading = false
+    state.company = null;
   },
   clearError: (state) => {
     state.error = null;
@@ -109,6 +149,7 @@ export const authReducer = createReducer(
       state.error = action.payload;
     },}
   )
+
   export const messageReducer = createReducer(
     {},
     {
