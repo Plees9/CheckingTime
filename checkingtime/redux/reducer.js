@@ -11,6 +11,11 @@ export const timesheetReducer = createReducer({}, {
     state.loading = false;
     state.error = action.payload;
   },
+  logoutTimesheet: (state) => {
+    state.loading = false
+    state.timesheet = null
+    state.number = null 
+  },
   getmyrankRequest: (state) => {
     state.loading = true;
   },
@@ -41,6 +46,10 @@ export const companyReducer = createReducer ({}, {
   companyFailure: (state, action) => {
     state.loading = false;
     state.error = action.payload;
+  },
+  logoutCompany: (state) => {
+    state.loading = false
+    state.company = null;
   },
   clearError: (state) => {
     state.error = null;

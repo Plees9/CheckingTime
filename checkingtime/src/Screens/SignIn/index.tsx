@@ -12,7 +12,7 @@ import Icon from "react-native-vector-icons/FontAwesome";
 import { CheckBox } from "@rneui/themed";
 import { useNavigation } from "@react-navigation/native";
 import { useDispatch, useSelector } from "react-redux";
-import { login } from "../../../redux/action";
+import { getmyrank, loadCompany, loadTimesheet, login } from "../../../redux/action";
 import { LinearGradient } from "expo-linear-gradient";
 import GradientText from "../../component/GradientText";
 import Icon_1 from "react-native-vector-icons/Ionicons";

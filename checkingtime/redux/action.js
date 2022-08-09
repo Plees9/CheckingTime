@@ -79,6 +79,9 @@ export const login = (phoneNumber, password) => async (dispatch) => {
       }
     );
     dispatch({ type: "loginSuccess", payload: data });
+    // dispatch({ type: "timesheetSuccess", payload: data });
+    // dispatch({ type: "getmyrankSuccess", payload: data });
+    // dispatch({ type: "companySuccess", payload: data });
   } catch (error) {
     dispatch({ type: "loginFailure", payload: error.response.data.message });
   }
@@ -98,6 +101,8 @@ export const logout = () => async (dispatch) => {
     dispatch({ type: "logoutRequest" });
 
     await axios.post(`${serverUrl}/user/logout`);
+    dispatch({type: "logoutTimesheet"})
+    dispatch({type: "logoutCompany"})
     dispatch({ type: "logoutSuccess" });
   } catch (error) {
     dispatch({
