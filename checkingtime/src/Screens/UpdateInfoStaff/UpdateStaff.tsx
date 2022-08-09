@@ -39,7 +39,8 @@ const UpdateStaff = () => {
   const [userName, setUserName] = useState(user.name);
   const [email, setEmail] = useState(user.email);
   const [numberPhone, setNumberPhone] = useState(user.phoneNumber);
-  const [date_Birth, setDate_Birth] = useState(moment(new Date(user.birth)))
+  const [date_Birth, setDate_Birth] = useState(moment());
+  
   const [address, setAddress] = useState(user.address);
   const route = useRoute();
 
@@ -80,7 +81,7 @@ const UpdateStaff = () => {
     myForm.append("email", email)
     myForm.append("phoneNumber", numberPhone)
     myForm.append("address", address)
-    myForm.append("birth", String(Sdate))
+    myForm.append("dateOfBirth", date_Birth.toISOString())
     myForm.append("gender", value_2)
     await dispatch<any>(updateProfile(myForm))
     if (message == "Profile updated successfully") {
