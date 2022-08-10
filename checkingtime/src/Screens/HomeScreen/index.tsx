@@ -15,10 +15,11 @@ import Icon from "react-native-vector-icons/FontAwesome";
 import Icon1 from "react-native-vector-icons/Ionicons";
 import styles from "./styles";
 
-import { loadUser } from "../../../redux/action";
+import { checking, loadUser, ranking } from "../../../redux/action";
 
 import { FAB, Input } from "react-native-elements";
 import { useDispatch, useSelector } from "react-redux";
+
 
 import { FlatList } from "react-native-gesture-handler";
 
@@ -30,42 +31,73 @@ const wait = (timeout: number | undefined) => {
 
 const HomeScreen = () => {
   const dispatch = useDispatch();
+  let checkout;
+  let checkin;
+  let numberstr;
+  let avatar1;
+  let userName1;
+  let checkin1;
+  let avatar2;
+  let userName2;
+  let checkin2;
+  let avatar3;
+  let userName3;
+  let checkin3;
+  let avatar4;
+  let userName4;
+  let checkin4;
+  let avatar5;
+  let userName5;
+  let checkin5;
   useEffect(() => {
     dispatch<any>(loadCompany());
     dispatch<any>(loadTimesheet());
     dispatch<any>(getmyrank());
+    dispatch<any>(ranking());
   }, [dispatch]);
   const navigation = useNavigation<any>();
   const { user } = useSelector<any, any>((state) => state.auth);
-
-  // const { timesheet, number } = useSelector<any, any>(
-  //   (state) => state.timesheet
-  // );
-
-  const { timesheet, number } = useSelector<any, any>(
+  const { timesheet, number, array } = useSelector<any, any>(
     (state) => state.timesheet
   );
-  let checkout;
-  let checkin;
-  let numberstr;
+
   if (
     typeof timesheet !== "undefined" &&
-    typeof number !== "number" &&
+    typeof number !== "undefined" &&
     timesheet !== null &&
-    number !== null
+    number !== null &&
+    typeof array !== "undefined" &&
+    array !== null
   ) {
     checkin = timesheet.Object.checkinTime;
     checkout = timesheet.Object.checkoutTime;
     numberstr = number.number;
+    avatar1 = array.array[0].avatar.url;
+    userName1 = array.array[0].name;
+    checkin1 = array.array[0].checkinTime;
+    avatar2 = array.array[1].avatar.url;
+    userName2 = array.array[1].name;
+    checkin2 = array.array[1].checkinTime;
+    avatar3 = array.array[2].avatar.url;
+    userName3 = array.array[2].name;
+    checkin3 = array.array[3].checkinTime;
+    avatar4 = array.array[3].avatar.url;
+    userName4 = array.array[3].name;
+    checkin4 = array.array[4].checkinTime;
+    avatar5 = array.array[4].avatar.url;
+    userName5 = array.array[4].name;
+    checkin5 = array.array[4].checkinTime;
   }
-
+  console.log(array);
   const [userName, setUserName] = useState(user.name);
   const [avatar, loading] = useState(user.avatar.url);
   const [refreshing, setRefreshing] = React.useState(false);
   const companyHandler = async () => {
     navigation.navigate("Thông tin Công Ty");
   };
-  const pressHandler = () => {
+  const pressHandler = async () => {
+    await dispatch<any>(checking());
+    dispatch<any>(loadTimesheet());
     ToastAndroid.show(
       "Bạn" + " " + userName + " " + "đã chấm công!",
       ToastAndroid.SHORT
@@ -193,42 +225,42 @@ const HomeScreen = () => {
 
           <View style={styles.row1}>
             <View style={styles.avt2}>
-              <Avatar rounded source={{ uri: avatar }} size={36} />
-            </View>
 
-            <Text style={styles.name2}>Đặng Phan T Công</Text>
-            <Text style={styles.checkin2}>00:22:11</Text>
+              <Avatar rounded source={{ uri: avatar1 }} size={40} />
+            </View>
+            <Text style={styles.name2}>{userName1}</Text>
+            <Text style={styles.checkin2}> {checkin1}</Text>
+          </View>
+          <View style={styles.row1}>
+            <View style={styles.avt2}>
+              <Avatar rounded source={{ uri: avatar2 }} size={40} />
+            </View>
+            <Text style={styles.name2}>{userName2}</Text>
+            <Text style={styles.checkin2}> {checkin2}</Text>
           </View>
 
           <View style={styles.row1}>
             <View style={styles.avt2}>
-              <Avatar rounded source={{ uri: avatar }} size={36} />
+              <Avatar rounded source={{ uri: avatar3 }} size={40} />
             </View>
-            <Text style={styles.name2}>Đặng Phan Thành Công nhe</Text>
-            <Text style={styles.checkin2}>00:22:11</Text>
-          </View>
-          <View style={styles.row1}>
-            <View style={styles.avt2}>
-              <Avatar rounded source={{ uri: avatar }} size={36} />
-            </View>
-            <Text style={styles.name2}>Đặng Thành Công</Text>
-            <Text style={styles.checkin2}>00:22:11</Text>
+            <Text style={styles.name2}>{userName3}</Text>
+            <Text style={styles.checkin2}> {checkin3}</Text>
+
           </View>
 
           <View style={styles.row1}>
             <View style={styles.avt2}>
-              <Avatar rounded source={{ uri: avatar }} size={36} />
+              <Avatar rounded source={{ uri: avatar4 }} size={40} />
             </View>
-            <Text style={styles.name2}>Đặng Thành Công</Text>
-            <Text style={styles.checkin2}>00:22:11</Text>
+            <Text style={styles.name2}>{userName4}</Text>
+            <Text style={styles.checkin2}> {checkin4}</Text>
           </View>
-
           <View style={styles.row1}>
             <View style={styles.avt2}>
-              <Avatar rounded source={{ uri: avatar }} size={36} />
+              <Avatar rounded source={{ uri: avatar5 }} size={40} />
             </View>
-            <Text style={styles.name2}>Đặng Phan </Text>
-            <Text style={styles.checkin2}>00:22:11</Text>
+            <Text style={styles.name2}>{userName5}</Text>
+            <Text style={styles.checkin2}> {checkin5}</Text>
           </View>
          
         </View>
