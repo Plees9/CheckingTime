@@ -9,7 +9,7 @@ const styles = StyleSheet.create({
   },
 
   text: {
-    fontSize: 20,
+    fontSize: 14,
 
     fontFamily: FONTS.vanSansBold,
     color: "#FFFFFF",
@@ -27,9 +27,9 @@ const styles = StyleSheet.create({
     
   },
   text2: {
-    fontSize: 16,
-    marginLeft: 10,
-    paddingTop: 5,
+    fontSize: 13,
+    marginLeft: 6,
+    alignSelf: 'center',
     fontFamily: FONTS.vanSansBold,
     color: "#FFFFFF",
     
@@ -42,9 +42,9 @@ const styles = StyleSheet.create({
     paddingTop: 5,
   },
   text4: {
-    fontSize: 16,
-   
-    paddingTop: 5,
+    fontSize: 12,
+   fontFamily: FONTS.vanSansBold,
+    
     color: "#eee9f5",
     alignSelf: "flex-end",
   },
@@ -70,10 +70,11 @@ const styles = StyleSheet.create({
     padding: 7,
   },
   icon2: {
-    flexDirection: "column",
+    flexDirection: "row",
     height: 180,
-    width: "94%",
+    flex:1,
     marginTop: 10,
+    marginHorizontal: 10,
     backgroundColor: "#FF8C32",
     borderRadius: 25,
     
@@ -83,9 +84,9 @@ const styles = StyleSheet.create({
     //flex: 1,
     flexDirection: "row",
     marginTop: 10,
-    marginBottom: 5,
-    marginLeft: 10,
-    marginRight: 10,
+    marginBottom: 7,
+    marginLeft: 6,
+    marginRight: 15,
     
   },
 
@@ -161,8 +162,8 @@ const styles = StyleSheet.create({
     marginLeft: 10,
   },
   boder: {
-    width: 30,
-    height: 30,
+    width: 24,
+    height: 24,
     borderRadius: 30 / 2,
     backgroundColor: "#eee9f5",
     padding: 6,
@@ -207,6 +208,79 @@ const styles = StyleSheet.create({
     
     alignSelf :"center",
 
+  },
+  box_check: {
+    flex: 1,
+    marginTop: 10,
+  },
+  nb_job: {
+    position: 'absolute',
+    fontSize: 14,
+    paddingRight: 10,
+    color: "#fdcd00",
+    alignSelf:'flex-end',
+    fontFamily: FONTS.vanSansBold,
+    
+  },
+  nb_jobdone: {
+    position: 'absolute',
+    fontSize: 14,
+    paddingRight: 10,
+    color: "#4adb63",
+    alignSelf:'flex-end',
+    fontFamily: FONTS.vanSansBold,
+    
+  },
+  nb_jobover: {
+    position: 'absolute',
+    fontSize: 14,
+    paddingRight: 10,
+    color: "#ff3b2e",
+    alignSelf:'flex-end',
+    fontFamily: FONTS.vanSansBold,
+    
+  },
+  txt_job: {
+    position: 'absolute',
+    alignSelf: 'center',
+    fontSize: 14,
+    paddingLeft: 10,
+    fontFamily: FONTS.vanSansBold,
+    color: "#fdcd00",
+    
+
+  },
+  txt_jobdone: {
+    position: 'absolute',
+    alignSelf: 'center',
+    fontSize: 14,
+    paddingLeft: 10,
+    fontFamily: FONTS.vanSansBold,
+    color: "#4adb63",
+    
+
+  },
+  txt_jobover: {
+    position: 'absolute',
+    alignSelf: 'center',
+    fontSize: 14,
+    paddingLeft: 10,
+    fontFamily: FONTS.vanSansBold,
+    color: "#ff3b2e",
+    
+
+  },
+  box_job: {
+    flex:1,
+    marginRight: 10,
+    height: 180,
+    width: "43%",
+    marginTop: 10,
+    backgroundColor: "#1d2637",
+    borderRadius: 25,
+    
+    
+    
   },
 });
 
