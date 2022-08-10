@@ -75,10 +75,10 @@ const HomeScreen = () => {
     checkin2 = array.array[1].checkinTime;
     avatar3 = array.array[2].avatar.url;
     userName3 = array.array[2].name;
-    checkin3 = array.array[3].checkinTime;
+    checkin3 = array.array[2].checkinTime;
     avatar4 = array.array[3].avatar.url;
     userName4 = array.array[3].name;
-    checkin4 = array.array[4].checkinTime;
+    checkin4 = array.array[3].checkinTime;
     avatar5 = array.array[4].avatar.url;
     userName5 = array.array[4].name;
     checkin5 = array.array[4].checkinTime;
