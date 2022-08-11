@@ -8,58 +8,53 @@ import {
   Platform,
   Linking,
 } from "react-native";
-import React, { useMemo, useState } from "react";
+import React, { useEffect, useMemo, useState } from "react";
 
 import Icon from "react-native-vector-icons/FontAwesome";
 import { TextInput } from "react-native-gesture-handler";
 import { Avatar } from "@rneui/themed";
 import createStyles from "./styles";
 import { useNavigation } from "@react-navigation/native";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import moment  from "moment";
+import { loadAlluser } from "../../../redux/action";
 
 const ListStaff = () => {
   const styles = useMemo(() => createStyles(), []);
   const navigation = useNavigation<any>();
-
-  const { user, loading } = useSelector<any, any>(state => state.auth)
-
-  const [userName, setUserName] = useState(user.name); //name
-  const [role, setRole] = useState(user.role); //vitri
-  const [userId, setUserId] = useState(user.userId); //MaNV
-  const [typeOfEmployee, setTypeOfEmployee] = useState(user.typeOfEmployee); //Loaihinhnhansu
-  const [contractStatus, setContractStatus] = useState(user.contractStatus); //trangthaihopdong
-  const [date, setDate] = useState(moment(new Date(user.startWorkingDate)).format("DD/MM/YYYY")); //ngayvaolam
-  const [birth, setDate_Birth] = useState(user.birth); //ngaysinh
-  const [numberPhone, setNumberPhone] = useState(user.phoneNumber); //sodienthoai
-  const [gender, setGender] = useState(user.gender); //gioitinh
-  const [avatar, setAvatar] = useState(user.avatar.url);
-
   const dialCall = (numberPhone_1: any) => {
     let phoneNumber = '';
     if (Platform.OS === 'android') { phoneNumber = `tel:${numberPhone_1}`; }
     else {phoneNumber = `telprompt:${numberPhone_1}`; }
     Linking.openURL(phoneNumber);
  };
+ const dispatch = useDispatch()
+ useEffect(() => {
+  dispatch<any>(loadAlluser())
+}, []);
+const { allUser } = useSelector<any, any>(state => state.allUser)
+let data : any = []
+if (typeof allUser !== "undefined") {
 
-  const [data, setData] = useState([
-   
-    {
-      id: 1,
-      name_1: userName,
-      role_1: role,
-      userId_1: userId,
-      typeOfEmployee_1: typeOfEmployee,
-      contractStatus_1: contractStatus,
-      date_1: date,
-      date_Birth_1: birth,
-      numberPhone_1: numberPhone,
-      gender_1: gender,
-    },
-   
-   
-  ]);
-
+for (var i = 0; i < allUser.array.length; i++ ){
+  let strAvatar = allUser.array[i].avatar.url
+  let object = {
+    id: i+1,
+    name_1: allUser.array[i].name,
+    role_1: allUser.array[i].role,
+    userId_1: allUser.array[i].userId,
+    typeOfEmployee_1: allUser.array[i].typeOfEmployee,
+    contractStatus_1: allUser.array[i].contractStatus,
+    date_1: moment(new Date(allUser.array[i].startWorkingDate)).format("DD/MM/YYYY"),
+    date_Birth_1: moment(new Date(allUser.array[i].birth)).format("DD/MM/YYYY"),
+    numberPhone_1: allUser.array[i].phoneNumber,
+    gender_1: allUser.array[i].gender,
+    avatar_1: allUser.array[i].avatar.url
+  }
+  console.log(object)
+  data.push(object)
+}
+}
   const NumberPhone = (
     id: number,
     name_1: string,
@@ -70,8 +65,7 @@ const ListStaff = () => {
     date_1: undefined,
     date_Birth_1: undefined,
     numberPhone_1: number,
-    gender_1: any
-    
+    gender_1: any ,
   ) => {
     Alert.alert(
       "Số điện thoại của nhân viên " + name_1.toUpperCase(),
@@ -117,14 +111,14 @@ const ListStaff = () => {
           text: "Xóa",
           onPress: () => {
             const newData = data.filter((item) => item.id !== id);
-            setData(newData);
+            //setData(newData);
           },
         },
       ]
     );
   };
   const ItemRender = ({
-    id,name_1,role_1,userID_1,typeOfEmployee_1,contractStatus_1,date_1,date_Birth_1,numberPhone_1,gender_1,
+    id,name_1,role_1,userID_1,typeOfEmployee_1,contractStatus_1,date_1,date_Birth_1,numberPhone_1,gender_1, avatar_1,
   }) => (
     <View style={{ padding: 10, flex: 1 }}>
       {/* nhan vien  */}
@@ -136,7 +130,8 @@ const ListStaff = () => {
               <Avatar
                 size={50}
                 rounded
-                source={{ uri: avatar }}
+                source={{ uri: avatar_1 }}
+                
               ></Avatar>
             </View>
 
@@ -255,6 +250,7 @@ const ListStaff = () => {
                 date_Birth_1={item.date_Birth_1}
                 numberPhone_1={item.numberPhone_1}
                 gender_1={item.gender_1}
+                avatar_1={item.avatar_1}
               />
             )}
             keyExtractor={(item) => item.id.toString()}

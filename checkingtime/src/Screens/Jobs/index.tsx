@@ -12,7 +12,7 @@ import Icon from "react-native-vector-icons/FontAwesome";
 import { IconButton } from "react-native-paper";
 
 import { useNavigation } from "@react-navigation/native";
-import { loadCompany } from "../../../redux/action";
+import { loadAlluser, loadCompany } from "../../../redux/action";
 import { useDispatch, useSelector } from "react-redux";
 const Jobs = () => {
   const navigation = useNavigation<any>();
@@ -81,7 +81,9 @@ const Jobs = () => {
         <View style={styles.scrollView}>
           <TouchableOpacity
             style={styles.Touch2}
-            onPress={() => navigation.navigate("DANH SÁCH NHÂN VIÊN")}
+            onPress={() => { 
+              navigation.navigate("DANH SÁCH NHÂN VIÊN")
+            }}
           >
             <View style={{ alignContent: "center" }}>
               <IconButton icon="account-group" color="#f49218" size={50} />
