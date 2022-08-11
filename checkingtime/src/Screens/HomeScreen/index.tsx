@@ -115,6 +115,7 @@ const HomeScreen = () => {
     await dispatch<any>(checking());
     dispatch<any>(loadTimesheet());
     dispatch<any>(getmyrank());
+    dispatch<any>(ranking());
     ToastAndroid.show(
       "Bạn" + " " + userName + " " + "đã chấm công!",
       ToastAndroid.SHORT
@@ -123,7 +124,10 @@ const HomeScreen = () => {
 
   const onRefresh = React.useCallback(() => {
     setRefreshing(true);
-    wait(2000).then(() => {setRefreshing(false)});
+    wait(2000).then(() => {setRefreshing(false);
+      dispatch<any>(loadTimesheet());
+      dispatch<any>(getmyrank());
+      dispatch<any>(ranking());});
   }, []);
 
   return (
@@ -187,8 +191,8 @@ const HomeScreen = () => {
                 >
                   <Icon1
                     name="log-out-outline"
-                    size={20}
-                    color="#f49218"
+                    size={13}
+                    color="#f13612"
                     style={styles.boder}
                   />
 
@@ -322,33 +326,35 @@ const HomeScreen = () => {
               <Avatar rounded source={{ uri: avatar1 }} size={40} />
             </View>
             <Text style={styles.name2}>{userName1}</Text>
-            <Text style={styles.checkin2}> {checkin1}</Text>
+            <Text style={styles.checkin2}>{checkin1}</Text>
           </View>
           <View style={styles.row1}>
             <View style={styles.avt2}>
               <Avatar rounded source={{ uri: avatar2 }} size={40} />
             </View>
             <Text style={styles.name2}>{userName2}</Text>
-            <Text style={styles.checkin2}> {checkin2}</Text>
+            <Text style={styles.checkin2}>{checkin2}</Text>
           </View>
           <View style={styles.row1}>
             <View style={styles.avt2}>
               <Avatar rounded source={{ uri: avatar3 }} size={40} />
             </View>
             <Text style={styles.name2}>{userName3}</Text>
-            <Text style={styles.checkin2}> {checkin3}</Text>
+            <Text style={styles.checkin2}>{checkin3}</Text>
           </View>
           <View style={styles.row1}>
-          <Avatar rounded source={{ uri: avatar }} size={40} />
-            <Text style={styles.textInfo}>userName</Text>
-            <Text style={styles.textInfo}> Time checkin</Text>
+            <View style={styles.avt2}>
+              <Avatar rounded source={{ uri: avatar4 }} size={40} />
+            </View>
+            <Text style={styles.name2}>{userName4}</Text>
+            <Text style={styles.checkin2}>{checkin4}</Text>
           </View>
           <View style={styles.row1}>
             <View style={styles.avt2}>
               <Avatar rounded source={{ uri: avatar5 }} size={40} />
             </View>
             <Text style={styles.name2}>{userName5}</Text>
-            <Text style={styles.checkin2}> {checkin5}</Text>
+            <Text style={styles.checkin2}>{checkin5}</Text>
           </View>
         </View>
       </ScrollView>

@@ -25,9 +25,6 @@ const ResetPasswordScreen = () => {
     if (message == "Password changed successfully")
       navigation.navigate("SignIn");
   };
-  const forgetHandler = async () => {
-    await dispatch<any>(forgetPassword(email1));
-  };
   useEffect(() => {
     if (message) {
       alert(message);
@@ -40,7 +37,12 @@ const ResetPasswordScreen = () => {
   }, [alert, dispatch, error]);
 
   const navigation = useNavigation<any>();
-
+  const resendOTP = async () => {
+    await dispatch<any>(forgetPassword(email1))
+    Alert.alert(`OTP has been sent to ${email1} `)
+    dispatch({ type: "clearMessage" });
+    dispatch({ type: "clearError" });
+  }
   return (
     <View style={styles.viewbgr}>
       <View style={styles.view}>
@@ -115,7 +117,7 @@ const ResetPasswordScreen = () => {
             </TouchableOpacity>
           </LinearGradient>
 
-          <TouchableOpacity onPress={forgetHandler}>
+          <TouchableOpacity onPress={resendOTP}>
             <Text style={styles.textOTP}>Gửi lại OTP</Text>
           </TouchableOpacity>
         </View>
