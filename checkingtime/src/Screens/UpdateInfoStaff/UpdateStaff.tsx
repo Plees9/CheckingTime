@@ -37,6 +37,7 @@ const UpdateStaff = () => {
   const [visible,setVisible] = useState(false)
   const dispatch = useDispatch();
   const [userName, setUserName] = useState(user.name);
+  const [password, setPassword] = useState("");
   const [email, setEmail] = useState(user.email);
   const [numberPhone, setNumberPhone] = useState(user.phoneNumber);
   const [date_Birth, setDate_Birth] = useState(moment());
@@ -244,10 +245,10 @@ const UpdateStaff = () => {
       <InputModal visible={visible}
       title='Xác nhận mật khẩu của bạn'
       confirmText="Xác nhận"
-      onConfirm={updateHandler}
+      onConfirm={() => {updateHandler}}
       cancelText="Hủy"
       onCancel={() => setVisible(false)}
-      inputText="Nhập mật khẩu"/>
+      inputText="Nhập mật khẩu" />
     </View>
     
   );
