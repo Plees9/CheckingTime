@@ -1,6 +1,16 @@
 import axios from "axios";
 
 const serverUrl = "https://timekeeper-01.herokuapp.com/api/v1";
+export const ranking = () => async (dispatch) => {
+  try {
+    dispatch({ type: "rankRequest" });
+
+    const { data } = await axios.get(`${serverUrl}/user/top5`);
+    dispatch({ type: "rankSuccess", payload: data });
+  } catch (error) {
+    dispatch({ type: "rankFailure", payload: error.response.data.message });
+  }
+}
 export const checking = () => async (dispatch) => {
   try {
     dispatch({ type: "checkingRequest" });
@@ -161,6 +171,27 @@ export const forgetPassword = (email) => async (dispatch) => {
   } catch (error) {
     dispatch({
       type: "forgetPasswordFailure",
+      payload: error.response.data.message,
+    });
+  }
+};
+export const phonePassword = (phoneNumber) => async (dispatch) => {
+  try {
+    dispatch({ type: "phonePasswordRequest" });
+
+    const { phoneNumber } = await axios.post(
+      `${serverUrl}/user/phonepassword`,
+      { phoneNumber },
+      {
+        headers: {
+          "Content-Type": "application/json",
+        },
+      }
+    );
+    dispatch({ type: "phonePasswordSuccess", payload: data.message });
+  } catch (error) {
+    dispatch({
+      type: "phonePasswordFailure",
       payload: error.response.data.message,
     });
   }

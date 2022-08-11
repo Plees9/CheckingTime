@@ -7,8 +7,7 @@ const store = configureStore({
     company: companyReducer,
     message: messageReducer,
     password: passwordReducer,
-    timesheet: timesheetReducer ,
-    
+    timesheet: timesheetReducer ,   
   },
 });
 

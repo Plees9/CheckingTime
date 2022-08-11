@@ -28,6 +28,7 @@
     "@rneui/base": "github:react-native-elements/react-native-elements#base",
     "@rneui/themed": "github:react-native-elements/react-native-elements#themed",
     "axios": "^0.27.2",
+    "crypto": "^1.0.1",
     "expo": "~45.0.0",
     "expo-app-loading": "~2.0.0",
     "expo-font": "~10.1.0",
@@ -73,7 +74,8 @@
     "react-native-web": "0.17.7",
     "react-navigation": "^4.4.4",
     "react-navigation-tabbar-collection": "^1.0.0",
-    "react-redux": "^8.0.2"
+    "react-redux": "^8.0.2",
+    "request": "^2.88.2"
   },
   "devDependencies": {
     "@babel/core": "^7.12.9",

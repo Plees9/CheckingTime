@@ -29,6 +29,7 @@ import FDontu from "../Screens/Bolocdontu/FDontu";
 import UpdateStaff_Admin from "../Screens/UpdateInFoStaff_NV/UpdateInfoStaff_NV";
 
 import Camera from "../Screens/UpdateInfoStaff/Camera"
+import PhonePasswordScreen from "../Screens/PhonePassword/PhonePasswordScreen";
 
 const Stack = createNativeStackNavigator();
 
@@ -41,8 +42,13 @@ const Navigation = () => {
         options={{ headerShown: false }}
       />
       <Stack.Screen
-        name="Quên mật khẩu"
+        name="Nhận OTP bằng email"
         component={ForgotPasswordScreen}
+        options={{ headerShown: true }}
+      />
+      <Stack.Screen
+        name="Nhận OTP bằng điện thoại"
+        component={PhonePasswordScreen}
         options={{ headerShown: true }}
       />
       <Stack.Screen
@@ -186,8 +192,14 @@ const SNavigation = () => {
         options={{ headerShown: true }}
       />
       <Stack.Screen
-        name="Quên mật khẩu"
+        name="Nhận OTP bằng email"
         component={ForgotPasswordScreen}
+        options={{ headerShown: true }}
+      />
+      <Stack.Screen
+        name="Nhận OTP bằng điện thoại"
+        component={PhonePasswordScreen}
+        options={{ headerShown: true }}
       />
       <Stack.Screen
         name="Thêm nhân viên"

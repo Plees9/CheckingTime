@@ -6,6 +6,7 @@ const styles = StyleSheet.create({
     flex: 1,
     paddingTop: StatusBar.currentHeight,
     backgroundColor: "#f2f2f2",
+    
   },
 
   text: {
@@ -23,7 +24,6 @@ const styles = StyleSheet.create({
   },
   textcolor: {
     fontFamily: FONTS.vanSansBold,
-    
   },
   text2: {
     fontSize: 13,
@@ -31,8 +31,6 @@ const styles = StyleSheet.create({
     alignSelf: 'center',
     fontFamily: FONTS.vanSansBold,
     color: "#FFFFFF",
-    
-
   },
   text3: {
     fontSize: 16,
@@ -59,7 +57,6 @@ const styles = StyleSheet.create({
     backgroundColor: "#eee9f5",
     // alignItems: "center",
     // justifyContent: "center",
-    
   },
   icon1: {
     width: 28,
@@ -76,8 +73,6 @@ const styles = StyleSheet.create({
     marginHorizontal: 10,
     backgroundColor: "#FF8C32",
     borderRadius: 25,
-    
-    
   },
   textIcon23: {
     //flex: 1,
@@ -243,7 +238,7 @@ const styles = StyleSheet.create({
   txt_job: {
     position: 'absolute',
     alignSelf: 'center',
-    fontSize: 14,
+    fontSize: 16,
     paddingLeft: 10,
     fontFamily: FONTS.vanSansBold,
     color: "#f5b501",
@@ -253,7 +248,7 @@ const styles = StyleSheet.create({
   txt_jobdone: {
     position: 'absolute',
     alignSelf: 'center',
-    fontSize: 14,
+    fontSize: 16,
     paddingLeft: 10,
     fontFamily: FONTS.vanSansBold,
     color: "#4adb63",
@@ -263,7 +258,7 @@ const styles = StyleSheet.create({
   txt_jobover: {
     position: 'absolute',
     alignSelf: 'center',
-    fontSize: 14,
+    fontSize: 16,
     paddingLeft: 10,
     fontFamily: FONTS.vanSansBold,
     color: "#ff3b2e",

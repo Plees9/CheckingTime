@@ -4,34 +4,34 @@ import createStyles from "./styles";
 import { useNavigation } from "@react-navigation/native";
 import { LinearGradient } from "expo-linear-gradient";
 import { useDispatch, useSelector } from "react-redux";
-import { forgetPassword } from "../../../redux/action";
-import { FONTS } from "../../../constants/theme";
-const ForgotPasswordScreen = () => {
-  const image = require("../../../assets/images/forgot-password.png");
-  const { message, error } = useSelector<any, any>((state) => state.password);
+import { phonePassword } from "../../../redux/action";
+
+const PhonePasswordScreen = () => {
+  const image = require("../../../assets/images/sms-phone.jpg");
+  const { messagePhone, errorPhone } = useSelector<any, any>((state) => state.password);
   const styles = useMemo(() => createStyles(), []);
-  const [email, setEmail] = useState("");
+  const [phoneNumber, setphoneNumber] = useState("");
   const navigation = useNavigation<any>();
   const dispatch = useDispatch();
   let check = ""
   useEffect(() => {
-    if (message) {
-      alert(message);
+    if (messagePhone) {
+      alert(messagePhone);
       dispatch({ type: "clearMessage" });
     }
-    if (error) {
-      alert(error);
+    if (errorPhone) {
+      alert(errorPhone);
       dispatch({ type: "clearError" });
     }
-  }, [alert, dispatch, error]);
-  if (message != null || message != "Invalid mail") {
-    check = message
+  }, [alert, dispatch, errorPhone]);
+  if (messagePhone != null || messagePhone != "Invalid phone") {
+    check = messagePhone
   }
   const forgetHandler = async () => {
-    await dispatch<any>(forgetPassword(email));
+    await dispatch<any>(phonePassword(phoneNumber));
   };
-  if (email != "" && check ==  `OTP has been sent to ${email}` ) {
-    navigation.navigate("Cài lại mật khẩu", {email});
+  if (phoneNumber != "" && check ==  `OTP has been sent to ${phoneNumber}` ) {
+    navigation.navigate("Cài lại mật khẩu", {phoneNumber});
   }
   return (
     <View style={styles.view}>
@@ -41,12 +41,11 @@ const ForgotPasswordScreen = () => {
       </Text>
       <TextInput
         style={styles.text}
-        value={email}
-        onChangeText={(text) => setEmail(text)}
+        value={phoneNumber}
+        onChangeText={(text) => setphoneNumber(text)}
         secureTextEntry={undefined}
-        keyboardType={"email-address"}
         returnKeyType="done"
-        placeholder={"Nhập địa chỉ email"}
+        placeholder={"Nhập địa chỉ phoneNumber"}
       ></TextInput>
       <View>
         <LinearGradient
@@ -64,4 +63,4 @@ const ForgotPasswordScreen = () => {
   );
 };
 
-export default ForgotPasswordScreen;
+export default PhonePasswordScreen;
