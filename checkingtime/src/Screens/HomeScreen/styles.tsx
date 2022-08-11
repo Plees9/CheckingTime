@@ -16,11 +16,10 @@ const styles = StyleSheet.create({
     textAlign: "center",
   },
   text1: {
-    fontSize: 16,
+    fontSize: 15,
     marginLeft: 10,
-    marginTop: 6,
-    justifyContent: "center",
-    fontFamily: FONTS.vanSansRegular,
+    
+    fontFamily: FONTS.vanSansMedium,
   },
   textcolor: {
     fontFamily: FONTS.vanSansBold,
@@ -136,9 +135,10 @@ const styles = StyleSheet.create({
     fontFamily: FONTS.vanSansBold,
   },
   text7: {
+    
     fontSize: 18,
     textAlign: "center",
-    margin: 10,
+    marginTop: 10,
     fontFamily: FONTS.vanSansSemiBold,
   },
 
@@ -217,7 +217,7 @@ const styles = StyleSheet.create({
     position: 'absolute',
     fontSize: 14,
     paddingRight: 10,
-    color: "#fdcd00",
+    color: "#f5b501",
     alignSelf:'flex-end',
     fontFamily: FONTS.vanSansBold,
     
@@ -246,7 +246,7 @@ const styles = StyleSheet.create({
     fontSize: 14,
     paddingLeft: 10,
     fontFamily: FONTS.vanSansBold,
-    color: "#fdcd00",
+    color: "#f5b501",
     
 
   },
@@ -276,11 +276,24 @@ const styles = StyleSheet.create({
     height: 180,
     width: "43%",
     marginTop: 10,
-    backgroundColor: "#1d2637",
+    backgroundColor: "#fffd",
     borderRadius: 25,
     
     
     
+  },
+  title_job: {
+    fontSize: 14,
+
+    fontFamily: FONTS.vanSansBold,
+    color: "#000",
+    textAlign: "center",
+  },
+  row_rank: {
+    padding: 10,
+    flexDirection: "row",
+    alignItems:'center',
+    justifyContent: 'center',
   },
 });
 

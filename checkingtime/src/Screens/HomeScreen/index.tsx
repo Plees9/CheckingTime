@@ -75,7 +75,7 @@ const HomeScreen = () => {
 
   const onRefresh = React.useCallback(() => {
     setRefreshing(true);
-    wait(2000).then(() => setRefreshing(false));
+    wait(2000).then(() => {setRefreshing(false)});
   }, []);
 
   return (
@@ -83,16 +83,21 @@ const HomeScreen = () => {
       <ScrollView
         style={{ flex: 1 }}
         refreshControl={
-          <RefreshControl refreshing={refreshing} onRefresh={onRefresh} />
+          <RefreshControl  colors={["#f12711", "#f5af19"]} refreshing={refreshing} onRefresh={onRefresh} />
         }
       >
-        <TouchableOpacity onPress={() => navigation.navigate("Tài khoản")}>
-          <View style={styles.row}>
-            <Avatar rounded source={{ uri: avatar }} size={40}></Avatar>
-            <Text style={styles.text1}> Xin chào, {userName}</Text>
-          </View>
-        </TouchableOpacity>
-
+        <View style={{ flexDirection: "row", justifyContent: "space-between" }}>
+          <TouchableOpacity onPress={() => navigation.navigate("Tài khoản")}>
+            <View style={styles.row}>
+              <Avatar rounded source={{ uri: avatar }} size={40}></Avatar>
+              <View>
+                <Text style={styles.text1}>Xin chào,</Text>
+                <Text style={styles.text1}>{userName}</Text>
+              </View>
+            </View>
+          </TouchableOpacity>
+          <Icon name='eye' />
+        </View>
         <View style={{ alignItems: "flex-start", flexDirection: "row" }}>
           <LinearGradient
             start={{ x: 0, y: 0 }}
@@ -170,13 +175,10 @@ const HomeScreen = () => {
               </View>
             </View>
           </LinearGradient>
-          <LinearGradient
-            start={{ x: 0, y: 0 }}
-            end={{ x: 1, y: 0 }}
-            colors={["#141E30", "#243B55"]}
+          <View
+            
             style={styles.box_job}
           >
-          
             <View
               style={{
                 marginTop: 10,
@@ -184,7 +186,7 @@ const HomeScreen = () => {
                 justifyContent: "space-between",
               }}
             >
-              <Text style={styles.text}>Công việc cần làm</Text>
+              <Text style={styles.title_job}>Công việc cần làm</Text>
               <View
                 style={{
                   height: 30,
@@ -229,8 +231,7 @@ const HomeScreen = () => {
                 </View>
               </View>
             </View>
-          
-          </LinearGradient>
+          </View>
         </View>
 
         <View style={styles.btn}>
@@ -247,7 +248,7 @@ const HomeScreen = () => {
           </TouchableOpacity>
           <TouchableOpacity onPress={() => setShowTimekeep(true)}>
             <View style={styles.btn1}>
-              <Text style={styles.text6}> Công Tháng</Text>
+              <Text style={styles.text6}>Công Tháng</Text>
               <View style={styles.vongtron}>
                 <AnimatedCircularProgress
                   size={35}
@@ -262,7 +263,10 @@ const HomeScreen = () => {
         </View>
 
         <View style={styles.view}>
+          <View style={styles.row_rank}>
           <Text style={styles.text7}>Top 5 hôm nay</Text>
+
+          </View>
 
           <View style={styles.row1}>
             <View style={styles.avt2}>
