@@ -107,6 +107,7 @@ const HomeScreen = () => {
     await dispatch<any>(checking());
     dispatch<any>(loadTimesheet());
     dispatch<any>(getmyrank());
+    dispatch<any>(ranking());
     ToastAndroid.show(
       "Bạn" + " " + userName + " " + "đã chấm công!",
       ToastAndroid.SHORT
@@ -115,7 +116,10 @@ const HomeScreen = () => {
 
   const onRefresh = React.useCallback(() => {
     setRefreshing(true);
-    wait(2000).then(() => setRefreshing(false));
+    wait(2000).then(() => {setRefreshing(false);
+      dispatch<any>(loadTimesheet());
+      dispatch<any>(getmyrank());
+      dispatch<any>(ranking());});
   }, []);
 
   return (
