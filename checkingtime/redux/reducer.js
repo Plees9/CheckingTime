@@ -81,6 +81,26 @@ export const companyReducer = createReducer ({}, {
     state.message = null;
   },
 });
+export const allReducer = createReducer ({},{
+  loadAllUserRequest: (state) => {
+    state.loading = true;
+  },
+  loadAllUserSuccess: (state, action) => {
+    state.loading = false;
+    state.allUser = action.payload;
+  },
+  loadAllUserFailure: (state, action) => {
+    state.loading = false;
+    state.error = action.payload;
+  },
+  clearError: (state) => {
+    state.error = null;
+  },
+
+  clearMessage: (state) => {
+    state.message = null;
+  },
+})
 export const authReducer = createReducer(
   {},
   {
@@ -158,6 +178,17 @@ export const authReducer = createReducer(
       state.loading = false;
       state.error = action.payload;
     },
+    phonePasswordRequest: (state) => {
+      state.loading = true;
+    },
+    phonePasswordSuccess: (state, action) => {
+      state.loading = false;
+      state.messagePhone = action.payload;
+    },
+    phonePasswordFailure: (state, action) => {
+      state.loading = false;
+      state.errorPhone = action.payload;
+    },
 
     resetPasswordRequest: (state) => {
       state.loading = true;
@@ -169,7 +200,17 @@ export const authReducer = createReducer(
     resetPasswordFailure: (state, action) => {
       state.loading = false;
       state.error = action.payload;
-    },}
+    },
+    clearError: (state) => {
+      state.error = null;
+      state.errorPhone = null ;
+    },
+
+    clearMessage: (state) => {
+      state.message = null;
+      state.messagePhone = null ;
+    },
+    }
   )
 
   export const messageReducer = createReducer(
@@ -195,13 +236,10 @@ export const authReducer = createReducer(
       },
       registerSuccess: (state, action) => {
         state.loading = false;
-        //state.isAuthenticated = true;
-        state.user = action.payload.user;
         state.message = action.payload.message;
       },
       registerFailure: (state, action) => {
         state.loading = false;
-        //state.isAuthenticated = false;
         state.error = action.payload;
         state.message = action.payload.message;
       },

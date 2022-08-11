@@ -27,7 +27,7 @@ import AntDesign from "react-native-vector-icons/AntDesign";
 import DateTimePicker from "@react-native-community/datetimepicker";
 import moment from "moment";
 import { useDispatch, useSelector } from "react-redux";
-import { register } from "../../../redux/action";
+import { loadAlluser, register } from "../../../redux/action";
 
 //import PassMeter from "../../../node_modules/react-native-passmeter";
 
@@ -101,6 +101,7 @@ const AddStaff = () => {
     myForm.append("role", value_3);
     console.log(Sdate);
     dispatch<any>(register(myForm));
+    dispatch<any>(loadAlluser())
   };
 
   const navigation = useNavigation<any>();

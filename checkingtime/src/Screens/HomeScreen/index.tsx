@@ -31,7 +31,7 @@ const wait = (timeout: number | undefined) => {
 const HomeScreen = () => {
   const dispatch = useDispatch();
   let checkout;
-  let checkin;
+  let checkin 
   let numberstr;
   let avatar1;
   let userName1;
@@ -59,39 +59,47 @@ const HomeScreen = () => {
   const { timesheet, number, array } = useSelector<any, any>(
     (state) => state.timesheet
   );
-
+  console.log(timesheet)
+  console.log(number)
   if (
     typeof timesheet !== "undefined" &&
     typeof number !== "undefined" &&
     timesheet !== null &&
-    number !== null &&
-    typeof array !== "undefined" &&
-    array !== null
+    number !== null 
   ) {
     checkin = timesheet.Object.checkinTime;
     checkout = timesheet.Object.checkoutTime;
     numberstr = number.number;
-    avatar1 = array.array[0].avatar.url;
-    userName1 = array.array[0].name;
-    checkin1 = array.array[0].checkinTime;
-
-    avatar2 = array.array[1].avatar.url;
-    userName2 = array.array[1].name;
-    checkin2 = array.array[1].checkinTime;
-
+  }
+  if (
+  typeof array !== "undefined" &&
+  array !== null ) {
+    if (typeof array.array[0] !== "undefined") {
+      avatar1 = array.array[0].avatar.url;
+      userName1 = array.array[0].name;
+      checkin1 = array.array[0].checkinTime;
+     }
+    if (typeof array.array[1] !== "undefined") {
+      avatar2 = array.array[1].avatar.url;
+      userName2 = array.array[1].name;
+      checkin2 = array.array[1].checkinTime;
+    }
+    if (typeof array.array[2] !== "undefined") {
     avatar3 = array.array[2].avatar.url;
     userName3 = array.array[2].name;
-  checkin3 = array.array[2].checkinTime;
-
+    checkin3 = array.array[2].checkinTime;
+    }
+    if (typeof array.array[3] !== "undefined") {
     avatar4 = array.array[3].avatar.url;
     userName4 = array.array[3].name;
     checkin4 = array.array[3].checkinTime;
-
+    }
+    if (typeof array.array[4] !== "undefined") {
     avatar5 = array.array[4].avatar.url;
     userName5 = array.array[4].name;
     checkin5 = array.array[4].checkinTime;
+    }
   }
-  console.log(array);
   const [userName, setUserName] = useState(user.name);
   const [avatar, loading] = useState(user.avatar.url);
   const [refreshing, setRefreshing] = React.useState(false);
@@ -99,8 +107,11 @@ const HomeScreen = () => {
     navigation.navigate("Thông tin Công Ty");
   };
   const pressHandler = async () => {
+
     await dispatch<any>(checking());
     dispatch<any>(loadTimesheet());
+    dispatch<any>(getmyrank());
+    dispatch<any>(ranking());
     ToastAndroid.show(
       "Bạn" + " " + userName + " " + "đã chấm công!",
       ToastAndroid.SHORT
@@ -109,7 +120,10 @@ const HomeScreen = () => {
 
   const onRefresh = React.useCallback(() => {
     setRefreshing(true);
-    wait(2000).then(() => setRefreshing(false));
+    wait(2000).then(() => {setRefreshing(false);
+      dispatch<any>(loadTimesheet());
+      dispatch<any>(getmyrank());
+      dispatch<any>(ranking());});
   }, []);
 
  

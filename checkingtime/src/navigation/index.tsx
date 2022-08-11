@@ -32,6 +32,8 @@ import Todo_Navigation from "./Todo_List";
 import UpdateStaff_Admin from "../Screens/UpdateInFoStaff_NV/UpdateInfoStaff_NV";
 
 import Camera from "../Screens/UpdateInfoStaff/Camera"
+import PhonePasswordScreen from "../Screens/PhonePassword/PhonePasswordScreen";
+import TypeOTP from "../Screens/PhonePassword/TypeOTP";
 
 const Stack = createNativeStackNavigator();
 
@@ -46,6 +48,11 @@ const Navigation = () => {
       <Stack.Screen
         name="Quên mật khẩu"
         component={ForgotPasswordScreen}
+        options={{ headerShown: true }}
+      />
+      <Stack.Screen
+        name="Nhập otp bằng điện thoại"
+        component={PhonePasswordScreen}
         options={{ headerShown: true }}
       />
       <Stack.Screen
@@ -203,6 +210,11 @@ const SNavigation = () => {
         component={ForgotPasswordScreen}
       />
       <Stack.Screen
+        name="Nhập otp bằng điện thoại"
+        component={PhonePasswordScreen}
+        options={{ headerShown: true }}
+      />
+      <Stack.Screen
         name="Thêm nhân viên"
         component={AddStaffNavigation}
         options={{ headerShown: true }}
@@ -225,6 +237,11 @@ const SNavigation = () => {
       <Stack.Screen
          name="Đổi ảnh đại diện"
          component={Camera}
+         options={{ headerShown: true}}
+        />
+      <Stack.Screen
+         name="TypeOTP"
+         component={TypeOTP}
          options={{ headerShown: true}}
         />
       <Stack.Screen
