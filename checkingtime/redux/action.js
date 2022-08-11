@@ -175,6 +175,27 @@ export const forgetPassword = (email) => async (dispatch) => {
     });
   }
 };
+export const phonePassword = (phoneNumber) => async (dispatch) => {
+  try {
+    dispatch({ type: "phonePasswordRequest" });
+
+    const { phoneNumber } = await axios.post(
+      `${serverUrl}/user/phonepassword`,
+      { phoneNumber },
+      {
+        headers: {
+          "Content-Type": "application/json",
+        },
+      }
+    );
+    dispatch({ type: "phonePasswordSuccess", payload: data.message });
+  } catch (error) {
+    dispatch({
+      type: "phonePasswordFailure",
+      payload: error.response.data.message,
+    });
+  }
+};
 
 export const resetPassword = (otp, newPassword, rewritePassword) => async (dispatch) => {
   try {

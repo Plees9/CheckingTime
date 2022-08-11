@@ -22,7 +22,8 @@ const ResetPasswordScreen = () => {
   const email1 = route.params.email;
   const changePasswordHandler = async () => {
     await dispatch<any>(resetPassword(otp, password, confirmPassword));
-    navigation.navigate("SignIn");
+    if (message == "Password changed successfully")
+      navigation.navigate("SignIn");
   };
   const forgetHandler = async () => {
     await dispatch<any>(forgetPassword(email1));

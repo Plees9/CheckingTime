@@ -139,7 +139,7 @@ const SignIn = () => {
 
       <TouchableOpacity
         style={styles.btnForgot}
-        onPress={() => navigation.navigate("Quên mật khẩu")}
+        onPress={() => navigation.navigate("TypeOTP")}
       >
         <Text style={styles.text23}>    Quên mật khẩu ?</Text>
       </TouchableOpacity>

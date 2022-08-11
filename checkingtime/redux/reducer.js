@@ -158,6 +158,17 @@ export const authReducer = createReducer(
       state.loading = false;
       state.error = action.payload;
     },
+    phonePasswordRequest: (state) => {
+      state.loading = true;
+    },
+    phonePasswordSuccess: (state, action) => {
+      state.loading = false;
+      state.messagePhone = action.payload;
+    },
+    phonePasswordFailure: (state, action) => {
+      state.loading = false;
+      state.errorPhone = action.payload;
+    },
 
     resetPasswordRequest: (state) => {
       state.loading = true;
@@ -169,7 +180,17 @@ export const authReducer = createReducer(
     resetPasswordFailure: (state, action) => {
       state.loading = false;
       state.error = action.payload;
-    },}
+    },
+    clearError: (state) => {
+      state.error = null;
+      state.errorPhone = null ;
+    },
+
+    clearMessage: (state) => {
+      state.message = null;
+      state.messagePhone = null ;
+    },
+    }
   )
 
   export const messageReducer = createReducer(
