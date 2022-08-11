@@ -20,7 +20,6 @@ import { checking, loadUser, ranking } from "../../../redux/action";
 import { FAB, Input } from "react-native-elements";
 import { useDispatch, useSelector } from "react-redux";
 
-
 import { FlatList } from "react-native-gesture-handler";
 
 import { getmyrank, loadTimesheet, loadCompany } from "../../../redux/action";
@@ -75,15 +74,19 @@ const HomeScreen = () => {
     avatar1 = array.array[0].avatar.url;
     userName1 = array.array[0].name;
     checkin1 = array.array[0].checkinTime;
+
     avatar2 = array.array[1].avatar.url;
     userName2 = array.array[1].name;
     checkin2 = array.array[1].checkinTime;
+
     avatar3 = array.array[2].avatar.url;
     userName3 = array.array[2].name;
-    checkin3 = array.array[3].checkinTime;
+  checkin3 = array.array[2].checkinTime;
+
     avatar4 = array.array[3].avatar.url;
     userName4 = array.array[3].name;
-    checkin4 = array.array[4].checkinTime;
+    checkin4 = array.array[3].checkinTime;
+
     avatar5 = array.array[4].avatar.url;
     userName5 = array.array[4].name;
     checkin5 = array.array[4].checkinTime;
@@ -225,42 +228,42 @@ const HomeScreen = () => {
 
           <View style={styles.row1}>
             <View style={styles.avt2}>
-
-              <Avatar rounded source={{ uri: avatar1 }} size={40} />
+              <Avatar rounded source={{ uri: avatar1 }} size={36} />
             </View>
+
             <Text style={styles.name2}>{userName1}</Text>
-            <Text style={styles.checkin2}> {checkin1}</Text>
+            <Text style={styles.checkin2}>{checkin1}</Text>
           </View>
+
           <View style={styles.row1}>
             <View style={styles.avt2}>
-              <Avatar rounded source={{ uri: avatar2 }} size={40} />
+              <Avatar rounded source={{ uri: avatar2 }} size={36} />
             </View>
             <Text style={styles.name2}>{userName2}</Text>
-            <Text style={styles.checkin2}> {checkin2}</Text>
+            <Text style={styles.checkin2}>{checkin2}</Text>
           </View>
-
           <View style={styles.row1}>
             <View style={styles.avt2}>
-              <Avatar rounded source={{ uri: avatar3 }} size={40} />
+              <Avatar rounded source={{ uri: avatar3 }} size={36} />
             </View>
             <Text style={styles.name2}>{userName3}</Text>
-            <Text style={styles.checkin2}> {checkin3}</Text>
-
+            <Text style={styles.checkin2}>{checkin3}</Text>
           </View>
 
           <View style={styles.row1}>
             <View style={styles.avt2}>
-              <Avatar rounded source={{ uri: avatar4 }} size={40} />
+              <Avatar rounded source={{ uri: avatar4 }} size={36} />
             </View>
             <Text style={styles.name2}>{userName4}</Text>
-            <Text style={styles.checkin2}> {checkin4}</Text>
+            <Text style={styles.checkin2}>{checkin4}</Text>
           </View>
+
           <View style={styles.row1}>
             <View style={styles.avt2}>
-              <Avatar rounded source={{ uri: avatar5 }} size={40} />
+              <Avatar rounded source={{ uri: avatar5 }} size={36} />
             </View>
-            <Text style={styles.name2}>{userName5}</Text>
-            <Text style={styles.checkin2}> {checkin5}</Text>
+            <Text style={styles.name2}>{userName5} </Text>
+            <Text style={styles.checkin2}>{checkin5}</Text>
           </View>
          
         </View>

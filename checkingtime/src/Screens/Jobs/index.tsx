@@ -22,7 +22,7 @@ const Jobs = () => {
       >
         <TouchableOpacity
           style={styles.Touch1}
-          onPress={() => navigation.navigate("Bảng chấm công")}
+          onPress={() => navigation.navigate("Công việc")}
         >
           <View style={{ alignContent: "center" }}>
             <IconButton icon="clipboard-list" color="#f49218" size={50} />
