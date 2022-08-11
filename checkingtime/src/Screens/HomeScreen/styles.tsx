@@ -6,30 +6,28 @@ const styles = StyleSheet.create({
     flex: 1,
     paddingTop: StatusBar.currentHeight,
     backgroundColor: "#f2f2f2",
-    
   },
 
   text: {
-    fontSize: 20,
+    fontSize: 14,
 
     fontFamily: FONTS.vanSansBold,
     color: "#FFFFFF",
     textAlign: "center",
   },
   text1: {
-    fontSize: 16,
+    fontSize: 15,
     marginLeft: 10,
-    marginTop: 6,
-    justifyContent: "center",
-    fontFamily: FONTS.vanSansRegular,
+
+    fontFamily: FONTS.vanSansMedium,
   },
   textcolor: {
     fontFamily: FONTS.vanSansBold,
   },
   text2: {
-    fontSize: 16,
-    marginLeft: 10,
-    paddingTop: 5,
+    fontSize: 13,
+    marginLeft: 6,
+    alignSelf: "center",
     fontFamily: FONTS.vanSansBold,
     color: "#FFFFFF",
   },
@@ -40,9 +38,9 @@ const styles = StyleSheet.create({
     paddingTop: 5,
   },
   text4: {
-    fontSize: 16,
+    fontSize: 12,
+    fontFamily: FONTS.vanSansBold,
 
-    paddingTop: 5,
     color: "#eee9f5",
     alignSelf: "flex-end",
   },
@@ -67,10 +65,11 @@ const styles = StyleSheet.create({
     padding: 7,
   },
   icon2: {
-    flexDirection: "column",
+    flexDirection: "row",
     height: 180,
-    width: "94%",
+    flex: 1,
     marginTop: 10,
+    marginHorizontal: 10,
     backgroundColor: "#FF8C32",
     borderRadius: 25,
   },
@@ -78,17 +77,16 @@ const styles = StyleSheet.create({
     //flex: 1,
     flexDirection: "row",
     marginTop: 10,
-    marginBottom: 5,
-    marginLeft: 10,
-    marginRight: 10,
+    marginBottom: 7,
+    marginLeft: 6,
+    marginRight: 15,
   },
 
   row1: {
     flexDirection: "row",
     justifyContent: "space-around",
     width: "99%",
-    // backgroundColor: "red",
-    marginTop: "-2%",
+    marginTop: 10,
     height: 55,
     //alignItems:'center'
   },
@@ -109,8 +107,8 @@ const styles = StyleSheet.create({
     height: "100%",
     backgroundColor: "#FFFFFF",
     marginHorizontal: 10,
-    borderRadius: 10,
-    
+
+    borderRadius: 8,
   },
   btn: {
     flexDirection: "row",
@@ -132,7 +130,7 @@ const styles = StyleSheet.create({
   text7: {
     fontSize: 18,
     textAlign: "center",
-    margin: 10,
+    marginTop: 10,
     fontFamily: FONTS.vanSansSemiBold,
   },
 
@@ -156,8 +154,8 @@ const styles = StyleSheet.create({
     marginLeft: 10,
   },
   boder: {
-    width: 30,
-    height: 30,
+    width: 24,
+    height: 24,
     borderRadius: 30 / 2,
     backgroundColor: "#eee9f5",
     padding: 6,
@@ -169,11 +167,6 @@ const styles = StyleSheet.create({
   fab: {
     width: 150,
     height: 50,
-   
-  },
-  btnFab: {
-    marginVertical: "-3.5%",
-    
   },
   text_name: {
     fontSize: 16,
@@ -183,19 +176,94 @@ const styles = StyleSheet.create({
   },
   avt2: {
     width: "15%",
+
     alignItems: "center",
     alignSelf: "center",
   },
   name2: {
     width: "60%",
-    fontFamily: FONTS.vanSansSemiBold,
+    fontFamily: FONTS.vanSansMedium,
+    color: "gray",
     alignSelf: "center",
   },
   checkin2: {
     width: "18%",
-    //fontFamily: FONTS.vanSansMedium,
-    color: "#FF8C32",
+    fontFamily: FONTS.vanSansMedium,
     alignSelf: "center",
+  },
+  box_check: {
+    flex: 1,
+    marginTop: 10,
+  },
+  nb_job: {
+    position: "absolute",
+    fontSize: 16,
+    paddingRight: 10,
+    color: "#f5b501",
+    alignSelf: "flex-end",
+    fontFamily: FONTS.vanSansBold,
+  },
+  nb_jobdone: {
+    position: "absolute",
+    fontSize: 16,
+    paddingRight: 10,
+    color: "#4adb63",
+    alignSelf: "flex-end",
+    fontFamily: FONTS.vanSansBold,
+  },
+  nb_jobover: {
+    position: "absolute",
+    fontSize: 16,
+    paddingRight: 10,
+    color: "#ff3b2e",
+    alignSelf: "flex-end",
+    fontFamily: FONTS.vanSansBold,
+  },
+  txt_job: {
+    position: "absolute",
+    alignSelf: "center",
+    fontSize: 16,
+    paddingLeft: 10,
+    fontFamily: FONTS.vanSansBold,
+    color: "#f5b501",
+  },
+  txt_jobdone: {
+    position: "absolute",
+    alignSelf: "center",
+    fontSize: 16,
+    paddingLeft: 10,
+    fontFamily: FONTS.vanSansBold,
+    color: "#4adb63",
+  },
+  txt_jobover: {
+    position: "absolute",
+    alignSelf: "center",
+    fontSize: 16,
+    paddingLeft: 10,
+    fontFamily: FONTS.vanSansBold,
+    color: "#ff3b2e",
+  },
+  box_job: {
+    flex: 1,
+    marginRight: 10,
+    height: 180,
+    width: "43%",
+    marginTop: 10,
+    backgroundColor: "#fffd",
+    borderRadius: 25,
+  },
+  title_job: {
+    fontSize: 14,
+
+    fontFamily: FONTS.vanSansBold,
+    color: "#000",
+    textAlign: "center",
+  },
+  row_rank: {
+    padding: 10,
+    flexDirection: "row",
+    alignItems: "center",
+    justifyContent: "center",
   },
 });
 

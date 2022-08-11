@@ -264,6 +264,7 @@ const UpdateStaff_Admin = () => {
           />
         </View>
         <View style={styles.khoi_2}>
+          <View>
           <Dropdown
             style={styles.dropdown}
             placeholderStyle={styles.placeholderStyle}
@@ -291,6 +292,9 @@ const UpdateStaff_Admin = () => {
               />
             )}
           />
+          </View>
+          
+          <View>
           <Dropdown
             style={styles.dropdown_1}
             placeholderStyle={styles.placeholderStyle}
@@ -318,6 +322,8 @@ const UpdateStaff_Admin = () => {
               />
             )}
           />
+          </View>
+          
         </View>
       </View>
       

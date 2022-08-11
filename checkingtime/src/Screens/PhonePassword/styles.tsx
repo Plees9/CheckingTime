@@ -51,6 +51,7 @@ const createStyles = () =>
       fontWeight: "bold",
     },
     image: {
+      borderRadius:100,
       height: 200,
       width: 200,
       alignSelf: "center",
