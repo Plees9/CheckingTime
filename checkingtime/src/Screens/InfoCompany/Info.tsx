@@ -43,7 +43,7 @@ const openUrl = async (url: string) => {
           <IconButton
             icon="office-building"
             size={30}
-            color="#f49218"
+            color="#716DF2"
             style={{
               width: 50,
               height: 50,
@@ -64,7 +64,7 @@ const openUrl = async (url: string) => {
           <IconButton
             icon="phone"
             size={20}
-            color="#f49218"
+            color="#716DF2"
             style={{
               width: 50,
               height: 50,

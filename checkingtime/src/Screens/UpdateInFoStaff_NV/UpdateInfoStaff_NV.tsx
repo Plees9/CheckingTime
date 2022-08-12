@@ -282,6 +282,7 @@ const UpdateStaff_Admin = () => {
           />
         </View>
         <View style={styles.khoi_2}>
+          <View>
           <Dropdown
             style={styles.dropdown}
             placeholderStyle={styles.placeholderStyle}
@@ -309,6 +310,9 @@ const UpdateStaff_Admin = () => {
               />
             )}
           />
+          </View>
+          
+          <View>
           <Dropdown
             style={styles.dropdown_1}
             placeholderStyle={styles.placeholderStyle}
@@ -336,13 +340,15 @@ const UpdateStaff_Admin = () => {
               />
             )}
           />
+          </View>
+          
         </View>
       </View>
       
       <LinearGradient
         start={{ x: 0, y: 0 }}
         end={{ x: 1, y: 0 }}
-        colors={["#f12711", "#f5af19"]}
+        colors={["#8f73f6", "#b5a4fc"]}
         style={styles.btn2}
       >
         <TouchableOpacity onPress={() => setVisible(true)}>

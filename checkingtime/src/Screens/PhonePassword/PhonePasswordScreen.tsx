@@ -5,9 +5,9 @@ import { useNavigation } from "@react-navigation/native";
 import { LinearGradient } from "expo-linear-gradient";
 import { useDispatch, useSelector } from "react-redux";
 import { phonePassword } from "../../../redux/action";
-import { FONTS } from "../../../constants/theme";
+
 const PhonePasswordScreen = () => {
-  const image = require("../../../assets/images/forgot-password.png");
+  const image = require("../../../assets/images/sms-phone.jpg");
   const { messagePhone, errorPhone } = useSelector<any, any>((state) => state.password);
   const styles = useMemo(() => createStyles(), []);
   const [phoneNumber, setphoneNumber] = useState("");
@@ -51,7 +51,7 @@ const PhonePasswordScreen = () => {
         <LinearGradient
           start={{ x: 0, y: 0 }}
           end={{ x: 1, y: 0 }}
-          colors={["#f12711", "#f5af19"]}
+          colors={["#8f73f6", "#b5a4fc"]}
           style={styles.btn}
         >
           <TouchableOpacity onPress={forgetHandler}>

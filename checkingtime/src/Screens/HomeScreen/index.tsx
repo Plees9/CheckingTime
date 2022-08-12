@@ -12,24 +12,25 @@ import {
 } from "react-native";
 import { Avatar } from "@rneui/themed";
 import Icon from "react-native-vector-icons/FontAwesome";
-import Icon1 from "react-native-vector-icons/Ionicons";
+import Icon1 from "react-native-vector-icons/Ionicons"
 import styles from "./styles";
-
+import TodoModal from "../../component/TodoModal";
+import { AnimatedCircularProgress } from "react-native-circular-progress";
+import GradientText from "../../component/GradientText";
 import { checking, loadUser, ranking } from "../../../redux/action";
-
 import { FAB, Input } from "react-native-elements";
 import { useDispatch, useSelector } from "react-redux";
-
-import { FlatList } from "react-native-gesture-handler";
-
 import { getmyrank, loadTimesheet, loadCompany } from "../../../redux/action";
-
+import { LinearGradient } from "expo-linear-gradient";
 const wait = (timeout: number | undefined) => {
   return new Promise((resolve) => setTimeout(resolve, timeout));
 };
 
 const HomeScreen = () => {
   const dispatch = useDispatch();
+  const job_todo = 4;
+  const job_done = 2;
+  const job_overdate = 2;
   let checkout;
   let checkin 
   let numberstr;
@@ -55,12 +56,16 @@ const HomeScreen = () => {
     dispatch<any>(ranking());
   }, [dispatch]);
   const navigation = useNavigation<any>();
+  const [showTodo, setShowTodo] = useState(false);
   const { user } = useSelector<any, any>((state) => state.auth);
   const { timesheet, number, array } = useSelector<any, any>(
     (state) => state.timesheet
   );
   console.log(timesheet)
   console.log(number)
+  const maxPoint = 25;
+  const currentProcess = 20.5;
+  const timeLate = 2;
   if (
     typeof timesheet !== "undefined" &&
     typeof number !== "undefined" &&
@@ -126,41 +131,50 @@ const HomeScreen = () => {
       dispatch<any>(ranking());});
   }, []);
 
- 
-
   return (
     <View style={styles.container}>
       <ScrollView
         style={{ flex: 1 }}
         refreshControl={
-          <RefreshControl refreshing={refreshing} onRefresh={onRefresh} />
+          <RefreshControl  colors={["#8f73f6", "#b5a4fc"]} refreshing={refreshing} onRefresh={onRefresh} />
         }
       >
-        <TouchableOpacity onPress={() => navigation.navigate("Tài khoản")}>
-          <View style={styles.row}>
-            <Avatar rounded source={{ uri: avatar }} size={40}></Avatar>
-            <Text style={styles.text1}> Xin chào, {userName}</Text>
-          </View>
-        </TouchableOpacity>
-
-        <View style={{ alignItems: "center" }}>
-          <View style={styles.icon2}>
-            <Text style={styles.text}>Nhật ký hôm nay</Text>
-            <View>
-              <View style={styles.textIcon23}>
-                <View
-                  style={{
-                    flexDirection: "row",
-                    alignSelf: "flex-end",
-                    flex: 1,
-                  }}
-                >
-                  <Icon
-                    name="check"
-                    size={18}
-                    color="#f49218"
-                    style={styles.boder}
-                  />
+        <View style={{ flexDirection: "row", justifyContent: "space-between" }}>
+          <TouchableOpacity onPress={() => navigation.navigate("Tài khoản")}>
+            <View style={styles.row}>
+              <Avatar rounded source={{ uri: avatar }} size={40}></Avatar>
+              <View>
+                <Text style={styles.text1}>Xin chào,</Text>
+                <Text style={styles.text1}>{userName}</Text>
+              </View>
+            </View>
+          </TouchableOpacity>
+          <Icon name='eye' />
+        </View>
+        <View style={{ alignItems: "flex-start", flexDirection: "row" }}>
+          <LinearGradient
+            start={{ x: 0, y: 0 }}
+            end={{ x: 1, y: 0 }}
+            colors={["#8f73f6", "#b5a4fc"]}
+            style={styles.icon2}
+          >
+            <View style={styles.box_check}>
+              <Text style={styles.text}>Nhật ký hôm nay</Text>
+              <View>
+                <View style={styles.textIcon23}>
+                  <View
+                    style={{
+                      flexDirection: "row",
+                      alignSelf: "center",
+                      flex: 1,
+                    }}
+                  >
+                    <Icon
+                      name="check"
+                      size={13}
+                      color="#8f73f6"
+                      style={styles.boder}
+                    />
 
                   <Text style={styles.text2}>Checkin: </Text>
                 </View>
@@ -178,41 +192,71 @@ const HomeScreen = () => {
                 >
                   <Icon1
                     name="log-out-outline"
-                    size={20}
-                    color="#f49218"
+                    size={13}
+                    color="#8f73f6"
                     style={styles.boder}
                   />
 
-                  <Text style={styles.text2}>Checkout: </Text>
+                    <Text style={styles.text2}>Checkout:</Text>
+                  </View>
+                  <View style={{ justifyContent: "center", flex: 1 }}>
+                    <Text style={styles.text4}>{checkout}</Text>
+                  </View>
                 </View>
-                <View style={{ justifyContent: "flex-end", flex: 1 }}>
-                  <Text style={styles.text4}>
-                    {checkout}
+
+                <View style={styles.textIcon23}>
+                  <View
+                    style={{
+                      flexDirection: "row",
+                      alignSelf: "flex-end",
+                      flex: 1,
+                    }}
+                  >
+                    <Icon
+                      name="line-chart"
+                      size={13}
+                      color="#8f73f6"
+                      style={styles.boder}
+                    />
+
+                    <Text style={styles.text2}>Xếp hạng:</Text>
+                  </View>
+                  <View style={{ justifyContent: "center", flex: 1 }}>
+                    <Text style={styles.text4}>{numberstr}</Text>
+                  </View>
+                </View>
+              </View>
+            </View>
+          </LinearGradient>
+          <View
+            
+            style={styles.box_job}
+          >
+            <View
+              style={{
+                marginTop: 10,
+                height: 180,
+                
+              }}
+            >
+              <Text style={styles.title_job}>Công tháng</Text>
+              
+              <AnimatedCircularProgress
+                  size={85}
+                  width={5}
+                  fill={Math.round((currentProcess / maxPoint) * 100)}
+                  tintColor="#8f73f6"
+                  style={{alignSelf:'center', marginTop: 10}}
+                  backgroundColor="#3d5875"
+                >{() => (
+                  <Text style={styles.points}>
+                    {currentProcess}/{maxPoint}
                   </Text>
-                </View>
-              </View>
-
-              <View style={styles.textIcon23}>
-                <View
-                  style={{
-                    flexDirection: "row",
-                    alignSelf: "flex-end",
-                    flex: 1,
-                  }}
-                >
-                  <Icon
-                    name="line-chart"
-                    size={18}
-                    color="#f49218"
-                    style={styles.boder}
-                  />
-
-                  <Text style={styles.text2}>Xếp hạng: </Text>
-                </View>
-                <View style={{ justifyContent: "flex-end", flex: 1 }}>
-                  <Text style={styles.text4}>{numberstr}</Text>
-                </View>
-              </View>
+                )}
+              </AnimatedCircularProgress>
+              <View style={{marginTop: 10}}>
+              <Text style={styles.text_late}>{timeLate} lần đi muộn !</Text>
+            </View>
             </View>
           </View>
         </View>
@@ -223,90 +267,76 @@ const HomeScreen = () => {
               <Icon
                 name="building"
                 size={18}
-                color="#f49218"
+                color="#8f73f6"
                 style={styles.icon1}
               />
               <Text style={styles.text5}>Thông tin Công Ty</Text>
             </View>
           </TouchableOpacity>
-          <TouchableOpacity onPress={() => Alert.alert("image clicked")}>
+          <TouchableOpacity onPress={() => setShowTodo(true)}>
             <View style={styles.btn1}>
-              <Text style={styles.text6}> Công Tháng</Text>
-              <View style={styles.vongtron}></View>
+              <Text style={styles.text6}>Công việc</Text>
             </View>
           </TouchableOpacity>
         </View>
 
         <View style={styles.view}>
+          <View style={styles.row_rank}>
           <Text style={styles.text7}>Top 5 hôm nay</Text>
 
-          <View style={styles.row1}>
-            <View style={styles.avt2}>
-              <Avatar rounded source={{ uri: avatar1 }} size={36} />
-            </View>
 
-            <Text style={styles.name2}>{userName1}</Text>
-            <Text style={styles.checkin2}>{checkin1}</Text>
           </View>
 
           <View style={styles.row1}>
             <View style={styles.avt2}>
-              <Avatar rounded source={{ uri: avatar2 }} size={36} />
+              <Avatar rounded source={{ uri: avatar1 }} size={40} />
+            </View>
+            <Text style={styles.name2}>{userName1}</Text>
+            <Text style={styles.checkin2}>{checkin1}</Text>
+          </View>
+          <View style={styles.row1}>
+            <View style={styles.avt2}>
+              <Avatar rounded source={{ uri: avatar2 }} size={40} />
             </View>
             <Text style={styles.name2}>{userName2}</Text>
             <Text style={styles.checkin2}>{checkin2}</Text>
           </View>
           <View style={styles.row1}>
             <View style={styles.avt2}>
-              <Avatar rounded source={{ uri: avatar3 }} size={36} />
+              <Avatar rounded source={{ uri: avatar3 }} size={40} />
             </View>
             <Text style={styles.name2}>{userName3}</Text>
             <Text style={styles.checkin2}>{checkin3}</Text>
           </View>
-
           <View style={styles.row1}>
             <View style={styles.avt2}>
-              <Avatar rounded source={{ uri: avatar4 }} size={36} />
+              <Avatar rounded source={{ uri: avatar4 }} size={40} />
             </View>
             <Text style={styles.name2}>{userName4}</Text>
             <Text style={styles.checkin2}>{checkin4}</Text>
           </View>
-
           <View style={styles.row1}>
             <View style={styles.avt2}>
-              <Avatar rounded source={{ uri: avatar5 }} size={36} />
+              <Avatar rounded source={{ uri: avatar5 }} size={40} />
             </View>
-            <Text style={styles.name2}>{userName5} </Text>
+            <Text style={styles.name2}>{userName5}</Text>
             <Text style={styles.checkin2}>{checkin5}</Text>
           </View>
-         
         </View>
-      
       </ScrollView>
-      
-      <View style ={styles.btnFab}>
       <FAB
-        // onPress={() => {
-        //   setIsCheckin(!isCheckin);
-        //   {
-        //     isCheckin == true
-        //       ? Alert.alert("Checkin thành công")
-        //       : Alert.alert("Checkout thành công");
-        //   }
-        // }}
-        // title={isCheckin ? "Checkin" : "Checkout"}
-        // color={isCheckin ? "#FF8C32" : "#F55353"}
         title="Chấm công"
         placement="right"
         size="small"
-        color="#FF8C32"
-        
+        color="#8f73f6"
         buttonStyle={styles.fab}
         onPress={pressHandler}
       />
-
-      </View>
-      
+      <TodoModal visible={showTodo}
+      onCancel={() => setShowTodo(false)}
+      dataTodo={4}
+      dataDone={2}
+      dataOvertime={2}/>
     </View>
   );
 };

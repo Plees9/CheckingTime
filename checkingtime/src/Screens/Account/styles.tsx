@@ -5,11 +5,14 @@ const createStyles = () =>
   StyleSheet.create({
     container: {
       flex: 1,
+      backgroundColor: "#f6f6f6",
+    },
+    container_2: {
+      flex: 1,
       flexDirection: "column",
       marginTop: "3%",
       marginLeft: 10,
       marginBottom: 15,
-      //paddingTop: StatusBar.currentHeight,
     },
     down: {
       flexDirection: "column",
@@ -53,7 +56,7 @@ const createStyles = () =>
 
     icon: {
       fontSize: 35,
-      alignSelf: 'center',
+      alignSelf: "center",
       margin: 4,
     },
 

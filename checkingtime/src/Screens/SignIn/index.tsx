@@ -15,6 +15,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { getmyrank, loadCompany, loadTimesheet, login } from "../../../redux/action";
 import { LinearGradient } from "expo-linear-gradient";
 import GradientText from "../../component/GradientText";
+import TwoChoiceModal from "../../component/TwoChoiceModal";
 import Icon_1 from "react-native-vector-icons/Ionicons";
 
 
@@ -25,7 +26,7 @@ const SignIn = () => {
   const styles = useMemo(() => createStyles(), []);
   const [userName, setUserName] = useState("");
   const [password, setPassword] = useState("");
-  const [isChecked, setIsChecked] = useState(false);
+  const [isPressed, setIsPressed] = useState(false);
   const [isHided, setIsHided] = useState(true);
 
   const loginHandler = () => {
@@ -40,20 +41,11 @@ const SignIn = () => {
   }, [error, dispatch, alert]);
   const navigation = useNavigation<any>();
 
-  const hobbies: string[] = [];
-
-  const Click = () => {
-    if (isChecked === true) {
-      hobbies.push("check");
-      Alert.alert("Please enter your user name" + hobbies.toString());
-    }
-  };
-
   return (
     <View style={styles.view}>
       <View style={styles.image1}>
         <GradientText
-          colors={["#f12711", "#f5af19"]}
+          colors={["#8f73f6", "#b5a4fc"]}
           style={styles.textWelcome}
         >
           Vikings
@@ -115,20 +107,10 @@ const SignIn = () => {
         
       </View>
 
-      <TouchableOpacity>
-        <View style={styles.checkbox}>
-          <CheckBox
-            title="Lưu mật khẩu"
-            checked={isChecked}
-            onPress={() => setIsChecked(!isChecked)}
-          ></CheckBox>
-        </View>
-      </TouchableOpacity>
-
       <LinearGradient
         start={{ x: 0, y: 0 }}
         end={{ x: 1, y: 0 }}
-        colors={["#f12711", "#f5af19"]}
+        colors={["#8f73f6", "#b5a4fc"]}
         style={styles.btn2}
       >
         <TouchableOpacity onPress={loginHandler}>
@@ -139,10 +121,20 @@ const SignIn = () => {
 
       <TouchableOpacity
         style={styles.btnForgot}
-        onPress={() => navigation.navigate("TypeOTP")}
+        onPress={() => setIsPressed(true)}
       >
         <Text style={styles.text23}>    Quên mật khẩu ?</Text>
       </TouchableOpacity>
+      <TwoChoiceModal visible={isPressed} 
+      iconLeft="email"
+      iconRight="phone"
+      txtLeft="Email"
+      message="Vui lòng chọn hình thức bạn muốn nhận mã OTP"
+      txtRight="Điện thoại"
+      onLeftClick={() => {navigation.navigate("Nhận OTP bằng email");setIsPressed(false)} }
+      onRightClick={() => {navigation.navigate("Nhận OTP bằng điện thoại");setIsPressed(false)}}
+      onCancel={() => setIsPressed(false)}
+      size={30}/>
     </View>
   );
 };

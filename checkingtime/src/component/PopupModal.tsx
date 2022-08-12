@@ -63,7 +63,7 @@ export default class PopupModal extends React.Component<PopupModalProps> {
         showConfirmButton={true}
         cancelText={this.props.cancelText}
         confirmText={this.props.confirmText}
-        confirmButtonColor="#DD6B55"
+        confirmButtonColor="#ff3b2e"
         onCancelPressed={() => {
           this.props.onCancel();
           this.hide();

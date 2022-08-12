@@ -49,132 +49,148 @@ const Account = () => {
 
   return (
     <ScrollView style={styles.container}>
-      <View style={styles.hang}>
-        <Avatar
-          size={70}
-          rounded
-          source={{ uri: avatar }}
-          containerStyle={{ backgroundColor: "orange" }}
-        />
-        <View>
-          <Text style={styles.user}>{userName}</Text>
-          <Text style={styles.user}>{role}</Text>
-        </View>
-      </View>
-      {/* tạo kẻ ngang */}
-      <View style={styles.kengang} />
-
-      <View>
-        <Text style={styles.text}>Thông tin cá nhân</Text>
+      <View style={styles.container_2}>
         <View style={styles.hang}>
-          <Icon1
-            name="mail-unread"
-            size={40}
-            color="#f49218"
-            style={styles.icon}
+          <Avatar
+            size={70}
+            rounded
+            source={{ uri: avatar }}
+            containerStyle={{ backgroundColor: "orange" }}
           />
-
-          <View style={styles.cot}>
-            <Text style={styles.user}>Email</Text>
-            <Text style={styles.user}>{email}</Text>
+          <View>
+            <Text style={styles.user}>{userName}</Text>
+            <Text style={styles.user}>{role}</Text>
           </View>
         </View>
+        {/* tạo kẻ ngang */}
+        <View style={styles.kengang} />
+
         <View>
-          <View style={{ flexDirection: "row" }}>
-            <Icon1 name="call" size={40} color="#f49218" style={styles.icon} />
-            <View>
-              <Text style={styles.user}>Số điện thoại</Text>
-              <Text style={styles.user}>{numberPhone}</Text>
+          <Text style={styles.text}>Thông tin cá nhân</Text>
+          <View style={styles.hang}>
+            <Icon1
+              name="mail-unread"
+              size={40}
+              color="#716DF2"
+              style={styles.icon}
+            />
+
+            <View style={styles.cot}>
+              <Text style={styles.user}>Email</Text>
+              <Text style={styles.user}>{email}</Text>
+            </View>
+          </View>
+          <View>
+            <View style={{ flexDirection: "row" }}>
+              <Icon1
+                name="call"
+                size={40}
+                color="#716DF2"
+                style={styles.icon}
+              />
+              <View>
+                <Text style={styles.user}>Số điện thoại</Text>
+                <Text style={styles.user}>{numberPhone}</Text>
+              </View>
             </View>
           </View>
         </View>
-      </View>
-      {/* tạo kẻ ngang */}
-      <View style={styles.kengang} />
-      <View>
-        <Text style={styles.text}>Thông tin công việc</Text>
-        <View style={styles.hang}>
-          <Icon1 name="card" size={35} color="#f49218" style={styles.icon} />
-          <View>
-            <Text style={styles.user}>Mã nhân viên </Text>
-            <Text style={styles.user}>{userId}</Text>
+        {/* tạo kẻ ngang */}
+        <View style={styles.kengang} />
+        <View>
+          <Text style={styles.text}>Thông tin công việc</Text>
+          <View style={styles.hang}>
+            <Icon1 name="card" size={35} color="#716DF2" style={styles.icon} />
+            <View>
+              <Text style={styles.user}>Mã nhân viên </Text>
+              <Text style={styles.user}>{userId}</Text>
+            </View>
           </View>
         </View>
-      </View>
 
-      <View>
-        <View style={styles.hang}>
-          <Icon1
-            name="calendar"
-            size={40}
-            color="#f49218"
-            style={styles.icon}
+        <View>
+          <View style={styles.hang}>
+            <Icon1
+              name="calendar"
+              size={40}
+              color="#716DF2"
+              style={styles.icon}
+            />
+            <View>
+              <Text style={styles.user}>Ngày bắt đầu làm việc</Text>
+              <Text style={styles.user}>{date}</Text>
+            </View>
+          </View>
+        </View>
+        <View>
+          <View style={styles.hang}>
+            <Icon1
+              name="hourglass"
+              size={40}
+              color="#716DF2"
+              style={styles.icon}
+            />
+            <View>
+              <Text style={styles.user}>Trạng thái hợp đồng </Text>
+              <Text style={styles.user}>{contractStatus}</Text>
+            </View>
+          </View>
+        </View>
+        <View>
+          <View style={styles.hang}>
+            <Icon1
+              name="people"
+              size={40}
+              color="#716DF2"
+              style={styles.icon}
+            />
+            <View>
+              <Text style={styles.user}>Loại hình nhân sự </Text>
+              <Text style={styles.user}>{typeOfEmployee}</Text>
+            </View>
+          </View>
+        </View>
+
+        {/* Tao ke ngang */}
+        <View style={styles.kengang} />
+
+        <View>
+          <TouchableOpacity
+            style={{ marginTop: "2%" }}
+            onPress={() => navigation.navigate("Cập nhật thông tin nhân viên")}
+          >
+            <Text style={styles.chu}> Thay đổi thông tin cá nhân</Text>
+          </TouchableOpacity>
+          <TouchableOpacity
+            style={styles.khoangcach}
+            onPress={() => navigation.navigate("Thay đổi mật khẩu")}
+          >
+            <Text style={styles.chu}> Thay đổi mật khẩu</Text>
+          </TouchableOpacity>
+
+          <TouchableOpacity
+            onPress={() => {
+              setVisible(true);
+            }}
+          >
+            <Text style={styles.chu1}> Đăng xuất</Text>
+          </TouchableOpacity>
+
+          <PopupModal
+            visible={visible}
+            title="Đăng xuất"
+            message="Bạn có chắc chắn muốn đăng xuất?"
+            confirmText={"Đăng xuất"}
+            cancelText={"Hủy"}
+            onConfirm={() => {
+              logoutHandler();
+              setVisible(false);
+            }}
+            onCancel={() => {
+              setVisible(false);
+            }}
           />
-          <View>
-            <Text style={styles.user}>Ngày bắt đầu làm việc</Text>
-            <Text style={styles.user}>{date}</Text>
-          </View>
         </View>
-      </View>
-      <View>
-        <View style={styles.hang}>
-          <Icon1
-            name="hourglass"
-            size={40}
-            color="#f49218"
-            style={styles.icon}
-          />
-          <View>
-            <Text style={styles.user}>Trạng thái hợp đồng </Text>
-            <Text style={styles.user}>{contractStatus}</Text>
-          </View>
-        </View>
-      </View>
-      <View>
-        <View style={styles.hang}>
-          <Icon1 name="people" size={40} color="#f49218" style={styles.icon} />
-          <View>
-            <Text style={styles.user}>Loại hình nhân sự </Text>
-            <Text style={styles.user}>{typeOfEmployee}</Text>
-          </View>
-        </View>
-      </View>
-
-      {/* Tao ke ngang */}
-      <View style={styles.kengang} />
-
-      <View>
-        <TouchableOpacity
-          style={{ marginTop: "2%" }}
-          onPress={() => navigation.navigate("Cập nhật thông tin nhân viên")}
-        >
-          <Text style={styles.chu}> Thay đổi thông tin cá nhân</Text>
-        </TouchableOpacity>
-        <TouchableOpacity
-          style={styles.khoangcach}
-          onPress={() => navigation.navigate("Thay đổi mật khẩu")}
-        >
-          <Text style={styles.chu}> Thay đổi mật khẩu</Text>
-        </TouchableOpacity>
-
-        <TouchableOpacity onPress={logoutHandler}>
-          <Text style={styles.chu1}> Đăng xuất</Text>
-        </TouchableOpacity>
-
-        <PopupModal
-          visible={visible}
-          title="Đăng xuất"
-          message="Bạn có chắc chắn muốn đăng xuất?"
-          confirmText={"Đăng xuất"}
-          cancelText={"Hủy"}
-          onConfirm={() => {
-            logoutHandler();
-            setVisible(false);
-          }}
-          onCancel={() => {
-            setVisible(false);
-          }}
-        />
       </View>
     </ScrollView>
   );

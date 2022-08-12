@@ -20,29 +20,14 @@ import moment  from "moment";
 import { loadAlluser } from "../../../redux/action";
 
 const ListStaff = () => {
+
+  
   const styles = useMemo(() => createStyles(), []);
   const navigation = useNavigation<any>();
-
-  const { user, loading } = useSelector<any, any>(state => state.auth)
-
-  const [userName, setUserName] = useState(user.name); //name
-  const [role, setRole] = useState(user.role); //vitri
-  const [userId, setUserId] = useState(user.userId); //MaNV
-  const [typeOfEmployee, setTypeOfEmployee] = useState(user.typeOfEmployee); //Loaihinhnhansu
-  const [contractStatus, setContractStatus] = useState(user.contractStatus); //trangthaihopdong
-  const [date, setDate] = useState(moment(new Date(user.startWorkingDate)).format("DD/MM/YYYY")); //ngayvaolam
-  const [birth, setDate_Birth] = useState(user.birth); //ngaysinh
-  const [numberPhone, setNumberPhone] = useState(user.phoneNumber); //sodienthoai
-  const [gender, setGender] = useState(user.gender); //gioitinh
-  const [avatar, setAvatar] = useState(user.avatar.url);
-
   const dialCall = (numberPhone_1: any) => {
-    let phoneNumber = "";
-    if (Platform.OS === "android") {
-      phoneNumber = `tel:${numberPhone_1}`;
-    } else {
-      phoneNumber = `telprompt:${numberPhone_1}`;
-    }
+    let phoneNumber = '';
+    if (Platform.OS === 'android') { phoneNumber = `tel:${numberPhone_1}`; }
+    else {phoneNumber = `telprompt:${numberPhone_1}`; }
     Linking.openURL(phoneNumber);
  };
  const dispatch = useDispatch()
@@ -97,7 +82,8 @@ for (var i = 0; i < allUser.array.length; i++ ){
           text: "Call",
           onPress: () => {
             dialCall(numberPhone_1);
-          },
+          }
+          
         },
       ]
     );
@@ -123,7 +109,7 @@ for (var i = 0; i < allUser.array.length; i++ ){
           text: "Hủy",
           onPress: () => console.log("Cancel Pressed"),
         },
-        {
+{
           text: "Xóa",
           onPress: () => {
             const newData = data.filter((item: { id: number; }) => item.id !== id);
@@ -134,104 +120,108 @@ for (var i = 0; i < allUser.array.length; i++ ){
     );
   };
   const ItemRender = ({
-    id,name_1,role_1,userID_1,typeOfEmployee_1,contractStatus_1,date_1,date_Birth_1,numberPhone_1,gender_1, avatar_1,
+    id,
+    name_1,
+    role_1,
+    userID_1,
+    typeOfEmployee_1,
+    contractStatus_1,
+    date_1,
+    date_Birth_1,
+    numberPhone_1,
+    gender_1,
+    avatar_1,
   }) => (
-    <View style={{ padding: 10, flex: 1 }}>
+    <SafeAreaView style={{ padding: 10, backgroundColor: "#f2f2f2" }}>
       {/* nhan vien  */}
-      <ScrollView style={styles.view1}>
-        {/*  */}
-        <View style={styles.view2}>
-          <View style={styles.hang}>
-            <View style={styles.avt}>
-              <Avatar
-                size={50}
-                rounded
-                source={{ uri: avatar_1 }}
-                
-              ></Avatar>
-            </View>
 
-            <View style={styles.khoiUser}>
-              <Text style={styles.user}>{name_1}</Text>
-              <Text style={styles.user}>{role_1}</Text>
-            </View>
-            <Icon
-              name="phone"
-              size={25}
-              style={styles.iconPhone}
-              onPress={() =>
-                NumberPhone(
-                  id,
-                  name_1,
-                  role_1,
-                  userID_1,
-                  typeOfEmployee_1,
-                  contractStatus_1,
-                  date_1,
-                  date_Birth_1,
-                  numberPhone_1,
-                  gender_1
-                )
-              }
-            />
-          </View>
-          <View style={styles.hang4}>
-            <View style={styles.hang2}>
-              <Text style={styles.view3}>{userID_1}</Text>
-              <Text style={styles.view3_1}>{gender_1}</Text>
-              <Text style={styles.view3_2}>{date_Birth_1}</Text>
-            </View>
-            <Icon
-              name="trash"
-              size={25}
-              style={styles.trash}
-              onPress={() =>
-                Trash(
-                  id,
-                  name_1,
-                  role_1,
-                  userID_1,
-                  typeOfEmployee_1,
-                  contractStatus_1,
-                  date_1,
-                  date_Birth_1,
-                  numberPhone_1,
-                  gender_1
-                )
-              }
-            ></Icon>
-            <Icon
-              name="edit"
-              size={25}
-              style={styles.trash}
-              onPress={() =>
-                navigation.navigate("Cập nhật thông tin nhân viên _Admin")
-              }
-            ></Icon>
+      {/*  */}
+      <View style={styles.view2}>
+        <View style={styles.hang}>
+          <View style={styles.avt}>
+            <Avatar size={50} rounded source={{ uri: avatar_1 }}></Avatar>
           </View>
 
-          <View style={styles.hang3}>
-            <View style={styles.cot1}>
-              <Text style={styles.textInfo}>Loại hình nhân sự</Text>
-              <Text>{typeOfEmployee_1}</Text>
-            </View>
-
-            <View style={styles.cot1}>
-              <Text style={styles.textInfo}>Trạng thái hợp đồng</Text>
-              <Text>{contractStatus_1}</Text>
-            </View>
+          <View style={styles.khoiUser}>
+            <Text style={styles.user}>{name_1}</Text>
+            <Text style={styles.user}>{role_1}</Text>
           </View>
-          <View style={styles.kengang} />
-          <Text style={styles.text1}>Ngày bắt đầu làm việc: {date_1} </Text>
+          <Icon
+            name="phone"
+            size={25}
+            style={styles.iconPhone}
+            onPress={() =>
+              NumberPhone(
+                id,
+                name_1,
+                role_1,
+                userID_1,
+                typeOfEmployee_1,
+                contractStatus_1,
+                date_1,
+                date_Birth_1,
+                numberPhone_1,
+                gender_1
+              )
+            }
+          />
         </View>
-      </ScrollView>
-    </View>
+        <View style={styles.hang4}>
+          <View style={styles.hang2}>
+            <Text style={styles.view3}>{userID_1}</Text>
+            <Text style={styles.view3_1}>{gender_1}</Text>
+            <Text style={styles.view3_2}>{date_Birth_1}</Text>
+          </View>
+          <Icon
+            name="trash"
+            size={25}
+            style={styles.trash}
+            onPress={() =>
+              Trash(
+                id,
+                name_1,
+                role_1,
+                userID_1,
+                typeOfEmployee_1,
+                contractStatus_1,
+                date_1,
+                date_Birth_1,
+                numberPhone_1,
+                gender_1
+              )
+            }
+          ></Icon>
+          <Icon
+            name="edit"
+            size={25}
+            style={styles.trash}
+            onPress={() =>
+              navigation.navigate("Cập nhật thông tin nhân viên _Admin")
+            }
+          ></Icon>
+        </View>
+
+        <View style={styles.hang3}>
+          <View style={styles.cot1}>
+            <Text style={styles.textInfo}>Loại hình nhân sự</Text>
+            <Text>{typeOfEmployee_1}</Text>
+          </View>
+
+          <View style={styles.cot1}>
+            <Text style={styles.textInfo}>Trạng thái hợp đồng</Text>
+            <Text>{contractStatus_1}</Text>
+          </View>
+        </View>
+        <View style={styles.kengang} />
+        <Text style={styles.text1}>Ngày bắt đầu làm việc: {date_1} </Text>
+      </View>
+    </SafeAreaView>
   );
 
   return (
-    <View style={styles.view}>
+    <SafeAreaView style={styles.view}>
       <View style={styles.row}>
-        <View style={styles.icon}>
+<View style={styles.icon}>
           <Icon
             name="bars"
             size={20}
@@ -255,30 +245,28 @@ for (var i = 0; i < allUser.array.length; i++ ){
           />
         </View>
       </View>
-      <SafeAreaView>
-        <View style={styles.view1}>
-          <FlatList
-            data={data}
-            renderItem={({ item }) => (
-              <ItemRender
-                id={item.id}
-                name_1={item.name_1}
-                role_1={item.role_1}
-                userID_1={item.userId_1}
-                typeOfEmployee_1={item.typeOfEmployee_1}
-                contractStatus_1={item.contractStatus_1}
-                date_1={item.date_1}
-                date_Birth_1={item.date_Birth_1}
-                numberPhone_1={item.numberPhone_1}
-                gender_1={item.gender_1}
-                avatar_1={item.avatar_1}
-              />
-            )}
-            keyExtractor={(item) => item.id.toString()}
-          ></FlatList>
-        </View>
-      </SafeAreaView>
-    </View>
+    
+            <FlatList
+              data={data}
+              renderItem={({ item }) => (
+                <ItemRender
+                  id={item.id}
+                  name_1={item.name_1}
+                  role_1={item.role_1}
+                  userID_1={item.userId_1}
+                  typeOfEmployee_1={item.typeOfEmployee_1}
+                  contractStatus_1={item.contractStatus_1}
+                  date_1={item.date_1}
+                  date_Birth_1={item.date_Birth_1}
+                  numberPhone_1={item.numberPhone_1}
+                  gender_1={item.gender_1}
+                  avatar_1={item.avatar_1}
+                />
+              )}
+              keyExtractor={(item) => item.id.toString()}
+            ></FlatList>
+         
+    </SafeAreaView>
   );
 };
 
