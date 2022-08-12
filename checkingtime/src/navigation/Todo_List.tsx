@@ -20,12 +20,12 @@ const Todo_Navigation = () => {
     }}>
       
       <Todo_List.Screen
-         name="Todo_Admin"
-         component={Todo_Admin}
+         name="Công việc của bạn"
+         component={Todo_Staff}
       />
        <Todo_List.Screen
-         name="Todo_Staff"
-         component={Todo_Staff}
+         name="Tất cả công việc"
+         component={Todo_Admin}
       />    
     </Todo_List.Navigator>
   );

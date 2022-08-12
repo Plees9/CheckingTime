@@ -27,7 +27,7 @@ const Account = () => {
   const [visible, setVisible] = useState(false);
   const { user, loading } = useSelector<any, any>((state) => state.auth);
   const styles = useMemo(() => createStyles(), []);
-  
+
   const navigation = useNavigation<any>();
   const dispatch = useDispatch();
   const [userName, setUserName] = useState(user.name);
@@ -35,7 +35,9 @@ const Account = () => {
   const [numberPhone, setNumberPhone] = useState(user.phoneNumber);
   const [userId, setuserId] = useState(String(user.userId));
   const [avatar, setAvatar] = useState(user.avatar.url);
-  const [date, setDate] = useState(moment(new Date(user.startWorkingDate)).format("DD/MM/YYYY"));
+  const [date, setDate] = useState(
+    moment(new Date(user.startWorkingDate)).format("DD/MM/YYYY")
+  );
   const [privilege, setPrivilege] = useState(user.privilege);
   const [typeOfEmployee, setTypeOfEmployee] = useState(user.typeOfEmployee);
   const [role, setRole] = useState(user.role);
@@ -55,10 +57,8 @@ const Account = () => {
           containerStyle={{ backgroundColor: "orange" }}
         />
         <View>
-         
           <Text style={styles.user}>{userName}</Text>
           <Text style={styles.user}>{role}</Text>
-          
         </View>
       </View>
       {/* tạo kẻ ngang */}
@@ -77,7 +77,6 @@ const Account = () => {
           <View style={styles.cot}>
             <Text style={styles.user}>Email</Text>
             <Text style={styles.user}>{email}</Text>
-            
           </View>
         </View>
         <View>
@@ -86,7 +85,6 @@ const Account = () => {
             <View>
               <Text style={styles.user}>Số điện thoại</Text>
               <Text style={styles.user}>{numberPhone}</Text>
-              
             </View>
           </View>
         </View>
@@ -100,7 +98,6 @@ const Account = () => {
           <View>
             <Text style={styles.user}>Mã nhân viên </Text>
             <Text style={styles.user}>{userId}</Text>
-           
           </View>
         </View>
       </View>
@@ -116,7 +113,6 @@ const Account = () => {
           <View>
             <Text style={styles.user}>Ngày bắt đầu làm việc</Text>
             <Text style={styles.user}>{date}</Text>
-            
           </View>
         </View>
       </View>
@@ -140,11 +136,10 @@ const Account = () => {
           <View>
             <Text style={styles.user}>Loại hình nhân sự </Text>
             <Text style={styles.user}>{typeOfEmployee}</Text>
-
           </View>
         </View>
       </View>
-      
+
       {/* Tao ke ngang */}
       <View style={styles.kengang} />
 
@@ -165,7 +160,7 @@ const Account = () => {
         <TouchableOpacity onPress={logoutHandler}>
           <Text style={styles.chu1}> Đăng xuất</Text>
         </TouchableOpacity>
-       
+
         <PopupModal
           visible={visible}
           title="Đăng xuất"
@@ -175,24 +170,11 @@ const Account = () => {
           onConfirm={() => {
             logoutHandler();
             setVisible(false);
-
-            
-          }
-          }
+          }}
           onCancel={() => {
-            
             setVisible(false);
-
-          }
-        
-        }
-        
-
+          }}
         />
-            
-          
-         
-        
       </View>
     </ScrollView>
   );

@@ -126,7 +126,7 @@ for (var i = 0; i < allUser.array.length; i++ ){
         {
           text: "Xóa",
           onPress: () => {
-            const newData = data.filter((item) => item.id !== id);
+            const newData = data.filter((item: { id: number; }) => item.id !== id);
             //setData(newData);
           },
         },

@@ -185,17 +185,21 @@ const styles = StyleSheet.create({
     width: "15%",
     alignItems: "center",
     alignSelf: "center",
+    
   },
   name2: {
     width: "60%",
     fontFamily: FONTS.vanSansSemiBold,
     alignSelf: "center",
+    
   },
   checkin2: {
     width: "18%",
     //fontFamily: FONTS.vanSansMedium,
     color: "#FF8C32",
+    textAlign: "center",
     alignSelf: "center",
+    
   },
 });
 

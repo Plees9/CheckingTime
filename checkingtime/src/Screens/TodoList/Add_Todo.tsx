@@ -10,15 +10,14 @@ import {
 import React, { useMemo, useState } from "react";
 
 import createStyles from "./styles";
-import { Dropdown } from "react-native-element-dropdown";
-import AntDesign from "react-native-vector-icons/AntDesign";
 import DateTimePicker from "@react-native-community/datetimepicker";
 import moment from "moment";
 import Icon from "react-native-vector-icons/FontAwesome";
-import AlarmClock from "react-native-alarm-clock";
-
 import { LinearGradient } from "expo-linear-gradient";
-import { Checkbox } from "react-native-paper";
+import { Avatar } from "@rneui/themed";
+import { FlatList } from 'react-native-gesture-handler';
+import { useSelector } from "react-redux";
+
 
 const data_TodoStaff = [
   {
@@ -33,120 +32,66 @@ const data_TodoStaff = [
     time_task: "10:00",
     status: "Done",
   },
-  {
-    id: 3,
-    name: "Nguyen Van C",
-    time_task: "10:00",
-    status: "Done",
-  },
+ 
 ];
 
 const Add_Todo = () => {
   const styles = useMemo(() => createStyles(), []);
-  const [todo, setTodo] = useState("");
+  const { user, loading } = useSelector<any, any>((state) => state.auth);
+  
+  const [task, setTask] = useState("");
+  const [description, setDescription] = useState(""); //Mô tả task
+  
   const [userName, setUserName] = useState("");
-
+  const [avatar, setAvatar] = useState(user.avatar.url);
   const [date, setDate] = useState(moment());
 
   const [time_task, setTime_Task] = useState(moment());
-  const [value_TodoStaff, setValue_TodoStaff] = useState("");
-  const [isFocus, setIsFocus] = useState(false);
+  
   const [show, setShow] = useState(false);
   const [show_1, setShow_1] = useState(false);
-  const [checked1, setChecked1] = useState(false);
-  const [checked2, setChecked2] = useState(false);
-  const [checked3, setChecked3] = useState(false);
-  const [checked4, setChecked4] = useState(false);
-
-  // save data todo
+  
   const saveTodo = async () => {
-    if (todo == "") {
+    if (task == "") {
       Alert.alert("Thông báo", "Bạn chưa nhập nội dung công việc");
     } else {
     }
   };
 
+  const ItemRender = ({}) => (
+    <View style={styles.render}>
+      <View style={{ flexDirection: "row" }}>
+            <View >
+              <Avatar rounded source={{ uri: avatar }} size={36} />
+            </View>
+
+            <Text >name1</Text>
+      </View>
+      
+    </View>
+  );
+
+
   return (
     <View style={styles.viewAdd_todo}>
       <View>
-        <Text>Tên task:</Text>
+        <View style={{flexDirection:"row", alignItems:"center"}}>
+        <Text style={{marginRight:"3%"}}>Tên task:</Text>
+        <TextInput
+        placeholder="Nhập tên task"
+        value={task}
+        onChangeText={(text) => setTask(text)}
+        >
+        </TextInput>
+        </View>
+
         <View style={styles.text_Content_Todo}>
           <TextInput
-            onChangeText={(text) => setTodo(text)}
-            value={todo}
-            placeholder="Nhập tên task"
+            onChangeText={(text) => setDescription(text)}
+            value={description}
+            placeholder="Mô tả task"
+            style={styles.text_Description}
           ></TextInput>
-        </View>
-        <View>
-          <Text>Mức độ ưu tiên:</Text>
-          <View style={styles.checkbox}>
-            
-            <Checkbox
-              status={checked1 ? "checked" : "unchecked"}
-              color="#ff0000"
-              onPress={() => setChecked1(!checked1)}
-            />
-            <Text>Khẩn cấp và quan trọng</Text>
-          </View>
-          <View style={styles.checkbox}>
-            {/* checkbox hinh tron */}
-
-            <Checkbox
-              status={checked2 ? "checked" : "unchecked"}
-              color="#FFC300"
-              
-              onPress={() => setChecked2(!checked2)}
-            />
-            <Text>Quan trọng nhưng không khẩn cấp</Text>
-          </View>
-          <View style={styles.checkbox}>
-            <Checkbox
-              status={checked3 ? "checked" : "unchecked"}
-              color="#3AB4F2"
-              onPress={() => setChecked3(!checked3)}
-            />
-            <Text>Khẩn cấp nhưng không quan trọng</Text>
-          </View>
-          <View style={styles.checkbox}>
-            <Checkbox
-              status={checked4 ? "checked" : "unchecked"}
-              color="#E900FF"
-              onPress={() => setChecked4(!checked4)}
-            />
-            <Text>Không khẩn cấp và không quan trọng</Text>
-          </View>
-        </View>
-        <View>
-          <Text>Nhân viên phụ trách:</Text>
-          <Dropdown
-            style={styles.dropdown}
-            placeholderStyle={styles.placeholderStyle}
-            selectedTextStyle={styles.selectedTextStyle}
-            inputSearchStyle={styles.inputSearchStyle}
-            iconStyle={styles.iconStyle}
-            data={data_TodoStaff}
-            search
-            maxHeight={300}
-            searchPlaceholder="Search..."
-            labelField="name"
-            valueField="id"
-            placeholder="Nhân viên phụ trách"
-            onFocus={() => setIsFocus(true)}
-            onBlur={() => setIsFocus(false)}
-            value={value_TodoStaff}
-            onChange={(item) => {
-              setValue_TodoStaff(item.id);
-              setIsFocus(false);
-            }}
-            renderRightIcon={() => (
-              <AntDesign
-                style={styles.iconStyle}
-                color="orange"
-                name={isFocus ? "up" : "down"}
-                size={20}
-              />
-            )}
-          />
         </View>
         <View>
           <Text>Thời gian cần hoàn thành:</Text>
@@ -200,7 +145,6 @@ const Add_Todo = () => {
                 </View>
               </Pressable>
             </View>
-
             <Icon
               style={styles.iconClock}
               name="clock-o"
@@ -209,6 +153,26 @@ const Add_Todo = () => {
             />
           </View>
         </View>
+
+        <View>
+          <Text style={{marginTop:"2%"}}>Nhân viên phụ trách:</Text>
+          <FlatList 
+          data={data_TodoStaff}
+          renderItem={ItemRender}
+          keyExtractor={item => item.id.toString()}
+          >
+          </FlatList>
+        </View>
+        <View>
+          <Text style={{marginTop:"2%"}}>Người giao việc:</Text>
+          <FlatList 
+          data={data_TodoStaff}
+          renderItem={ItemRender}
+          keyExtractor={item => item.id.toString()}
+          >
+          </FlatList>
+        </View>
+       
       </View>
 
       <LinearGradient

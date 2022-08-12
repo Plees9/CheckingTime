@@ -6,22 +6,35 @@ const createStyles = () =>
     view: {
       backgroundColor: "#FFFFFF",
       height: "90%",
-      marginHorizontal: 10,
-      marginTop: "5%",
     },
     view1: {
+      marginTop: "3%",
       flexDirection: "row",
       alignItems: "center",
+    },
+    view1_1: {
+      marginTop: "1%",
+      marginHorizontal: "3%",
+    },
+    view1_2: {
+      flexDirection: "row",
+      justifyContent: "space-between",
+      alignItems: "center",
+      width: "90%",
     },
     view2: {
       flexDirection: "row",
       alignItems: "center",
-      marginLeft: "-1%",
       width: "100%",
+      borderBottomColor: "#f2f2f2",
+      borderBottomWidth: 1,
+      
     },
     view3: {
       flexDirection: "row",
       alignItems: "center",
+      borderBottomColor: "#f2f2f2",
+      borderBottomWidth: 1,
       width: "100%",
     },
    
@@ -30,20 +43,18 @@ const createStyles = () =>
       width: "74%",
     },
     colomn1: {
-      flexDirection: "column",
-      marginLeft: "3%",
-      width: "85%",
+      width: "75%",
+      
     },
     text1: {
       marginLeft: "3%",
+      width: "75%",
       fontSize: 12,
+      
     },
     render: {
       flexDirection: "row",
-      alignItems: "center",
       width: "100%",
-
-      marginTop: "3%",
     },
     icon: {
       marginLeft: "3%",
@@ -59,40 +70,71 @@ const createStyles = () =>
       width: "100%",
     },
     checkbox: {
-      flexDirection: "row",
-      alignItems: "center",
-
-      
+      width: "10%",
+      marginRight: "2%",
+     
+    },
+    checkbox_1: {
+      color: "#f49218",
+     
     },
     checkbox1: {
       width: "10%",
+      borderRadius: 20,
+      padding: "5%",
+      borderWidth: 1,
+      borderColor: "#f49218",
+
+    },
+    checkbox1_1: {
+      width: "10%",
+      borderRadius: 20,
+      borderWidth: 1,
+      borderColor: "#f49218",
+      height: "94%",
+      
+    },
+    checkbox_text: {
+      flexDirection: "row",
+      alignItems: "center",
+      marginTop: "2%",
+      
+    },
+    checkbox2: {
+      borderRadius: 20,
+      height: "90%",
+      marginRight: "2%",
+      borderColor: "#f49218",
+      borderWidth: 1,
     },
     task: {
-      width: "74%",
+      width: "76%",
       marginLeft: "1%",
+      
     },
     trash: {
-      width: "10%",
-      marginLeft: "1%",
+      width: "8%",
+      marginLeft: "-5%",
     },
     pencil: {
       width: "10%",
-      marginLeft: "1.5%",
+      marginLeft: "3%",
     },
 
     fab: {
       marginLeft: "4%",
     },
-
     btnFab: {
       flexDirection: "row",
       justifyContent: "flex-end",
+      marginTop: "3%",
       marginRight: "5%",
     },
     btnFab_1: {
       alignItems: "center",
       alignSelf: "center",
       justifyContent: "center",
+      marginTop: "3%",
       borderRadius: 20,
       height: "10%",
       width: "70%",
@@ -106,78 +148,37 @@ const createStyles = () =>
       
     },
     viewAdd_todo: {
-      marginHorizontal: "3%",
-      marginTop: "10%",
+      marginHorizontal: "1%",
+      marginTop: "3%",
     },
     text_Content_Todo: {
       marginTop: "3%",
-      //marginBottom: "3%",
+      marginBottom: "2%",
       alignSelf: "center",
       width: "100%",
-      height: "30%",
-      borderColor: "#f2f2f2",
+      height: "20%",
+      borderColor: "#CFD2CF",
       borderWidth: 1,
-    },
-    dropdown: {
-      marginTop: "3%",
-      marginBottom: "3%",
-      height: 40,
-      backgroundColor: "#f2f2f2",
       borderRadius: 10,
-      padding: 12,
-      shadowColor: '#000',
-      shadowOffset: {
-        width: 0,
-        height: 1,
-      },
-      shadowOpacity: 0.2,
-      shadowRadius: 1.41,
-      elevation: 2,
     },
-   
-    item: {
-      padding: 17,
-      flexDirection: 'row',
-      justifyContent: 'space-between',
-      alignItems: 'center',
-      marginTop: "1%",
-    },
-    textItem: {
-      flex: 1,
-      fontSize: 16,
-    },
-    placeholderStyle: {
-      fontSize: 16,
-      
-    },
-    selectedTextStyle: {
-      fontSize: 16,
-      
-    },
-    iconStyle: {
-      width: 20,
-      height: 20,
-    },
-    inputSearchStyle: {
-      height: 40,
-      fontSize: 16,
-    },
+    
     viewTime: {
       flexDirection: "row",
       justifyContent: "space-between",
       marginTop: "3%",
-      borderColor: "#EEEEEE",
+      borderColor: "#A2B5BB",
       borderWidth: 1,
       padding: "2%",
       width: "100%",
     },
     textTime: {
       width: "15%",
+      marginLeft: "3%",
     },
     kedoc: {
       marginLeft: "2%",
       marginRight: "2%",
-      borderColor: "#EEEEEE",
+      borderColor: "#A2B5BB",
       borderWidth: 0.5,
     },
     textDate: {
@@ -185,7 +186,11 @@ const createStyles = () =>
     },
     iconClock: {
       width: "18%",
-     
+    },
+    text_Description: {
+      width: "100%",
+      height: "100%",
+      
     },
   });
 

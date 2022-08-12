@@ -27,6 +27,9 @@ import UpdatePassword from "../Screens/UpdatePassword";
 import FDontu from "../Screens/Bolocdontu/FDontu";
 import BangCong_Navigation from "./BangCong";
 import Todo_Navigation from "./Todo_List";
+import Add_Todo from '../Screens/TodoList/Add_Todo';
+import Update_Todo from "../Screens/TodoList/Update_Todo";
+
 
 
 import UpdateStaff_Admin from "../Screens/UpdateInFoStaff_NV/UpdateInfoStaff_NV";
@@ -34,6 +37,7 @@ import UpdateStaff_Admin from "../Screens/UpdateInFoStaff_NV/UpdateInfoStaff_NV"
 import Camera from "../Screens/UpdateInfoStaff/Camera"
 import PhonePasswordScreen from "../Screens/PhonePassword/PhonePasswordScreen";
 import TypeOTP from "../Screens/PhonePassword/TypeOTP";
+
 
 const Stack = createNativeStackNavigator();
 
@@ -128,6 +132,13 @@ const FDontuNavigation = () => {
     </Stack.Navigator>
   );
 };
+const BangCongNavigation = () => {
+  return (
+    <Stack.Navigator screenOptions={{ headerShown: false }}>
+      <Stack.Screen name="BangCong" component={BangCong_Navigation} />
+    </Stack.Navigator>
+  );
+}
 const UpdateStaff_AdminNavigation = () => {
   return (
     <Stack.Navigator screenOptions={{ headerShown: false }}>
@@ -135,6 +146,28 @@ const UpdateStaff_AdminNavigation = () => {
     </Stack.Navigator>
   );
 };
+const Todo_ListNavigation = () => {
+  return (
+    <Stack.Navigator screenOptions={{ headerShown: false }}>
+      <Stack.Screen name="Todo_Navigation" component={Todo_Navigation} />
+    </Stack.Navigator>
+  );
+}
+const Add_TodoNavigation = () => {
+  return (
+    <Stack.Navigator screenOptions={{ headerShown: false }}>
+      <Stack.Screen name="Add_Todo" component={Add_Todo} />
+    </Stack.Navigator>
+  );
+}
+const Update_TodoNavigation = () => {
+  return (
+    <Stack.Navigator screenOptions={{ headerShown: false }}>
+      <Stack.Screen name="Update_Todo" component={Update_Todo} />
+    </Stack.Navigator>
+  );
+}
+
 
 const SNavigation = () => {
   const dispatch = useDispatch()
@@ -176,12 +209,12 @@ const SNavigation = () => {
         />
         <Stack.Screen
           name="Bảng chấm công"
-          component={BangCong_Navigation}
+          component={BangCongNavigation}
           options={{ headerShown: true }}
         />
         <Stack.Screen
           name="Công việc"
-          component={Todo_Navigation}
+          component={Todo_ListNavigation}
           options={{ headerShown: true }}
         />
         <Stack.Screen
@@ -246,9 +279,20 @@ const SNavigation = () => {
         />
       <Stack.Screen
           name="Cập nhật thông tin nhân viên _Admin"
-          component={UpdateStaff_Admin}
+          component={UpdateStaff_AdminNavigation}
           options={{ headerShown: true }}
         />
+      <Stack.Screen
+          name="Thêm công việc"
+          component={Add_TodoNavigation}
+          options={{ headerShown: true }}
+        />
+      <Stack.Screen
+          name="Cập nhật công việc"
+          component={Update_TodoNavigation}
+          options={{ headerShown: true }}
+        />
+
         
       </Stack.Navigator>
     </NavigationContainer>

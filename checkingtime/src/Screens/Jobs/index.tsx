@@ -28,7 +28,7 @@ const Jobs = () => {
             <IconButton icon="clipboard-list" color="#f49218" size={50} />
           </View>
           <View style={styles.viewText}>
-            <Text style={styles.text1}>Công việc cần làm</Text>
+            <Text style={styles.text1}>Công việc của tôi</Text>
           </View>
         </TouchableOpacity>
 
