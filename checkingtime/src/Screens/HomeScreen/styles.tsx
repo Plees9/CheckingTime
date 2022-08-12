@@ -153,6 +153,17 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     marginLeft: 10,
   },
+  text_late: {
+    alignSelf: "center",
+    fontSize: 15,
+    fontFamily: FONTS.vanSansMediumItalic,
+  },
+  points: {
+    textAlign: "center",
+    color: "#000",
+    fontFamily: FONTS.vanSansMediumItalic,
+    fontSize: 15,
+  },
   boder: {
     width: 24,
     height: 24,

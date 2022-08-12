@@ -14,7 +14,7 @@ import { Avatar } from "@rneui/themed";
 import Icon from "react-native-vector-icons/FontAwesome";
 import Icon1 from "react-native-vector-icons/Ionicons"
 import styles from "./styles";
-import TimekeepModal from "../../component/TimekeepModal";
+import TodoModal from "../../component/TodoModal";
 import { AnimatedCircularProgress } from "react-native-circular-progress";
 import GradientText from "../../component/GradientText";
 import { checking, loadUser, ranking } from "../../../redux/action";
@@ -56,7 +56,7 @@ const HomeScreen = () => {
     dispatch<any>(ranking());
   }, [dispatch]);
   const navigation = useNavigation<any>();
-  const [showTimekeep, setShowTimekeep] = useState(false);
+  const [showTodo, setShowTodo] = useState(false);
   const { user } = useSelector<any, any>((state) => state.auth);
   const { timesheet, number, array } = useSelector<any, any>(
     (state) => state.timesheet
@@ -65,6 +65,7 @@ const HomeScreen = () => {
   console.log(number)
   const maxPoint = 25;
   const currentProcess = 20.5;
+  const timeLate = 2;
   if (
     typeof timesheet !== "undefined" &&
     typeof number !== "undefined" &&
@@ -135,7 +136,7 @@ const HomeScreen = () => {
       <ScrollView
         style={{ flex: 1 }}
         refreshControl={
-          <RefreshControl  colors={["#f12711", "#f5af19"]} refreshing={refreshing} onRefresh={onRefresh} />
+          <RefreshControl  colors={["#8f73f6", "#b5a4fc"]} refreshing={refreshing} onRefresh={onRefresh} />
         }
       >
         <View style={{ flexDirection: "row", justifyContent: "space-between" }}>
@@ -154,7 +155,7 @@ const HomeScreen = () => {
           <LinearGradient
             start={{ x: 0, y: 0 }}
             end={{ x: 1, y: 0 }}
-            colors={["#f12711", "#f5af19"]}
+            colors={["#8f73f6", "#b5a4fc"]}
             style={styles.icon2}
           >
             <View style={styles.box_check}>
@@ -171,7 +172,7 @@ const HomeScreen = () => {
                     <Icon
                       name="check"
                       size={13}
-                      color="#f13612"
+                      color="#8f73f6"
                       style={styles.boder}
                     />
 
@@ -192,7 +193,7 @@ const HomeScreen = () => {
                   <Icon1
                     name="log-out-outline"
                     size={13}
-                    color="#f13612"
+                    color="#8f73f6"
                     style={styles.boder}
                   />
 
@@ -214,7 +215,7 @@ const HomeScreen = () => {
                     <Icon
                       name="line-chart"
                       size={13}
-                      color="#f13612"
+                      color="#8f73f6"
                       style={styles.boder}
                     />
 
@@ -234,54 +235,28 @@ const HomeScreen = () => {
             <View
               style={{
                 marginTop: 10,
-                height: 140,
-                justifyContent: "space-between",
+                height: 180,
+                
               }}
             >
-              <Text style={styles.title_job}>Công việc cần làm</Text>
-              <View
-                style={{
-                  height: 30,
-                  flexDirection: "row",
-                  width: "100%",
-                  borderRadius: 8,
-                }}
-              >
-                <Text style={styles.txt_job}>Tổng công việc</Text>
-                <View style={{ justifyContent: "center", flex: 1 }}>
-                  <Text style={styles.nb_job}>{job_todo}</Text>
-                </View>
-              </View>
-
-              <View
-                style={{
-                  height: 30,
-                  flexDirection: "row",
-                  width: "100%",
-
-                  borderRadius: 8,
-                }}
-              >
-                <Text style={styles.txt_jobdone}>Đã hoàn thành </Text>
-                <View style={{ justifyContent: "center", flex: 1 }}>
-                  <Text style={styles.nb_jobdone}>{job_done}</Text>
-                </View>
-              </View>
-
-              <View
-                style={{
-                  height: 30,
-                  flexDirection: "row",
-                  width: `100%`,
-
-                  borderRadius: 8,
-                }}
-              >
-                <Text style={styles.txt_jobover}>Quá hạn</Text>
-                <View style={{ justifyContent: "center", flex: 1 }}>
-                  <Text style={styles.nb_jobover}>{job_overdate}</Text>
-                </View>
-              </View>
+              <Text style={styles.title_job}>Công tháng</Text>
+              
+              <AnimatedCircularProgress
+                  size={85}
+                  width={5}
+                  fill={Math.round((currentProcess / maxPoint) * 100)}
+                  tintColor="#8f73f6"
+                  style={{alignSelf:'center', marginTop: 10}}
+                  backgroundColor="#3d5875"
+                >{() => (
+                  <Text style={styles.points}>
+                    {currentProcess}/{maxPoint}
+                  </Text>
+                )}
+              </AnimatedCircularProgress>
+              <View style={{marginTop: 10}}>
+              <Text style={styles.text_late}>{timeLate} lần đi muộn !</Text>
+            </View>
             </View>
           </View>
         </View>
@@ -292,24 +267,15 @@ const HomeScreen = () => {
               <Icon
                 name="building"
                 size={18}
-                color="#f13612"
+                color="#8f73f6"
                 style={styles.icon1}
               />
               <Text style={styles.text5}>Thông tin Công Ty</Text>
             </View>
           </TouchableOpacity>
-          <TouchableOpacity onPress={() => setShowTimekeep(true)}>
+          <TouchableOpacity onPress={() => setShowTodo(true)}>
             <View style={styles.btn1}>
-              <Text style={styles.text6}>Công Tháng</Text>
-              <View style={styles.vongtron}>
-                <AnimatedCircularProgress
-                  size={35}
-                  width={4}
-                  fill={Math.round((currentProcess / maxPoint) * 100)}
-                  tintColor="#f49218"
-                  backgroundColor="#3d5875"
-                />
-              </View>
+              <Text style={styles.text6}>Công việc</Text>
             </View>
           </TouchableOpacity>
         </View>
@@ -362,21 +328,15 @@ const HomeScreen = () => {
         title="Chấm công"
         placement="right"
         size="small"
-        color="#FF8C32"
+        color="#8f73f6"
         buttonStyle={styles.fab}
         onPress={pressHandler}
       />
-      <TimekeepModal
-        visible={showTimekeep}
-        maxPoint={maxPoint}
-        late={2}
-        title="Bảng công"
-        fill={currentProcess}
-        cancelText="Đóng"
-        onCancel={() => setShowTimekeep(false)}
-        size={130}
-        width={7}
-      />
+      <TodoModal visible={showTodo}
+      onCancel={() => setShowTodo(false)}
+      dataTodo={4}
+      dataDone={2}
+      dataOvertime={2}/>
     </View>
   );
 };
