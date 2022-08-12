@@ -1,7 +1,9 @@
 {
    "cSpell.words": [
+      "Alluser",
       "Checkin",
       "checkingtime",
+      "congviechoanthanh",
       "datetimepicker",
       "Doiqua",
       "fontawesome",
@@ -11,9 +13,11 @@
       "Pressable",
       "rneui",
       "selectbox",
+      "setwork",
       "Sigin",
       "tatca",
       "timesheet",
+      "tongcong",
       "Vien"
    ],
    "java.configuration.updateBuildConfiguration": "interactive"

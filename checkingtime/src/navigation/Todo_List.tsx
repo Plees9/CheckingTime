@@ -4,8 +4,8 @@ import { NavigationContainer } from "@react-navigation/native";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { createMaterialTopTabNavigator } from '@react-navigation/material-top-tabs';
 
-import Todo_Admin from "../Screens/TodoList/Todo_Admin";
-import Todo_Staff from "../Screens/TodoList/Todo_Staff";
+import Todo_All from "../Screens/TodoList/Todo_All";
+import Todo_ListStaff from "../Screens/TodoList/Todo_ListStaff";
 import { FONTS } from "../../constants/theme";
 
 
@@ -20,12 +20,12 @@ const Todo_Navigation = () => {
     }}>
       
       <Todo_List.Screen
-         name="Công việc của bạn"
-         component={Todo_Staff}
+         name="Nhân viên"
+         component={Todo_ListStaff}
       />
        <Todo_List.Screen
-         name="Tất cả công việc"
-         component={Todo_Admin}
+         name="Tất cả"
+         component={Todo_All}
       />    
     </Todo_List.Navigator>
   );

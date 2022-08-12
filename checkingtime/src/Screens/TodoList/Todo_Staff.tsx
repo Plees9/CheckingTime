@@ -7,61 +7,72 @@ import {
   SafeAreaView,
   Pressable,
 } from "react-native";
-import React, { useMemo, useState } from "react";
+import React, { useEffect, useMemo, useState } from "react";
 import createStyles from "./styles";
 import Icon from "react-native-vector-icons/FontAwesome";
 import { CheckBox } from "@rneui/themed";
 import { FAB, Input } from "react-native-elements";
-import { FlatList } from "react-native-gesture-handler";
+
 import moment from "moment";
 import DateTimePicker from "@react-native-community/datetimepicker";
 import { useNavigation } from "@react-navigation/native";
+import { useDispatch, useSelector } from "react-redux";
+import { loadAlluser } from "../../../redux/action";
+import { FlatList } from "react-native-gesture-handler";
 
 const Todo_Staff = () => {
   const styles = useMemo(() => createStyles(), []);
+  const { user, loading } = useSelector<any, any>((state) => state.auth);
   const navigation = useNavigation<any>();
   const [checked, setChecked] = useState(false);
   const [time_task, setTime_Task] = useState(moment());
 
-  const [show_1, setShow_1] = useState(false);
+  const [task, setTask] = useState(user.task);
+  const [sumWork, setSumWork] = useState("");
+  const [workDone, setworkDone] = useState(0);
+  const [workNotDone, setworkNotDone] = useState(0);
 
-  const [data, setData] = useState([
-    {
-      id: 1,
-      task: "Task 1",
-      checked: false,
-    },
-    {
-      id: 2,
-      task: "Task 2",
-      checked: false,
-    },
-  ]);
-  const trash = () => {
-    Alert.alert("Thông báo", "Bạn có chắc chắn muốn xóa không?", [
-      { text: "Hủy", style: "cancel" },
-      {
-        text: "Xóa",
-        onPress: () => setData(data.filter((item) => item.id !== 1)),
-      },
-    ]);
-  };
+  const [show_1, setShow_1] = useState(false);
+  const { allUser } = useSelector<any, any>((state) => state.allUser);
+ 
+
+  const dispatch = useDispatch();
+  useEffect(() => {
+    dispatch<any>(loadAlluser());
+  }, []);
+  let data: any = [];
+  if (typeof allUser !== "undefined") {
+    for (var i = 0; i < allUser.array.length; i++) {
+      
+      let object = {
+        id: i + 1,
+        checked_1 : checked,
+        task_1: allUser.array[i].task,
+        sumWork_1: allUser.array[i].sumWork,
+        workDone_1: allUser.array[i].workDone,
+        workNotDone_1: allUser.array[i].workNotDone,
+      };
+      console.log(object);
+      data.push(object);
+    }
+  }
 
   const ItemRender = ({}) => (
     <View style={styles.render}>
-      <View style={{ flexDirection: "row" }}>
+      <View style={{ flexDirection: "row", backgroundColor:"#f2f2f2", flex:1, }}>
         <View style={styles.view3}>
           <View style={styles.checkbox}>
             <CheckBox  
               checkedColor="#f49218"
-              checked={checked}    
+              checked={checked} 
               onIconPress={() => setChecked(!checked)}
-              onPress={() => console.log("onPress")}
+              
+              // onPress={() => console.log("onPress")}
             ></CheckBox>
           </View>
 
           <View style={styles.colomn1}>
-            <Text style={styles.task}>"Task cua ban"</Text>
+            <Text style={styles.task}>{user.task} ten task</Text>
             <View style={styles.textTime}>
               <Pressable onPress={() => setShow_1(true)}>
                 <View
@@ -117,12 +128,12 @@ const Todo_Staff = () => {
 
           <View style={styles.view1_2}>
             <Text>Công việc đã hoàn thành:</Text>
-            <Text>{data.length}</Text>
+            <Text>{workDone}</Text>
           </View>
 
           <View style={styles.view1_2}>
             <Text>Công việc chưa hoàn thành:</Text>
-            <Text>{data.length}</Text>
+            <Text>{workNotDone}</Text>
           </View>
         </View>
         <View style={styles.kengang}></View>

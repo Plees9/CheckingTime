@@ -2,7 +2,7 @@ import { Text, StyleSheet, View, ScrollView, Alert, SafeAreaView } from 'react-n
 import React, { useMemo, useState } from "react";
 import createStyles from "./styles";
 import Icon from "react-native-vector-icons/FontAwesome";
-import { Checkbox } from "react-native-paper";
+import { CheckBox } from "@rneui/themed";
 import { FAB, Input } from "react-native-elements";
 import { FlatList } from "react-native-gesture-handler";
 import { useNavigation } from "@react-navigation/native";
@@ -10,7 +10,7 @@ import { useSelector } from "react-redux";
 import { loadAlluser } from "../../../redux/action";
 import moment from "moment";
 
-const Todo_Admin = () => {
+const Todo_All = () => {
   const styles = useMemo(() => createStyles(), []);
   const { user, loading } = useSelector<any, any>((state) => state.auth);
   const navigation = useNavigation<any>();
@@ -67,18 +67,19 @@ const Todo_Admin = () => {
 
   const ItemRender = ({}) => (
     <View style={styles.render}>
-      <View style={{ flexDirection: "row" }}>
+      <View style={{ flexDirection: "row", backgroundColor:"#f2f2f2" }}>
         <View style={styles.view2}>
-          <View style={styles.checkbox}>
-            <Checkbox
-              status={checked ? "checked" : "unchecked"}
-              color="#f49218"
-              onPress={() => setChecked(!checked)}
-            />
+        <View style={styles.checkbox}>
+            <CheckBox  
+              checkedColor="#f49218"
+              checked={checked}    
+              onIconPress={() => setChecked(!checked)}
+              onPress={() => console.log("onPress")}
+            ></CheckBox>
           </View>
           <View style={styles.colomn}>
-            <Text style={styles.task}>"Task cua ban"</Text>
-            <Text style={styles.text1}>name</Text>
+            <Text style={styles.task}>"Ten task can hoan thanh"</Text>
+            <Text style={styles.text1}>{user.name}</Text>
           </View>
 
           <Icon
@@ -137,4 +138,4 @@ const Todo_Admin = () => {
   );
 };
 
-export default Todo_Admin;
+export default Todo_All;

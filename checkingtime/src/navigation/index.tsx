@@ -29,6 +29,7 @@ import BangCong_Navigation from "./BangCong";
 import Todo_Navigation from "./Todo_List";
 import Add_Todo from '../Screens/TodoList/Add_Todo';
 import Update_Todo from "../Screens/TodoList/Update_Todo";
+import Todo_Staff from "../Screens/TodoList/Todo_Staff";
 
 
 
@@ -167,6 +168,14 @@ const Update_TodoNavigation = () => {
     </Stack.Navigator>
   );
 }
+const Todo_StaffNavigation = () => {
+  return (
+    <Stack.Navigator screenOptions={{ headerShown: false }}>
+      <Stack.Screen name="Todo_Staff" component={Todo_Staff} />
+    </Stack.Navigator>
+  );
+}
+
 
 
 const SNavigation = () => {
@@ -290,6 +299,11 @@ const SNavigation = () => {
       <Stack.Screen
           name="Cập nhật công việc"
           component={Update_TodoNavigation}
+          options={{ headerShown: true }}
+        />
+      <Stack.Screen
+          name="Công việc của tôi"
+          component={Todo_StaffNavigation}
           options={{ headerShown: true }}
         />
 

@@ -19,38 +19,46 @@ const createStyles = () =>
     view1_2: {
       flexDirection: "row",
       justifyContent: "space-between",
+      marginTop: "1%",
       alignItems: "center",
       width: "90%",
     },
     view2: {
       flexDirection: "row",
       alignItems: "center",
-      width: "100%",
-      borderBottomColor: "#f2f2f2",
-      borderBottomWidth: 1,
-      
+      backgroundColor:"#FFFFFF" ,
+      justifyContent: "center",
+      borderRadius: 10,
+      width: "98%",
+      marginTop: "2%",
+      marginBottom: "2%",
+      marginHorizontal: "1%",
     },
     view3: {
       flexDirection: "row",
       alignItems: "center",
-      borderBottomColor: "#f2f2f2",
-      borderBottomWidth: 1,
-      width: "100%",
+      backgroundColor:"#FFFFFF" ,
+      justifyContent: "center",
+      borderRadius: 10,
+      width: "98%",
+      marginTop: "2%",
+      marginBottom: "2%",
+      marginHorizontal: "1%",
+
+      
     },
-   
+
     colomn: {
       flexDirection: "column",
       width: "74%",
     },
     colomn1: {
       width: "75%",
-      
     },
     text1: {
       marginLeft: "3%",
       width: "75%",
       fontSize: 12,
-      
     },
     render: {
       flexDirection: "row",
@@ -72,45 +80,11 @@ const createStyles = () =>
     checkbox: {
       width: "10%",
       marginRight: "2%",
-     
     },
-    checkbox_1: {
-      color: "#f49218",
-     
-    },
-    checkbox1: {
-      width: "10%",
-      borderRadius: 20,
-      padding: "5%",
-      borderWidth: 1,
-      borderColor: "#f49218",
 
-    },
-    checkbox1_1: {
-      width: "10%",
-      borderRadius: 20,
-      borderWidth: 1,
-      borderColor: "#f49218",
-      height: "94%",
-      
-    },
-    checkbox_text: {
-      flexDirection: "row",
-      alignItems: "center",
-      marginTop: "2%",
-      
-    },
-    checkbox2: {
-      borderRadius: 20,
-      height: "90%",
-      marginRight: "2%",
-      borderColor: "#f49218",
-      borderWidth: 1,
-    },
     task: {
       width: "76%",
       marginLeft: "1%",
-      
     },
     trash: {
       width: "8%",
@@ -145,7 +119,6 @@ const createStyles = () =>
       padding: "3%",
       width: 255,
       height: 45,
-      
     },
     viewAdd_todo: {
       marginHorizontal: "1%",
@@ -161,7 +134,7 @@ const createStyles = () =>
       borderWidth: 1,
       borderRadius: 10,
     },
-    
+
     viewTime: {
       flexDirection: "row",
       justifyContent: "space-between",
@@ -190,8 +163,40 @@ const createStyles = () =>
     text_Description: {
       width: "100%",
       height: "100%",
-      
     },
+    // Style man cong viec nhan vien
+    view_staff1:{
+      backgroundColor: "#f2f2f2",
+    },
+    view_staff2:{
+      backgroundColor: "#ffffff",
+      borderRadius:10,
+      flexDirection: "row",
+      alignItems:"center",
+      alignSelf:"center",
+      width:"96%",
+      padding:"3%",
+      marginLeft:"2%",
+      marginTop:"2%",
+      marginRight:"2%",
+
+    },
+    avatar_staff:{
+      justifyContent:"center",
+      marginLeft:"3%",
+      width:"10%",
+     
+    },
+    text_staff:{
+      flexDirection:"column",
+      justifyContent:"center",
+      width:"75%",
+      marginLeft:"3%",
+    },
+    icon_staff:{
+      width:"10%",
+    },
+
   });
 
 export default createStyles;
