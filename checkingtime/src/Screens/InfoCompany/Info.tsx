@@ -74,15 +74,14 @@ const openUrl = async (url: string) => {
           />
           <View>
             <Text style={styles.user_1}>Hotline</Text>
-
-            
             <TouchableOpacity>
               <Text style={styles.texta} onPress={() => dialCall(company.company.hotline)}>{company.company.hotline}</Text>
             </TouchableOpacity>
-            <View style={styles.kengang1}></View>
           </View>
         </View>
+        
       </View>
+      <View style={styles.kengang}></View>
 
       <View style={styles.footer}>
         <TouchableOpacity

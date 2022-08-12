@@ -11,6 +11,9 @@ import { NavigationContainer } from "@react-navigation/native";
 import UpdateStaff from "./src/Screens/UpdateInfoStaff/UpdateStaff";
 import UpdateInfoStaff_NV from "./src/Screens/UpdateInFoStaff_NV/UpdateInfoStaff_NV";
 import ListStaff from "./src/Screens/ListStaff/ListStaff";
+import Todo_Admin from "./src/Screens/TodoList/Todo_All";
+import Todo_Staff from "./src/Screens/TodoList/Todo_Staff";
+import Add_Todo from "./src/Screens/TodoList/Add_Todo";
 
 
 const App = () => {
@@ -42,7 +45,7 @@ const App = () => {
     <SafeAreaView style={styles.root}>
        <SNavigation /> 
        {/* <NavigationContainer>
-        <ListStaff/>
+        <Add_Todo/>
        </NavigationContainer> */}
       </SafeAreaView>
     </Provider>
