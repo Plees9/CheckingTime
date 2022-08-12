@@ -71,7 +71,7 @@ const Account = () => {
             <Icon1
               name="mail-unread"
               size={40}
-              color="#f49218"
+              color="#716DF2"
               style={styles.icon}
             />
 
@@ -85,7 +85,7 @@ const Account = () => {
               <Icon1
                 name="call"
                 size={40}
-                color="#f49218"
+                color="#716DF2"
                 style={styles.icon}
               />
               <View>
@@ -100,7 +100,7 @@ const Account = () => {
         <View>
           <Text style={styles.text}>Thông tin công việc</Text>
           <View style={styles.hang}>
-            <Icon1 name="card" size={35} color="#f49218" style={styles.icon} />
+            <Icon1 name="card" size={35} color="#716DF2" style={styles.icon} />
             <View>
               <Text style={styles.user}>Mã nhân viên </Text>
               <Text style={styles.user}>{userId}</Text>
@@ -113,7 +113,7 @@ const Account = () => {
             <Icon1
               name="calendar"
               size={40}
-              color="#f49218"
+              color="#716DF2"
               style={styles.icon}
             />
             <View>
@@ -127,7 +127,7 @@ const Account = () => {
             <Icon1
               name="hourglass"
               size={40}
-              color="#f49218"
+              color="#716DF2"
               style={styles.icon}
             />
             <View>
@@ -141,7 +141,7 @@ const Account = () => {
             <Icon1
               name="people"
               size={40}
-              color="#f49218"
+              color="#716DF2"
               style={styles.icon}
             />
             <View>

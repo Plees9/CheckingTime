@@ -17,5 +17,5 @@ export const FONTS = {
   vanSansThinItalic: "VanSansThinItalic",
 };
 export const Color_Icon = {
-  options: "#f49218",
+  options: "#716DF2",
 };
