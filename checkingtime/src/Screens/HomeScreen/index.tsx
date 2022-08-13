@@ -336,7 +336,8 @@ const HomeScreen = () => {
       onCancel={() => setShowTodo(false)}
       dataTodo={4}
       dataDone={2}
-      dataOvertime={2}/>
+      dataOvertime={2}
+      onClick={() => {navigation.navigate("Công việc của tôi"); setShowTodo(false)}}/>
     </View>
   );
 };
