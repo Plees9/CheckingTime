@@ -190,12 +190,14 @@ const styles = StyleSheet.create({
 
     alignItems: "center",
     alignSelf: "center",
+    
   },
   name2: {
     width: "60%",
     fontFamily: FONTS.vanSansMedium,
     color: "gray",
     alignSelf: "center",
+    
   },
   checkin2: {
     width: "18%",

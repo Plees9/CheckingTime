@@ -85,27 +85,33 @@ const createStyles = () =>
     row1: {
       flexDirection: "row",
       justifyContent: "space-around", 
+      width: "94%",
       // marginRight: "6%",
       // marginLeft: "3%",
     },
     
     row2: {
       flexDirection: "row",
-      justifyContent: "space-around",
+      justifyContent: "space-between",
       textAlign: "center",
-      width: 150,
+      
+      width: "100%",
       height: 40,
-      marginRight: "1%",
+      marginRight: "3%",
+      marginLeft: "10%",
       marginTop: "1%",
       borderColor: "#CFD2CF",
       borderWidth: 1,
       borderRadius: 5,
     },
+    textDate: {
+      marginLeft: "10%",
+    },
   
     styleIcon: {
-      marginTop: "5%",
-      marginRight: "0.5%",
-      marginBottom: "5%",
+      marginTop: "3%",
+      marginRight: "5%",
+      alignItems: "center",
     },
     text22: {
       fontSize: 20,
