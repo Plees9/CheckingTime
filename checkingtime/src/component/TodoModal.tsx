@@ -20,6 +20,7 @@ interface TodoModalProps {
   dataTodo: number;
   dataDone: number;
   dataOvertime: number;
+  onClick: () => void;
 }
 export default class TodoModal extends React.Component<TodoModalProps> {
   constructor(props: any) {
@@ -31,6 +32,7 @@ export default class TodoModal extends React.Component<TodoModalProps> {
       dataDone: props.dataDone,
       dataOvertime: props.dateOvertime,
       image: props.image,
+      onClick: props.onClick,
     };
   }
 
@@ -42,7 +44,8 @@ export default class TodoModal extends React.Component<TodoModalProps> {
       <Modal
         transparent={true}
         visible={this.props.visible}
-        animationType="fade"
+        animationType='none'
+        
         onRequestClose={this.props.onCancel}
       >
         <TouchableOpacity
@@ -89,7 +92,7 @@ export default class TodoModal extends React.Component<TodoModalProps> {
                   </View>
                   </View>
                   <View style={styles.equal}>
-                  <TouchableOpacity style={styles.box_more}>
+                  <TouchableOpacity onPress={this.props.onClick} style={styles.box_more}>
                     <Icon name="format-list-bulleted" size={30} />
                   </TouchableOpacity>
                   </View>
