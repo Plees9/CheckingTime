@@ -20,6 +20,18 @@ export const ranking = () => async (dispatch) => {
     dispatch({ type: "rankFailure", payload: error.response.data.message });
   }
 }
+export const deleteProfile = (userId) => async (dispatch) => {
+  try {
+    dispatch({ type: "deleteProfileRequest" });
+    console.log(userId)
+    console.log(`${serverUrl}/user/deleteprofile`, {userId : userId})
+    const { data } = await axios.delete(`${serverUrl}/user/deleteprofile`, {data: {userId}} );
+    dispatch({ type: "deleteProfileSuccess", payload: data.message });
+    
+  } catch (error) {
+    dispatch({ type: "deleteProfileFailure", payload: error.response.data.message });
+  }
+}
 export const checking = (networkIp, deviceId ) => async (dispatch) => {
   try {
     dispatch({ type: "checkingRequest" });

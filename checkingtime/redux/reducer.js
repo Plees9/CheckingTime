@@ -216,6 +216,17 @@ export const authReducer = createReducer(
   export const messageReducer = createReducer(
     {},
     {
+      deleteProfileRequest: (state) => {
+        state.loading = true;
+      },
+      deleteProfileSuccess: (state, action) => {
+        state.loading = false;
+        state.message = action.payload;
+      },
+      deleteProfileFailure: (state, action) => {
+        state.loading = false;
+        state.error = action.payload;
+      },
       updateProfileRequest: (state) => {
         state.loading = true;
       },

@@ -17,12 +17,12 @@ import createStyles from "./styles";
 import { useNavigation } from "@react-navigation/native";
 import { useDispatch, useSelector } from "react-redux";
 import moment from "moment";
-import { loadAlluser } from "../../../redux/action";
+import { deleteProfile, loadAlluser } from "../../../redux/action";
 import { SearchBar } from "react-native-elements";
-
 const ListStaff = () => {
   const styles = useMemo(() => createStyles(), []);
-
+  const { message, error } = useSelector<any, any>((state) => state.message)
+  console.log(error)
   const navigation = useNavigation<any>();
   const dialCall = (numberPhone_1: any) => {
     let phoneNumber = "";
@@ -39,11 +39,13 @@ const ListStaff = () => {
   }, []);
   const { allUser } = useSelector<any, any>((state) => state.allUser);
   let data: any = [];
+  const loadView = () => {
   if (typeof allUser !== "undefined") {
     for (var i = 0; i < allUser.array.length; i++) {
       let strAvatar = allUser.array[i].avatar.url;
       let object = {
         id: i + 1,
+        _id: allUser.array[i]._id ,
         name_1: allUser.array[i].name,
         role_1: allUser.array[i].role,
         userId_1: allUser.array[i].userId,
@@ -59,11 +61,28 @@ const ListStaff = () => {
         gender_1: allUser.array[i].gender,
         avatar_1: allUser.array[i].avatar.url,
       };
-      console.log(object);
+      //console.log(object._id)
+      //console.log(object);
       data.push(object);
     }
   }
-
+}
+loadView()
+  const deleteHandler = async (_id : any) => {
+    await dispatch<any>(deleteProfile(_id))
+    dispatch<any>(loadAlluser());
+    loadView()
+  }
+  useEffect(() => {
+    if (message) {
+      alert(message);
+      dispatch({ type: "clearMessage" });
+    }
+    if (error) {
+      alert(error);
+      dispatch({ type: "clearError" });
+     }
+  }, [alert, dispatch, error, message]);
   const NumberPhone = (
     id: number,
     name_1: string,
@@ -96,7 +115,9 @@ const ListStaff = () => {
   };
 
   const Trash = (
+    
     id: number,
+    _id: any,
     name_1: string,
     role_1: any,
     userID_1: any,
@@ -118,9 +139,8 @@ const ListStaff = () => {
         {
           text: "Xóa",
           onPress: () => {
-            const newData = data.filter(
-              (item: { id: number }) => item.id !== id
-            );
+            //console.log(_id)
+            deleteHandler(_id)
             //setData(newData);
           },
         },
@@ -129,6 +149,7 @@ const ListStaff = () => {
   };
   const ItemRender = ({
     id,
+    _id ,
     name_1,
     role_1,
     userID_1,
@@ -187,6 +208,7 @@ const ListStaff = () => {
             onPress={() =>
               Trash(
                 id,
+                _id,
                 name_1,
                 role_1,
                 userID_1,
@@ -259,6 +281,7 @@ const ListStaff = () => {
         renderItem={({ item }) => (
           <ItemRender
             id={item.id}
+            _id={item._id}
             name_1={item.name_1}
             role_1={item.role_1}
             userID_1={item.userId_1}
