@@ -41,7 +41,7 @@ const ListStaff = () => {
   let data: any = [];
   if (typeof allUser !== "undefined") {
     for (var i = 0; i < allUser.array.length; i++) {
-      let strAvatar = allUser.array[i].avatar.url;
+      
       let object = {
         id: i + 1,
         name_1: allUser.array[i].name,
@@ -128,17 +128,8 @@ const ListStaff = () => {
     );
   };
   const ItemRender = ({
-    id,
-    name_1,
-    role_1,
-    userID_1,
-    typeOfEmployee_1,
-    contractStatus_1,
-    date_1,
-    date_Birth_1,
-    numberPhone_1,
-    gender_1,
-    avatar_1,
+    id,name_1,role_1,userID_1,typeOfEmployee_1,contractStatus_1,date_1,date_Birth_1,numberPhone_1,
+    gender_1,avatar_1,
   }) => (
     <SafeAreaView style={{ padding: 10, backgroundColor: "#f2f2f2" }}>
       {/* nhan vien  */}

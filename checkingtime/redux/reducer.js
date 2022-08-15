@@ -111,7 +111,7 @@ export const authReducer = createReducer(
       state.loading = false;
       state.isAuthenticated = true;
       state.user = action.payload.user;
-      state.message = action.payload.message
+      state.message = action.payload.message;
     },
     loginFailure: (state, action) => {
       state.loading = false;
@@ -119,52 +119,67 @@ export const authReducer = createReducer(
       state.error = action.payload;
     },
     loadUserRequest: (state) => {
-        state.loading = true;
-      },
-      loadUserSuccess: (state, action) => {
-        state.loading = false;
-        state.isAuthenticated = true;
-        state.user = action.payload.user;
-      },
-      loadUserFailure: (state, action) => {
-        state.loading = false;
-        state.isAuthenticated = false;
-        state.error = action.payload;
-      },
-      logoutRequest: (state) => {
-        state.loading = true;
-      },
-      logoutSuccess: (state) => {
-        state.loading = false;
-        state.isAuthenticated = false;
-        state.user = null;
-      },
-      logoutFailure: (state, action) => {
-        state.loading = false;
-        state.isAuthenticated = true;
-        state.error = action.payload;
-      },
-  
-      verificationRequest: (state) => {
-        state.loading = true;
-      },
-      verificationSuccess: (state, action) => {
-        state.loading = false;
-        state.message = action.payload;
-      },
-      verificationFailure: (state, action) => {
-        state.loading = false;
-        state.error = action.payload;
-      },
+      state.loading = true;
+    },
+    loadUserSuccess: (state, action) => {
+state.loading = false;
+      state.isAuthenticated = true;
+      state.user = action.payload.user;
+    },
+    loadUserFailure: (state, action) => {
+      state.loading = false;
+      state.isAuthenticated = false;
+      state.error = action.payload;
+    },
+    loadUserRequest: (state) => {
+      state.loading = true;
+    },
+    loadUserSuccess: (state, action) => {
+      state.loading = false;
+      state.isAuthenticated = true;
+      state.user = action.payload.user;
+    },
+    loadUserFailure: (state, action) => {
+      state.loading = false;
+      state.isAuthenticated = false;
+      state.error = action.payload;
+    },
+
+    
+    logoutRequest: (state) => {
+      state.loading = true;
+    },
+    logoutSuccess: (state) => {
+      state.loading = false;
+      state.isAuthenticated = false;
+      state.user = null;
+    },
+    logoutFailure: (state, action) => {
+      state.loading = false;
+      state.isAuthenticated = true;
+      state.error = action.payload;
+    },
+
+    verificationRequest: (state) => {
+      state.loading = true;
+    },
+    verificationSuccess: (state, action) => {
+      state.loading = false;
+      state.message = action.payload;
+    },
+    verificationFailure: (state, action) => {
+      state.loading = false;
+      state.error = action.payload;
+    },
     clearError: (state) => {
-        state.error = null;
-      },
-  
-      clearMessage: (state) => {
-        state.message = null;
-      },
-    }
-  );
+      state.error = null;
+    },
+
+    clearMessage: (state) => {
+      state.message = null;
+    },
+  }
+);
   export const passwordReducer = createReducer (
     {} ,
     {forgetPasswordRequest: (state) => {
@@ -225,7 +240,7 @@ export const authReducer = createReducer(
         state.isUpdated = true;
       },
       updateProfileReset: (state) => {
-        state.isUpdated = false ;
+state.isUpdated = false ;
       },
       updateProfileFailure: (state, action) => {
         state.loading = false;
@@ -254,28 +269,6 @@ export const authReducer = createReducer(
         state.loading = false;
         state.error = action.payload;
       },
-      updatePasswordRequest: (state) => {
-        state.loading = true;
-      },
-      updatePasswordSuccess: (state, action) => {
-        state.loading = false;
-        state.message = action.payload;
-      },
-      updatePasswordFailure: (state, action) => {
-        state.loading = false;
-        state.error = action.payload;
-      },
-      updateDeviceIdRequest: (state) => {
-        state.loading = true;
-      },
-      updateDeviceIdSuccess: (state, action) => {
-        state.loading = false;
-        state.message = action.payload;
-      },
-      updateDeviceIdFailure: (state, action) => {
-        state.loading = false;
-        state.error = action.payload;
-      },
       clearError: (state) => {
         state.error = null;
       },
@@ -285,3 +278,38 @@ export const authReducer = createReducer(
       },
     }
   );
+    export const taskReducer = createReducer(
+      {},
+      {
+        loadAllTaskRequest: (state) => {
+          state.loading = true;
+        },
+        loadAllTaskSuccess: (state, action) => {
+          state.loading = false;
+          state.allTask = action.payload;
+        },
+        loadAllTaskFailure: (state, action) => {
+          state.loading = false;
+          state.error = action.payload;
+        },
+        loadTaskRequest: (state) => {
+          state.loading = true;
+        },
+        loadTaskSuccess: (state, action) => {
+          state.loading = false;
+
+          state.task = action.payload;
+        },
+        loadTaskFailure: (state, action) => {
+          state.loading = false;
+          state.error = action.payload;
+        },
+        clearError: (state) => {
+          state.error = null;
+        },
+
+        clearMessage: (state) => {
+          state.message = null;
+        },
+      },
+    );
