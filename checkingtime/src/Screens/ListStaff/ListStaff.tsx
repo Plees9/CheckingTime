@@ -41,7 +41,7 @@ const ListStaff = () => {
   let data: any = [];
   if (typeof allUser !== "undefined") {
     for (var i = 0; i < allUser.array.length; i++) {
-      let strAvatar = allUser.array[i].avatar.url;
+      
       let object = {
         id: i + 1,
         name_1: allUser.array[i].name,

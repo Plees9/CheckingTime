@@ -54,8 +54,8 @@ const Todo_All = () => {
   ]);
 
 
-const onChangeValue = (item: { id: number; }, index: any, newValue: boolean) => {
-  const newData = data_1.map((newItem) => {
+const onChangeValue = (item: { id: any; }, index: any, newValue: boolean) => {
+  const newData = data.map((newItem: { id: any; }) => {
     if (newItem.id == item.id) {
       return {
         ...newItem,
@@ -71,7 +71,7 @@ const onChangeValue = (item: { id: number; }, index: any, newValue: boolean) => 
       { text: "Hủy", style: "cancel" },
       {
         text: "Xóa",
-        onPress: () => setData(data_1.filter((item) => item.id !== 1)),
+        onPress: () => setData(data.filter((item: { id: number; }) => item.id !== 1)),
       },
     ]);
   };
@@ -126,7 +126,7 @@ const onChangeValue = (item: { id: number; }, index: any, newValue: boolean) => 
         </View>
         <View style={styles.kengang}></View>
         <FlatList
-          data={data_1}
+          data={data}
           renderItem={ItemRender}
           keyExtractor={(item) => item.id.toString()}
         ></FlatList>
