@@ -16,47 +16,54 @@ import { Avatar } from "@rneui/themed";
 import createStyles from "./styles";
 import { useNavigation } from "@react-navigation/native";
 import { useDispatch, useSelector } from "react-redux";
-import moment  from "moment";
+import moment from "moment";
 import { loadAlluser } from "../../../redux/action";
+import { SearchBar } from "react-native-elements";
 
 const ListStaff = () => {
-
-  
   const styles = useMemo(() => createStyles(), []);
+
   const navigation = useNavigation<any>();
   const dialCall = (numberPhone_1: any) => {
-    let phoneNumber = '';
-    if (Platform.OS === 'android') { phoneNumber = `tel:${numberPhone_1}`; }
-    else {phoneNumber = `telprompt:${numberPhone_1}`; }
+    let phoneNumber = "";
+    if (Platform.OS === "android") {
+      phoneNumber = `tel:${numberPhone_1}`;
+    } else {
+      phoneNumber = `telprompt:${numberPhone_1}`;
+    }
     Linking.openURL(phoneNumber);
- };
- const dispatch = useDispatch()
- useEffect(() => {
-  dispatch<any>(loadAlluser())
-}, []);
-const { allUser } = useSelector<any, any>(state => state.allUser)
-let data : any = []
-if (typeof allUser !== "undefined") {
-
-for (var i = 0; i < allUser.array.length; i++ ){
-  let strAvatar = allUser.array[i].avatar.url
-  let object = {
-    id: i+1,
-    name_1: allUser.array[i].name,
-    role_1: allUser.array[i].role,
-    userId_1: allUser.array[i].userId,
-    typeOfEmployee_1: allUser.array[i].typeOfEmployee,
-    contractStatus_1: allUser.array[i].contractStatus,
-    date_1: moment(new Date(allUser.array[i].startWorkingDate)).format("DD/MM/YYYY"),
-    date_Birth_1: moment(new Date(allUser.array[i].birth)).format("DD/MM/YYYY"),
-    numberPhone_1: allUser.array[i].phoneNumber,
-    gender_1: allUser.array[i].gender,
-    avatar_1: allUser.array[i].avatar.url
+  };
+  const dispatch = useDispatch();
+  useEffect(() => {
+    dispatch<any>(loadAlluser());
+  }, []);
+  const { allUser } = useSelector<any, any>((state) => state.allUser);
+  let data: any = [];
+  if (typeof allUser !== "undefined") {
+    for (var i = 0; i < allUser.array.length; i++) {
+      let strAvatar = allUser.array[i].avatar.url;
+      let object = {
+        id: i + 1,
+        name_1: allUser.array[i].name,
+        role_1: allUser.array[i].role,
+        userId_1: allUser.array[i].userId,
+        typeOfEmployee_1: allUser.array[i].typeOfEmployee,
+        contractStatus_1: allUser.array[i].contractStatus,
+        date_1: moment(new Date(allUser.array[i].startWorkingDate)).format(
+          "DD/MM/YYYY"
+        ),
+        date_Birth_1: moment(new Date(allUser.array[i].birth)).format(
+          "DD/MM/YYYY"
+        ),
+        numberPhone_1: allUser.array[i].phoneNumber,
+        gender_1: allUser.array[i].gender,
+        avatar_1: allUser.array[i].avatar.url,
+      };
+      console.log(object);
+      data.push(object);
+    }
   }
-  console.log(object)
-  data.push(object)
-}
-}
+
   const NumberPhone = (
     id: number,
     name_1: string,
@@ -67,7 +74,7 @@ for (var i = 0; i < allUser.array.length; i++ ){
     date_1: undefined,
     date_Birth_1: undefined,
     numberPhone_1: number,
-    gender_1: any ,
+    gender_1: any
   ) => {
     Alert.alert(
       "Số điện thoại của nhân viên " + name_1.toUpperCase(),
@@ -82,8 +89,7 @@ for (var i = 0; i < allUser.array.length; i++ ){
           text: "Call",
           onPress: () => {
             dialCall(numberPhone_1);
-          }
-          
+          },
         },
       ]
     );
@@ -109,10 +115,12 @@ for (var i = 0; i < allUser.array.length; i++ ){
           text: "Hủy",
           onPress: () => console.log("Cancel Pressed"),
         },
-{
+        {
           text: "Xóa",
           onPress: () => {
-            const newData = data.filter((item: { id: number; }) => item.id !== id);
+            const newData = data.filter(
+              (item: { id: number }) => item.id !== id
+            );
             //setData(newData);
           },
         },
@@ -221,7 +229,7 @@ for (var i = 0; i < allUser.array.length; i++ ){
   return (
     <SafeAreaView style={styles.view}>
       <View style={styles.row}>
-<View style={styles.icon}>
+        <View style={styles.icon}>
           <Icon
             name="bars"
             size={20}
@@ -245,27 +253,26 @@ for (var i = 0; i < allUser.array.length; i++ ){
           />
         </View>
       </View>
-    
-            <FlatList
-              data={data}
-              renderItem={({ item }) => (
-                <ItemRender
-                  id={item.id}
-                  name_1={item.name_1}
-                  role_1={item.role_1}
-                  userID_1={item.userId_1}
-                  typeOfEmployee_1={item.typeOfEmployee_1}
-                  contractStatus_1={item.contractStatus_1}
-                  date_1={item.date_1}
-                  date_Birth_1={item.date_Birth_1}
-                  numberPhone_1={item.numberPhone_1}
-                  gender_1={item.gender_1}
-                  avatar_1={item.avatar_1}
-                />
-              )}
-              keyExtractor={(item) => item.id.toString()}
-            ></FlatList>
-         
+
+      <FlatList
+        data={data}
+        renderItem={({ item }) => (
+          <ItemRender
+            id={item.id}
+            name_1={item.name_1}
+            role_1={item.role_1}
+            userID_1={item.userId_1}
+            typeOfEmployee_1={item.typeOfEmployee_1}
+            contractStatus_1={item.contractStatus_1}
+            date_1={item.date_1}
+            date_Birth_1={item.date_Birth_1}
+            numberPhone_1={item.numberPhone_1}
+            gender_1={item.gender_1}
+            avatar_1={item.avatar_1}
+          />
+        )}
+        keyExtractor={(item) => item.id.toString()}
+      ></FlatList>
     </SafeAreaView>
   );
 };

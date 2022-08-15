@@ -1,8 +1,8 @@
 import { Text, StyleSheet, View, ScrollView, Alert, SafeAreaView } from 'react-native';
-import React, { useMemo, useState } from "react";
+import React, { useMemo, useState,Component } from "react";
 import createStyles from "./styles";
 import Icon from "react-native-vector-icons/FontAwesome";
-import { CheckBox } from "@rneui/themed";
+import CheckBox from "expo-checkbox";
 import { FAB, Input } from "react-native-elements";
 import { FlatList } from "react-native-gesture-handler";
 import { useNavigation } from "@react-navigation/native";
@@ -19,6 +19,7 @@ const Todo_All = () => {
   const [task, setTask] = useState(""); //task
 
   const [checked, setChecked] = useState(false);
+  
   const { allUser } = useSelector<any, any>((state) => state.allUser);
 
   let data: any = [];
@@ -49,12 +50,22 @@ const Todo_All = () => {
       task: "Task 1",
       checked: false,
     },
-    {
-      id: 2,
-      task: "Task 2",
-      checked: false,
-    },
+   
   ]);
+
+
+const onChangeValue = (item: { id: number; }, index: any, newValue: boolean) => {
+  const newData = data_1.map((newItem) => {
+    if (newItem.id == item.id) {
+      return {
+        ...newItem,
+        selected: newValue,
+      };
+    }
+    return newItem;
+  });
+  setData(newData);
+};
   const trash = () => {
     Alert.alert("Thông báo", "Bạn có chắc chắn muốn xóa không?", [
       { text: "Hủy", style: "cancel" },
@@ -65,22 +76,22 @@ const Todo_All = () => {
     ]);
   };
 
-  const ItemRender = ({}) => (
+  const ItemRender = ({ item, index }) => (
     <View style={styles.render}>
-      <View style={{ flexDirection: "row", backgroundColor:"#f2f2f2" }}>
+      <View style={{ flexDirection: "row", backgroundColor: "#f2f2f2"}}>
         <View style={styles.view2}>
-        <View style={styles.checkbox}>
-            <CheckBox  
-              checkedColor="#f49218"
-              checked={checked}    
-              onIconPress={() => setChecked(!checked)}
-              onPress={() => console.log("onPress")}
-            ></CheckBox>
+          <View style={styles.checkbox}>
+            <CheckBox
+            color= "#00a8ff"
+              value={item.selected}
+              disabled={false}
+              onValueChange={(newValue) => onChangeValue(item, index,newValue)}
+            />
           </View>
           <View style={styles.colomn}>
             <Text style={styles.task}>"Ten task can hoan thanh"</Text>
             <Text style={styles.text1}>{user.name}</Text>
-          </View>
+</View>
 
           <Icon
             name="trash"

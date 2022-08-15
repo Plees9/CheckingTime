@@ -5,34 +5,31 @@ import {
   ScrollView,
   Text,
   View,
-  Alert,
   TouchableOpacity,
-  TextInput,
   ToastAndroid,
 } from "react-native";
 import { Avatar } from "@rneui/themed";
 import Icon from "react-native-vector-icons/FontAwesome";
-import Icon1 from "react-native-vector-icons/Ionicons"
+import Icon1 from "react-native-vector-icons/Ionicons";
 import styles from "./styles";
 import TodoModal from "../../component/TodoModal";
 import { AnimatedCircularProgress } from "react-native-circular-progress";
-import GradientText from "../../component/GradientText";
+
 import { checking, loadUser, ranking } from "../../../redux/action";
 import { FAB, Input } from "react-native-elements";
 import { useDispatch, useSelector } from "react-redux";
 import { getmyrank, loadTimesheet, loadCompany } from "../../../redux/action";
 import { LinearGradient } from "expo-linear-gradient";
+import { SafeAreaView } from "react-native";
 const wait = (timeout: number | undefined) => {
   return new Promise((resolve) => setTimeout(resolve, timeout));
 };
 
 const HomeScreen = () => {
   const dispatch = useDispatch();
-  const job_todo = 4;
-  const job_done = 2;
-  const job_overdate = 2;
+
   let checkout;
-  let checkin 
+  let checkin;
   let numberstr;
   let avatar1;
   let userName1;
@@ -61,8 +58,8 @@ const HomeScreen = () => {
   const { timesheet, number, array } = useSelector<any, any>(
     (state) => state.timesheet
   );
-  console.log(timesheet)
-  console.log(number)
+  console.log(timesheet);
+  console.log(number);
   const maxPoint = 25;
   const currentProcess = 20.5;
   const timeLate = 2;
@@ -70,49 +67,51 @@ const HomeScreen = () => {
     typeof timesheet !== "undefined" &&
     typeof number !== "undefined" &&
     timesheet !== null &&
-    number !== null 
+    number !== null
   ) {
     checkin = timesheet.Object.checkinTime;
     checkout = timesheet.Object.checkoutTime;
     numberstr = number.number;
   }
-  if (
-  typeof array !== "undefined" &&
-  array !== null ) {
+  if (typeof array !== "undefined" && array !== null) {
     if (typeof array.array[0] !== "undefined") {
       avatar1 = array.array[0].avatar.url;
       userName1 = array.array[0].name;
       checkin1 = array.array[0].checkinTime;
-     }
+    }
     if (typeof array.array[1] !== "undefined") {
       avatar2 = array.array[1].avatar.url;
       userName2 = array.array[1].name;
       checkin2 = array.array[1].checkinTime;
     }
     if (typeof array.array[2] !== "undefined") {
-    avatar3 = array.array[2].avatar.url;
-    userName3 = array.array[2].name;
-    checkin3 = array.array[2].checkinTime;
+      avatar3 = array.array[2].avatar.url;
+      userName3 = array.array[2].name;
+      checkin3 = array.array[2].checkinTime;
     }
     if (typeof array.array[3] !== "undefined") {
-    avatar4 = array.array[3].avatar.url;
-    userName4 = array.array[3].name;
-    checkin4 = array.array[3].checkinTime;
+      avatar4 = array.array[3].avatar.url;
+      userName4 = array.array[3].name;
+      checkin4 = array.array[3].checkinTime;
     }
     if (typeof array.array[4] !== "undefined") {
-    avatar5 = array.array[4].avatar.url;
-    userName5 = array.array[4].name;
-    checkin5 = array.array[4].checkinTime;
+      avatar5 = array.array[4].avatar.url;
+      userName5 = array.array[4].name;
+      checkin5 = array.array[4].checkinTime;
     }
   }
   const [userName, setUserName] = useState(user.name);
   const [avatar, loading] = useState(user.avatar.url);
   const [refreshing, setRefreshing] = React.useState(false);
+
+  const [sumWork, setSumWork] = useState(""); //Tổng công  viec của ngày hôm nay
+  const [workDone, setworkDone] = useState(0); //Số công việc đã làm
+  const [workNotDone, setworkNotDone] = useState(0); //Số công việc chưa làm
+
   const companyHandler = async () => {
     navigation.navigate("Thông tin Công Ty");
   };
   const pressHandler = async () => {
-
     await dispatch<any>(checking());
     dispatch<any>(loadTimesheet());
     dispatch<any>(getmyrank());
@@ -125,18 +124,24 @@ const HomeScreen = () => {
 
   const onRefresh = React.useCallback(() => {
     setRefreshing(true);
-    wait(2000).then(() => {setRefreshing(false);
+    wait(2000).then(() => {
+      setRefreshing(false);
       dispatch<any>(loadTimesheet());
       dispatch<any>(getmyrank());
-      dispatch<any>(ranking());});
+      dispatch<any>(ranking());
+    });
   }, []);
 
   return (
     <View style={styles.container}>
       <ScrollView
-        style={{ flex: 1 }}
+        style={{ flex: 1, height: "90%" }}
         refreshControl={
-          <RefreshControl  colors={["#8f73f6", "#b5a4fc"]} refreshing={refreshing} onRefresh={onRefresh} />
+          <RefreshControl
+            colors={["#8f73f6", "#b5a4fc"]}
+            refreshing={refreshing}
+            onRefresh={onRefresh}
+          />
         }
       >
         <View style={{ flexDirection: "row", justifyContent: "space-between" }}>
@@ -149,7 +154,7 @@ const HomeScreen = () => {
               </View>
             </View>
           </TouchableOpacity>
-          <Icon name='eye' />
+          <Icon name="eye" />
         </View>
         <View style={{ alignItems: "flex-start", flexDirection: "row" }}>
           <LinearGradient
@@ -176,26 +181,26 @@ const HomeScreen = () => {
                       style={styles.boder}
                     />
 
-                  <Text style={styles.text2}>Checkin: </Text>
+                    <Text style={styles.text2}>Checkin: </Text>
+                  </View>
+                  <View style={{ justifyContent: "flex-end", flex: 1 }}>
+                    <Text style={styles.text4}>{checkin}</Text>
+                  </View>
                 </View>
-                <View style={{ justifyContent: "flex-end", flex: 1 }}>
-                  <Text style={styles.text4}>{checkin}</Text>
-                </View>
-              </View>
-              <View style={styles.textIcon23}>
-                <View
-                  style={{
-                    flexDirection: "row",
-                    alignSelf: "flex-end",
-                    flex: 1,
-                  }}
-                >
-                  <Icon1
-                    name="log-out-outline"
-                    size={13}
-                    color="#8f73f6"
-                    style={styles.boder}
-                  />
+                <View style={styles.textIcon23}>
+                  <View
+                    style={{
+                      flexDirection: "row",
+                      alignSelf: "flex-end",
+                      flex: 1,
+                    }}
+                  >
+                    <Icon1
+                      name="log-out-outline"
+                      size={13}
+                      color="#8f73f6"
+                      style={styles.boder}
+                    />
 
                     <Text style={styles.text2}>Checkout:</Text>
                   </View>
@@ -228,35 +233,32 @@ const HomeScreen = () => {
               </View>
             </View>
           </LinearGradient>
-          <View
-            
-            style={styles.box_job}
-          >
+          <View style={styles.box_job}>
             <View
               style={{
                 marginTop: 10,
                 height: 180,
-                
               }}
             >
               <Text style={styles.title_job}>Công tháng</Text>
-              
+
               <AnimatedCircularProgress
-                  size={85}
-                  width={5}
-                  fill={Math.round((currentProcess / maxPoint) * 100)}
-                  tintColor="#8f73f6"
-                  style={{alignSelf:'center', marginTop: 10}}
-                  backgroundColor="#3d5875"
-                >{() => (
+                size={85}
+                width={5}
+                fill={Math.round((currentProcess / maxPoint) * 100)}
+                tintColor="#8f73f6"
+                style={{ alignSelf: "center", marginTop: 10 }}
+                backgroundColor="#3d5875"
+              >
+                {() => (
                   <Text style={styles.points}>
                     {currentProcess}/{maxPoint}
                   </Text>
                 )}
               </AnimatedCircularProgress>
-              <View style={{marginTop: 10}}>
-              <Text style={styles.text_late}>{timeLate} lần đi muộn !</Text>
-            </View>
+              <View style={{ marginTop: 10 }}>
+                <Text style={styles.text_late}>{timeLate} lần đi muộn !</Text>
+              </View>
             </View>
           </View>
         </View>
@@ -280,11 +282,9 @@ const HomeScreen = () => {
           </TouchableOpacity>
         </View>
 
-        <View style={styles.view}>
+        <SafeAreaView style={styles.view}>
           <View style={styles.row_rank}>
-          <Text style={styles.text7}>Top 5 hôm nay</Text>
-
-
+            <Text style={styles.text7}>Top 5 hôm nay</Text>
           </View>
 
           <View style={styles.row1}>
@@ -322,21 +322,25 @@ const HomeScreen = () => {
             <Text style={styles.name2}>{userName5}</Text>
             <Text style={styles.checkin2}>{checkin5}</Text>
           </View>
-        </View>
+          <View style={styles.btnFab}>
+            <FAB
+              title="Chấm công"
+              placement="right"
+              size="small"
+              color="#8f73f6"
+              buttonStyle={styles.fab}
+              onPress={pressHandler}
+            />
+            <TodoModal
+              visible={showTodo}
+              onCancel={() => setShowTodo(false)}
+              dataTodo={12}
+              dataDone={2}
+              dataOvertime={2}
+            />
+          </View>
+        </SafeAreaView>
       </ScrollView>
-      <FAB
-        title="Chấm công"
-        placement="right"
-        size="small"
-        color="#8f73f6"
-        buttonStyle={styles.fab}
-        onPress={pressHandler}
-      />
-      <TodoModal visible={showTodo}
-      onCancel={() => setShowTodo(false)}
-      dataTodo={4}
-      dataDone={2}
-      dataOvertime={2}/>
     </View>
   );
 };

@@ -104,7 +104,7 @@ const styles = StyleSheet.create({
     flexDirection: "column",
     marginTop: 20,
     width: "94%",
-    height: "100%",
+    height: "50%",
     backgroundColor: "#FFFFFF",
     marginHorizontal: 10,
 
@@ -277,6 +277,12 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     alignItems: "center",
     justifyContent: "center",
+  },
+  btnFab: {
+    //flexDirection: "row",
+    justifyContent: "flex-end",
+    marginTop: "3%",
+    marginRight: "5%",
   },
 });
 

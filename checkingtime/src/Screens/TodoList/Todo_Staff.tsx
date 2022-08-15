@@ -10,7 +10,7 @@ import {
 import React, { useEffect, useMemo, useState } from "react";
 import createStyles from "./styles";
 import Icon from "react-native-vector-icons/FontAwesome";
-import { CheckBox } from "@rneui/themed";
+import CheckBox from "expo-checkbox";
 import { FAB, Input } from "react-native-elements";
 
 import moment from "moment";
@@ -19,6 +19,8 @@ import { useNavigation } from "@react-navigation/native";
 import { useDispatch, useSelector } from "react-redux";
 import { loadAlluser } from "../../../redux/action";
 import { FlatList } from "react-native-gesture-handler";
+import { AnimatedCircularProgress } from "react-native-circular-progress";
+import { Button } from 'react-native';
 
 const Todo_Staff = () => {
   const styles = useMemo(() => createStyles(), []);
@@ -28,13 +30,11 @@ const Todo_Staff = () => {
   const [time_task, setTime_Task] = useState(moment());
 
   const [task, setTask] = useState(user.task);
-  const [sumWork, setSumWork] = useState("");
-  const [workDone, setworkDone] = useState(0);
-  const [workNotDone, setworkNotDone] = useState(0);
-
+  const [sumWork, setSumWork] = useState(10);
+  const [workDone, setworkDone] = useState(4);
+  const [workOvertime, setworkOvertime] = useState(6);
   const [show_1, setShow_1] = useState(false);
   const { allUser } = useSelector<any, any>((state) => state.allUser);
- 
 
   const dispatch = useDispatch();
   useEffect(() => {
@@ -43,10 +43,9 @@ const Todo_Staff = () => {
   let data: any = [];
   if (typeof allUser !== "undefined") {
     for (var i = 0; i < allUser.array.length; i++) {
-      
       let object = {
         id: i + 1,
-        checked_1 : checked,
+        checked_1: checked,
         task_1: allUser.array[i].task,
         sumWork_1: allUser.array[i].sumWork,
         workDone_1: allUser.array[i].workDone,
@@ -56,18 +55,48 @@ const Todo_Staff = () => {
       data.push(object);
     }
   }
+  const [data_1, setData] = useState([
+    {
+      id: 1,
+      task: "Task 1",
+      checked: false,
+    },
+    {
+      id: 2,
+      task: "Task 2",
+      checked: false,
+    },
+  ]);
+  const onChangeValue = (item, index, newValue) => {
+    const newData = data_1.map((newItem) => {
+      if (newItem.id == item.id) {
+        return {
+          ...newItem,
+          selected: newValue,
+        };
+      }
+      return newItem;
+    });
+    setData(newData);
+  };
 
-  const ItemRender = ({}) => (
+  const ItemRender = ({item, index}) => (
     <View style={styles.render}>
-      <View style={{ flexDirection: "row", backgroundColor:"#f2f2f2", flex:1, }}>
+      <View
+        style={{ flexDirection: "row", backgroundColor: "#f2f2f2", flex: 1 }}
+      >
         <View style={styles.view3}>
           <View style={styles.checkbox}>
-            <CheckBox  
-              checkedColor="#f49218"
-              checked={checked} 
-              onIconPress={() => setChecked(!checked)}
-              
-              // onPress={() => console.log("onPress")}
+            <CheckBox
+               color= "#00a8ff"
+               value={item.selected}
+               disabled={false}
+               onValueChange={(newValue) => onChangeValue(item, index,newValue)}
+
+             
+             
+
+             
             ></CheckBox>
           </View>
 
@@ -120,6 +149,30 @@ const Todo_Staff = () => {
           ></Icon>
           <Text style={styles.text}>Your Task List:</Text>
         </View>
+        <AnimatedCircularProgress
+          size={85}
+          width={5}
+          fill={Math.round((workDone / sumWork) * 100)}
+          tintColor="#3EC70B"
+          style={{ alignSelf: "center", marginTop: 10 }}
+          backgroundColor="#3d5875"
+        >
+          {() => (
+            <Text style={styles.points}>
+              <Text style={{ color: "#3EC70B" }}>
+                {" "}
+                {workDone} {""}
+              </Text>
+              /<Text style={{ color: "#3d5875" }}> {sumWork}</Text>
+            </Text>
+          )}
+        </AnimatedCircularProgress>
+        <View >
+          <View style={styles.note_staff}/>
+          
+            
+          </View>
+
         <View style={styles.view1_1}>
           <View style={styles.view1_2}>
             <Text>Tổng số công việc hôm nay:</Text>
@@ -131,15 +184,12 @@ const Todo_Staff = () => {
             <Text>{workDone}</Text>
           </View>
 
-          <View style={styles.view1_2}>
-            <Text>Công việc chưa hoàn thành:</Text>
-            <Text>{workNotDone}</Text>
-          </View>
+          
         </View>
         <View style={styles.kengang}></View>
 
         <FlatList
-          data={data}
+          data={data_1}
           renderItem={ItemRender}
           keyExtractor={(item) => item.id.toString()}
         ></FlatList>
