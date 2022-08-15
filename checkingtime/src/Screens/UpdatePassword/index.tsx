@@ -5,7 +5,7 @@ import createStyles from "./styles";
 import { useNavigation, useRoute } from "@react-navigation/native";
 import { LinearGradient } from "expo-linear-gradient";
 import { useDispatch, useSelector } from "react-redux";
-import { resetPassword } from "../../../redux/action";
+import { resetPassword, updatePassword } from "../../../redux/action";
 import Icon from "react-native-vector-icons/AntDesign";
 import Icon_1 from "react-native-vector-icons/Ionicons";
 import { isNull } from "lodash";
@@ -15,30 +15,30 @@ const UpdatePassword = () => {
   const dispatch = useDispatch();
   const { message, error } = useSelector<any, any>((state) => state.message);
   const styles = useMemo(() => createStyles(), []);
-  const [password, setPassword] = useState("");
+  const [oldPassword, setoldPassword] = useState("");
+  const [newPassword, setnewPassword] = useState("");
   const [otp, setotp] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
   const [isHided, setIsHided] = useState(true);
-  // const email1 = route.params.email;
-  // const changePasswordHandler = async () => {
-  //   await dispatch<any>(resetPassword(otp, password, confirmPassword));
-  //   navigation.navigate("SignIn");
-  // };
-  // const forgetHandler = async () => {
-  //   await dispatch<any>(forgetPassword(email1));
-  // };
-  // useEffect(() => {
-  //   if (message) {
-  //     alert(message);
-  //     dispatch({ type: "clearMessage" });
-  //   }
-  //   if (error) {
-  //     alert(error);
-  //     dispatch({ type: "clearError" });
-  //   }
-  // }, [alert, dispatch, error]);
+  const updatePasswordHandler = async () => {
+    const myForm = new FormData();
+    myForm.append("oldPassword", oldPassword )
+    myForm.append("newPassword", newPassword)
+    myForm.append("confirmPassword", confirmPassword)
+    await dispatch<any>(updatePassword(myForm));
+  };
+  useEffect(() => {
+    if (message) {
+      alert(message);
+      dispatch({ type: "clearMessage" });
+    }
+    if (error) {
+      alert(error);
+      dispatch({ type: "clearError" });
+    }
+  }, [alert, dispatch, error]);
 
-  // const navigation = useNavigation<any>();
+  const navigation = useNavigation<any>();
 
   return (
     <View style={styles.viewbgr}>
@@ -47,9 +47,9 @@ const UpdatePassword = () => {
         <View style={styles.inputBox}>
           <TextInput
             style={styles.text}
-            value={otp}
-            onChangeText={(text) => setotp(text)}
-            secureTextEntry={undefined}
+            value={oldPassword}
+            onChangeText={(text) => setoldPassword(text)}
+            secureTextEntry={true}
             returnKeyType="done"
             placeholder={"Nhập mật khẩu hiện tại"}
           />
@@ -59,8 +59,8 @@ const UpdatePassword = () => {
         <View style={styles.confirmPassword}>
           <TextInput
             style={styles.text}
-            value={password}
-            onChangeText={(text) => setPassword(text)}
+            value={newPassword}
+            onChangeText={(text) => setnewPassword(text)}
             secureTextEntry={isHided}
             returnKeyType="done"
             placeholder={"Nhập mật khẩu mới"}
@@ -91,7 +91,7 @@ const UpdatePassword = () => {
             placeholder={"Xác nhận mật khẩu mới"}
           />
           <View style={styles.icon_confirmPassword}>
-          {password === "" || confirmPassword !== password ? (
+          {newPassword === "" || confirmPassword !== newPassword ? (
               <Icon name="exclamationcircle" size={17} color="#d22d2c" />
             ) : (
               <Icon name="checkcircle" size={17} color="#51c92b" />
@@ -106,9 +106,9 @@ const UpdatePassword = () => {
             colors={["#8f73f6", "#b5a4fc"]}
             style={styles.btn22}
           >
-            {/* <TouchableOpacity onPress={changePasswordHandler}> */}
+            <TouchableOpacity onPress={updatePasswordHandler}>
               <Text style={styles.size}>Xác nhận</Text>
-            {/* </TouchableOpacity> */}
+            </TouchableOpacity>
           </LinearGradient>
         </View>
       </View>

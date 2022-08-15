@@ -1,13 +1,20 @@
-import { Text, StyleSheet, View, ScrollView, Alert, SafeAreaView } from 'react-native';
-import React, { useMemo, useState,Component } from "react";
+import {
+  Text,
+  StyleSheet,
+  View,
+  ScrollView,
+  Alert,
+  SafeAreaView,
+} from "react-native";
+import React, { useMemo, useState, Component, useEffect } from "react";
 import createStyles from "./styles";
 import Icon from "react-native-vector-icons/FontAwesome";
 import CheckBox from "expo-checkbox";
 import { FAB, Input } from "react-native-elements";
 import { FlatList } from "react-native-gesture-handler";
 import { useNavigation } from "@react-navigation/native";
-import { useSelector } from "react-redux";
-import { loadAlluser } from "../../../redux/action";
+import { useDispatch, useSelector } from "react-redux";
+import { loadAlluser, loadAllTask } from "../../../redux/action";
 import moment from "moment";
 
 const Todo_All = () => {
@@ -16,16 +23,16 @@ const Todo_All = () => {
   const navigation = useNavigation<any>();
 
   const [userName, setUserName] = useState(user.name); //name
-  const [task, setTask] = useState(""); //task
 
   const [checked, setChecked] = useState(false);
-  
+
   const { allUser } = useSelector<any, any>((state) => state.allUser);
 
+  const dispatch = useDispatch();
   let data: any = [];
   if (typeof allUser !== "undefined") {
     for (var i = 0; i < allUser.array.length; i++) {
-     // let strAvatar = allUser.array[i].avatar.url;
+      // let strAvatar = allUser.array[i].avatar.url;
       let object = {
         id: i + 1,
         name_1: allUser.array[i].name,
@@ -44,54 +51,72 @@ const Todo_All = () => {
     }
   }
 
-  const [data_1, setData] = useState([
-    {
-      id: 1,
-      task: "Task 1",
-      checked: false,
-    },
-   
-  ]);
+  useEffect(() => {
+    dispatch<any>(loadAllTask());
+  }, []);
+  const { allTask } = useSelector<any, any>((state) => state.task);
 
-
-const onChangeValue = (item: { id: any; }, index: any, newValue: boolean) => {
-  const newData = data.map((newItem: { id: any; }) => {
-    if (newItem.id == item.id) {
-      return {
-        ...newItem,
-        selected: newValue,
+  let data_2: any = [];
+  if (typeof allTask !== "undefined") {
+    for (var i = 0; i < allTask.tasks.length; i++) {
+      // let strAvatar = allUser.array[i].avatar.url;
+      let task = {
+        _id: allTask.tasks[i]._id,
+        name: allTask.tasks[i].name,
+        description: allTask.tasks[i].description,
+        deadline: moment(new Date(allTask.tasks[i].deadline)).format(
+          "DD/MM/YYYY"
+        ),
+        status: allTask.tasks[i].status,
+        date: moment(new Date(allTask.tasks[i].date)).format("DD/MM/YYYY"),
+        manager: allTask.tasks[i].manager,
       };
+      console.log(task);
+      data_2.push(task);
     }
-    return newItem;
-  });
-  setData(newData);
-};
+  }
+
+  const [data_1, setData] = useState(data_2);
+
+  const onChangeValue = (item: { _id: any }, index: any, newValue: boolean) => {
+    const newData = data_1.map((newItem: { _id: any }) => {
+      if (newItem._id == item._id) {
+        return {
+          ...newItem,
+          selected: newValue,
+        };
+      }
+      return newItem;
+    });
+    setData(newData);
+  };
   const trash = () => {
     Alert.alert("Thông báo", "Bạn có chắc chắn muốn xóa không?", [
       { text: "Hủy", style: "cancel" },
       {
         text: "Xóa",
-        onPress: () => setData(data.filter((item: { id: number; }) => item.id !== 1)),
+        onPress: () =>
+          setData(data_1.filter((item: { _id: string }) => item._id !== "")),
       },
     ]);
   };
 
   const ItemRender = ({ item, index }) => (
     <View style={styles.render}>
-      <View style={{ flexDirection: "row", backgroundColor: "#f2f2f2"}}>
+      <View style={{ flexDirection: "row", backgroundColor: "#f2f2f2" }}>
         <View style={styles.view2}>
           <View style={styles.checkbox}>
             <CheckBox
-            color= "#00a8ff"
+              color="#00a8ff"
               value={item.selected}
               disabled={false}
-              onValueChange={(newValue) => onChangeValue(item, index,newValue)}
+              onValueChange={(newValue) => onChangeValue(item, index, newValue)}
             />
           </View>
           <View style={styles.colomn}>
-            <Text style={styles.task}>"Ten task can hoan thanh"</Text>
+            <Text style={styles.task}>{data_2.status}</Text>
             <Text style={styles.text1}>{user.name}</Text>
-</View>
+          </View>
 
           <Icon
             name="trash"
@@ -126,9 +151,9 @@ const onChangeValue = (item: { id: any; }, index: any, newValue: boolean) => {
         </View>
         <View style={styles.kengang}></View>
         <FlatList
-          data={data}
+          data={data_1}
           renderItem={ItemRender}
-          keyExtractor={(item) => item.id.toString()}
+          keyExtractor={(item) => item._id}
         ></FlatList>
       </SafeAreaView>
       <View style={styles.btnFab}>

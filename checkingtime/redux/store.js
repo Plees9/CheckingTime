@@ -1,5 +1,14 @@
 import { configureStore } from "@reduxjs/toolkit";
-import { authReducer, messageReducer, companyReducer, passwordReducer, timesheetReducer, allReducer} from "./reducer";
+import {
+  authReducer,
+  messageReducer,
+  companyReducer,
+  passwordReducer,
+  timesheetReducer,
+  allReducer,
+  taskReducer,
+  taskAllReducer,
+} from "./reducer";
 
 const store = configureStore({
   reducer: {
@@ -8,7 +17,8 @@ const store = configureStore({
     message: messageReducer,
     password: passwordReducer,
     timesheet: timesheetReducer ,   
-    allUser: allReducer
+    allUser: allReducer,
+    task: taskReducer,
   },
 });
 

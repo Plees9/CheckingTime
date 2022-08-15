@@ -24,12 +24,29 @@ import { useDispatch, useSelector } from "react-redux";
 import { getmyrank, loadTimesheet, loadCompany } from "../../../redux/action";
 import { LinearGradient } from "expo-linear-gradient";
 
-
+import publicIP from 'react-native-public-ip';
+import * as Device from 'expo-device';
 const wait = (timeout: number | undefined) => {
   return new Promise((resolve) => setTimeout(resolve, timeout));
 };
-
 const HomeScreen = () => {
+const { user } = useSelector<any, any>((state) => state.auth);
+const [networkIp, setNetworkIp] = useState("")
+
+let deviceId : any
+if (typeof user != undefined) {
+  deviceId= Device.deviceName + user.userId + Device.modelName
+}
+publicIP()
+.then((ip: React.SetStateAction<string>) => {   
+  // '47.122.71.234'
+  setNetworkIp(ip)
+})
+.catch((error: any) => {
+  console.log(error);
+  // 'Unable to get IP address.'
+})
+  const { message, error } = useSelector<any, any>((state) => state.timesheet)
   const dispatch = useDispatch();
   
   let checkout;
@@ -58,12 +75,9 @@ const HomeScreen = () => {
   }, [dispatch]);
   const navigation = useNavigation<any>();
   const [showTodo, setShowTodo] = useState(false);
-  const { user } = useSelector<any, any>((state) => state.auth);
   const { timesheet, number, array } = useSelector<any, any>(
     (state) => state.timesheet
   );
-  console.log(timesheet)
-  console.log(number)
   const maxPoint = 25;
   const currentProcess = 20.5;
   const timeLate = 2;
@@ -112,8 +126,18 @@ const HomeScreen = () => {
   const companyHandler = async () => {
     navigation.navigate("Thông tin Công Ty");
   };
+  useEffect(() => {
+    if (message) {
+      alert(message);
+      dispatch({ type: "clearMessage" });
+    }
+    if (error) {
+      alert(error);
+      dispatch({ type: "clearError" });
+     }
+  }, [alert, dispatch, error, message]);
   const pressHandler = async () => {
-    await dispatch<any>(checking());
+    await dispatch<any>(checking(networkIp, deviceId));
     dispatch<any>(loadTimesheet());
     dispatch<any>(getmyrank());
     dispatch<any>(ranking());
@@ -125,7 +149,6 @@ const HomeScreen = () => {
       Alert.alert( userName + " " + "đã chấm công!");
     }
   };
-
   const onRefresh = React.useCallback(() => {
     setRefreshing(true);
     wait(2000).then(() => {setRefreshing(false);
