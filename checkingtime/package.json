@@ -82,7 +82,8 @@
     "react-navigation-tabbar-collection": "^1.0.0",
     "react-redux": "^8.0.2",
     "request": "^2.88.2",
-    "uuid": "^8.3.2"
+    "uuid": "^8.3.2",
+    "expo-checkbox": "~2.1.0"
   },
   "devDependencies": {
     "@babel/core": "^7.12.9",

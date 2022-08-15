@@ -50,7 +50,7 @@ const createStyles = () =>
 
     colomn: {
       flexDirection: "column",
-      width: "74%",
+      width: "70%",
     },
     colomn1: {
       width: "75%",
@@ -79,7 +79,7 @@ const createStyles = () =>
     },
     checkbox: {
       width: "10%",
-      marginRight: "2%",
+      //marginRight: "2%",
     },
 
     task: {
@@ -196,6 +196,20 @@ const createStyles = () =>
     icon_staff:{
       width:"10%",
     },
+    points: {
+      textAlign: "center",
+      fontFamily: FONTS.vanSansMediumItalic,
+      fontSize: 15,
+    },
+    note_staff:{
+      marginTop:"2%",
+      backgroundColor: "#f2f2",
+      borderRadius:10,
+      width:10,
+      height:10,
+
+    },
+
 
   });
 
