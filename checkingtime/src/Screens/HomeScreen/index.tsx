@@ -76,7 +76,6 @@ publicIP()
   }, [dispatch]);
   const navigation = useNavigation<any>();
   const [showTodo, setShowTodo] = useState(false);
-  const { user } = useSelector<any, any>((state) => state.auth);
   const { timesheet, number, array } = useSelector<any, any>(
     (state) => state.timesheet
   );
