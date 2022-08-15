@@ -254,6 +254,17 @@ export const authReducer = createReducer(
         state.loading = false;
         state.error = action.payload;
       },
+      updatePasswordRequest: (state) => {
+        state.loading = true;
+      },
+      updatePasswordSuccess: (state, action) => {
+        state.loading = false;
+        state.message = action.payload;
+      },
+      updatePasswordFailure: (state, action) => {
+        state.loading = false;
+        state.error = action.payload;
+      },
       updateDeviceIdRequest: (state) => {
         state.loading = true;
       },

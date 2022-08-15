@@ -107,6 +107,23 @@ export const updateProfile = (formData) => async (dispatch) => {
     });
   }
 };
+export const updatePassword = (formData) => async (dispatch) => {
+  try {
+    dispatch({ type: "updatePasswordRequest" });
+
+    const { data } = await axios.put(`${serverUrl}/user/updatepassword`, formData, {
+      headers: {
+        "Content-Type": "multipart/form-data",
+      },
+    });
+    dispatch({ type: "updatePasswordSuccess", payload: data.message });
+  } catch (error) {
+    dispatch({
+      type: "updatePasswordFailure",
+      payload: error.response.data.message,
+    });
+  }
+};
 export const login = (phoneNumber, password) => async (dispatch) => {
   try {
     dispatch({ type: "loginRequest" });
