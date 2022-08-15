@@ -37,15 +37,15 @@ const createStyles = () =>
     view3: {
       flexDirection: "row",
       alignItems: "center",
+      textAlign: "center",
       backgroundColor:"#FFFFFF" ,
       justifyContent: "center",
       borderRadius: 10,
       width: "98%",
+      padding:"2%",
       marginTop: "2%",
       marginBottom: "2%",
       marginHorizontal: "1%",
-
-      
     },
 
     colomn: {
@@ -54,6 +54,8 @@ const createStyles = () =>
     },
     colomn1: {
       width: "75%",
+      textAlign: "center",
+     
     },
     text1: {
       marginLeft: "3%",
@@ -79,7 +81,7 @@ const createStyles = () =>
     },
     checkbox: {
       width: "10%",
-      //marginRight: "2%",
+      marginLeft: "2%",
     },
 
     task: {
@@ -145,8 +147,8 @@ const createStyles = () =>
       width: "100%",
     },
     textTime: {
-      width: "15%",
-      marginLeft: "3%",
+      width: "50%",
+      //smarginLeft: "3%",
     },
     kedoc: {
       marginLeft: "2%",

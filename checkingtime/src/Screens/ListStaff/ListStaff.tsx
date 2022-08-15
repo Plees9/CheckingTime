@@ -42,7 +42,7 @@ const ListStaff = () => {
   const loadView = () => {
   if (typeof allUser !== "undefined") {
     for (var i = 0; i < allUser.array.length; i++) {
-      let strAvatar = allUser.array[i].avatar.url;
+      
       let object = {
         id: i + 1,
         _id: allUser.array[i]._id ,

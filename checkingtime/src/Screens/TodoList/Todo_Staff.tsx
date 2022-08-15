@@ -17,10 +17,10 @@ import moment from "moment";
 import DateTimePicker from "@react-native-community/datetimepicker";
 import { useNavigation } from "@react-navigation/native";
 import { useDispatch, useSelector } from "react-redux";
-import { loadAlluser } from "../../../redux/action";
+import { loadAllTask, loadAlluser, loadTask } from "../../../redux/action";
 import { FlatList } from "react-native-gesture-handler";
 import { AnimatedCircularProgress } from "react-native-circular-progress";
-import { Button } from 'react-native';
+
 
 const Todo_Staff = () => {
   const styles = useMemo(() => createStyles(), []);
@@ -29,47 +29,45 @@ const Todo_Staff = () => {
   const [checked, setChecked] = useState(false);
   const [time_task, setTime_Task] = useState(moment());
 
-  const [task, setTask] = useState(user.task);
   const [sumWork, setSumWork] = useState(10);
   const [workDone, setworkDone] = useState(4);
   const [workOvertime, setworkOvertime] = useState(6);
   const [show_1, setShow_1] = useState(false);
-  const { allUser } = useSelector<any, any>((state) => state.allUser);
+  
 
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch<any>(loadAlluser());
   }, []);
-  let data: any = [];
-  if (typeof allUser !== "undefined") {
-    for (var i = 0; i < allUser.array.length; i++) {
-      let object = {
-        id: i + 1,
-        checked_1: checked,
-        task_1: allUser.array[i].task,
-        sumWork_1: allUser.array[i].sumWork,
-        workDone_1: allUser.array[i].workDone,
-        workNotDone_1: allUser.array[i].workNotDone,
+  
+  useEffect(() => {
+    dispatch<any>(loadTask());
+  }, []);
+  const { allTask } = useSelector<any, any>((state) => state.task);
+
+  let data_2: any = [];
+  if (typeof allTask !== "undefined") {
+    for (var i = 0; i < allTask.tasks.length; i++) {
+      
+      let task = {
+        _id: allTask.tasks[i]._id,
+        name: allTask.tasks[i].name,
+        description: allTask.tasks[i].description,
+        deadline: moment(allTask.tasks[i].deadline, "HH:mm, DD/MM/YYYY"),
+        status: allTask.tasks[i].status,
+        date: moment(allTask.tasks[i].date).format("DD/MM/YYYY"),
+        manager: allTask.tasks[i].manager,
       };
-      console.log(object);
-      data.push(object);
+      console.log(task);
+      data_2.push(task);
     }
   }
-  const [data_1, setData] = useState([
-    {
-      id: 1,
-      task: "Task 1",
-      checked: false,
-    },
-    {
-      id: 2,
-      task: "Task 2",
-      checked: false,
-    },
-  ]);
-  const onChangeValue = (item, index, newValue) => {
-    const newData = data_1.map((newItem) => {
-      if (newItem.id == item.id) {
+
+  const [data_1, setData] = useState(data_2);
+  
+  const onChangeValue = (item: { _id: any }, index: any, newValue: boolean) => {
+    const newData = data_1.map((newItem: { _id: any }) => {
+      if (newItem._id == item._id) {
         return {
           ...newItem,
           selected: newValue,
@@ -80,7 +78,7 @@ const Todo_Staff = () => {
     setData(newData);
   };
 
-  const ItemRender = ({item, index}) => (
+  const ItemRender = ({ item, index }) => (
     <View style={styles.render}>
       <View
         style={{ flexDirection: "row", backgroundColor: "#f2f2f2", flex: 1 }}
@@ -88,29 +86,24 @@ const Todo_Staff = () => {
         <View style={styles.view3}>
           <View style={styles.checkbox}>
             <CheckBox
-               color= "#00a8ff"
-               value={item.selected}
-               disabled={false}
-               onValueChange={(newValue) => onChangeValue(item, index,newValue)}
-
-             
-             
-
-             
+              color="#FFC23C"
+              value={item.selected}
+              disabled={false}
+              onValueChange={(newValue) => onChangeValue(item, index, newValue)}
             ></CheckBox>
           </View>
 
           <View style={styles.colomn1}>
-            <Text style={styles.task}>{user.task} ten task</Text>
+            <Text style={styles.task}>{item.name}</Text>
             <View style={styles.textTime}>
               <Pressable onPress={() => setShow_1(true)}>
                 <View
                   style={{ justifyContent: "center", alignContent: "center" }}
                 >
-                  <Text>{time_task.format("HH:mm")}</Text>
+                  <Text>{moment(item.deadline).format("HH:mm, DD/MM/YYYY")}</Text>
                   {show_1 && (
                     <DateTimePicker
-                      value={new Date(time_task.format("YYYY/MM/DD"))}
+                      value={new Date(item.deadline.format("YYYY/MM/DD"))}
                       mode={"time"}
                       display="default"
                       is24Hour={true}
@@ -167,31 +160,27 @@ const Todo_Staff = () => {
             </Text>
           )}
         </AnimatedCircularProgress>
-        <View >
-          <View style={styles.note_staff}/>
-          
-            
-          </View>
+        <View>
+          <View style={styles.note_staff} />
+        </View>
 
         <View style={styles.view1_1}>
           <View style={styles.view1_2}>
             <Text>Tổng số công việc hôm nay:</Text>
-            <Text>{data.length}</Text>
+            <Text>{data_2.length}</Text>
           </View>
 
           <View style={styles.view1_2}>
             <Text>Công việc đã hoàn thành:</Text>
             <Text>{workDone}</Text>
           </View>
-
-          
         </View>
         <View style={styles.kengang}></View>
 
         <FlatList
           data={data_1}
           renderItem={ItemRender}
-          keyExtractor={(item) => item.id.toString()}
+          keyExtractor={(item) => item._id}
         ></FlatList>
       </SafeAreaView>
       <View style={styles.btnFab}>

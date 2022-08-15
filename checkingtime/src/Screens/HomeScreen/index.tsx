@@ -7,22 +7,23 @@ import {
   View,
   Alert,
   TouchableOpacity,
-  TextInput,
   ToastAndroid,
+  Platform,
+ 
+
 } from "react-native";
 import { Avatar } from "@rneui/themed";
 import Icon from "react-native-vector-icons/FontAwesome";
 import Icon1 from "react-native-vector-icons/Ionicons"
 import styles from "./styles";
 import TodoModal from "../../component/TodoModal";
-import { AnimatedCircularProgress } from "react-native-circular-progress";
-import GradientText from "../../component/GradientText";
+import { AnimatedCircularProgress } from "react-native-circular-progress"
 import { checking, loadUser, ranking } from "../../../redux/action";
 import { FAB, Input } from "react-native-elements";
 import { useDispatch, useSelector } from "react-redux";
 import { getmyrank, loadTimesheet, loadCompany } from "../../../redux/action";
 import { LinearGradient } from "expo-linear-gradient";
-import { NetworkInfo } from "react-native-network-info";
+
 import publicIP from 'react-native-public-ip';
 import * as Device from 'expo-device';
 const wait = (timeout: number | undefined) => {
@@ -37,19 +38,17 @@ if (typeof user != undefined) {
   deviceId= Device.deviceName + user.userId + Device.modelName
 }
 publicIP()
-.then(ip => {   
+.then((ip: React.SetStateAction<string>) => {   
   // '47.122.71.234'
   setNetworkIp(ip)
 })
-.catch(error => {
+.catch((error: any) => {
   console.log(error);
   // 'Unable to get IP address.'
 })
   const { message, error } = useSelector<any, any>((state) => state.timesheet)
   const dispatch = useDispatch();
-  const job_todo = 4;
-  const job_done = 2;
-  const job_overdate = 2;
+  
   let checkout;
   let checkin 
   let numberstr;
@@ -142,10 +141,13 @@ publicIP()
     dispatch<any>(loadTimesheet());
     dispatch<any>(getmyrank());
     dispatch<any>(ranking());
-    ToastAndroid.show(
-      "Bạn" + " " + userName + " " + "đã chấm công!",
-      ToastAndroid.SHORT
-    );
+
+   //show toast android and ios
+    if (Platform.OS === "android") {
+      ToastAndroid.show( userName + " " + "đã chấm công!", ToastAndroid.SHORT);
+    } else {
+      Alert.alert( userName + " " + "đã chấm công!");
+    }
   };
   const onRefresh = React.useCallback(() => {
     setRefreshing(true);

@@ -287,3 +287,27 @@ export const register = (formData) => async (dispatch) => {
     });
   }
 };
+
+  export const loadAllTask = () => async (dispatch) => {
+    try {
+      dispatch({ type: "loadAllTaskRequest" });
+      const { data } = await axios.get(`${serverUrl}/user/alltask`);
+      dispatch({ type: "loadAllTaskSuccess", payload: data });
+    } catch (error) {
+      dispatch({
+        type: "loadAllTaskFailure",
+        payload: error.response.data.message,
+      });
+    }
+  };
+    
+  export const loadTask = () => async (dispatch) => {
+    try {
+      dispatch({ type: "loadTaskRequest" });
+      const { data } = await axios.get(`${serverUrl}/user/mytask`);
+      dispatch({ type: "loadTaskSuccess", payload: data });
+    } catch (error) {
+      dispatch({ type: "loadTaskFailure", payload: error.response.data.message });
+    }
+  
+};

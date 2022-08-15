@@ -1,4 +1,4 @@
-import { View, Text, SafeAreaView } from "react-native";
+import { View, Text, SafeAreaView, TouchableOpacity } from 'react-native';
 import React, { useEffect, useMemo, useState } from "react";
 import { Avatar } from "@rneui/themed";
 import { useDispatch, useSelector } from "react-redux";
@@ -42,6 +42,7 @@ const Todo_ListStaff = () => {
   }
   const ItemRender = ({ id, name_1, avatar_1 }) => (
     <View>
+      <TouchableOpacity onPress={() => navigation.navigate("Công việc của tôi")}>
       <View style={styles.view_staff2}>
         <View style={styles.avatar_staff}>
           <Avatar rounded source={{ uri: avatar_1 }} size={36} />
@@ -59,6 +60,9 @@ const Todo_ListStaff = () => {
           />
         </View>
       </View>
+
+      </TouchableOpacity>
+     
     </View>
   );
 
@@ -76,22 +80,7 @@ const Todo_ListStaff = () => {
           )}
           keyExtractor={(item) => item.id.toString()}
         ></FlatList>
-        {/* <View style={styles.view_staff2}>
-            <View style={styles.avatar_staff}>
-               <Avatar rounded source={{ uri: avatar }} size={36} />
-            </View>
-            <View style={styles.text_staff}>
-            <Text>{user.name}</Text>
-            <Text>Hoàn thành: 3/5</Text>
-            </View>
-            <View style={styles.icon_staff}>
-               <Icon name="angle-double-right" size={34} color="#f49218"
-               onPress={() => navigation.navigate("Công việc của tôi")} 
-               
-               />
-            </View>
-            
-         </View> */}
+      
       </View>
     </SafeAreaView>
   );
