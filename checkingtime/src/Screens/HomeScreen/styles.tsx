@@ -104,7 +104,7 @@ const styles = StyleSheet.create({
     flexDirection: "column",
     marginTop: 20,
     width: "94%",
-    height: "100%",
+    height: "50%",
     backgroundColor: "#FFFFFF",
     marginHorizontal: 10,
 
@@ -153,6 +153,17 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     marginLeft: 10,
   },
+  text_late: {
+    alignSelf: "center",
+    fontSize: 15,
+    fontFamily: FONTS.vanSansMediumItalic,
+  },
+  points: {
+    textAlign: "center",
+    color: "#000",
+    fontFamily: FONTS.vanSansMediumItalic,
+    fontSize: 15,
+  },
   boder: {
     width: 24,
     height: 24,
@@ -179,12 +190,14 @@ const styles = StyleSheet.create({
 
     alignItems: "center",
     alignSelf: "center",
+    
   },
   name2: {
     width: "60%",
     fontFamily: FONTS.vanSansMedium,
     color: "gray",
     alignSelf: "center",
+    
   },
   checkin2: {
     width: "18%",
@@ -264,6 +277,12 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     alignItems: "center",
     justifyContent: "center",
+  },
+  btnFab: {
+    //flexDirection: "row",
+    justifyContent: "flex-end",
+    marginTop: "3%",
+    marginRight: "5%",
   },
 });
 

@@ -75,7 +75,7 @@ export default class TwoChoiceModal extends React.Component<TwoChoiceModalProps>
                   <IconButton
                     icon={this.props.iconLeft}
                     size={this.props.size}
-                    color="#f49218"
+                    color="#716df2"
                   />
                 </View>
                 <View style={styles.viewText}>
@@ -92,7 +92,7 @@ export default class TwoChoiceModal extends React.Component<TwoChoiceModalProps>
                   <IconButton
                     icon={this.props.iconRight}
                     size={this.props.size}
-                    color="#f49218"
+                    color="#716df2"
                   />
                 </View>
                 <View style={styles.viewText}>
@@ -122,7 +122,7 @@ const styles = StyleSheet.create({
   },
 
   Touch1: {
-    backgroundColor: "#f7d0af",
+    backgroundColor: "#bcd7f2",
     borderRadius: 10,
     flex : 0.5,
     marginTop: 5,
@@ -145,6 +145,7 @@ const styles = StyleSheet.create({
   },
 
   text1: {
+    fontSize: 14,
     textAlign: "center",
     fontFamily: FONTS.vanSansMedium,
   },
@@ -162,7 +163,7 @@ const styles = StyleSheet.create({
     width: 60,
     justifyContent: "center",
     borderRadius: 8,
-    backgroundColor: "#f49218",
+    backgroundColor: "#716DF2",
     flex: 1,
     marginBottom: 10, 
   },

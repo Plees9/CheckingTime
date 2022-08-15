@@ -6,7 +6,13 @@ import {
   TouchableOpacity,
   Pressable,
 } from "react-native";
-import React, { useCallback,useMemo, useState, useEffect, Component } from "react";
+import React, {
+  useCallback,
+  useMemo,
+  useState,
+  useEffect,
+  Component,
+} from "react";
 import createStyles from "./styles";
 import { useNavigation } from "@react-navigation/native";
 
@@ -53,9 +59,9 @@ const data_4 = [
 const AddStaff = () => {
   const dispatch = useDispatch();
   const { message, error } = useSelector<any, any>((state) => state.message);
-  console.log(message)
-  const [count, setCount] = useState(0)
-	// const handleClick = useCallback(() => setCount(count + 1), [count]);
+  console.log(message);
+  const [count, setCount] = useState(0);
+  // const handleClick = useCallback(() => setCount(count + 1), [count]);
 
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
@@ -64,7 +70,7 @@ const AddStaff = () => {
   const [userName, setUserName] = useState("");
   const [email, setEmail] = useState("");
   const [numberPhone, setNumberPhone] = useState("");
- 
+
   const [isHided, setIsHided] = useState(true);
 
   const [date, setDate] = useState(moment());
@@ -88,7 +94,7 @@ const AddStaff = () => {
     myForm.append("password", password);
     myForm.append("confirmPassword", confirmPassword)
     myForm.append("privilege", value_1);
-    
+
     const Sdate = moment(date); //chu y lam lai ngay thang nam
     myForm.append("startWorkingDate", String(Sdate));
     myForm.append("contractStatus", value_2);
@@ -385,6 +391,5 @@ const AddStaff = () => {
     </View>
   );
 };
-
 
 export default React.memo(AddStaff);

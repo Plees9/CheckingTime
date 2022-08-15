@@ -60,7 +60,7 @@ const CameraComponent = () => {
       >
         <TouchableOpacity style={styles.Touch1} onPress={pickImage}>
           <View style={{ alignContent: "center" }}>
-            <IconButton icon="image" size={40} color="#f49218" />
+            <IconButton icon="image" size={40} color="#716DF2" />
           </View>
           <View style={styles.viewText}>
             <Text style={styles.text1}>Chọn ảnh</Text>
@@ -69,7 +69,7 @@ const CameraComponent = () => {
 
         <TouchableOpacity style={styles.Touch1} onPress={takeImage}>
           <View style={{ alignContent: "center" }}>
-            <IconButton icon="camera" size={40} color="#f49218" />
+            <IconButton icon="camera" size={40} color="#716DF2" />
           </View>
           <View style={styles.viewText}>
             <Text style={styles.text1}>Chụp ảnh</Text>

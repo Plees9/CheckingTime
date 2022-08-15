@@ -105,7 +105,7 @@ const styles = StyleSheet.create({
     width: 60,
     justifyContent:'center',
     borderRadius: 8,
-    backgroundColor: "#f49218",
+    backgroundColor: "#716DF2",
     flex :1,
   },
   cancel_button: {

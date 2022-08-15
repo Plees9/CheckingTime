@@ -43,7 +43,7 @@ const openUrl = async (url: string) => {
           <IconButton
             icon="office-building"
             size={30}
-            color="#f49218"
+            color="#716DF2"
             style={{
               width: 50,
               height: 50,
@@ -64,7 +64,7 @@ const openUrl = async (url: string) => {
           <IconButton
             icon="phone"
             size={20}
-            color="#f49218"
+            color="#716DF2"
             style={{
               width: 50,
               height: 50,
@@ -74,15 +74,14 @@ const openUrl = async (url: string) => {
           />
           <View>
             <Text style={styles.user_1}>Hotline</Text>
-
-            
             <TouchableOpacity>
               <Text style={styles.texta} onPress={() => dialCall(company.company.hotline)}>{company.company.hotline}</Text>
             </TouchableOpacity>
-            <View style={styles.kengang1}></View>
           </View>
         </View>
+        
       </View>
+      <View style={styles.kengang}></View>
 
       <View style={styles.footer}>
         <TouchableOpacity

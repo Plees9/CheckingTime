@@ -1,11 +1,5 @@
 import React from "react";
-import {
-  Text,
-  ScrollView,
-  View,
-  Alert,
-  TouchableOpacity,
-} from "react-native";
+import { Text, ScrollView, View, Alert, TouchableOpacity } from "react-native";
 import styles from "./styles";
 
 import Icon from "react-native-vector-icons/FontAwesome";
@@ -24,13 +18,37 @@ const Jobs = () => {
   return (
     <ScrollView style={styles.container}>
       <View
-        style={{ backgroundColor: "#f2f2f2", margin: 10,  borderRadius: 20 }}>
+        style={{ backgroundColor: "#f2f2f2", margin: 10, borderRadius: 20 }}
+      >
         <TouchableOpacity
           style={styles.Touch1}
-          onPress={() => Alert.alert("Simple Button pressed")}
+          onPress={() => navigation.navigate("Công việc của tôi")}
         >
           <View style={{ alignContent: "center" }}>
-            <IconButton icon="calendar-account" color="#f49218" size={50} />
+            <IconButton icon="book" color="#f49218" size={50} />
+          </View>
+          <View style={styles.viewText}>
+            <Text style={styles.text1}>Công việc của tôi</Text>
+          </View>
+        </TouchableOpacity>
+        <TouchableOpacity
+          style={styles.Touch1}
+          onPress={() => navigation.navigate("Công việc")}
+        >
+          <View style={{ alignContent: "center" }}>
+            <IconButton icon="clipboard-list" color="#f49218" size={50} />
+          </View>
+          <View style={styles.viewText}>
+            <Text style={styles.text1}>Quản lý công việc</Text>
+          </View>
+        </TouchableOpacity>
+
+        <TouchableOpacity
+          style={styles.Touch1}
+          onPress={() => navigation.navigate("Bảng chấm công")}
+        >
+          <View style={{ alignContent: "center" }}>
+            <IconButton icon="calendar-account" color="#716DF2" size={50} />
           </View>
           <View style={styles.viewText}>
             <Text style={styles.text1}>Bảng công</Text>
@@ -40,9 +58,10 @@ const Jobs = () => {
         <View style={styles.scrollView}>
           <TouchableOpacity
             style={styles.Touch2}
-            onPress={() => navigation.navigate("Đơn từ")}>
+            onPress={() => navigation.navigate("Đơn từ")}
+          >
             <View style={{ alignContent: "center" }}>
-              <IconButton icon="text-box" color="#f49218" size={50} />
+              <IconButton icon="text-box" color="#716DF2" size={50} />
             </View>
             <View style={styles.viewText}>
               <Text style={styles.text1}>Danh sách đơn từ</Text>
@@ -56,7 +75,7 @@ const Jobs = () => {
             onPress={() => navigation.navigate("Form Created")}
           >
             <View style={{ alignContent: "center" }}>
-              <IconButton icon="text-box-plus" color="#f49218" size={50} />
+              <IconButton icon="text-box-plus" color="#716DF2" size={50} />
             </View>
             <View style={styles.viewText}>
               <Text style={styles.text1}>Tạo đơn mới</Text>
@@ -65,12 +84,9 @@ const Jobs = () => {
         </View>
 
         <View style={styles.scrollView}>
-          <TouchableOpacity
-            style={styles.Touch2}
-            onPress={companyHandler}
-          >
+          <TouchableOpacity style={styles.Touch2} onPress={companyHandler}>
             <View style={{ alignContent: "center" }}>
-              <IconButton icon="office-building" color="#f49218" size={50} />
+              <IconButton icon="office-building" color="#716DF2" size={50} />
             </View>
             <View style={styles.viewText}>
               <Text style={styles.text1}>Thông tin công ty</Text>
@@ -86,7 +102,7 @@ const Jobs = () => {
             }}
           >
             <View style={{ alignContent: "center" }}>
-              <IconButton icon="account-group" color="#f49218" size={50} />
+              <IconButton icon="account-group" color="#716DF2" size={50} />
             </View>
             <View
               style={{

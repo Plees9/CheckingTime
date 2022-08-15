@@ -21,7 +21,7 @@ const TabsNavigation = () => {
           options={{
             tabBarIcon: () => <Icon name="home" size={20} />,
             headerShown: false,
-            tabBarActiveTintColor:'#FF7600',
+            tabBarActiveTintColor:'#8f73f6',
           }}
         />
         <Tab.Screen
@@ -29,7 +29,7 @@ const TabsNavigation = () => {
           component={Jobs}
           options={{
             // headerShown: true,
-            tabBarActiveTintColor: '#FF7600',
+            tabBarActiveTintColor: '#8f73f6',
             tabBarIcon: () => <Icon name="briefcase" size={20} />,
             headerTitleAlign: "center",
             headerStatusBarHeight: 20,
@@ -44,7 +44,7 @@ const TabsNavigation = () => {
           component={Account}
           options={{
             tabBarIcon: () => <Icon name="user" size={20} />,
-            tabBarActiveTintColor:'#FF7600',
+            tabBarActiveTintColor:'#8f73f6',
             headerTitleAlign: "center",
             headerStatusBarHeight: 20,
             headerTitleStyle: {
