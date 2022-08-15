@@ -20,11 +20,11 @@ export const ranking = () => async (dispatch) => {
     dispatch({ type: "rankFailure", payload: error.response.data.message });
   }
 }
-export const checking = () => async (dispatch) => {
+export const checking = (networkIp, deviceId ) => async (dispatch) => {
   try {
     dispatch({ type: "checkingRequest" });
-
-    const { data } = await axios.post(`${serverUrl}/user/checking`);
+    
+    const { data } = await axios.post(`${serverUrl}/user/checking`, { networkIp, deviceId },);
     dispatch({ type: "checkingSuccess", payload: data.message });
   } catch (error) {
     dispatch({ type: "checkingFailure", payload: error.response.data.message });
@@ -43,6 +43,19 @@ export const updateAvatar = (formData) => async (dispatch) => {
   } catch (error) {
     dispatch({
       type: "updateAvatarFailure",
+      payload: error.response.data.message,
+    });
+  }
+};
+export const updateDeviceId = (deviceId) => async (dispatch) => {
+  try {
+    dispatch({ type: "updateDeviceIdRequest" });
+
+    const { data } = await axios.put(`${serverUrl}/user/updatedeviceid`, {deviceId});
+    dispatch({ type: "updateDeviceIdSuccess", payload: data.message });
+  } catch (error) {
+    dispatch({
+      type: "updateDeviceIdFailure",
       payload: error.response.data.message,
     });
   }

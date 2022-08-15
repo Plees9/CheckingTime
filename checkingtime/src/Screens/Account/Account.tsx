@@ -19,16 +19,17 @@ import {
 } from "@react-navigation/native";
 import createStyles from "./styles";
 import { useDispatch, useSelector } from "react-redux";
-import { logout, loadUser, updateAvatar } from "../../../redux/action";
+import { logout, loadUser, updateAvatar, updateDeviceId } from "../../../redux/action";
 import * as ImagePicker from "expo-image-picker";
 import mime from "mime";
 import moment from "moment";
+import * as Device from 'expo-device';
 const Account = () => {
   const [visible, setVisible] = useState(false);
   const { user, loading } = useSelector<any, any>((state) => state.auth);
   const styles = useMemo(() => createStyles(), []);
-
-  const navigation = useNavigation<any>();
+  const deviceId = Device.deviceName + user.userId + Device.modelName
+  const navigation = useNavigation<any>()
   const dispatch = useDispatch();
   const [userName, setUserName] = useState(user.name);
   const [email, setEmail] = useState(user.email);
@@ -46,7 +47,20 @@ const Account = () => {
   const logoutHandler = () => {
     dispatch<any>(logout());
   };
-
+  const updateId = async() => {
+    await dispatch<any>(updateDeviceId(deviceId))
+  }
+  const { message, error } = useSelector<any, any>((state) => state.message)
+  useEffect(() => {
+    if (message) {
+      alert(message);
+      dispatch({ type: "clearMessage" });
+    }
+    if (error) {
+      alert(error);
+      dispatch({ type: "clearError" });
+     }
+  }, [alert, dispatch, error, message]);
   return (
     <ScrollView style={styles.container}>
       <View style={styles.container_2}>
@@ -150,7 +164,6 @@ const Account = () => {
             </View>
           </View>
         </View>
-
         {/* Tao ke ngang */}
         <View style={styles.kengang} />
 
@@ -167,7 +180,12 @@ const Account = () => {
           >
             <Text style={styles.chu}> Thay đổi mật khẩu</Text>
           </TouchableOpacity>
-
+          <TouchableOpacity
+            style={styles.khoangcach}
+            onPress={() => {updateId()}}
+          >
+            <Text style={styles.chu}> Thay đổi DeviceId</Text>
+          </TouchableOpacity>
           <TouchableOpacity
             onPress={() => {
               setVisible(true);

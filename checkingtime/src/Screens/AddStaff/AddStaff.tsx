@@ -86,6 +86,7 @@ const AddStaff = () => {
     myForm.append("email", email);
     myForm.append("phoneNumber", numberPhone);
     myForm.append("password", password);
+    myForm.append("confirmPassword", confirmPassword)
     myForm.append("privilege", value_1);
     
     const Sdate = moment(date); //chu y lam lai ngay thang nam
@@ -113,6 +114,18 @@ const AddStaff = () => {
     if (error) {
       alert(error);
       dispatch({ type: "clearError" });
+     }
+     if (message == "Create account successfully") {
+      setUserName("");
+      setEmail("");
+      setNumberPhone("")
+      setDate(moment());
+      setValue_1("");
+      setValue_2("");
+      setValue_3("");
+      setValue_4("");
+      setPassword("");
+      setConfirmPassword("");
      }
   }, [alert, dispatch, error, message]);
 
@@ -362,7 +375,7 @@ const AddStaff = () => {
       <LinearGradient
         start={{ x: 0, y: 0 }}
         end={{ x: 1, y: 0 }}
-        colors={["#f12711", "#f5af19"]}
+        colors={["#8f73f6", "#b5a4fc"]}
         style={styles.btn2}
       >
         <TouchableOpacity onPress={registerHandler}>

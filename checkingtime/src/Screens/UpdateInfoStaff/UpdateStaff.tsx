@@ -234,7 +234,7 @@ const UpdateStaff = () => {
       <LinearGradient
         start={{ x: 0, y: 0 }}
         end={{ x: 1, y: 0 }}
-        colors={["#f12711", "#f5af19"]}
+        colors={["#8f73f6", "#b5a4fc"]}
         style={styles.btn2}
       >
         <TouchableOpacity onPress={() => setVisible(true)}>

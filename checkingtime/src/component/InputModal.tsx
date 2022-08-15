@@ -20,6 +20,7 @@ interface InputModalProps {
   cancelText: string;
   onCancel: () => void;
   inputText: string;
+  onchange: () => void;
 }
 
 export default class InputModal extends React.Component<InputModalProps> {
@@ -33,6 +34,7 @@ export default class InputModal extends React.Component<InputModalProps> {
       cancelText: props.cancelText,
       onCancel: props.onCancel,
       inputText: props.inputText,
+      onchange: props.onChange,
     };
   }
 
@@ -56,6 +58,7 @@ export default class InputModal extends React.Component<InputModalProps> {
               style={styles.input_box}
               placeholder={this.props.inputText}
               secureTextEntry={true}
+              onChangeText={this.props.onchange}
             />
             <View style={styles.box_button}>
               
