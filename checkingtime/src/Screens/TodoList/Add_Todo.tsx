@@ -9,6 +9,7 @@ import {
 } from "react-native";
 import React, { useEffect, useMemo, useState } from "react";
 
+
 import createStyles from "./styles";
 import DateTimePicker from "@react-native-community/datetimepicker";
 import moment from "moment";
@@ -19,7 +20,6 @@ import { FlatList } from 'react-native-gesture-handler';
 import { useDispatch, useSelector } from "react-redux";
 import MultiSelect from 'react-native-multiple-select';
 import { loadAlluser } from "../../../redux/action";
-
 
 
 const Add_Todo = () => {
@@ -39,7 +39,9 @@ const Add_Todo = () => {
   const [show_1, setShow_1] = useState(false);
   const { allUser } = useSelector<any, any>((state) => state.allUser);
 
+
   const dispatch = useDispatch();
+    
   
   useEffect(() => {
     dispatch<any>(loadAlluser());
@@ -51,9 +53,12 @@ const Add_Todo = () => {
       let object = {
         id: i + 1,
         name_1: allUser.array[i].name,
-        avatar_1: allUser.array[i].avatar.url,
-        sumWork_1: allUser.array[i].sumWork,
-        workDone_1: allUser.array[i].workDone,
+        description_1: allUser.array[i].description,
+        deadline: moment(allUser.array[i].deadline, "HH:mm, DD/MM/YYYY"),
+        status: allUser.array[i].status,
+        date: moment(new Date(allUser.array[i].date)).format("DD/MM/YYYY"),
+        manager: allUser.array[i].manager,
+        
       };
       console.log(object);
       data.push(object);

@@ -124,25 +124,7 @@ const UpdateStaff_Admin = () => {
     }
 
   }, [route]);
-  const UpdateInfoConfirm = async () => {
-    Alert.alert(
-      "Cập nhật thông tin",
-      "Bạn có chắc chắn muốn cập nhật thông tin không?",
-      [
-        {
-          text: "Hủy",
-          onPress: () => console.log("Cancel Pressed" ),
-          style: "cancel",
-        },
-        { text: "Đồng ý", onPress: () => {
-          prompt();
-          showToast();
-        }
-        },
-      ],
-
-    );
-  }
+ 
   const updateHandler = async () => {
     const myForm = new FormData();
     const Sdate = moment(date)

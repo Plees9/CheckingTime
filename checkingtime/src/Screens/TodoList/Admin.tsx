@@ -15,29 +15,34 @@ import { FAB, Input } from "react-native-elements";
 
 import moment from "moment";
 import DateTimePicker from "@react-native-community/datetimepicker";
-import { useNavigation } from "@react-navigation/native";
+import { useNavigation, useRoute } from "@react-navigation/native";
 import { useDispatch, useSelector } from "react-redux";
 import { loadAllTask, loadAlluser, loadTask } from "../../../redux/action";
 import { FlatList } from "react-native-gesture-handler";
 import { AnimatedCircularProgress } from "react-native-circular-progress";
 
-
-const Todo_Staff = () => {
+const Admin_Manage = () => {
   const styles = useMemo(() => createStyles(), []);
   const { user, loading } = useSelector<any, any>((state) => state.auth);
   const navigation = useNavigation<any>();
   const [checked, setChecked] = useState(false);
   const [time_task, setTime_Task] = useState(moment());
 
-  
-  const [sumWork, setSumWork] = useState(10);
-  const [workDone, setworkDone] = useState(4);
-  const [workOvertime, setworkOvertime] = useState(6);
   const [show_1, setShow_1] = useState(false);
+
+  const route = useRoute();
+  const [userId, setUserId] = useState("")
+   const [userName, setUserName] = useState("")
+   const [description, setDescription] = useState("")
+   const [deadline, setDeadline] = useState("")
+   const [date, setDate] = useState("")
+   const [sumWork, setSumWork] = useState("")
+   const [workDone, setworkDone] = useState("")
+   
+
   const { allUser } = useSelector<any, any>((state) => state.allUser);
 
   const dispatch = useDispatch();
-  
 
   useEffect(() => {
     dispatch<any>(loadTask());
@@ -47,7 +52,6 @@ const Todo_Staff = () => {
   let data_2: any = [];
   if (typeof task !== "undefined") {
     for (var i = 0; i < task.tasks.length; i++) {
-      
       let task_user = {
         _id: task.tasks[i]._id,
         name: task.tasks[i].name,
@@ -56,17 +60,48 @@ const Todo_Staff = () => {
         status: task.tasks[i].status,
         date: moment(new Date(task.tasks[i].date)).format("DD/MM/YYYY"),
         manager: task.tasks[i].manager,
+        sumWork_1: task.tasks[i].sumWork,
+        workDone_1: task.tasks[i].workDone,
       };
       console.log(task_user);
       data_2.push(task_user);
     }
   }
- 
 
+  useEffect(() => {
+    if (route.params) {
+      if (route.params._id) {
+        setUserId(route.params._id);
+      }
+      if (route.params.name_1) {
+        setUserName(route.params.name_1);
+      }
+      if (route.params.description) {
+        setDescription(route.params.description);
+      }
+      if (route.params.deadline) {
+        setDeadline(route.params.deadline);
+      }
+      if (route.params.status) {
+        setStatus(route.params.status);
+      }
+      if (route.params.date) {
+        setDate(route.params.date);
+      }
+      if (route.params.manager) {
+        setManager(route.params.manager);
+      }
+      if (route.params.sumWork) {
+         setSumWork(route.params.sumWork);
+         }
+         if (route.params.workDone) {
+         setworkDone(route.params.workDone);
+         }
+    }
+  }, [route]);
 
- 
   const [data_1, setData] = useState(data_2);
-  
+
   const onChangeValue = (item: { _id: any }, index: any, newValue: boolean) => {
     const newData = data_1.map((newItem: { _id: any }) => {
       if (newItem._id == item._id) {
@@ -98,18 +133,19 @@ const Todo_Staff = () => {
           <View style={styles.colomn1}>
             <Text style={styles.task}>{item.name}</Text>
             <View style={styles.textTime}>
-              <Pressable >
+              <Pressable>
                 <View
                   style={{ justifyContent: "center", alignContent: "center" }}
                 >
-                  <Text>{moment(item.deadline).format("HH:mm, DD/MM/YYYY")}</Text>
+                  <Text>
+                    {moment(item.deadline).format("HH:mm, DD/MM/YYYY")}
+                  </Text>
                   {show_1 && (
                     <DateTimePicker
                       value={new Date(item.deadline.format("YYYY/MM/DD"))}
                       mode={"time"}
                       display="default"
                       is24Hour={true}
-                      
                     />
                   )}
                 </View>
@@ -143,7 +179,7 @@ const Todo_Staff = () => {
         <AnimatedCircularProgress
           size={85}
           width={5}
-          fill={Math.round((workDone / data_2.length) * 100)}
+          fill={Math.round(( 8 / data_2.length) * 100)}
           tintColor="#3EC70B"
           style={{ alignSelf: "center", marginTop: 10 }}
           backgroundColor="#3d5875"
@@ -194,4 +230,4 @@ const Todo_Staff = () => {
   );
 };
 
-export default Todo_Staff;
+export default Admin_Manage;
