@@ -23,8 +23,7 @@ export const ranking = () => async (dispatch) => {
 export const deleteProfile = (userId) => async (dispatch) => {
   try {
     dispatch({ type: "deleteProfileRequest" });
-    console.log(userId)
-    console.log(`${serverUrl}/user/deleteprofile`, {userId : userId})
+
     const { data } = await axios.delete(`${serverUrl}/user/deleteprofile`, {data: {userId}} );
     dispatch({ type: "deleteProfileSuccess", payload: data.message });
     
@@ -72,6 +71,17 @@ export const updateDeviceId = (deviceId) => async (dispatch) => {
     });
   }
 };
+export const loadProfile = (_id) => async (dispatch) => {
+  try {
+    dispatch({ type: "loadProfileRequest" });
+
+    const { data } = await axios.post(`${serverUrl}/user/getprofile`, {_id});
+    dispatch({ type: "loadProfileSuccess", payload: data });
+  } catch (error) {
+    dispatch({ type: "loadProfileFailure", payload: error.response.data.message });
+  }
+}
+
 export const loadTimesheet = () => async (dispatch) => {
   try {
     dispatch({ type: "timmesheetRequest" });
@@ -115,6 +125,23 @@ export const updateProfile = (formData) => async (dispatch) => {
   } catch (error) {
     dispatch({
       type: "updateProfileFailure",
+      payload: error.response.data.message,
+    });
+  }
+};
+export const updateAdmin = (formData) => async (dispatch) => {
+  try {
+    dispatch({ type: "updateAdminRequest" });
+
+    const { data } = await axios.put(`${serverUrl}/user/updateadmin`, formData, {
+      headers: {
+        "Content-Type": "multipart/form-data",
+      },
+    });
+    dispatch({ type: "updateAdminSuccess", payload: data.message });
+  } catch (error) {
+    dispatch({
+      type: "updateAdminFailure",
       payload: error.response.data.message,
     });
   }
@@ -290,6 +317,7 @@ export const register = (formData) => async (dispatch) => {
 
   export const loadAllTask = () => async (dispatch) => {
     try {
+      dispatch({ type: "updateProfileReset"})
       dispatch({ type: "loadAllTaskRequest" });
       const { data } = await axios.get(`${serverUrl}/user/alltask`);
       dispatch({ type: "loadAllTaskSuccess", payload: data });

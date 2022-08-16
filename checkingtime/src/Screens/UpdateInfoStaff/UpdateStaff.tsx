@@ -83,7 +83,6 @@ const UpdateStaff = () => {
     myForm.append("name", userName)
     myForm.append("email", email)
     myForm.append("password", password)
-    console.log(password)
     myForm.append("phoneNumber", numberPhone)
     myForm.append("address", address)
     myForm.append("dateOfBirth", date_Birth.toISOString())

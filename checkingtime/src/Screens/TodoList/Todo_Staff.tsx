@@ -58,7 +58,6 @@ const Todo_Staff = () => {
         date: moment(allTask.tasks[i].date).format("DD/MM/YYYY"),
         manager: allTask.tasks[i].manager,
       };
-      console.log(task);
       data_2.push(task);
     }
   }
@@ -110,7 +109,6 @@ const Todo_Staff = () => {
                       onChange={(event, selectedDate) => {
                         setTime_Task(moment(selectedDate));
                         setShow_1(false);
-                        console.log(selectedDate);
                       }}
                     />
                   )}

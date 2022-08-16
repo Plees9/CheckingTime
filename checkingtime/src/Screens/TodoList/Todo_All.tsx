@@ -46,7 +46,6 @@ const Todo_All = () => {
         gender_1: allUser.array[i].gender,
         avatar_1: allUser.array[i].avatar.url,
       };
-      console.log(object);
       data.push(object);
     }
   }
@@ -71,7 +70,6 @@ const Todo_All = () => {
         date: moment(new Date(allTask.tasks[i].date)).format("DD/MM/YYYY"),
         manager: allTask.tasks[i].manager,
       };
-      console.log(task);
       data_2.push(task);
     }
   }

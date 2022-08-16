@@ -59,7 +59,6 @@ const data_4 = [
 const AddStaff = () => {
   const dispatch = useDispatch();
   const { message, error } = useSelector<any, any>((state) => state.message);
-  console.log(message);
   const [count, setCount] = useState(0);
   // const handleClick = useCallback(() => setCount(count + 1), [count]);
 
@@ -100,7 +99,7 @@ const AddStaff = () => {
     myForm.append("contractStatus", value_2);
     myForm.append("typeOfEmployee", value_4);
     myForm.append("role", value_3);
-    console.log(Sdate);
+
     dispatch<any>(register(myForm));
     dispatch<any>(loadAlluser())
   };
@@ -267,7 +266,6 @@ const AddStaff = () => {
                 onChange={(event, selectedDate) => {
                   setDate(moment(selectedDate));
                   setShow(false);
-                  console.log(selectedDate);
                 }}
               />
             )}
