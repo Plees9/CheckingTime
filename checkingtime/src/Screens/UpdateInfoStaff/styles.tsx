@@ -96,14 +96,14 @@ const createStyles = () =>
       
     },
     btn2: {
-      width: "80%",
+      width: "90%",
       height: "7%",
       alignSelf: "center",
       justifyContent: "center",
       alignItems: "center",
       borderRadius: 10,
       marginTop: "8%",
-      marginRight: "5%",
+      
     },
     
     dropdown: {

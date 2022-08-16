@@ -29,11 +29,12 @@ const Todo_Staff = () => {
   const [checked, setChecked] = useState(false);
   const [time_task, setTime_Task] = useState(moment());
 
+  
   const [sumWork, setSumWork] = useState(10);
   const [workDone, setworkDone] = useState(4);
   const [workOvertime, setworkOvertime] = useState(6);
   const [show_1, setShow_1] = useState(false);
-  
+  const { allUser } = useSelector<any, any>((state) => state.allUser);
 
   const dispatch = useDispatch();
   useEffect(() => {
@@ -43,27 +44,29 @@ const Todo_Staff = () => {
   useEffect(() => {
     dispatch<any>(loadTask());
   }, []);
-  const { allTask } = useSelector<any, any>((state) => state.task);
+  const { task } = useSelector<any, any>((state) => state.task);
 
   let data_2: any = [];
-  if (typeof allTask !== "undefined") {
-    for (var i = 0; i < allTask.tasks.length; i++) {
+  if (typeof task !== "undefined") {
+    for (var i = 0; i < task.tasks.length; i++) {
       
-      let task = {
-        _id: allTask.tasks[i]._id,
-        name: allTask.tasks[i].name,
-        description: allTask.tasks[i].description,
-        deadline: moment(allTask.tasks[i].deadline, "HH:mm, DD/MM/YYYY"),
-        status: allTask.tasks[i].status,
-        date: moment(allTask.tasks[i].date).format("DD/MM/YYYY"),
-        manager: allTask.tasks[i].manager,
+      let task_user = {
+        _id: task.tasks[i]._id,
+        name: task.tasks[i].name,
+        description: task.tasks[i].description,
+        deadline: moment(task.tasks[i].deadline, "HH:mm, DD/MM/YYYY"),
+        status: task.tasks[i].status,
+        date: moment(new Date(task.tasks[i].date)).format("DD/MM/YYYY"),
+        manager: task.tasks[i].manager,
       };
       data_2.push(task);
     }
   }
 
+ 
   const [data_1, setData] = useState(data_2);
   
+
   const onChangeValue = (item: { _id: any }, index: any, newValue: boolean) => {
     const newData = data_1.map((newItem: { _id: any }) => {
       if (newItem._id == item._id) {
@@ -143,7 +146,7 @@ const Todo_Staff = () => {
         <AnimatedCircularProgress
           size={85}
           width={5}
-          fill={Math.round((workDone / sumWork) * 100)}
+          fill={Math.round((workDone / data_2.length) * 100)}
           tintColor="#3EC70B"
           style={{ alignSelf: "center", marginTop: 10 }}
           backgroundColor="#3d5875"
@@ -154,7 +157,7 @@ const Todo_Staff = () => {
                 {" "}
                 {workDone} {""}
               </Text>
-              /<Text style={{ color: "#3d5875" }}> {sumWork}</Text>
+              /<Text style={{ color: "#3d5875" }}> {data_2.length}</Text>
             </Text>
           )}
         </AnimatedCircularProgress>
@@ -185,14 +188,9 @@ const Todo_Staff = () => {
         <FAB
           title="Completed"
           size="small"
-          onPress={() => Alert.alert("Add Task")}
-        />
-        <FAB
-          title="Add Task"
-          size="small"
           color="#FF8C32"
           style={styles.fab}
-          onPress={() => navigation.navigate("Thêm công việc")}
+          onPress={() => Alert.alert("Completed")}
         />
       </View>
     </View>
