@@ -1,10 +1,11 @@
 import {
   View,
-  Text,
+  Text,StyleSheet,
   TextInput,
   ToastAndroid,
   TouchableOpacity,
   Pressable,
+  Modal
 } from "react-native";
 import React, { useMemo, useState, useEffect, Component } from "react";
 import createStyles from "./styles";
@@ -21,7 +22,8 @@ import { useDispatch, useSelector } from "react-redux";
 import DateTimePicker from "@react-native-community/datetimepicker";
 import moment from "moment";
 import { Avatar } from "@rneui/themed";
-import InputModal from "../../component/InputModal";
+import { FONTS } from "../../../constants/theme";
+
 
 
 import { loadUser, updateProfile } from "../../../redux/action";
@@ -80,6 +82,8 @@ const UpdateStaff = () => {
     const Sdate = moment(date_Birth)
     myForm.append("name", userName)
     myForm.append("email", email)
+    myForm.append("password", password)
+    console.log(password)
     myForm.append("phoneNumber", numberPhone)
     myForm.append("address", address)
     myForm.append("dateOfBirth", date_Birth.toISOString())
@@ -103,8 +107,7 @@ const UpdateStaff = () => {
         dispatch <any>(loadUser());
     }
   }, [alert, dispatch, error, isUpdated]);
-  console.log(isUpdated + "******")
-  console.log(message)
+
   return (
     <View style={styles.view}>
       <View style={styles.avatar}>
@@ -234,7 +237,7 @@ const UpdateStaff = () => {
       <LinearGradient
         start={{ x: 0, y: 0 }}
         end={{ x: 1, y: 0 }}
-        colors={["#8f73f6", "#b5a4fc"]}
+        colors={["#8f73f6", "#8f73f6"]}
         style={styles.btn2}
       >
         <TouchableOpacity onPress={() => setVisible(true)}>
@@ -242,16 +245,111 @@ const UpdateStaff = () => {
         </TouchableOpacity>
       </LinearGradient>
      
-      <InputModal visible={visible}
-      title='Xác nhận mật khẩu của bạn'
-      confirmText="Xác nhận"
-      onConfirm={() => {updateHandler}}
-      cancelText="Hủy"
-      onCancel={() => setVisible(false)}
-      inputText="Nhập mật khẩu" />
+      <Modal
+        transparent={true}
+        visible={visible}
+        animationType='fade'
+        onRequestClose={() => setVisible(false)}
+        
+      >
+        <View style={styles1.container}>
+          <View style={styles1.box}>
+            <Text style={styles1.title}>Xác nhận mật khẩu</Text>
+
+            <TextInput
+              style={styles1.input_box}
+              placeholder='Nhập mật khẩu'
+              secureTextEntry={true}
+              onChangeText={setPassword}
+            />
+            <View style={styles1.box_button}>
+              
+              <View style={styles1.cancel_button}>
+                <TouchableOpacity onPress={() => setVisible(false)}>
+                  <Text style={styles1.text_button}>
+                    Hủy
+                  </Text>
+                </TouchableOpacity>
+              </View>
+              
+              <View style={styles1.confirm_button}>
+                <TouchableOpacity onPress={updateHandler}>
+                  <Text style={styles1.text_button}>
+                    Xác nhận
+                  </Text>
+                </TouchableOpacity>
+              </View>
+            </View>
+          </View>
+        </View>
+      </Modal>
     </View>
     
   );
 };
+const styles1 = StyleSheet.create({
+  container: {
+    flex: 1,
+    backgroundColor: "#000000AA",
+    justifyContent: "center",
+    alignItems: "center",
+  },
+  box_button: {
+    width: '100%',
+    flex: 1,
+    flexDirection: "row",
+    alignItems:'center',
+    borderRadius: 8,
+  },
+  confirm_button: {
+    marginHorizontal:10,
+    height: 30,
+    width: 60,
+    justifyContent:'center',
+    borderRadius: 8,
+    backgroundColor: "#716DF2",
+    flex :1,
+  },
+  cancel_button: {
+    marginHorizontal:10,
+    height: 30,
+    width: 60,
+    justifyContent:'center',
+    borderRadius: 8,
+    backgroundColor: "#cccccc",
+    flex :1,
+  },
+  box: {
+    height: 150,
+    width: 280,
+    alignItems: "center",
+    backgroundColor: "#fff",
+    borderRadius: 10,
+  },
+  input_box: {
+    justifyContent :"center",
+    marginTop :15,  
+    fontFamily : FONTS.vanSansLight,
+   fontSize :14,
+
+    width: '85%',
+    
+
+  },
+  title: {
+    marginTop: 10, 
+    alignItems: "center",
+    fontSize :16,
+    fontFamily : FONTS.vanSansSemiBoldItalic,
+  },
+  text_button: {
+    alignSelf: "center",
+    fontSize :13,
+    fontFamily : FONTS.vanSansMediumItalic,
+  },
+    
+  
+});
+
 
 export default UpdateStaff;

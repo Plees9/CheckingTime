@@ -7,30 +7,49 @@ import {
   View,
   Alert,
   TouchableOpacity,
-  TextInput,
   ToastAndroid,
+  Platform,
 } from "react-native";
 import { Avatar } from "@rneui/themed";
 import Icon from "react-native-vector-icons/FontAwesome";
 import Icon1 from "react-native-vector-icons/Ionicons"
+import { IconButton } from "react-native-paper";
 import styles from "./styles";
 import TodoModal from "../../component/TodoModal";
-import { AnimatedCircularProgress } from "react-native-circular-progress";
-import GradientText from "../../component/GradientText";
-import { checking, loadUser, ranking } from "../../../redux/action";
+import { AnimatedCircularProgress } from "react-native-circular-progress"
+import { checking, loadTask, loadUser, ranking } from "../../../redux/action";
 import { FAB, Input } from "react-native-elements";
 import { useDispatch, useSelector } from "react-redux";
 import { getmyrank, loadTimesheet, loadCompany } from "../../../redux/action";
 import { LinearGradient } from "expo-linear-gradient";
+
+
+import publicIP from 'react-native-public-ip';
+import * as Device from 'expo-device';
+import moment from "moment";
 const wait = (timeout: number | undefined) => {
   return new Promise((resolve) => setTimeout(resolve, timeout));
 };
-
 const HomeScreen = () => {
+const { user } = useSelector<any, any>((state) => state.auth);
+const [networkIp, setNetworkIp] = useState("")
+
+let deviceId : any
+if (typeof user != undefined) {
+  deviceId= Device.deviceName + user.userId + Device.modelName
+}
+publicIP()
+.then((ip: React.SetStateAction<string>) => {   
+  // '47.122.71.234'
+  setNetworkIp(ip)
+})
+.catch((error: any) => {
+  console.log(error);
+  // 'Unable to get IP address.'
+})
+  const { message, error } = useSelector<any, any>((state) => state.timesheet)
   const dispatch = useDispatch();
-  const job_todo = 4;
-  const job_done = 2;
-  const job_overdate = 2;
+  
   let checkout;
   let checkin 
   let numberstr;
@@ -57,12 +76,9 @@ const HomeScreen = () => {
   }, [dispatch]);
   const navigation = useNavigation<any>();
   const [showTodo, setShowTodo] = useState(false);
-  const { user } = useSelector<any, any>((state) => state.auth);
   const { timesheet, number, array } = useSelector<any, any>(
     (state) => state.timesheet
   );
-  console.log(timesheet)
-  console.log(number)
   const maxPoint = 25;
   const currentProcess = 20.5;
   const timeLate = 2;
@@ -111,18 +127,29 @@ const HomeScreen = () => {
   const companyHandler = async () => {
     navigation.navigate("Thông tin Công Ty");
   };
+  useEffect(() => {
+    if (message) {
+      alert(message);
+      dispatch({ type: "clearMessage" });
+    }
+    if (error) {
+      alert(error);
+      dispatch({ type: "clearError" });
+     }
+  }, [alert, dispatch, error, message]);
   const pressHandler = async () => {
-
-    await dispatch<any>(checking());
+    await dispatch<any>(checking(networkIp, deviceId));
     dispatch<any>(loadTimesheet());
     dispatch<any>(getmyrank());
     dispatch<any>(ranking());
-    ToastAndroid.show(
-      "Bạn" + " " + userName + " " + "đã chấm công!",
-      ToastAndroid.SHORT
-    );
-  };
 
+   //show toast android and ios
+    if (Platform.OS === "android") {
+      ToastAndroid.show( userName + " " + "đã chấm công!", ToastAndroid.SHORT);
+    } else {
+      Alert.alert( userName + " " + "đã chấm công!");
+    }
+  };
   const onRefresh = React.useCallback(() => {
     setRefreshing(true);
     wait(2000).then(() => {setRefreshing(false);
@@ -130,13 +157,14 @@ const HomeScreen = () => {
       dispatch<any>(getmyrank());
       dispatch<any>(ranking());});
   }, []);
+  
 
   return (
     <View style={styles.container}>
       <ScrollView
         style={{ flex: 1 }}
         refreshControl={
-          <RefreshControl  colors={["#8f73f6", "#b5a4fc"]} refreshing={refreshing} onRefresh={onRefresh} />
+          <RefreshControl  colors={["#8f73f6", "#8f73f6"]} refreshing={refreshing} onRefresh={onRefresh} />
         }
       >
         <View style={{ flexDirection: "row", justifyContent: "space-between" }}>
@@ -155,7 +183,7 @@ const HomeScreen = () => {
           <LinearGradient
             start={{ x: 0, y: 0 }}
             end={{ x: 1, y: 0 }}
-            colors={["#8f73f6", "#b5a4fc"]}
+            colors={["#8f73f6", "#8f73f6"]}
             style={styles.icon2}
           >
             <View style={styles.box_check}>
@@ -273,9 +301,17 @@ const HomeScreen = () => {
               <Text style={styles.text5}>Thông tin Công Ty</Text>
             </View>
           </TouchableOpacity>
+
           <TouchableOpacity onPress={() => navigation.navigate("Công việc của tôi")}>
+
             <View style={styles.btn1}>
-              <Text style={styles.text6}>Công việc</Text>
+            <Icon
+                name="clipboard"
+                size={20}
+                color="#8f73f6"
+                style={styles.icon1}
+              />
+              <Text style={styles.text6}>Công việc hôm nay</Text>
             </View>
           </TouchableOpacity>
         </View>
@@ -335,6 +371,7 @@ const HomeScreen = () => {
         buttonStyle={styles.fab}
         onPress={pressHandler}
       />
+      
     </View>
   );
 };

@@ -111,9 +111,22 @@ export const authReducer = createReducer(
       state.loading = false;
       state.isAuthenticated = true;
       state.user = action.payload.user;
-      state.message = action.payload.message
+      state.message = action.payload.message;
     },
     loginFailure: (state, action) => {
+      state.loading = false;
+      state.isAuthenticated = false;
+      state.error = action.payload;
+    },
+    loadUserRequest: (state) => {
+      state.loading = true;
+    },
+    loadUserSuccess: (state, action) => {
+state.loading = false;
+      state.isAuthenticated = true;
+      state.user = action.payload.user;
+    },
+    loadUserFailure: (state, action) => {
       state.loading = false;
       state.isAuthenticated = false;
       state.error = action.payload;
@@ -131,6 +144,8 @@ export const authReducer = createReducer(
       state.isAuthenticated = false;
       state.error = action.payload;
     },
+
+    
     logoutRequest: (state) => {
       state.loading = true;
     },
@@ -165,10 +180,9 @@ export const authReducer = createReducer(
     },
   }
 );
-export const passwordReducer = createReducer(
-  {},
-  {
-    forgetPasswordRequest: (state) => {
+  export const passwordReducer = createReducer (
+    {} ,
+    {forgetPasswordRequest: (state) => {
       state.loading = true;
     },
     forgetPasswordSuccess: (state, action) => {
@@ -214,73 +228,119 @@ export const passwordReducer = createReducer(
   }
 )
 
-export const messageReducer = createReducer(
-  {},
-  {
-    updateProfileRequest: (state) => {
-      state.loading = true;
-    },
-    updateProfileSuccess: (state, action) => {
-      state.loading = false;
-      state.message = action.payload;
-      state.isUpdated = true;
-    },
-    updateProfileReset: (state) => {
-      state.isUpdated = false;
-    },
-    updateProfileFailure: (state, action) => {
-      state.loading = false;
-      state.error = action.payload;
-    },
-    registerRequest: (state) => {
-      state.loading = true;
-    },
-    registerSuccess: (state, action) => {
-      state.loading = false;
-      state.message = action.payload.message;
-    },
-    registerFailure: (state, action) => {
-      state.loading = false;
-      state.error = action.payload;
-      state.message = action.payload.message;
-    },
-    updateAvatarRequest: (state) => {
-      state.loading = true;
-    },
-    updateAvatarSuccess: (state, action) => {
-      state.loading = false;
-      state.message = action.payload;
-    },
-    updateAvatarFailure: (state, action) => {
-      state.loading = false;
-      state.error = action.payload;
-    },
-    clearError: (state) => {
-      state.error = null;
-    },
+  export const messageReducer = createReducer(
+    {},
+    {
+      deleteProfileRequest: (state) => {
+        state.loading = true;
+      },
+      deleteProfileSuccess: (state, action) => {
+        state.loading = false;
+        state.message = action.payload;
+      },
+      deleteProfileFailure: (state, action) => {
+        state.loading = false;
+        state.error = action.payload;
+      },
+      updateProfileRequest: (state) => {
+        state.loading = true;
+      },
+      updateProfileSuccess: (state, action) => {
+        state.loading = false;
+        state.message = action.payload;
+        state.isUpdated = true;
+      },
+      updateProfileReset: (state) => {
+state.isUpdated = false ;
+      },
+      updateProfileFailure: (state, action) => {
+        state.loading = false;
+        state.error = action.payload;
+      },
+      registerRequest: (state) => {
+        state.loading = true;
+      },
+      registerSuccess: (state, action) => {
+        state.loading = false;
+        state.message = action.payload.message;
+      },
+      registerFailure: (state, action) => {
+        state.loading = false;
+        state.error = action.payload;
+        state.message = action.payload.message;
+      },
+      updateAvatarRequest: (state) => {
+        state.loading = true;
+      },
+      updateAvatarSuccess: (state, action) => {
+        state.loading = false;
+        state.message = action.payload;
+      },
+      updateAvatarFailure: (state, action) => {
+        state.loading = false;
+        state.error = action.payload;
+      },
+      clearError: (state) => {
+        state.error = null;
+      },
+  
+      clearMessage: (state) => {
+        state.message = null;
+      },
+    }
+  );
+    export const taskReducer = createReducer(
+      {},
+      {
+        loadAllTaskRequest: (state) => {
+          state.loading = true;
+        },
+        loadAllTaskSuccess: (state, action) => {
+          state.loading = false;
+          state.allTask = action.payload;
+        },
+        loadAllTaskFailure: (state, action) => {
+          state.loading = false;
+          state.error = action.payload;
+        },
+        loadTaskRequest: (state) => {
+          state.loading = true;
+        },
+        loadTaskSuccess: (state, action) => {
+          state.loading = false;
 
-    clearMessage: (state) => {
-      state.message = null;
-    },
-  }
-);
+          state.task = action.payload;
+        },
+        loadTaskFailure: (state, action) => {
+          state.loading = false;
+          state.error = action.payload;
+        },
+        clearError: (state) => {
+          state.error = null;
+        },
 
-export const searchReducer = createReducer(
-  {},
-  {
-    searchRequest: (state) => {
-      state.loading = true;
-    },
-    searchSuccess: (state, action) => {
-      state.loading = false;
-      state.search = action.payload;
-    },
-    searchFailure: (state, action) => {
-      state.loading = false;
-      state.error = action.payload;
-    },
-    clearError: (state) => {
-      state.error = null;
-    },
-  }
-);
+        clearMessage: (state) => {
+          state.message = null;
+        },
+      },
+    );
+
+    export const searchReducer = createReducer(
+      {},
+      {
+        searchRequest: (state) => {
+          state.loading = true;
+        },
+        searchSuccess: (state, action) => {
+          state.loading = false;
+          state.search = action.payload;
+        },
+        searchFailure: (state, action) => {
+          state.loading = false;
+          state.error = action.payload;
+        },
+        clearError: (state) => {
+          state.error = null;
+        },
+      }
+    );

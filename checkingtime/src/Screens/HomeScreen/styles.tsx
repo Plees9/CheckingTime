@@ -58,11 +58,7 @@ const styles = StyleSheet.create({
     // justifyContent: "center",
   },
   icon1: {
-    width: 28,
-    height: 28,
-    borderRadius: 28 / 2,
-    backgroundColor: "#eee9f5",
-    padding: 7,
+    
   },
   icon2: {
     flexDirection: "row",
@@ -123,7 +119,7 @@ const styles = StyleSheet.create({
   text6: {
     fontSize: 13,
     color: "#100F0F",
-    marginLeft: 15,
+    marginLeft: "3%",
     fontFamily: FONTS.vanSansBold,
   },
   text7: {
@@ -276,6 +272,12 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     alignItems: "center",
     justifyContent: "center",
+  },
+  btnFab: {
+    //flexDirection: "row",
+    justifyContent: "flex-end",
+    marginTop: "3%",
+    marginRight: "5%",
   },
 });
 
