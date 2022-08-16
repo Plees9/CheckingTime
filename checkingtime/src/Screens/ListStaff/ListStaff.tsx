@@ -17,13 +17,14 @@ import createStyles from "./styles";
 import { useNavigation } from "@react-navigation/native";
 import { useDispatch, useSelector } from "react-redux";
 import moment  from "moment";
-import { loadAlluser } from "../../../redux/action";
+import { loadAlluser, search } from "../../../redux/action";
 
 const ListStaff = () => {
 
   
   const styles = useMemo(() => createStyles(), []);
   const navigation = useNavigation<any>();
+  const [searchText, setSearch] = useState("");
   const dialCall = (numberPhone_1: any) => {
     let phoneNumber = '';
     if (Platform.OS === 'android') { phoneNumber = `tel:${numberPhone_1}`; }
@@ -88,6 +89,10 @@ for (var i = 0; i < allUser.array.length; i++ ){
       ]
     );
   };
+
+  const searchHandle = (text: string) => {
+    dispatch<any>(search(text))
+  }
 
   const Trash = (
     id: number,
@@ -234,6 +239,7 @@ for (var i = 0; i < allUser.array.length; i++ ){
             style={styles.text}
             placeholder="Tìm kiếm"
             returnKeyType="done"
+            onChangeText={(text) => setSearch(text)}
           ></TextInput>
         </View>
         <View style={styles.iconPlus}>

@@ -12,6 +12,8 @@ import createStyles from "./styles";
 import Icon from "react-native-vector-icons/FontAwesome";
 import { CheckBox } from "@rneui/themed";
 import { FAB, Input } from "react-native-elements";
+import { AnimatedCircularProgress } from "react-native-circular-progress";
+import { Circle } from "react-native-svg";
 
 import moment from "moment";
 import DateTimePicker from "@react-native-community/datetimepicker";
@@ -120,19 +122,42 @@ const Todo_Staff = () => {
           ></Icon>
           <Text style={styles.text}>Your Task List:</Text>
         </View>
+        <View>
+        <AnimatedCircularProgress
+                  size={85}
+                  width={5}
+                  fill={Math.round((workDone/ data.length) * 100)}
+                  tintColor="#72da43"
+                  style={{alignSelf:'center', marginTop: 10}}
+                  backgroundColor="#3d5875"
+                >{() => (
+                  <Text>
+                    {workDone}/{data.length}
+                  </Text>
+                )}
+              </AnimatedCircularProgress>
+        </View>
         <View style={styles.view1_1}>
           <View style={styles.view1_2}>
+            <View style={{flexDirection:'row'}}>
             <Text>Tổng số công việc hôm nay:</Text>
+            </View>
             <Text>{data.length}</Text>
           </View>
 
           <View style={styles.view1_2}>
-            <Text>Công việc đã hoàn thành:</Text>
+            <View style={{flexDirection:'row'}}>
+              <View style={{backgroundColor:'#72da43', borderRadius:100, height: 10, width:10, alignSelf: 'center'}} />
+            <Text style={{marginLeft: 5}}>Công việc đã hoàn thành:</Text>
+            </View>
             <Text>{workDone}</Text>
           </View>
 
           <View style={styles.view1_2}>
-            <Text>Công việc chưa hoàn thành:</Text>
+          <View style={{flexDirection:'row'}}>
+              <View style={{backgroundColor:'#3d5875', borderRadius:100, height: 10, width:10, alignSelf: 'center'}} />
+            <Text style={{marginLeft: 5}}>Công việc chưa hoàn thành:</Text>
+            </View>
             <Text>{workNotDone}</Text>
           </View>
         </View>

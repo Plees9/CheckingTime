@@ -245,3 +245,17 @@ export const register = (formData) => async (dispatch) => {
     });
   }
 };
+
+export const search = (search) => async (dispatch) => {
+  try {
+    dispatch({ type: "searchRequest" });
+
+    const { data } = await axios.get(`${serverUrl}/user/searchuser/${search}`);
+    dispatch({ type: "searchSuccess", payload: data });
+  } catch (error) {
+    dispatch({
+      type: "searchFailure",
+      payload: error.response.data.message,
+    });
+  }
+}

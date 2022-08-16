@@ -273,7 +273,7 @@ const HomeScreen = () => {
               <Text style={styles.text5}>Thông tin Công Ty</Text>
             </View>
           </TouchableOpacity>
-          <TouchableOpacity onPress={() => setShowTodo(true)}>
+          <TouchableOpacity onPress={() => navigation.navigate("Công việc của tôi")}>
             <View style={styles.btn1}>
               <Text style={styles.text6}>Công việc</Text>
             </View>
@@ -323,6 +323,9 @@ const HomeScreen = () => {
             <Text style={styles.checkin2}>{checkin5}</Text>
           </View>
         </View>
+        <View style={{height:50,justifyContent:'center'}}>
+          <Text style={{marginLeft: 10}}>@Phiên bản 2.0</Text>
+        </View>
       </ScrollView>
       <FAB
         title="Chấm công"
@@ -332,12 +335,6 @@ const HomeScreen = () => {
         buttonStyle={styles.fab}
         onPress={pressHandler}
       />
-      <TodoModal visible={showTodo}
-      onCancel={() => setShowTodo(false)}
-      dataTodo={4}
-      dataDone={2}
-      dataOvertime={2}
-      onClick={() => {navigation.navigate("Công việc của tôi"); setShowTodo(false)}}/>
     </View>
   );
 };

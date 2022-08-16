@@ -36,7 +36,7 @@ export const timesheetReducer = createReducer({}, {
   logoutTimesheet: (state) => {
     state.loading = false
     state.timesheet = null
-    state.number = null 
+    state.number = null
   },
   getmyrankRequest: (state) => {
     state.loading = true;
@@ -52,12 +52,12 @@ export const timesheetReducer = createReducer({}, {
   clearError: (state) => {
     state.error = null;
   },
-  
+
   clearMessage: (state) => {
     state.message = null;
   },
 });
-export const companyReducer = createReducer ({}, {
+export const companyReducer = createReducer({}, {
   companyRequest: (state) => {
     state.loading = true;
   },
@@ -81,7 +81,7 @@ export const companyReducer = createReducer ({}, {
     state.message = null;
   },
 });
-export const allReducer = createReducer ({},{
+export const allReducer = createReducer({}, {
   loadAllUserRequest: (state) => {
     state.loading = true;
   },
@@ -119,55 +119,56 @@ export const authReducer = createReducer(
       state.error = action.payload;
     },
     loadUserRequest: (state) => {
-        state.loading = true;
-      },
-      loadUserSuccess: (state, action) => {
-        state.loading = false;
-        state.isAuthenticated = true;
-        state.user = action.payload.user;
-      },
-      loadUserFailure: (state, action) => {
-        state.loading = false;
-        state.isAuthenticated = false;
-        state.error = action.payload;
-      },
-      logoutRequest: (state) => {
-        state.loading = true;
-      },
-      logoutSuccess: (state) => {
-        state.loading = false;
-        state.isAuthenticated = false;
-        state.user = null;
-      },
-      logoutFailure: (state, action) => {
-        state.loading = false;
-        state.isAuthenticated = true;
-        state.error = action.payload;
-      },
-  
-      verificationRequest: (state) => {
-        state.loading = true;
-      },
-      verificationSuccess: (state, action) => {
-        state.loading = false;
-        state.message = action.payload;
-      },
-      verificationFailure: (state, action) => {
-        state.loading = false;
-        state.error = action.payload;
-      },
+      state.loading = true;
+    },
+    loadUserSuccess: (state, action) => {
+      state.loading = false;
+      state.isAuthenticated = true;
+      state.user = action.payload.user;
+    },
+    loadUserFailure: (state, action) => {
+      state.loading = false;
+      state.isAuthenticated = false;
+      state.error = action.payload;
+    },
+    logoutRequest: (state) => {
+      state.loading = true;
+    },
+    logoutSuccess: (state) => {
+      state.loading = false;
+      state.isAuthenticated = false;
+      state.user = null;
+    },
+    logoutFailure: (state, action) => {
+      state.loading = false;
+      state.isAuthenticated = true;
+      state.error = action.payload;
+    },
+
+    verificationRequest: (state) => {
+      state.loading = true;
+    },
+    verificationSuccess: (state, action) => {
+      state.loading = false;
+      state.message = action.payload;
+    },
+    verificationFailure: (state, action) => {
+      state.loading = false;
+      state.error = action.payload;
+    },
     clearError: (state) => {
-        state.error = null;
-      },
-  
-      clearMessage: (state) => {
-        state.message = null;
-      },
-    }
-  );
-  export const passwordReducer = createReducer (
-    {} ,
-    {forgetPasswordRequest: (state) => {
+      state.error = null;
+    },
+
+    clearMessage: (state) => {
+      state.message = null;
+    },
+  }
+);
+export const passwordReducer = createReducer(
+  {},
+  {
+    forgetPasswordRequest: (state) => {
       state.loading = true;
     },
     forgetPasswordSuccess: (state, action) => {
@@ -203,63 +204,83 @@ export const authReducer = createReducer(
     },
     clearError: (state) => {
       state.error = null;
-      state.errorPhone = null ;
+      state.errorPhone = null;
     },
 
     clearMessage: (state) => {
       state.message = null;
-      state.messagePhone = null ;
+      state.messagePhone = null;
     },
-    }
-  )
+  }
+)
 
-  export const messageReducer = createReducer(
-    {},
-    {
-      updateProfileRequest: (state) => {
-        state.loading = true;
-      },
-      updateProfileSuccess: (state, action) => {
-        state.loading = false;
-        state.message = action.payload;
-        state.isUpdated = true;
-      },
-      updateProfileReset: (state) => {
-        state.isUpdated = false ;
-      },
-      updateProfileFailure: (state, action) => {
-        state.loading = false;
-        state.error = action.payload;
-      },
-      registerRequest: (state) => {
-        state.loading = true;
-      },
-      registerSuccess: (state, action) => {
-        state.loading = false;
-        state.message = action.payload.message;
-      },
-      registerFailure: (state, action) => {
-        state.loading = false;
-        state.error = action.payload;
-        state.message = action.payload.message;
-      },
-      updateAvatarRequest: (state) => {
-        state.loading = true;
-      },
-      updateAvatarSuccess: (state, action) => {
-        state.loading = false;
-        state.message = action.payload;
-      },
-      updateAvatarFailure: (state, action) => {
-        state.loading = false;
-        state.error = action.payload;
-      },
-      clearError: (state) => {
-        state.error = null;
-      },
-  
-      clearMessage: (state) => {
-        state.message = null;
-      },
-    }
-  );
+export const messageReducer = createReducer(
+  {},
+  {
+    updateProfileRequest: (state) => {
+      state.loading = true;
+    },
+    updateProfileSuccess: (state, action) => {
+      state.loading = false;
+      state.message = action.payload;
+      state.isUpdated = true;
+    },
+    updateProfileReset: (state) => {
+      state.isUpdated = false;
+    },
+    updateProfileFailure: (state, action) => {
+      state.loading = false;
+      state.error = action.payload;
+    },
+    registerRequest: (state) => {
+      state.loading = true;
+    },
+    registerSuccess: (state, action) => {
+      state.loading = false;
+      state.message = action.payload.message;
+    },
+    registerFailure: (state, action) => {
+      state.loading = false;
+      state.error = action.payload;
+      state.message = action.payload.message;
+    },
+    updateAvatarRequest: (state) => {
+      state.loading = true;
+    },
+    updateAvatarSuccess: (state, action) => {
+      state.loading = false;
+      state.message = action.payload;
+    },
+    updateAvatarFailure: (state, action) => {
+      state.loading = false;
+      state.error = action.payload;
+    },
+    clearError: (state) => {
+      state.error = null;
+    },
+
+    clearMessage: (state) => {
+      state.message = null;
+    },
+  }
+);
+
+export const searchReducer = createReducer(
+  {},
+  {
+    searchRequest: (state) => {
+      state.loading = true;
+    },
+    searchSuccess: (state, action) => {
+      state.loading = false;
+      state.search = action.payload;
+    },
+    searchFailure: (state, action) => {
+      state.loading = false;
+      state.error = action.payload;
+    },
+    clearError: (state) => {
+      state.error = null;
+    },
+  }
+);
