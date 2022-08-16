@@ -245,10 +245,12 @@ const UpdateStaff = () => {
       <InputModal visible={visible}
       title='Xác nhận mật khẩu của bạn'
       confirmText="Xác nhận"
-      onConfirm={() => {updateHandler}}
+      onConfirm={() => { updateHandler; } }
       cancelText="Hủy"
       onCancel={() => setVisible(false)}
-      inputText="Nhập mật khẩu" />
+      inputText="Nhập mật khẩu" onchange={function (): void {
+        throw new Error("Function not implemented.");
+      } } />
     </View>
     
   );

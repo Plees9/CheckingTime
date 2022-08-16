@@ -59,7 +59,7 @@ const Todo_All = () => {
   let data_2: any = [];
   if (typeof allTask !== "undefined") {
     for (var i = 0; i < allTask.tasks.length; i++) {
-      // let strAvatar = allUser.array[i].avatar.url;
+      
       let task = {
         _id: allTask.tasks[i]._id,
         name: allTask.tasks[i].name,
@@ -114,8 +114,8 @@ const Todo_All = () => {
             />
           </View>
           <View style={styles.colomn}>
-            <Text style={styles.task}>{data_2.status}</Text>
-            <Text style={styles.text1}>{user.name}</Text>
+            <Text style={styles.task}>{item.name}</Text>
+            <Text style={styles.text1}>{item.description}</Text>
           </View>
 
           <Icon
