@@ -9,23 +9,24 @@ import {
   TouchableOpacity,
   ToastAndroid,
   Platform,
- 
-
 } from "react-native";
 import { Avatar } from "@rneui/themed";
 import Icon from "react-native-vector-icons/FontAwesome";
 import Icon1 from "react-native-vector-icons/Ionicons"
+import { IconButton } from "react-native-paper";
 import styles from "./styles";
 import TodoModal from "../../component/TodoModal";
 import { AnimatedCircularProgress } from "react-native-circular-progress"
-import { checking, loadUser, ranking } from "../../../redux/action";
+import { checking, loadTask, loadUser, ranking } from "../../../redux/action";
 import { FAB, Input } from "react-native-elements";
 import { useDispatch, useSelector } from "react-redux";
 import { getmyrank, loadTimesheet, loadCompany } from "../../../redux/action";
 import { LinearGradient } from "expo-linear-gradient";
 
+
 import publicIP from 'react-native-public-ip';
 import * as Device from 'expo-device';
+import moment from "moment";
 const wait = (timeout: number | undefined) => {
   return new Promise((resolve) => setTimeout(resolve, timeout));
 };
@@ -156,6 +157,7 @@ publicIP()
       dispatch<any>(getmyrank());
       dispatch<any>(ranking());});
   }, []);
+  
 
   return (
     <View style={styles.container}>
@@ -299,9 +301,17 @@ publicIP()
               <Text style={styles.text5}>Thông tin Công Ty</Text>
             </View>
           </TouchableOpacity>
-          <TouchableOpacity onPress={() => setShowTodo(true)}>
+
+          <TouchableOpacity onPress={() => navigation.navigate("Công việc của tôi")}>
+
             <View style={styles.btn1}>
-              <Text style={styles.text6}>Công việc</Text>
+            <Icon
+                name="clipboard"
+                size={20}
+                color="#8f73f6"
+                style={styles.icon1}
+              />
+              <Text style={styles.text6}>Công việc hôm nay</Text>
             </View>
           </TouchableOpacity>
         </View>
@@ -358,12 +368,7 @@ publicIP()
         buttonStyle={styles.fab}
         onPress={pressHandler}
       />
-      <TodoModal visible={showTodo}
-      onCancel={() => setShowTodo(false)}
-      dataTodo={4}
-      dataDone={2}
-      dataOvertime={2}
-      onClick={() => {navigation.navigate("Công việc của tôi"); setShowTodo(false)}}/>
+      
     </View>
   );
 };
