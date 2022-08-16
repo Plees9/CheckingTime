@@ -66,7 +66,6 @@ const Todo_Staff = () => {
  
   const [data_1, setData] = useState(data_2);
   
-
   const onChangeValue = (item: { _id: any }, index: any, newValue: boolean) => {
     const newData = data_1.map((newItem: { _id: any }) => {
       if (newItem._id == item._id) {

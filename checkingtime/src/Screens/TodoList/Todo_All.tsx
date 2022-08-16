@@ -61,14 +61,13 @@ const Todo_All = () => {
       
       let task = {
         _id: allTask.tasks[i]._id,
-        name: allTask.tasks[i].name,
-        description: allTask.tasks[i].description,
-        deadline: moment(new Date(allTask.tasks[i].deadline)).format(
-          "DD/MM/YYYY"
-        ),
-        status: allTask.tasks[i].status,
+        name: allTask.tasks[i].name, //ten task
+        description: allTask.tasks[i].description, //mo ta task
+        deadline: moment(allTask.tasks[i].deadline, "HH:mm, DD/MM/YYYY"),
+        status: allTask.tasks[i].status, //trang thai task
         date: moment(new Date(allTask.tasks[i].date)).format("DD/MM/YYYY"),
-        manager: allTask.tasks[i].manager,
+        manager: allTask.tasks[i].manager, //nguoi quan ly task
+        contributors: allTask.tasks[i].contributors, //thanh vien task
       };
       data_2.push(task);
     }
@@ -113,7 +112,7 @@ const Todo_All = () => {
           </View>
           <View style={styles.colomn}>
             <Text style={styles.task}>{item.name}</Text>
-            <Text style={styles.text1}>{item.description}</Text>
+            <Text style={styles.text1}>{ item.contributors + " "  } </Text>
           </View>
 
           <Icon
