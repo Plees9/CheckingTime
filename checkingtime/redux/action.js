@@ -71,6 +71,19 @@ export const updateDeviceId = (deviceId) => async (dispatch) => {
     });
   }
 };
+export const updateCompanyIp = (comapanyIp) => async (dispatch) => {
+  try {
+    dispatch({ type: "updateCompanyIpRequest" });
+
+    const { data } = await axios.put(`${serverUrl}/company/updatecompanyip`, {comapanyIp});
+    dispatch({ type: "updateCompanyIpSuccess", payload: data.message });
+  } catch (error) {
+    dispatch({
+      type: "updateCompanyIpFailure",
+      payload: error.response.data.message,
+    });
+  }
+};
 export const loadProfile = (_id) => async (dispatch) => {
   try {
     dispatch({ type: "loadProfileRequest" });

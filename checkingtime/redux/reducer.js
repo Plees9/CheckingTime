@@ -75,10 +75,12 @@ export const companyReducer = createReducer ({}, {
   },
   clearError: (state) => {
     state.error = null;
+    state.errorCompany = null 
   },
 
   clearMessage: (state) => {
     state.message = null;
+    state.messageCompany = null ;
   },
 });
 export const allReducer = createReducer ({},{
@@ -248,6 +250,17 @@ export const authReducer = createReducer(
         state.message = action.payload;
         state.isUpdated = true;
       },
+      updateCompanyIpRequest: (state) => {
+        state.loading = true;
+      },
+      updateCompanyIpSuccess: (state, action) => {
+        state.loading = false;
+        state.message = action.payload;
+      },
+      updateCompanyIpFailure: (state, action) => {
+        state.loading = false;
+        state.error = action.payload;
+      },
       updateAdminReset: (state) => {
           state.isUpdated = false ;
       },
@@ -290,6 +303,17 @@ state.isUpdated = false ;
         state.message = action.payload;
       },
       updateAvatarFailure: (state, action) => {
+        state.loading = false;
+        state.error = action.payload;
+      },
+      updateDeviceIdRequest: (state) => {
+        state.loading = true;
+      },
+      updateDeviceIdSuccess: (state, action) => {
+        state.loading = false;
+        state.message = action.payload;
+      },
+      updateDeviceIdFailure: (state, action) => {
         state.loading = false;
         state.error = action.payload;
       },
