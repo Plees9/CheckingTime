@@ -10,6 +10,15 @@ export const loadAlluser = () => async (dispatch) => {
     dispatch({ type: "loadAllUserFailure", payload: error.response.data.message });
   }
 };
+export const queryUser = (keyword) => async (dispatch) => {
+  try {
+    dispatch({ type: "queryUserRequest" });
+    const { data } = await axios.get(`${serverUrl}/user/searchuser?name=${keyword}`);
+    dispatch({ type: "queryUserSuccess", payload: data });
+  } catch (error) {
+    dispatch({ type: "queryUserFailure", payload: error.response.data.message });
+  }
+};
 export const ranking = () => async (dispatch) => {
   try {
     dispatch({ type: "rankRequest" });

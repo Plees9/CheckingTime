@@ -95,6 +95,17 @@ export const allReducer = createReducer ({},{
     state.loading = false;
     state.error = action.payload;
   },
+  queryUserRequest: (state) => {
+    state.loading = true;
+  },
+  queryUserSuccess: (state, action) => {
+    state.loading = false;
+    state.allUser = action.payload;
+  },
+  queryUserFailure: (state, action) => {
+    state.loading = false;
+    state.error = action.payload;
+  },
   clearError: (state) => {
     state.error = null;
   },
