@@ -38,6 +38,8 @@ const createStyles = () =>
       alignItems: "center",
       marginLeft: 10,
       fontSize: 14,
+      width: "80%",
+      
     },
 
     view1: {

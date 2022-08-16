@@ -19,8 +19,11 @@ import { useDispatch, useSelector } from "react-redux";
 import moment from "moment";
 import { deleteProfile, loadAlluser } from "../../../redux/action";
 import { SearchBar } from "react-native-elements";
-const ListStaff = () => {
+
+const ListStaff  = () => {
+
   const styles = useMemo(() => createStyles(), []);
+  const [search, setSearch] = useState("");
   const { message, error } = useSelector<any, any>((state) => state.message)
   console.log(error)
   const navigation = useNavigation<any>();
@@ -38,6 +41,9 @@ const ListStaff = () => {
     dispatch<any>(loadAlluser());
   }, []);
   const { allUser } = useSelector<any, any>((state) => state.allUser);
+  
+
+
   let data: any = [];
   const loadView = () => {
   if (typeof allUser !== "undefined") {
@@ -45,7 +51,7 @@ const ListStaff = () => {
       
       let object = {
         id: i + 1,
-        _id: allUser.array[i]._id ,
+        _id: allUser.array[i]._id , 
         name_1: allUser.array[i].name,
         role_1: allUser.array[i].role,
         userId_1: allUser.array[i].userId,
@@ -247,7 +253,7 @@ loadView()
       </View>
     </SafeAreaView>
   );
-
+ 
   return (
     <SafeAreaView style={styles.view}>
       <View style={styles.row}>
@@ -260,11 +266,17 @@ loadView()
         </View>
         <View style={styles.icon1}>
           <Icon name="search" size={20} style={styles.icon3} />
+          
+            
           <TextInput
             style={styles.text}
             placeholder="Tìm kiếm"
             returnKeyType="done"
+            onChangeText={(text) => setSearch(text)}
+            value={search}
+
           ></TextInput>
+          
         </View>
         <View style={styles.iconPlus}>
           <Icon
