@@ -58,7 +58,7 @@ const createStyles = () =>
      
     },
     text1: {
-      marginLeft: "3%",
+     
       width: "75%",
       fontSize: 12,
     },
@@ -86,7 +86,7 @@ const createStyles = () =>
 
     task: {
       width: "76%",
-      marginLeft: "1%",
+      
     },
     trash: {
       width: "8%",
