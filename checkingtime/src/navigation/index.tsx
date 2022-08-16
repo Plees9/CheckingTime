@@ -281,6 +281,11 @@ const SNavigation = () => {
          component={Camera}
          options={{ headerShown: true}}
         />
+        <Stack.Screen
+         name="UpdateStaff_Admin"
+         component={UpdateStaff_Admin}
+         options={{ headerShown: true}}
+        />
       <Stack.Screen
           name="Cập nhật thông tin nhân viên _Admin"
           component={UpdateStaff_AdminNavigation}

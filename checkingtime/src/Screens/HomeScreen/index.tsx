@@ -44,7 +44,7 @@ publicIP()
   setNetworkIp(ip)
 })
 .catch((error: any) => {
-  console.log(error);
+
   // 'Unable to get IP address.'
 })
   const { message, error } = useSelector<any, any>((state) => state.timesheet)

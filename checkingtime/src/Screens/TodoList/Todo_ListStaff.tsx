@@ -37,7 +37,6 @@ const Todo_ListStaff = () => {
         sumWork_1: allUser.array[i].sumWork,
         workDone_1: allUser.array[i].workDone,
       };
-      console.log(object);
       data.push(object);
     }
   }

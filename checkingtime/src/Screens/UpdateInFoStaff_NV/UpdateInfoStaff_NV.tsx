@@ -7,10 +7,13 @@ import {
   Pressable,
   Alert,
   Platform,
+  Modal,
+  StyleSheet
 } from "react-native";
 import React, { useMemo, useState, useEffect, Component } from "react";
 import createStyles from "./styles";
-import { useNavigation } from "@react-navigation/native";
+import { useNavigation, useRoute } from "@react-navigation/native";
+import { FONTS } from "../../../constants/theme";
 
 
 import Icon from "react-native-vector-icons/FontAwesome";
@@ -23,8 +26,9 @@ import DateTimePicker from "@react-native-community/datetimepicker";
 import InputModal from "../../component/InputModal";
 import moment from "moment";
 import { Avatar } from "@rneui/themed";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import mime from "mime";
+import { loadAlluser, loadProfile, updateAdmin } from "../../../redux/action";
 
 const data_privilege = [
   {label: "Người dùng", value: "Người dùng"},
@@ -37,12 +41,10 @@ const data_contractStatus = [
   { label: "Thực tập sinh", value: "Thực tập sinh" },
 ];
 const data_typeOfEmployee = [
-  { label: "Developer", value: "Developer" },
-  { label: "Tester", value: "Tester" },
-  { label: "Quản lý", value: "Quản lý" },
-  { label: "Giám đốc", value: "Giám đốc" },
-  { label: "Hành chính", value: "Hành chính" },
-  { label: "Kế toán", value: "Kế toán" },
+  { label: "Đang làm việc", value: "Đang làm việc" },
+  { label: "Đã nghỉ việc", value: "Đã nghỉ việc" },
+  { label: "Nghỉ có phép", value: "Nghỉ có phép" },
+  { label: "Nghỉ không phép", value: "Nghỉ không phép" },
 ];
 const data_gender = [
   { label: "Nam", value: "Nam" },
@@ -59,44 +61,69 @@ const data_role = [
 
 const UpdateStaff_Admin = () => {
   const styles = useMemo(() => createStyles(), []);
-  const { user, loading } = useSelector<any, any>((state) => state.auth);
-  const [userName, setUserName] = useState(user.name);
-  const [email, setEmail] = useState(user.email);
-  const [numberPhone, setNumberPhone] = useState(user.phoneNumber);
+  const [userName, setUserName] = useState("");
+  const [email, setEmail] = useState("");
+  const [numberPhone, setNumberPhone] = useState("");
   const [date, setDate] = useState(moment());
-  
-  const [avatar, setAvatar] = useState(user.avatar.url);
-  
+  const [userId, setUserId] = useState("")
+  const [avatar, setAvatar] = useState(null);
+  const [password, setPassword] = useState("") 
   const [show, setShow] = useState(false);
-  const [value_privilege, setValue_Privilege] = useState(null)
-  const [value_contractStatus, setValue_contractStatus] = useState(null);
-  const [value_typeOfEmployee, setValue_typeOfEmployee] = useState(null);
-  const [value_role, setValue_role] = useState(null);
+  const [value_privilege, setValue_Privilege] = useState("")
+  const [value_contractStatus, setValue_contractStatus] = useState("");
+  const [value_typeOfEmployee, setValue_typeOfEmployee] = useState("");
+  const [value_role, setValue_role] = useState("");
   const [isFocus_privilege, setisFocus_privilege] = useState(false)
   const [isFocus_contractStatus, setIsFocus_contractStatus] = useState(false);
   const [isFocus_typeOfEmployee, setIsFocus_typeOfEmployee] = useState(false);
   const [isFocus_role, setIsFocus_role] = useState(false);
-
   const [visible,setVisible] = useState(false)
-
+  const route = useRoute()
+  let { message, error, isUpdated } = useSelector<any, any>((state) => state.message);
   const navigation = useNavigation<any>();
-
+  const dispatch = useDispatch()
   const [country, setCountry] = useState("Unknown");
   function showToast() {
     ToastAndroid.show("Đã update thông tin thành công ", ToastAndroid.SHORT);
   }
-  
-  let prompt = () => {
-    Alert.prompt("xac nhan mat khau", "", (password) => {
-      if (password === user.password) {
-        navigation.navigate("HomeScreen");
-      } else {
-        ToastAndroid.show("Mật khẩu không đúng", ToastAndroid.SHORT);
-      }
-    });
+  if (message == "Profile updated successfully") {
+    navigation.navigate("DANH SÁCH NHÂN VIÊN")
   }
+  useEffect(() => {
+    if (route.params) {
+      if (route.params._id) {
+        setUserId(route.params._id)
+      }
+      if (route.params.name_1) {
+            setUserName(route.params.name_1)
+      }
+      if (route.params.avatar_1) {
+        setAvatar(route.params.avatar_1)
+      }
+      if (route.params.email_1) {
+          setEmail(route.params.email_1)
+      }
+      if (route.params.numberPhone_1) {
+        setNumberPhone(route.params.numberPhone_1)
+      }
+      if (route.params.date_1) {
+        setDate(moment(route.params.date_1, "DD/MM/YYYY"))
+      }
+      if (route.params.role_1) {
+        setValue_role(route.params.role_1)
+      }
+      if (route.params.privilege_1) {
+        setValue_Privilege(route.params.privilege_1)
+      }
+      if (route.params.typeOfEmployee_1) {
+        setValue_contractStatus(route.params.typeOfEmployee_1)
+      }
+      if (route.params.contractStatus_1) {
+        setValue_typeOfEmployee(route.params.contractStatus_1)
+      }
+    }
 
-
+  }, [route]);
   const UpdateInfoConfirm = async () => {
     Alert.alert(
       "Cập nhật thông tin",
@@ -118,17 +145,35 @@ const UpdateStaff_Admin = () => {
   }
   const updateHandler = async () => {
     const myForm = new FormData();
-    myForm.append(
-      "avatar",
-      JSON.parse(
-        JSON.stringify({
-          uri: avatar,
-          type: mime.getType(avatar),
-          name: avatar.split("/").pop(),
-        })
-      )
-    );
+    const Sdate = moment(date)
+    myForm.append("_id", userId)
+    myForm.append("name", userName)
+    myForm.append("email", email)
+    myForm.append("phoneNumber", numberPhone)
+    myForm.append("startWorkingDate", String(Sdate)) 
+    myForm.append("contractStats", value_typeOfEmployee)
+    myForm.append("typeOfEmployee", value_contractStatus)
+    myForm.append("role", value_role) 
+    myForm.append("privilege", value_privilege)
+    myForm.append("password", password)
+    await dispatch<any>(updateAdmin(myForm))
+    setVisible(false)
   }
+
+  useEffect(() => {
+    if (message) {
+      alert(message);
+      
+      dispatch({ type: "clearMessage" });
+    }   
+    if (error) {
+      alert(error);
+      dispatch({ type: "clearError" });
+    }
+    if (isUpdated) {
+        dispatch <any>(loadAlluser());
+    }
+  }, [alert, dispatch, error, isUpdated]);
   
 
 
@@ -204,7 +249,6 @@ const UpdateStaff_Admin = () => {
                   onChange={(event, selectedDate) => {
                     setDate(moment(selectedDate));
                     setShow(false);
-                    console.log(selectedDate);
                   }
                   
                   }
@@ -356,17 +400,110 @@ const UpdateStaff_Admin = () => {
         </TouchableOpacity>
       </LinearGradient>
      
-      <InputModal visible={visible}
-      title='Xác nhận mật khẩu của bạn'
-      confirmText="Xác nhận"
-      onConfirm={updateHandler}
-      cancelText="Hủy"
-      onCancel={() => setVisible(false)}
-      inputText="Nhập mật khẩu"/>
+      <Modal
+        transparent={true}
+        visible={visible}
+        animationType='fade'
+        onRequestClose={() => setVisible(false)}
+        
+      >
+        <View style={styles1.container}>
+          <View style={styles1.box}>
+            <Text style={styles1.title}>Xác nhận mật khẩu</Text>
+
+            <TextInput
+              style={styles1.input_box}
+              placeholder='Nhập mật khẩu'
+              secureTextEntry={true}
+              onChangeText={setPassword}
+            />
+            <View style={styles1.box_button}>
+              
+              <View style={styles1.cancel_button}>
+                <TouchableOpacity onPress={() => setVisible(false)}>
+                  <Text style={styles1.text_button}>
+                    Hủy
+                  </Text>
+                </TouchableOpacity>
+              </View>
+              
+              <View style={styles1.confirm_button}>
+                <TouchableOpacity onPress={updateHandler}>
+                  <Text style={styles1.text_button}>
+                    Xác nhận
+                  </Text>
+                </TouchableOpacity>
+              </View>
+            </View>
+          </View>
+        </View>
+      </Modal>
     </View>
 
   );
 };
 
+const styles1 = StyleSheet.create({
+  container: {
+    flex: 1,
+    backgroundColor: "#000000AA",
+    justifyContent: "center",
+    alignItems: "center",
+  },
+  box_button: {
+    width: '100%',
+    flex: 1,
+    flexDirection: "row",
+    alignItems:'center',
+    borderRadius: 8,
+  },
+  confirm_button: {
+    marginHorizontal:10,
+    height: 30,
+    width: 60,
+    justifyContent:'center',
+    borderRadius: 8,
+    backgroundColor: "#716DF2",
+    flex :1,
+  },
+  cancel_button: {
+    marginHorizontal:10,
+    height: 30,
+    width: 60,
+    justifyContent:'center',
+    borderRadius: 8,
+    backgroundColor: "#cccccc",
+    flex :1,
+  },
+  box: {
+    height: 150,
+    width: 280,
+    alignItems: "center",
+    backgroundColor: "#fff",
+    borderRadius: 10,
+  },
+  input_box: {
+    justifyContent :"center",
+    marginTop :15,  
+    fontFamily : FONTS.vanSansLight,
+   fontSize :14,
 
+    width: '85%',
+    
+
+  },
+  title: {
+    marginTop: 10, 
+    alignItems: "center",
+    fontSize :16,
+    fontFamily : FONTS.vanSansSemiBoldItalic,
+  },
+  text_button: {
+    alignSelf: "center",
+    fontSize :13,
+    fontFamily : FONTS.vanSansMediumItalic,
+  },
+    
+  
+});
 export default UpdateStaff_Admin;

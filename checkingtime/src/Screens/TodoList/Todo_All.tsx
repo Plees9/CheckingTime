@@ -46,7 +46,6 @@ const Todo_All = () => {
         gender_1: allUser.array[i].gender,
         avatar_1: allUser.array[i].avatar.url,
       };
-      console.log(object);
       data.push(object);
     }
   }
@@ -70,7 +69,6 @@ const Todo_All = () => {
         manager: allTask.tasks[i].manager, //nguoi quan ly task
         contributors: allTask.tasks[i].contributors, //thanh vien task
       };
-      console.log(task);
       data_2.push(task);
     }
   }

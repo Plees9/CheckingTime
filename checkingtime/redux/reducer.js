@@ -122,19 +122,6 @@ export const authReducer = createReducer(
       state.loading = true;
     },
     loadUserSuccess: (state, action) => {
-state.loading = false;
-      state.isAuthenticated = true;
-      state.user = action.payload.user;
-    },
-    loadUserFailure: (state, action) => {
-      state.loading = false;
-      state.isAuthenticated = false;
-      state.error = action.payload;
-    },
-    loadUserRequest: (state) => {
-      state.loading = true;
-    },
-    loadUserSuccess: (state, action) => {
       state.loading = false;
       state.isAuthenticated = true;
       state.user = action.payload.user;
@@ -231,6 +218,17 @@ state.loading = false;
   export const messageReducer = createReducer(
     {},
     {
+      loadProfileRequest: (state) => {
+        state.loading = true;
+      },
+      loadProfileSuccess: (state, action) => {
+        state.loading = false;
+        state.user = action.payload;
+      },
+      loadProfileFailure: (state, action) => {
+        state.loading = false;
+        state.error = action.payload;
+      },
       deleteProfileRequest: (state) => {
         state.loading = true;
       },
@@ -239,6 +237,21 @@ state.loading = false;
         state.message = action.payload;
       },
       deleteProfileFailure: (state, action) => {
+        state.loading = false;
+        state.error = action.payload;
+      },
+      updateAdminRequest: (state) => {
+        state.loading = true;
+      },
+      updateAdminSuccess: (state, action) => {
+        state.loading = false;
+        state.message = action.payload;
+        state.isUpdated = true;
+      },
+      updateAdminReset: (state) => {
+          state.isUpdated = false ;
+      },
+      updateAdminFailure: (state, action) => {
         state.loading = false;
         state.error = action.payload;
       },
