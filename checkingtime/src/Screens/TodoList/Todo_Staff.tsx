@@ -25,6 +25,7 @@ import {
 } from "../../../redux/action";
 import { FlatList } from "react-native-gesture-handler";
 import { AnimatedCircularProgress } from "react-native-circular-progress";
+import Loader from "../../navigation/Loader";
 
 const Todo_Staff = () => {
   const styles = useMemo(() => createStyles(), []);
@@ -131,7 +132,9 @@ const Todo_Staff = () => {
       </View>
     </View>
   );
-
+  if (typeof taskContributor === "undefined") {
+    return <Loader />
+}
   return (
     <View>
       <SafeAreaView style={styles.view}>

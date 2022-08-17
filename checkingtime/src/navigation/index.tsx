@@ -14,7 +14,7 @@ import FormCreated from "../Screens/FormCreated";
 import Jobs from "../Screens/Jobs";
 import InfoScreen from "../Screens/InfoCompany/Info";
 import Account from "../Screens/Account/Account";
-import { getmyrank, loadCompany, loadTimesheet, loadUser } from '../../redux/action'
+import { getmyrank, loadCompany, loadTimesheet, loadTimesheetFilter, loadTimesheetPoint, loadUser, ranking } from '../../redux/action'
 import ResetPasswordScreen from "../Screens/ResetPasswordScreen/ResetPasswordScreen";
 import TabDonTusNavigation from "./TabDonTu";
 import CuaToi from "../Screens/DonTu/CuaToi/CuaToi";
@@ -183,10 +183,19 @@ const SNavigation = () => {
 
   useEffect(() => {
       dispatch<any>(loadUser())
+      dispatch<any>(loadCompany());
+      dispatch<any>(loadTimesheet());
+      dispatch<any>(loadTimesheetFilter());
+      dispatch<any>(getmyrank());
+      dispatch<any>(ranking());
+      dispatch<any>(loadTimesheetPoint());
   }, [dispatch])
-  const { isAuthenticated, loading, user } = useSelector<any, any>(state => state.auth)
+  const { isAuthenticated, loading } = useSelector<any, any>(state => state.auth)
+  const { loadingTimesheet }  = useSelector<any, any>(state => state.timesheet)
+  console.log(loadingTimesheet)
   return (
-    loading ? <Loader /> : 
+    loading || loadingTimesheet ? <Loader /> : 
+    
     <NavigationContainer>
       <Stack.Navigator
         initialRouteName={isAuthenticated ? "HomeScreen" : "Sign In"} 

@@ -3,7 +3,6 @@ import axios from "axios";
 const serverUrl = "https://timekeeper-01.herokuapp.com/api/v1";
 export const loadAlluser = () => async (dispatch) => {
   try {
-    dispatch({ type: "loadTaskByIdReset" });
     dispatch({ type: "loadAllUserRequest" });
     const { data } = await axios.get(`${serverUrl}/user/profiles`);
     dispatch({ type: "loadAllUserSuccess", payload: data });
