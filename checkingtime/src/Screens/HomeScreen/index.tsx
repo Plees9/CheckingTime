@@ -183,6 +183,8 @@ const HomeScreen = () => {
       dispatch<any>(loadTimesheet());
       dispatch<any>(getmyrank());
       dispatch<any>(ranking());
+      dispatch<any>(loadTimesheetFilter())
+    dispatch<any>(loadTimesheetPoint())
     });
   }, []);
 
