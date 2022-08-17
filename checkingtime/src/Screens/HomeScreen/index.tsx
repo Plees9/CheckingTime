@@ -39,7 +39,7 @@ const wait = (timeout: number | undefined) => {
 const HomeScreen = () => {
   const { user } = useSelector<any, any>((state) => state.auth);
   const [networkIp, setNetworkIp] = useState("");
-  const [processBoard, setProcessBoard] = useState(0);
+  let processBoard : number = 0
   let deviceId: any;
   if (typeof user != undefined) {
     deviceId = Device.deviceName + user.userId + Device.modelName;
@@ -97,6 +97,7 @@ const HomeScreen = () => {
   if (typeof timesheetPoint !== "undefined" && timesheetPoint !== null) {
     actualPoint = timesheetPoint.point.actualPoint;
     maxPoint = timesheetPoint.point.maxPoint;
+    processBoard  = (actualPoint / maxPoint) * 100;
   }
 
   if (
@@ -149,7 +150,7 @@ const HomeScreen = () => {
       maxPoint !== "undefined" &&
       maxPoint !== null
     ) {
-      setProcessBoard((actualPoint / maxPoint) * 100);
+
     }
     if (message) {
       alert(message);
