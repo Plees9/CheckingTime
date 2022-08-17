@@ -4,25 +4,24 @@ import { Avatar } from "@rneui/themed";
 import { useDispatch, useSelector } from "react-redux";
 import createStyles from "./styles";
 import Icon from "react-native-vector-icons/FontAwesome";
-import { useNavigation } from "@react-navigation/native";
+import {  useNavigation } from "@react-navigation/native";
 import { loadAlluser, loadTaskById } from "../../../redux/action";
 import { FlatList } from "react-native-gesture-handler";
-
+import {  Link, Route } from "react-router-native";
 const Todo_ListStaff = () => {
   const { user, loading } = useSelector<any, any>((state) => state.auth);
   const styles = useMemo(() => createStyles(), []);
   const navigation = useNavigation<any>();
   const [userName, setUserName] = useState(user.name);
   const [avatar, setAvatar] = useState(user.avatar.url);
-
+  const serverUrl = "https://timekeeper-01.herokuapp.com/api/v1";
   
   const [sumWork, setSumWork] = useState(0); //tongcong
   const [workDone, setworkDone] = useState(0); //congviechoanthanh
 
   const { allUser } = useSelector<any, any>((state) => state.allUser);
-
   const dispatch = useDispatch();
-  
+  const {task} = useSelector<any, any>((state => state.task))
   useEffect(() => {
     dispatch<any>(loadAlluser());
   }, []);
@@ -42,8 +41,11 @@ const Todo_ListStaff = () => {
     }
   }  const ItemRender = ({ id,_id, name_1, avatar_1 }) => (
     <View>
-      <TouchableOpacity onPress={() => {dispatch<any>(loadTaskById(_id))
-        navigation.navigate("Công việc của nhân viên", { _id, name_1})}}>
+      {/* <Link to={`${serverUrl}/user/${_id}`} > */}
+      <TouchableOpacity onPress={() => { 
+        navigation.navigate("Công việc của nhân viên", {name_1, _id})
+        }}>
+      
       <View style={styles.view_staff2}>
         <View style={styles.avatar_staff}>
           <Avatar rounded source={{ uri: avatar_1 }} size={36} />
@@ -61,9 +63,9 @@ const Todo_ListStaff = () => {
           />
         </View>
       </View>
-
-      </TouchableOpacity>
      
+      </TouchableOpacity>
+      {/* </Link> */}
     </View>
   );
 

@@ -14,6 +14,7 @@ import ListStaff from "./src/Screens/ListStaff/ListStaff";
 import Todo_Admin from "./src/Screens/TodoList/Todo_All";
 import Todo_Staff from "./src/Screens/TodoList/Todo_Staff";
 import Add_Todo from "./src/Screens/TodoList/Add_Todo";
+import { NativeRouter, Router } from "react-router-native";
 
 
 const App = () => {
@@ -40,6 +41,7 @@ const App = () => {
   }
 
   return (
+    // <NativeRouter>
     <Provider store={store}>
 
     <SafeAreaView style={styles.root}>
@@ -49,6 +51,7 @@ const App = () => {
        </NavigationContainer> */}
       </SafeAreaView>
     </Provider>
+    // </NativeRouter>
   );
 };
 const styles = StyleSheet.create({
