@@ -42,12 +42,11 @@ const Todo_Staff = () => {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch<any>(loadTask());
     dispatch<any>(loadTaskContributor());
   }, []);
 
   const { taskContributor } = useSelector<any, any>((state) => state.task);
-
+  console.log(taskContributor)
   let data_contributor: any = [];
   if (typeof taskContributor !== "undefined") {
     for (var i = 0; i < taskContributor.tasks.length; i++) {
@@ -67,7 +66,6 @@ const Todo_Staff = () => {
         manager: taskContributor.tasks[i].manager,
         checked: false,
       };
-      console.log(task_user);
       data_contributor.push(task_user);
     }
   }
