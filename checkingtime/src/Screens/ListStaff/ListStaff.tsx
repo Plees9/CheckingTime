@@ -17,7 +17,7 @@ import createStyles from "./styles";
 import { useNavigation } from "@react-navigation/native";
 import { useDispatch, useSelector } from "react-redux";
 import moment from "moment";
-import { deleteProfile, loadAlluser, loadProfile } from "../../../redux/action";
+import { deleteProfile, loadAlluser, loadProfile, queryUser } from "../../../redux/action";
 import { SearchBar } from "react-native-elements";
 
 const ListStaff  = () => {
@@ -39,8 +39,7 @@ const ListStaff  = () => {
   useEffect(() => {
     dispatch<any>(loadAlluser());
   }, []);
-  const { allUser } = useSelector<any, any>((state) => state.allUser);
-  
+  const {allUser} = useSelector<any, any>((state) => state.allUser);
 
 
   let data: any = [];
@@ -305,7 +304,8 @@ loadView()
             style={styles.text}
             placeholder="Tìm kiếm"
             returnKeyType="done"
-            onChangeText={(text) => setSearch(text)}
+            onChangeText={(text) => {dispatch<any>(queryUser(text))
+            setSearch(text)}}
             value={search}
 
           ></TextInput>

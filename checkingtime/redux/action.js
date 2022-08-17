@@ -10,6 +10,15 @@ export const loadAlluser = () => async (dispatch) => {
     dispatch({ type: "loadAllUserFailure", payload: error.response.data.message });
   }
 };
+export const queryUser = (keyword) => async (dispatch) => {
+  try {
+    dispatch({ type: "queryUserRequest" });
+    const { data } = await axios.get(`${serverUrl}/user/searchuser?name=${keyword}`);
+    dispatch({ type: "queryUserSuccess", payload: data });
+  } catch (error) {
+    dispatch({ type: "queryUserFailure", payload: error.response.data.message });
+  }
+};
 export const ranking = () => async (dispatch) => {
   try {
     dispatch({ type: "rankRequest" });
@@ -67,6 +76,18 @@ export const updateDeviceId = (deviceId) => async (dispatch) => {
   } catch (error) {
     dispatch({
       type: "updateDeviceIdFailure",
+      payload: error.response.data.message,
+    });
+  }
+};
+export const updateCompanyIp = (companyIp) => async (dispatch) => {
+  try {
+    dispatch({ type: "updateCompanyIpRequest" });
+    const { data } = await axios.put(`${serverUrl}/company/updatecompanyip`, {companyIp});
+    dispatch({ type: "updateCompanyIpSuccess", payload: data.message });
+  } catch (error) {
+    dispatch({
+      type: "updateCompanyIpFailure",
       payload: error.response.data.message,
     });
   }
@@ -336,6 +357,32 @@ export const register = (formData) => async (dispatch) => {
       dispatch({ type: "loadTaskSuccess", payload: data });
     } catch (error) {
       dispatch({ type: "loadTaskFailure", payload: error.response.data.message });
+    };
+  }
+  export const loadTaskManager = () => async (dispatch) => {
+    try {
+      dispatch({ type: "loadTaskManagerRequest" });
+      const { data } = await axios.get(`${serverUrl}/user/mytaskasmanager`);
+      dispatch({ type: "loadTaskManagerSuccess", payload: data });
+    } catch (error) {
+      dispatch({ type: "loadTaskManagerFailure", payload: error.response.data.message });
+    };
+  }
+  export const loadTaskContributor = () => async (dispatch) => {
+    try {
+      dispatch({ type: "loadTaskContributorRequest" });
+      const { data } = await axios.get(`${serverUrl}/user/mytaskascontributor`);
+      dispatch({ type: "loadTaskContributorSuccess", payload: data });
+    } catch (error) {
+      dispatch({ type: "loadTaskContributorFailure", payload: error.response.data.message });
+    };
+  }
+    export const loadTaskById = (_id) => async (dispatch) => {
+      try {
+        dispatch({ type: "loadTaskByIdRequest" });
+        const { data } = await axios.post(`${serverUrl}/user/gettaskbyid`, {_id});
+        dispatch({ type: "loadTaskByIdSuccess", payload: data });
+      } catch (error) {
+        dispatch({ type: "loadTaskByIdFailure", payload: error.response.data.message });
+      }
     }
-  
-};

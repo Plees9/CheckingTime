@@ -55,11 +55,12 @@ const Todo_All = () => {
   }, []);
   const { allTask } = useSelector<any, any>((state) => state.task);
 
-  let data_2: any = [];
+  let data_all: any = [];
   if (typeof allTask !== "undefined") {
     for (var i = 0; i < allTask.tasks.length; i++) {
       
       let task = {
+        id : i+1,
         _id: allTask.tasks[i]._id,
         name: allTask.tasks[i].name, //ten task
         description: allTask.tasks[i].description, //mo ta task
@@ -69,14 +70,14 @@ const Todo_All = () => {
         manager: allTask.tasks[i].manager, //nguoi quan ly task
         contributors: allTask.tasks[i].contributors, //thanh vien task
       };
-      data_2.push(task);
+      data_all.push(task);
     }
   }
 
-  const [data_1, setData] = useState(data_2);
+  const [data_allTask, setData] = useState(data_all);
 
   const onChangeValue = (item: { _id: any }, index: any, newValue: boolean) => {
-    const newData = data_1.map((newItem: { _id: any }) => {
+    const newData = data_allTask.map((newItem: { _id: any }) => {
       if (newItem._id == item._id) {
         return {
           ...newItem,
@@ -93,7 +94,7 @@ const Todo_All = () => {
       {
         text: "Xóa",
         onPress: () =>
-          setData(data_1.filter((item: { _id: string }) => item._id !== "")),
+          setData(data_allTask.filter((item: { _id: string }) => item._id !== "")),
       },
     ]);
   };
@@ -148,7 +149,7 @@ const Todo_All = () => {
         </View>
         <View style={styles.kengang}></View>
         <FlatList
-          data={data_1}
+          data={data_all}
           renderItem={ItemRender}
           keyExtractor={(item) => item._id}
         ></FlatList>

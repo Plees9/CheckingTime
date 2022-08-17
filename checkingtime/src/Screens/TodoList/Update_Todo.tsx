@@ -66,24 +66,24 @@ const Update_Todo = () => {
   }
 
   
-  const [data_2, setData_2] = useState(data);
-  const [selectedItems, setSelectedItems] = useState([]); //Danh sách người được chọn
-  const [selectedItems_1, setSelectedItems_1] = useState([]); // nguoi giao viec
- //onSelectedItemsChange 
-  const onSelectedItemsChange = (selectedItems) => {
-    setSelectedItems(selectedItems);
-    for (let i = 0; i < selectedItems.length; i++) {
-      var tempItem = data.find((item: { id: any; }) => item.id === selectedItems[i]);
-      console.log(tempItem);
-    }
-  }
-  const onSelectedItemsChange_1 = (selectedItems_1) => {
-    setSelectedItems_1(selectedItems_1);
-    for (let i = 0; i < selectedItems_1.length; i++) {
-      var tempItem = data.find((item: { id: any; }) => item.id === selectedItems_1[i]);
-      console.log(tempItem);
-    }
-  }
+//   const [data_2, setData_2] = useState(data);
+//   const [selectedItems, setSelectedItems] = useState([]); //Danh sách người được chọn
+//   const [selectedItems_1, setSelectedItems_1] = useState([]); // nguoi giao viec
+//  //onSelectedItemsChange 
+//   const onSelectedItemsChange = (selectedItems) => {
+//     setSelectedItems(selectedItems);
+//     for (let i = 0; i < selectedItems.length; i++) {
+//       var tempItem = data.find((item: { id: any; }) => item.id === selectedItems[i]);
+//       console.log(tempItem);
+//     }
+//   }
+//   const onSelectedItemsChange_1 = (selectedItems_1) => {
+//     setSelectedItems_1(selectedItems_1);
+//     for (let i = 0; i < selectedItems_1.length; i++) {
+//       var tempItem = data.find((item: { id: any; }) => item.id === selectedItems_1[i]);
+//       console.log(tempItem);
+//     }
+//   }
  
   const saveTodo = async () => {
     if (task == "") {
@@ -175,7 +175,7 @@ const Update_Todo = () => {
 
         <View>
           <Text style={{marginTop:"2%"}}>Nhân viên phụ trách:</Text>
-          <MultiSelect
+          {/* <MultiSelect
           hideTags
           items={data_2}
           uniqueKey="id"
@@ -194,11 +194,11 @@ const Update_Todo = () => {
           searchInputStyle={{ color: '#CCC', padding: 10 }}
           submitButtonColor="#f5af19"
           submitButtonText="Submit"
-        />
+        /> */}
         </View>
         <View>
           <Text style={{marginTop:"2%"}}>Người giao việc:</Text>
-          <MultiSelect
+          {/* <MultiSelect
           hideTags
           items={data_2}
           uniqueKey="id"
@@ -217,7 +217,7 @@ const Update_Todo = () => {
           searchInputStyle={{ color: '#CCC', padding: 10 }}
           submitButtonColor="#f5af19"
           submitButtonText="Submit"
-        />
+        /> */}
 
           
         </View>

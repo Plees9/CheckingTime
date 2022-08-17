@@ -17,19 +17,22 @@ import moment from "moment";
 import DateTimePicker from "@react-native-community/datetimepicker";
 import { useNavigation } from "@react-navigation/native";
 import { useDispatch, useSelector } from "react-redux";
-import { loadAllTask, loadAlluser, loadTask } from "../../../redux/action";
+import {
+  loadAllTask,
+  loadAlluser,
+  loadTask,
+  loadTaskContributor,
+} from "../../../redux/action";
 import { FlatList } from "react-native-gesture-handler";
 import { AnimatedCircularProgress } from "react-native-circular-progress";
-
 
 const Todo_Staff = () => {
   const styles = useMemo(() => createStyles(), []);
   const { user, loading } = useSelector<any, any>((state) => state.auth);
   const navigation = useNavigation<any>();
-  const [checked, setChecked] = useState(false);
+  // const [checked, setChecked] = useState(false);
   const [time_task, setTime_Task] = useState(moment());
 
-  
   const [sumWork, setSumWork] = useState(10);
   const [workDone, setworkDone] = useState(4);
   const [workOvertime, setworkOvertime] = useState(6);
@@ -37,36 +40,43 @@ const Todo_Staff = () => {
   const { allUser } = useSelector<any, any>((state) => state.allUser);
 
   const dispatch = useDispatch();
-  
 
   useEffect(() => {
     dispatch<any>(loadTask());
+    dispatch<any>(loadTaskContributor());
   }, []);
-  const { task } = useSelector<any, any>((state) => state.task);
 
-  let data_2: any = [];
-  if (typeof task !== "undefined") {
-    for (var i = 0; i < task.tasks.length; i++) {
-      
+  const { taskContributor } = useSelector<any, any>((state) => state.task);
+
+  let data_contributor: any = [];
+  if (typeof taskContributor !== "undefined") {
+    for (var i = 0; i < taskContributor.tasks.length; i++) {
       let task_user = {
-        _id: task.tasks[i]._id,
-        name: task.tasks[i].name,
-        description: task.tasks[i].description,
-        deadline: moment(task.tasks[i].deadline, "HH:mm, DD/MM/YYYY"),
-        status: task.tasks[i].status,
-        date: moment(new Date(task.tasks[i].date)).format("DD/MM/YYYY"),
-        manager: task.tasks[i].manager,
+        id: i + 1,
+        _id: taskContributor.tasks[i]._id,
+        name: taskContributor.tasks[i].name,
+        description: taskContributor.tasks[i].description,
+        deadline: moment(
+          taskContributor.tasks[i].deadline,
+          "HH:mm, DD/MM/YYYY"
+        ),
+        status: taskContributor.tasks[i].status,
+        date: moment(new Date(taskContributor.tasks[i].date)).format(
+          "DD/MM/YYYY"
+        ),
+        manager: taskContributor.tasks[i].manager,
+        checked: false,
       };
       console.log(task_user);
-      data_2.push(task_user);
+      data_contributor.push(task_user);
     }
   }
- 
-  const [data_1, setData] = useState(data_2);
-  
-  const onChangeValue = (item: { _id: any }, index: any, newValue: boolean) => {
-    const newData = data_1.map((newItem: { _id: any }) => {
-      if (newItem._id == item._id) {
+  const [data_contributor_Staff, setdata_contributor] =
+    useState(data_contributor);
+
+  const onChangeValue = (item: { id: any }, index: any, newValue: boolean) => {
+    const newData = data_contributor_Staff.map((newItem: { id: any }) => {
+      if (newItem.id == item.id) {
         return {
           ...newItem,
           selected: newValue,
@@ -74,7 +84,7 @@ const Todo_Staff = () => {
       }
       return newItem;
     });
-    setData(newData);
+    setdata_contributor(newData);
   };
 
   const ItemRender = ({ item, index }) => (
@@ -91,22 +101,22 @@ const Todo_Staff = () => {
               onValueChange={(newValue) => onChangeValue(item, index, newValue)}
             ></CheckBox>
           </View>
-
           <View style={styles.colomn1}>
             <Text style={styles.task}>{item.name}</Text>
             <View style={styles.textTime}>
-              <Pressable >
+              <Pressable>
                 <View
                   style={{ justifyContent: "center", alignContent: "center" }}
                 >
-                  <Text>{moment(item.deadline).format("HH:mm, DD/MM/YYYY")}</Text>
+                  <Text>
+                    {moment(item.deadline).format("HH:mm, DD/MM/YYYY")}
+                  </Text>
                   {show_1 && (
                     <DateTimePicker
                       value={new Date(item.deadline.format("YYYY/MM/DD"))}
                       mode={"time"}
                       display="default"
                       is24Hour={true}
-                      
                     />
                   )}
                 </View>
@@ -140,7 +150,7 @@ const Todo_Staff = () => {
         <AnimatedCircularProgress
           size={85}
           width={5}
-          fill={Math.round((workDone / data_2.length) * 100)}
+          fill={Math.round((workDone / data_contributor.length) * 100)}
           tintColor="#3EC70B"
           style={{ alignSelf: "center", marginTop: 10 }}
           backgroundColor="#3d5875"
@@ -148,10 +158,13 @@ const Todo_Staff = () => {
           {() => (
             <Text style={styles.points}>
               <Text style={{ color: "#3EC70B" }}>
-              
                 {workDone} {""}
               </Text>
-              /<Text style={{ color: "#3d5875" }}> {data_2.length}</Text>
+              /
+              <Text style={{ color: "#3d5875" }}>
+                {" "}
+                {data_contributor.length}
+              </Text>
             </Text>
           )}
         </AnimatedCircularProgress>
@@ -162,7 +175,7 @@ const Todo_Staff = () => {
         <View style={styles.view1_1}>
           <View style={styles.view1_2}>
             <Text>Tổng số công việc hôm nay:</Text>
-            <Text>{data_2.length}</Text>
+            <Text>{data_contributor.length}</Text>
           </View>
 
           <View style={styles.view1_2}>
@@ -173,9 +186,9 @@ const Todo_Staff = () => {
         <View style={styles.kengang}></View>
 
         <FlatList
-          data={data_1}
+          data={data_contributor_Staff}
           renderItem={ItemRender}
-          keyExtractor={(item) => item._id}
+          keyExtractor={(item) => item.id.toString()}
         ></FlatList>
       </SafeAreaView>
       <View style={styles.btnFab}>

@@ -33,7 +33,6 @@ const wait = (timeout: number | undefined) => {
 const HomeScreen = () => {
 const { user } = useSelector<any, any>((state) => state.auth);
 const [networkIp, setNetworkIp] = useState("")
-
 let deviceId : any
 if (typeof user != undefined) {
   deviceId= Device.deviceName + user.userId + Device.modelName

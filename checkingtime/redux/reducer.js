@@ -75,10 +75,12 @@ export const companyReducer = createReducer ({}, {
   },
   clearError: (state) => {
     state.error = null;
+    state.errorCompany = null 
   },
 
   clearMessage: (state) => {
     state.message = null;
+    state.messageCompany = null ;
   },
 });
 export const allReducer = createReducer ({},{
@@ -90,6 +92,17 @@ export const allReducer = createReducer ({},{
     state.allUser = action.payload;
   },
   loadAllUserFailure: (state, action) => {
+    state.loading = false;
+    state.error = action.payload;
+  },
+  queryUserRequest: (state) => {
+    state.loading = true;
+  },
+  queryUserSuccess: (state, action) => {
+    state.loading = false;
+    state.allUser = action.payload;
+  },
+  queryUserFailure: (state, action) => {
     state.loading = false;
     state.error = action.payload;
   },
@@ -248,6 +261,17 @@ export const authReducer = createReducer(
         state.message = action.payload;
         state.isUpdated = true;
       },
+      updateCompanyIpRequest: (state) => {
+        state.loading = true;
+      },
+      updateCompanyIpSuccess: (state, action) => {
+        state.loading = false;
+        state.message = action.payload;
+      },
+      updateCompanyIpFailure: (state, action) => {
+        state.loading = false;
+        state.error = action.payload;
+      },
       updateAdminReset: (state) => {
           state.isUpdated = false ;
       },
@@ -293,6 +317,17 @@ state.isUpdated = false ;
         state.loading = false;
         state.error = action.payload;
       },
+      updateDeviceIdRequest: (state) => {
+        state.loading = true;
+      },
+      updateDeviceIdSuccess: (state, action) => {
+        state.loading = false;
+        state.message = action.payload;
+      },
+      updateDeviceIdFailure: (state, action) => {
+        state.loading = false;
+        state.error = action.payload;
+      },
       clearError: (state) => {
         state.error = null;
       },
@@ -328,6 +363,41 @@ state.isUpdated = false ;
           state.loading = false;
           state.error = action.payload;
         },
+        loadTaskByIdRequest: (state) => {
+          state.loading = true;
+        },
+        loadTaskByIdSuccess: (state, action) => {
+          state.loading = false;
+
+          state.task = action.payload;
+        },
+        loadTaskByIdFailure: (state, action) => {
+          state.loading = false;
+          state.error = action.payload;
+        },
+        loadTaskManagerRequest: (state) => {
+          state.loading = true;
+        } ,
+        loadTaskManagerSuccess: (state, action) => {
+          state.loading = false;
+          state.taskManager = action.payload;
+        } ,
+        loadTaskManagerFailure: (state, action) => {
+          state.loading = false;
+          state.error = action.payload;
+        } ,
+        loadTaskContributorRequest: (state) => {
+          state.loading = true;
+        },
+        loadTaskContributorSuccess: (state, action) => {
+          state.loading = false;
+          state.taskContributor = action.payload;
+        },
+        loadTaskContributorFailure: (state, action) => {
+          state.loading = false;
+          state.error = action.payload;
+        } ,
+
         clearError: (state) => {
           state.error = null;
         },
@@ -336,4 +406,6 @@ state.isUpdated = false ;
           state.message = null;
         },
       },
+      
     );
+   

@@ -17,7 +17,7 @@ import moment from "moment";
 import DateTimePicker from "@react-native-community/datetimepicker";
 import { useNavigation, useRoute } from "@react-navigation/native";
 import { useDispatch, useSelector } from "react-redux";
-//import { loadAllTask, loadAlluser, loadTask, loadTaskById } from "../../../redux/action";
+import { loadAllTask, loadAlluser, loadTask, loadTaskById } from "../../../redux/action";
 import { FlatList } from "react-native-gesture-handler";
 import { AnimatedCircularProgress } from "react-native-circular-progress";
 
@@ -47,7 +47,7 @@ const Admin_Manage = () => {
       if (route.params) {
         if (route.params._id) {
             console.log(route.params._id)
-            //dispatch<any>(loadTaskById(route.params._id));
+            
         }
         if (route.params.name_1) {
           setUserName(route.params.name_1);
@@ -56,10 +56,11 @@ const Admin_Manage = () => {
     }, [route]);
   const { task } = useSelector<any, any>((state) => state.task);
   console.log(task + "+++++++++++++")
-  let data_2: any = [];
+  let data_admin: any = [];
   if (typeof task !== "undefined") {
     for (var i = 0; i < task.tasks.length; i++) {
       let task_user = {
+        id : i +1,
         _id: task.tasks[i]._id,
         name: task.tasks[i].name,
         description: task.tasks[i].description,
@@ -71,16 +72,16 @@ const Admin_Manage = () => {
         workDone_1: task.tasks[i].workDone,
       };
       //console.log(task_user);
-      data_2.push(task_user);
+      data_admin.push(task_user);
     }
   }
-  console.log(data_2)
+  console.log(data_admin)
  
 
-  const [data_1, setData] = useState(data_2);
+  const [data_admin_Staff, setData] = useState(data_admin);
 
   const onChangeValue = (item: { _id: any }, index: any, newValue: boolean) => {
-    const newData = data_1.map((newItem: { _id: any }) => {
+    const newData = data_admin_Staff.map((newItem: { _id: any }) => {
       if (newItem._id == item._id) {
         return {
           ...newItem,
@@ -156,7 +157,7 @@ const Admin_Manage = () => {
         <AnimatedCircularProgress
           size={85}
           width={5}
-          fill={Math.round(( 8 / data_2.length) * 100)}
+          fill={Math.round(( 8 / data_admin.length) * 100)}
           tintColor="#3EC70B"
           style={{ alignSelf: "center", marginTop: 10 }}
           backgroundColor="#3d5875"
@@ -167,7 +168,7 @@ const Admin_Manage = () => {
                 {" "}
                 {workDone} {""}
               </Text>
-              /<Text style={{ color: "#3d5875" }}> {data_2.length}</Text>
+              /<Text style={{ color: "#3d5875" }}> {data_admin.length}</Text>
             </Text>
           )}
         </AnimatedCircularProgress>
@@ -178,7 +179,7 @@ const Admin_Manage = () => {
         <View style={styles.view1_1}>
           <View style={styles.view1_2}>
             <Text>Tổng số công việc hôm nay:</Text>
-            <Text>{data_2.length}</Text>
+            <Text>{data_admin.length}</Text>
           </View>
 
           <View style={styles.view1_2}>
@@ -189,7 +190,7 @@ const Admin_Manage = () => {
         <View style={styles.kengang}></View>
 
         <FlatList
-          data={data_1}
+          data={data_admin}
           renderItem={ItemRender}
           keyExtractor={(item) => item._id}
         ></FlatList>

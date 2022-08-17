@@ -19,11 +19,12 @@ import {
 } from "@react-navigation/native";
 import createStyles from "./styles";
 import { useDispatch, useSelector } from "react-redux";
-import { logout, loadUser, updateAvatar, updateDeviceId } from "../../../redux/action";
+import { logout, loadUser, updateAvatar, updateDeviceId, updateCompanyIp } from "../../../redux/action";
 import * as ImagePicker from "expo-image-picker";
 import mime from "mime";
 import moment from "moment";
 import * as Device from 'expo-device';
+import publicIP from 'react-native-public-ip';
 const Account = () => {
   const [visible, setVisible] = useState(false);
   const { user, loading } = useSelector<any, any>((state) => state.auth);
@@ -44,13 +45,28 @@ const Account = () => {
   const [role, setRole] = useState(user.role);
   const [contractStatus, setContractStatus] = useState(user.contractStatus);
   const [flag1, setFlag1] = useState();
+  const [networkIp, setNetworkIp] = useState()
   const logoutHandler = () => {
     dispatch<any>(logout());
   };
+  publicIP()
+.then((ip: React.SetStateAction<string>) => {   
+  // '47.122.71.234'
+  setNetworkIp(ip)
+})
+.catch((error: any) => {
+
+  // 'Unable to get IP address.'
+})
   const updateId = async() => {
+    console.log(deviceId)
     await dispatch<any>(updateDeviceId(deviceId))
   }
+  const companyIpHandler = async() => {
+    await dispatch<any>(updateCompanyIp(networkIp))
+  }
   const { message, error } = useSelector<any, any>((state) => state.message)
+  console.log(message)
   useEffect(() => {
     if (message) {
       alert(message);
@@ -185,6 +201,12 @@ const Account = () => {
             onPress={() => {updateId()}}
           >
             <Text style={styles.chu}> Thay đổi DeviceId</Text>
+          </TouchableOpacity>
+          <TouchableOpacity
+            style={styles.khoangcach}
+            onPress={() => {companyIpHandler()}}
+          >
+            <Text style={styles.chu}> Thay đổi CompanyIp</Text>
           </TouchableOpacity>
           <TouchableOpacity
             onPress={() => {
