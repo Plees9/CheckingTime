@@ -14,8 +14,6 @@ const Todo_ListStaff = () => {
   const navigation = useNavigation<any>();
   const [userName, setUserName] = useState(user.name);
   const [avatar, setAvatar] = useState(user.avatar.url);
-
-  
   const [sumWork, setSumWork] = useState(0); //tongcong
   const [workDone, setworkDone] = useState(0); //congviechoanthanh
 

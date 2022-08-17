@@ -151,7 +151,7 @@ const Todo_Staff = () => {
           {() => (
             <Text style={styles.points}>
               <Text style={{ color: "#3EC70B" }}>
-                {" "}
+              
                 {workDone} {""}
               </Text>
               /<Text style={{ color: "#3d5875" }}> {data_2.length}</Text>
