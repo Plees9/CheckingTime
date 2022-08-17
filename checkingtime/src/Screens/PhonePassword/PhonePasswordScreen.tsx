@@ -51,7 +51,7 @@ const PhonePasswordScreen = () => {
         <LinearGradient
           start={{ x: 0, y: 0 }}
           end={{ x: 1, y: 0 }}
-          colors={["#8f73f6", "#b5a4fc"]}
+          colors={["#8f73f6", "#8f73f6"]}
           style={styles.btn}
         >
           <TouchableOpacity onPress={forgetHandler}>

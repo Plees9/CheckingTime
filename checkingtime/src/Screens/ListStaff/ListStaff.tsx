@@ -17,7 +17,7 @@ import createStyles from "./styles";
 import { useNavigation } from "@react-navigation/native";
 import { useDispatch, useSelector } from "react-redux";
 import moment from "moment";
-import { deleteProfile, loadAlluser, loadProfile, queryUser } from "../../../redux/action";
+import { deleteProfile, loadAlluser } from "../../../redux/action";
 import { SearchBar } from "react-native-elements";
 
 const ListStaff  = () => {
@@ -117,6 +117,11 @@ loadView()
       ]
     );
   };
+
+  const searchHandle = (text: string) => {
+    dispatch<any>(search(text));
+    
+  }
 
   const Trash = (
     
@@ -304,10 +309,6 @@ loadView()
             style={styles.text}
             placeholder="Tìm kiếm"
             returnKeyType="done"
-            onChangeText={(text) => {dispatch<any>(queryUser(text))
-            setSearch(text)}}
-            value={search}
-
           ></TextInput>
           
         </View>

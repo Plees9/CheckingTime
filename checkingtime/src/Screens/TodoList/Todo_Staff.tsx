@@ -34,7 +34,7 @@ const Todo_Staff = () => {
   const [time_task, setTime_Task] = useState(moment());
 
   const [sumWork, setSumWork] = useState(10);
-  const [workDone, setworkDone] = useState(4);
+  const [workDone, setworkDone] = useState(0);
   const [workOvertime, setworkOvertime] = useState(6);
   const [show_1, setShow_1] = useState(false);
   const { allUser } = useSelector<any, any>((state) => state.allUser);
@@ -52,7 +52,7 @@ const Todo_Staff = () => {
   if (typeof taskContributor !== "undefined") {
     for (var i = 0; i < taskContributor.tasks.length; i++) {
       let task_user = {
-        id: i + 1,
+        id : i +1,
         _id: taskContributor.tasks[i]._id,
         name: taskContributor.tasks[i].name,
         description: taskContributor.tasks[i].description,
@@ -168,18 +168,33 @@ const Todo_Staff = () => {
             </Text>
           )}
         </AnimatedCircularProgress>
-        <View>
-          <View style={styles.note_staff} />
-        </View>
 
         <View style={styles.view1_1}>
           <View style={styles.view1_2}>
+            
             <Text>Tổng số công việc hôm nay:</Text>
             <Text>{data_contributor.length}</Text>
           </View>
 
           <View style={styles.view1_2}>
-            <Text>Công việc đã hoàn thành:</Text>
+          <View style={{flexDirection:'row'}}>
+              <View style={{backgroundColor:'#3EC70B', borderRadius: 100, height:10, width:10,alignSelf:'center'}}/>
+            <Text style={{marginLeft: 5}}>Công việc đã hoàn thành:</Text>
+            </View>
+            <Text>{workDone}</Text>
+          </View>
+          <View style={styles.view1_2}>
+          <View style={{flexDirection:'row'}}>
+              <View style={{backgroundColor:'#e35b45', borderRadius: 100, height:10, width:10,alignSelf:'center'}}/>
+            <Text style={{marginLeft: 5}}>Công việc đã quá hạn:</Text>
+            </View>
+            <Text>{workDone}</Text>
+          </View>
+          <View style={styles.view1_2}>
+          <View style={{flexDirection:'row'}}>
+              <View style={{backgroundColor:'#3d5875', borderRadius: 100, height:10, width:10,alignSelf:'center'}}/>
+            <Text style={{marginLeft: 5}}>Công việc chưa hoàn thành:</Text>
+            </View>
             <Text>{workDone}</Text>
           </View>
         </View>

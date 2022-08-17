@@ -386,3 +386,40 @@ export const register = (formData) => async (dispatch) => {
         dispatch({ type: "loadTaskByIdFailure", payload: error.response.data.message });
       }
     }
+
+export const search = (search) => async (dispatch) => {
+  try {
+    dispatch({ type: "searchRequest" });
+
+    const { data } = await axios.get(`${serverUrl}/user/searchuser/${search}`);
+    dispatch({ type: "searchSuccess", payload: data });
+    
+  } catch (error) {
+    dispatch({
+      type: "searchFailure",
+      payload: error.response.data.message,
+    });
+  }
+}
+
+export const loadTimesheetFilter = () => async (dispatch) => {
+  try {
+    dispatch({ type: "timesheetFilterRequest" });
+
+    const { data } = await axios.get(`${serverUrl}/user/filtertimesheetdatabythismonth`);
+    dispatch({ type: "timesheetFilterSuccess", payload: data });
+  } catch (error) {
+    dispatch({ type: "timesheetFilterFailure", payload: error.response.data.message });
+  }
+}
+
+export const loadTimesheetPoint = () => async (dispatch) => {
+  try {
+    dispatch({ type: "timesheetPointRequest" });
+
+    const { data } = await axios.get(`${serverUrl}/user/timesheetpoint`);
+    dispatch({ type: "timesheetPointSuccess", payload: data });
+  } catch (error) {
+    dispatch({ type: "timesheetPointFailure", payload: error.response.data.message });
+  }
+}
