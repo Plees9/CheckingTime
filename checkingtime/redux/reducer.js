@@ -36,6 +36,17 @@ export const timesheetReducer = createReducer({}, {
     state.loading = false;
     state.error = action.payload;
   },
+  timesheetPointRequest: (state) => {
+    state.loading = true;
+  } ,
+  timesheetPointSuccess: (state, action) => {
+    state.loading = false;
+    state.timesheetPoint = action.payload;
+  } ,
+  timesheetPointFailure: (state, action) => {
+    state.loading = false;
+    state.error = action.payload;
+  },
   timesheetSuccess: (state, action) => {
     state.loading = false;
     state.timesheet = action.payload;
@@ -86,10 +97,12 @@ export const companyReducer = createReducer({}, {
   },
   clearError: (state) => {
     state.error = null;
+    state.errorCompany = null 
   },
 
   clearMessage: (state) => {
     state.message = null;
+    state.messageCompany = null ;
   },
 });
 export const allReducer = createReducer({}, {
@@ -101,6 +114,17 @@ export const allReducer = createReducer({}, {
     state.allUser = action.payload;
   },
   loadAllUserFailure: (state, action) => {
+    state.loading = false;
+    state.error = action.payload;
+  },
+  queryUserRequest: (state) => {
+    state.loading = true;
+  },
+  queryUserSuccess: (state, action) => {
+    state.loading = false;
+    state.allUser = action.payload;
+  },
+  queryUserFailure: (state, action) => {
     state.loading = false;
     state.error = action.payload;
   },
@@ -125,19 +149,6 @@ export const authReducer = createReducer(
       state.message = action.payload.message;
     },
     loginFailure: (state, action) => {
-      state.loading = false;
-      state.isAuthenticated = false;
-      state.error = action.payload;
-    },
-    loadUserRequest: (state) => {
-      state.loading = true;
-    },
-    loadUserSuccess: (state, action) => {
-state.loading = false;
-      state.isAuthenticated = true;
-      state.user = action.payload.user;
-    },
-    loadUserFailure: (state, action) => {
       state.loading = false;
       state.isAuthenticated = false;
       state.error = action.payload;
@@ -242,6 +253,17 @@ state.loading = false;
   export const messageReducer = createReducer(
     {},
     {
+      loadProfileRequest: (state) => {
+        state.loading = true;
+      },
+      loadProfileSuccess: (state, action) => {
+        state.loading = false;
+        state.user = action.payload;
+      },
+      loadProfileFailure: (state, action) => {
+        state.loading = false;
+        state.error = action.payload;
+      },
       deleteProfileRequest: (state) => {
         state.loading = true;
       },
@@ -250,6 +272,32 @@ state.loading = false;
         state.message = action.payload;
       },
       deleteProfileFailure: (state, action) => {
+        state.loading = false;
+        state.error = action.payload;
+      },
+      updateAdminRequest: (state) => {
+        state.loading = true;
+      },
+      updateAdminSuccess: (state, action) => {
+        state.loading = false;
+        state.message = action.payload;
+        state.isUpdated = true;
+      },
+      updateCompanyIpRequest: (state) => {
+        state.loading = true;
+      },
+      updateCompanyIpSuccess: (state, action) => {
+        state.loading = false;
+        state.message = action.payload;
+      },
+      updateCompanyIpFailure: (state, action) => {
+        state.loading = false;
+        state.error = action.payload;
+      },
+      updateAdminReset: (state) => {
+          state.isUpdated = false ;
+      },
+      updateAdminFailure: (state, action) => {
         state.loading = false;
         state.error = action.payload;
       },
@@ -288,6 +336,17 @@ state.isUpdated = false ;
         state.message = action.payload;
       },
       updateAvatarFailure: (state, action) => {
+        state.loading = false;
+        state.error = action.payload;
+      },
+      updateDeviceIdRequest: (state) => {
+        state.loading = true;
+      },
+      updateDeviceIdSuccess: (state, action) => {
+        state.loading = false;
+        state.message = action.payload;
+      },
+      updateDeviceIdFailure: (state, action) => {
         state.loading = false;
         state.error = action.payload;
       },

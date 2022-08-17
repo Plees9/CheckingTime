@@ -8,11 +8,13 @@ const createStyles = () =>
     },
     icon1: {
       flexDirection: "row",
-      marginTop: 10,
-      marginRight: "60%",
-      borderRadius: 20,
-      padding: 10,
-      backgroundColor: "#FDFCE5",
+      width: 150,
+      marginLeft: 10,
+      borderRadius: 10,
+      height: 45,
+      alignItems: "center",
+      justifyContent: "center",
+      backgroundColor: "#ebe0ea",
     },
     icon2: {
       marginTop: "2%",
@@ -20,7 +22,7 @@ const createStyles = () =>
       borderRadius: 15,
       padding: 10,
       width: "45%",
-      backgroundColor: "#DDDDDD",
+      backgroundColor: "#ebe0ea",
     },
     icon4: {
       flexDirection: "row",
@@ -68,25 +70,26 @@ const createStyles = () =>
       borderRadius: 15,
       padding: 10,
       width: "45%",
-      backgroundColor: "#DDDDDD",
+      backgroundColor: "#ebe0ea",
     },
     icon3: {
       padding: 5,
-      color: "#ff8c00",
+      color: "#9469d7",
     },
     text: {
-      color: "#ff8c00",
+      color: "#9469d7",
       alignItems: "center",
-      marginLeft: 10,
-      fontSize: 18,
+      marginLeft: 5,
+      fontSize: 17,
+      fontFamily: FONTS.vanSansSemiBold,
+
     },
     chu11: {
       fontWeight: "bold",
       fontSize: 18,
       width: "100%",
-      backgroundColor: "#DDDDDD",
-      padding: 15,
-      marginTop: 10,
+      marginLeft: 10,
+      
     },
     chu1: {
       fontSize: 14,
@@ -98,29 +101,30 @@ const createStyles = () =>
     chu3: {
       fontSize: 14,
       width: "100%",
-      backgroundColor: "#FDFCE5",
+      backgroundColor: "#ebe0ea",
       padding: 10,
-      textAlign: "center",
+      
+      fontFamily: FONTS.vanSansMedium,
     },
     chu5: {
       fontSize: 14,
       width: "100%",
-
-      padding: 5,
+      fontFamily: FONTS.vanSansMedium,
       textAlign: "center",
     },
     chu2: {
       textAlign: "center",
       fontSize: 14,
-      width: "125%",
-      backgroundColor: "#FDFCE5",
+      width: "100%",
+      backgroundColor: "#ebe0ea",
       padding: 5,
+      fontFamily: FONTS.vanSansMedium,
     },
     chu4: {
       textAlign: "center",
       fontSize: 14,
-      width: "125%",
-
+      width: "100%",
+      fontFamily: FONTS.vanSansMedium,
       padding: 5,
     },
     row: {
@@ -134,19 +138,21 @@ const createStyles = () =>
       flexDirection: "column",
     },
     textTop2: {
-      marginTop: "3%",
-      fontSize: 14,
+      marginTop: 10,
+      fontSize: 15,
       color: "#413F42",
+      fontFamily: FONTS.vanSansSemiBold,
     },
     textTop3: {
-      marginTop: "3%",
-      marginLeft: "50%",
+      marginTop: 10,
+      alignSelf: 'flex-end',
       fontSize: 15,
       color: "#ff8c00",
     },
     textTop4: {
       fontSize: 15,
-      color: "#ff8c00",
+      color: "#9469d7",
+      fontFamily: FONTS.vanSansSemiBold,
     },
     image: {
       height: 250,

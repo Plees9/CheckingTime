@@ -53,56 +53,58 @@ const BangCong_Cuatoi = () => {
     lateValue = timesheetFilter.Object.checkinLate.value;
     earlyNumber = timesheetFilter.Object.checkoutEarly.number;
     earlyValue = timesheetFilter.Object.checkoutEarly.value;
-    otNumber = timesheetFilter.Object.checkoutLate.number;
-    otValue = timesheetFilter.Object.checkoutLate.value;
+    otNumber = timesheetFilter.Object.overtime.number;
+    otValue = timesheetFilter.Object.overtime.value;
   }
   const styles = useMemo(() => createStyles(), []);
   //const navigation = useNavigation<any>();
   return (
     <View style={styles.bgr}>
+      <View style={{height: 60, justifyContent:'center'}}>
       <TouchableOpacity
         style={styles.icon1}
         onPress={() => Alert.alert("Simple Button")}
       >
-        <Icon name="bars" size={20} style={styles.icon3}></Icon>
-        <Text style={styles.text}>tháng này</Text>
+        <Icon name="bars" size={18} style={styles.icon3}></Icon>
+        <Text style={styles.text}>Tháng này</Text>
       </TouchableOpacity>
+      </View>
       <SafeAreaView>
         <View>
           <ScrollView contentContainerStyle={{ paddingBottom: "30%" }}>
             <View>
-              <View>
+              <View style={{height:50, backgroundColor:'#DDDDDD', justifyContent:'center'}}>
                 <Text style={styles.chu11}>Tổng hợp ngày công</Text>
               </View>
 
-              <View style={styles.row}>
-                <Text style={styles.textTop2}> Trạng thái nhân sự</Text>
-                <Text style={styles.textTop3}> 3/21</Text>
+              <View style={{flexDirection:'row', marginLeft:10, width: '94%', justifyContent:'space-between'}}>
+                <Text style={styles.textTop2}>Trạng thái nhân sự</Text>
+                <Text style={styles.textTop3}>3/21</Text>
               </View>
 
               <View style={styles.row2}>
                 <View style={styles.icon2}>
                   <View style={{ flexDirection: "column" }}>
                     <Text style={styles.textTop4}>{lateValue} phút/ {lateNumber} lần</Text>
-                    <TextInput style={styles.textTop2}> Đi muộn</TextInput>
+                    <TextInput style={styles.textTop2}>Đi muộn</TextInput>
                   </View>
                 </View>
                 <View style={styles.icon5}>
                   <View style={{ flexDirection: "column" }}>
                     <Text style={styles.textTop4}>{earlyValue} phút/ {earlyNumber} lần</Text>
-                    <TextInput style={styles.textTop2}> Về sớm</TextInput>
+                    <TextInput style={styles.textTop2}>Về sớm</TextInput>
                   </View>
                 </View>
               </View>
 
               <View style={styles.icon2}>
                 <View style={{ flexDirection: "column" }}>
-                  <Text style={styles.textTop4}>{otValue} phút/ {otNumber} lần </Text>
-                  <TextInput style={styles.textTop2}> Tổng giờ OT</TextInput>
+                  <Text style={styles.textTop4}>{otValue} giờ/ {otNumber} lần </Text>
+                  <TextInput style={styles.textTop2}>Tổng giờ OT</TextInput>
                 </View>
               </View>
 
-              <View>
+              <View style={{marginTop:10,height:50, backgroundColor:'#DDDDDD', justifyContent:'center'}}>
                 <Text style={styles.chu11}>Bảng công chi tiết</Text>
               </View>
 

@@ -17,14 +17,15 @@ import createStyles from "./styles";
 import { useNavigation } from "@react-navigation/native";
 import { useDispatch, useSelector } from "react-redux";
 import moment from "moment";
-import { deleteProfile, loadAlluser, search } from "../../../redux/action";
+import { deleteProfile, loadAlluser } from "../../../redux/action";
 import { SearchBar } from "react-native-elements";
-const ListStaff = () => {
+
+const ListStaff  = () => {
+
   const styles = useMemo(() => createStyles(), []);
+  const [search, setSearch] = useState("");
   const { message, error } = useSelector<any, any>((state) => state.message)
-  console.log(error)
   const navigation = useNavigation<any>();
-  const [searchText, setSearch] = useState("");
   const dialCall = (numberPhone_1: any) => {
     let phoneNumber = "";
     if (Platform.OS === "android") {
@@ -38,7 +39,9 @@ const ListStaff = () => {
   useEffect(() => {
     dispatch<any>(loadAlluser());
   }, []);
-  const { allUser } = useSelector<any, any>((state) => state.allUser);
+  const {allUser} = useSelector<any, any>((state) => state.allUser);
+
+
   let data: any = [];
   const loadView = () => {
   if (typeof allUser !== "undefined") {
@@ -46,12 +49,14 @@ const ListStaff = () => {
       
       let object = {
         id: i + 1,
-        _id: allUser.array[i]._id ,
+        _id: allUser.array[i]._id , 
         name_1: allUser.array[i].name,
+        email_1: allUser.array[i].email,
         role_1: allUser.array[i].role,
         userId_1: allUser.array[i].userId,
         typeOfEmployee_1: allUser.array[i].typeOfEmployee,
         contractStatus_1: allUser.array[i].contractStatus,
+        privilege_1 : allUser.array[i].privilege,
         date_1: moment(new Date(allUser.array[i].startWorkingDate)).format(
           "DD/MM/YYYY"
         ),
@@ -62,8 +67,6 @@ const ListStaff = () => {
         gender_1: allUser.array[i].gender,
         avatar_1: allUser.array[i].avatar.url,
       };
-      //console.log(object._id)
-      //console.log(object);
       data.push(object);
     }
   }
@@ -145,22 +148,41 @@ loadView()
         {
           text: "Xóa",
           onPress: () => {
-            //console.log(_id)
             deleteHandler(_id)
-            //setData(newData);
           },
         },
       ]
     );
   };
+  const Edit = async (
+    
+    id: number,
+    _id: any,
+    name_1: string,
+    email_1: any ,
+    role_1: any,
+    userID_1: any,
+    typeOfEmployee_1: any,
+    contractStatus_1: any,
+    privilege_1:any,
+    date_1: undefined,
+    date_Birth_1: undefined,
+    numberPhone_1: number,
+    gender_1: any ,
+    avatar_1: any
+  ) => {
+    navigation.navigate("UpdateStaff_Admin", { _id, name_1,email_1, role_1, typeOfEmployee_1, contractStatus_1, privilege_1, date_1, numberPhone_1, avatar_1 })
+  };
   const ItemRender = ({
-    id,
+    id ,
     _id ,
     name_1,
+    email_1,
     role_1,
     userID_1,
     typeOfEmployee_1,
     contractStatus_1,
+    privilege_1 ,
     date_1,
     date_Birth_1,
     numberPhone_1,
@@ -231,8 +253,23 @@ loadView()
             name="edit"
             size={25}
             style={styles.trash}
-            onPress={() =>
-              navigation.navigate("Cập nhật thông tin nhân viên _Admin")
+            onPress={() => {
+              Edit(
+                id,
+                _id,
+                name_1,
+                email_1,
+                role_1,
+                userID_1,
+                typeOfEmployee_1,
+                contractStatus_1,
+                privilege_1,
+                date_1,
+                date_Birth_1,
+                numberPhone_1,
+                gender_1 ,
+                avatar_1
+              ) }
             }
           ></Icon>
         </View>
@@ -253,7 +290,7 @@ loadView()
       </View>
     </SafeAreaView>
   );
-
+ 
   return (
     <SafeAreaView style={styles.view}>
       <View style={styles.row}>
@@ -266,12 +303,14 @@ loadView()
         </View>
         <View style={styles.icon1}>
           <Icon name="search" size={20} style={styles.icon3} />
+          
+            
           <TextInput
             style={styles.text}
             placeholder="Tìm kiếm"
             returnKeyType="done"
-            onChangeText={(text) => setSearch(text)}
           ></TextInput>
+          
         </View>
         <View style={styles.iconPlus}>
           <Icon
@@ -290,10 +329,12 @@ loadView()
             id={item.id}
             _id={item._id}
             name_1={item.name_1}
+            email_1={item.email_1}
             role_1={item.role_1}
             userID_1={item.userId_1}
             typeOfEmployee_1={item.typeOfEmployee_1}
             contractStatus_1={item.contractStatus_1}
+            privilege_1={item.privilege_1}
             date_1={item.date_1}
             date_Birth_1={item.date_Birth_1}
             numberPhone_1={item.numberPhone_1}

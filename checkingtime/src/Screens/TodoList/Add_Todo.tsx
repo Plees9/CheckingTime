@@ -7,7 +7,7 @@ import {
   Alert,
   TouchableOpacity,
 } from "react-native";
-import React, { useMemo, useState } from "react";
+import React, { useEffect, useMemo, useState } from "react";
 
 import createStyles from "./styles";
 import DateTimePicker from "@react-native-community/datetimepicker";
@@ -16,24 +16,11 @@ import Icon from "react-native-vector-icons/FontAwesome";
 import { LinearGradient } from "expo-linear-gradient";
 import { Avatar } from "@rneui/themed";
 import { FlatList } from 'react-native-gesture-handler';
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import MultiSelect from 'react-native-multiple-select';
+import { loadAlluser } from "../../../redux/action";
 
 
-const data_TodoStaff = [
-  {
-    id: 1,
-    name: "Nguyen Van A",
-    time_task: "10:00",
-    status: "Done",
-  },
-  {
-    id: 2,
-    name: "Nguyen Van B",
-    time_task: "10:00",
-    status: "Done",
-  },
- 
-];
 
 const Add_Todo = () => {
   const styles = useMemo(() => createStyles(), []);
@@ -50,26 +37,55 @@ const Add_Todo = () => {
   
   const [show, setShow] = useState(false);
   const [show_1, setShow_1] = useState(false);
+  const { allUser } = useSelector<any, any>((state) => state.allUser);
+
+  const dispatch = useDispatch();
   
+  useEffect(() => {
+    dispatch<any>(loadAlluser());
+  }, []);
+  let data: any = [];
+  if (typeof allUser !== "undefined") {
+    for (var i = 0; i < allUser.array.length; i++) {
+      
+      let object = {
+        id: i + 1,
+        name_1: allUser.array[i].name,
+        avatar_1: allUser.array[i].avatar.url,
+        sumWork_1: allUser.array[i].sumWork,
+        workDone_1: allUser.array[i].workDone,
+      };
+      console.log(object);
+      data.push(object);
+    }
+  }
+
+  
+  const [data_2, setData_2] = useState(data);
+  const [selectedItems, setSelectedItems] = useState([]); //Danh sách người được chọn
+  const [selectedItems_1, setSelectedItems_1] = useState([]); // nguoi giao viec
+ //onSelectedItemsChange 
+  const onSelectedItemsChange = (selectedItems) => {
+    setSelectedItems(selectedItems);
+    for (let i = 0; i < selectedItems.length; i++) {
+      var tempItem = data.find((item: { id: any; }) => item.id === selectedItems[i]);
+      console.log(tempItem);
+    }
+  }
+  const onSelectedItemsChange_1 = (selectedItems_1) => {
+    setSelectedItems_1(selectedItems_1);
+    for (let i = 0; i < selectedItems_1.length; i++) {
+      var tempItem = data.find((item: { id: any; }) => item.id === selectedItems_1[i]);
+      console.log(tempItem);
+    }
+  }
+ 
   const saveTodo = async () => {
     if (task == "") {
       Alert.alert("Thông báo", "Bạn chưa nhập nội dung công việc");
     } else {
     }
   };
-
-  const ItemRender = ({}) => (
-    <View style={styles.render}>
-      <View style={{ flexDirection: "row" }}>
-            <View >
-              <Avatar rounded source={{ uri: avatar }} size={36} />
-            </View>
-
-            <Text >name1</Text>
-      </View>
-      
-    </View>
-  );
 
 
   return (
@@ -111,7 +127,6 @@ const Add_Todo = () => {
                       onChange={(event, selectedDate) => {
                         setTime_Task(moment(selectedDate));
                         setShow_1(false);
-                        console.log(selectedDate);
                       }}
                     />
                   )}
@@ -138,7 +153,6 @@ const Add_Todo = () => {
                       onChange={(event, selectedDate) => {
                         setDate(moment(selectedDate));
                         setShow(false);
-                        console.log(selectedDate);
                       }}
                     />
                   )}
@@ -156,21 +170,51 @@ const Add_Todo = () => {
 
         <View>
           <Text style={{marginTop:"2%"}}>Nhân viên phụ trách:</Text>
-          <FlatList 
-          data={data_TodoStaff}
-          renderItem={ItemRender}
-          keyExtractor={item => item.id.toString()}
-          >
-          </FlatList>
+          <MultiSelect
+          hideTags
+          items={data_2}
+          uniqueKey="id"
+          onSelectedItemsChange={onSelectedItemsChange}
+          selectedItems={selectedItems}
+          selectText= "Chọn nhân viên phụ trách"
+          searchInputPlaceholderText="Search Items Here..."
+          onChangeInput={(text) => console.log(text)}
+          tagRemoveIconColor="#CCC"
+          tagBorderColor="#CCC"
+          tagTextColor="#CCC"
+          selectedItemTextColor="#FFB200"
+          selectedItemIconColor="#FFB200"
+          itemTextColor="#000"
+          displayKey="name_1"
+          searchInputStyle={{ color: '#CCC', padding: 10 }}
+          submitButtonColor="#f5af19"
+          submitButtonText="Submit"
+        />
         </View>
         <View>
           <Text style={{marginTop:"2%"}}>Người giao việc:</Text>
-          <FlatList 
-          data={data_TodoStaff}
-          renderItem={ItemRender}
-          keyExtractor={item => item.id.toString()}
-          >
-          </FlatList>
+          <MultiSelect
+          hideTags
+          items={data_2}
+          uniqueKey="id"
+          onSelectedItemsChange={onSelectedItemsChange_1}
+          selectedItems={selectedItems_1}
+          selectText= "Chọn người giao việc"
+          searchInputPlaceholderText="Search Items Here..."
+          onChangeInput={(text) => console.log(text)}
+          tagRemoveIconColor="#CCC"
+          tagBorderColor="#CCC"
+          tagTextColor="#CCC"
+          selectedItemTextColor="#FFB200"
+          selectedItemIconColor="#FFB200"
+          itemTextColor="#000"
+          displayKey="name_1"
+          searchInputStyle={{ color: '#CCC', padding: 10 }}
+          submitButtonColor="#f5af19"
+          submitButtonText="Submit"
+        />
+
+          
         </View>
        
       </View>

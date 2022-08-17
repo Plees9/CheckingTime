@@ -22,6 +22,7 @@ const Todo_ListStaff = () => {
   const { allUser } = useSelector<any, any>((state) => state.allUser);
 
   const dispatch = useDispatch();
+  
   useEffect(() => {
     dispatch<any>(loadAlluser());
   }, []);
@@ -36,7 +37,6 @@ const Todo_ListStaff = () => {
         sumWork_1: allUser.array[i].sumWork,
         workDone_1: allUser.array[i].workDone,
       };
-      console.log(object);
       data.push(object);
     }
   }

@@ -111,7 +111,6 @@ const Update_Todo = () => {
                       onChange={(event, selectedDate) => {
                         setTime_Task(moment(selectedDate));
                         setShow_1(false);
-                        console.log(selectedDate);
                       }}
                     />
                   )}
@@ -138,7 +137,6 @@ const Update_Todo = () => {
                       onChange={(event, selectedDate) => {
                         setDate(moment(selectedDate));
                         setShow(false);
-                        console.log(selectedDate);
                       }}
                     />
                   )}

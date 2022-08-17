@@ -44,7 +44,6 @@ const BangCong_NhanVien = () => {
        gender_1: allUser.array[i].gender,
        avatar_1: allUser.array[i].avatar.url,
      };
-     console.log(object);
      data.push(object);
    }
  }

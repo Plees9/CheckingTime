@@ -175,7 +175,6 @@ const FDontu = () => {
                 onChange={(event, selectedDate) => {
                   setDateCreated_Start(moment(selectedDate));
                   setShowCreated_Start(false);
-                  console.log(selectedDate);
                 }}
               />
             )}
@@ -195,7 +194,6 @@ const FDontu = () => {
                 onChange={(event, selectedDate) => {
                   setDateCreated_End(moment(selectedDate));
                   setShowCreated_End(false);
-                  console.log(selectedDate);
                 }}
               />
             )}
@@ -221,7 +219,6 @@ const FDontu = () => {
                 onChange={(event, selectedDate) => {
                   setDateApply_Start(moment(selectedDate));
                   setShowApply_Start(false);
-                  console.log(selectedDate);
                 }}
               />
             )}
@@ -241,7 +238,6 @@ const FDontu = () => {
                 onChange={(event, selectedDate) => {
                   setDateApply_End(moment(selectedDate));
                   setShowApply_End(false);
-                  console.log(selectedDate);
                 }}
               />
             )}
@@ -252,7 +248,7 @@ const FDontu = () => {
         <LinearGradient
           start={{ x: 0, y: 0 }}
           end={{ x: 1, y: 0 }}
-          colors={["#8f73f6", "#b5a4fc"]}
+          colors={["#8f73f6", "#8f73f6"]}
           style={styles.btn2}
         >
           <TouchableOpacity onPress={() => navigation.navigate("Tab Don Tu")}>

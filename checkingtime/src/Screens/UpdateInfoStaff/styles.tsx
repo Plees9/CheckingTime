@@ -153,6 +153,65 @@ const createStyles = () =>
       height: 40,
       fontSize: 14,
     },
+    container: {
+      flex: 1,
+      backgroundColor: "#000000AA",
+      justifyContent: "center",
+      alignItems: "center",
+    },
+    box_button: {
+      width: '100%',
+      flex: 1,
+      flexDirection: "row",
+      alignItems:'center',
+      borderRadius: 8,
+    },
+    confirm_button: {
+      marginHorizontal:10,
+      height: 30,
+      width: 60,
+      justifyContent:'center',
+      borderRadius: 8,
+      backgroundColor: "#716DF2",
+      flex :1,
+    },
+    cancel_button: {
+      marginHorizontal:10,
+      height: 30,
+      width: 60,
+      justifyContent:'center',
+      borderRadius: 8,
+      backgroundColor: "#cccccc",
+      flex :1,
+    },
+    box: {
+      height: 150,
+      width: 280,
+      alignItems: "center",
+      backgroundColor: "#fff",
+      borderRadius: 10,
+    },
+    input_box: {
+      justifyContent :"center",
+      marginTop :15,  
+      fontFamily : FONTS.vanSansLight,
+     fontSize :14,
+  
+      width: '85%',
+      
+  
+    },
+    title: {
+      marginTop: 10, 
+      alignItems: "center",
+      fontSize :16,
+      fontFamily : FONTS.vanSansSemiBoldItalic,
+    },
+    text_button: {
+      alignSelf: "center",
+      fontSize :13,
+      fontFamily : FONTS.vanSansMediumItalic,
+    },
   });
 
 
