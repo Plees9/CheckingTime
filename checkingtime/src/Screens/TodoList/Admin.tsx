@@ -17,7 +17,7 @@ import moment from "moment";
 import DateTimePicker from "@react-native-community/datetimepicker";
 import { useNavigation, useRoute } from "@react-navigation/native";
 import { useDispatch, useSelector } from "react-redux";
-import { loadAllTask, loadAlluser, loadTask } from "../../../redux/action";
+//import { loadAllTask, loadAlluser, loadTask, loadTaskById } from "../../../redux/action";
 import { FlatList } from "react-native-gesture-handler";
 import { AnimatedCircularProgress } from "react-native-circular-progress";
 
@@ -43,12 +43,19 @@ const Admin_Manage = () => {
   const { allUser } = useSelector<any, any>((state) => state.allUser);
 
   const dispatch = useDispatch();
-
   useEffect(() => {
-    dispatch<any>(loadTask());
-  }, []);
+      if (route.params) {
+        if (route.params._id) {
+            console.log(route.params._id)
+            //dispatch<any>(loadTaskById(route.params._id));
+        }
+        if (route.params.name_1) {
+          setUserName(route.params.name_1);
+        }
+      }
+    }, [route]);
   const { task } = useSelector<any, any>((state) => state.task);
-
+  console.log(task + "+++++++++++++")
   let data_2: any = [];
   if (typeof task !== "undefined") {
     for (var i = 0; i < task.tasks.length; i++) {
@@ -63,42 +70,12 @@ const Admin_Manage = () => {
         sumWork_1: task.tasks[i].sumWork,
         workDone_1: task.tasks[i].workDone,
       };
-      console.log(task_user);
+      //console.log(task_user);
       data_2.push(task_user);
     }
   }
-
-  useEffect(() => {
-    if (route.params) {
-      if (route.params._id) {
-        setUserId(route.params._id);
-      }
-      if (route.params.name_1) {
-        setUserName(route.params.name_1);
-      }
-      if (route.params.description) {
-        setDescription(route.params.description);
-      }
-      if (route.params.deadline) {
-        setDeadline(route.params.deadline);
-      }
-      if (route.params.status) {
-        setStatus(route.params.status);
-      }
-      if (route.params.date) {
-        setDate(route.params.date);
-      }
-      if (route.params.manager) {
-        setManager(route.params.manager);
-      }
-      if (route.params.sumWork) {
-         setSumWork(route.params.sumWork);
-         }
-         if (route.params.workDone) {
-         setworkDone(route.params.workDone);
-         }
-    }
-  }, [route]);
+  console.log(data_2)
+ 
 
   const [data_1, setData] = useState(data_2);
 
@@ -174,7 +151,7 @@ const Admin_Manage = () => {
             color="#f49218"
             style={styles.icon}
           ></Icon>
-          <Text style={styles.text}>Your Task List:</Text>
+          <Text style={styles.text}>{userName} Task List:</Text>
         </View>
         <AnimatedCircularProgress
           size={85}

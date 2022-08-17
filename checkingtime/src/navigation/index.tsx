@@ -30,8 +30,7 @@ import Todo_Navigation from "./Todo_List";
 import Add_Todo from '../Screens/TodoList/Add_Todo';
 import Update_Todo from "../Screens/TodoList/Update_Todo";
 import Todo_Staff from "../Screens/TodoList/Todo_Staff";
-
-
+import Staff_Navigation from "./Staff";
 
 import UpdateStaff_Admin from "../Screens/UpdateInFoStaff_NV/UpdateInfoStaff_NV";
 
@@ -167,10 +166,11 @@ const Update_TodoNavigation = () => {
     </Stack.Navigator>
   );
 }
-const Todo_StaffNavigation = () => {
+
+const Staff_ManagerNavigation = () => {
   return (
     <Stack.Navigator screenOptions={{ headerShown: false }}>
-      <Stack.Screen name="Todo_Staff" component={Todo_Staff} />
+      <Stack.Screen name="Staff" component={Staff_Navigation} />
     </Stack.Navigator>
   );
 }
@@ -225,6 +225,12 @@ const SNavigation = () => {
           component={Todo_ListNavigation}
           options={{ headerShown: true }}
         />
+        <Stack.Screen
+          name="Công việc của tôi"
+          component={Staff_ManagerNavigation}
+          options={{ headerShown: true }}
+        />
+
         <Stack.Screen
           name="Thông tin Công Ty"
           component={InfoScreenNavigation}
@@ -301,11 +307,7 @@ const SNavigation = () => {
           component={Update_TodoNavigation}
           options={{ headerShown: true }}
         />
-      <Stack.Screen
-          name="Công việc của tôi"
-          component={Todo_StaffNavigation}
-          options={{ headerShown: true }}
-        />
+     
 
         
       </Stack.Navigator>

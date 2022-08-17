@@ -62,9 +62,6 @@ const Todo_Staff = () => {
     }
   }
  
-
-
- 
   const [data_1, setData] = useState(data_2);
   
   const onChangeValue = (item: { _id: any }, index: any, newValue: boolean) => {
