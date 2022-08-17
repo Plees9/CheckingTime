@@ -31,12 +31,7 @@ const QuanLy = () => {
         </View>
       </View>
       <ScrollView style={styles.scrollview}>
-        <Image
-          style={styles.tinyLogo}
-          source={{
-            uri: "https://media-cdn-v2.laodong.vn/Storage/NewsPortal/2021/2/16/880654/Midu10.jpg",
-          }}
-        />
+        
         <Text style={styles.text1}> Không tìm thấy đơn nào!</Text>
       </ScrollView>
     </View>
