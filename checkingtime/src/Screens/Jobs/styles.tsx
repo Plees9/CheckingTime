@@ -7,8 +7,6 @@ const styles = StyleSheet.create({
     backgroundColor: "#f2f2f2",
   },
   scrollView: {
-    // marginLeft: "3%",
-    // marginRight: "3%",
     marginLeft: "3%",
   },
   text1: {

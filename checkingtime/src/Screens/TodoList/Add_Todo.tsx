@@ -9,6 +9,7 @@ import {
 } from "react-native";
 import React, { useEffect, useMemo, useState } from "react";
 
+
 import createStyles from "./styles";
 import DateTimePicker from "@react-native-community/datetimepicker";
 import moment from "moment";
@@ -19,7 +20,6 @@ import { FlatList } from 'react-native-gesture-handler';
 import { useDispatch, useSelector } from "react-redux";
 import MultiSelect from 'react-native-multiple-select';
 import { loadAlluser } from "../../../redux/action";
-
 
 
 const Add_Todo = () => {
@@ -39,7 +39,9 @@ const Add_Todo = () => {
   const [show_1, setShow_1] = useState(false);
   const { allUser } = useSelector<any, any>((state) => state.allUser);
 
+
   const dispatch = useDispatch();
+    
   
   useEffect(() => {
     dispatch<any>(loadAlluser());
@@ -51,9 +53,12 @@ const Add_Todo = () => {
       let object = {
         id: i + 1,
         name_1: allUser.array[i].name,
-        avatar_1: allUser.array[i].avatar.url,
-        sumWork_1: allUser.array[i].sumWork,
-        workDone_1: allUser.array[i].workDone,
+        description_1: allUser.array[i].description,
+        deadline: moment(allUser.array[i].deadline, "HH:mm, DD/MM/YYYY"),
+        status: allUser.array[i].status,
+        date: moment(new Date(allUser.array[i].date)).format("DD/MM/YYYY"),
+        manager: allUser.array[i].manager,
+        
       };
       console.log(object);
       data.push(object);
@@ -61,24 +66,24 @@ const Add_Todo = () => {
   }
 
   
-  const [data_2, setData_2] = useState(data);
-  const [selectedItems, setSelectedItems] = useState([]); //Danh sách người được chọn
-  const [selectedItems_1, setSelectedItems_1] = useState([]); // nguoi giao viec
- //onSelectedItemsChange 
-  const onSelectedItemsChange = (selectedItems) => {
-    setSelectedItems(selectedItems);
-    for (let i = 0; i < selectedItems.length; i++) {
-      var tempItem = data.find((item: { id: any; }) => item.id === selectedItems[i]);
-      console.log(tempItem);
-    }
-  }
-  const onSelectedItemsChange_1 = (selectedItems_1) => {
-    setSelectedItems_1(selectedItems_1);
-    for (let i = 0; i < selectedItems_1.length; i++) {
-      var tempItem = data.find((item: { id: any; }) => item.id === selectedItems_1[i]);
-      console.log(tempItem);
-    }
-  }
+//   const [data_2, setData_2] = useState(data);
+//   const [selectedItems, setSelectedItems] = useState([]); //Danh sách người được chọn
+//   const [selectedItems_1, setSelectedItems_1] = useState([]); // nguoi giao viec
+//  //onSelectedItemsChange 
+//   const onSelectedItemsChange = (selectedItems) => {
+//     setSelectedItems(selectedItems);
+//     for (let i = 0; i < selectedItems.length; i++) {
+//       var tempItem = data.find((item: { id: any; }) => item.id === selectedItems[i]);
+//       console.log(tempItem);
+//     }
+//   }
+//   const onSelectedItemsChange_1 = (selectedItems_1) => {
+//     setSelectedItems_1(selectedItems_1);
+//     for (let i = 0; i < selectedItems_1.length; i++) {
+//       var tempItem = data.find((item: { id: any; }) => item.id === selectedItems_1[i]);
+//       console.log(tempItem);
+//     }
+//   }
  
   const saveTodo = async () => {
     if (task == "") {
@@ -170,7 +175,7 @@ const Add_Todo = () => {
 
         <View>
           <Text style={{marginTop:"2%"}}>Nhân viên phụ trách:</Text>
-          <MultiSelect
+          {/* <MultiSelect
           hideTags
           items={data_2}
           uniqueKey="id"
@@ -189,11 +194,11 @@ const Add_Todo = () => {
           searchInputStyle={{ color: '#CCC', padding: 10 }}
           submitButtonColor="#f5af19"
           submitButtonText="Submit"
-        />
+        /> */}
         </View>
         <View>
           <Text style={{marginTop:"2%"}}>Người giao việc:</Text>
-          <MultiSelect
+          {/* <MultiSelect
           hideTags
           items={data_2}
           uniqueKey="id"
@@ -212,7 +217,7 @@ const Add_Todo = () => {
           searchInputStyle={{ color: '#CCC', padding: 10 }}
           submitButtonColor="#f5af19"
           submitButtonText="Submit"
-        />
+        /> */}
 
           
         </View>

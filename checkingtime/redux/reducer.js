@@ -397,6 +397,29 @@ state.isUpdated = false ;
           state.loading = false;
           state.error = action.payload;
         },
+        loadTaskManagerRequest: (state) => {
+          state.loading = true;
+        } ,
+        loadTaskManagerSuccess: (state, action) => {
+          state.loading = false;
+          state.taskManager = action.payload;
+        } ,
+        loadTaskManagerFailure: (state, action) => {
+          state.loading = false;
+          state.error = action.payload;
+        } ,
+        loadTaskContributorRequest: (state) => {
+          state.loading = true;
+        },
+        loadTaskContributorSuccess: (state, action) => {
+          state.loading = false;
+          state.taskContributor = action.payload;
+        },
+        loadTaskContributorFailure: (state, action) => {
+          state.loading = false;
+          state.error = action.payload;
+        } ,
+
         clearError: (state) => {
           state.error = null;
         },

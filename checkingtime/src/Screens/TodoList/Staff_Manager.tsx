@@ -1,8 +1,8 @@
 import {
   Text,
-  StyleSheet,
+  
   View,
-  ScrollView,
+  
   Alert,
   SafeAreaView,
   Pressable,
@@ -17,25 +17,16 @@ import moment from "moment";
 import DateTimePicker from "@react-native-community/datetimepicker";
 import { useNavigation } from "@react-navigation/native";
 import { useDispatch, useSelector } from "react-redux";
-import {
-  loadAllTask,
-  loadAlluser,
-  loadTask,
-  loadTaskContributor,
-} from "../../../redux/action";
+import { loadAllTask, loadAlluser, loadTask, loadTaskManager } from "../../../redux/action";
 import { FlatList } from "react-native-gesture-handler";
 import { AnimatedCircularProgress } from "react-native-circular-progress";
 
-const Todo_Staff = () => {
+const Staff_Manager = () => {
   const styles = useMemo(() => createStyles(), []);
   const { user, loading } = useSelector<any, any>((state) => state.auth);
   const navigation = useNavigation<any>();
-  // const [checked, setChecked] = useState(false);
-  const [time_task, setTime_Task] = useState(moment());
-
-  const [sumWork, setSumWork] = useState(10);
-  const [workDone, setworkDone] = useState(0);
-  const [workOvertime, setworkOvertime] = useState(6);
+  
+  const [workDone, setworkDone] = useState(4);
   const [show_1, setShow_1] = useState(false);
   const { allUser } = useSelector<any, any>((state) => state.allUser);
 
@@ -43,39 +34,32 @@ const Todo_Staff = () => {
 
   useEffect(() => {
     dispatch<any>(loadTask());
-    dispatch<any>(loadTaskContributor());
+    dispatch<any>(loadTaskManager());
   }, []);
-
-  const { taskContributor } = useSelector<any, any>((state) => state.task);
-
-  let data_contributor: any = [];
-  if (typeof taskContributor !== "undefined") {
-    for (var i = 0; i < taskContributor.tasks.length; i++) {
+  const { task,taskManager } = useSelector<any, any>((state) => state.task);
+console.log(taskManager);
+  let data_manager: any = [];
+  if (typeof taskManager !== "undefined") {
+    for (var i = 0; i < taskManager.tasks.length; i++) {
       let task_user = {
-        id : i +1,
-        _id: taskContributor.tasks[i]._id,
-        name: taskContributor.tasks[i].name,
-        description: taskContributor.tasks[i].description,
-        deadline: moment(
-          taskContributor.tasks[i].deadline,
-          "HH:mm, DD/MM/YYYY"
-        ),
-        status: taskContributor.tasks[i].status,
-        date: moment(new Date(taskContributor.tasks[i].date)).format(
-          "DD/MM/YYYY"
-        ),
-        manager: taskContributor.tasks[i].manager,
-        checked: false,
+        id : i+1,
+        _id: taskManager.tasks[i]._id + 1,
+        name: taskManager.tasks[i].name,
+        description: taskManager.tasks[i].description,
+        deadline: moment(taskManager.tasks[i].deadline, "HH:mm, DD/MM/YYYY"),
+        status: taskManager.tasks[i].status,
+        date: moment(new Date(taskManager.tasks[i].date)).format("DD/MM/YYYY"),
+        manager: taskManager.tasks[i].manager,
       };
       console.log(task_user);
-      data_contributor.push(task_user);
+      data_manager.push(task_user);
     }
   }
-  const [data_contributor_Staff, setdata_contributor] =
-    useState(data_contributor);
+
+  const [data_manager3, setdata_manager3] = useState(data_manager);
 
   const onChangeValue = (item: { id: any }, index: any, newValue: boolean) => {
-    const newData = data_contributor_Staff.map((newItem: { id: any }) => {
+    const newData = data_manager3.map((newItem: { id: any }) => {
       if (newItem.id == item.id) {
         return {
           ...newItem,
@@ -84,7 +68,7 @@ const Todo_Staff = () => {
       }
       return newItem;
     });
-    setdata_contributor(newData);
+    setdata_manager3(newData);
   };
 
   const ItemRender = ({ item, index }) => (
@@ -145,14 +129,14 @@ const Todo_Staff = () => {
             color="#f49218"
             style={styles.icon}
           ></Icon>
-          <Text style={styles.text}>Your Task List:</Text>
+          <Text style={styles.text}> Quản lý công việc:</Text>
         </View>
         <AnimatedCircularProgress
           size={85}
           width={5}
-          fill={Math.round((workDone / data_contributor.length) * 100)}
+          fill={Math.round((workDone / data_manager.length) * 100)}
           tintColor="#3EC70B"
-          style={{ alignSelf: "center", marginTop: 10 }}
+          style={{ alignSelf: "center", marginTop: 10,  marginBottom: 10 }}
           backgroundColor="#3d5875"
         >
           {() => (
@@ -160,50 +144,29 @@ const Todo_Staff = () => {
               <Text style={{ color: "#3EC70B" }}>
                 {workDone} {""}
               </Text>
-              /
-              <Text style={{ color: "#3d5875" }}>
-                {" "}
-                {data_contributor.length}
-              </Text>
+              /<Text style={{ color: "#3d5875" }}> {data_manager.length}</Text>
             </Text>
           )}
         </AnimatedCircularProgress>
+       
 
         <View style={styles.view1_1}>
           <View style={styles.view1_2}>
-            
-            <Text>Tổng số công việc hôm nay:</Text>
-            <Text>{data_contributor.length}</Text>
+            <Text>Tổng số công việc đã phê duyệt:</Text>
+            <Text>{data_manager.length}</Text>
           </View>
 
           <View style={styles.view1_2}>
-          <View style={{flexDirection:'row'}}>
-              <View style={{backgroundColor:'#3EC70B', borderRadius: 100, height:10, width:10,alignSelf:'center'}}/>
-            <Text style={{marginLeft: 5}}>Công việc đã hoàn thành:</Text>
-            </View>
-            <Text>{workDone}</Text>
-          </View>
-          <View style={styles.view1_2}>
-          <View style={{flexDirection:'row'}}>
-              <View style={{backgroundColor:'#e35b45', borderRadius: 100, height:10, width:10,alignSelf:'center'}}/>
-            <Text style={{marginLeft: 5}}>Công việc đã quá hạn:</Text>
-            </View>
-            <Text>{workDone}</Text>
-          </View>
-          <View style={styles.view1_2}>
-          <View style={{flexDirection:'row'}}>
-              <View style={{backgroundColor:'#3d5875', borderRadius: 100, height:10, width:10,alignSelf:'center'}}/>
-            <Text style={{marginLeft: 5}}>Công việc chưa hoàn thành:</Text>
-            </View>
+            <Text>Công việc đang chờ phê duyệt:</Text>
             <Text>{workDone}</Text>
           </View>
         </View>
         <View style={styles.kengang}></View>
 
         <FlatList
-          data={data_contributor_Staff}
+          data={data_manager3}
           renderItem={ItemRender}
-          keyExtractor={(item) => item.id.toString()}
+          keyExtractor={(item) => item._id}
         ></FlatList>
       </SafeAreaView>
       <View style={styles.btnFab}>
@@ -219,4 +182,4 @@ const Todo_Staff = () => {
   );
 };
 
-export default Todo_Staff;
+export default Staff_Manager;

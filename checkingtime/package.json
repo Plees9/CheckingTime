@@ -32,6 +32,7 @@
     "axios": "^0.27.2",
     "create-react-native-app": "^3.8.0",
     "crypto": "^1.0.1",
+    "deprecated-react-native-prop-types": "^2.2.0",
     "expo": "~45.0.0",
     "expo-app-loading": "~2.0.0",
     "expo-checkbox": "~2.1.0",

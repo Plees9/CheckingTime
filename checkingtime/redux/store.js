@@ -9,6 +9,8 @@ import {
   taskReducer,
   taskAllReducer,
   searchReducer,
+  loadTaskManager,
+  loadTaskContributor
 } from "./reducer";
 
 const store = configureStore({

@@ -384,7 +384,7 @@ const HomeScreen = () => {
           </View>
         </View>
         <View style={{ height: 50, justifyContent: "center" }}>
-          <Text style={{ marginLeft: 10 }}>@Phiên bản 2.0</Text>
+          <Text style={{ marginLeft: "30%" }}>@Phiên bản: beta</Text>
         </View>
       </ScrollView>
       <FAB
