@@ -37,7 +37,7 @@ const Staff_Manager = () => {
     dispatch<any>(loadTaskManager());
   }, []);
   const { task,taskManager } = useSelector<any, any>((state) => state.task);
-console.log(taskManager);
+//console.log(taskManager);
   let data_manager: any = [];
   if (typeof taskManager !== "undefined") {
     for (var i = 0; i < taskManager.tasks.length; i++) {
