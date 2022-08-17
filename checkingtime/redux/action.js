@@ -80,11 +80,10 @@ export const updateDeviceId = (deviceId) => async (dispatch) => {
     });
   }
 };
-export const updateCompanyIp = (comapanyIp) => async (dispatch) => {
+export const updateCompanyIp = (companyIp) => async (dispatch) => {
   try {
     dispatch({ type: "updateCompanyIpRequest" });
-
-    const { data } = await axios.put(`${serverUrl}/company/updatecompanyip`, {comapanyIp});
+    const { data } = await axios.put(`${serverUrl}/company/updatecompanyip`, {companyIp});
     dispatch({ type: "updateCompanyIpSuccess", payload: data.message });
   } catch (error) {
     dispatch({
@@ -358,9 +357,17 @@ export const register = (formData) => async (dispatch) => {
       dispatch({ type: "loadTaskSuccess", payload: data });
     } catch (error) {
       dispatch({ type: "loadTaskFailure", payload: error.response.data.message });
+    };
+  }
+    export const loadTaskById = (_id) => async (dispatch) => {
+      try {
+        dispatch({ type: "loadTaskByIdRequest" });
+        const { data } = await axios.post(`${serverUrl}/user/gettaskbyid`, {_id});
+        dispatch({ type: "loadTaskByIdSuccess", payload: data });
+      } catch (error) {
+        dispatch({ type: "loadTaskByIdFailure", payload: error.response.data.message });
+      }
     }
-  
-};
 
 export const search = (search) => async (dispatch) => {
   try {

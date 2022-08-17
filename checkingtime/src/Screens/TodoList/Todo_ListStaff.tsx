@@ -5,7 +5,7 @@ import { useDispatch, useSelector } from "react-redux";
 import createStyles from "./styles";
 import Icon from "react-native-vector-icons/FontAwesome";
 import { useNavigation } from "@react-navigation/native";
-import { loadAlluser } from "../../../redux/action";
+import { loadAlluser, loadTaskById } from "../../../redux/action";
 import { FlatList } from "react-native-gesture-handler";
 
 const Todo_ListStaff = () => {
@@ -32,17 +32,18 @@ const Todo_ListStaff = () => {
       let strAvatar = allUser.array[i].avatar.url;
       let object = {
         id: i + 1,
+        _id: allUser.array[i]._id,
         name_1: allUser.array[i].name,
         avatar_1: allUser.array[i].avatar.url,
-        sumWork_1: allUser.array[i].sumWork,
-        workDone_1: allUser.array[i].workDone,
+        // sumWork_1: allUser.array[i].sumWork,
+        // workDone_1: allUser.array[i].workDone,
       };
       data.push(object);
     }
-  }
-  const ItemRender = ({ id, name_1, avatar_1 }) => (
+  }  const ItemRender = ({ id,_id, name_1, avatar_1 }) => (
     <View>
-      <TouchableOpacity onPress={() => navigation.navigate("Công việc của tôi")}>
+      <TouchableOpacity onPress={() => {dispatch<any>(loadTaskById(_id))
+        navigation.navigate("Công việc của nhân viên", { _id, name_1})}}>
       <View style={styles.view_staff2}>
         <View style={styles.avatar_staff}>
           <Avatar rounded source={{ uri: avatar_1 }} size={36} />
@@ -56,7 +57,7 @@ const Todo_ListStaff = () => {
             name="angle-double-right"
             size={34}
             color="#f49218"
-            onPress={() => navigation.navigate("Công việc của tôi")}
+            onPress={() => navigation.navigate("Công việc của nhân viên")}
           />
         </View>
       </View>
@@ -74,6 +75,7 @@ const Todo_ListStaff = () => {
           renderItem={({ item }) => (
             <ItemRender
               id={item.id}
+              _id={item._id}
               name_1={item.name_1}
               avatar_1={item.avatar_1}
             />

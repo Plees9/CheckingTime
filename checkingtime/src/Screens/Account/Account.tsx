@@ -63,7 +63,6 @@ const Account = () => {
     await dispatch<any>(updateDeviceId(deviceId))
   }
   const companyIpHandler = async() => {
-    console.log(networkIp)
     await dispatch<any>(updateCompanyIp(networkIp))
   }
   const { message, error } = useSelector<any, any>((state) => state.message)
