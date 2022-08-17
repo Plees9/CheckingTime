@@ -17,7 +17,7 @@ import { IconButton } from "react-native-paper";
 import styles from "./styles";
 import TodoModal from "../../component/TodoModal";
 import { AnimatedCircularProgress } from "react-native-circular-progress"
-import { checking, loadTask, loadUser, ranking } from "../../../redux/action";
+import { checking, loadTask, loadTimesheetFilter, loadUser, ranking } from "../../../redux/action";
 import { FAB, Input } from "react-native-elements";
 import { useDispatch, useSelector } from "react-redux";
 import { getmyrank, loadTimesheet, loadCompany } from "../../../redux/action";
@@ -49,7 +49,7 @@ publicIP()
 })
   const { message, error } = useSelector<any, any>((state) => state.timesheet)
   const dispatch = useDispatch();
-  
+  let timeLate;
   let checkout;
   let checkin 
   let numberstr;
@@ -71,6 +71,7 @@ publicIP()
   useEffect(() => {
     dispatch<any>(loadCompany());
     dispatch<any>(loadTimesheet());
+    dispatch<any>(loadTimesheetFilter());
     dispatch<any>(getmyrank());
     dispatch<any>(ranking());
   }, [dispatch]);
@@ -81,7 +82,12 @@ publicIP()
   );
   const maxPoint = 25;
   const currentProcess = 20.5;
-  const timeLate = 2;
+
+  const { timesheetFilter } = useSelector<any, any>((state) => state.timesheet);
+  console.log(timesheetFilter);
+  if (typeof timesheetFilter !== "undefined" && timesheetFilter !== null) {
+    timeLate = timesheetFilter.Object.checkinLate.number;
+  }
   if (
     typeof timesheet !== "undefined" &&
     typeof number !== "undefined" &&
@@ -164,7 +170,7 @@ publicIP()
       <ScrollView
         style={{ flex: 1 }}
         refreshControl={
-          <RefreshControl  colors={["#8f73f6", "#8f73f6"]} refreshing={refreshing} onRefresh={onRefresh} />
+          <RefreshControl  colors={["#8f73f6", "#b5a4fc"]} refreshing={refreshing} onRefresh={onRefresh} />
         }
       >
         <View style={{ flexDirection: "row", justifyContent: "space-between" }}>
@@ -183,7 +189,7 @@ publicIP()
           <LinearGradient
             start={{ x: 0, y: 0 }}
             end={{ x: 1, y: 0 }}
-            colors={["#8f73f6", "#8f73f6"]}
+            colors={["#8f73f6", "#b5a4fc"]}
             style={styles.icon2}
           >
             <View style={styles.box_check}>

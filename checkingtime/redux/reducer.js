@@ -25,6 +25,17 @@ export const timesheetReducer = createReducer({}, {
   timesheetRequest: (state) => {
     state.loading = true;
   },
+  timesheetFilterRequest: (state) => {
+    state.loading = true;
+  } ,
+  timesheetFilterSuccess: (state, action) => {
+    state.loading = false;
+    state.timesheetFilter = action.payload;
+  } ,
+  timesheetFilterFailure: (state, action) => {
+    state.loading = false;
+    state.error = action.payload;
+  },
   timesheetSuccess: (state, action) => {
     state.loading = false;
     state.timesheet = action.payload;
@@ -344,3 +355,20 @@ state.isUpdated = false ;
         },
       }
     );
+
+    export const timesheetFilterReducer = createReducer(
+      {},
+      {
+        loadTimesheetFilterRequest: (state) => {
+          state.loading = true;
+        } ,
+        loadTimesheetFilterSuccess: (state, action) => {
+          state.loading = false;
+          state.timesheetDay = action.payload;
+        } ,
+        loadTimesheetFilterFailure: (state, action) => {
+          state.loading = false;
+          state.error = action.payload;
+        }
+      }
+      );

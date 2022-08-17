@@ -64,8 +64,21 @@ const Todo_Staff = () => {
       data_2.push(task_user);
     }
   }
+  const [data_1, setData] = useState(data_2);
+  const onChangeValue = (item: { _id: any }, index: any, newValue: boolean) => {
+    const newData = data_1.map((newItem: { _id: any }) => {
+      if (newItem._id == item._id) {
+        return {
+          ...newItem,
+          selected: newValue,
+        };
+      }
+      return newItem;
+    });
+    setData(newData);
+  };
 
-  const ItemRender = ({}) => (
+  const ItemRender = (item , index) => (
     <View style={styles.render}>
       <View
         style={{ flexDirection: "row", backgroundColor: "#f2f2f2", flex: 1 }}
@@ -197,3 +210,7 @@ const Todo_Staff = () => {
 };
 
 export default Todo_Staff;
+function onChangeValue(item: any, index: any, newValue: boolean): void {
+  throw new Error("Function not implemented.");
+}
+

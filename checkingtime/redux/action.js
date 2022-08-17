@@ -326,3 +326,14 @@ export const search = (search) => async (dispatch) => {
     });
   }
 }
+
+export const loadTimesheetFilter = () => async (dispatch) => {
+  try {
+    dispatch({ type: "timesheetFilterRequest" });
+
+    const { data } = await axios.get(`${serverUrl}/user/filtertimesheetdatabytoday`);
+    dispatch({ type: "timesheetFilterSuccess", payload: data });
+  } catch (error) {
+    dispatch({ type: "timesheetFilterFailure", payload: error.response.data.message });
+  }
+}
