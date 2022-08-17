@@ -121,14 +121,8 @@ const UpdateStaff = () => {
         </Avatar>
       </View>
       <View style={styles.textuserName}>
-        <TextInput
-          placeholder={"Họ và tên"}
-          style={styles.text23_1}
-          returnKeyType="done"
-          value={userName}
-          secureTextEntry={false}
-          onChangeText={setUserName}
-        ></TextInput>
+        <Text style={styles.text23_1}>{userName}</Text>
+        
       </View>
       <View>
         {/* Email */}

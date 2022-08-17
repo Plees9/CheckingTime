@@ -171,7 +171,7 @@ loadView()
     gender_1: any ,
     avatar_1: any
   ) => {
-    navigation.navigate("UpdateStaff_Admin", { _id, name_1,email_1, role_1, typeOfEmployee_1, contractStatus_1, privilege_1, date_1, numberPhone_1, avatar_1 })
+    navigation.navigate("Cập nhật thông tin nhân viên", { _id, name_1,email_1, role_1, typeOfEmployee_1, contractStatus_1, privilege_1, date_1, numberPhone_1, avatar_1 })
   };
   const ItemRender = ({
     id ,

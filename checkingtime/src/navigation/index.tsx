@@ -269,7 +269,7 @@ const SNavigation = () => {
         options={{ headerShown: true }}
       />
       <Stack.Screen
-        name="Cập nhật thông tin nhân viên"
+        name="Cập nhật thông tin cá nhân"
         component={UpdateStaffNavigation}
         options={{ headerShown: true }}
       />
@@ -289,7 +289,7 @@ const SNavigation = () => {
          options={{ headerShown: true}}
         />
         <Stack.Screen
-         name="UpdateStaff_Admin"
+         name="Cập nhật thông tin nhân viên"
          component={UpdateStaff_Admin}
          options={{ headerShown: true}}
         />
