@@ -97,10 +97,9 @@ const styles = StyleSheet.create({
     marginBottom: 5,
   },
   view: {
-    flexDirection: "column",
     marginTop: 20,
     width: "94%",
-    height: "50%",
+    height: 410,
     backgroundColor: "#FFFFFF",
     marginHorizontal: 10,
 

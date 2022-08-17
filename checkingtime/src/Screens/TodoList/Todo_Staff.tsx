@@ -21,7 +21,6 @@ import { loadAllTask, loadAlluser, loadTask } from "../../../redux/action";
 import { FlatList } from "react-native-gesture-handler";
 import { AnimatedCircularProgress } from "react-native-circular-progress";
 
-
 const Todo_Staff = () => {
   const styles = useMemo(() => createStyles(), []);
   const { user, loading } = useSelector<any, any>((state) => state.auth);
@@ -29,18 +28,14 @@ const Todo_Staff = () => {
   const [checked, setChecked] = useState(false);
   const [time_task, setTime_Task] = useState(moment());
 
-  
   const [sumWork, setSumWork] = useState(10);
-  const [workDone, setworkDone] = useState(4);
+  const [workDone, setworkDone] = useState(0);
   const [workOvertime, setworkOvertime] = useState(6);
   const [show_1, setShow_1] = useState(false);
   const { allUser } = useSelector<any, any>((state) => state.allUser);
 
   const dispatch = useDispatch();
-  useEffect(() => {
-    dispatch<any>(loadAlluser());
-  }, []);
-  
+
   useEffect(() => {
     dispatch<any>(loadTask());
   }, []);
@@ -49,8 +44,8 @@ const Todo_Staff = () => {
   let data_2: any = [];
   if (typeof task !== "undefined") {
     for (var i = 0; i < task.tasks.length; i++) {
-      
       let task_user = {
+        id : i +1,
         _id: task.tasks[i]._id,
         name: task.tasks[i].name,
         description: task.tasks[i].description,
@@ -59,16 +54,16 @@ const Todo_Staff = () => {
         date: moment(new Date(task.tasks[i].date)).format("DD/MM/YYYY"),
         manager: task.tasks[i].manager,
       };
-      data_2.push(task);
+      console.log(task_user);
+      data_2.push(task_user);
     }
   }
 
- 
   const [data_1, setData] = useState(data_2);
-  
-  const onChangeValue = (item: { _id: any }, index: any, newValue: boolean) => {
-    const newData = data_1.map((newItem: { _id: any }) => {
-      if (newItem._id == item._id) {
+
+  const onChangeValue = (item: { id: any }, index: any, newValue: boolean) => {
+    const newData = data_1.map((newItem: { id: any }) => {
+      if (newItem.id == item.id) {
         return {
           ...newItem,
           selected: newValue,
@@ -93,25 +88,22 @@ const Todo_Staff = () => {
               onValueChange={(newValue) => onChangeValue(item, index, newValue)}
             ></CheckBox>
           </View>
-
           <View style={styles.colomn1}>
             <Text style={styles.task}>{item.name}</Text>
             <View style={styles.textTime}>
-              <Pressable onPress={() => setShow_1(true)}>
+              <Pressable>
                 <View
                   style={{ justifyContent: "center", alignContent: "center" }}
                 >
-                  <Text>{moment(item.deadline).format("HH:mm, DD/MM/YYYY")}</Text>
+                  <Text>
+                    {moment(item.deadline).format("HH:mm, DD/MM/YYYY")}
+                  </Text>
                   {show_1 && (
                     <DateTimePicker
                       value={new Date(item.deadline.format("YYYY/MM/DD"))}
                       mode={"time"}
                       display="default"
                       is24Hour={true}
-                      onChange={(event, selectedDate) => {
-                        setTime_Task(moment(selectedDate));
-                        setShow_1(false);
-                      }}
                     />
                   )}
                 </View>
@@ -153,25 +145,40 @@ const Todo_Staff = () => {
           {() => (
             <Text style={styles.points}>
               <Text style={{ color: "#3EC70B" }}>
-                {" "}
                 {workDone} {""}
               </Text>
               /<Text style={{ color: "#3d5875" }}> {data_2.length}</Text>
             </Text>
           )}
         </AnimatedCircularProgress>
-        <View>
-          <View style={styles.note_staff} />
-        </View>
 
         <View style={styles.view1_1}>
           <View style={styles.view1_2}>
+            
             <Text>Tổng số công việc hôm nay:</Text>
+            
             <Text>{data_2.length}</Text>
           </View>
 
           <View style={styles.view1_2}>
-            <Text>Công việc đã hoàn thành:</Text>
+          <View style={{flexDirection:'row'}}>
+              <View style={{backgroundColor:'#3EC70B', borderRadius: 100, height:10, width:10,alignSelf:'center'}}/>
+            <Text style={{marginLeft: 5}}>Công việc đã hoàn thành:</Text>
+            </View>
+            <Text>{workDone}</Text>
+          </View>
+          <View style={styles.view1_2}>
+          <View style={{flexDirection:'row'}}>
+              <View style={{backgroundColor:'#e35b45', borderRadius: 100, height:10, width:10,alignSelf:'center'}}/>
+            <Text style={{marginLeft: 5}}>Công việc đã quá hạn:</Text>
+            </View>
+            <Text>{workDone}</Text>
+          </View>
+          <View style={styles.view1_2}>
+          <View style={{flexDirection:'row'}}>
+              <View style={{backgroundColor:'#3d5875', borderRadius: 100, height:10, width:10,alignSelf:'center'}}/>
+            <Text style={{marginLeft: 5}}>Công việc chưa hoàn thành:</Text>
+            </View>
             <Text>{workDone}</Text>
           </View>
         </View>
@@ -180,7 +187,7 @@ const Todo_Staff = () => {
         <FlatList
           data={data_1}
           renderItem={ItemRender}
-          keyExtractor={(item) => item._id}
+          keyExtractor={(item) => item.id}
         ></FlatList>
       </SafeAreaView>
       <View style={styles.btnFab}>

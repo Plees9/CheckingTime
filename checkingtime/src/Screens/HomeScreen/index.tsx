@@ -12,45 +12,53 @@ import {
 } from "react-native";
 import { Avatar } from "@rneui/themed";
 import Icon from "react-native-vector-icons/FontAwesome";
-import Icon1 from "react-native-vector-icons/Ionicons"
+import Icon1 from "react-native-vector-icons/Ionicons";
 import { IconButton } from "react-native-paper";
 import styles from "./styles";
 import TodoModal from "../../component/TodoModal";
-import { AnimatedCircularProgress } from "react-native-circular-progress"
-import { checking, loadTask, loadUser, ranking } from "../../../redux/action";
+import { AnimatedCircularProgress } from "react-native-circular-progress";
+import {
+  checking,
+  loadTask,
+  loadTimesheetFilter,
+  loadTimesheetPoint,
+  loadUser,
+  ranking,
+} from "../../../redux/action";
 import { FAB, Input } from "react-native-elements";
 import { useDispatch, useSelector } from "react-redux";
 import { getmyrank, loadTimesheet, loadCompany } from "../../../redux/action";
 import { LinearGradient } from "expo-linear-gradient";
 
-
-import publicIP from 'react-native-public-ip';
-import * as Device from 'expo-device';
+import publicIP from "react-native-public-ip";
+import * as Device from "expo-device";
 import moment from "moment";
 const wait = (timeout: number | undefined) => {
   return new Promise((resolve) => setTimeout(resolve, timeout));
 };
 const HomeScreen = () => {
-const { user } = useSelector<any, any>((state) => state.auth);
-const [networkIp, setNetworkIp] = useState("")
-let deviceId : any
-if (typeof user != undefined) {
-  deviceId= Device.deviceName + user.userId + Device.modelName
-}
-publicIP()
-.then((ip: React.SetStateAction<string>) => {   
-  // '47.122.71.234'
-  setNetworkIp(ip)
-})
-.catch((error: any) => {
-
-  // 'Unable to get IP address.'
-})
-  const { message, error } = useSelector<any, any>((state) => state.timesheet)
+  const { user } = useSelector<any, any>((state) => state.auth);
+  const [networkIp, setNetworkIp] = useState("");
+  const [processBoard, setProcessBoard] = useState(0);
+  let deviceId: any;
+  if (typeof user != undefined) {
+    deviceId = Device.deviceName + user.userId + Device.modelName;
+  }
+  publicIP()
+    .then((ip: React.SetStateAction<string>) => {
+      // '47.122.71.234'
+      setNetworkIp(ip);
+    })
+    .catch((error: any) => {
+      // 'Unable to get IP address.'
+    });
+  const { message, error } = useSelector<any, any>((state) => state.timesheet);
   const dispatch = useDispatch();
-  
+  let actualPoint: any;
+  let maxPoint: any;
+  let timeLate;
   let checkout;
-  let checkin 
+  let checkin;
   let numberstr;
   let avatar1;
   let userName1;
@@ -70,54 +78,62 @@ publicIP()
   useEffect(() => {
     dispatch<any>(loadCompany());
     dispatch<any>(loadTimesheet());
+    dispatch<any>(loadTimesheetFilter());
     dispatch<any>(getmyrank());
     dispatch<any>(ranking());
+    dispatch<any>(loadTimesheetPoint());
   }, [dispatch]);
   const navigation = useNavigation<any>();
-  const [showTodo, setShowTodo] = useState(false);
   const { timesheet, number, array } = useSelector<any, any>(
     (state) => state.timesheet
   );
-  const maxPoint = 25;
-  const currentProcess = 20.5;
-  const timeLate = 2;
+
+  const { timesheetFilter } = useSelector<any, any>((state) => state.timesheet);
+  if (typeof timesheetFilter !== "undefined" && timesheetFilter !== null) {
+    timeLate = timesheetFilter.Object.checkinLate.number;
+  }
+
+  const { timesheetPoint } = useSelector<any, any>((state) => state.timesheet);
+  if (typeof timesheetPoint !== "undefined" && timesheetPoint !== null) {
+    actualPoint = timesheetPoint.point.actualPoint;
+    maxPoint = timesheetPoint.point.maxPoint;
+  }
+
   if (
     typeof timesheet !== "undefined" &&
     typeof number !== "undefined" &&
     timesheet !== null &&
-    number !== null 
+    number !== null
   ) {
     checkin = timesheet.Object.checkinTime;
     checkout = timesheet.Object.checkoutTime;
     numberstr = number.number;
   }
-  if (
-  typeof array !== "undefined" &&
-  array !== null ) {
+  if (typeof array !== "undefined" && array !== null) {
     if (typeof array.array[0] !== "undefined") {
       avatar1 = array.array[0].avatar.url;
       userName1 = array.array[0].name;
       checkin1 = array.array[0].checkinTime;
-     }
+    }
     if (typeof array.array[1] !== "undefined") {
       avatar2 = array.array[1].avatar.url;
       userName2 = array.array[1].name;
       checkin2 = array.array[1].checkinTime;
     }
     if (typeof array.array[2] !== "undefined") {
-    avatar3 = array.array[2].avatar.url;
-    userName3 = array.array[2].name;
-    checkin3 = array.array[2].checkinTime;
+      avatar3 = array.array[2].avatar.url;
+      userName3 = array.array[2].name;
+      checkin3 = array.array[2].checkinTime;
     }
     if (typeof array.array[3] !== "undefined") {
-    avatar4 = array.array[3].avatar.url;
-    userName4 = array.array[3].name;
-    checkin4 = array.array[3].checkinTime;
+      avatar4 = array.array[3].avatar.url;
+      userName4 = array.array[3].name;
+      checkin4 = array.array[3].checkinTime;
     }
     if (typeof array.array[4] !== "undefined") {
-    avatar5 = array.array[4].avatar.url;
-    userName5 = array.array[4].name;
-    checkin5 = array.array[4].checkinTime;
+      avatar5 = array.array[4].avatar.url;
+      userName5 = array.array[4].name;
+      checkin5 = array.array[4].checkinTime;
     }
   }
   const [userName, setUserName] = useState(user.name);
@@ -127,6 +143,14 @@ publicIP()
     navigation.navigate("Thông tin Công Ty");
   };
   useEffect(() => {
+    if (
+      typeof actualPoint !== "undefined" &&
+      actualPoint !== null &&
+      maxPoint !== "undefined" &&
+      maxPoint !== null
+    ) {
+      setProcessBoard((actualPoint / maxPoint) * 100);
+    }
     if (message) {
       alert(message);
       dispatch({ type: "clearMessage" });
@@ -134,7 +158,7 @@ publicIP()
     if (error) {
       alert(error);
       dispatch({ type: "clearError" });
-     }
+    }
   }, [alert, dispatch, error, message]);
   const pressHandler = async () => {
     await dispatch<any>(checking(networkIp, deviceId));
@@ -142,28 +166,33 @@ publicIP()
     dispatch<any>(getmyrank());
     dispatch<any>(ranking());
 
-   //show toast android and ios
+    //show toast android and ios
     if (Platform.OS === "android") {
-      ToastAndroid.show( userName + " " + "đã chấm công!", ToastAndroid.SHORT);
+      ToastAndroid.show(userName + " " + "đã chấm công!", ToastAndroid.SHORT);
     } else {
-      Alert.alert( userName + " " + "đã chấm công!");
+      Alert.alert(userName + " " + "đã chấm công!");
     }
   };
   const onRefresh = React.useCallback(() => {
     setRefreshing(true);
-    wait(2000).then(() => {setRefreshing(false);
+    wait(2000).then(() => {
+      setRefreshing(false);
       dispatch<any>(loadTimesheet());
       dispatch<any>(getmyrank());
-      dispatch<any>(ranking());});
+      dispatch<any>(ranking());
+    });
   }, []);
-  
 
   return (
     <View style={styles.container}>
       <ScrollView
         style={{ flex: 1 }}
         refreshControl={
-          <RefreshControl  colors={["#8f73f6", "#b5a4fc"]} refreshing={refreshing} onRefresh={onRefresh} />
+          <RefreshControl
+            colors={["#8f73f6", "#8f73f6"]}
+            refreshing={refreshing}
+            onRefresh={onRefresh}
+          />
         }
       >
         <View style={{ flexDirection: "row", justifyContent: "space-between" }}>
@@ -176,13 +205,13 @@ publicIP()
               </View>
             </View>
           </TouchableOpacity>
-          <Icon name='eye' />
+          <Icon name="eye" />
         </View>
         <View style={{ alignItems: "flex-start", flexDirection: "row" }}>
           <LinearGradient
             start={{ x: 0, y: 0 }}
             end={{ x: 1, y: 0 }}
-            colors={["#8f73f6", "#b5a4fc"]}
+            colors={["#8f73f6", "#8f73f6"]}
             style={styles.icon2}
           >
             <View style={styles.box_check}>
@@ -203,26 +232,26 @@ publicIP()
                       style={styles.boder}
                     />
 
-                  <Text style={styles.text2}>Checkin: </Text>
+                    <Text style={styles.text2}>Checkin: </Text>
+                  </View>
+                  <View style={{ justifyContent: "flex-end", flex: 1 }}>
+                    <Text style={styles.text4}>{checkin}</Text>
+                  </View>
                 </View>
-                <View style={{ justifyContent: "flex-end", flex: 1 }}>
-                  <Text style={styles.text4}>{checkin}</Text>
-                </View>
-              </View>
-              <View style={styles.textIcon23}>
-                <View
-                  style={{
-                    flexDirection: "row",
-                    alignSelf: "flex-end",
-                    flex: 1,
-                  }}
-                >
-                  <Icon1
-                    name="log-out-outline"
-                    size={13}
-                    color="#8f73f6"
-                    style={styles.boder}
-                  />
+                <View style={styles.textIcon23}>
+                  <View
+                    style={{
+                      flexDirection: "row",
+                      alignSelf: "flex-end",
+                      flex: 1,
+                    }}
+                  >
+                    <Icon1
+                      name="log-out-outline"
+                      size={13}
+                      color="#8f73f6"
+                      style={styles.boder}
+                    />
 
                     <Text style={styles.text2}>Checkout:</Text>
                   </View>
@@ -255,35 +284,32 @@ publicIP()
               </View>
             </View>
           </LinearGradient>
-          <View
-            
-            style={styles.box_job}
-          >
+          <View style={styles.box_job}>
             <View
               style={{
                 marginTop: 10,
                 height: 180,
-                
               }}
             >
               <Text style={styles.title_job}>Công tháng</Text>
-              
+
               <AnimatedCircularProgress
-                  size={85}
-                  width={5}
-                  fill={Math.round((currentProcess / maxPoint) * 100)}
-                  tintColor="#8f73f6"
-                  style={{alignSelf:'center', marginTop: 10}}
-                  backgroundColor="#3d5875"
-                >{() => (
+                size={85}
+                width={5}
+                fill={processBoard}
+                tintColor="#6cc8f1"
+                style={{ alignSelf: "center", marginTop: 10 }}
+                backgroundColor="#3d5875"
+              >
+                {() => (
                   <Text style={styles.points}>
-                    {currentProcess}/{maxPoint}
+                    {actualPoint} / {maxPoint}
                   </Text>
                 )}
               </AnimatedCircularProgress>
-              <View style={{marginTop: 10}}>
-              <Text style={styles.text_late}>{timeLate} lần đi muộn !</Text>
-            </View>
+              <View style={{ marginTop: 10 }}>
+                <Text style={styles.text_late}>{timeLate} lần đi muộn !</Text>
+              </View>
             </View>
           </View>
         </View>
@@ -301,10 +327,11 @@ publicIP()
             </View>
           </TouchableOpacity>
 
-          <TouchableOpacity onPress={() => navigation.navigate("Công việc của tôi")}>
-
+          <TouchableOpacity
+            onPress={() => navigation.navigate("Công việc của tôi")}
+          >
             <View style={styles.btn1}>
-            <Icon
+              <Icon
                 name="clipboard"
                 size={20}
                 color="#8f73f6"
@@ -317,9 +344,7 @@ publicIP()
 
         <View style={styles.view}>
           <View style={styles.row_rank}>
-          <Text style={styles.text7}>Top 5 hôm nay</Text>
-
-
+            <Text style={styles.text7}>Top 5 hôm nay</Text>
           </View>
 
           <View style={styles.row1}>
@@ -358,6 +383,9 @@ publicIP()
             <Text style={styles.checkin2}>{checkin5}</Text>
           </View>
         </View>
+        <View style={{ height: 50, justifyContent: "center" }}>
+          <Text style={{ marginLeft: 10 }}>@Phiên bản 2.0</Text>
+        </View>
       </ScrollView>
       <FAB
         title="Chấm công"
@@ -367,7 +395,6 @@ publicIP()
         buttonStyle={styles.fab}
         onPress={pressHandler}
       />
-      
     </View>
   );
 };

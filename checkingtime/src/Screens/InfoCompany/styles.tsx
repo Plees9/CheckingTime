@@ -30,14 +30,14 @@ const createStyles = () =>
     btnForgot: {
       fontWeight: "200",
       borderRadius: 10,
-      backgroundColor: "#FFFFFF",
+      backgroundColor: "#716DF2",
       alignItems: "center",
       margin: 15,
       flex: 1,
     },
     textend: {
       textAlign: "center",
-      color: "#FEB139",
+      color: "#fff",
       padding: 5,
       fontFamily: FONTS.vanSansMedium,
     },

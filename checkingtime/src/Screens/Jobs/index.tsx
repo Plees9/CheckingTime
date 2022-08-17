@@ -25,7 +25,7 @@ const Jobs = () => {
           onPress={() => navigation.navigate("Công việc của tôi")}
         >
           <View style={{ alignContent: "center" }}>
-            <IconButton icon="book" color="#f49218" size={50} />
+            <IconButton icon="book" color="#716DF2" size={50} />
           </View>
           <View style={styles.viewText}>
             <Text style={styles.text1}>Công việc của tôi</Text>
@@ -36,7 +36,7 @@ const Jobs = () => {
           onPress={() => navigation.navigate("Công việc")}
         >
           <View style={{ alignContent: "center" }}>
-            <IconButton icon="clipboard-list" color="#f49218" size={50} />
+            <IconButton icon="clipboard-list" color="#716DF2" size={50} />
           </View>
           <View style={styles.viewText}>
             <Text style={styles.text1}>Quản lý công việc</Text>

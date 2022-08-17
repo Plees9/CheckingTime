@@ -7,6 +7,8 @@ import {
   timesheetReducer,
   allReducer,
   taskReducer,
+  taskAllReducer,
+  searchReducer,
 } from "./reducer";
 
 const store = configureStore({
@@ -15,9 +17,10 @@ const store = configureStore({
     company: companyReducer,
     message: messageReducer,
     password: passwordReducer,
-    timesheet: timesheetReducer ,   
+    timesheet: timesheetReducer,   
     allUser: allReducer,
     task: taskReducer,
+    search: searchReducer,
   },
 });
 
