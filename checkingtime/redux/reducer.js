@@ -371,6 +371,11 @@ state.isUpdated = false ;
 
           state.task = action.payload;
         },
+        loadTaskByIdReset: (state, action) => {
+          state.loading = false;
+
+          state.task = null;
+        },
         loadTaskByIdFailure: (state, action) => {
           state.loading = false;
           state.error = action.payload;

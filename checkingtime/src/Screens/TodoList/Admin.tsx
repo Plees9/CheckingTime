@@ -6,6 +6,7 @@ import {
     Alert,
     SafeAreaView,
     Pressable,
+    ActivityIndicator,
   } from "react-native";
   import React, { useEffect, useMemo, useState } from "react";
   import createStyles from "./styles";
@@ -29,37 +30,31 @@ import {
     const [time_task, setTime_Task] = useState(moment());
   
     const [show_1, setShow_1] = useState(false);
-  
     const route = useRoute();
-    const [userId, setUserId] = useState("")
+    const {task} = useSelector<any, any>(state => state.task)
      const [userName, setUserName] = useState("")
      const [description, setDescription] = useState("")
      const [deadline, setDeadline] = useState("")
      const [date, setDate] = useState("")
      const [sumWork, setSumWork] = useState("")
      const [workDone, setworkDone] = useState("")
-     
-  
-    const { allUser } = useSelector<any, any>((state) => state.allUser);
-  
     const dispatch = useDispatch();
     useEffect(() => {
         if (route.params) {
-          if (route.params._id) {
-              console.log(route.params._id)
-              //dispatch<any>(loadTaskById(route.params._id));
-          }
+            if (route.params._id) {
+                dispatch<any>(loadTaskById(route.params._id));
+              }
           if (route.params.name_1) {
             setUserName(route.params.name_1);
           }
         }
       }, [route]);
-    const { task } = useSelector<any, any>((state) => state.task);
-    console.log(task + "+++++++++++++")
     let data_2: any = [];
-    if (typeof task !== "undefined") {
+    const loadView = () => {
+    if (typeof task !== "undefined" && task !== null) {
       for (var i = 0; i < task.tasks.length; i++) {
         let task_user = {
+            id: i+1 ,
           _id: task.tasks[i]._id,
           name: task.tasks[i].name,
           description: task.tasks[i].description,
@@ -74,9 +69,8 @@ import {
         data_2.push(task_user);
       }
     }
-    console.log(data_2)
-   
-  
+}
+    loadView()
     const [data_1, setData] = useState(data_2);
   
     const onChangeValue = (item: { _id: any }, index: any, newValue: boolean) => {
@@ -140,7 +134,22 @@ import {
         </View>
       </View>
     );
-  
+    useEffect(() => {
+        dispatch<any>(loadAlluser())
+      }, [dispatch]);
+    if (task == null) {
+        return (
+        <View
+            style={{
+                backgroundColor: "#fff",
+                flex: 1,
+                justifyContent: "center",
+                alignItems: "center",
+            }}
+        >
+            <ActivityIndicator animating={true} size={100} color="#706df2" />
+        </View>)
+    }
     return (
       <View>
         <SafeAreaView style={styles.view}>
@@ -189,7 +198,7 @@ import {
           <View style={styles.kengang}></View>
   
           <FlatList
-            data={data_1}
+            data={data_2}
             renderItem={ItemRender}
             keyExtractor={(item) => item._id}
           ></FlatList>
