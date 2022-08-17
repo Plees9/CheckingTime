@@ -203,14 +203,7 @@ const createStyles = () =>
       fontFamily: FONTS.vanSansMediumItalic,
       fontSize: 15,
     },
-    note_staff:{
-      marginTop:"2%",
-      backgroundColor: "#f2f2",
-      borderRadius:10,
-      width:10,
-      height:10,
 
-    },
 
 
   });

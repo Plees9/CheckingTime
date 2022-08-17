@@ -25,6 +25,28 @@ export const timesheetReducer = createReducer({}, {
   timesheetRequest: (state) => {
     state.loading = true;
   },
+  timesheetFilterRequest: (state) => {
+    state.loading = true;
+  } ,
+  timesheetFilterSuccess: (state, action) => {
+    state.loading = false;
+    state.timesheetFilter = action.payload;
+  } ,
+  timesheetFilterFailure: (state, action) => {
+    state.loading = false;
+    state.error = action.payload;
+  },
+  timesheetPointRequest: (state) => {
+    state.loading = true;
+  } ,
+  timesheetPointSuccess: (state, action) => {
+    state.loading = false;
+    state.timesheetPoint = action.payload;
+  } ,
+  timesheetPointFailure: (state, action) => {
+    state.loading = false;
+    state.error = action.payload;
+  },
   timesheetSuccess: (state, action) => {
     state.loading = false;
     state.timesheet = action.payload;
@@ -36,7 +58,7 @@ export const timesheetReducer = createReducer({}, {
   logoutTimesheet: (state) => {
     state.loading = false
     state.timesheet = null
-    state.number = null 
+    state.number = null
   },
   getmyrankRequest: (state) => {
     state.loading = true;
@@ -52,12 +74,12 @@ export const timesheetReducer = createReducer({}, {
   clearError: (state) => {
     state.error = null;
   },
-  
+
   clearMessage: (state) => {
     state.message = null;
   },
 });
-export const companyReducer = createReducer ({}, {
+export const companyReducer = createReducer({}, {
   companyRequest: (state) => {
     state.loading = true;
   },
@@ -83,7 +105,7 @@ export const companyReducer = createReducer ({}, {
     state.messageCompany = null ;
   },
 });
-export const allReducer = createReducer ({},{
+export const allReducer = createReducer({}, {
   loadAllUserRequest: (state) => {
     state.loading = true;
   },
@@ -218,15 +240,15 @@ export const authReducer = createReducer(
     },
     clearError: (state) => {
       state.error = null;
-      state.errorPhone = null ;
+      state.errorPhone = null;
     },
 
     clearMessage: (state) => {
       state.message = null;
-      state.messagePhone = null ;
+      state.messagePhone = null;
     },
-    }
-  )
+  }
+)
 
   export const messageReducer = createReducer(
     {},
@@ -380,6 +402,29 @@ state.isUpdated = false ;
           state.loading = false;
           state.error = action.payload;
         },
+        loadTaskManagerRequest: (state) => {
+          state.loading = true;
+        } ,
+        loadTaskManagerSuccess: (state, action) => {
+          state.loading = false;
+          state.taskManager = action.payload;
+        } ,
+        loadTaskManagerFailure: (state, action) => {
+          state.loading = false;
+          state.error = action.payload;
+        } ,
+        loadTaskContributorRequest: (state) => {
+          state.loading = true;
+        },
+        loadTaskContributorSuccess: (state, action) => {
+          state.loading = false;
+          state.taskContributor = action.payload;
+        },
+        loadTaskContributorFailure: (state, action) => {
+          state.loading = false;
+          state.error = action.payload;
+        } ,
+
         clearError: (state) => {
           state.error = null;
         },
@@ -389,3 +434,40 @@ state.isUpdated = false ;
         },
       },
     );
+
+    export const searchReducer = createReducer(
+      {},
+      {
+        searchRequest: (state) => {
+          state.loading = true;
+        },
+        searchSuccess: (state, action) => {
+          state.loading = false;
+          state.search = action.payload;
+        },
+        searchFailure: (state, action) => {
+          state.loading = false;
+          state.error = action.payload;
+        },
+        clearError: (state) => {
+          state.error = null;
+        },
+      }
+    );
+
+    export const timesheetFilterReducer = createReducer(
+      {},
+      {
+        loadTimesheetFilterRequest: (state) => {
+          state.loading = true;
+        } ,
+        loadTimesheetFilterSuccess: (state, action) => {
+          state.loading = false;
+          state.timesheetDay = action.payload;
+        } ,
+        loadTimesheetFilterFailure: (state, action) => {
+          state.loading = false;
+          state.error = action.payload;
+        }
+      }
+      );

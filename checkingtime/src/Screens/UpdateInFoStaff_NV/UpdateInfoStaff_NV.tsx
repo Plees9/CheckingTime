@@ -124,25 +124,7 @@ const UpdateStaff_Admin = () => {
     }
 
   }, [route]);
-  const UpdateInfoConfirm = async () => {
-    Alert.alert(
-      "Cập nhật thông tin",
-      "Bạn có chắc chắn muốn cập nhật thông tin không?",
-      [
-        {
-          text: "Hủy",
-          onPress: () => console.log("Cancel Pressed" ),
-          style: "cancel",
-        },
-        { text: "Đồng ý", onPress: () => {
-          prompt();
-          showToast();
-        }
-        },
-      ],
-
-    );
-  }
+ 
   const updateHandler = async () => {
     const myForm = new FormData();
     const Sdate = moment(date)
@@ -392,7 +374,7 @@ const UpdateStaff_Admin = () => {
       <LinearGradient
         start={{ x: 0, y: 0 }}
         end={{ x: 1, y: 0 }}
-        colors={["#8f73f6", "#b5a4fc"]}
+        colors={["#8f73f6", "#8f73f6"]}
         style={styles.btn2}
       >
         <TouchableOpacity onPress={() => setVisible(true)}>
