@@ -363,6 +363,18 @@ state.isUpdated = false ;
           state.loading = false;
           state.error = action.payload;
         },
+        loadTaskByIdRequest: (state) => {
+          state.loading = true;
+        },
+        loadTaskByIdSuccess: (state, action) => {
+          state.loading = false;
+
+          state.task = action.payload;
+        },
+        loadTaskByIdFailure: (state, action) => {
+          state.loading = false;
+          state.error = action.payload;
+        },
         clearError: (state) => {
           state.error = null;
         },
