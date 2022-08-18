@@ -1,4 +1,4 @@
-import { StyleSheet } from "react-native";
+import { StyleSheet, Platform, StatusBar } from 'react-native';
 import { FONTS } from "../../../constants/theme";
 
 const createStyles = () =>
@@ -6,6 +6,7 @@ const createStyles = () =>
     view: {
       backgroundColor: "#FFFFFF",
       height: "90%",
+      //paddingTop: Platform.OS === "android" ? StatusBar.currentHeight : 0,
     },
     view1: {
       marginTop: "3%",

@@ -7,7 +7,7 @@ import Icon from "react-native-vector-icons/FontAwesome";
 import {  useNavigation } from "@react-navigation/native";
 import { loadAlluser, loadTaskById } from "../../../redux/action";
 import { FlatList } from "react-native-gesture-handler";
-import {  Link, Route } from "react-router-native";
+
 import Loader from '../../navigation/Loader';
 const Todo_ListStaff = () => {
   const { user, loading } = useSelector<any, any>((state) => state.auth);
@@ -60,7 +60,7 @@ const Todo_ListStaff = () => {
             name="angle-double-right"
             size={34}
             color="#f49218"
-            onPress={() => navigation.navigate("Công việc của nhân viên")}
+            
           />
         </View>
       </View>

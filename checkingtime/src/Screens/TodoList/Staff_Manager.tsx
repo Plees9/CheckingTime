@@ -10,34 +10,34 @@ import {
 import React, { useEffect, useMemo, useState } from "react";
 import createStyles from "./styles";
 import Icon from "react-native-vector-icons/FontAwesome";
-import CheckBox from "expo-checkbox";
+//import CheckBox from "expo-checkbox";
+import { Checkbox } from "react-native-paper";
 import { FAB, Input } from "react-native-elements";
+
 
 import moment from "moment";
 import DateTimePicker from "@react-native-community/datetimepicker";
 import { useNavigation } from "@react-navigation/native";
 import { useDispatch, useSelector } from "react-redux";
-import { loadAllTask, loadAlluser, loadTask, loadTaskManager } from "../../../redux/action";
+import { loadAllTask, loadAlluser, loadTask, loadTaskManager, updateTask } from "../../../redux/action";
 import { FlatList } from "react-native-gesture-handler";
 import { AnimatedCircularProgress } from "react-native-circular-progress";
 
-const Staff_Manager = () => {
+const Staff_Manager = () =>{
   const styles = useMemo(() => createStyles(), []);
-  const { user, loading } = useSelector<any, any>((state) => state.auth);
   const navigation = useNavigation<any>();
   
   const [workDone, setworkDone] = useState(4);
   const [show_1, setShow_1] = useState(false);
-  const { allUser } = useSelector<any, any>((state) => state.allUser);
-
+ 
   const dispatch = useDispatch();
 
   useEffect(() => {
     dispatch<any>(loadTask());
     dispatch<any>(loadTaskManager());
   }, []);
-  const { task,taskManager } = useSelector<any, any>((state) => state.task);
-//console.log(taskManager);
+  const { taskManager } = useSelector<any, any>((state) => state.task);
+
   let data_manager: any = [];
   if (typeof taskManager !== "undefined") {
     for (var i = 0; i < taskManager.tasks.length; i++) {
@@ -58,19 +58,7 @@ const Staff_Manager = () => {
 
   const [data_manager3, setdata_manager3] = useState(data_manager);
 
-  const onChangeValue = (item: { id: any }, index: any, newValue: boolean) => {
-    const newData = data_manager3.map((newItem: { id: any }) => {
-      if (newItem.id == item.id) {
-        return {
-          ...newItem,
-          selected: newValue,
-        };
-      }
-      return newItem;
-    });
-    setdata_manager3(newData);
-  };
-
+ 
   const ItemRender = ({ item, index }) => (
     <View style={styles.render}>
       <View
@@ -78,12 +66,21 @@ const Staff_Manager = () => {
       >
         <View style={styles.view3}>
           <View style={styles.checkbox}>
-            <CheckBox
-              color="#FFC23C"
-              value={item.selected}
-              disabled={false}
-              onValueChange={(newValue) => onChangeValue(item, index, newValue)}
-            ></CheckBox>
+            <Checkbox
+              status={item.status ? "unchecked" : "checked"}
+              color="#A66CFF"
+              onPress={() => {
+                setdata_manager3(
+                  data_manager.map((item: { id: any; status: boolean; }) => {
+                    if (item.id === index + 1) {
+                      item.status = !item.status;
+                    }
+                    return item;
+                  }),
+                );
+              }
+              }
+            />
           </View>
           <View style={styles.colomn1}>
             <Text style={styles.task}>{item.name}</Text>
@@ -136,7 +133,7 @@ const Staff_Manager = () => {
           width={5}
           fill={Math.round((workDone / data_manager.length) * 100)}
           tintColor="#3EC70B"
-          style={{ alignSelf: "center", marginTop: 10,  marginBottom: 10 }}
+          style={{ alignSelf: "center", marginTop: 10 }}
           backgroundColor="#3d5875"
         >
           {() => (
@@ -144,7 +141,11 @@ const Staff_Manager = () => {
               <Text style={{ color: "#3EC70B" }}>
                 {workDone} {""}
               </Text>
-              /<Text style={{ color: "#3d5875" }}> {data_manager.length}</Text>
+              /
+              <Text style={{ color: "#3d5875" }}>
+                {" "}
+                {data_manager.length}
+              </Text>
             </Text>
           )}
         </AnimatedCircularProgress>
@@ -164,7 +165,7 @@ const Staff_Manager = () => {
         <View style={styles.kengang}></View>
 
         <FlatList
-          data={data_manager3}
+          data={data_manager}
           renderItem={ItemRender}
           keyExtractor={(item) => item._id}
         ></FlatList>

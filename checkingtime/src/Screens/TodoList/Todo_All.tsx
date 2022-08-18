@@ -149,7 +149,7 @@ const Todo_All = () => {
         </View>
         <View style={styles.kengang}></View>
         <FlatList
-           data={data_allTask}
+           data={data_all}
            renderItem={ItemRender}
            keyExtractor={(item) => item.id.toString()}
         ></FlatList>

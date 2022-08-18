@@ -1,8 +1,6 @@
 import {
   Text,
-  StyleSheet,
   View,
-  ScrollView,
   Alert,
   SafeAreaView,
   Pressable,
@@ -11,37 +9,27 @@ import React, { useEffect, useMemo, useState } from "react";
 import createStyles from "./styles";
 import Icon from "react-native-vector-icons/FontAwesome";
 import CheckBox from "expo-checkbox";
-import { FAB, Input } from "react-native-elements";
+import { FAB} from "react-native-elements";
 
 import moment from "moment";
 import DateTimePicker from "@react-native-community/datetimepicker";
 import { useNavigation } from "@react-navigation/native";
 import { useDispatch, useSelector } from "react-redux";
-import {
-  loadAllTask,
-  loadAlluser,
-  loadTask,
-  loadTaskContributor,
-} from "../../../redux/action";
+import {loadTaskContributor} from "../../../redux/action";
 import { FlatList } from "react-native-gesture-handler";
 import { AnimatedCircularProgress } from "react-native-circular-progress";
 import Loader from "../../navigation/Loader";
 
 const Todo_Staff = () => {
   const styles = useMemo(() => createStyles(), []);
-  const { user, loading } = useSelector<any, any>((state) => state.auth);
   const navigation = useNavigation<any>();
-  // const [checked, setChecked] = useState(false);
-  const [time_task, setTime_Task] = useState(moment());
 
-  const [sumWork, setSumWork] = useState(10);
-  const [workDone, setworkDone] = useState(0);
-  const [workOvertime, setworkOvertime] = useState(6);
+  const [workDone, setworkDone] = useState(1);
   const [show_1, setShow_1] = useState(false);
-  const { allUser } = useSelector<any, any>((state) => state.allUser);
-
+  
   const dispatch = useDispatch();
-  const { taskContributor } = useSelector<any, any>((state) => state.task);
+
+  const { taskContributor, loading } = useSelector<any, any>((state) => state.task);
   useEffect(() => {
   dispatch<any>(loadTaskContributor());
   }, []);
@@ -69,8 +57,7 @@ const Todo_Staff = () => {
     }
   }
  // console.log(data_contributor)
-  const [data_contributor_Staff, setdata_contributor] =
-    useState(data_contributor);
+  const [data_contributor_Staff, setdata_contributor] = useState(data_contributor);
 
   const onChangeValue = (item: { id: any }, index: any, newValue: boolean) => {
     const newData = data_contributor_Staff.map((newItem: { id: any }) => {
@@ -132,10 +119,8 @@ const Todo_Staff = () => {
       </View>
     </View>
   );
-  if (typeof taskContributor === "undefined") {
-    return <Loader />
-}
   return (
+    loading ? <Loader /> :
     <View>
       <SafeAreaView style={styles.view}>
         <View style={styles.view1}>
