@@ -335,6 +335,23 @@ export const register = (formData) => async (dispatch) => {
     });
   }
 };
+export const registerTask = (formData) => async (dispatch) => {
+  try {
+    dispatch({ type: "registerTaskRequest" });
+    const { data } = await axios.post(`${serverUrl}/user/createtask`, formData, {
+      headers: {
+        "Content-Type": "multipart/form-data",
+      },
+    });
+    dispatch({ type: "registerTaskSuccess", payload: data });
+  } catch (error) {
+    dispatch({
+      type: "registerTaskFailure",
+      payload: error.response.data.message,
+    });
+  }
+}
+
 
   export const loadAllTask = () => async (dispatch) => {
     try {
