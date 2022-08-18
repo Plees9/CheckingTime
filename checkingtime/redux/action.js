@@ -10,10 +10,10 @@ export const loadAlluser = () => async (dispatch) => {
     dispatch({ type: "loadAllUserFailure", payload: error.response.data.message });
   }
 };
-export const queryUser = (keyword) => async (dispatch) => {
+export const queryUser = (name, privilege, typeOfEmployee, role, contractStatus) => async (dispatch) => {
   try {
     dispatch({ type: "queryUserRequest" });
-    const { data } = await axios.get(`${serverUrl}/user/searchuser?name=${keyword}`);
+    const { data } = await axios.get(`${serverUrl}/user/searchuser?name=${name}&privilege=${privilege}&typeOfEmployee=${typeOfEmployee}&role=${role}&contractStatus=${contractStatus}`);
     dispatch({ type: "queryUserSuccess", payload: data });
   } catch (error) {
     dispatch({ type: "queryUserFailure", payload: error.response.data.message });

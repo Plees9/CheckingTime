@@ -1,12 +1,14 @@
-import React, { useState, useMemo } from "react";
+import React, { useState, useMemo, useEffect } from "react";
 import { View, Text, TouchableOpacity, ScrollView } from "react-native";
 import { Picker } from "@react-native-picker/picker";
 import createStyles from "./styles";
-import { useNavigation } from "@react-navigation/native";
+import { useNavigation, useRoute } from "@react-navigation/native";
 import { LinearGradient } from "expo-linear-gradient";
 
 import { Dropdown } from "react-native-element-dropdown";
 import AntDesign from "react-native-vector-icons/AntDesign";
+import { queryUser } from "../../../redux/action";
+import { useDispatch } from "react-redux";
 
 
 const data_1 = [
@@ -40,13 +42,21 @@ const data_4 = [
 const EFilter = () => {
   const styles = useMemo(() => createStyles(), []);
   const navigation = useNavigation<any>();
-  
-  const [value_4, setValue_4] = useState(null);
-  const [value_5, setValue_5] = useState(null);
-  const [value_6, setValue_6] = useState(null);
-  const [value_7, setValue_7] = useState(null);
-  
-
+  const route = useRoute()
+  const dispatch = useDispatch()
+  const [value_4, setValue_4] = useState("");
+  const [value_5, setValue_5] = useState("");
+  const [value_6, setValue_6] = useState("");
+  const [value_7, setValue_7] = useState("");
+  useEffect(() => {
+    if (route.params) {
+    setValue_4(route.params.privilege)
+    setValue_5(route.params.typeOfEmployee)
+    setValue_6(route.params.role) 
+    setValue_7(route.params.contractStatus)
+    }
+  }, [route]);
+  console.log(route.params)
   return (
     <ScrollView style={styles.viewbgr}>
       <View style={styles.view}>
@@ -180,7 +190,8 @@ const EFilter = () => {
           style={styles.btn2}
         >
           <TouchableOpacity
-            onPress={() => navigation.navigate("DANH SÁCH NHÂN VIÊN")}
+            onPress={() => { dispatch<any>(queryUser("", value_4, value_5, value_6, value_7))
+              navigation.navigate("DANH SÁCH NHÂN VIÊN", {value_4, value_5, value_6, value_7})}}
           >
             <Text style={styles.text22}>Xác nhận</Text>
           </TouchableOpacity>
