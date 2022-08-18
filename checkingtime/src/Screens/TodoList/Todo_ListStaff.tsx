@@ -7,6 +7,8 @@ import Icon from "react-native-vector-icons/FontAwesome";
 import {  useNavigation } from "@react-navigation/native";
 import { loadAlluser, loadTaskById } from "../../../redux/action";
 import { FlatList } from "react-native-gesture-handler";
+import {  Link, Route } from "react-router-native";
+import Loader from '../../navigation/Loader';
 const Todo_ListStaff = () => {
   const { user, loading } = useSelector<any, any>((state) => state.auth);
   const styles = useMemo(() => createStyles(), []);
@@ -67,7 +69,9 @@ const Todo_ListStaff = () => {
       {/* </Link> */}
     </View>
   );
-
+  if (typeof allUser === "undefined") {
+    return <Loader />
+}
   return (
     <SafeAreaView>
       <View style={styles.view_staff1}>

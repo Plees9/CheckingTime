@@ -75,14 +75,6 @@ const HomeScreen = () => {
   let avatar5;
   let userName5;
   let checkin5;
-  useEffect(() => {
-    dispatch<any>(loadCompany());
-    dispatch<any>(loadTimesheet());
-    dispatch<any>(loadTimesheetFilter());
-    dispatch<any>(getmyrank());
-    dispatch<any>(ranking());
-    dispatch<any>(loadTimesheetPoint());
-  }, [dispatch]);
   const navigation = useNavigation<any>();
   const { timesheet, number, array } = useSelector<any, any>(
     (state) => state.timesheet
@@ -159,6 +151,8 @@ const HomeScreen = () => {
     dispatch<any>(loadTimesheet());
     dispatch<any>(getmyrank());
     dispatch<any>(ranking());
+    dispatch<any>(loadTimesheetFilter())
+    dispatch<any>(loadTimesheetPoint())
 
     //show toast android and ios
     if (Platform.OS === "android") {
@@ -174,6 +168,8 @@ const HomeScreen = () => {
       dispatch<any>(loadTimesheet());
       dispatch<any>(getmyrank());
       dispatch<any>(ranking());
+      dispatch<any>(loadTimesheetFilter())
+    dispatch<any>(loadTimesheetPoint())
     });
   }, []);
 

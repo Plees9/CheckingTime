@@ -18,6 +18,7 @@ import { useDispatch, useSelector } from "react-redux";
 import moment from "moment";
 import { deleteProfile, loadAlluser, loadProfile, queryUser } from "../../../redux/action";
 import { SearchBar } from "react-native-elements";
+import Loader from "../../navigation/Loader";
 
 const ListStaff  = () => {
   const styles = useMemo(() => createStyles(), []);
@@ -277,7 +278,9 @@ loadView()
       </View>
     </SafeAreaView>
   );
- 
+  if (typeof allUser === "undefined") {
+    return <Loader />
+}
   return (
     <SafeAreaView style={styles.view}>
       <View style={styles.row}>
