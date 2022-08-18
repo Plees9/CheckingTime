@@ -60,7 +60,6 @@ const AddStaff = () => {
   const dispatch = useDispatch();
   const { message, error } = useSelector<any, any>((state) => state.message);
   const [count, setCount] = useState(0);
-  // const handleClick = useCallback(() => setCount(count + 1), [count]);
 
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
@@ -94,10 +93,10 @@ const AddStaff = () => {
     myForm.append("confirmPassword", confirmPassword)
     myForm.append("privilege", value_1);
 
-    const Sdate = moment(date); //chu y lam lai ngay thang nam
+    const Sdate = moment(date); 
     myForm.append("startWorkingDate", String(Sdate));
-    myForm.append("contractStatus", value_2);
-    myForm.append("typeOfEmployee", value_4);
+    myForm.append("typeOfEmployee", value_2);
+    myForm.append("contractStatus", value_4);
     myForm.append("role", value_3);
 
     dispatch<any>(register(myForm));
@@ -120,7 +119,7 @@ const AddStaff = () => {
       alert(error);
       dispatch({ type: "clearError" });
      }
-     if (message == "Create account successfully") {
+     if (message == "Tạo tài khoản thành công") {
       setUserName("");
       setEmail("");
       setNumberPhone("")

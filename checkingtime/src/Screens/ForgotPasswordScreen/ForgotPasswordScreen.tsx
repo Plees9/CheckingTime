@@ -24,13 +24,13 @@ const ForgotPasswordScreen = () => {
       dispatch({ type: "clearError" });
     }
   }, [alert, dispatch, error]);
-  if (message != null || message != "Invalid mail") {
+  if (message != null || message != "Email không đúng") {
     check = message
   }
   const forgetHandler = async () => {
     await dispatch<any>(forgetPassword(email));
   };
-  if (email != "" && check ==  `OTP has been sent to ${email}` ) {
+  if (email != "" && check ==  `OTP đã được gửi đến ${email}` ) {
     navigation.navigate("Cài lại mật khẩu", {email});
   }
   return (

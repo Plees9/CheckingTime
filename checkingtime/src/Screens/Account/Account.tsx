@@ -186,7 +186,7 @@ const Account = () => {
         <View>
           <TouchableOpacity
             style={{ marginTop: "2%" }}
-            onPress={() => navigation.navigate("Cập nhật thông tin nhân viên")}
+            onPress={() => navigation.navigate("Cập nhật thông tin cá nhân")}
           >
             <Text style={styles.chu}> Thay đổi thông tin cá nhân</Text>
           </TouchableOpacity>

@@ -183,18 +183,18 @@ const SNavigation = () => {
 
   useEffect(() => {
       dispatch<any>(loadUser())
-      dispatch<any>(loadCompany());
       dispatch<any>(loadTimesheet());
       dispatch<any>(loadTimesheetFilter());
       dispatch<any>(getmyrank());
       dispatch<any>(ranking());
       dispatch<any>(loadTimesheetPoint());
+      dispatch<any>(loadCompany());
   }, [dispatch])
   const { isAuthenticated, loading } = useSelector<any, any>(state => state.auth)
-  const { loadingTimesheet }  = useSelector<any, any>(state => state.timesheet)
-  console.log(loadingTimesheet)
+  const { loadingCompany}  = useSelector<any, any>(state => state.company)
+  console.log(loadingCompany)
   return (
-    loading || loadingTimesheet ? <Loader /> : 
+    loading || loadingCompany ? <Loader /> : 
     
     <NavigationContainer>
       <Stack.Navigator
@@ -248,12 +248,12 @@ const SNavigation = () => {
         />
         <Stack.Screen
           name="DANH SÁCH NHÂN VIÊN"
-          component={ListStaffNavigation}
+          component={ListStaff}
           options={{ headerShown: true }}
         />
         <Stack.Screen
           name="Bộ lọc"
-          component={ListFilterNavigation}
+          component={EFilter}
           options={{ headerShown: true }}
         />
         
@@ -278,7 +278,7 @@ const SNavigation = () => {
         options={{ headerShown: true }}
       />
       <Stack.Screen
-        name="Cập nhật thông tin nhân viên"
+        name="Cập nhật thông tin cá nhân"
         component={UpdateStaffNavigation}
         options={{ headerShown: true }}
       />
@@ -298,7 +298,7 @@ const SNavigation = () => {
          options={{ headerShown: true}}
         />
         <Stack.Screen
-         name="UpdateStaff_Admin"
+         name="Cập nhật thông tin nhân viên"
          component={UpdateStaff_Admin}
          options={{ headerShown: true}}
         />

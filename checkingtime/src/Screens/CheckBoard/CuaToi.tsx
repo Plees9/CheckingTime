@@ -25,6 +25,9 @@ import moment from "moment";
 
 const BangCong_Cuatoi = () => {
   const dispatch = useDispatch();
+  let actualPoint: any;
+  let maxPoint: any;
+  let processBoard : number = 0;
   let lateNumber;
   let lateValue;
   let earlyNumber;
@@ -64,7 +67,12 @@ const BangCong_Cuatoi = () => {
     otNumber = timesheetFilter.Object.overtime.number;
     otValue = timesheetFilter.Object.overtime.value;
   }
-
+  const { timesheetPoint } = useSelector<any, any>((state) => state.timesheet);
+  if (typeof timesheetPoint !== "undefined" && timesheetPoint !== null) {
+    actualPoint = timesheetPoint.point.actualPoint;
+    maxPoint = timesheetPoint.point.maxPoint;
+    processBoard  = (actualPoint / maxPoint) * 100;
+  }
 
 
   
@@ -141,17 +149,7 @@ const BangCong_Cuatoi = () => {
                 <Text style={styles.chu11}>Tổng hợp ngày công</Text>
               </View>
 
-              <View
-                style={{
-                  flexDirection: "row",
-                  marginLeft: 10,
-                  width: "94%",
-                  justifyContent: "space-between",
-                }}
-              >
-                <Text style={styles.textTop2}>Trạng thái nhân sự</Text>
-                <Text style={styles.textTop3}>3/21</Text>
-              </View>
+              
 
               <View style={styles.row2}>
                 <View style={styles.icon2}>
@@ -184,9 +182,9 @@ const BangCong_Cuatoi = () => {
                 <View style={styles.icon5}>
                   <View style={{ flexDirection: "column" }}>
                     <Text style={styles.textTop4}>
-                      {earlyValue} phút/ {earlyNumber} lần
+                       {actualPoint}/{maxPoint}
                     </Text>
-                    <TextInput style={styles.textTop2}>Về sớm</TextInput>
+                    <TextInput style={styles.textTop2}>Điểm công</TextInput>
                   </View>
                 </View>
               </View>

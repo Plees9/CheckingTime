@@ -78,62 +78,6 @@ export default class PopupModal extends React.Component<PopupModalProps> {
   }
 }
 
-//   constructor(props) {
-//     super(props);
-//     this.state = { showAlert: false };
-//   };
-
-//   showAlert = () => {
-//     this.setState({
-//       showAlert: true
-//     });
-//   };
-
-//   hideAlert = () => {
-//     this.setState({
-//       showAlert: false
-//     });
-//   };
-
-//   render() {
-//     const {showAlert} = this.state;
-
-//     return (
-//       <View style={styles.container}>
-
-//         <Text>I'm AwesomeAlert</Text>
-//         <TouchableOpacity onPress={() => {
-//           this.showAlert();
-//         }}>
-//           <View style={styles.button}>
-//             <Text style={styles.text}>Try me!</Text>
-//           </View>
-//         </TouchableOpacity>
-
-//         <AwesomeAlert
-//           show={showAlert}
-//           showProgress={false}
-//           title="AwesomeAlert"
-//           message="I have a message for you!"
-//           closeOnTouchOutside={true}
-//           closeOnHardwareBackPress={false}
-//           showCancelButton={true}
-//           showConfirmButton={true}
-//           cancelText="No, cancel"
-//           confirmText="Yes, delete it"
-//           confirmButtonColor="#DD6B55"
-//           onCancelPressed={() => {
-//             this.hideAlert();
-//           }}
-//           onConfirmPressed={() => {
-//             this.hideAlert();
-//           }}
-//         />
-//       </View>
-//     );
-//   };
-// };
-
 const styles = StyleSheet.create({
   container: {
     flex: 1,

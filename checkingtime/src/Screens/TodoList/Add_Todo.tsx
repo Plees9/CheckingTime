@@ -9,7 +9,6 @@ import {
 } from "react-native";
 import React, { useEffect, useMemo, useState } from "react";
 
-
 import createStyles from "./styles";
 import DateTimePicker from "@react-native-community/datetimepicker";
 import moment from "moment";
@@ -19,33 +18,81 @@ import { Avatar } from "@rneui/themed";
 import { FlatList } from 'react-native-gesture-handler';
 import { useDispatch, useSelector } from "react-redux";
 import MultiSelect from 'react-native-multiple-select';
-import { loadAlluser } from "../../../redux/action";
+import { loadAllTask, loadAlluser, registerTask } from "../../../redux/action";
 
 
 const Add_Todo = () => {
   const styles = useMemo(() => createStyles(), []);
   const { user, loading } = useSelector<any, any>((state) => state.auth);
   
-  const [task, setTask] = useState("");
+  const [name, setName] = useState("");
   const [description, setDescription] = useState(""); //Mô tả task
+  const [deadline, setDeadline] = useState(moment()); //Deadline của task\
+  const [time_task, setTime_Task] = useState(moment());
+  const [date, setDate] = useState(moment());
+  const [status, setStatus] = useState(""); //Trạng thái của task
+  const [manager, setManager] = useState(""); //Trạng thái của task
+  const [contributors, setContributors] = useState([]); //Trạng thái của task
+
   
   const [userName, setUserName] = useState("");
   const [avatar, setAvatar] = useState(user.avatar.url);
-  const [date, setDate] = useState(moment());
+  
 
-  const [time_task, setTime_Task] = useState(moment());
   
   const [show, setShow] = useState(false);
   const [show_1, setShow_1] = useState(false);
   const { allUser } = useSelector<any, any>((state) => state.allUser);
+  const {task} = useSelector<any, any>((state) => state.task);
 
 
   const dispatch = useDispatch();
+  const registerHandlerTask = () => {
+    const myForm = new FormData();
+    myForm.append("name", name);
+    myForm.append("description", description);
+    const deadline_1 = moment(deadline);
+    myForm.append("deadline", deadline_1.format("HH:mm, DD/MM/YYYY"));
+    const time_task_1 = moment(time_task);
+    myForm.append("time_task", time_task_1.format("HH:mm, DD/MM/YYYY"));
+    const date_1 = moment(date);
+    myForm.append("date", date_1.format("HH:mm, DD/MM/YYYY"));
+    myForm.append("status", status);
+    myForm.append("manager", manager);
+    myForm.append("contributors", JSON.stringify(contributors));
+    dispatch<any>(registerTask(myForm));
+    dispatch<any>(loadAllTask());
+    dispatch<any>(loadAlluser());
+  };
     
   
   useEffect(() => {
     dispatch<any>(loadAlluser());
   }, []);
+  const { message, error } = useSelector<any, any>((state) => state.message);
+  useEffect(() => {
+    if (message) {
+      alert(message);
+      dispatch({ type: "clearMessage" });
+    }
+    if (error) {
+      alert(error);
+      dispatch({ type: "clearError" });
+     }
+     if (message == "Tạo tài khoản thành công") {
+      setName("");
+      setDescription("");
+      setDeadline(moment());
+      setTime_Task(moment());
+      setDate(moment());
+      setStatus("");
+      setManager("");
+      setContributors([]);
+
+     }
+  }, [alert, dispatch, error, message]);
+
+
   let data: any = [];
   if (typeof allUser !== "undefined") {
     for (var i = 0; i < allUser.array.length; i++) {
@@ -58,6 +105,7 @@ const Add_Todo = () => {
         status: allUser.array[i].status,
         date: moment(new Date(allUser.array[i].date)).format("DD/MM/YYYY"),
         manager: allUser.array[i].manager,
+        contributors: allUser.array[i].contributors, 
         
       };
       console.log(object);
@@ -100,17 +148,20 @@ const Add_Todo = () => {
         <Text style={{marginRight:"3%"}}>Tên task:</Text>
         <TextInput
         placeholder="Nhập tên task"
-        value={task}
-        onChangeText={(text) => setTask(text)}
+        returnKeyType="done"
+            value={name}
+            secureTextEntry={false}
+            onChangeText={(text) => setName(text)}
         >
         </TextInput>
         </View>
 
         <View style={styles.text_Content_Todo}>
           <TextInput
-            onChangeText={(text) => setDescription(text)}
+            placeholder="Nhập nội dung công việc"
+            returnKeyType="done"
             value={description}
-            placeholder="Mô tả task"
+            onChangeText={(text) => setDescription(text)}
             style={styles.text_Description}
           ></TextInput>
         </View>
@@ -164,17 +215,25 @@ const Add_Todo = () => {
                 </View>
               </Pressable>
             </View>
-            <Icon
+            {/* <Icon
               style={styles.iconClock}
               name="clock-o"
               size={20}
               color="orange"
-            />
+            /> */}
           </View>
         </View>
 
         <View>
           <Text style={{marginTop:"2%"}}>Nhân viên phụ trách:</Text>
+          <TextInput 
+          placeholder="Nhập tên nhân viên phụ trách"
+          returnKeyType="done"
+          value={manager}
+          onChangeText={(text) => setManager(text)}
+          >
+
+          </TextInput>
           {/* <MultiSelect
           hideTags
           items={data_2}
@@ -198,6 +257,12 @@ const Add_Todo = () => {
         </View>
         <View>
           <Text style={{marginTop:"2%"}}>Người giao việc:</Text>
+          <TextInput 
+          placeholder="Nhập tên nhân viên giao việc"
+          returnKeyType="done"
+          
+          >
+          </TextInput>
           {/* <MultiSelect
           hideTags
           items={data_2}
@@ -230,7 +295,7 @@ const Add_Todo = () => {
         colors={["#f12711", "#f5af19"]}
         style={styles.btnFab_1}
       >
-        <TouchableOpacity onPress={saveTodo}>
+        <TouchableOpacity onPress={registerHandlerTask}>
           <Text style={styles.textComfirm}>Thêm Task</Text>
         </TouchableOpacity>
       </LinearGradient>
@@ -238,4 +303,4 @@ const Add_Todo = () => {
   );
 };
 
-export default Add_Todo;
+export default React.memo(Add_Todo);

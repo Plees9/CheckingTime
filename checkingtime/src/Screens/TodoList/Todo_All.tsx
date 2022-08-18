@@ -32,7 +32,7 @@ const Todo_All = () => {
   let data: any = [];
   if (typeof allUser !== "undefined") {
     for (var i = 0; i < allUser.array.length; i++) {
-      // let strAvatar = allUser.array[i].avatar.url;
+      
       let object = {
         id: i + 1,
         name_1: allUser.array[i].name,
@@ -59,7 +59,7 @@ const Todo_All = () => {
   if (typeof allTask !== "undefined") {
     for (var i = 0; i < allTask.tasks.length; i++) {
       
-      let task = {
+      let task_all = {
         id : i+1,
         _id: allTask.tasks[i]._id,
         name: allTask.tasks[i].name, //ten task
@@ -70,15 +70,15 @@ const Todo_All = () => {
         manager: allTask.tasks[i].manager, //nguoi quan ly task
         contributors: allTask.tasks[i].contributors, //thanh vien task
       };
-      data_all.push(task);
+      data_all.push(task_all);
     }
   }
 
-  const [data_allTask, setData] = useState(data_all);
+  const [data_allTask, setData_all] = useState(data_all);
 
-  const onChangeValue = (item: { _id: any }, index: any, newValue: boolean) => {
-    const newData = data_allTask.map((newItem: { _id: any }) => {
-      if (newItem._id == item._id) {
+  const onChangeValue = (item: { id: any }, index: any, newValue: boolean) => {
+    const newData = data_allTask.map((newItem: { id: any }) => {
+      if (newItem.id == item.id) {
         return {
           ...newItem,
           selected: newValue,
@@ -86,7 +86,7 @@ const Todo_All = () => {
       }
       return newItem;
     });
-    setData(newData);
+    setData_all(newData);
   };
   const trash = () => {
     Alert.alert("Thông báo", "Bạn có chắc chắn muốn xóa không?", [
@@ -94,7 +94,7 @@ const Todo_All = () => {
       {
         text: "Xóa",
         onPress: () =>
-          setData(data_allTask.filter((item: { _id: string }) => item._id !== "")),
+          setData_all(data_allTask.filter((item: { id: string }) => item.id !== "")),
       },
     ]);
   };
@@ -104,12 +104,12 @@ const Todo_All = () => {
       <View style={{ flexDirection: "row", backgroundColor: "#f2f2f2" }}>
         <View style={styles.view2}>
           <View style={styles.checkbox}>
-            <CheckBox
-              color="#00a8ff"
+          <CheckBox
+              color="#FFC23C"
               value={item.selected}
               disabled={false}
               onValueChange={(newValue) => onChangeValue(item, index, newValue)}
-            />
+            ></CheckBox>
           </View>
           <View style={styles.colomn}>
             <Text style={styles.task}>{item.name}</Text>
@@ -149,9 +149,9 @@ const Todo_All = () => {
         </View>
         <View style={styles.kengang}></View>
         <FlatList
-          data={data_all}
-          renderItem={ItemRender}
-          keyExtractor={(item) => item._id}
+           data={data_allTask}
+           renderItem={ItemRender}
+           keyExtractor={(item) => item.id.toString()}
         ></FlatList>
       </SafeAreaView>
       <View style={styles.btnFab}>

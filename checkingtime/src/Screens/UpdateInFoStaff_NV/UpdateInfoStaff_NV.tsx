@@ -46,10 +46,7 @@ const data_typeOfEmployee = [
   { label: "Nghỉ có phép", value: "Nghỉ có phép" },
   { label: "Nghỉ không phép", value: "Nghỉ không phép" },
 ];
-const data_gender = [
-  { label: "Nam", value: "Nam" },
-  { label: "Nữ", value: "Nữ" },
-];
+
 const data_role = [
   { label: "Developer", value: "Developer" },
   { label: "Tester", value: "Tester" },
@@ -86,7 +83,7 @@ const UpdateStaff_Admin = () => {
   function showToast() {
     ToastAndroid.show("Đã update thông tin thành công ", ToastAndroid.SHORT);
   }
-  if (message == "Profile updated successfully") {
+  if (message == "Cập nhật tài khoản thành công") {
     navigation.navigate("DANH SÁCH NHÂN VIÊN")
   }
   useEffect(() => {
@@ -301,7 +298,7 @@ const UpdateStaff_Admin = () => {
               <AntDesign
                 style={styles.icon}
                 color="orange"
-                name={isFocus_role ? "up" : "down"}
+                name={isFocus_privilege ? "up" : "down"}
                 size={20}
               />
             )}
