@@ -83,7 +83,7 @@ const UpdateStaff_Admin = () => {
   function showToast() {
     ToastAndroid.show("Đã update thông tin thành công ", ToastAndroid.SHORT);
   }
-  if (message == "Profile updated successfully") {
+  if (message == "Cập nhật tài khoản thành công") {
     navigation.navigate("DANH SÁCH NHÂN VIÊN")
   }
   useEffect(() => {

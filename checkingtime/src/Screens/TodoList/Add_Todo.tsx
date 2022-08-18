@@ -34,17 +34,13 @@ const Add_Todo = () => {
   const [manager, setManager] = useState(""); //Trạng thái của task
   const [contributors, setContributors] = useState([]); //Trạng thái của task
 
-  
   const [userName, setUserName] = useState("");
   const [avatar, setAvatar] = useState(user.avatar.url);
-  
-
   
   const [show, setShow] = useState(false);
   const [show_1, setShow_1] = useState(false);
   const { allUser } = useSelector<any, any>((state) => state.allUser);
   const {task} = useSelector<any, any>((state) => state.task);
-
 
   const dispatch = useDispatch();
   const registerHandlerTask = () => {
@@ -65,7 +61,6 @@ const Add_Todo = () => {
     dispatch<any>(loadAlluser());
   };
     
-  
   useEffect(() => {
     dispatch<any>(loadAlluser());
   }, []);
@@ -79,7 +74,7 @@ const Add_Todo = () => {
       alert(error);
       dispatch({ type: "clearError" });
      }
-     if (message == "Create account successfully") {
+     if (message == "Tạo tài khoản thành công") {
       setName("");
       setDescription("");
       setDeadline(moment());

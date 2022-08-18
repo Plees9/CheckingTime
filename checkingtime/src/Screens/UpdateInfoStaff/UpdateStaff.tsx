@@ -83,7 +83,7 @@ const UpdateStaff = () => {
     myForm.append("dateOfBirth", date_Birth.toISOString())
     myForm.append("gender", value_2)
     await dispatch<any>(updateProfile(myForm))
-    if (message == "Profile updated successfully") {
+    if (message == "Cập nhật tài khoản thành công") {
         await dispatch <any> (loadUser)
     }
   }
