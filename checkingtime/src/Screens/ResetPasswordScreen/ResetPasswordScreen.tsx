@@ -22,7 +22,7 @@ const ResetPasswordScreen = () => {
   const email1 = route.params.email;
   const changePasswordHandler = async () => {
     await dispatch<any>(resetPassword(otp, password, confirmPassword));
-    if (message == "Password changed successfully")
+    if (message == "Thay đổi mật khẩu thành công")
       navigation.navigate("SignIn");
   };
   useEffect(() => {
