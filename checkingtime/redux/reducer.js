@@ -37,14 +37,14 @@ export const timesheetReducer = createReducer({}, {
     state.error = action.payload;
   },
   timesheetPointRequest: (state) => {
-    state.loading = true;
+    state.loadingTimesheet = true;
   } ,
   timesheetPointSuccess: (state, action) => {
-    state.loading = false;
+    state.loadingTimesheet = false;
     state.timesheetPoint = action.payload;
   } ,
   timesheetPointFailure: (state, action) => {
-    state.loading = false;
+    state.loadingTimesheet = false;
     state.error = action.payload;
   },
   timesheetSuccess: (state, action) => {

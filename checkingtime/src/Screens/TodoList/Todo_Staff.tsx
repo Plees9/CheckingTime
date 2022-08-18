@@ -25,6 +25,7 @@ import {
 } from "../../../redux/action";
 import { FlatList } from "react-native-gesture-handler";
 import { AnimatedCircularProgress } from "react-native-circular-progress";
+import Loader from "../../navigation/Loader";
 
 const Todo_Staff = () => {
   const styles = useMemo(() => createStyles(), []);
@@ -40,14 +41,11 @@ const Todo_Staff = () => {
   const { allUser } = useSelector<any, any>((state) => state.allUser);
 
   const dispatch = useDispatch();
-
-  useEffect(() => {
-    dispatch<any>(loadTask());
-    dispatch<any>(loadTaskContributor());
-  }, []);
-
   const { taskContributor } = useSelector<any, any>((state) => state.task);
-
+  useEffect(() => {
+  dispatch<any>(loadTaskContributor());
+  }, []);
+  console.log(taskContributor)
   let data_contributor: any = [];
   if (typeof taskContributor !== "undefined") {
     for (var i = 0; i < taskContributor.tasks.length; i++) {
@@ -67,10 +65,10 @@ const Todo_Staff = () => {
         manager: taskContributor.tasks[i].manager,
         checked: false,
       };
-      console.log(task_user);
       data_contributor.push(task_user);
     }
   }
+ // console.log(data_contributor)
   const [data_contributor_Staff, setdata_contributor] =
     useState(data_contributor);
 
@@ -134,7 +132,9 @@ const Todo_Staff = () => {
       </View>
     </View>
   );
-
+  if (typeof taskContributor === "undefined") {
+    return <Loader />
+}
   return (
     <View>
       <SafeAreaView style={styles.view}>
@@ -201,7 +201,7 @@ const Todo_Staff = () => {
         <View style={styles.kengang}></View>
 
         <FlatList
-          data={data_contributor_Staff}
+          data={data_contributor}
           renderItem={ItemRender}
           keyExtractor={(item) => item.id.toString()}
         ></FlatList>

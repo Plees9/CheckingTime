@@ -39,7 +39,7 @@ const wait = (timeout: number | undefined) => {
 const HomeScreen = () => {
   const { user } = useSelector<any, any>((state) => state.auth);
   const [networkIp, setNetworkIp] = useState("");
-  const [processBoard, setProcessBoard] = useState(0);
+  let processBoard : number = 0
   let deviceId: any;
   if (typeof user != undefined) {
     deviceId = Device.deviceName + user.userId + Device.modelName;
@@ -75,14 +75,6 @@ const HomeScreen = () => {
   let avatar5;
   let userName5;
   let checkin5;
-  useEffect(() => {
-    dispatch<any>(loadCompany());
-    dispatch<any>(loadTimesheet());
-    dispatch<any>(loadTimesheetFilter());
-    dispatch<any>(getmyrank());
-    dispatch<any>(ranking());
-    dispatch<any>(loadTimesheetPoint());
-  }, [dispatch]);
   const navigation = useNavigation<any>();
   const { timesheet, number, array } = useSelector<any, any>(
     (state) => state.timesheet
@@ -97,6 +89,7 @@ const HomeScreen = () => {
   if (typeof timesheetPoint !== "undefined" && timesheetPoint !== null) {
     actualPoint = timesheetPoint.point.actualPoint;
     maxPoint = timesheetPoint.point.maxPoint;
+    processBoard  = (actualPoint / maxPoint) * 100;
   }
 
   if (
@@ -149,7 +142,7 @@ const HomeScreen = () => {
       maxPoint !== "undefined" &&
       maxPoint !== null
     ) {
-      setProcessBoard((actualPoint / maxPoint) * 100);
+
     }
     if (message) {
       alert(message);
@@ -165,6 +158,8 @@ const HomeScreen = () => {
     dispatch<any>(loadTimesheet());
     dispatch<any>(getmyrank());
     dispatch<any>(ranking());
+    dispatch<any>(loadTimesheetFilter())
+    dispatch<any>(loadTimesheetPoint())
 
     //show toast android and ios
     if (Platform.OS === "android") {
@@ -180,6 +175,8 @@ const HomeScreen = () => {
       dispatch<any>(loadTimesheet());
       dispatch<any>(getmyrank());
       dispatch<any>(ranking());
+      dispatch<any>(loadTimesheetFilter())
+    dispatch<any>(loadTimesheetPoint())
     });
   }, []);
 

@@ -9,7 +9,6 @@ import {
   Linking,
 } from "react-native";
 import React, { useEffect, useMemo, useState } from "react";
-
 import Icon from "react-native-vector-icons/FontAwesome";
 import { TextInput } from "react-native-gesture-handler";
 import { Avatar } from "@rneui/themed";
@@ -17,11 +16,11 @@ import createStyles from "./styles";
 import { useNavigation } from "@react-navigation/native";
 import { useDispatch, useSelector } from "react-redux";
 import moment from "moment";
-import { deleteProfile, loadAlluser } from "../../../redux/action";
+import { deleteProfile, loadAlluser, loadProfile, queryUser } from "../../../redux/action";
 import { SearchBar } from "react-native-elements";
+import Loader from "../../navigation/Loader";
 
 const ListStaff  = () => {
-
   const styles = useMemo(() => createStyles(), []);
   const [search, setSearch] = useState("");
   const { message, error } = useSelector<any, any>((state) => state.message)
@@ -39,8 +38,7 @@ const ListStaff  = () => {
   useEffect(() => {
     dispatch<any>(loadAlluser());
   }, []);
-  const {allUser} = useSelector<any, any>((state) => state.allUser);
-
+  const { allUser } = useSelector<any, any>((state) => state.allUser);
 
   let data: any = [];
   const loadView = () => {
@@ -188,14 +186,12 @@ loadView()
   }) => (
     <SafeAreaView style={{ padding: 10, backgroundColor: "#f2f2f2" }}>
       {/* nhan vien  */}
-
       {/*  */}
       <View style={styles.view2}>
         <View style={styles.hang}>
           <View style={styles.avt}>
             <Avatar size={50} rounded source={{ uri: avatar_1 }}></Avatar>
           </View>
-
           <View style={styles.khoiUser}>
             <Text style={styles.user}>{name_1}</Text>
             <Text style={styles.user}>{role_1}</Text>
@@ -270,13 +266,11 @@ loadView()
             }
           ></Icon>
         </View>
-
         <View style={styles.hang3}>
           <View style={styles.cot1}>
             <Text style={styles.textInfo}>Loại hình nhân sự</Text>
             <Text>{typeOfEmployee_1}</Text>
           </View>
-
           <View style={styles.cot1}>
             <Text style={styles.textInfo}>Trạng thái hợp đồng</Text>
             <Text>{contractStatus_1}</Text>
@@ -287,7 +281,9 @@ loadView()
       </View>
     </SafeAreaView>
   );
- 
+  if (typeof allUser === "undefined") {
+    return <Loader />
+}
   return (
     <SafeAreaView style={styles.view}>
       <View style={styles.row}>
@@ -306,6 +302,11 @@ loadView()
             style={styles.text}
             placeholder="Tìm kiếm"
             returnKeyType="done"
+            onChangeText={(text) => setSearch(text)}
+            onChangeText={(text) => {dispatch<any>(queryUser(text))
+            setSearch(text)}}
+            value={search}
+
           ></TextInput>
           
         </View>
@@ -318,7 +319,6 @@ loadView()
           />
         </View>
       </View>
-
       <FlatList
         data={data}
         renderItem={({ item }) => (
@@ -344,5 +344,4 @@ loadView()
     </SafeAreaView>
   );
 };
-
 export default ListStaff;

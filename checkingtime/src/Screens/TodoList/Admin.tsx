@@ -21,6 +21,7 @@ import {
   import { loadAllTask, loadAlluser, loadTask, loadTaskById } from "../../../redux/action";
   import { FlatList } from "react-native-gesture-handler";
   import { AnimatedCircularProgress } from "react-native-circular-progress";
+import Loader from "../../navigation/Loader";
   
   const Admin_Manage = () => {
     const styles = useMemo(() => createStyles(), []);
@@ -68,6 +69,7 @@ import {
         //console.log(task_user);
         data_2.push(task_user);
       }
+      
     }
 }
     loadView()
@@ -135,20 +137,14 @@ import {
       </View>
     );
     useEffect(() => {
-        dispatch<any>(loadAlluser())
+        if (typeof task != "undefined") {
+        if (task.message === "Task list") {
+            dispatch({ type: "loadTaskByIdReset" });
+        }
+    }
       }, [dispatch]);
     if (task == null) {
-        return (
-        <View
-            style={{
-                backgroundColor: "#fff",
-                flex: 1,
-                justifyContent: "center",
-                alignItems: "center",
-            }}
-        >
-            <ActivityIndicator animating={true} size={100} color="#706df2" />
-        </View>)
+        return <Loader />
     }
     return (
       <View>
