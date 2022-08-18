@@ -29,7 +29,6 @@ import Loader from "../../navigation/Loader";
 
 const Todo_Staff = () => {
   const styles = useMemo(() => createStyles(), []);
-  const { user, loading } = useSelector<any, any>((state) => state.auth);
   const navigation = useNavigation<any>();
   // const [checked, setChecked] = useState(false);
   const [time_task, setTime_Task] = useState(moment());
@@ -41,7 +40,7 @@ const Todo_Staff = () => {
   const { allUser } = useSelector<any, any>((state) => state.allUser);
 
   const dispatch = useDispatch();
-  const { taskContributor } = useSelector<any, any>((state) => state.task);
+  const { taskContributor, loading } = useSelector<any, any>((state) => state.task);
   useEffect(() => {
   dispatch<any>(loadTaskContributor());
   }, []);
@@ -132,10 +131,8 @@ const Todo_Staff = () => {
       </View>
     </View>
   );
-  if (typeof taskContributor === "undefined") {
-    return <Loader />
-}
   return (
+    loading ? <Loader /> :
     <View>
       <SafeAreaView style={styles.view}>
         <View style={styles.view1}>

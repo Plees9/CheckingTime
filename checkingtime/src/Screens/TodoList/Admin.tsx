@@ -25,14 +25,13 @@ import Loader from "../../navigation/Loader";
   
   const Admin_Manage = () => {
     const styles = useMemo(() => createStyles(), []);
-    const { user, loading } = useSelector<any, any>((state) => state.auth);
     const navigation = useNavigation<any>();
     const [checked, setChecked] = useState(false);
     const [time_task, setTime_Task] = useState(moment());
   
     const [show_1, setShow_1] = useState(false);
     const route = useRoute();
-    const {task} = useSelector<any, any>(state => state.task)
+    const {task, loading} = useSelector<any, any>(state => state.task)
      const [userName, setUserName] = useState("")
      const [description, setDescription] = useState("")
      const [deadline, setDeadline] = useState("")
@@ -143,10 +142,8 @@ import Loader from "../../navigation/Loader";
         }
     }
       }, [dispatch]);
-    if (task == null) {
-        return <Loader />
-    }
     return (
+        loading ? <Loader /> :
       <View>
         <SafeAreaView style={styles.view}>
           <View style={styles.view1}>
