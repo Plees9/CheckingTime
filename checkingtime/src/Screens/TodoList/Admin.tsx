@@ -181,7 +181,7 @@ import {
             )}
           </AnimatedCircularProgress>
           <View>
-            <View style={styles.note_staff} />
+            <View style={styles.text_staff} />
           </View>
   
           <View style={styles.view1_1}>

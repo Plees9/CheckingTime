@@ -26,7 +26,7 @@ const Staff_Manager = () => {
   const { user, loading } = useSelector<any, any>((state) => state.auth);
   const navigation = useNavigation<any>();
   
-  const [workDone, setworkDone] = useState(4);
+  const [workDone, setworkDone] = useState(0);
   const [show_1, setShow_1] = useState(false);
   const { allUser } = useSelector<any, any>((state) => state.allUser);
 
@@ -152,13 +152,19 @@ const Staff_Manager = () => {
 
         <View style={styles.view1_1}>
           <View style={styles.view1_2}>
-            <Text>Tổng số công việc đã phê duyệt:</Text>
-            <Text>{data_manager.length}</Text>
+          <View style={{flexDirection:'row'}}>
+              <View style={{backgroundColor:'#3EC70B', borderRadius: 100, height:10, width:10,alignSelf:'center'}}/>
+            <Text style={styles.text_processTask}>Tổng số công việc đã phê duyệt:</Text>
+            </View>
+            <Text style={styles.num_done}>{data_manager.length}</Text>
           </View>
 
           <View style={styles.view1_2}>
-            <Text>Công việc đang chờ phê duyệt:</Text>
-            <Text>{workDone}</Text>
+          <View style={{flexDirection:'row'}}>
+              <View style={{backgroundColor:'#3d5875', borderRadius: 100, height:10, width:10,alignSelf:'center'}}/>
+            <Text style={styles.text_processTask}>Công việc đang chờ phê duyệt:</Text>
+            </View>
+            <Text style={styles.num_rest}>{workDone}</Text>
           </View>
         </View>
         <View style={styles.kengang}></View>
