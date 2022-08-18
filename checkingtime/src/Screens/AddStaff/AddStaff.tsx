@@ -60,7 +60,6 @@ const AddStaff = () => {
   const dispatch = useDispatch();
   const { message, error } = useSelector<any, any>((state) => state.message);
   const [count, setCount] = useState(0);
-  // const handleClick = useCallback(() => setCount(count + 1), [count]);
 
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
@@ -94,7 +93,7 @@ const AddStaff = () => {
     myForm.append("confirmPassword", confirmPassword)
     myForm.append("privilege", value_1);
 
-    const Sdate = moment(date); //chu y lam lai ngay thang nam
+    const Sdate = moment(date); 
     myForm.append("startWorkingDate", String(Sdate));
     myForm.append("contractStatus", value_2);
     myForm.append("typeOfEmployee", value_4);

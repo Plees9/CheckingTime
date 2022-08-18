@@ -380,8 +380,8 @@ const HomeScreen = () => {
             <Text style={styles.checkin2}>{checkin5}</Text>
           </View>
         </View>
-        <View style={{ height: 50, justifyContent: "center" }}>
-          <Text style={{ marginLeft: "30%" }}>@Phiên bản: beta</Text>
+        <View style={{ height: 60, justifyContent: "center" }}>
+          
         </View>
       </ScrollView>
       <FAB

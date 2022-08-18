@@ -176,9 +176,7 @@ import Loader from "../../navigation/Loader";
               </Text>
             )}
           </AnimatedCircularProgress>
-          <View>
-            <View style={styles.note_staff} />
-          </View>
+          
   
           <View style={styles.view1_1}>
             <View style={styles.view1_2}>

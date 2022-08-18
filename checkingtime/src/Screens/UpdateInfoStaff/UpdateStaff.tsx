@@ -24,8 +24,6 @@ import moment from "moment";
 import { Avatar } from "@rneui/themed";
 import { FONTS } from "../../../constants/theme";
 
-
-
 import { loadUser, updateProfile } from "../../../redux/action";
 import mime from "mime";
 const data_2 = [
@@ -55,11 +53,8 @@ const UpdateStaff = () => {
   const [count, setCount] = useState(0);
   const navigation = useNavigation<any>();
   let { message, error, isUpdated } = useSelector<any, any>((state) => state.message);
-  const [country, setCountry] = useState("Unknown");
-  let flag = 2
-  function showToast() {
-    ToastAndroid.show("Đã update thông tin thành công ", ToastAndroid.SHORT);
-  }
+  
+ 
   useEffect(() => {
     if (route.params) {
       if (route.params.image) {
@@ -121,14 +116,8 @@ const UpdateStaff = () => {
         </Avatar>
       </View>
       <View style={styles.textuserName}>
-        <TextInput
-          placeholder={"Họ và tên"}
-          style={styles.text23_1}
-          returnKeyType="done"
-          value={userName}
-          secureTextEntry={false}
-          onChangeText={setUserName}
-        ></TextInput>
+        <Text style={styles.text23_1}>{userName}</Text>
+        
       </View>
       <View>
         {/* Email */}
