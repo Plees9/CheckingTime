@@ -118,10 +118,7 @@ loadView()
     );
   };
 
-  const searchHandle = (text: string) => {
-    dispatch<any>(search(text));
-    
-  }
+  
 
   const Trash = (
     

@@ -328,6 +328,17 @@ state.isUpdated = false ;
         state.error = action.payload;
         state.message = action.payload.message;
       },
+        registerTaskRequest: (state) => {
+          state.loading = true;
+        } ,
+        registerTaskSuccess : (state, action) => {
+          state.loading = false;
+          state.message = action.payload;
+        } ,
+        registerTaskFailure : (state, action) => {
+          state.loading = false;
+          state.error = action.payload;
+        } ,
       updateAvatarRequest: (state) => {
         state.loading = true;
       },
@@ -423,7 +434,21 @@ state.isUpdated = false ;
         loadTaskContributorFailure: (state, action) => {
           state.loading = false;
           state.error = action.payload;
+          // Ba Kien viet them
         } ,
+        
+        loadTaskAssigneeRequest: (state) => {
+          state.loading = true;
+        } ,
+        loadTaskAssigneeSuccess: (state, action) => {
+          state.loading = false;
+          state.taskAssignee = action.payload;
+        } ,
+        loadTaskAssigneeFailure: (state, action) => {
+          state.loading = false;
+          state.error = action.payload;
+        } ,
+        // den day
 
         clearError: (state) => {
           state.error = null;

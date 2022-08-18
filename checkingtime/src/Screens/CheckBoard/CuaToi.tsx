@@ -86,13 +86,13 @@ const BangCong_Cuatoi = () => {
                 <View style={styles.icon2}>
                   <View style={{ flexDirection: "column" }}>
                     <Text style={styles.textTop4}>{lateValue} phút/ {lateNumber} lần</Text>
-                    <TextInput style={styles.textTop2}>Đi muộn</TextInput>
+                    <Text style={styles.textTop2}>Đi muộn</Text>
                   </View>
                 </View>
                 <View style={styles.icon5}>
                   <View style={{ flexDirection: "column" }}>
                     <Text style={styles.textTop4}>{earlyValue} phút/ {earlyNumber} lần</Text>
-                    <TextInput style={styles.textTop2}>Về sớm</TextInput>
+                    <Text style={styles.textTop2}>Về sớm</Text>
                   </View>
                 </View>
               </View>
@@ -100,7 +100,7 @@ const BangCong_Cuatoi = () => {
               <View style={styles.icon2}>
                 <View style={{ flexDirection: "column" }}>
                   <Text style={styles.textTop4}>{otValue} giờ/ {otNumber} lần </Text>
-                  <TextInput style={styles.textTop2}>Tổng giờ OT</TextInput>
+                  <Text style={styles.textTop2}>Tổng giờ OT</Text>
                 </View>
               </View>
 
