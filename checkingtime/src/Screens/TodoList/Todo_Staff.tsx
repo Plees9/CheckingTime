@@ -172,7 +172,7 @@ const Todo_Staff = () => {
         <View style={styles.view1_1}>
           <View style={styles.view1_2}>
             
-            <Text>Tổng số công việc hôm nay:</Text>
+            <Text style={styles.text_processTotal}>Tổng số công việc hôm nay:</Text>
             <Text style={styles.num_total}>{data_contributor.length}</Text>
           </View>
 

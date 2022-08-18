@@ -224,7 +224,10 @@ const createStyles = () =>
       fontFamily: FONTS.vanSansMedium,
       color:'#e35b45'
     },
-
+    text_processTotal:{
+      fontFamily: FONTS.vanSansMedium,
+      
+    },
 
   });
 
