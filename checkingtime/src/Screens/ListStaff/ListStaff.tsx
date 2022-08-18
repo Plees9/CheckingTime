@@ -13,7 +13,7 @@ import Icon from "react-native-vector-icons/FontAwesome";
 import { TextInput } from "react-native-gesture-handler";
 import { Avatar } from "@rneui/themed";
 import createStyles from "./styles";
-import { useNavigation } from "@react-navigation/native";
+import { useNavigation, useRoute } from "@react-navigation/native";
 import { useDispatch, useSelector } from "react-redux";
 import moment from "moment";
 import { deleteProfile, loadAlluser, loadProfile, queryUser } from "../../../redux/action";
@@ -25,6 +25,7 @@ const ListStaff  = () => {
   const [search, setSearch] = useState("");
   const { message, error } = useSelector<any, any>((state) => state.message)
   const navigation = useNavigation<any>();
+  const route = useRoute () 
   const dialCall = (numberPhone_1: any) => {
     let phoneNumber = "";
     if (Platform.OS === "android") {
@@ -291,7 +292,23 @@ loadView()
           <Icon
             name="bars"
             size={20}
-            onPress={() => navigation.navigate("Bộ lọc")}
+            onPress={() => {
+              if  (route.params) {
+              let privilege = route.params.value_4  
+              let typeOfEmployee =  route.params.value_5 
+              let role = route.params.value_6 
+              let contractStatus = route.params.value_7
+              navigation.navigate("Bộ lọc", {privilege,typeOfEmployee, role, contractStatus})
+            }
+              else {
+                let privilege = "" 
+                let typeOfEmployee =  "" 
+                let role = "" 
+                let contractStatus = ""
+                navigation.navigate("Bộ lọc", {privilege,typeOfEmployee, role, contractStatus})
+              }
+            }}
+              
           />
         </View>
         <View style={styles.icon1}>
@@ -302,8 +319,8 @@ loadView()
             style={styles.text}
             placeholder="Tìm kiếm"
             returnKeyType="done"
-            onChangeText={(text) => setSearch(text)}
-            onChangeText={(text) => {dispatch<any>(queryUser(text))
+            onChangeText={(text) => { 
+            dispatch<any>(queryUser(text, route.params.value_4, route.params.value_5, route.params.value_6, route.params.value_7))
             setSearch(text)}}
             value={search}
 

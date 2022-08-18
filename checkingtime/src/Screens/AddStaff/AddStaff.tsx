@@ -95,8 +95,8 @@ const AddStaff = () => {
 
     const Sdate = moment(date); 
     myForm.append("startWorkingDate", String(Sdate));
-    myForm.append("contractStatus", value_2);
-    myForm.append("typeOfEmployee", value_4);
+    myForm.append("typeOfEmployee", value_2);
+    myForm.append("contractStatus", value_4);
     myForm.append("role", value_3);
 
     dispatch<any>(register(myForm));

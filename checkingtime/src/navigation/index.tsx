@@ -248,12 +248,12 @@ const SNavigation = () => {
         />
         <Stack.Screen
           name="DANH SÁCH NHÂN VIÊN"
-          component={ListStaffNavigation}
+          component={ListStaff}
           options={{ headerShown: true }}
         />
         <Stack.Screen
           name="Bộ lọc"
-          component={ListFilterNavigation}
+          component={EFilter}
           options={{ headerShown: true }}
         />
         
