@@ -138,7 +138,7 @@ import Loader from "../../navigation/Loader";
     );
     useEffect(() => {
         if (typeof task != "undefined") {
-        if (task.message === "Task list") {
+        if (task.message === "Công việc") {
             dispatch({ type: "loadTaskByIdReset" });
         }
     }

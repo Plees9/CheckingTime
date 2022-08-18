@@ -79,7 +79,7 @@ const Add_Todo = () => {
       alert(error);
       dispatch({ type: "clearError" });
      }
-     if (message == "Create account successfully") {
+     if (message == "Tạo tài khoản thành công") {
       setName("");
       setDescription("");
       setDeadline(moment());

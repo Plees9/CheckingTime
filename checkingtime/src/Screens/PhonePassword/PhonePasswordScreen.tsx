@@ -24,7 +24,7 @@ const PhonePasswordScreen = () => {
       dispatch({ type: "clearError" });
     }
   }, [alert, dispatch, errorPhone]);
-  if (messagePhone != null || messagePhone != "Invalid phone") {
+  if (messagePhone != null || messagePhone != "Số điện thoại không đúng") {
     check = messagePhone
   }
   const forgetHandler = async () => {
