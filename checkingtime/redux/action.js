@@ -423,3 +423,14 @@ export const loadTimesheetPoint = () => async (dispatch) => {
     dispatch({ type: "timesheetPointFailure", payload: error.response.data.message });
   }
 }
+
+export const loadTimesheetBoard = () => async (dispatch) => {
+  try {
+    dispatch({ type: "timesheetBoardRequest" });
+
+    const { data } = await axios.get(`${serverUrl}/user/timesheetbymonth`);
+    dispatch({ type: "timesheetBoardSuccess", payload: data });
+  } catch (error) {
+    dispatch({ type: "timesheetBoardFailure", payload: error.response.data.message });
+  }
+}
