@@ -119,14 +119,14 @@ const Todo_All = () => {
               let typeOfEmployee =  route.params.value_5 
               let role = route.params.value_6 
               let contractStatus = route.params.value_7
-              navigation.navigate("Bộ lọc", {privilege,typeOfEmployee, role, contractStatus})
+              navigation.navigate("Bộ lọc tất cả công việc", {privilege,typeOfEmployee, role, contractStatus})
             }
               else {
                 let privilege = "" 
                 let typeOfEmployee =  "" 
                 let role = "" 
                 let contractStatus = ""
-                navigation.navigate("Bộ lọc", {privilege,typeOfEmployee, role, contractStatus})
+                navigation.navigate("Bộ lọc tất cả công việc", {privilege,typeOfEmployee, role, contractStatus})
               }
             }}
               

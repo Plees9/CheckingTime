@@ -82,18 +82,15 @@ const Todo_ListStaff = () => {
             color="#8f73f6"
             onPress={() => {
               if  (route.params) {
-              let privilege = route.params.value_4  
-              let typeOfEmployee =  route.params.value_5 
-              let role = route.params.value_6 
-              let contractStatus = route.params.value_7
-              navigation.navigate("Bộ lọc", {privilege,typeOfEmployee, role, contractStatus})
+              let name = route.params.value_Name
+              let workDone =  route.params.value_WorkDone // workDone chua xong
+             
+              navigation.navigate("Bộ lọc công việc hoàn thành", {name, workDone})
             }
               else {
-                let privilege = "" 
-                let typeOfEmployee =  "" 
-                let role = "" 
-                let contractStatus = ""
-                navigation.navigate("Bộ lọc", {privilege,typeOfEmployee, role, contractStatus})
+                let name = "" 
+                let workDone =  "" 
+                navigation.navigate("Bộ lọc công việc hoàn thành", {name, workDone})
               }
             }}
               
@@ -107,7 +104,7 @@ const Todo_ListStaff = () => {
             returnKeyType="done"
             onChangeText={(text) => { 
             if (route.params) {
-            dispatch<any>(queryUser(text, route.params.value_4, route.params.value_5, route.params.value_6, route.params.value_7))
+            dispatch<any>(queryUser(text, route.params.value_Name, route.params.value_WorkDone)) // workDone chua xong
             } else {
             dispatch<any>(queryUser(text, "", "", "", ""))
             }
