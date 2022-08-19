@@ -38,7 +38,7 @@ import Loader from "../../navigation/Loader";
      const [deadline, setDeadline] = useState("")
      const [date, setDate] = useState("")
      const [sumWork, setSumWork] = useState("")
-     const [workDone, setworkDone] = useState("")
+     const [workDone, setworkDone] = useState(0)
     const dispatch = useDispatch();
     useEffect(() => {
         if (route.params) {
@@ -138,7 +138,7 @@ import Loader from "../../navigation/Loader";
           <AnimatedCircularProgress
             size={85}
             width={5}
-            fill={Math.round(( 8 / data_2.length) * 100)}
+            fill={Math.round(( workDone / data_2.length) * 100)}
             tintColor="#3EC70B"
             style={{ alignSelf: "center", marginTop: 10 }}
             backgroundColor="#3d5875"
@@ -153,17 +153,22 @@ import Loader from "../../navigation/Loader";
               </Text>
             )}
           </AnimatedCircularProgress>
-          
+          <View>
+            <View style={styles.text_staff} />
+          </View>
   
           <View style={styles.view1_1}>
             <View style={styles.view1_2}>
-              <Text>Tổng số công việc hôm nay:</Text>
-              <Text>{data_2.length}</Text>
+              <Text style={styles.text_processTotal}>Tổng số công việc hôm nay:</Text>
+              <Text style={styles.num_total}>{data_2.length}</Text>
             </View>
   
             <View style={styles.view1_2}>
-              <Text>Công việc đã hoàn thành:</Text>
-              <Text>{workDone}</Text>
+            <View style={{flexDirection:'row'}}>
+              <View style={{backgroundColor:'#3EC70B', borderRadius: 100, height:10, width:10,alignSelf:'center'}}/>
+              <Text style={styles.text_processTask}>Công việc đã hoàn thành:</Text>
+              </View>
+              <Text style={styles.num_done}>{workDone}</Text>
             </View>
           </View>
           <View style={styles.kengang}></View>

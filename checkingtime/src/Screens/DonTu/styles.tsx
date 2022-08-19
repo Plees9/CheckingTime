@@ -39,6 +39,7 @@ const createStyles = () =>
       alignItems: "center",
       marginLeft: 10,
       fontSize: 14,
+      
     },
     tinyLogo: {
       width: 400,
@@ -48,6 +49,7 @@ const createStyles = () =>
     text1: {
       textAlign: "center",
       fontSize: 14,
+      fontFamily: FONTS.vanSansMedium,
     },
   });
 

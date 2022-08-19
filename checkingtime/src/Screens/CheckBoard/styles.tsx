@@ -82,14 +82,24 @@ const createStyles = () =>
       marginLeft: 5,
       fontSize: 17,
       fontFamily: FONTS.vanSansSemiBold,
-
+    },
+    view_staff2: {
+      backgroundColor: "#ffffff",
+      borderRadius: 10,
+      flexDirection: "row",
+      alignItems: "center",
+      alignSelf: "center",
+      width: "96%",
+      padding: "3%",
+      marginLeft: "2%",
+      marginTop: "2%",
+      marginRight: "2%",
     },
     chu11: {
       fontWeight: "bold",
       fontSize: 18,
       width: "100%",
       marginLeft: 10,
-      
     },
     chu1: {
       fontSize: 14,
@@ -103,7 +113,7 @@ const createStyles = () =>
       width: "100%",
       backgroundColor: "#ebe0ea",
       padding: 10,
-      
+
       fontFamily: FONTS.vanSansMedium,
     },
     chu5: {
@@ -145,7 +155,7 @@ const createStyles = () =>
     },
     textTop3: {
       marginTop: 10,
-      alignSelf: 'flex-end',
+      alignSelf: "flex-end",
       fontSize: 15,
       color: "#ff8c00",
     },
@@ -163,6 +173,20 @@ const createStyles = () =>
       color: "#ff8c00",
       textAlign: "center",
       fontSize: 14,
+    },
+    avatar_staff: {
+      justifyContent: "center",
+      marginLeft: "3%",
+      width: "10%",
+    },
+    text_staff: {
+      flexDirection: "column",
+      justifyContent: "center",
+      width: "75%",
+      marginLeft: "3%",
+    },
+    icon_staff: {
+      width: "10%",
     },
     render: {
       flexDirection: "row",
