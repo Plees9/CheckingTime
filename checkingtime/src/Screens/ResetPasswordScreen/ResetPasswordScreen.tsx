@@ -27,7 +27,7 @@ const ResetPasswordScreen = () => {
   };
   useEffect(() => {
     if (message) {
-      alert(message);
+      ToastAlert(message);
       dispatch({ type: "clearMessage" });
     }
     if (error) {

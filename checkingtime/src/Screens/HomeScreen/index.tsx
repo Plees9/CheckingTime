@@ -130,58 +130,52 @@ const HomeScreen = () => {
   const companyHandler = async () => {
     navigation.navigate("Thông tin Công Ty");
   };
-  const ToastAlert = (message: any) => {
-    Toast.show({ text1: message ,type: "success"});
+  const ToastAlertMessage = (message: any) => {
+    Toast.show({ text1: message, type: "success" });
+  };
+  const ToastAlertError = (error: any) => {
+    Toast.show({ text1: error, type: "error" });
   };
   const configToast = {
-    success: (internal :any) => (
+    success: (internal: any) => (
       <View
         style={{
-          width: "90%",
-          height: 30,
-          backgroundColor: "#8f73f6",
+          width: "95%",
+          height: 40,
+          backgroundColor: "green",
           justifyContent: "center",
           alignItems: "center",
-          borderRadius: 20,
         }}
       >
         <Text style={{ fontSize: 15, color: "white" }}> {internal.text1}</Text>
       </View>
-
-      
     ),
-    error: (internal :any) => {<View
-      style={{
-        width: "95%",
-        height: 50,
-        backgroundColor: "#8f73f6",
-        justifyContent: "center",
-        alignItems: "center",
-     
-      }}
-    >
-      <Text style={{ fontSize: 15, color: "white" }}> {internal.text1}</Text>
-    </View>;}
+    error: (internal: any) => (
+      <View
+        style={{
+          width: "95%",
+          height: 40,
+          backgroundColor: "red",
+          justifyContent: "center",
+          alignItems: "center",
+        }}
+      >
+        <Text style={{ fontSize: 15, color: "white" }}> {internal.text1}</Text>
+      </View>
+    ),
     
   };
   useEffect(() => {
-    if (
-      typeof actualPoint !== "undefined" &&
-      actualPoint !== null &&
-      maxPoint !== "undefined" &&
-      maxPoint !== null
-    ) {
-    }
     if (message) {
-      // console.log(message);
-      ToastAlert(message);
+      ToastAlertMessage(message);
       dispatch({ type: "clearMessage" });
     }
     if (error) {
-      ToastAlert(error);
+      ToastAlertError(error);
       dispatch({ type: "clearError" });
     }
-  }, [ToastAlert, dispatch, error, message]);
+  }, [ToastAlertMessage, ToastAlertError, dispatch, error, message]);
+  
   const pressHandler = async () => {
     await dispatch<any>(checking(networkIp, deviceId));
     dispatch<any>(loadTimesheet());

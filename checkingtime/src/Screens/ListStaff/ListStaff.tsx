@@ -19,6 +19,7 @@ import moment from "moment";
 import { deleteProfile, loadAlluser, loadProfile, queryUser } from "../../../redux/action";
 import { SearchBar } from "react-native-elements";
 import Loader from "../../navigation/Loader";
+import Toast from "react-native-toast-message";
 
 const ListStaff  = () => {
   const styles = useMemo(() => createStyles(), []);
@@ -40,6 +41,40 @@ const ListStaff  = () => {
     dispatch<any>(loadAlluser());
   }, []);
   const { allUser, loading } = useSelector<any, any>((state) => state.allUser);
+  const ToastAlertMessage = (message: any) => {
+    Toast.show({ text1: message, type: "success" });
+  };
+  const ToastAlertError = (error: any) => {
+    Toast.show({ text1: error, type: "error" });
+  };
+  const configToast = {
+    success: (internal: any) => (
+      <View
+        style={{
+          width: "95%",
+          height: 40,
+          backgroundColor: "green",
+          justifyContent: "center",
+          alignItems: "center",
+        }}
+      >
+        <Text style={{ fontSize: 15, color: "white" }}> {internal.text1}</Text>
+      </View>
+    ),
+    error: (internal: any) => (
+      <View
+        style={{
+          width: "95%",
+          height: 40,
+          backgroundColor: "red",
+          justifyContent: "center",
+          alignItems: "center",
+        }}
+      >
+        <Text style={{ fontSize: 15, color: "white" }}> {internal.text1}</Text>
+      </View>
+    ),
+  };
 
   let data: any = [];
   const loadView = () => {
@@ -78,14 +113,14 @@ loadView()
   }
   useEffect(() => {
     if (message) {
-      alert(message);
+      ToastAlertMessage(message);
       dispatch({ type: "clearMessage" });
     }
     if (error) {
-      alert(error);
+      ToastAlertError(error);
       dispatch({ type: "clearError" });
-     }
-  }, [alert, dispatch, error, message]);
+    }
+  }, [ToastAlertMessage, ToastAlertError, dispatch, error, message]);
   const NumberPhone = (
     id: number,
     name_1: string,
@@ -293,43 +328,57 @@ loadView()
             name="bars"
             size={20}
             onPress={() => {
-              if  (route.params) {
-              let privilege = route.params.value_4  
-              let typeOfEmployee =  route.params.value_5 
-              let role = route.params.value_6 
-              let contractStatus = route.params.value_7
-              navigation.navigate("Bộ lọc", {privilege,typeOfEmployee, role, contractStatus})
-            }
-              else {
-                let privilege = "" 
-                let typeOfEmployee =  "" 
-                let role = "" 
-                let contractStatus = ""
-                navigation.navigate("Bộ lọc", {privilege,typeOfEmployee, role, contractStatus})
+              if (route.params) {
+                let privilege = route.params.value_4;
+                let typeOfEmployee = route.params.value_5;
+                let role = route.params.value_6;
+                let contractStatus = route.params.value_7;
+                navigation.navigate("Bộ lọc", {
+                  privilege,
+                  typeOfEmployee,
+                  role,
+                  contractStatus,
+                });
+              } else {
+                let privilege = "";
+                let typeOfEmployee = "";
+                let role = "";
+                let contractStatus = "";
+                navigation.navigate("Bộ lọc", {
+                  privilege,
+                  typeOfEmployee,
+                  role,
+                  contractStatus,
+                });
               }
             }}
-              
           />
         </View>
         <View style={styles.icon1}>
           <Icon name="search" size={20} style={styles.icon3} />
-          
-            
+
           <TextInput
             style={styles.text}
             placeholder="Tìm kiếm"
             returnKeyType="done"
-            onChangeText={(text) => { 
-            if (route.params) {
-            dispatch<any>(queryUser(text, route.params.value_4, route.params.value_5, route.params.value_6, route.params.value_7))
-            } else {
-            dispatch<any>(queryUser(text, "", "", "", ""))
-            }
-            setSearch(text)}}
+            onChangeText={(text) => {
+              if (route.params) {
+                dispatch<any>(
+                  queryUser(
+                    text,
+                    route.params.value_4,
+                    route.params.value_5,
+                    route.params.value_6,
+                    route.params.value_7
+                  )
+                );
+              } else {
+                dispatch<any>(queryUser(text, "", "", "", ""));
+              }
+              setSearch(text);
+            }}
             value={search}
-
           ></TextInput>
-          
         </View>
         <View style={styles.iconPlus}>
           <Icon
@@ -362,6 +411,7 @@ loadView()
         )}
         keyExtractor={(item) => item.id.toString()}
       ></FlatList>
+      <Toast config={configToast} ref={(ref) => Toast.setRef(ref)} />
     </SafeAreaView>
   );
 };

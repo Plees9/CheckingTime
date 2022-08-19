@@ -19,6 +19,7 @@ import { FlatList } from 'react-native-gesture-handler';
 import { useDispatch, useSelector } from "react-redux";
 import MultiSelect from 'react-native-multiple-select';
 import { loadAllTask, loadAlluser, registerTask } from "../../../redux/action";
+import Toast from "react-native-toast-message";
 
 
 const Add_Todo = () => {
@@ -70,13 +71,47 @@ const Add_Todo = () => {
     dispatch<any>(loadAlluser());
   }, []);
   const { message, error } = useSelector<any, any>((state) => state.message);
+   const ToastAlertMessage = (message: any) => {
+     Toast.show({ text1: message, type: "success" });
+   };
+   const ToastAlertError = (error: any) => {
+     Toast.show({ text1: error, type: "error" });
+   };
+   const configToast = {
+     success: (internal: any) => (
+       <View
+         style={{
+           width: "95%",
+           height: 40,
+           backgroundColor: "green",
+           justifyContent: "center",
+           alignItems: "center",
+         }}
+       >
+         <Text style={{ fontSize: 15, color: "white" }}> {internal.text1}</Text>
+       </View>
+     ),
+     error: (internal: any) => (
+       <View
+         style={{
+           width: "95%",
+           height: 40,
+           backgroundColor: "red",
+           justifyContent: "center",
+           alignItems: "center",
+         }}
+       >
+         <Text style={{ fontSize: 15, color: "white" }}> {internal.text1}</Text>
+       </View>
+     ),
+   };
   useEffect(() => {
     if (message) {
-      alert(message);
+      ToastAlertMessage(message);
       dispatch({ type: "clearMessage" });
     }
     if (error) {
-      alert(error);
+      ToastAlertError(error);
       dispatch({ type: "clearError" });
      }
      if (message == "Tạo tài khoản thành công") {
@@ -144,16 +179,15 @@ const Add_Todo = () => {
   return (
     <View style={styles.viewAdd_todo}>
       <View>
-        <View style={{flexDirection:"row", alignItems:"center"}}>
-        <Text style={{marginRight:"3%"}}>Tên task:</Text>
-        <TextInput
-        placeholder="Nhập tên task"
-        returnKeyType="done"
+        <View style={{ flexDirection: "row", alignItems: "center" }}>
+          <Text style={{ marginRight: "3%" }}>Tên task:</Text>
+          <TextInput
+            placeholder="Nhập tên task"
+            returnKeyType="done"
             value={name}
             secureTextEntry={false}
             onChangeText={(text) => setName(text)}
-        >
-        </TextInput>
+          ></TextInput>
         </View>
 
         <View style={styles.text_Content_Todo}>
@@ -225,15 +259,13 @@ const Add_Todo = () => {
         </View>
 
         <View>
-          <Text style={{marginTop:"2%"}}>Nhân viên phụ trách:</Text>
-          <TextInput 
-          placeholder="Nhập tên nhân viên phụ trách"
-          returnKeyType="done"
-          value={manager}
-          onChangeText={(text) => setManager(text)}
-          >
-
-          </TextInput>
+          <Text style={{ marginTop: "2%" }}>Nhân viên phụ trách:</Text>
+          <TextInput
+            placeholder="Nhập tên nhân viên phụ trách"
+            returnKeyType="done"
+            value={manager}
+            onChangeText={(text) => setManager(text)}
+          ></TextInput>
           {/* <MultiSelect
           hideTags
           items={data_2}
@@ -256,13 +288,11 @@ const Add_Todo = () => {
         /> */}
         </View>
         <View>
-          <Text style={{marginTop:"2%"}}>Người giao việc:</Text>
-          <TextInput 
-          placeholder="Nhập tên nhân viên giao việc"
-          returnKeyType="done"
-          
-          >
-          </TextInput>
+          <Text style={{ marginTop: "2%" }}>Người giao việc:</Text>
+          <TextInput
+            placeholder="Nhập tên nhân viên giao việc"
+            returnKeyType="done"
+          ></TextInput>
           {/* <MultiSelect
           hideTags
           items={data_2}
@@ -283,10 +313,7 @@ const Add_Todo = () => {
           submitButtonColor="#f5af19"
           submitButtonText="Submit"
         /> */}
-
-          
         </View>
-       
       </View>
 
       <LinearGradient
@@ -299,8 +326,11 @@ const Add_Todo = () => {
           <Text style={styles.textComfirm}>Thêm Task</Text>
         </TouchableOpacity>
       </LinearGradient>
+      <Toast config={configToast} ref={(ref) => Toast.setRef(ref)} />
     </View>
   );
 };
 
 export default React.memo(Add_Todo);
+
+

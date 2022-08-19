@@ -26,6 +26,7 @@ import { FONTS } from "../../../constants/theme";
 
 import { loadUser, updateProfile } from "../../../redux/action";
 import mime from "mime";
+import Toast from "react-native-toast-message";
 const data_2 = [
   { label: "Nam", value: "Nam" },
   { label: "Nữ", value: "Nữ" },
@@ -87,20 +88,54 @@ const UpdateStaff = () => {
         await dispatch <any> (loadUser)
     }
   }
+   const ToastAlertMessage = (message: any) => {
+     Toast.show({ text1: message, type: "success" });
+   };
+   const ToastAlertError = (error: any) => {
+     Toast.show({ text1: error, type: "error" });
+   };
+   const configToast = {
+     success: (internal: any) => (
+       <View
+         style={{
+           width: "95%",
+           height: 40,
+           backgroundColor: "green",
+           justifyContent: "center",
+           alignItems: "center",
+         }}
+       >
+         <Text style={{ fontSize: 15, color: "white" }}> {internal.text1}</Text>
+       </View>
+     ),
+     error: (internal: any) => (
+       <View
+         style={{
+           width: "95%",
+           height: 40,
+           backgroundColor: "red",
+           justifyContent: "center",
+           alignItems: "center",
+         }}
+       >
+         <Text style={{ fontSize: 15, color: "white" }}> {internal.text1}</Text>
+       </View>
+     ),
+   };
   useEffect(() => {
     if (message) {
-      alert(message);
+      ToastAlertMessage(message);
       dispatch({ type: "clearMessage" });
     }   
     if (error) {
-      alert(error);
+      ToastAlertError(error);
       dispatch({ type: "clearError" });
       navigation.navigate("UpdateStaff")
     }
     if (isUpdated) {
         dispatch <any>(loadUser());
     }
-  }, [alert, dispatch, error, isUpdated]);
+  }, [ToastAlertError,ToastAlertMessage, dispatch, error, isUpdated]);
 
   return (
     <View style={styles.view}>
@@ -111,13 +146,10 @@ const UpdateStaff = () => {
           source={{ uri: avatar }}
           containerStyle={{ backgroundColor: "orange" }}
           onPress={() => navigation.navigate("Đổi ảnh đại diện")}
-        >
-          
-        </Avatar>
+        ></Avatar>
       </View>
       <View style={styles.textuserName}>
         <Text style={styles.text23_1}>{userName}</Text>
-        
       </View>
       <View>
         {/* Email */}
@@ -167,7 +199,7 @@ const UpdateStaff = () => {
 
       <View style={styles.row}>
         <View style={styles.row1}>
-        <Pressable style={styles.row2} onPress={() => setShow_birth(true)}>
+          <Pressable style={styles.row2} onPress={() => setShow_birth(true)}>
             <View style={{ justifyContent: "center", alignContent: "center" }}>
               <Text>{moment(date_Birth).format("DD/MM/YYYY")}</Text>
               {show_birth && (
@@ -232,13 +264,12 @@ const UpdateStaff = () => {
           <Text style={styles.text22}>Cập nhật</Text>
         </TouchableOpacity>
       </LinearGradient>
-     
+
       <Modal
         transparent={true}
         visible={visible}
-        animationType='fade'
+        animationType="fade"
         onRequestClose={() => setVisible(false)}
-        
       >
         <View style={styles1.container}>
           <View style={styles1.box}>
@@ -246,33 +277,28 @@ const UpdateStaff = () => {
 
             <TextInput
               style={styles1.input_box}
-              placeholder='Nhập mật khẩu'
+              placeholder="Nhập mật khẩu"
               secureTextEntry={true}
               onChangeText={setPassword}
             />
             <View style={styles1.box_button}>
-              
               <View style={styles1.cancel_button}>
                 <TouchableOpacity onPress={() => setVisible(false)}>
-                  <Text style={styles1.text_button}>
-                    Hủy
-                  </Text>
+                  <Text style={styles1.text_button}>Hủy</Text>
                 </TouchableOpacity>
               </View>
-              
+
               <View style={styles1.confirm_button}>
                 <TouchableOpacity onPress={updateHandler}>
-                  <Text style={styles1.text_button}>
-                    Xác nhận
-                  </Text>
+                  <Text style={styles1.text_button}>Xác nhận</Text>
                 </TouchableOpacity>
               </View>
             </View>
           </View>
         </View>
       </Modal>
+      <Toast config={configToast} ref={(ref) => Toast.setRef(ref)} />
     </View>
-    
   );
 };
 const styles1 = StyleSheet.create({
