@@ -25,6 +25,7 @@ import mime from "mime";
 import moment from "moment";
 import * as Device from 'expo-device';
 import publicIP from 'react-native-public-ip';
+import Toast from "react-native-toast-message";
 const Account = () => {
   const [visible, setVisible] = useState(false);
   const { user, loading } = useSelector<any, any>((state) => state.auth);
@@ -45,6 +46,25 @@ const Account = () => {
   const [role, setRole] = useState(user.role);
   const [contractStatus, setContractStatus] = useState(user.contractStatus);
   const [flag1, setFlag1] = useState();
+  const ToastAlert = (message: any) => {
+    Toast.show({ text1: message });
+  };
+  const configToast = {
+    success: (internal) => (
+      <View
+        style={{
+          width: "90%",
+          height: 30,
+          backgroundColor: "#8f73f6",
+          justifyContent: "center",
+          alignItems: "center",
+          borderRadius: 20,
+        }}
+      >
+        <Text style={{ fontSize: 15, color: "white" }}> {internal.text1}</Text>
+      </View>
+    ),
+  };
   const [networkIp, setNetworkIp] = useState()
   const logoutHandler = () => {
     dispatch<any>(logout());
@@ -69,17 +89,18 @@ const Account = () => {
   console.log(message)
   useEffect(() => {
     if (message) {
-      alert(message);
+      // console.log(message);
+      ToastAlert(message);
       dispatch({ type: "clearMessage" });
     }
     if (error) {
-      alert(error);
+      ToastAlert(error);
       dispatch({ type: "clearError" });
-     }
-  }, [alert, dispatch, error, message]);
+    }
+  }, [ToastAlert, dispatch, error, message]);
   return (
-    <ScrollView style={styles.container}>
-      <View style={styles.container_2}>
+    <View style={styles.container}>
+      <ScrollView style={styles.container_2}>
         <View style={styles.hang}>
           <Avatar
             size={70}
@@ -198,13 +219,17 @@ const Account = () => {
           </TouchableOpacity>
           <TouchableOpacity
             style={styles.khoangcach}
-            onPress={() => {updateId()}}
+            onPress={() => {
+              updateId();
+            }}
           >
             <Text style={styles.chu}> Thay đổi DeviceId</Text>
           </TouchableOpacity>
           <TouchableOpacity
             style={styles.khoangcach}
-            onPress={() => {companyIpHandler()}}
+            onPress={() => {
+              companyIpHandler();
+            }}
           >
             <Text style={styles.chu}> Thay đổi CompanyIp</Text>
           </TouchableOpacity>
@@ -231,8 +256,9 @@ const Account = () => {
             }}
           />
         </View>
-      </View>
-    </ScrollView>
+      </ScrollView>
+      <Toast config={configToast} ref={(ref) => Toast.setRef(ref)} />
+    </View>
   );
 };
 

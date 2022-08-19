@@ -41,19 +41,19 @@ export default class TwoChoiceModal extends React.Component<TwoChoiceModalProps>
   };
   render() {
     return (
-      
+       <Modal
+      transparent={true}
+      visible={this.props.visible}
+      animationType="fade"
+      onRequestClose={this.props.onCancel}>
+        <View style={styles.container_2}/>
       <Modal
         transparent={true}
         visible={this.props.visible}
         animationType="slide"
         onRequestClose={this.props.onCancel}
       >
-        <Modal
-      transparent={true}
-      visible={this.props.visible}
-      animationType="fade"
-      onRequestClose={this.props.onCancel}>
-        <View style={styles.container_2}/></Modal>
+       
         <TouchableOpacity onPress={this.props.onCancel} style={styles.container}>
           <TouchableWithoutFeedback>
           <View style={styles.box}>
@@ -103,6 +103,7 @@ export default class TwoChoiceModal extends React.Component<TwoChoiceModalProps>
           </View>
           </TouchableWithoutFeedback>
         </TouchableOpacity>
+      </Modal>
       </Modal>
     );
   }

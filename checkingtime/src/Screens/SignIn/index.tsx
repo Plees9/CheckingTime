@@ -17,6 +17,7 @@ import { LinearGradient } from "expo-linear-gradient";
 import GradientText from "../../component/GradientText";
 import TwoChoiceModal from "../../component/TwoChoiceModal";
 import Icon_1 from "react-native-vector-icons/Ionicons";
+import Toast from "react-native-toast-message";
 
 
 const SignIn = () => {
@@ -32,17 +33,36 @@ const SignIn = () => {
   const loginHandler = () => {
     dispatch<any>(login(userName, password));
   };
-
+const ToastAlert = (message: any) => {
+  Toast.show({ text1: message ,});
+};
+const configToast = {
+  error: (internal) => (
+    <View
+      style={{
+        width: "50%",
+        height: 40,
+        backgroundColor: "#8f73f6",
+        justifyContent: "center",
+        alignItems: "center",
+        
+      }}
+    >
+      <Text style={{ fontSize: 15, color: "white" }}> {internal.text1}</Text>
+    </View>
+  ),
+};
   useEffect(() => {
     if (error) {
-      alert(error);
+      ToastAlert(error);
       dispatch({ type: "clearError" });
     }
-  }, [error, dispatch, alert]);
+  }, [error, dispatch, ToastAlert]);
   const navigation = useNavigation<any>();
 
   return (
     <View style={styles.view}>
+      <Toast config={configToast} ref={(ref) => Toast.setRef(ref)} />
       <View style={styles.image1}>
         <GradientText
           colors={["#8f73f6", "#8f73f6"]}
@@ -86,10 +106,7 @@ const SignIn = () => {
               value={password}
               onChangeText={setPassword}
             />
-           
           </View>
-         
-          
 
           <TouchableOpacity
             onPressIn={() => setIsHided(false)}
@@ -104,7 +121,6 @@ const SignIn = () => {
             </View>
           </TouchableOpacity>
         </View>
-        
       </View>
 
       <LinearGradient
@@ -123,18 +139,26 @@ const SignIn = () => {
         style={styles.btnForgot}
         onPress={() => setIsPressed(true)}
       >
-        <Text style={styles.text23}>    Quên mật khẩu ?</Text>
+        <Text style={styles.text23}> Quên mật khẩu ?</Text>
       </TouchableOpacity>
-      <TwoChoiceModal visible={isPressed} 
-      iconLeft="email"
-      iconRight="phone"
-      txtLeft="Email"
-      message="Vui lòng chọn hình thức bạn muốn nhận mã OTP"
-      txtRight="Điện thoại"
-      onLeftClick={() => {navigation.navigate("Nhận OTP bằng email");setIsPressed(false)} }
-      onRightClick={() => {navigation.navigate("Nhận OTP bằng điện thoại");setIsPressed(false)}}
-      onCancel={() => setIsPressed(false)}
-      size={30}/>
+      <TwoChoiceModal
+        visible={isPressed}
+        iconLeft="email"
+        iconRight="phone"
+        txtLeft="Email"
+        message="Vui lòng chọn hình thức bạn muốn nhận mã OTP"
+        txtRight="Điện thoại"
+        onLeftClick={() => {
+          navigation.navigate("Nhận OTP bằng email");
+          setIsPressed(false);
+        }}
+        onRightClick={() => {
+          navigation.navigate("Nhận OTP bằng điện thoại");
+          setIsPressed(false);
+        }}
+        onCancel={() => setIsPressed(false)}
+        size={30}
+      />
     </View>
   );
 };
