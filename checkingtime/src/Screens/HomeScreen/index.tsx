@@ -103,30 +103,30 @@ const HomeScreen = () => {
     numberstr = number.number;
   }
   if (typeof array !== "undefined" && array !== null) {
-    if (typeof array.array[0] !== "undefined") {
-      avatar1 = array.array[0].avatar.url;
-      userName1 = array.array[0].name;
-      checkin1 = array.array[0].checkinTime;
+    if (typeof array.ranking[0] !== "undefined") {
+      avatar1 = array.ranking[0].avatar.url;
+      userName1 = array.ranking[0].name;
+      checkin1 = array.ranking[0].checkinTime;
     }
-    if (typeof array.array[1] !== "undefined") {
-      avatar2 = array.array[1].avatar.url;
-      userName2 = array.array[1].name;
-      checkin2 = array.array[1].checkinTime;
+    if (typeof array.ranking[1] !== "undefined") {
+      avatar2 = array.ranking[1].avatar.url;
+      userName2 = array.ranking[1].name;
+      checkin2 = array.ranking[1].checkinTime;
     }
-    if (typeof array.array[2] !== "undefined") {
-      avatar3 = array.array[2].avatar.url;
-      userName3 = array.array[2].name;
-      checkin3 = array.array[2].checkinTime;
+    if (typeof array.ranking[2] !== "undefined") {
+      avatar3 = array.ranking[2].avatar.url;
+      userName3 = array.ranking[2].name;
+      checkin3 = array.ranking[2].checkinTime;
     }
-    if (typeof array.array[3] !== "undefined") {
-      avatar4 = array.array[3].avatar.url;
-      userName4 = array.array[3].name;
-      checkin4 = array.array[3].checkinTime;
+    if (typeof array.ranking[3] !== "undefined") {
+      avatar4 = array.ranking[3].avatar.url;
+      userName4 = array.ranking[3].name;
+      checkin4 = array.ranking[3].checkinTime;
     }
-    if (typeof array.array[4] !== "undefined") {
-      avatar5 = array.array[4].avatar.url;
-      userName5 = array.array[4].name;
-      checkin5 = array.array[4].checkinTime;
+    if (typeof array.ranking[4] !== "undefined") {
+      avatar5 = array.ranking[4].avatar.url;
+      userName5 = array.ranking[4].name;
+      checkin5 = array.ranking[4].checkinTime;
     }
   }
   const [userName, setUserName] = useState(user.name);
