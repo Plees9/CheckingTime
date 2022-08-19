@@ -55,7 +55,7 @@ const HomeScreen = () => {
   const dispatch = useDispatch();
   let actualPoint: any;
   let maxPoint: any;
-  let timeLate;
+  let numLate : any;
   let checkout;
   let checkin;
   let numberstr;
@@ -75,17 +75,9 @@ const HomeScreen = () => {
   let userName5;
   let checkin5;
   const navigation = useNavigation<any>();
-  const { timesheet, number, array } = useSelector<any, any>(
+  const { timesheet, number, array, timesheetFilter } = useSelector<any, any>(
     (state) => state.timesheet
   );
-
-  const { timesheetPoint } = useSelector<any, any>((state) => state.timesheet);
-  if (typeof timesheetPoint !== "undefined" && timesheetPoint !== null) {
-    actualPoint = timesheetPoint.point.actualPoint;
-    maxPoint = timesheetPoint.point.maxPoint;
-    processBoard  = (actualPoint / maxPoint) * 100;
-  }
-
   if (
     typeof timesheet !== "undefined" &&
     typeof number !== "undefined" &&
@@ -95,6 +87,14 @@ const HomeScreen = () => {
     checkin = timesheet.checking.checkinTime;
     checkout = timesheet.checking.checkoutTime;
     numberstr = number.rank;
+  }
+  if (
+    typeof timesheetFilter !== "undefined" &&
+    timesheetFilter !== null
+  ) {
+    actualPoint = timesheetFilter.timesheetData.point.actual;
+    maxPoint = timesheetFilter.timesheetData.point.max;
+    numLate = timesheetFilter.timesheetData.checkinLate.number;
   }
   if (typeof array !== "undefined" && array !== null) {
     if (typeof array.ranking[0] !== "undefined") {
@@ -152,7 +152,6 @@ const HomeScreen = () => {
     dispatch<any>(loadTimesheet());
     dispatch<any>(getmyrank());
     dispatch<any>(ranking());
-    dispatch<any>(loadTimesheetPoint())
 
     //show toast android and ios
     if (Platform.OS === "android") {
@@ -168,7 +167,6 @@ const HomeScreen = () => {
       dispatch<any>(loadTimesheet());
       dispatch<any>(getmyrank());
       dispatch<any>(ranking());
-    dispatch<any>(loadTimesheetPoint())
     });
   }, []);
 
@@ -297,7 +295,7 @@ const HomeScreen = () => {
                 )}
               </AnimatedCircularProgress>
               <View style={{ marginTop: 10 }}>
-                <Text style={styles.text_late}>{timeLate} lần đi muộn !</Text>
+                <Text style={styles.text_late}>{numLate} lần đi muộn !</Text>
               </View>
             </View>
           </View>
