@@ -109,31 +109,8 @@ const Add_Todo = () => {
   }
 
   
-//   const [data_2, setData_2] = useState(data);
-//   const [selectedItems, setSelectedItems] = useState([]); //Danh sách người được chọn
-//   const [selectedItems_1, setSelectedItems_1] = useState([]); // nguoi giao viec
-//  //onSelectedItemsChange 
-//   const onSelectedItemsChange = (selectedItems) => {
-//     setSelectedItems(selectedItems);
-//     for (let i = 0; i < selectedItems.length; i++) {
-//       var tempItem = data.find((item: { id: any; }) => item.id === selectedItems[i]);
-//       console.log(tempItem);
-//     }
-//   }
-//   const onSelectedItemsChange_1 = (selectedItems_1) => {
-//     setSelectedItems_1(selectedItems_1);
-//     for (let i = 0; i < selectedItems_1.length; i++) {
-//       var tempItem = data.find((item: { id: any; }) => item.id === selectedItems_1[i]);
-//       console.log(tempItem);
-//     }
-//   }
+  const [data_2, setData_2] = useState(data);
  
-  const saveTodo = async () => {
-    if (task == "") {
-      Alert.alert("Thông báo", "Bạn chưa nhập nội dung công việc");
-    } else {
-    }
-  };
 
 
   return (
@@ -142,7 +119,7 @@ const Add_Todo = () => {
         <View style={{flexDirection:"row", alignItems:"center"}}>
         <Text style={{marginRight:"3%"}}>Tên task:</Text>
         <TextInput
-        placeholder="Nhập tên task"
+        placeholder="Nhập tên công việc"
         returnKeyType="done"
             value={name}
             secureTextEntry={false}
@@ -153,7 +130,7 @@ const Add_Todo = () => {
 
         <View style={styles.text_Content_Todo}>
           <TextInput
-            placeholder="Nhập nội dung công việc"
+            placeholder="Mô tả nội dung công việc"
             returnKeyType="done"
             value={description}
             onChangeText={(text) => setDescription(text)}
@@ -210,12 +187,6 @@ const Add_Todo = () => {
                 </View>
               </Pressable>
             </View>
-            {/* <Icon
-              style={styles.iconClock}
-              name="clock-o"
-              size={20}
-              color="orange"
-            /> */}
           </View>
         </View>
 
@@ -227,28 +198,8 @@ const Add_Todo = () => {
           value={manager}
           onChangeText={(text) => setManager(text)}
           >
-
           </TextInput>
-          {/* <MultiSelect
-          hideTags
-          items={data_2}
-          uniqueKey="id"
-          onSelectedItemsChange={onSelectedItemsChange}
-          selectedItems={selectedItems}
-          selectText= "Chọn nhân viên phụ trách"
-          searchInputPlaceholderText="Search Items Here..."
-          onChangeInput={(text) => console.log(text)}
-          tagRemoveIconColor="#CCC"
-          tagBorderColor="#CCC"
-          tagTextColor="#CCC"
-          selectedItemTextColor="#FFB200"
-          selectedItemIconColor="#FFB200"
-          itemTextColor="#000"
-          displayKey="name_1"
-          searchInputStyle={{ color: '#CCC', padding: 10 }}
-          submitButtonColor="#f5af19"
-          submitButtonText="Submit"
-        /> */}
+         
         </View>
         <View>
           <Text style={{marginTop:"2%"}}>Người giao việc:</Text>
@@ -258,28 +209,7 @@ const Add_Todo = () => {
           
           >
           </TextInput>
-          {/* <MultiSelect
-          hideTags
-          items={data_2}
-          uniqueKey="id"
-          onSelectedItemsChange={onSelectedItemsChange_1}
-          selectedItems={selectedItems_1}
-          selectText= "Chọn người giao việc"
-          searchInputPlaceholderText="Search Items Here..."
-          onChangeInput={(text) => console.log(text)}
-          tagRemoveIconColor="#CCC"
-          tagBorderColor="#CCC"
-          tagTextColor="#CCC"
-          selectedItemTextColor="#FFB200"
-          selectedItemIconColor="#FFB200"
-          itemTextColor="#000"
-          displayKey="name_1"
-          searchInputStyle={{ color: '#CCC', padding: 10 }}
-          submitButtonColor="#f5af19"
-          submitButtonText="Submit"
-        /> */}
-
-          
+         
         </View>
        
       </View>

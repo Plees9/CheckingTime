@@ -252,7 +252,7 @@ const createStyles = () =>
     },
     icon3: {
       padding: 5,
-      color: "gay",
+      color: "gray",
     },
 
   });
