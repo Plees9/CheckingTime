@@ -32,6 +32,7 @@ import Loader from "../../navigation/Loader";
     const [show_1, setShow_1] = useState(false);
     const route = useRoute();
     const {task, loading} = useSelector<any, any>(state => state.task)
+    console.log(task)
      const [userName, setUserName] = useState("")
      const [description, setDescription] = useState("")
      const [deadline, setDeadline] = useState("")
@@ -72,36 +73,12 @@ import Loader from "../../navigation/Loader";
     }
 }
     loadView()
-    const [data_1, setData] = useState(data_2);
-  
-    const onChangeValue = (item: { _id: any }, index: any, newValue: boolean) => {
-      const newData = data_1.map((newItem: { _id: any }) => {
-        if (newItem._id == item._id) {
-          return {
-            ...newItem,
-            selected: newValue,
-          };
-        }
-        return newItem;
-      });
-      setData(newData);
-    };
-  
     const ItemRender = ({ item, index }) => (
       <View style={styles.render}>
         <View
           style={{ flexDirection: "row", backgroundColor: "#f2f2f2", flex: 1 }}
         >
           <View style={styles.view3}>
-            <View style={styles.checkbox}>
-              <CheckBox
-                color="#FFC23C"
-                value={item.selected}
-                disabled={false}
-                onValueChange={(newValue) => onChangeValue(item, index, newValue)}
-              ></CheckBox>
-            </View>
-  
             <View style={styles.colomn1}>
               <Text style={styles.task}>{item.name}</Text>
               <View style={styles.textTime}>
@@ -142,6 +119,9 @@ import Loader from "../../navigation/Loader";
         }
     }
       }, [dispatch]);
+    if (task == null) {
+        return <Loader />
+    }
     return (
         loading ? <Loader /> :
       <View>

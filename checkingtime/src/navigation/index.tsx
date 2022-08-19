@@ -14,7 +14,7 @@ import FormCreated from "../Screens/FormCreated";
 import Jobs from "../Screens/Jobs";
 import InfoScreen from "../Screens/InfoCompany/Info";
 import Account from "../Screens/Account/Account";
-import { getmyrank, loadCompany, loadTimesheet, loadTimesheetFilter, loadTimesheetPoint, loadUser, ranking } from '../../redux/action'
+import { getmyrank, loadCompany, loadTaskContributor, loadTimesheet, loadTimesheetFilter, loadTimesheetPoint, loadUser, ranking } from '../../redux/action'
 import ResetPasswordScreen from "../Screens/ResetPasswordScreen/ResetPasswordScreen";
 import TabDonTusNavigation from "./TabDonTu";
 import CuaToi from "../Screens/DonTu/CuaToi/CuaToi";
@@ -189,6 +189,7 @@ const SNavigation = () => {
       dispatch<any>(ranking());
       dispatch<any>(loadTimesheetPoint());
       dispatch<any>(loadCompany());
+      dispatch<any>(loadTaskContributor());
   }, [dispatch])
   const { isAuthenticated, loading } = useSelector<any, any>(state => state.auth)
   const { loadingCompany}  = useSelector<any, any>(state => state.company)

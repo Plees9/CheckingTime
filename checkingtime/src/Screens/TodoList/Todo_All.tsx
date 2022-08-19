@@ -17,17 +17,20 @@ import { useNavigation, useRoute } from "@react-navigation/native";
 import { useDispatch, useSelector } from "react-redux";
 import { loadAlluser, loadAllTask, queryUser } from "../../../redux/action";
 import moment from "moment";
+import Task_Admin from "./Task_Admin.";
+import Loader from "../../navigation/Loader";
 
 const Todo_All = () => {
   const styles = useMemo(() => createStyles(), []);
-  const { user, loading } = useSelector<any, any>((state) => state.auth);
+  const { user} = useSelector<any, any>((state) => state.auth);
   const navigation = useNavigation<any>();
 
   const [userName, setUserName] = useState(user.name); //name
-  const [search, setSearch] = useState("");
 
   const [checked, setChecked] = useState(false);
+  const [search, setSearch] = useState("");
   const route = useRoute () 
+
 
   const { allUser } = useSelector<any, any>((state) => state.allUser);
 
@@ -56,8 +59,7 @@ const Todo_All = () => {
   useEffect(() => {
     dispatch<any>(loadAllTask());
   }, []);
-  const { allTask } = useSelector<any, any>((state) => state.task);
-
+  const { allTask, loading } = useSelector<any, any>((state) => state.task);
   let data_all: any = [];
   if (typeof allTask !== "undefined") {
     for (var i = 0; i < allTask.tasks.length; i++) {
@@ -101,44 +103,8 @@ const Todo_All = () => {
       },
     ]);
   };
-
-  const ItemRender = ({ item, index }) => (
-    <View style={styles.render}>
-      <View style={{ flexDirection: "row", backgroundColor: "#f2f2f2" }}>
-        <View style={styles.view2}>
-          <View style={styles.checkbox}>
-          <CheckBox
-              color="#FFC23C"
-              value={item.selected}
-              disabled={false}
-              onValueChange={(newValue) => onChangeValue(item, index, newValue)}
-            ></CheckBox>
-          </View>
-          <View style={styles.colomn}>
-            <Text style={styles.task}>{item.name}</Text>
-            <Text style={styles.text1}>{ item.contributors + " "  } </Text>
-          </View>
-
-          <Icon
-            name="trash"
-            color="#f49218"
-            size={20}
-            style={styles.trash}
-            onPress={() => trash()}
-          />
-          <Icon
-            name="pencil"
-            color="#f49218"
-            size={20}
-            style={styles.pencil}
-            onPress={() => navigation.navigate("Cập nhật công việc")}
-          />
-        </View>
-      </View>
-    </View>
-  );
-
   return (
+    loading ? <Loader /> :
     <View>
       <SafeAreaView style={styles.view}>
       <View style={styles.row}>
@@ -186,21 +152,21 @@ const Todo_All = () => {
         </View>
        
       </View>
+        
+
         <View style={styles.view1}>
           <Icon
             name="list"
             size={18}
-            color="#8f73f6"
+            color="#f49218"
             style={styles.icon}
           ></Icon>
           <Text style={styles.text}>Task List:</Text>
         </View>
         <View style={styles.kengang}></View>
-        <FlatList
-           data={data_all}
-           renderItem={ItemRender}
-           keyExtractor={(item) => item.id.toString()}
-        ></FlatList>
+        {allTask && allTask.tasks.map((item : any) => (
+                            <Task_Admin key={item._id} item={item}/>
+                        ))} 
       </SafeAreaView>
       <View style={styles.btnFab}>
         <FAB

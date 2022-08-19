@@ -50,6 +50,16 @@ export const checking = (networkIp, deviceId ) => async (dispatch) => {
     dispatch({ type: "checkingFailure", payload: error.response.data.message });
   }
 }
+export const checkingTask = (taskId ) => async (dispatch) => {
+  try {
+    dispatch({ type: "checkingTaskRequest" });
+    
+    const { data } = await axios.post(`${serverUrl}/user/checkingtask`, { taskId },);
+    dispatch({ type: "checkingTaskSuccess", payload: data.message });
+  } catch (error) {
+    dispatch({ type: "checkingTaskFailure", payload: error.response.data.message });
+  }
+}
 export const updateAvatar = (formData) => async (dispatch) => {
   try {
     dispatch({ type: "updateAvatarRequest" });
@@ -400,6 +410,7 @@ export const updateTask = (taskId) => async (dispatch) => {
   }
   export const loadTaskContributor = () => async (dispatch) => {
     try {
+      dispatch({ type: "updateProfileReset"})
       dispatch({ type: "loadTaskContributorRequest" });
       const { data } = await axios.get(`${serverUrl}/user/mytaskascontributor`);
       dispatch({ type: "loadTaskContributorSuccess", payload: data });
