@@ -23,7 +23,7 @@ export const ranking = () => async (dispatch) => {
   try {
     dispatch({ type: "rankRequest" });
 
-    const { data } = await axios.get(`${serverUrl}/user/top5`);
+    const { data } = await axios.get(`${serverUrl}/user/gettop5`);
     dispatch({ type: "rankSuccess", payload: data });
   } catch (error) {
     dispatch({ type: "rankFailure", payload: error.response.data.message });
@@ -48,6 +48,16 @@ export const checking = (networkIp, deviceId ) => async (dispatch) => {
     dispatch({ type: "checkingSuccess", payload: data.message });
   } catch (error) {
     dispatch({ type: "checkingFailure", payload: error.response.data.message });
+  }
+}
+export const checkingTask = (taskId ) => async (dispatch) => {
+  try {
+    dispatch({ type: "checkingTaskRequest" });
+    
+    const { data } = await axios.post(`${serverUrl}/user/checkingtask`, { taskId },);
+    dispatch({ type: "checkingTaskSuccess", payload: data.message });
+  } catch (error) {
+    dispatch({ type: "checkingTaskFailure", payload: error.response.data.message });
   }
 }
 export const updateAvatar = (formData) => async (dispatch) => {
@@ -107,7 +117,7 @@ export const loadTimesheet = () => async (dispatch) => {
   try {
     dispatch({ type: "timmesheetRequest" });
 
-    const { data } = await axios.get(`${serverUrl}/user/timesheetinfo`);
+    const { data } = await axios.get(`${serverUrl}/user/getchecking`);
     dispatch({ type: "timesheetSuccess", payload: data });
   } catch (error) {
     dispatch({ type: "timesheetFailure", payload: error.response.data.message });
@@ -117,7 +127,7 @@ export const getmyrank = () => async (dispatch) => {
   try {
     dispatch({ type: "getmyrankRequet" });
 
-    const { data } = await axios.get(`${serverUrl}/user/rank`);
+    const { data } = await axios.get(`${serverUrl}/user/getmyrank`);
     dispatch({ type: "getmyrankSuccess", payload: data });
   } catch (error) {
     dispatch({ type: "getmyrankFailure", payload: error.response.data.message });
@@ -387,6 +397,7 @@ export const registerTask = (formData) => async (dispatch) => {
   }
   export const loadTaskContributor = () => async (dispatch) => {
     try {
+      dispatch({ type: "updateProfileReset"})
       dispatch({ type: "loadTaskContributorRequest" });
       const { data } = await axios.get(`${serverUrl}/user/mytaskascontributor`);
       dispatch({ type: "loadTaskContributorSuccess", payload: data });
@@ -423,7 +434,7 @@ export const loadTimesheetFilter = () => async (dispatch) => {
   try {
     dispatch({ type: "timesheetFilterRequest" });
 
-    const { data } = await axios.get(`${serverUrl}/user/filtertimesheetdatabythismonth`);
+    const { data } = await axios.get(`${serverUrl}/user/filtertimesheetbythismonth`);
     dispatch({ type: "timesheetFilterSuccess", payload: data });
   } catch (error) {
     dispatch({ type: "timesheetFilterFailure", payload: error.response.data.message });

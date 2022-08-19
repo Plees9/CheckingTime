@@ -459,6 +459,17 @@ state.isUpdated = false ;
           state.loading = false;
           state.error = action.payload;
         } ,
+        checkingTaskRequest: (state) => {
+          state.loadingTask = true;
+        },
+        checkingTaskSuccess: (state, action) => {
+          state.loadingTask = false;
+          state.message = action.payload;
+        },
+        checkingTaskFailure: (state, action) => {
+          state.loadingTask = false;
+          state.error = action.payload;
+        },
         // den day
 
         clearError: (state) => {

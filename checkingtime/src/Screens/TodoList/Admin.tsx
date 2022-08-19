@@ -32,6 +32,7 @@ import Loader from "../../navigation/Loader";
     const [show_1, setShow_1] = useState(false);
     const route = useRoute();
     const {task, loading} = useSelector<any, any>(state => state.task)
+    console.log(task)
      const [userName, setUserName] = useState("")
      const [description, setDescription] = useState("")
      const [deadline, setDeadline] = useState("")
