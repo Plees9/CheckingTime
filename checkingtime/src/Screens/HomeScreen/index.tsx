@@ -177,7 +177,7 @@ const HomeScreen = () => {
           />
         }
       >
-        <View style={{ flexDirection: "row", justifyContent: "space-between" }}>
+        
           <TouchableOpacity onPress={() => navigation.navigate("Tài khoản")}>
             <View style={styles.row}>
               <Avatar rounded source={{ uri: avatar }} size={40}></Avatar>
@@ -187,8 +187,7 @@ const HomeScreen = () => {
               </View>
             </View>
           </TouchableOpacity>
-          <Icon name="eye" />
-        </View>
+          
         <View style={{ alignItems: "flex-start", flexDirection: "row" }}>
           <LinearGradient
             start={{ x: 0, y: 0 }}
