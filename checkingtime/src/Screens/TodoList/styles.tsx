@@ -28,13 +28,15 @@ const createStyles = () =>
       flexDirection: "row",
       alignItems: "center",
       backgroundColor:"#FFFFFF" ,
-      justifyContent: "center",
       borderRadius: 10,
       width: "98%",
+      height:65,
       marginTop: "2%",
-      marginBottom: "2%",
+      marginBottom: "1%",
       marginHorizontal: "1%",
+      
     },
+
     view3: {
       flexDirection: "row",
       alignItems: "center",
@@ -51,7 +53,8 @@ const createStyles = () =>
 
     colomn: {
       flexDirection: "column",
-      width: "70%",
+      width: "74%",
+      marginRight: "5%",
     },
     colomn1: {
       width: "75%",
@@ -66,6 +69,10 @@ const createStyles = () =>
     render: {
       flexDirection: "row",
       width: "100%",
+    },
+    render_addtask: {
+      width: "100%",
+      backgroundColor: "#f2f2f2",
     },
     icon: {
       marginLeft: "3%",
@@ -84,7 +91,7 @@ const createStyles = () =>
     },
     checkbox: {
       width: "10%",
-      marginLeft: "2%",
+      marginLeft: "-1%",
     },
 
     task: {
@@ -92,11 +99,11 @@ const createStyles = () =>
       
     },
     trash: {
-      width: "8%",
+      width: "5%",
       marginLeft: "-5%",
     },
     pencil: {
-      width: "10%",
+      width: "5%",
       marginLeft: "3%",
     },
 
@@ -126,15 +133,17 @@ const createStyles = () =>
       height: 45,
     },
     viewAdd_todo: {
-      marginHorizontal: "1%",
-      marginTop: "3%",
+      //marginHorizontal: "1%",
+      paddingBottom: Platform.OS === "android" ? StatusBar.currentHeight : 0,
     },
+      
     text_Content_Todo: {
-      marginTop: "3%",
-      marginBottom: "2%",
+      marginTop: 5,
+      marginLeft:10,
+      marginRight:10,
       alignSelf: "center",
-      width: "100%",
-      height: "20%",
+      width: "96%",
+      height: 100,
       borderColor: "#CFD2CF",
       borderWidth: 1,
       borderRadius: 10,
@@ -143,11 +152,14 @@ const createStyles = () =>
     viewTime: {
       flexDirection: "row",
       justifyContent: "space-between",
-      marginTop: "3%",
+      marginBottom: "1%",
       borderColor: "#A2B5BB",
       borderWidth: 1,
       padding: "2%",
-      width: "100%",
+      borderRadius: 10,
+      marginTop: 5,
+      marginRight: 10,
+      marginLeft: 10,
     },
     textTime: {
       width: "50%",
@@ -250,9 +262,47 @@ const createStyles = () =>
       backgroundColor: "#ffffff",
       fontWeight: "bold",
     },
+    icon_add_task: {
+      flexDirection: "row",
+      margin: 10,
+      borderRadius: 10,
+      padding: 5,
+      backgroundColor: "#ffffff",
+      fontWeight: "bold",
+    },
     icon3: {
       padding: 5,
       color: "gray",
+    },
+    // add task
+    view_addTask: {
+      //width: "100%",
+      //flex:1,
+    },
+    view_btn_add_task: {
+      flexDirection: "row",
+      alignItems: "center",
+      justifyContent: "space-between",
+      marginTop: "1%",
+      marginHorizontal: "1%",
+      
+    },
+    style_add_task: {
+      marginLeft: 10,
+      marginRight: 10,
+      borderRadius: 10,
+      height: "45%",
+      backgroundColor: "#ffffff",
+
+    },
+    btnFab_add_task: {
+      alignItems: "center",
+      alignSelf: "center",
+      justifyContent: "center",
+      //marginTop: "3%",
+      borderRadius: 20,
+      height: "10%",
+      width: "70%",
     },
 
   });

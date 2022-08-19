@@ -6,6 +6,7 @@ import {
   Button,
   Alert,
   TouchableOpacity,
+  ScrollView,
 } from "react-native";
 import React, { useEffect, useMemo, useState } from "react";
 
@@ -15,16 +16,17 @@ import moment from "moment";
 import Icon from "react-native-vector-icons/FontAwesome";
 import { LinearGradient } from "expo-linear-gradient";
 import { Avatar } from "@rneui/themed";
-import { FlatList } from 'react-native-gesture-handler';
+import { FlatList } from "react-native-gesture-handler";
 import { useDispatch, useSelector } from "react-redux";
-import MultiSelect from 'react-native-multiple-select';
-import { loadAllTask, loadAlluser, registerTask } from "../../../redux/action";
-
+import { loadAllTask, loadAlluser, queryUser, registerTask } from "../../../redux/action";
+import Contributor_Add_Task from "./Contributor_Add_Task";
+import Loader from "../../navigation/Loader";
+import { useRoute } from "@react-navigation/native";
 
 const Add_Todo = () => {
   const styles = useMemo(() => createStyles(), []);
   const { user, loading } = useSelector<any, any>((state) => state.auth);
-  
+
   const [name, setName] = useState("");
   const [description, setDescription] = useState(""); //Mô tả task
   const [deadline, setDeadline] = useState(moment()); //Deadline của task\
@@ -36,11 +38,17 @@ const Add_Todo = () => {
 
   const [userName, setUserName] = useState("");
   const [avatar, setAvatar] = useState(user.avatar.url);
-  
+  const route = useRoute () 
+  const [search, setSearch] = useState("");
+
   const [show, setShow] = useState(false);
   const [show_1, setShow_1] = useState(false);
   const { allUser } = useSelector<any, any>((state) => state.allUser);
-  const {task} = useSelector<any, any>((state) => state.task);
+  const { allTask } = useSelector<any, any>((state) => state.task);
+  const { task } = useSelector<any, any>((state) => state.task);
+  if (typeof allTask == "undefined") {
+    return <Loader />;
+  }
 
   const dispatch = useDispatch();
   const registerHandlerTask = () => {
@@ -60,7 +68,7 @@ const Add_Todo = () => {
     dispatch<any>(loadAllTask());
     dispatch<any>(loadAlluser());
   };
-    
+
   useEffect(() => {
     dispatch<any>(loadAlluser());
   }, []);
@@ -73,8 +81,8 @@ const Add_Todo = () => {
     if (error) {
       alert(error);
       dispatch({ type: "clearError" });
-     }
-     if (message == "Tạo tài khoản thành công") {
+    }
+    if (message == "Tạo tài khoản thành công") {
       setName("");
       setDescription("");
       setDeadline(moment());
@@ -83,49 +91,23 @@ const Add_Todo = () => {
       setStatus("");
       setManager("");
       setContributors([]);
-
-     }
+    }
   }, [alert, dispatch, error, message]);
 
-
-  let data: any = [];
-  if (typeof allUser !== "undefined") {
-    for (var i = 0; i < allUser.array.length; i++) {
-      
-      let object = {
-        id: i + 1,
-        name_1: allUser.array[i].name,
-        description_1: allUser.array[i].description,
-        deadline: moment(allUser.array[i].deadline, "HH:mm, DD/MM/YYYY"),
-        status: allUser.array[i].status,
-        date: moment(new Date(allUser.array[i].date)).format("DD/MM/YYYY"),
-        manager: allUser.array[i].manager,
-        contributors: allUser.array[i].contributors, 
-        
-      };
-      console.log(object);
-      data.push(object);
-    }
-  }
-
-  
-  const [data_2, setData_2] = useState(data);
  
-
-
   return (
     <View style={styles.viewAdd_todo}>
       <View>
-        <View style={{flexDirection:"row", alignItems:"center"}}>
-        <Text style={{marginRight:"3%"}}>Tên task:</Text>
-        <TextInput
-        placeholder="Nhập tên công việc"
-        returnKeyType="done"
+        <View style={{ flexDirection: "row", alignItems: "center",  marginLeft:10,
+      marginRight:10 }}>
+          <Text >Tên công việc: </Text>
+          <TextInput
+            placeholder="Nhập tên công việc"
+            returnKeyType="done"
             value={name}
             secureTextEntry={false}
             onChangeText={(text) => setName(text)}
-        >
-        </TextInput>
+          ></TextInput>
         </View>
 
         <View style={styles.text_Content_Todo}>
@@ -138,7 +120,8 @@ const Add_Todo = () => {
           ></TextInput>
         </View>
         <View>
-          <Text>Thời gian cần hoàn thành:</Text>
+          <Text style={{ marginLeft:10,
+      marginRight:10,}}>Thời gian cần hoàn thành:</Text>
           <View style={styles.viewTime}>
             <View style={styles.textTime}>
               <Pressable onPress={() => setShow_1(true)}>
@@ -191,34 +174,43 @@ const Add_Todo = () => {
         </View>
 
         <View>
-          <Text style={{marginTop:"2%"}}>Nhân viên phụ trách:</Text>
-          <TextInput 
-          placeholder="Nhập tên nhân viên phụ trách"
-          returnKeyType="done"
-          value={manager}
-          onChangeText={(text) => setManager(text)}
-          >
-          </TextInput>
-         
+          <Text style={{ marginLeft:10,
+      marginRight:10,}}>Nhân viên phụ trách:</Text>
+          <View style={styles.icon_add_task}>
+            <Icon
+              name="search"
+              size={20}
+              color="#8f73f6"
+              style={styles.icon3}
+            />
+            <TextInput
+              style={styles.text}
+              placeholder="Tìm kiếm"
+              returnKeyType="done"
+              onChangeText={(text) => { 
+                if (route.params) {
+                dispatch<any>(queryUser(text, route.params.value_4, route.params.value_5, route.params.value_6, route.params.value_7))
+                } else {
+                dispatch<any>(queryUser(text, "", "", "", ""))
+                }
+                setSearch(text)}}
+                value={search}
+            ></TextInput>
+          </View>
+          <ScrollView style={styles.style_add_task}>
+            {allUser &&
+              allUser.array.map((item: any) => (
+                <Contributor_Add_Task key={item._id} item={item}  />
+              ))}
+          </ScrollView>
         </View>
-        <View>
-          <Text style={{marginTop:"2%"}}>Người giao việc:</Text>
-          <TextInput 
-          placeholder="Nhập tên nhân viên giao việc"
-          returnKeyType="done"
-          
-          >
-          </TextInput>
-         
-        </View>
-       
       </View>
 
       <LinearGradient
         start={{ x: 0, y: 0 }}
         end={{ x: 1, y: 0 }}
         colors={["#f12711", "#f5af19"]}
-        style={styles.btnFab_1}
+        style={styles.btnFab_add_task}
       >
         <TouchableOpacity onPress={registerHandlerTask}>
           <Text style={styles.textComfirm}>Thêm Task</Text>
