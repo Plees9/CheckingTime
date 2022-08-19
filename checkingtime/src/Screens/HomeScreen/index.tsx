@@ -98,9 +98,9 @@ const HomeScreen = () => {
     timesheet !== null &&
     number !== null
   ) {
-    checkin = timesheet.Object.checkinTime;
-    checkout = timesheet.Object.checkoutTime;
-    numberstr = number.number;
+    checkin = timesheet.checking.checkinTime;
+    checkout = timesheet.checking.checkoutTime;
+    numberstr = number.rank;
   }
   if (typeof array !== "undefined" && array !== null) {
     if (typeof array.ranking[0] !== "undefined") {
