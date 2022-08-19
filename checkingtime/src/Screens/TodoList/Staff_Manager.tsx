@@ -20,23 +20,22 @@ import { useDispatch, useSelector } from "react-redux";
 import { loadAllTask, loadAlluser, loadTask, loadTaskManager } from "../../../redux/action";
 import { FlatList } from "react-native-gesture-handler";
 import { AnimatedCircularProgress } from "react-native-circular-progress";
+import Task_Manager from "./Task_Manager";
+import Loader from "../../navigation/Loader";
 
 const Staff_Manager = () => {
   const styles = useMemo(() => createStyles(), []);
-  const { user, loading } = useSelector<any, any>((state) => state.auth);
   const navigation = useNavigation<any>();
   
-  const [workDone, setworkDone] = useState(4);
+  const [workDone, setworkDone] = useState(0);
   const [show_1, setShow_1] = useState(false);
-  const { allUser } = useSelector<any, any>((state) => state.allUser);
-
+  const { message, error} = useSelector<any, any>((state) => state.taskMessage);
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch<any>(loadTask());
     dispatch<any>(loadTaskManager());
   }, []);
-  const { task,taskManager } = useSelector<any, any>((state) => state.task);
+  const { taskManager, loading } = useSelector<any, any>((state) => state.task);
 //console.log(taskManager);
   let data_manager: any = [];
   if (typeof taskManager !== "undefined") {
@@ -70,56 +69,18 @@ const Staff_Manager = () => {
     });
     setdata_manager3(newData);
   };
-
-  const ItemRender = ({ item, index }) => (
-    <View style={styles.render}>
-      <View
-        style={{ flexDirection: "row", backgroundColor: "#f2f2f2", flex: 1 }}
-      >
-        <View style={styles.view3}>
-          <View style={styles.checkbox}>
-            <CheckBox
-              color="#FFC23C"
-              value={item.selected}
-              disabled={false}
-              onValueChange={(newValue) => onChangeValue(item, index, newValue)}
-            ></CheckBox>
-          </View>
-          <View style={styles.colomn1}>
-            <Text style={styles.task}>{item.name}</Text>
-            <View style={styles.textTime}>
-              <Pressable>
-                <View
-                  style={{ justifyContent: "center", alignContent: "center" }}
-                >
-                  <Text>
-                    {moment(item.deadline).format("HH:mm, DD/MM/YYYY")}
-                  </Text>
-                  {show_1 && (
-                    <DateTimePicker
-                      value={new Date(item.deadline.format("YYYY/MM/DD"))}
-                      mode={"time"}
-                      display="default"
-                      is24Hour={true}
-                    />
-                  )}
-                </View>
-              </Pressable>
-            </View>
-          </View>
-          <Icon
-            name="pencil"
-            color="#f49218"
-            size={20}
-            style={styles.pencil}
-            onPress={() => navigation.navigate("Cập nhật công việc")}
-          />
-        </View>
-      </View>
-    </View>
-  );
-
+  useEffect(() => {
+    if (message) {
+      alert(message);
+      dispatch({ type: "clearMessage" });
+    }
+    if (error) {
+      alert(error);
+      dispatch({ type: "clearError" });
+    }
+  }, [alert, dispatch, error, message]);
   return (
+    loading ? <Loader /> :
     <View>
       <SafeAreaView style={styles.view}>
         <View style={styles.view1}>
@@ -152,22 +113,26 @@ const Staff_Manager = () => {
 
         <View style={styles.view1_1}>
           <View style={styles.view1_2}>
-            <Text>Tổng số công việc đã phê duyệt:</Text>
-            <Text>{data_manager.length}</Text>
+          <View style={{flexDirection:'row'}}>
+              <View style={{backgroundColor:'#3EC70B', borderRadius: 100, height:10, width:10,alignSelf:'center'}}/>
+            <Text style={styles.text_processTask}>Tổng số công việc đã phê duyệt:</Text>
+            </View>
+            <Text style={styles.num_done}>{data_manager.length}</Text>
           </View>
 
           <View style={styles.view1_2}>
-            <Text>Công việc đang chờ phê duyệt:</Text>
-            <Text>{workDone}</Text>
+          <View style={{flexDirection:'row'}}>
+              <View style={{backgroundColor:'#3d5875', borderRadius: 100, height:10, width:10,alignSelf:'center'}}/>
+            <Text style={styles.text_processTask}>Công việc đang chờ phê duyệt:</Text>
+            </View>
+            <Text style={styles.num_rest}>{workDone}</Text>
           </View>
         </View>
         <View style={styles.kengang}></View>
 
-        <FlatList
-          data={data_manager3}
-          renderItem={ItemRender}
-          keyExtractor={(item) => item._id}
-        ></FlatList>
+        {taskManager && taskManager.tasks.map((item : any) => (
+                            <Task_Manager key={item._id} item={item}/>
+                        ))} 
       </SafeAreaView>
       <View style={styles.btnFab}>
         <FAB

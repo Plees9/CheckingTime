@@ -52,8 +52,8 @@ const Todo_ListStaff = () => {
           <Avatar rounded source={{ uri: avatar_1 }} size={36} />
         </View>
         <View style={styles.text_staff}>
-          <Text>{name_1}</Text>
-          <Text>Hoàn thành: 3/5</Text>
+          <Text style={styles.text_processTotal}>{name_1}</Text>
+          <Text style={styles.num_rest}>Hoàn thành: 3/5</Text>
         </View>
         <View style={styles.icon_staff}>
           <Icon

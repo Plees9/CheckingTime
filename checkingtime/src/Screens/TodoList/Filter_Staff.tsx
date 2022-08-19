@@ -24,23 +24,23 @@ const data_WorkDone = [
 const Filter_Staff = () => {
   const styles = useMemo(() => createStyles(), []);
   const navigation = useNavigation<any>();
-  const route = useRoute()
-  const dispatch = useDispatch()
- const [value_Name, setValue_Name] = useState("")
-const [value_WorkDone, setValue_WorkDone] = useState("")
+  const route = useRoute();
+  const dispatch = useDispatch();
+  const [value_Name, setValue_Name] = useState("");
+  const [value_WorkDone, setValue_WorkDone] = useState("");
   useEffect(() => {
     if (route.params) {
-    setValue_Name(route.params.name)
-    setValue_WorkDone(route.params.typeOfEmployee) // chua lam xong
+      setValue_Name(route.params.name);
+      setValue_WorkDone(route.params.typeOfEmployee); // chua lam xong
     }
   }, [route]);
-  console.log(route.params)
+  console.log(route.params);
   return (
     <ScrollView style={styles.viewbgr}>
       <View style={styles.view}>
         <Text style={styles.textTop}> Cấp quyền </Text>
         <View style={styles.style}>
-        <Dropdown
+          <Dropdown
             style={styles.dropdown}
             placeholderStyle={styles.placeholderStyle}
             selectedTextStyle={styles.selectedTextStyle}
@@ -70,7 +70,7 @@ const [value_WorkDone, setValue_WorkDone] = useState("")
 
         <Text style={styles.textTop2}> Nhân sự</Text>
         <View style={styles.style}>
-        <Dropdown
+          <Dropdown
             style={styles.dropdown}
             placeholderStyle={styles.placeholderStyle}
             selectedTextStyle={styles.selectedTextStyle}
@@ -96,7 +96,6 @@ const [value_WorkDone, setValue_WorkDone] = useState("")
               />
             )}
           />
-       
         </View>
         <LinearGradient
           start={{ x: 0, y: 0 }}
@@ -105,8 +104,10 @@ const [value_WorkDone, setValue_WorkDone] = useState("")
           style={styles.btn2}
         >
           <TouchableOpacity
-            onPress={() => { dispatch<any>(queryUser("", value_Name, value_WorkDone))
-              navigation.navigate("Nhân viên", {value_Name, value_WorkDone})}}
+            onPress={() => {
+              dispatch<any>(queryUser("", value_Name, value_WorkDone));
+              navigation.navigate("Nhân viên", { value_Name, value_WorkDone });
+            }}
           >
             <Text style={styles.text22}>Xác nhận</Text>
           </TouchableOpacity>

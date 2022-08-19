@@ -81,26 +81,26 @@ const Todo_Staff = () => {
           <View style={styles.view1_2}>
           <View style={{flexDirection:'row'}}>
               <View style={{backgroundColor:'#3EC70B', borderRadius: 100, height:10, width:10,alignSelf:'center'}}/>
-            <Text style={{marginLeft: 5}}>Công việc đã hoàn thành:</Text>
+            <Text style={styles.text_processTask}>Công việc đã hoàn thành:</Text>
             </View>
-            <Text>{workDone}</Text>
+            <Text style={styles.num_done}>{workDone}</Text>
           </View>
           <View style={styles.view1_2}>
           <View style={{flexDirection:'row'}}>
               <View style={{backgroundColor:'#e35b45', borderRadius: 100, height:10, width:10,alignSelf:'center'}}/>
-            <Text style={{marginLeft: 5}}>Công việc đã quá hạn:</Text>
+            <Text style={styles.text_processTask}>Công việc đã quá hạn:</Text>
             </View>
-            <Text>{workDone}</Text>
+            <Text style={styles.num_overtime}>{workDone}</Text>
           </View>
           <View style={styles.view1_2}>
           <View style={{flexDirection:'row'}}>
               <View style={{backgroundColor:'#3d5875', borderRadius: 100, height:10, width:10,alignSelf:'center'}}/>
-            <Text style={{marginLeft: 5}}>Công việc chưa hoàn thành:</Text>
+            <Text style={styles.text_processTask}>Công việc chưa hoàn thành:</Text>
             </View>
-            <Text>{workDone}</Text>
+            <Text style={styles.num_rest}>{workDone}</Text>
           </View>
         </View>
-        <View style={styles.kengang}></View>
+        <View style={styles.kengang}/>
 
         {taskContributor && taskContributor.tasks.map((item : any) => (
                             <Task key={item._id} item={item}/>

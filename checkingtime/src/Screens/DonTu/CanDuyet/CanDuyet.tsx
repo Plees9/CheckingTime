@@ -32,12 +32,6 @@ const CanDuyet = () => {
         </View>
       </View>
       <ScrollView style={styles.scrollview}>
-        <Image
-          style={styles.tinyLogo}
-          source={{
-            uri: "https://kenh14cdn.com/203336854389633024/2021/9/11/16306838190621579227306-1631374860499161786395.jpg",
-          }}
-        />
         <Text style={styles.text1}> Không tìm thấy đơn nào!</Text>
       </ScrollView>
     </View>

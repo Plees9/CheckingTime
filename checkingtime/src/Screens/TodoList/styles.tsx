@@ -206,6 +206,31 @@ const createStyles = () =>
       fontFamily: FONTS.vanSansMediumItalic,
       fontSize: 15,
     },
+    text_processTask:{
+      fontFamily: FONTS.vanSansMedium,
+      marginLeft: 5,
+    },
+    num_total:{
+      fontFamily: FONTS.vanSansMedium,
+      
+    },
+    num_done:{
+      fontFamily: FONTS.vanSansMedium,
+      color:'#3EC70B'
+    },
+    num_rest:{
+      fontFamily: FONTS.vanSansMedium,
+      color:'#3d5875'
+    },
+    
+    num_overtime:{
+      fontFamily: FONTS.vanSansMedium,
+      color:'#e35b45'
+    },
+    text_processTotal:{
+      fontFamily: FONTS.vanSansMedium,
+      
+    },
     row: {
       flexDirection: "row",
       marginTop: "3%",
@@ -227,10 +252,8 @@ const createStyles = () =>
     },
     icon3: {
       padding: 5,
-      color: "gray",
+      color: "gay",
     },
-
-
 
   });
 
