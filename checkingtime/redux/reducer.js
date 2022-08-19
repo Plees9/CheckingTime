@@ -328,6 +328,17 @@ state.isUpdated = false ;
           state.loading = false;
           state.error = action.payload;
         } ,
+        updateTaskRequest : (state) => {
+          state.loading = true;
+        } ,
+        updateTaskSuccess : (state, action) => {
+          state.loading = false;
+          state.message = action.payload;
+        } ,
+        updateTaskFailure : (state, action) => {
+          state.loading = false;
+          state.error = action.payload;
+        } ,
       updateAvatarRequest: (state) => {
         state.loading = true;
       },

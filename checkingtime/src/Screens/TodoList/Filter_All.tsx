@@ -1,81 +1,82 @@
 import React, { useState, useMemo, useEffect } from "react";
 import { View, Text, TouchableOpacity, ScrollView } from "react-native";
-import { Picker } from "@react-native-picker/picker";
-import createStyles from "./styles";
+
 import { useNavigation, useRoute } from "@react-navigation/native";
 import { LinearGradient } from "expo-linear-gradient";
 
 import { Dropdown } from "react-native-element-dropdown";
 import AntDesign from "react-native-vector-icons/AntDesign";
 import { queryUser } from "../../../redux/action";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import createStyles from "./styles_filterStaff";
 
-
-const data_1 = [
-  { label: "Người dùng", value: "Người dùng" },
-  { label: "Quản lý", value: "Quản lý" },
+const data_Name_Task = [
+  { label: "cv2", value: "Người dùng" },
+  { label: "cv3", value: "Quản lý" },
   { label: "Quản trị viên", value: "Quản trị viên" },
 ];
-const data_2 = [
-  { label: "Chính thức", value: "Chính thức" },
-  { label: "Thử việc", value: "Thử việc" },
+const data_Contributor = [
+  { label: "hehhe ", value: "1" },
+  { label: "kkasa", value: "2" },
+  { label: "asas", value: "Thực tập sinh" },
+];
+const data_WorkDone_All = [
+  { label: "1", value: "1" },
+  { label: "2", value: "2" },
   { label: "Thực tập sinh", value: "Thực tập sinh" },
 ];
-const data_3 = [
-  { label: "Developer", value: "Developer" },
-  { label: "Tester", value: "Tester" },
-  { label: "Quản lý", value: "Quản lý" },
-  { label: "Giám đốc", value: "Giám đốc" },
-  { label: "Hành chính", value: "Hành chính" },
-  { label: "Kế toán", value: "Kế toán" },
-];
-const data_4 = [
-  { label: "Đang làm việc", value: "Đang làm việc" },
-  { label: "Đã nghỉ việc", value: "Đã nghỉ việc" },
-  { label: "Nghỉ có phép", value: "Nghỉ có phép" },
-  { label: "Nghỉ không phép", value: "Nghỉ không phép" },
-];
 
-
-const EFilter = () => {
+const Filter_All = () => {
   const styles = useMemo(() => createStyles(), []);
   const navigation = useNavigation<any>();
-  const route = useRoute()
-  const dispatch = useDispatch()
-  const [value_4, setValue_4] = useState("");
-  const [value_5, setValue_5] = useState("");
-  const [value_6, setValue_6] = useState("");
-  const [value_7, setValue_7] = useState("");
+  const route = useRoute();
+  const dispatch = useDispatch();
+  const [name, setName] = useState("");
+  const [contributor, setContributor] = useState("");
+  const [value_WorkDone, setValue_WorkDone] = useState("");
+  const { allUser } = useSelector<any, any>((state) => state.allUser);
+
+  let data: any = [];
+  if (typeof allUser !== "undefined") {
+    for (var i = 0; i < allUser.array.length; i++) {
+      let object = {
+        id: i + 1,
+        name_1: allUser.array[i].name,
+        contributor_1: allUser.array[i].contributor,
+        workDone_1: allUser.array[i].workDone,
+      };
+      data.push(object);
+    }
+  }
   useEffect(() => {
     if (route.params) {
-    setValue_4(route.params.privilege)
-    setValue_5(route.params.typeOfEmployee)
-    setValue_6(route.params.role) 
-    setValue_7(route.params.contractStatus)
+      setName(route.params.name);
+      setContributor(route.params.contributor);
+      setValue_WorkDone(route.params.workDone); // chua lam xong
     }
   }, [route]);
-  console.log(route.params)
+  console.log(route.params);
   return (
     <ScrollView style={styles.viewbgr}>
       <View style={styles.view}>
-        <Text style={styles.textTop}> Cấp quyền </Text>
+        <Text style={styles.textTop}> Công việc: </Text>
         <View style={styles.style}>
-        <Dropdown
+          <Dropdown
             style={styles.dropdown}
             placeholderStyle={styles.placeholderStyle}
             selectedTextStyle={styles.selectedTextStyle}
             inputSearchStyle={styles.inputSearchStyle}
             iconStyle={styles.iconStyle}
-            data={data_1}
+            data={data_Name_Task}
             search
             maxHeight={300}
             searchPlaceholder="Search..."
             labelField="label"
             valueField="value"
-            placeholder="Cấp quyền"
-            value={value_4}
+            placeholder="Chọn công việc"
+            value={name}
             onChange={(item) => {
-              setValue_4(item.value);
+              setName(item.value);
             }}
             renderLeftIcon={() => (
               <AntDesign
@@ -88,24 +89,24 @@ const EFilter = () => {
           />
         </View>
 
-        <Text style={styles.textTop2}> Nhân sự</Text>
+        <Text style={styles.textTop2}>Nhân sự tham gia: </Text>
         <View style={styles.style}>
-        <Dropdown
+          <Dropdown
             style={styles.dropdown}
             placeholderStyle={styles.placeholderStyle}
             selectedTextStyle={styles.selectedTextStyle}
             inputSearchStyle={styles.inputSearchStyle}
             iconStyle={styles.iconStyle}
-            data={data_2}
+            data={data_Contributor}
             search
             maxHeight={300}
             searchPlaceholder="Search..."
             labelField="label"
             valueField="value"
-            placeholder="Nhân sự"
-            value={value_5}
+            placeholder="Chọn nhân sự tham gia"
+            value={contributor}
             onChange={(item) => {
-              setValue_5(item.value);
+              setContributor(item.value);
             }}
             renderLeftIcon={() => (
               <AntDesign
@@ -118,24 +119,24 @@ const EFilter = () => {
           />
         </View>
 
-        <Text style={styles.textTop2}> Vai trò </Text>
+        <Text style={styles.textTop2}>Số công việc đã hoàn thành:</Text>
         <View style={styles.style}>
-        <Dropdown
+          <Dropdown
             style={styles.dropdown}
             placeholderStyle={styles.placeholderStyle}
             selectedTextStyle={styles.selectedTextStyle}
             inputSearchStyle={styles.inputSearchStyle}
             iconStyle={styles.iconStyle}
-            data={data_3}
+            data={data_WorkDone_All}
             search
             maxHeight={300}
             searchPlaceholder="Search..."
             labelField="label"
             valueField="value"
-            placeholder="Vai trò"
-            value={value_6}
+            placeholder="Công việc đã hoàn thành"
+            value={value_WorkDone}
             onChange={(item) => {
-              setValue_6(item.value);
+              setValue_WorkDone(item.value);
             }}
             renderLeftIcon={() => (
               <AntDesign
@@ -147,40 +148,6 @@ const EFilter = () => {
             )}
           />
         </View>
-
-        <Text style={styles.textTop2}> Hợp đồng</Text>
-        <View style={styles.style}>
-        <Dropdown
-            style={styles.dropdown}
-            placeholderStyle={styles.placeholderStyle}
-            selectedTextStyle={styles.selectedTextStyle}
-            inputSearchStyle={styles.inputSearchStyle}
-            iconStyle={styles.iconStyle}
-            data={data_4}
-            search
-            maxHeight={300}
-            searchPlaceholder="Search..."
-            labelField="label"
-            valueField="value"
-            placeholder="Hợp đồng"
-            value={value_7}
-            onChange={(item) => {
-              setValue_7(item.value);
-            }}
-            renderLeftIcon={() => (
-              <AntDesign
-                style={styles.icon}
-                color="orange"
-                name="Safety"
-                size={20}
-              />
-            )}
-          />
-        </View>
-
-       
-        
-
         <LinearGradient
           start={{ x: 0, y: 0 }}
           end={{ x: 1, y: 0 }}
@@ -188,8 +155,10 @@ const EFilter = () => {
           style={styles.btn2}
         >
           <TouchableOpacity
-            onPress={() => { dispatch<any>(queryUser("", value_4, value_5, value_6, value_7))
-              navigation.navigate("DANH SÁCH NHÂN VIÊN", {value_4, value_5, value_6, value_7})}}
+            onPress={() => {
+              dispatch<any>(queryUser("", name, contributor, value_WorkDone));
+              navigation.navigate("Tất cả", { name, contributor, value_WorkDone });
+            }}
           >
             <Text style={styles.text22}>Xác nhận</Text>
           </TouchableOpacity>
@@ -199,4 +168,4 @@ const EFilter = () => {
   );
 };
 
-export default EFilter;
+export default Filter_All;

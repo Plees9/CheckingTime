@@ -22,7 +22,6 @@ const Task_Admin = ( {item}) => {
         setCompleted(!completed);
     }
 
-
     return (
         <View style={styles.render}>
         <View style={{ flexDirection: "row", backgroundColor: "#f2f2f2" }}>

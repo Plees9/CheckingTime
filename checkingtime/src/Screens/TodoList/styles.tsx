@@ -1,11 +1,12 @@
-import { StyleSheet } from "react-native";
+import { StyleSheet, Platform, StatusBar } from 'react-native';
 import { FONTS } from "../../../constants/theme";
 
 const createStyles = () =>
   StyleSheet.create({
     view: {
-      backgroundColor: "#FFFFFF",
-      height: "90%",
+      backgroundColor: "#F2F2F2",
+      //height: "90%",
+      //paddingTop: Platform.OS === "android" ? StatusBar.currentHeight : 0,
     },
     view1: {
       marginTop: "3%",
@@ -71,7 +72,9 @@ const createStyles = () =>
     },
     text: {
       fontSize: 18,
+      width: "80%",
       marginLeft: "3%",
+      
     },
     kengang: {
       marginTop: "3%",
@@ -185,7 +188,7 @@ const createStyles = () =>
     },
     avatar_staff:{
       justifyContent:"center",
-      marginLeft:"3%",
+      marginLeft:"1%",
       width:"10%",
      
     },
@@ -227,6 +230,29 @@ const createStyles = () =>
     text_processTotal:{
       fontFamily: FONTS.vanSansMedium,
       
+    },
+    row: {
+      flexDirection: "row",
+      marginTop: "3%",
+    },
+    icon_NV: {
+      margin: 10,
+      borderRadius: 10,
+      padding: 10,
+      backgroundColor: "#ffffff",
+    },
+    icon1: {
+      flexDirection: "row",
+      flex: 1,
+      margin: 10,
+      borderRadius: 10,
+      padding: 5,
+      backgroundColor: "#ffffff",
+      fontWeight: "bold",
+    },
+    icon3: {
+      padding: 5,
+      color: "gay",
     },
 
   });

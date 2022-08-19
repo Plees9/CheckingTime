@@ -1,13 +1,13 @@
-import { View, Text, SafeAreaView, TouchableOpacity } from 'react-native';
+import { View, Text, SafeAreaView, TouchableOpacity, TextInput } from 'react-native';
 import React, { useEffect, useMemo, useState } from "react";
 import { Avatar } from "@rneui/themed";
 import { useDispatch, useSelector } from "react-redux";
 import createStyles from "./styles";
 import Icon from "react-native-vector-icons/FontAwesome";
-import {  useNavigation } from "@react-navigation/native";
-import { loadAlluser, loadTaskById } from "../../../redux/action";
+import {  useNavigation, useRoute } from "@react-navigation/native";
+import { loadAlluser, loadTaskById, queryUser } from "../../../redux/action";
 import { FlatList } from "react-native-gesture-handler";
-import {  Link, Route } from "react-router-native";
+
 import Loader from '../../navigation/Loader';
 const Todo_ListStaff = () => {
   const { user, loading } = useSelector<any, any>((state) => state.auth);
@@ -15,14 +15,14 @@ const Todo_ListStaff = () => {
   const navigation = useNavigation<any>();
   const [userName, setUserName] = useState(user.name);
   const [avatar, setAvatar] = useState(user.avatar.url);
+  const [search, setSearch] = useState("");
   const serverUrl = "https://timekeeper-01.herokuapp.com/api/v1";
   
-  const [sumWork, setSumWork] = useState(0); //tongcong
-  const [workDone, setworkDone] = useState(0); //congviechoanthanh
+  const route = useRoute () 
 
   const { allUser } = useSelector<any, any>((state) => state.allUser);
   const dispatch = useDispatch();
-  const {task} = useSelector<any, any>((state => state.task))
+  
   useEffect(() => {
     dispatch<any>(loadAlluser());
   }, []);
@@ -59,8 +59,8 @@ const Todo_ListStaff = () => {
           <Icon
             name="angle-double-right"
             size={34}
-            color="#8f73f6"
-            onPress={() => navigation.navigate("Công việc của nhân viên")}
+            color="#f49218"
+            
           />
         </View>
       </View>
@@ -73,8 +73,50 @@ const Todo_ListStaff = () => {
     return <Loader />
 }
   return (
-    <SafeAreaView>
-      <View style={styles.view_staff1}>
+    <SafeAreaView style={{flex:1}}>
+        <View style={styles.row}>
+        <View style={styles.icon_NV}>
+          <Icon
+            name="bars"
+            size={20}
+            color="#8f73f6"
+            onPress={() => {
+              if  (route.params) {
+              let name = route.params.value_Name
+              let workDone =  route.params.value_WorkDone // workDone chua xong
+             
+              navigation.navigate("Bộ lọc công việc hoàn thành", {name, workDone})
+            }
+              else {
+                let name = "" 
+                let workDone =  "" 
+                navigation.navigate("Bộ lọc công việc hoàn thành", {name, workDone})
+              }
+            }}
+              
+          />
+        </View>
+        <View style={styles.icon1}>
+          <Icon name="search" size={20} color= "#8f73f6" style={styles.icon3} />
+          <TextInput
+            style={styles.text}
+            placeholder="Tìm kiếm"
+            returnKeyType="done"
+            onChangeText={(text) => { 
+            if (route.params) {
+            dispatch<any>(queryUser(text, route.params.value_Name, route.params.value_WorkDone)) // workDone chua xong
+            } else {
+            dispatch<any>(queryUser(text, "", "", "", ""))
+            }
+            setSearch(text)}}
+            value={search}
+
+          ></TextInput>
+          
+        </View>
+       
+      </View>
+
         <FlatList
           data={data}
           renderItem={({ item }) => (
@@ -88,7 +130,6 @@ const Todo_ListStaff = () => {
           keyExtractor={(item) => item.id.toString()}
         ></FlatList>
       
-      </View>
     </SafeAreaView>
   );
 };
