@@ -270,11 +270,11 @@ loadView()
         <View style={styles.hang3}>
           <View style={styles.cot1}>
             <Text style={styles.textInfo}>Loại hình nhân sự</Text>
-            <Text>{typeOfEmployee_1}</Text>
+            <Text style={styles.text_role}>{typeOfEmployee_1}</Text>
           </View>
           <View style={styles.cot1}>
             <Text style={styles.textInfo}>Trạng thái hợp đồng</Text>
-            <Text>{contractStatus_1}</Text>
+            <Text style={styles.text_role}>{contractStatus_1}</Text>
           </View>
         </View>
         <View style={styles.kengang} />
@@ -335,7 +335,7 @@ loadView()
           <Icon
             name="plus-circle"
             size={40}
-            color="orange"
+            color="#8f73f6"
             onPress={() => navigation.navigate("Thêm nhân viên")}
           />
         </View>

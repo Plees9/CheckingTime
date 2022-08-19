@@ -20,6 +20,7 @@ const TabDonTusNavigation = () => {
     screenOptions={{
       tabBarStyle:  { height: 45 },
       tabBarLabelStyle: { fontSize: 11, alignItems: 'center', fontFamily: FONTS.vanSansSemiBold },
+
     }}>
       
       <TabDonTu.Screen

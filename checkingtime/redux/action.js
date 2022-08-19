@@ -450,14 +450,3 @@ export const deleteTask = (taskId) => async (dispatch) => {
     dispatch({ type: "deleteTaskFailure", payload: error.response.data.message });
   }
 }
-
-export const loadTimesheetPoint = () => async (dispatch) => {
-  try {
-    dispatch({ type: "timesheetPointRequest" });
-
-    const { data } = await axios.get(`${serverUrl}/user/timesheetpoint`);
-    dispatch({ type: "timesheetPointSuccess", payload: data });
-  } catch (error) {
-    dispatch({ type: "timesheetPointFailure", payload: error.response.data.message });
-  }
-}

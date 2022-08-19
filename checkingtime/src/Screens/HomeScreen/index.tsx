@@ -131,14 +131,7 @@ const HomeScreen = () => {
     navigation.navigate("Thông tin Công Ty");
   };
   useEffect(() => {
-    if (
-      typeof actualPoint !== "undefined" &&
-      actualPoint !== null &&
-      maxPoint !== "undefined" &&
-      maxPoint !== null
-    ) {
-
-    }
+  
     if (message) {
       alert(message);
       dispatch({ type: "clearMessage" });
@@ -371,9 +364,9 @@ const HomeScreen = () => {
             <Text style={styles.checkin2}>{checkin5}</Text>
           </View>
         </View>
-        <View style={{ height: 60, justifyContent: "center" }}>
-          
-        </View>
+        <View style={{ height: 50}} />
+         
+        
       </ScrollView>
       <FAB
         title="Chấm công"

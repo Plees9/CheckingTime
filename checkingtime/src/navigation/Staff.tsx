@@ -14,7 +14,7 @@ const Staff_Navigation = () => {
     <Staff.Navigator initialRouteName="back"
     screenOptions={{
       tabBarStyle:  { height: 45 },
-      tabBarLabelStyle: { fontSize: 14,  alignItems: 'center', fontFamily: FONTS.vanSansSemiBold },
+      tabBarLabelStyle: { fontSize: 13,  alignItems: 'center', fontFamily: FONTS.vanSansSemiBold },
     }}>
       
       <Staff.Screen

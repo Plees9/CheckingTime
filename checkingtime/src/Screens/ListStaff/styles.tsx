@@ -71,17 +71,17 @@ const createStyles = () =>
     },
     user: {
       fontSize: 16,
-      fontWeight: "bold",
+      fontFamily: FONTS.vanSansBold,
       marginTop: "2%",
     },
     iconPhone: {
       marginTop: "3%",
-      color: "orange",
+      color: "#8f73f6",
     },
     trash: {
       marginLeft: "10%",
       marginBottom: "3%",
-      color: "orange",
+      color: "#8f73f6",
     },
     hang2: {
       flexDirection: "row",
@@ -102,7 +102,7 @@ const createStyles = () =>
       alignItems: "center",
       fontFamily: FONTS.vanSansMedium,
       //padding: "2%",
-      borderColor: "#FBB454",
+      borderColor: "#8f73f6",
       
     },
     view3_1: {
@@ -113,7 +113,7 @@ const createStyles = () =>
       height: "90%",
       textAlign: "center",
       //padding: "2%",
-      borderColor: "#FBB454",
+      borderColor: "#8f73f6",
     },
     view3_2: {
       borderWidth: 1,
@@ -123,7 +123,7 @@ const createStyles = () =>
       textAlign: "center",
       fontFamily: FONTS.vanSansMedium,
       //padding: "2%",
-      borderColor: "#FBB454",
+      borderColor: "#8f73f6",
     },
     hang3: {
       flexDirection: "row",
@@ -148,13 +148,19 @@ const createStyles = () =>
       fontSize: 14,
       marginBottom: "2%",
       marginTop: "1%",
-      color: "orange",
+      color: "#9469d7",
+      fontFamily: FONTS.vanSansMedium,
     },
     itemText: {
       fontSize: 26,
       color: 'black',
       textTransform: 'capitalize'
-    }
+    },
+    text_role: {
+      fontSize: 14,
+      color: "#000",
+      fontFamily: FONTS.vanSansMedium,
+    },
   });
 
 export default createStyles;
