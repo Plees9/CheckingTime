@@ -8,7 +8,7 @@ import createStyles from './styles'
 import { useNavigation } from '@react-navigation/native'
 import moment from 'moment'
 import DateTimePicker from "@react-native-community/datetimepicker";
-import { checkingTask, deleteTask, loadTaskContributor } from '../../../redux/action';
+import { checkingTask, deleteTask, loadAllTask, loadTaskContributor, loadTaskManager } from '../../../redux/action';
 const Task_Admin = ( {item}) => {
     const {user} = useSelector<any, any>(state => state.auth)
     const dispatch = useDispatch()
@@ -45,8 +45,8 @@ const Task_Admin = ( {item}) => {
               color="#f49218"
               size={20}
               style={styles.trash}
-              onPress={() => {dispatch<any>(deleteTask())
-                                dispatch<any>(loadTaskContributor())}}
+              onPress={() => {dispatch<any>(deleteTask(item._id))
+                                dispatch<any>(loadAllTask())}}
             />
             <Icon
               name="pencil"

@@ -92,6 +92,7 @@ const HomeScreen = () => {
     typeof timesheetFilter !== "undefined" &&
     timesheetFilter !== null
   ) {
+    console.log(timesheetFilter)
     actualPoint = timesheetFilter.timesheetData.point.actual;
     maxPoint = timesheetFilter.timesheetData.point.max;
     numLate = timesheetFilter.timesheetData.checkinLate.number;

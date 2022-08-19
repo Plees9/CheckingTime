@@ -442,12 +442,12 @@ export const loadTimesheetFilter = () => async (dispatch) => {
 }
 export const deleteTask = (taskId) => async (dispatch) => {
   try {
-    dispatch({ type: "timesheetFilterRequest" });
+    dispatch({ type: "deleteTaskRequest" });
 
     const { data } = await axios.delete(`${serverUrl}/user/deletetask` , {data: {taskId}} );
-    dispatch({ type: "timesheetFilterSuccess", payload: data });
+    dispatch({ type: "deleteTaskSuccess", payload: data });
   } catch (error) {
-    dispatch({ type: "timesheetFilterFailure", payload: error.response.data.message });
+    dispatch({ type: "deleteTaskFailure", payload: error.response.data.message });
   }
 }
 

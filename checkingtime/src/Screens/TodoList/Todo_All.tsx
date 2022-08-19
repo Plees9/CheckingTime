@@ -21,13 +21,7 @@ import Loader from "../../navigation/Loader";
 
 const Todo_All = () => {
   const styles = useMemo(() => createStyles(), []);
-  const { user} = useSelector<any, any>((state) => state.auth);
   const navigation = useNavigation<any>();
-
-  const [userName, setUserName] = useState(user.name); //name
-
-  const [checked, setChecked] = useState(false);
-
   const { allUser } = useSelector<any, any>((state) => state.allUser);
 
   const dispatch = useDispatch();
@@ -55,7 +49,8 @@ const Todo_All = () => {
   useEffect(() => {
     dispatch<any>(loadAllTask());
   }, []);
-  const { allTask, loading } = useSelector<any, any>((state) => state.task);
+  const { allTask, loading} = useSelector<any, any>((state) => state.task);
+  const { message, error} = useSelector<any, any>((state) => state.taskMessage);
   let data_all: any = [];
   if (typeof allTask !== "undefined") {
     for (var i = 0; i < allTask.tasks.length; i++) {
@@ -99,6 +94,16 @@ const Todo_All = () => {
       },
     ]);
   };
+  useEffect(() => {
+    if (message) {
+      alert(message);
+      dispatch({ type: "clearMessage" });
+    }
+    if (error) {
+      alert(error);
+      dispatch({ type: "clearError" });
+    }
+  }, [alert, dispatch, error, message]);
   return (
     loading ? <Loader /> :
     <View>
