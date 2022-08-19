@@ -40,13 +40,7 @@ const BangCong_Cuatoi = () => {
     tableHead2: ["Check in", "Check out","Công ngày"],
 
     tableData: [
-      ["1", "2", "-", "-", "-"],
-      ["-", "-", "-", "-", "-"],
-      ["-", "-", "-", "-", "-"],
-      ["-", "-", "-", "-", "-"],
-      ["-", "-", "-", "-", "-"],
-      ["-", "-", "-", "-", "-"],
-      ["-", "-", "-", "-", "-"],
+      ["-", "-", "-"],
     ],
   };
 
@@ -59,6 +53,8 @@ const BangCong_Cuatoi = () => {
     earlyValue = timesheetFilter.timesheetData.checkoutEarly.value;
     otNumber = timesheetFilter.timesheetData.overtime.number;
     otValue = timesheetFilter.timesheetData.overtime.value;
+    actualPoint = timesheetFilter.timesheetData.point.actual;
+    maxPoint = timesheetFilter.timesheetData.point.max;
   }
 
   let data_date: any = [];
@@ -71,6 +67,7 @@ const BangCong_Cuatoi = () => {
       object_board.push(timesheetFilter.timesheetTable[i].point);
       data_date.push(timesheetFilter.timesheetTable[i].date);
       data_board.push(object_board);
+      CONTENT.tableData.push(data_board);
     }
   }
   const styles = useMemo(() => createStyles(), []);

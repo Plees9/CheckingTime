@@ -94,6 +94,7 @@ const HomeScreen = () => {
   ) {
     actualPoint = timesheetFilter.timesheetData.point.actual;
     maxPoint = timesheetFilter.timesheetData.point.max;
+    processBoard = actualPoint / maxPoint * 100;
     numLate = timesheetFilter.timesheetData.checkinLate.number;
   }
   if (typeof array !== "undefined" && array !== null) {

@@ -110,7 +110,8 @@ const createStyles = () =>
     },
     chu3: {
       fontSize: 14,
-      width: "100%",
+      width: 90,
+      alignSelf: 'center',
       backgroundColor: "#ebe0ea",
       padding: 10,
 
@@ -124,16 +125,18 @@ const createStyles = () =>
     },
     chu2: {
       textAlign: "center",
+      alignItems:'center',
       fontSize: 14,
-      width: "100%",
+      width: "125%",
       backgroundColor: "#ebe0ea",
       padding: 5,
       fontFamily: FONTS.vanSansMedium,
     },
     chu4: {
       textAlign: "center",
+      alignItems:'center',
       fontSize: 14,
-      width: "100%",
+      width: "125%",
       fontFamily: FONTS.vanSansMedium,
       padding: 5,
     },
