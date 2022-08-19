@@ -384,6 +384,17 @@ state.isUpdated = false ;
     export const taskReducer = createReducer(
       {},
       {
+        deleteTaskRequest: (state) => {
+          state.loading = true;
+        },
+        deleteTaskSuccess: (state, action) => {
+          state.loading = false;
+          state.message = action.payload;
+        },
+        deleteTaskFailure: (state, action) => {
+          state.loading = false;
+          state.error = action.payload;
+        },
         loadAllTaskRequest: (state) => {
           state.loading = true;
         },
