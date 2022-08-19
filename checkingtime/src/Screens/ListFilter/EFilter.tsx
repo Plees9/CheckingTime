@@ -37,8 +37,6 @@ const data_4 = [
 ];
 
 
-
-
 const EFilter = () => {
   const styles = useMemo(() => createStyles(), []);
   const navigation = useNavigation<any>();

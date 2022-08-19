@@ -1,117 +1,114 @@
-import { View, Text, Image, SafeAreaView } from "react-native";
+import { View, Text, SafeAreaView, TouchableOpacity, TextInput } from "react-native";
 import React, { useEffect, useMemo, useState } from "react";
+import { Avatar } from "@rneui/themed";
+import { useDispatch, useSelector } from "react-redux";
 
 import Icon from "react-native-vector-icons/FontAwesome";
-import { FlatList, TextInput } from "react-native-gesture-handler";
-import { Avatar } from "@rneui/themed";
-import { loadAlluser } from "../../../redux/action";
-import { useDispatch, useSelector } from "react-redux";
-import { useNavigation } from "@react-navigation/native";
-import createStyles from "./styles";
-import moment from "moment";
+import { useNavigation, useRoute } from "@react-navigation/native";
+import { loadAlluser, loadTaskById, queryUser } from "../../../redux/action";
+import { FlatList } from "react-native-gesture-handler";
 
+import Loader from "../../navigation/Loader";
+import createStyles from "./styles_board";
 
 const BangCong_NhanVien = () => {
-  const styles = useMemo(() => createStyles(), []);
-  // const image = require("../../../assets/images/splash.png");
-  const navigation = useNavigation<any>();
-
   const { user, loading } = useSelector<any, any>((state) => state.auth);
-  
- const dispatch = useDispatch();
- useEffect(() => {
-   dispatch<any>(loadAlluser());
- }, []);
- const { allUser } = useSelector<any, any>((state) => state.allUser);
- let data: any = [];
- if (typeof allUser !== "undefined") {
-   for (var i = 0; i < allUser.array.length; i++) {
-     let strAvatar = allUser.array[i].avatar.url;
-     let object = {
-       id: i + 1,
-       name_1: allUser.array[i].name,
-       role_1: allUser.array[i].role,
-       userId_1: allUser.array[i].userId,
-       typeOfEmployee_1: allUser.array[i].typeOfEmployee,
-       contractStatus_1: allUser.array[i].contractStatus,
-       date_1: moment(new Date(allUser.array[i].startWorkingDate)).format(
-         "DD/MM/YYYY"
-       ),
-       date_Birth_1: moment(new Date(allUser.array[i].birth)).format(
-         "DD/MM/YYYY"
-       ),
-       numberPhone_1: allUser.array[i].phoneNumber,
-       gender_1: allUser.array[i].gender,
-       avatar_1: allUser.array[i].avatar.url,
-     };
-     data.push(object);
-   }
- }
-  const ItemRender = ({
-    id,
-    name_1,
-    role_1,
-    userID_1,
-    typeOfEmployee_1,
-    contractStatus_1,
-    date_1,
-    date_Birth_1,
-    numberPhone_1,
-    gender_1,
-    avatar_1,
-  }) => (
-    <View style={styles.render}>
-      <Text style={styles.userID_1}>{id}</Text>
-      <Text style={styles.userName_1}>{name_1}</Text>
-     
+  const styles = useMemo(() => createStyles(), []);
+  const navigation = useNavigation<any>();
+  const [userName, setUserName] = useState(user.name);
+  const [avatar, setAvatar] = useState(user.avatar.url);
+  const [search, setSearch] = useState("");
+  const serverUrl = "https://timekeeper-01.herokuapp.com/api/v1";
+  const route = useRoute () 
+
+  const { allUser } = useSelector<any, any>((state) => state.allUser);
+
+  const dispatch = useDispatch();
+  useEffect(() => {
+    dispatch<any>(loadAlluser());
+  }, []);
+  let data: any = [];
+  if (typeof allUser !== "undefined") {
+    for (var i = 0; i < allUser.array.length; i++) {
+      let object = {
+        id: i + 1,
+        _id: allUser.array[i]._id,
+        userId_1: allUser.array[i].userId,
+        name_1: allUser.array[i].name,
+        avatar_1: allUser.array[i].avatar.url,
+      };
+      data.push(object);
+    }
+  }
+  const ItemRender = ({ id, userId_1, _id, name_1, avatar_1 }) => (
+    <View>
+      <TouchableOpacity
+        onPress={() => {
+          navigation.navigate("Công việc của nhân viên", { name_1, _id });
+        }}
+      >
+        <View style={styles.view_staff2}>
+          <View style={styles.row1_staff}>
+            <View style={styles.avatar_staff}>
+              <Avatar rounded source={{ uri: avatar_1 }} size={36} />
+            </View>
+            <View >
+              <Text style={styles.user_staff}>{name_1}</Text>
+              <Text style={styles.id_staff}>ID: {userId_1}</Text>
+            </View>
+          </View>
+
+          <View style={styles.rơw2_staff}>
+            <View>
+              <Text>OT: 03 lần</Text>
+              <Text>Về sớm: 02 lần</Text>
+              <Text>Đi muộn: 02 lần</Text>
+              <Text>Công tháng: 01/22 </Text>
+            </View>
+          </View>
+        </View>
+      </TouchableOpacity>
     </View>
   );
-  
-
+  if (typeof allUser === "undefined") {
+    return <Loader />;
+  }
   return (
-    <View style={styles.bgr}>
-      <View>
-        <View style={styles.icon4}>
+    <SafeAreaView style={{flex: 1,}}>
+      
+      <View style={styles.icon4}>
           <Icon name="search" size={20} />
           <TextInput
             style={styles.text2}
             placeholder="Nhập tên nhân viên của bạn"
             returnKeyType="done"
+            onChangeText={(text) => { 
+            if (route.params) {
+            dispatch<any>(queryUser(text, route.params.value_4, route.params.value_5, route.params.value_6, route.params.value_7))
+            } else {
+            dispatch<any>(queryUser(text, "", "", "", ""))
+            }
+            setSearch(text)}}
+            value={search}
           ></TextInput>
         </View>
-      </View>
-
-      <View style={styles.view1}>
-        <View style={styles.view2}>
-          <Text style={styles.textDSNV}>Danh sách nhân viên của tôi</Text>
-          <Text style={styles.text_selectNv}>
-            {" "}
-            Chọn nhân viên để xem bảng công tương ứng
-          </Text>
-        </View>
-        <SafeAreaView>
-          <FlatList
-            data={data}
-            renderItem={({ item }) => (
-              <ItemRender
-                id={item.id}
-name_1={item.name_1}
-                role_1={item.role_1}
-                userID_1={item.userId_1}
-                typeOfEmployee_1={item.typeOfEmployee_1}
-                contractStatus_1={item.contractStatus_1}
-                date_1={item.date_1}
-                date_Birth_1={item.date_Birth_1}
-                numberPhone_1={item.numberPhone_1}
-                gender_1={item.gender_1}
-                avatar_1={item.avatar_1}
-              />
-            )}
-            keyExtractor={(item) => item.id.toString()}
-          ></FlatList>
-        </SafeAreaView>
-      </View>
-    </View>
+      
+      
+        <FlatList
+          data={data}
+          renderItem={({ item }) => (
+            <ItemRender
+              id={item.id}
+              _id={item._id}
+              userId_1={item.userId_1}
+              name_1={item.name_1}
+              avatar_1={item.avatar_1}
+            />
+          )}
+          keyExtractor={(item) => item.id.toString()}
+        ></FlatList>
+      
+    </SafeAreaView>
   );
 };
 export default BangCong_NhanVien;

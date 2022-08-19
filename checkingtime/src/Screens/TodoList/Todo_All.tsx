@@ -5,6 +5,7 @@ import {
   ScrollView,
   Alert,
   SafeAreaView,
+  TextInput,
 } from "react-native";
 import React, { useMemo, useState, Component, useEffect } from "react";
 import createStyles from "./styles";
@@ -12,9 +13,9 @@ import Icon from "react-native-vector-icons/FontAwesome";
 import CheckBox from "expo-checkbox";
 import { FAB, Input } from "react-native-elements";
 import { FlatList } from "react-native-gesture-handler";
-import { useNavigation } from "@react-navigation/native";
+import { useNavigation, useRoute } from "@react-navigation/native";
 import { useDispatch, useSelector } from "react-redux";
-import { loadAlluser, loadAllTask } from "../../../redux/action";
+import { loadAlluser, loadAllTask, queryUser } from "../../../redux/action";
 import moment from "moment";
 
 const Todo_All = () => {
@@ -23,8 +24,10 @@ const Todo_All = () => {
   const navigation = useNavigation<any>();
 
   const [userName, setUserName] = useState(user.name); //name
+  const [search, setSearch] = useState("");
 
   const [checked, setChecked] = useState(false);
+  const route = useRoute () 
 
   const { allUser } = useSelector<any, any>((state) => state.allUser);
 
@@ -138,11 +141,56 @@ const Todo_All = () => {
   return (
     <View>
       <SafeAreaView style={styles.view}>
+      <View style={styles.row}>
+        <View style={styles.icon_NV}>
+          <Icon
+            name="bars"
+            size={20}
+            color="#8f73f6"
+            onPress={() => {
+              if  (route.params) {
+              let privilege = route.params.value_4  
+              let typeOfEmployee =  route.params.value_5 
+              let role = route.params.value_6 
+              let contractStatus = route.params.value_7
+              navigation.navigate("Bộ lọc", {privilege,typeOfEmployee, role, contractStatus})
+            }
+              else {
+                let privilege = "" 
+                let typeOfEmployee =  "" 
+                let role = "" 
+                let contractStatus = ""
+                navigation.navigate("Bộ lọc", {privilege,typeOfEmployee, role, contractStatus})
+              }
+            }}
+              
+          />
+        </View>
+        <View style={styles.icon1}>
+          <Icon name="search" size={20} color= "#8f73f6" style={styles.icon3} />
+          <TextInput
+            style={styles.text}
+            placeholder="Tìm kiếm"
+            returnKeyType="done"
+            onChangeText={(text) => { 
+            if (route.params) {
+            dispatch<any>(queryUser(text, route.params.value_4, route.params.value_5, route.params.value_6, route.params.value_7))
+            } else {
+            dispatch<any>(queryUser(text, "", "", "", ""))
+            }
+            setSearch(text)}}
+            value={search}
+
+          ></TextInput>
+          
+        </View>
+       
+      </View>
         <View style={styles.view1}>
           <Icon
             name="list"
             size={18}
-            color="#f49218"
+            color="#8f73f6"
             style={styles.icon}
           ></Icon>
           <Text style={styles.text}>Task List:</Text>
