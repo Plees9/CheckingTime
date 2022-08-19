@@ -44,17 +44,6 @@ export const timesheetReducer = createReducer({}, {
     state.loading = false;
     state.error = action.payload;
   },
-  loadTimesheetFilterRequest: (state) => {
-    state.loading = true;
-  } ,
-  loadTimesheetFilterSuccess: (state, action) => {
-    state.loading = false;
-    state.timesheetDay = action.payload;
-  } ,
-  loadTimesheetFilterFailure: (state, action) => {
-    state.loading = false;
-    state.error = action.payload;
-  } ,
   logoutTimesheet: (state) => {
     state.loading = false
     state.timesheet = null
@@ -339,6 +328,17 @@ state.isUpdated = false ;
           state.loading = false;
           state.error = action.payload;
         } ,
+        updateTaskRequest : (state) => {
+          state.loading = true;
+        } ,
+        updateTaskSuccess : (state, action) => {
+          state.loading = false;
+          state.message = action.payload;
+        } ,
+        updateTaskFailure : (state, action) => {
+          state.loading = false;
+          state.error = action.payload;
+        } ,
       updateAvatarRequest: (state) => {
         state.loading = true;
       },
@@ -373,17 +373,7 @@ state.isUpdated = false ;
     export const taskReducer = createReducer(
       {},
       {
-        deleteTaskRequest: (state) => {
-          state.loading = true;
-        },
-        deleteTaskSuccess: (state, action) => {
-          state.loading = false;
-          state.message = action.payload;
-        },
-        deleteTaskFailure: (state, action) => {
-          state.loading = false;
-          state.error = action.payload;
-        },
+       
         loadAllTaskRequest: (state) => {
           state.loading = true;
         },
@@ -502,3 +492,24 @@ state.isUpdated = false ;
       }
     );
 
+    export const taskMessageReducer = createReducer (
+      {},
+      { deleteTaskRequest: (state) => {
+        state.loading = true;
+      },
+      deleteTaskSuccess: (state, action) => {
+        state.loading = false;
+        state.message = action.payload.message;
+      },
+      deleteTaskFailure: (state, action) => {
+        state.loading = false;
+        state.error = action.payload;
+      },
+      clearError: (state) => {
+        state.error = null;
+      },
+
+      clearMessage: (state) => {
+        state.message = null;
+      },}
+    )

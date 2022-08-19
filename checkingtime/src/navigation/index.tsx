@@ -31,6 +31,8 @@ import Add_Todo from '../Screens/TodoList/Add_Todo';
 import Update_Todo from "../Screens/TodoList/Update_Todo";
 import Todo_Staff from "../Screens/TodoList/Todo_Staff";
 import Staff_Navigation from "./Staff";
+import Filter_Staff from "../Screens/TodoList/Filter_Staff";
+import Filter_All from "../Screens/TodoList/Filter_All";
 
 import UpdateStaff_Admin from "../Screens/UpdateInFoStaff_NV/UpdateInfoStaff_NV";
 
@@ -175,7 +177,20 @@ const Staff_ManagerNavigation = () => {
     </Stack.Navigator>
   );
 }
-
+const Filter_StaffNavigation = () => {
+  return (
+    <Stack.Navigator screenOptions={{ headerShown: false }}>
+      <Stack.Screen name="Filter_Staff" component={Filter_Staff} />
+    </Stack.Navigator>
+  );
+}
+const Filter_AllNavigation = () => {
+  return (
+    <Stack.Navigator screenOptions={{ headerShown: false }}>
+      <Stack.Screen name="Filter_All" component={Filter_All} />
+    </Stack.Navigator>
+  );
+}
 
 
 const SNavigation = () => {
@@ -322,6 +337,16 @@ const SNavigation = () => {
         <Stack.Screen
           name="Công việc của nhân viên"
           component={Admin_Manage}
+          options={{ headerShown: true }}
+        />
+        <Stack.Screen
+          name="Bộ lọc công việc hoàn thành"
+          component={Filter_StaffNavigation}
+          options={{ headerShown: true }}
+        />
+        <Stack.Screen
+          name="Bộ lọc tất cả công việc"
+          component={Filter_AllNavigation}
           options={{ headerShown: true }}
         />
 

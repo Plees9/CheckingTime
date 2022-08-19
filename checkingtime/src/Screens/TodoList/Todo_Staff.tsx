@@ -1,11 +1,11 @@
 import {
   Text,
-  StyleSheet,
+ 
   View,
-  ScrollView,
+ 
   Alert,
   SafeAreaView,
-  Pressable,
+ 
 } from "react-native";
 import React, { useEffect, useMemo, useState } from "react";
 import createStyles from "./styles";
@@ -14,16 +14,12 @@ import CheckBox from "expo-checkbox";
 import { FAB, Input } from "react-native-elements";
 
 import moment from "moment";
-import DateTimePicker from "@react-native-community/datetimepicker";
 import { useNavigation } from "@react-navigation/native";
 import { useDispatch, useSelector } from "react-redux";
 import {
-  loadAllTask,
-  loadAlluser,
-  loadTask,
   loadTaskContributor,
 } from "../../../redux/action";
-import { FlatList } from "react-native-gesture-handler";
+
 import { AnimatedCircularProgress } from "react-native-circular-progress";
 import Loader from "../../navigation/Loader";
 import Task from "./Task";
@@ -31,14 +27,8 @@ import Task from "./Task";
 const Todo_Staff = () => {
   const styles = useMemo(() => createStyles(), []);
   const navigation = useNavigation<any>();
-  // const [checked, setChecked] = useState(false);
-  const [time_task, setTime_Task] = useState(moment());
-
-  const [sumWork, setSumWork] = useState(10);
+  
   const [workDone, setworkDone] = useState(0);
-  const [workOvertime, setworkOvertime] = useState(6);
-  const [show_1, setShow_1] = useState(false);
-  const { allUser } = useSelector<any, any>((state) => state.allUser);
   const dispatch = useDispatch()
   const { taskContributor, loading } = useSelector<any, any>((state) => state.task);
   

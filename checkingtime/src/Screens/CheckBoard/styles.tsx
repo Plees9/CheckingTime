@@ -5,6 +5,8 @@ const createStyles = () =>
   StyleSheet.create({
     bgr: {
       backgroundColor: "#FFFFFF",
+      flex: 1,
+      paddingTop: StatusBar.currentHeight,
     },
     icon1: {
       flexDirection: "row",
@@ -213,6 +215,34 @@ const createStyles = () =>
       width: "12%",
       alignSelf: "center",
     },
+    // Table_Board 
+    with_id : {
+      width: "10%",
+      marginLeft: "1%"
+    },
+    with_name : {
+      width: "30%",
+      marginLeft: "1%"
+    },
+    with_lateValue : {
+      width: "10%",
+      marginLeft: "1%"
+    },
+    with_earlyValue : {
+      width: "10%",
+      marginLeft: "1%"
+    },
+    with_otValue : {
+      width: "10%",
+      marginLeft: "1%"
+    },
+    with_point : {
+      width: "10%",
+      marginLeft: "1%"
+    },
+
+
+   
   });
 
 export default createStyles;

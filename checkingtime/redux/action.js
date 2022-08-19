@@ -361,6 +361,19 @@ export const registerTask = (formData) => async (dispatch) => {
     });
   }
 }
+export const updateTask = (taskId) => async (dispatch) => {
+  try {
+    dispatch({ type: "updateTaskRequest" });
+
+    const { data } = await axios.get(`${serverUrl}/user/updatetask/${taskId}`);
+    dispatch({ type: "updateTaskSuccess", payload: data.message });
+  } catch (error) {
+    dispatch({
+      type: "updateTaskFailure",
+      payload: error.response.data.message,
+    });
+  }
+};
 
 
   export const loadAllTask = () => async (dispatch) => {
@@ -442,11 +455,11 @@ export const loadTimesheetFilter = () => async (dispatch) => {
 }
 export const deleteTask = (taskId) => async (dispatch) => {
   try {
-    dispatch({ type: "timesheetFilterRequest" });
+    dispatch({ type: "deleteTaskRequest" });
 
     const { data } = await axios.delete(`${serverUrl}/user/deletetask` , {data: {taskId}} );
-    dispatch({ type: "timesheetFilterSuccess", payload: data });
+    dispatch({ type: "deleteTaskSuccess", payload: data });
   } catch (error) {
-    dispatch({ type: "timesheetFilterFailure", payload: error.response.data.message });
+    dispatch({ type: "deleteTaskFailure", payload: error.response.data.message });
   }
 }
