@@ -18,7 +18,12 @@ import { LinearGradient } from "expo-linear-gradient";
 import { Avatar } from "@rneui/themed";
 import { FlatList } from "react-native-gesture-handler";
 import { useDispatch, useSelector } from "react-redux";
-import { loadAllTask, loadAlluser, queryUser, registerTask } from "../../../redux/action";
+import {
+  loadAllTask,
+  loadAlluser,
+  queryUser,
+  registerTask,
+} from "../../../redux/action";
 import Contributor_Add_Task from "./Contributor_Add_Task";
 import Loader from "../../navigation/Loader";
 import { useRoute } from "@react-navigation/native";
@@ -38,7 +43,7 @@ const Add_Todo = () => {
 
   const [userName, setUserName] = useState("");
   const [avatar, setAvatar] = useState(user.avatar.url);
-  const route = useRoute () 
+  const route = useRoute();
   const [search, setSearch] = useState("");
 
   const [show, setShow] = useState(false);
@@ -94,13 +99,18 @@ const Add_Todo = () => {
     }
   }, [alert, dispatch, error, message]);
 
- 
   return (
     <View style={styles.viewAdd_todo}>
       <View>
-        <View style={{ flexDirection: "row", alignItems: "center",  marginLeft:10,
-      marginRight:10 }}>
-          <Text >Tên công việc: </Text>
+        <View
+          style={{
+            flexDirection: "row",
+            alignItems: "center",
+            marginLeft: 10,
+            marginRight: 10,
+          }}
+        >
+          <Text>Tên công việc: </Text>
           <TextInput
             placeholder="Nhập tên công việc"
             returnKeyType="done"
@@ -120,8 +130,9 @@ const Add_Todo = () => {
           ></TextInput>
         </View>
         <View>
-          <Text style={{ marginLeft:10,
-      marginRight:10,}}>Thời gian cần hoàn thành:</Text>
+          <Text style={{ marginLeft: 10, marginRight: 10 }}>
+            Thời gian cần hoàn thành:
+          </Text>
           <View style={styles.viewTime}>
             <View style={styles.textTime}>
               <Pressable onPress={() => setShow_1(true)}>
@@ -174,8 +185,9 @@ const Add_Todo = () => {
         </View>
 
         <View>
-          <Text style={{ marginLeft:10,
-      marginRight:10,}}>Nhân viên phụ trách:</Text>
+          <Text style={{ marginLeft: 10, marginRight: 10 }}>
+            Nhân viên phụ trách:
+          </Text>
           <View style={styles.icon_add_task}>
             <Icon
               name="search"
@@ -187,20 +199,29 @@ const Add_Todo = () => {
               style={styles.text}
               placeholder="Tìm kiếm"
               returnKeyType="done"
-              onChangeText={(text) => { 
+              onChangeText={(text) => {
                 if (route.params) {
-                dispatch<any>(queryUser(text, route.params.value_4, route.params.value_5, route.params.value_6, route.params.value_7))
+                  dispatch<any>(
+                    queryUser(
+                      text,
+                      route.params.value_4,
+                      route.params.value_5,
+                      route.params.value_6,
+                      route.params.value_7
+                    )
+                  );
                 } else {
-                dispatch<any>(queryUser(text, "", "", "", ""))
+                  dispatch<any>(queryUser(text, "", "", "", ""));
                 }
-                setSearch(text)}}
-                value={search}
+                setSearch(text);
+              }}
+              value={search}
             ></TextInput>
           </View>
           <ScrollView style={styles.style_add_task}>
             {allUser &&
               allUser.array.map((item: any) => (
-                <Contributor_Add_Task key={item._id} item={item}  />
+                <Contributor_Add_Task key={item._id} item={item} />
               ))}
           </ScrollView>
         </View>

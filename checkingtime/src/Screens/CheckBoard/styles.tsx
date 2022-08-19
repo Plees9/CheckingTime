@@ -1,4 +1,4 @@
-import { StyleSheet, StatusBar } from "react-native";
+import { StyleSheet, StatusBar, Platform } from 'react-native';
 import { FONTS } from "../../../constants/theme";
 
 const createStyles = () =>
@@ -6,7 +6,7 @@ const createStyles = () =>
     bgr: {
       backgroundColor: "#FFFFFF",
       flex: 1,
-      paddingTop: StatusBar.currentHeight,
+      paddingBottom: Platform.OS === "android" ? StatusBar.currentHeight : 0,
     },
     icon1: {
       flexDirection: "row",
