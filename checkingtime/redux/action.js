@@ -440,6 +440,16 @@ export const loadTimesheetFilter = () => async (dispatch) => {
     dispatch({ type: "timesheetFilterFailure", payload: error.response.data.message });
   }
 }
+export const deleteTask = (taskId) => async (dispatch) => {
+  try {
+    dispatch({ type: "timesheetFilterRequest" });
+
+    const { data } = await axios.delete(`${serverUrl}/user/deletetask` , {data: {taskId}} );
+    dispatch({ type: "timesheetFilterSuccess", payload: data });
+  } catch (error) {
+    dispatch({ type: "timesheetFilterFailure", payload: error.response.data.message });
+  }
+}
 
 export const loadTimesheetPoint = () => async (dispatch) => {
   try {
