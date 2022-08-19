@@ -20,7 +20,6 @@ import { AnimatedCircularProgress } from "react-native-circular-progress";
 import {
   checking,
   loadTask,
-  loadTimesheetFilter,
   loadTimesheetPoint,
   loadUser,
   ranking,
@@ -79,11 +78,6 @@ const HomeScreen = () => {
   const { timesheet, number, array } = useSelector<any, any>(
     (state) => state.timesheet
   );
-
-  const { timesheetFilter } = useSelector<any, any>((state) => state.timesheet);
-  if (typeof timesheetFilter !== "undefined" && timesheetFilter !== null) {
-    timeLate = timesheetFilter.Object.checkinLate.number;
-  }
 
   const { timesheetPoint } = useSelector<any, any>((state) => state.timesheet);
   if (typeof timesheetPoint !== "undefined" && timesheetPoint !== null) {
@@ -158,7 +152,6 @@ const HomeScreen = () => {
     dispatch<any>(loadTimesheet());
     dispatch<any>(getmyrank());
     dispatch<any>(ranking());
-    dispatch<any>(loadTimesheetFilter())
     dispatch<any>(loadTimesheetPoint())
 
     //show toast android and ios
@@ -175,7 +168,6 @@ const HomeScreen = () => {
       dispatch<any>(loadTimesheet());
       dispatch<any>(getmyrank());
       dispatch<any>(ranking());
-      dispatch<any>(loadTimesheetFilter())
     dispatch<any>(loadTimesheetPoint())
     });
   }, []);
