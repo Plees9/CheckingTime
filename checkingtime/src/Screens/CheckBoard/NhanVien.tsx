@@ -28,19 +28,15 @@ const BangCong_NhanVien = () => {
   let otNumber;
   let otValue;
 
-  useEffect(() => {
-    dispatch<any>(loadTimesheetFilter());
-  }, [dispatch]);
-
   const { timesheetFilter } = useSelector<any, any>((state) => state.timesheet);
   console.log(timesheetFilter);
   if (typeof timesheetFilter !== "undefined" && timesheetFilter !== null) {
-    lateNumber = timesheetFilter.Object.checkinLate.number;
-    lateValue = timesheetFilter.Object.checkinLate.value;
-    earlyNumber = timesheetFilter.Object.checkoutEarly.number;
-    earlyValue = timesheetFilter.Object.checkoutEarly.value;
-    otNumber = timesheetFilter.Object.overtime.number;
-    otValue = timesheetFilter.Object.overtime.value;
+    lateNumber = timesheetFilter.timesheetData.checkinLate.number;
+    lateValue = timesheetFilter.timesheetData.checkinLate.value;
+    earlyNumber = timesheetFilter.timesheetData.checkoutEarly.number;
+    earlyValue = timesheetFilter.timesheetData.checkoutEarly.value;
+    otNumber = timesheetFilter.timesheetData.overtime.number;
+    otValue = timesheetFilter.timesheetData.overtime.value;
   }
   // const image = require("../../../assets/images/splash.png");
   const navigation = useNavigation<any>();

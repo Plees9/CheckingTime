@@ -9,9 +9,8 @@ import {
 } from "react-native";
 import {
   loadTimesheet,
-  loadTimesheetBoard,
   loadTimesheetFilter,
-  loadTimesheetPoint,
+  
 } from "../../../redux/action";
 import { useDispatch, useSelector } from "react-redux";
 import React, { useMemo, useEffect } from "react";
@@ -35,16 +34,10 @@ const BangCong_Cuatoi = () => {
   let otNumber;
   let otValue;
 
-  useEffect(() => {
-    dispatch<any>(loadTimesheetFilter());
-    dispatch<any>(loadTimesheetBoard());
-    dispatch<any>(loadTimesheetPoint())
-  }, [dispatch]);
-
   const CONTENT = {
     tableHead: ["Ngày"],
     tableHead1: ["01/08", "02/08", "03/08", "04/08", "05/08", "06/08", "07/08"],
-    tableHead2: ["Check in", "Check out"],
+    tableHead2: ["Check in", "Check out","Công ngày"],
 
     tableData: [
       ["1", "2", "-", "-", "-"],
@@ -58,40 +51,29 @@ const BangCong_Cuatoi = () => {
   };
 
   const { timesheetFilter } = useSelector<any, any>((state) => state.timesheet);
-  // console.log(timesheetFilter);
+  console.log(timesheetFilter);
   if (typeof timesheetFilter !== "undefined" && timesheetFilter !== null) {
-    lateNumber = timesheetFilter.Object.checkinLate.number;
-    lateValue = timesheetFilter.Object.checkinLate.value;
-    earlyNumber = timesheetFilter.Object.checkoutEarly.number;
-    earlyValue = timesheetFilter.Object.checkoutEarly.value;
-    otNumber = timesheetFilter.Object.overtime.number;
-    otValue = timesheetFilter.Object.overtime.value;
-  }
-  const { timesheetPoint } = useSelector<any, any>((state) => state.timesheet);
-  if (typeof timesheetPoint !== "undefined" && timesheetPoint !== null) {
-    actualPoint = timesheetPoint.point.actualPoint;
-    maxPoint = timesheetPoint.point.maxPoint;
-    processBoard  = (actualPoint / maxPoint) * 100;
+    lateNumber = timesheetFilter.timesheetData.checkinLate.number;
+    lateValue = timesheetFilter.timesheetData.checkinLate.value;
+    earlyNumber = timesheetFilter.timesheetData.checkoutEarly.number;
+    earlyValue = timesheetFilter.timesheetData.checkoutEarly.value;
+    otNumber = timesheetFilter.timesheetData.overtime.number;
+    otValue = timesheetFilter.timesheetData.overtime.value;
   }
 
-
-  
-  const { timesheetBoard } = useSelector<any, any>((state) => state.timesheet);
-  // console.log(timesheetBoard);
   let data_date: any = [];
   let data_board: any = [];
-  if (typeof timesheetBoard !== "undefined") {
-    for (var i = 0; i < timesheetBoard.Object.length; i++) {
+  if (typeof timesheetFilter !== "undefined") {
+    for (var i = 0; i < timesheetFilter.timesheetTable.length; i++) {
       let object_board = [];
-      object_board.push(timesheetBoard.Object[i].checkinTime);
-      object_board.push(timesheetBoard.Object[i].checkoutTime);
-
-      data_date.push(timesheetBoard.Object[i].date);
+      object_board.push(timesheetFilter.timesheetTable[i].checkinTime);
+      object_board.push(timesheetFilter.timesheetTable[i].checkoutTime);
+      object_board.push(timesheetFilter.timesheetTable[i].point);
+      data_date.push(timesheetFilter.timesheetTable[i].date);
       data_board.push(object_board);
     }
   }
   const styles = useMemo(() => createStyles(), []);
-  //const navigation = useNavigation<any>();
 
   const TableBoard = () => (
     <View style={styles.row}>

@@ -36,28 +36,6 @@ export const timesheetReducer = createReducer({}, {
     state.loading = false;
     state.error = action.payload;
   },
-  timesheetBoardRequest: (state) => {
-    state.loading = true;
-  } ,
-  timesheetBoardSuccess: (state, action) => {
-    state.loading = false;
-    state.timesheetBoard = action.payload;
-  } ,
-  timesheetBoardFailure: (state, action) => {
-    state.loading = false;
-    state.error = action.payload;
-  },
-  timesheetPointRequest: (state) => {
-    state.loading = true;
-  } ,
-  timesheetPointSuccess: (state, action) => {
-    state.loading = false;
-    state.timesheetPoint = action.payload;
-  } ,
-  timesheetPointFailure: (state, action) => {
-    state.loading = false;
-    state.error = action.payload;
-  },
   timesheetSuccess: (state, action) => {
     state.loading = false;
     state.timesheet = action.payload;
