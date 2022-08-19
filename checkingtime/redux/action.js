@@ -23,7 +23,7 @@ export const ranking = () => async (dispatch) => {
   try {
     dispatch({ type: "rankRequest" });
 
-    const { data } = await axios.get(`${serverUrl}/user/top5`);
+    const { data } = await axios.get(`${serverUrl}/user/gettop5`);
     dispatch({ type: "rankSuccess", payload: data });
   } catch (error) {
     dispatch({ type: "rankFailure", payload: error.response.data.message });
@@ -117,7 +117,7 @@ export const loadTimesheet = () => async (dispatch) => {
   try {
     dispatch({ type: "timmesheetRequest" });
 
-    const { data } = await axios.get(`${serverUrl}/user/timesheetinfo`);
+    const { data } = await axios.get(`${serverUrl}/user/getchecking`);
     dispatch({ type: "timesheetSuccess", payload: data });
   } catch (error) {
     dispatch({ type: "timesheetFailure", payload: error.response.data.message });
@@ -127,7 +127,7 @@ export const getmyrank = () => async (dispatch) => {
   try {
     dispatch({ type: "getmyrankRequet" });
 
-    const { data } = await axios.get(`${serverUrl}/user/rank`);
+    const { data } = await axios.get(`${serverUrl}/user/getmyrank`);
     dispatch({ type: "getmyrankSuccess", payload: data });
   } catch (error) {
     dispatch({ type: "getmyrankFailure", payload: error.response.data.message });
@@ -434,7 +434,7 @@ export const loadTimesheetFilter = () => async (dispatch) => {
   try {
     dispatch({ type: "timesheetFilterRequest" });
 
-    const { data } = await axios.get(`${serverUrl}/user/filtertimesheetdatabythismonth`);
+    const { data } = await axios.get(`${serverUrl}/user/filtertimesheetbythismonth`);
     dispatch({ type: "timesheetFilterSuccess", payload: data });
   } catch (error) {
     dispatch({ type: "timesheetFilterFailure", payload: error.response.data.message });
