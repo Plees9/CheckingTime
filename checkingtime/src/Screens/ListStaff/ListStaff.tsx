@@ -39,7 +39,7 @@ const ListStaff  = () => {
   useEffect(() => {
     dispatch<any>(loadAlluser());
   }, []);
-  const { allUser } = useSelector<any, any>((state) => state.allUser);
+  const { allUser, loading } = useSelector<any, any>((state) => state.allUser);
 
   let data: any = [];
   const loadView = () => {
@@ -282,9 +282,9 @@ loadView()
       </View>
     </SafeAreaView>
   );
-  if (typeof allUser === "undefined") {
+  if (typeof allUser == "undefined") {
     return <Loader />
-}
+  }
   return (
     <SafeAreaView style={styles.view}>
       <View style={styles.row}>
@@ -320,7 +320,11 @@ loadView()
             placeholder="Tìm kiếm"
             returnKeyType="done"
             onChangeText={(text) => { 
+            if (route.params) {
             dispatch<any>(queryUser(text, route.params.value_4, route.params.value_5, route.params.value_6, route.params.value_7))
+            } else {
+            dispatch<any>(queryUser(text, "", "", "", ""))
+            }
             setSearch(text)}}
             value={search}
 

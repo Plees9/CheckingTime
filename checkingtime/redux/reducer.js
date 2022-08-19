@@ -37,14 +37,14 @@ export const timesheetReducer = createReducer({}, {
     state.error = action.payload;
   },
   timesheetPointRequest: (state) => {
-    state.loadingTimesheet = true;
+    state.loading = true;
   } ,
   timesheetPointSuccess: (state, action) => {
-    state.loadingTimesheet = false;
+    state.loading = false;
     state.timesheetPoint = action.payload;
   } ,
   timesheetPointFailure: (state, action) => {
-    state.loadingTimesheet = false;
+    state.loading = false;
     state.error = action.payload;
   },
   timesheetSuccess: (state, action) => {
@@ -81,14 +81,14 @@ export const timesheetReducer = createReducer({}, {
 });
 export const companyReducer = createReducer({}, {
   companyRequest: (state) => {
-    state.loading = true;
+    state.loadingCompany = true;
   },
   companySuccess: (state, action) => {
-    state.loading = false;
+    state.loadingCompany = false;
     state.company = action.payload;
   },
   companyFailure: (state, action) => {
-    state.loading = false;
+    state.loadingCompany = false;
     state.error = action.payload;
   },
   logoutCompany: (state) => {
@@ -448,6 +448,17 @@ state.isUpdated = false ;
           state.loading = false;
           state.error = action.payload;
         } ,
+        checkingTaskRequest: (state) => {
+          state.loadingTask = true;
+        },
+        checkingTaskSuccess: (state, action) => {
+          state.loadingTask = false;
+          state.message = action.payload;
+        },
+        checkingTaskFailure: (state, action) => {
+          state.loadingTask = false;
+          state.error = action.payload;
+        },
         // den day
 
         clearError: (state) => {

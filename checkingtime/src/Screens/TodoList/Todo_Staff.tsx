@@ -26,10 +26,10 @@ import {
 import { FlatList } from "react-native-gesture-handler";
 import { AnimatedCircularProgress } from "react-native-circular-progress";
 import Loader from "../../navigation/Loader";
+import Task from "./Task";
 
 const Todo_Staff = () => {
   const styles = useMemo(() => createStyles(), []);
-  const { user, loading } = useSelector<any, any>((state) => state.auth);
   const navigation = useNavigation<any>();
   // const [checked, setChecked] = useState(false);
   const [time_task, setTime_Task] = useState(moment());
@@ -39,103 +39,15 @@ const Todo_Staff = () => {
   const [workOvertime, setworkOvertime] = useState(6);
   const [show_1, setShow_1] = useState(false);
   const { allUser } = useSelector<any, any>((state) => state.allUser);
-
-  const dispatch = useDispatch();
-  const { taskContributor } = useSelector<any, any>((state) => state.task);
-  useEffect(() => {
-  dispatch<any>(loadTaskContributor());
-  }, []);
+  const dispatch = useDispatch()
+  const { taskContributor, loading } = useSelector<any, any>((state) => state.task);
+  
   console.log(taskContributor)
-  let data_contributor: any = [];
-  if (typeof taskContributor !== "undefined") {
-    for (var i = 0; i < taskContributor.tasks.length; i++) {
-      let task_user = {
-        id : i +1,
-        _id: taskContributor.tasks[i]._id,
-        name: taskContributor.tasks[i].name,
-        description: taskContributor.tasks[i].description,
-        deadline: moment(
-          taskContributor.tasks[i].deadline,
-          "HH:mm, DD/MM/YYYY"
-        ),
-        status: taskContributor.tasks[i].status,
-        date: moment(new Date(taskContributor.tasks[i].date)).format(
-          "DD/MM/YYYY"
-        ),
-        manager: taskContributor.tasks[i].manager,
-        checked: false,
-      };
-      data_contributor.push(task_user);
-    }
-  }
- // console.log(data_contributor)
-  const [data_contributor_Staff, setdata_contributor] =
-    useState(data_contributor);
-
-  const onChangeValue = (item: { id: any }, index: any, newValue: boolean) => {
-    const newData = data_contributor_Staff.map((newItem: { id: any }) => {
-      if (newItem.id == item.id) {
-        return {
-          ...newItem,
-          selected: newValue,
-        };
-      }
-      return newItem;
-    });
-    setdata_contributor(newData);
-  };
-
-  const ItemRender = ({ item, index }) => (
-    <View style={styles.render}>
-      <View
-        style={{ flexDirection: "row", backgroundColor: "#f2f2f2", flex: 1 }}
-      >
-        <View style={styles.view3}>
-          <View style={styles.checkbox}>
-            <CheckBox
-              color="#FFC23C"
-              value={item.selected}
-              disabled={false}
-              onValueChange={(newValue) => onChangeValue(item, index, newValue)}
-            ></CheckBox>
-          </View>
-          <View style={styles.colomn1}>
-            <Text style={styles.task}>{item.name}</Text>
-            <View style={styles.textTime}>
-              <Pressable>
-                <View
-                  style={{ justifyContent: "center", alignContent: "center" }}
-                >
-                  <Text>
-                    {moment(item.deadline).format("HH:mm, DD/MM/YYYY")}
-                  </Text>
-                  {show_1 && (
-                    <DateTimePicker
-                      value={new Date(item.deadline.format("YYYY/MM/DD"))}
-                      mode={"time"}
-                      display="default"
-                      is24Hour={true}
-                    />
-                  )}
-                </View>
-              </Pressable>
-            </View>
-          </View>
-          <Icon
-            name="pencil"
-            color="#f49218"
-            size={20}
-            style={styles.pencil}
-            onPress={() => navigation.navigate("Cập nhật công việc")}
-          />
-        </View>
-      </View>
-    </View>
-  );
-  if (typeof taskContributor === "undefined") {
+  if (typeof taskContributor == "undefined" ) {
     return <Loader />
-}
+  }
   return (
+    loading ? <Loader /> :
     <View>
       <SafeAreaView style={styles.view}>
         <View style={styles.view1}>
@@ -150,7 +62,7 @@ const Todo_Staff = () => {
         <AnimatedCircularProgress
           size={85}
           width={5}
-          fill={Math.round((workDone / data_contributor.length) * 100)}
+          fill={Math.round((workDone / taskContributor.tasks.length) * 100)}
           tintColor="#3EC70B"
           style={{ alignSelf: "center", marginTop: 10 }}
           backgroundColor="#3d5875"
@@ -163,7 +75,7 @@ const Todo_Staff = () => {
               /
               <Text style={{ color: "#3d5875" }}>
                 {" "}
-                {data_contributor.length}
+                {taskContributor.tasks.length}
               </Text>
             </Text>
           )}
@@ -173,7 +85,7 @@ const Todo_Staff = () => {
           <View style={styles.view1_2}>
             
             <Text>Tổng số công việc hôm nay:</Text>
-            <Text>{data_contributor.length}</Text>
+            <Text>{taskContributor.tasks.length}</Text>
           </View>
 
           <View style={styles.view1_2}>
@@ -200,11 +112,9 @@ const Todo_Staff = () => {
         </View>
         <View style={styles.kengang}></View>
 
-        <FlatList
-          data={data_contributor}
-          renderItem={ItemRender}
-          keyExtractor={(item) => item.id.toString()}
-        ></FlatList>
+        {taskContributor && taskContributor.tasks.map((item : any) => (
+                            <Task key={item._id} item={item}/>
+                        ))}
       </SafeAreaView>
       <View style={styles.btnFab}>
         <FAB
@@ -212,7 +122,9 @@ const Todo_Staff = () => {
           size="small"
           color="#FF8C32"
           style={styles.fab}
-          onPress={() => Alert.alert("Completed")}
+          onPress={() => {
+            dispatch<any>(loadTaskContributor())
+          Alert.alert("Bạn đã cập nhật thành công")}}
         />
       </View>
     </View>
