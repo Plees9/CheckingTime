@@ -39,12 +39,9 @@ const Todo_Staff = () => {
   const [workOvertime, setworkOvertime] = useState(6);
   const [show_1, setShow_1] = useState(false);
   const { allUser } = useSelector<any, any>((state) => state.allUser);
-
-  const dispatch = useDispatch();
+  const dispatch = useDispatch()
   const { taskContributor, loading } = useSelector<any, any>((state) => state.task);
-  useEffect(() => {
-  dispatch<any>(loadTaskContributor());
-  }, []);
+  
   console.log(taskContributor)
   if (typeof taskContributor == "undefined" ) {
     return <Loader />
@@ -125,7 +122,9 @@ const Todo_Staff = () => {
           size="small"
           color="#FF8C32"
           style={styles.fab}
-          onPress={() => Alert.alert("Completed")}
+          onPress={() => {
+            dispatch<any>(loadTaskContributor())
+          Alert.alert("Bạn đã cập nhật thành công")}}
         />
       </View>
     </View>

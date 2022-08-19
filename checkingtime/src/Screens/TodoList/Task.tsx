@@ -2,23 +2,33 @@ import { View, Text, Pressable } from 'react-native'
 import React, { useMemo, useState } from 'react'
 import Icon from "react-native-vector-icons/FontAwesome";
 import { Checkbox } from 'react-native-paper'
-import { useDispatch } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import styles from './styles'
 import createStyles from './styles'
 import { useNavigation } from '@react-navigation/native'
 import moment from 'moment'
 import DateTimePicker from "@react-native-community/datetimepicker";
+import { checkingTask, loadTaskContributor } from '../../../redux/action';
+import Loader from '../../navigation/Loader';
 const Task = ( {item}) => {
-
-    const [completed, setCompleted] = useState(false);
+    const {user} = useSelector<any, any>(state => state.auth)
+    const dispatch = useDispatch()
+    let index = 0
+    for (var i = 0; i < item.contributors.length ; i++ ) {
+    if (item.contributors[i] == user.name) {
+        index=i
+    }
+    }
+    const [completed, setCompleted] = useState(item.isDone[index]);
     const styles = useMemo(() => createStyles(), []);
     const navigation = useNavigation<any>();
     const [show_1, setShow_1] = useState(false);
-    const handleCheckbox = () => {
+    const handleCheckbox =  async() => {
         setCompleted(!completed);
-
+        await dispatch<any>(checkingTask(item._id))
+        await dispatch<any>(loadTaskContributor())
     }
-
+    
 
     return (
         <View style={styles.render}>
