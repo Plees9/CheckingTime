@@ -20,7 +20,6 @@ import { useDispatch, useSelector } from "react-redux";
 import {
   loadAllTask,
   loadAlluser,
-  loadTask,
   loadTaskContributor,
 } from "../../../redux/action";
 import { FlatList } from "react-native-gesture-handler";

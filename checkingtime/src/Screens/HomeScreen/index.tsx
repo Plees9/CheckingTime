@@ -19,7 +19,6 @@ import TodoModal from "../../component/TodoModal";
 import { AnimatedCircularProgress } from "react-native-circular-progress";
 import {
   checking,
-  loadTask,
   loadTimesheetPoint,
   loadUser,
   ranking,

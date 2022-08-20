@@ -18,7 +18,7 @@ import {
   import DateTimePicker from "@react-native-community/datetimepicker";
   import { useNavigation, useRoute } from "@react-navigation/native";
   import { useDispatch, useSelector } from "react-redux";
-  import { loadAllTask, loadAlluser, loadTask, loadTaskById } from "../../../redux/action";
+  import { loadAllTask, loadAlluser, loadTaskById } from "../../../redux/action";
   import { FlatList } from "react-native-gesture-handler";
   import { AnimatedCircularProgress } from "react-native-circular-progress";
 import Loader from "../../navigation/Loader";
