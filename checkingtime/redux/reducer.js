@@ -310,12 +310,11 @@ state.isUpdated = false ;
       },
       registerSuccess: (state, action) => {
         state.loading = false;
-        state.message = action.payload.message;
+        state.message = action.payload;
       },
       registerFailure: (state, action) => {
         state.loading = false;
         state.error = action.payload;
-        state.message = action.payload.message;
       },
         registerTaskRequest: (state) => {
           state.loading = true;

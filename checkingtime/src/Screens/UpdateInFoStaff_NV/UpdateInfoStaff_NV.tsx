@@ -29,6 +29,7 @@ import { Avatar } from "@rneui/themed";
 import { useDispatch, useSelector } from "react-redux";
 import mime from "mime";
 import { loadAlluser, loadProfile, updateAdmin } from "../../../redux/action";
+import Toast from "react-native-toast-message";
 
 const data_privilege = [
   {label: "Người dùng", value: "Người dùng"},
@@ -139,35 +140,59 @@ const UpdateStaff_Admin = () => {
     setVisible(false)
   }
 
+  const ToastAlertMessage = (message: any) => {
+    Toast.show({ text1: message, type: "success" });
+  };
+  const ToastAlertError = (error: any) => {
+    Toast.show({ text1: error, type: "error" });
+  };
+  const configToast = {
+    success: (internal: any) => (
+      <View
+        style={{
+          width: "95%",
+          height: 40,
+          backgroundColor: "green",
+          justifyContent: "center",
+          alignItems: "center",
+        }}
+      >
+        <Text style={{ fontSize: 15, color: "white" }}> {internal.text1}</Text>
+      </View>
+    ),
+    error: (internal: any) => (
+      <View
+        style={{
+          width: "95%",
+          height: 40,
+          backgroundColor: "red",
+          justifyContent: "center",
+          alignItems: "center",
+        }}
+      >
+        <Text style={{ fontSize: 15, color: "white" }}> {internal.text1}</Text>
+      </View>
+    ),
+  };
   useEffect(() => {
     if (message) {
-      alert(message);
-      
+      ToastAlertMessage(message);
       dispatch({ type: "clearMessage" });
-    }   
+    }
     if (error) {
-      alert(error);
+      ToastAlertError(error);
       dispatch({ type: "clearError" });
     }
-    if (isUpdated) {
-        dispatch <any>(loadAlluser());
-    }
-  }, [alert, dispatch, error, isUpdated]);
+  }, [ToastAlertMessage, ToastAlertError, dispatch, error, message,isUpdated]);
   
 
 
   return (
     <View style={styles.view}>
       <View style={styles.avatar}>
-        <Avatar
-          size={80}
-          rounded
-          source={{ uri: avatar }}
-        >
-        </Avatar>
+        <Avatar size={80} rounded source={{ uri: avatar }}></Avatar>
       </View>
       <View style={styles.textuserName}>
-        
         <TextInput
           placeholder={"Họ và tên"}
           style={styles.text23_1}
@@ -176,7 +201,7 @@ const UpdateStaff_Admin = () => {
           secureTextEntry={false}
           onChangeText={setUserName}
         ></TextInput>
-        
+
         <Icon name="edit" size={20} color="black" style={styles.icon}></Icon>
       </View>
 
@@ -210,13 +235,11 @@ const UpdateStaff_Admin = () => {
             </View>
           </View>
         </View>
-        <View>
-        </View>
+        <View></View>
       </View>
 
       <View style={styles.row}>
         <View style={styles.row1}>
-        
           <Pressable style={styles.row2} onPress={() => setShow(true)}>
             <View style={{ justifyContent: "center", alignContent: "center" }}>
               <Text style={styles.textDate}>{date.format("DD/MM/YYYY")}</Text>
@@ -228,9 +251,7 @@ const UpdateStaff_Admin = () => {
                   onChange={(event, selectedDate) => {
                     setDate(moment(selectedDate));
                     setShow(false);
-                  }
-                  
-                  }
+                  }}
                 />
               )}
             </View>
@@ -242,14 +263,12 @@ const UpdateStaff_Admin = () => {
               color="orange"
             />
           </Pressable>
-          
         </View>
 
         {/* Tình trạng hợp đồng, Loại hình nhân viên */}
 
-       
         <View style={styles.khoi_2}>
-        <Dropdown
+          <Dropdown
             style={styles.dropdown_1}
             placeholderStyle={styles.placeholderStyle}
             selectedTextStyle={styles.selectedTextStyle}
@@ -306,68 +325,67 @@ const UpdateStaff_Admin = () => {
         </View>
         <View style={styles.khoi_2}>
           <View>
-          <Dropdown
-            style={styles.dropdown}
-            placeholderStyle={styles.placeholderStyle}
-            selectedTextStyle={styles.selectedTextStyle}
-            inputSearchStyle={styles.inputSearchStyle}
-            iconStyle={styles.iconStyle}
-            data={data_contractStatus}
-            maxHeight={300}
-            labelField="label"
-            valueField="value"
-            placeholder="Hợp đồng"
-            onFocus={() => setIsFocus_contractStatus(true)}
-            onBlur={() => setIsFocus_contractStatus(false)}
-            value={value_contractStatus}
-            onChange={(item) => {
-              setValue_contractStatus(item.value);
-              setIsFocus_contractStatus(false);
-            }}
-            renderRightIcon={() => (
-              <AntDesign
-                style={styles.icon}
-                color="orange"
-                name={isFocus_contractStatus ? "up" : "down"}
-                size={20}
-              />
-            )}
-          />
+            <Dropdown
+              style={styles.dropdown}
+              placeholderStyle={styles.placeholderStyle}
+              selectedTextStyle={styles.selectedTextStyle}
+              inputSearchStyle={styles.inputSearchStyle}
+              iconStyle={styles.iconStyle}
+              data={data_contractStatus}
+              maxHeight={300}
+              labelField="label"
+              valueField="value"
+              placeholder="Hợp đồng"
+              onFocus={() => setIsFocus_contractStatus(true)}
+              onBlur={() => setIsFocus_contractStatus(false)}
+              value={value_contractStatus}
+              onChange={(item) => {
+                setValue_contractStatus(item.value);
+                setIsFocus_contractStatus(false);
+              }}
+              renderRightIcon={() => (
+                <AntDesign
+                  style={styles.icon}
+                  color="orange"
+                  name={isFocus_contractStatus ? "up" : "down"}
+                  size={20}
+                />
+              )}
+            />
           </View>
-          
+
           <View>
-          <Dropdown
-            style={styles.dropdown_1}
-            placeholderStyle={styles.placeholderStyle}
-            selectedTextStyle={styles.selectedTextStyle}
-            inputSearchStyle={styles.inputSearchStyle}
-            iconStyle={styles.iconStyle}
-            data={data_typeOfEmployee}
-            maxHeight={300}
-            labelField="label"
-            valueField="value"
-            placeholder="Loại hình..."
-            onFocus={() => setIsFocus_typeOfEmployee(true)}
-            onBlur={() => setIsFocus_typeOfEmployee(false)}
-            value={value_typeOfEmployee}
-            onChange={(item) => {
-              setValue_typeOfEmployee(item.value);
-              setIsFocus_typeOfEmployee(false);
-            }}
-            renderRightIcon={() => (
-              <AntDesign
-                style={styles.icon}
-                color="orange"
-                name={isFocus_typeOfEmployee ? "up" : "down"}
-                size={20}
-              />
-            )}
-          />
+            <Dropdown
+              style={styles.dropdown_1}
+              placeholderStyle={styles.placeholderStyle}
+              selectedTextStyle={styles.selectedTextStyle}
+              inputSearchStyle={styles.inputSearchStyle}
+              iconStyle={styles.iconStyle}
+              data={data_typeOfEmployee}
+              maxHeight={300}
+              labelField="label"
+              valueField="value"
+              placeholder="Loại hình..."
+              onFocus={() => setIsFocus_typeOfEmployee(true)}
+              onBlur={() => setIsFocus_typeOfEmployee(false)}
+              value={value_typeOfEmployee}
+              onChange={(item) => {
+                setValue_typeOfEmployee(item.value);
+                setIsFocus_typeOfEmployee(false);
+              }}
+              renderRightIcon={() => (
+                <AntDesign
+                  style={styles.icon}
+                  color="orange"
+                  name={isFocus_typeOfEmployee ? "up" : "down"}
+                  size={20}
+                />
+              )}
+            />
           </View>
-          
         </View>
       </View>
-      
+
       <LinearGradient
         start={{ x: 0, y: 0 }}
         end={{ x: 1, y: 0 }}
@@ -378,13 +396,12 @@ const UpdateStaff_Admin = () => {
           <Text style={styles.text22}>Cập nhật</Text>
         </TouchableOpacity>
       </LinearGradient>
-     
+
       <Modal
         transparent={true}
         visible={visible}
-        animationType='fade'
+        animationType="fade"
         onRequestClose={() => setVisible(false)}
-        
       >
         <View style={styles1.container}>
           <View style={styles1.box}>
@@ -392,33 +409,28 @@ const UpdateStaff_Admin = () => {
 
             <TextInput
               style={styles1.input_box}
-              placeholder='Nhập mật khẩu'
+              placeholder="Nhập mật khẩu"
               secureTextEntry={true}
               onChangeText={setPassword}
             />
             <View style={styles1.box_button}>
-              
               <View style={styles1.cancel_button}>
                 <TouchableOpacity onPress={() => setVisible(false)}>
-                  <Text style={styles1.text_button}>
-                    Hủy
-                  </Text>
+                  <Text style={styles1.text_button}>Hủy</Text>
                 </TouchableOpacity>
               </View>
-              
+
               <View style={styles1.confirm_button}>
                 <TouchableOpacity onPress={updateHandler}>
-                  <Text style={styles1.text_button}>
-                    Xác nhận
-                  </Text>
+                  <Text style={styles1.text_button}>Xác nhận</Text>
                 </TouchableOpacity>
               </View>
             </View>
           </View>
         </View>
       </Modal>
+      <Toast config={configToast} ref={(ref) => Toast.setRef(ref)} />
     </View>
-
   );
 };
 

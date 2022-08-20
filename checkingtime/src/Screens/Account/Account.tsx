@@ -25,7 +25,9 @@ import mime from "mime";
 import moment from "moment";
 import * as Device from 'expo-device';
 import publicIP from 'react-native-public-ip';
+import Toast from "react-native-toast-message";
 const Account = () => {
+  const { message, error } = useSelector<any, any>((state) => state.message);
   const [visible, setVisible] = useState(false);
   const { user, loading } = useSelector<any, any>((state) => state.auth);
   const styles = useMemo(() => createStyles(), []);
@@ -45,6 +47,50 @@ const Account = () => {
   const [role, setRole] = useState(user.role);
   const [contractStatus, setContractStatus] = useState(user.contractStatus);
   const [flag1, setFlag1] = useState();
+  const ToastAlertMessage = (message: any) => {
+    Toast.show({ text1: message, type: "success" });
+  };
+  const ToastAlertError = (error: any) => {
+    Toast.show({ text1: error, type: "error" });
+  };
+  const configToast = {
+    success: (internal: any) => (
+      <View
+        style={{
+          width: "95%",
+          height: 40,
+          backgroundColor: "green",
+          justifyContent: "center",
+          alignItems: "center",
+        }}
+      >
+        <Text style={{ fontSize: 15, color: "white" }}> {internal.text1}</Text>
+      </View>
+    ),
+    error: (internal: any) => (
+      <View
+        style={{
+          width: "95%",
+          height: 40,
+          backgroundColor: "red",
+          justifyContent: "center",
+          alignItems: "center",
+        }}
+      >
+        <Text style={{ fontSize: 15, color: "white" }}> {internal.text1}</Text>
+      </View>
+    ),
+  };
+  useEffect(() => {
+    if (message) {
+      ToastAlertMessage(message);
+      dispatch({ type: "clearMessage" });
+    }
+    if (error) {
+      ToastAlertError(error);
+      dispatch({ type: "clearError" });
+    }
+  }, [ToastAlertMessage, ToastAlertError, dispatch, error, message]);
   const [networkIp, setNetworkIp] = useState()
   const logoutHandler = () => {
     dispatch<any>(logout());
@@ -65,21 +111,12 @@ const Account = () => {
   const companyIpHandler = async() => {
     await dispatch<any>(updateCompanyIp(networkIp))
   }
-  const { message, error } = useSelector<any, any>((state) => state.message)
-  console.log(message)
-  useEffect(() => {
-    if (message) {
-      alert(message);
-      dispatch({ type: "clearMessage" });
-    }
-    if (error) {
-      alert(error);
-      dispatch({ type: "clearError" });
-     }
-  }, [alert, dispatch, error, message]);
+  
+ 
+  
   return (
-    <ScrollView style={styles.container}>
-      <View style={styles.container_2}>
+    <View style={styles.container}>
+      <ScrollView style={styles.container_2}>
         <View style={styles.hang}>
           <Avatar
             size={70}
@@ -198,13 +235,17 @@ const Account = () => {
           </TouchableOpacity>
           <TouchableOpacity
             style={styles.khoangcach}
-            onPress={() => {updateId()}}
+            onPress={() => {
+              updateId();
+            }}
           >
             <Text style={styles.chu}> Thay đổi DeviceId</Text>
           </TouchableOpacity>
           <TouchableOpacity
             style={styles.khoangcach}
-            onPress={() => {companyIpHandler()}}
+            onPress={() => {
+              companyIpHandler();
+            }}
           >
             <Text style={styles.chu}> Thay đổi CompanyIp</Text>
           </TouchableOpacity>
@@ -231,8 +272,9 @@ const Account = () => {
             }}
           />
         </View>
-      </View>
-    </ScrollView>
+      </ScrollView>
+      <Toast config={configToast} ref={(ref) => Toast.setRef(ref)} />
+    </View>
   );
 };
 
