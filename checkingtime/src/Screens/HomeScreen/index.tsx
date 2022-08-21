@@ -19,7 +19,7 @@ import TodoModal from "../../component/TodoModal";
 import { AnimatedCircularProgress } from "react-native-circular-progress";
 import {
   checking,
-  loadTimesheetPoint,
+  
   loadUser,
   ranking,
 } from "../../../redux/action";
@@ -129,41 +129,7 @@ const HomeScreen = () => {
   const companyHandler = async () => {
     navigation.navigate("Thông tin Công Ty");
   };
-  const ToastAlertMessage = (message: any) => {
-    Toast.show({ text1: message, type: "success" });
-  };
-  const ToastAlertError = (error: any) => {
-    Toast.show({ text1: error, type: "error" });
-  };
-  const configToast = {
-    success: (internal: any) => (
-      <View
-        style={{
-          width: "95%",
-          height: 40,
-          backgroundColor: "green",
-          justifyContent: "center",
-          alignItems: "center",
-        }}
-      >
-        <Text style={{ fontSize: 15, color: "white" }}> {internal.text1}</Text>
-      </View>
-    ),
-    error: (internal: any) => (
-      <View
-        style={{
-          width: "95%",
-          height: 40,
-          backgroundColor: "red",
-          justifyContent: "center",
-          alignItems: "center",
-        }}
-      >
-        <Text style={{ fontSize: 15, color: "white" }}> {internal.text1}</Text>
-      </View>
-    ),
-    
-  };
+  
   const ToastAlertMessage = (message: any) => {
     Toast.show({ text1: message, type: "success" });
   };
