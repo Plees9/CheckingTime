@@ -15,19 +15,34 @@ const ForgotPasswordScreen = () => {
   const navigation = useNavigation<any>();
   const dispatch = useDispatch();
   let check = ""
-  const ToastAlert = (message: any) => {
-    Toast.show({ text1: message });
+  const ToastAlertMessage = (message: any) => {
+    Toast.show({ text1: message, type: "success" });
+  };
+  const ToastAlertError = (error: any) => {
+    Toast.show({ text1: error, type: "error" });
   };
   const configToast = {
-    success: (internal) => (
+    success: (internal: any) => (
       <View
         style={{
-          width: "90%",
-          height: 30,
-          backgroundColor: "#8f73f6",
+          width: "95%",
+          height: 40,
+          backgroundColor: "green",
           justifyContent: "center",
           alignItems: "center",
-          borderRadius: 20,
+        }}
+      >
+        <Text style={{ fontSize: 15, color: "white" }}> {internal.text1}</Text>
+      </View>
+    ),
+    error: (internal: any) => (
+      <View
+        style={{
+          width: "95%",
+          height: 40,
+          backgroundColor: "red",
+          justifyContent: "center",
+          alignItems: "center",
         }}
       >
         <Text style={{ fontSize: 15, color: "white" }}> {internal.text1}</Text>
@@ -36,14 +51,14 @@ const ForgotPasswordScreen = () => {
   };
   useEffect(() => {
     if (message) {
-      ToastAlert(message);
+      ToastAlertMessage(message);
       dispatch({ type: "clearMessage" });
     }
     if (error) {
-      ToastAlert(error);
+      ToastAlertError(error);
       dispatch({ type: "clearError" });
     }
-  }, [ToastAlert, dispatch, error]);
+  }, [ToastAlertMessage, ToastAlertError, dispatch, error, message]);
   if (message != null || message != "Email không đúng") {
     check = message
   }
