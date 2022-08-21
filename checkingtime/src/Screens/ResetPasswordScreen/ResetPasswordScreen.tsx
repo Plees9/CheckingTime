@@ -10,6 +10,7 @@ import Icon from "react-native-vector-icons/AntDesign";
 import Icon_1 from "react-native-vector-icons/Ionicons";
 import { isNull } from "lodash";
 import { forgetPassword } from "../../../redux/action";
+import Toast from "react-native-toast-message";
 const ResetPasswordScreen = () => {
   const route = useRoute() 
   const dispatch = useDispatch();
@@ -25,16 +26,50 @@ const ResetPasswordScreen = () => {
     if (message == "Thay đổi mật khẩu thành công")
       navigation.navigate("SignIn");
   };
+ const ToastAlertMessage = (message: any) => {
+   Toast.show({ text1: message, type: "success" });
+ };
+ const ToastAlertError = (error: any) => {
+   Toast.show({ text1: error, type: "error" });
+ };
+ const configToast = {
+   success: (internal: any) => (
+     <View
+       style={{
+         width: "95%",
+         height: 40,
+         backgroundColor: "green",
+         justifyContent: "center",
+         alignItems: "center",
+       }}
+     >
+       <Text style={{ fontSize: 15, color: "white" }}> {internal.text1}</Text>
+     </View>
+   ),
+   error: (internal: any) => (
+     <View
+       style={{
+         width: "95%",
+         height: 40,
+         backgroundColor: "red",
+         justifyContent: "center",
+         alignItems: "center",
+       }}
+     >
+       <Text style={{ fontSize: 15, color: "white" }}> {internal.text1}</Text>
+     </View>
+   ),
+ };
   useEffect(() => {
     if (message) {
-      ToastAlert(message);
+      ToastAlertMessage(message);
       dispatch({ type: "clearMessage" });
     }
     if (error) {
-      alert(error);
+      ToastAlertError(error);
       dispatch({ type: "clearError" });
     }
-  }, [alert, dispatch, error]);
+  }, [ToastAlertError,ToastAlertMessage, dispatch, error]);
 
   const navigation = useNavigation<any>();
   const resendOTP = async () => {
@@ -97,7 +132,7 @@ const ResetPasswordScreen = () => {
             placeholder={"Xác nhận mật khẩu mới"}
           />
           <View style={styles.icon_confirmPassword}>
-          {password === "" || confirmPassword !== password ? (
+            {password === "" || confirmPassword !== password ? (
               <Icon name="exclamationcircle" size={17} color="#d22d2c" />
             ) : (
               <Icon name="checkcircle" size={17} color="#51c92b" />
@@ -122,6 +157,7 @@ const ResetPasswordScreen = () => {
           </TouchableOpacity>
         </View>
       </View>
+      <Toast config={configToast} ref={(ref) => Toast.setRef(ref)} />
     </View>
   );
 };
