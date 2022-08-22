@@ -180,13 +180,14 @@ export const updateAdmin = (formData) => async (dispatch) => {
 export const updatePassword = (formData) => async (dispatch) => {
   try {
     dispatch({ type: "updatePasswordRequest" });
+    console.log("ayyo")
 
     const { data } = await axios.put(`${serverUrl}/user/updatepassword`, formData, {
       headers: {
         "Content-Type": "multipart/form-data",
       },
     });
-    dispatch({ type: "updatePasswordSuccess", payload: data.message });
+    dispatch({ type: "updatePasswordSuccess", payload: data });
   } catch (error) {
     dispatch({
       type: "updatePasswordFailure",
@@ -233,6 +234,7 @@ export const logout = () => async (dispatch) => {
     dispatch({type: "logoutTimesheet"})
     dispatch({type: "logoutCompany"})
     dispatch({ type: "logoutSuccess" });
+    dispatch({type: "logouttimesheetFilter"})
   } catch (error) {
     dispatch({
       type: "logoutFailure",
@@ -418,20 +420,21 @@ export const updateTask = (taskId) => async (dispatch) => {
       }
     }
 
-export const search = (search) => async (dispatch) => {
+export const search = (name) => async (dispatch) => {
   try {
-    dispatch({ type: "searchRequest" });
+    dispatch({ type: "searchUserTaskRequest" });
 
-    const { data } = await axios.get(`${serverUrl}/user/searchuser/${search}`);
-    dispatch({ type: "searchSuccess", payload: data });
+    const { data } = await axios.get(`${serverUrl}/user/searchusertask/?name=${name}`);
+    dispatch({ type: "searchUserTaskSuccess", payload: data });
     
   } catch (error) {
     dispatch({
-      type: "searchFailure",
+      type: "searchUserTaskFailure",
       payload: error.response.data.message,
     });
   }
 }
+
 
 export const loadTimesheetFilter = () => async (dispatch) => {
   try {

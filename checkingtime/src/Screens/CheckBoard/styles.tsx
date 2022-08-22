@@ -127,14 +127,14 @@ const createStyles = () =>
     chu2: {
       textAlign: "center",
       fontSize: 14,
-      width: "100%",
-      marginLeft: 10,
+      width: "115%",
       backgroundColor: "#ebe0ea",
       padding: 5,
       fontFamily: FONTS.vanSansMedium,
     },
     chu4: {
       textAlign: "center",
+      alignSelf:'center',
       fontSize: 14,
       width: "100%",
       fontFamily: FONTS.vanSansMedium,

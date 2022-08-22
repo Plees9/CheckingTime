@@ -19,7 +19,9 @@ import TodoModal from "../../component/TodoModal";
 import { AnimatedCircularProgress } from "react-native-circular-progress";
 import {
   checking,
-  
+  loadTask,
+  loadTimesheetFilter,
+  loadTimesheetPoint,
   loadUser,
   ranking,
 } from "../../../redux/action";
@@ -31,6 +33,7 @@ import Toast from "react-native-toast-message";
 import publicIP from "react-native-public-ip";
 import * as Device from "expo-device";
 import moment from "moment";
+import { FONTS } from "../../../constants/theme";
 const wait = (timeout: number | undefined) => {
   return new Promise((resolve) => setTimeout(resolve, timeout));
 };
@@ -94,6 +97,7 @@ const HomeScreen = () => {
   ) {
     actualPoint = timesheetFilter.timesheetData.point.actual;
     maxPoint = timesheetFilter.timesheetData.point.max;
+    processBoard = (actualPoint / maxPoint) * 100;
     numLate = timesheetFilter.timesheetData.checkinLate.number;
   }
   if (typeof array !== "undefined" && array !== null) {
@@ -181,6 +185,7 @@ const HomeScreen = () => {
     dispatch<any>(loadTimesheet());
     dispatch<any>(getmyrank());
     dispatch<any>(ranking());
+    dispatch<any>(loadTimesheetFilter())
 
   };
   const onRefresh = React.useCallback(() => {
@@ -190,6 +195,7 @@ const HomeScreen = () => {
       dispatch<any>(loadTimesheet());
       dispatch<any>(getmyrank());
       dispatch<any>(ranking());
+      dispatch<any>(loadTimesheetFilter())
     });
   }, []);
 
@@ -205,7 +211,7 @@ const HomeScreen = () => {
           />
         }
       >
-        <View style={{ flexDirection: "row", justifyContent: "space-between" }}>
+        
           <TouchableOpacity onPress={() => navigation.navigate("Tài khoản")}>
             <View style={styles.row}>
               <Avatar rounded source={{ uri: avatar }} size={40}></Avatar>
@@ -215,8 +221,7 @@ const HomeScreen = () => {
               </View>
             </View>
           </TouchableOpacity>
-          <Icon name="eye" />
-        </View>
+          
         <View style={{ alignItems: "flex-start", flexDirection: "row" }}>
           <LinearGradient
             start={{ x: 0, y: 0 }}
@@ -399,6 +404,7 @@ const HomeScreen = () => {
         title="Chấm công"
         placement="right"
         size="small"
+        titleStyle={styles.txt_fab}
         color="#8f73f6"
         buttonStyle={styles.fab}
         onPress={pressHandler}

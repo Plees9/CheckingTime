@@ -36,6 +36,11 @@ export const timesheetReducer = createReducer({}, {
     state.loading = false;
     state.error = action.payload;
   },
+  logouttimesheetFilter: (state) => {
+    state.loading = false
+    state.timesheetFilter = null
+
+  } ,
   timesheetSuccess: (state, action) => {
     state.loading = false;
     state.timesheet = action.payload;
@@ -117,6 +122,17 @@ export const allReducer = createReducer({}, {
     state.loading = false;
     state.error = action.payload;
   },
+  queryUserTaskRequest: (state) => {
+    state.loading = true;
+  },
+  queryUserTaskSuccess: (state, action) => {
+    state.loading = false;
+    state.allUser = action.payload;
+  },
+  queryUserTaskFailure: (state, action) => {
+    state.loading = false;
+    state.error = action.payload;
+  },
   clearError: (state) => {
     state.error = null;
   },
@@ -193,7 +209,19 @@ export const authReducer = createReducer(
 );
   export const passwordReducer = createReducer (
     {} ,
-    {forgetPasswordRequest: (state) => {
+    { updatePasswordRequest: (state) => {
+      state.loading = true;
+    },
+    updatePasswordSuccess: (state, action) => {
+      state.loading = false;
+      state.message = action.payload;
+    },
+    updatePasswordFailure: (state, action) => {
+      state.loading = false;
+      state.error = action.payload;
+    },
+
+      forgetPasswordRequest: (state) => {
       state.loading = true;
     },
     forgetPasswordSuccess: (state, action) => {
@@ -458,27 +486,6 @@ state.isUpdated = false ;
         },
       },
     );
-
-    export const searchReducer = createReducer(
-      {},
-      {
-        searchRequest: (state) => {
-          state.loading = true;
-        },
-        searchSuccess: (state, action) => {
-          state.loading = false;
-          state.search = action.payload;
-        },
-        searchFailure: (state, action) => {
-          state.loading = false;
-          state.error = action.payload;
-        },
-        clearError: (state) => {
-          state.error = null;
-        },
-      }
-    );
-
     export const taskMessageReducer = createReducer (
       {},
       { deleteTaskRequest: (state) => {

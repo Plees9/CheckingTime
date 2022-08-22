@@ -37,23 +37,23 @@ const Task_Manager = ( {item}) => {
             <View style={styles.colomn1}>
               <Text style={styles.task}>{item.name}</Text>
               <View style={styles.textTime}>
-                <Pressable>
-                  <View
-                    style={{ justifyContent: "center", alignContent: "center" }}
-                  >
-                    <Text>
-                      {moment(item.deadline).format("HH:mm, DD/MM/YYYY")}
-                    </Text>
-                    {show_1 && (
-                      <DateTimePicker
-                        value={new Date(item.deadline.format("YYYY/MM/DD"))}
-                        mode={"time"}
-                        display="default"
-                        is24Hour={true}
-                      />
-                    )}
-                  </View>
-                </Pressable>
+              <Pressable>
+                <View
+                  style={{ justifyContent: "center", alignContent: "center" }}
+                >
+                  <Text>
+                    {moment(item.deadline, "HH:mm, DD/MM/YYYY").format("HH:mm, DD/MM/YYYY")}
+                  </Text>
+                  {show_1 && (
+                    <DateTimePicker
+                      value={new Date(item.deadline.format("YYYY/MM/DD"))}
+                      mode={"time"}
+                      display="default"
+                      is24Hour={true}
+                    />
+                  )}
+                </View>
+              </Pressable>
               </View>
             </View>
             <Icon
