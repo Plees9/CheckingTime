@@ -153,7 +153,13 @@ const [_id, set_Id] = useState("");
                   </Text>
                   {show_1 && (
                     <DateTimePicker
-                      value={new Date(moment(deadline).format("YYYY/MM/DD"))}
+                      value={
+                        new Date(
+                          moment(deadline, "HH:mm, DD/MM/YYYY").format(
+                            "YYYY/MM/DD"
+                          )
+                        )
+                      }
                       mode={"time"}
                       display="default"
                       is24Hour={true}
