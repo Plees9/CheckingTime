@@ -164,9 +164,13 @@ const Todo_All = () => {
           <Text style={styles.text}>Task List:</Text>
         </View>
         <View style={styles.kengang}></View>
+        <ScrollView>
         {allTask && allTask.tasks.map((item : any) => (
                             <Task_Admin key={item._id} item={item}/>
                         ))} 
+
+        </ScrollView>
+        
       </SafeAreaView>
       <View style={styles.btnFab}>
         <FAB

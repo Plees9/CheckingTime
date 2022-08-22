@@ -28,6 +28,7 @@ import DateTimePicker from "@react-native-community/datetimepicker";
 import moment from "moment";
 import { useDispatch, useSelector } from "react-redux";
 import { loadAlluser, register } from "../../../redux/action";
+import Toast from "react-native-toast-message";
 
 //import PassMeter from "../../../node_modules/react-native-passmeter";
 
@@ -106,19 +107,45 @@ const AddStaff = () => {
   const navigation = useNavigation<any>();
 
   const [country, setCountry] = useState("Unknown");
-  function showToast() {
-    ToastAndroid.show("Xác nhận đăng ký thành công", ToastAndroid.SHORT);
-  }
+  const ToastAlertMessage = (message:any) => {
+    Toast.show({ text1: message,  type: "success" });
+  };
+  const ToastAlertError = (error:any) => {
+    Toast.show({ text1: error , type: "error"});
+  };
+  const configToast = {
+    success: (internal:any) => (
+      <View
+        style={{
+          width: "95%",
+          height: 40,
+          backgroundColor: "green",
+          justifyContent: "center",
+          alignItems: "center",
+        }}
+      >
+        <Text style={{ fontSize: 15, color: "white" }}> {internal.text1}</Text>
+      </View>
+    ),
+    error: (internal :any) => (
+      <View
+        style={{
+          width: "95%",
+          height: 40,
+          backgroundColor: "red",
+          justifyContent: "center",
+          alignItems: "center",
+        }}
+      >
+        <Text style={{ fontSize: 15, color: "white" }}> {internal.text1}</Text>
+      </View>
+    ),
+  };
+   
+  
 
   useEffect(() => {
-    if (message) {
-      alert(message);
-      dispatch({ type: "clearMessage" });
-    }
-    if (error) {
-      alert(error);
-      dispatch({ type: "clearError" });
-     }
+   
      if (message == "Tạo tài khoản thành công") {
       setUserName("");
       setEmail("");
@@ -131,7 +158,15 @@ const AddStaff = () => {
       setPassword("");
       setConfirmPassword("");
      }
-  }, [alert, dispatch, error, message]);
+      if (message) {
+        ToastAlertMessage(message);
+        dispatch({ type: "clearMessage" });
+      }
+      if (error) {
+        ToastAlertError(error);
+        dispatch({ type: "clearError" });
+      }
+  }, [ToastAlertMessage,ToastAlertError, dispatch, error, message]);
 
   return (
     <View style={styles.view}>
@@ -385,6 +420,8 @@ const AddStaff = () => {
           <Text style={styles.text22}>Đăng ký</Text>
         </TouchableOpacity>
       </LinearGradient>
+
+      <Toast config={configToast} ref={(ref) => Toast.setRef(ref)} />
     </View>
   );
 };

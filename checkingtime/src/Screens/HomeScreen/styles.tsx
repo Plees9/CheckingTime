@@ -279,6 +279,9 @@ const styles = StyleSheet.create({
     marginTop: "3%",
     marginRight: "5%",
   },
+  txt_fab: {
+    fontFamily: FONTS.vanSansSemiBold,
+  },
 });
 
 export default styles;

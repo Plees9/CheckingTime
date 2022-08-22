@@ -37,6 +37,7 @@ const Task_Admin = ( {item}) => {
             <View style={styles.colomn}>
               <Text style={styles.task}>{item.name}</Text>
               <Text style={styles.text1}>{ item.contributors + " "  } </Text>
+              <Text style={styles.text1}>Manager: {item.manager}</Text>
             </View>
   
             <Icon
