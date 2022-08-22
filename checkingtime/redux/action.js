@@ -4,7 +4,7 @@ const serverUrl = "https://timekeeper-01.herokuapp.com/api/v1";
 export const loadAlluser = () => async (dispatch) => {
   try {
     dispatch({ type: "loadAllUserRequest" });
-    const { data } = await axios.get(`${serverUrl}/user/profiles`);
+    const { data } = await axios.get(`${serverUrl}/user/getallprofile`);
     dispatch({ type: "loadAllUserSuccess", payload: data });
   } catch (error) {
     dispatch({ type: "loadAllUserFailure", payload: error.response.data.message });
@@ -137,7 +137,7 @@ export const loadCompany = () => async (dispatch) => {
   try {
     dispatch({ type: "companyRequest" });
 
-    const { data } = await axios.get(`${serverUrl}/company/information`);
+    const { data } = await axios.get(`${serverUrl}/company/getinformation`);
     dispatch({ type: "companySuccess", payload: data });
   } catch (error) {
     dispatch({ type: "companyFailure", payload: error.response.data.message });
@@ -219,7 +219,7 @@ export const loadUser = () => async (dispatch) => {
   try {
     dispatch({ type: "updateProfileReset"})
     dispatch({ type: "loadUserRequest" });
-    const { data } = await axios.get(`${serverUrl}/user/myprofile`);
+    const { data } = await axios.get(`${serverUrl}/user/getmyprofile`);
     dispatch({ type: "loadUserSuccess", payload: data });
   } catch (error) {
     dispatch({ type: "loadUserFailure", payload: error.response.data.message });
@@ -268,7 +268,7 @@ export const forgetPassword = (email) => async (dispatch) => {
     dispatch({ type: "forgetPasswordRequest" });
 
     const { data } = await axios.post(
-      `${serverUrl}/user/forgetpassword`,
+      `${serverUrl}/user/forgetpasswordemail`,
       { email },
       {
         headers: {
@@ -289,7 +289,7 @@ export const phonePassword = (phoneNumber) => async (dispatch) => {
     dispatch({ type: "phonePasswordRequest" });
 
     const { phoneNumber } = await axios.post(
-      `${serverUrl}/user/phonepassword`,
+      `${serverUrl}/user/forgetpasswordphone`,
       { phoneNumber },
       {
         headers: {
@@ -380,7 +380,7 @@ export const updateTask = (taskId) => async (dispatch) => {
     try {
       dispatch({ type: "updateProfileReset"})
       dispatch({ type: "loadAllTaskRequest" });
-      const { data } = await axios.get(`${serverUrl}/user/alltask`);
+      const { data } = await axios.get(`${serverUrl}/user/getalltask`);
       dispatch({ type: "loadAllTaskSuccess", payload: data });
     } catch (error) {
       dispatch({
@@ -389,20 +389,10 @@ export const updateTask = (taskId) => async (dispatch) => {
       });
     }
   };
-    
-  export const loadTask = () => async (dispatch) => {
-    try {
-      dispatch({ type: "loadTaskRequest" });
-      const { data } = await axios.get(`${serverUrl}/user/mytask`);
-      dispatch({ type: "loadTaskSuccess", payload: data });
-    } catch (error) {
-      dispatch({ type: "loadTaskFailure", payload: error.response.data.message });
-    };
-  }
   export const loadTaskManager = () => async (dispatch) => {
     try {
       dispatch({ type: "loadTaskManagerRequest" });
-      const { data } = await axios.get(`${serverUrl}/user/mytaskasmanager`);
+      const { data } = await axios.get(`${serverUrl}/user/getmytaskasmanager`);
       dispatch({ type: "loadTaskManagerSuccess", payload: data });
     } catch (error) {
       dispatch({ type: "loadTaskManagerFailure", payload: error.response.data.message });
@@ -412,7 +402,7 @@ export const updateTask = (taskId) => async (dispatch) => {
     try {
       dispatch({ type: "updateProfileReset"})
       dispatch({ type: "loadTaskContributorRequest" });
-      const { data } = await axios.get(`${serverUrl}/user/mytaskascontributor`);
+      const { data } = await axios.get(`${serverUrl}/user/getmytaskascontributor`);
       dispatch({ type: "loadTaskContributorSuccess", payload: data });
     } catch (error) {
       dispatch({ type: "loadTaskContributorFailure", payload: error.response.data.message });

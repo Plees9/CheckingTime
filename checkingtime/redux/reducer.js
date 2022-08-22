@@ -321,12 +321,11 @@ state.isUpdated = false ;
       },
       registerSuccess: (state, action) => {
         state.loading = false;
-        state.message = action.payload.message;
+        state.message = action.payload;
       },
       registerFailure: (state, action) => {
         state.loading = false;
         state.error = action.payload;
-        state.message = action.payload.message;
       },
         registerTaskRequest: (state) => {
           state.loading = true;
@@ -393,18 +392,6 @@ state.isUpdated = false ;
           state.allTask = action.payload;
         },
         loadAllTaskFailure: (state, action) => {
-          state.loading = false;
-          state.error = action.payload;
-        },
-        loadTaskRequest: (state) => {
-          state.loading = true;
-        },
-        loadTaskSuccess: (state, action) => {
-          state.loading = false;
-
-          state.task = action.payload;
-        },
-        loadTaskFailure: (state, action) => {
           state.loading = false;
           state.error = action.payload;
         },

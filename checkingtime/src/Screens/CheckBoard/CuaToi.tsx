@@ -37,16 +37,10 @@ const BangCong_Cuatoi = () => {
   const CONTENT = {
     tableHead: ["Ngày"],
     tableHead1: ["01/08", "02/08", "03/08", "04/08", "05/08", "06/08", "07/08"],
-    tableHead2: ["Check in", "Check out","Công ngày"],
+    tableHead2: ["Check in", "Check out","Công ngày","Tăng ca(Phút)"],
 
     tableData: [
-      ["1", "2", "-", "-", "-"],
-      ["-", "-", "-", "-", "-"],
-      ["-", "-", "-", "-", "-"],
-      ["-", "-", "-", "-", "-"],
-      ["-", "-", "-", "-", "-"],
-      ["-", "-", "-", "-", "-"],
-      ["-", "-", "-", "-", "-"],
+      ["-", "-", "-"],
     ],
   };
 
@@ -59,6 +53,8 @@ const BangCong_Cuatoi = () => {
     earlyValue = timesheetFilter.timesheetData.checkoutEarly.value;
     otNumber = timesheetFilter.timesheetData.overtime.number;
     otValue = timesheetFilter.timesheetData.overtime.value;
+    actualPoint = timesheetFilter.timesheetData.point.actual;
+    maxPoint = timesheetFilter.timesheetData.point.max;
   }
 
   let data_date: any = [];
@@ -69,8 +65,10 @@ const BangCong_Cuatoi = () => {
       object_board.push(timesheetFilter.timesheetTable[i].checkinTime);
       object_board.push(timesheetFilter.timesheetTable[i].checkoutTime);
       object_board.push(timesheetFilter.timesheetTable[i].point);
+      object_board.push(timesheetFilter.timesheetTable[i].overtime)
       data_date.push(timesheetFilter.timesheetTable[i].date);
       data_board.push(object_board);
+      CONTENT.tableData.push(data_board);
     }
   }
   const styles = useMemo(() => createStyles(), []);
