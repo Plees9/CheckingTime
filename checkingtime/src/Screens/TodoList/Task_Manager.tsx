@@ -18,8 +18,6 @@ const Task_Manager = ( {item}) => {
     const handleCheckbox = () => {
         setCompleted(!completed);
     }
-
-
     return (
         <View style={styles.render}>
         <View
@@ -42,7 +40,7 @@ const Task_Manager = ( {item}) => {
                     style={{ justifyContent: "center", alignContent: "center" }}
                   >
                     <Text>
-                      {moment(item.deadline).format("HH:mm, DD/MM/YYYY")}
+                      {moment(item.deadline, "HH:mm, DD/MM/YYYY").format("HH:mm, DD/MM/YYYY")}
                     </Text>
                     {show_1 && (
                       <DateTimePicker

@@ -428,20 +428,21 @@ export const updateTask = (taskId) => async (dispatch) => {
       }
     }
 
-export const search = (search) => async (dispatch) => {
+export const search = (name) => async (dispatch) => {
   try {
-    dispatch({ type: "searchRequest" });
+    dispatch({ type: "searchUserTaskRequest" });
 
-    const { data } = await axios.get(`${serverUrl}/user/searchuser/${search}`);
-    dispatch({ type: "searchSuccess", payload: data });
+    const { data } = await axios.get(`${serverUrl}/user/searchusertask/?name=${name}`);
+    dispatch({ type: "searchUserTaskSuccess", payload: data });
     
   } catch (error) {
     dispatch({
-      type: "searchFailure",
+      type: "searchUserTaskFailure",
       payload: error.response.data.message,
     });
   }
 }
+
 
 export const loadTimesheetFilter = () => async (dispatch) => {
   try {
