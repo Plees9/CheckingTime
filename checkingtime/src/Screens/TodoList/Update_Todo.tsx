@@ -18,7 +18,7 @@ import { LinearGradient } from "expo-linear-gradient";
 import { Avatar } from "@rneui/themed";
 import { FlatList } from "react-native-gesture-handler";
 import { useDispatch, useSelector } from "react-redux";
-import { loadAllTask, loadAlluser, queryUser, registerTask } from "../../../redux/action";
+import { loadAllTask, loadAlluser, queryUser, registerTask, updateTask } from "../../../redux/action";
 import Contributor_Add_Task from "./Contributor_Add_Task";
 import Loader from "../../navigation/Loader";
 import { useRoute } from "@react-navigation/native";
@@ -26,7 +26,7 @@ import { useRoute } from "@react-navigation/native";
 const Update_Todo = () => {
   const styles = useMemo(() => createStyles(), []);
   const { user, loading } = useSelector<any, any>((state) => state.auth);
-
+const [visible, setVisible] = useState(false);
   const [name, setName] = useState("");
   const [description, setDescription] = useState(""); //Mô tả task
   const [deadline, setDeadline] = useState(moment()); //Deadline của task\
@@ -35,7 +35,7 @@ const Update_Todo = () => {
   const [status, setStatus] = useState(""); //Trạng thái của task
   const [manager, setManager] = useState(""); //Trạng thái của task
   const [contributors, setContributors] = useState([]); //Trạng thái của task
-
+const [_id, set_Id] = useState("");
   const [userName, setUserName] = useState("");
   const [avatar, setAvatar] = useState(user.avatar.url);
   const route = useRoute () 
@@ -46,28 +46,30 @@ const Update_Todo = () => {
   const { allUser } = useSelector<any, any>((state) => state.allUser);
   const { allTask } = useSelector<any, any>((state) => state.task);
   const { task } = useSelector<any, any>((state) => state.task);
+  useEffect(() => {
+    if (route.params) {
+      if (route.params._id) {
+        set_Id(route.params._id);
+      }
+      if (route.params.name) {
+        setName(route.params.name);
+      }
+      if (route.params.description) {
+        setDescription(route.params.description);
+      }
+      if (route.params.deadline) {
+        setDeadline(route.params.deadline);
+      }
+    }
+    console.log(route.params);
+  }, [route]);
+  
   if (typeof allTask == "undefined") {
     return <Loader />;
   }
 
   const dispatch = useDispatch();
-  const registerHandlerTask = () => {
-    const myForm = new FormData();
-    myForm.append("name", name);
-    myForm.append("description", description);
-    const deadline_1 = moment(deadline);
-    myForm.append("deadline", deadline_1.format("HH:mm, DD/MM/YYYY"));
-    const time_task_1 = moment(time_task);
-    myForm.append("time_task", time_task_1.format("HH:mm, DD/MM/YYYY"));
-    const date_1 = moment(date);
-    myForm.append("date", date_1.format("HH:mm, DD/MM/YYYY"));
-    myForm.append("status", status);
-    myForm.append("manager", manager);
-    myForm.append("contributors", JSON.stringify(contributors));
-    dispatch<any>(registerTask(myForm));
-    dispatch<any>(loadAllTask());
-    dispatch<any>(loadAlluser());
-  };
+ 
 
   useEffect(() => {
     dispatch<any>(loadAlluser());
@@ -87,20 +89,37 @@ const Update_Todo = () => {
       setDescription("");
       setDeadline(moment());
       setTime_Task(moment());
-      setDate(moment());
       setStatus("");
       setManager("");
       setContributors([]);
+      
     }
   }, [alert, dispatch, error, message]);
 
  
+  const updateHandler = async () => {
+    const myForm = new FormData();
+    const Sdate = moment(date);
+    myForm.append("_id", _id);
+    myForm.append("name", name);
+    myForm.append("description", description);
+    myForm.append("deadline", String(deadline));
+    await dispatch<any>(updateTask(myForm));
+    
+    setVisible(false);
+  };
   return (
     <View style={styles.viewAdd_todo}>
       <View>
-        <View style={{ flexDirection: "row", alignItems: "center",  marginLeft:10,
-      marginRight:10 }}>
-          <Text >Tên công việc: </Text>
+        <View
+          style={{
+            flexDirection: "row",
+            alignItems: "center",
+            marginLeft: 10,
+            marginRight: 10,
+          }}
+        >
+          <Text>Tên công việc: </Text>
           <TextInput
             placeholder="Nhập tên công việc"
             returnKeyType="done"
@@ -115,23 +134,26 @@ const Update_Todo = () => {
             placeholder="Mô tả nội dung công việc"
             returnKeyType="done"
             value={description}
-            onChangeText={(text) => setDescription(text)}
+            onChangeText={setDescription}
             style={styles.text_Description}
           ></TextInput>
         </View>
         <View>
-          <Text style={{ marginLeft:10,
-      marginRight:10,}}>Thời gian cần hoàn thành:</Text>
+          <Text style={{ marginLeft: 10, marginRight: 10 }}>
+            Thời gian cần hoàn thành:
+          </Text>
           <View style={styles.viewTime}>
             <View style={styles.textTime}>
               <Pressable onPress={() => setShow_1(true)}>
                 <View
                   style={{ justifyContent: "center", alignContent: "center" }}
                 >
-                  <Text>{time_task.format("HH:mm")}</Text>
+                  <Text>
+                    {moment(deadline, "HH:mm, DD/MM/YYYY").format("HH:mm")}
+                  </Text>
                   {show_1 && (
                     <DateTimePicker
-                      value={new Date(time_task.format("YYYY/MM/DD"))}
+                      value={new Date(moment(deadline).format("YYYY/MM/DD"))}
                       mode={"time"}
                       display="default"
                       is24Hour={true}
@@ -174,8 +196,9 @@ const Update_Todo = () => {
         </View>
 
         <View>
-          <Text style={{ marginLeft:10,
-      marginRight:10,}}>Nhân viên phụ trách:</Text>
+          <Text style={{ marginLeft: 10, marginRight: 10 }}>
+            Nhân viên phụ trách:
+          </Text>
           <View style={styles.icon_add_task}>
             <Icon
               name="search"
@@ -183,7 +206,7 @@ const Update_Todo = () => {
               color="#8f73f6"
               style={styles.icon3}
             />
-            <TextInput
+            {/* <TextInput
               style={styles.text}
               placeholder="Tìm kiếm"
               returnKeyType="done"
@@ -195,12 +218,12 @@ const Update_Todo = () => {
                 }
                 setSearch(text)}}
                 value={search}
-            ></TextInput>
+            ></TextInput> */}
           </View>
           <ScrollView style={styles.style_add_task}>
             {allUser &&
               allUser.array.map((item: any) => (
-                <Contributor_Add_Task key={item._id} item={item}  />
+                <Contributor_Add_Task key={item._id} item={item} />
               ))}
           </ScrollView>
         </View>
@@ -212,8 +235,8 @@ const Update_Todo = () => {
         colors={["#f12711", "#f5af19"]}
         style={styles.btnFab_add_task}
       >
-        <TouchableOpacity onPress={registerHandlerTask}>
-          <Text style={styles.textComfirm}>Thêm Task</Text>
+        <TouchableOpacity onPress={updateHandler}>
+          <Text style={styles.textComfirm}>Cập nhật</Text>
         </TouchableOpacity>
       </LinearGradient>
     </View>

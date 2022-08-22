@@ -21,6 +21,20 @@ const Task_Admin = ( {item}) => {
     const handleCheckbox = () => {
         setCompleted(!completed);
     }
+    const Edit = async (
+      name: any,
+      _id: any,
+      description: any,
+
+      deadline: any
+    ) => {
+      navigation.navigate("Cập nhật công việc", {
+        name,
+        _id,
+        description,
+        deadline,
+      });
+    };
 
     return (
         <View style={styles.render}>
@@ -36,13 +50,13 @@ const Task_Admin = ( {item}) => {
             </View>
             <View style={styles.colomn}>
               <Text style={styles.task}>{item.name}</Text>
-              <Text style={styles.text1}>{ item.contributors + " "  } </Text>
+              <Text style={styles.text1}>{item.contributors + " "} </Text>
               <Text style={styles.text1}>Manager: {item.manager}</Text>
             </View>
   
             <Icon
               name="trash"
-              color="#f49218"
+              color="#8f37f6"
               size={20}
               style={styles.trash}
               onPress={async () => {await dispatch<any>(deleteTask(item._id))
@@ -50,10 +64,14 @@ const Task_Admin = ( {item}) => {
             />
             <Icon
               name="pencil"
-              color="#f49218"
+              color="#8f37f6"
               size={20}
               style={styles.pencil}
-              onPress={() => navigation.navigate("Cập nhật công việc")}
+              onPress={() => {
+                Edit(
+                 item.name , item._id , item.description , item.deadline
+                 
+                );}}
             />
           </View>
         </View>
