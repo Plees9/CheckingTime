@@ -10,6 +10,7 @@ import { queryUser } from "../../../redux/action";
 import { useDispatch, useSelector } from "react-redux";
 import createStyles from "./styles_filterStaff";
 
+
 const data_Name_Task = [
   { label: "cv2", value: "Người dùng" },
   { label: "cv3", value: "Quản lý" },
@@ -59,36 +60,6 @@ const Filter_All = () => {
   return (
     <ScrollView style={styles.viewbgr}>
       <View style={styles.view}>
-        <Text style={styles.textTop}> Công việc: </Text>
-        <View style={styles.style}>
-          <Dropdown
-            style={styles.dropdown}
-            placeholderStyle={styles.placeholderStyle}
-            selectedTextStyle={styles.selectedTextStyle}
-            inputSearchStyle={styles.inputSearchStyle}
-            iconStyle={styles.iconStyle}
-            data={data_Name_Task}
-            search
-            maxHeight={300}
-            searchPlaceholder="Search..."
-            labelField="label"
-            valueField="value"
-            placeholder="Chọn công việc"
-            value={name}
-            onChange={(item) => {
-              setName(item.value);
-            }}
-            renderLeftIcon={() => (
-              <AntDesign
-                style={styles.icon}
-                color="orange"
-                name="Safety"
-                size={20}
-              />
-            )}
-          />
-        </View>
-
         <Text style={styles.textTop2}>Nhân sự tham gia: </Text>
         <View style={styles.style}>
           <Dropdown
@@ -103,7 +74,7 @@ const Filter_All = () => {
             searchPlaceholder="Search..."
             labelField="label"
             valueField="value"
-            placeholder="Chọn nhân sự tham gia"
+            placeholder="Nhân sự tham gia"
             value={contributor}
             onChange={(item) => {
               setContributor(item.value);
@@ -119,7 +90,7 @@ const Filter_All = () => {
           />
         </View>
 
-        <Text style={styles.textTop2}>Số công việc đã hoàn thành:</Text>
+        <Text style={styles.textTop2}>Người quản lý:</Text>
         <View style={styles.style}>
           <Dropdown
             style={styles.dropdown}
@@ -133,7 +104,7 @@ const Filter_All = () => {
             searchPlaceholder="Search..."
             labelField="label"
             valueField="value"
-            placeholder="Công việc đã hoàn thành"
+            placeholder="Người quản lý"
             value={value_WorkDone}
             onChange={(item) => {
               setValue_WorkDone(item.value);

@@ -143,24 +143,29 @@ const Todo_All = () => {
           <Text style={styles.text}>Task List:</Text>
         </View>
         <View style={styles.kengang}></View>
+        
         <ScrollView>
         {allTask && allTask.tasks.map((item : any) => (
                             <Task_Admin key={item._id} item={item}/>
                         ))} 
 
         </ScrollView>
+
+       
+        
         
       </SafeAreaView>
       <View style={styles.btnFab}>
         <FAB
           title="Save"
           size="small"
-          onPress={() => Alert.alert("Add Task")}
+          color="#8f73f6"
+          onPress={() => Alert.alert("Lưu thành công")}
         />
         <FAB
           title="Add Task"
           size="small"
-          color="#FF8C32"
+          color="#8f73f6"
           style={styles.fab}
           onPress={() => navigation.navigate("Thêm công việc")}
         />

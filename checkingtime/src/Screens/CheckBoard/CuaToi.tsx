@@ -36,7 +36,6 @@ const BangCong_Cuatoi = () => {
 
   const CONTENT = {
     tableHead: ["Ngày"],
-    tableHead1: ["01/08", "02/08", "03/08", "04/08", "05/08", "06/08", "07/08"],
     tableHead2: ["Check in", "Check out","Công ngày","Tăng ca(Phút)"],
 
     tableData: [

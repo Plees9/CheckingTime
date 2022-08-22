@@ -127,18 +127,7 @@ const Todo_Staff = () => {
             <Task key={item._id} item={item} />
           ))}
       </SafeAreaView>
-      <View style={styles.btnFab}>
-        <FAB
-          title="Completed"
-          size="small"
-          color="#FF8C32"
-          style={styles.fab}
-          onPress={() => {
-            dispatch<any>(loadTaskContributor());
-            Alert.alert("Bạn đã cập nhật thành công");
-          }}
-        />
-      </View>
+      
     </View>
   );
 };

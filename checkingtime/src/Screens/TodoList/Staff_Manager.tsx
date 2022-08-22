@@ -138,9 +138,16 @@ const Staff_Manager = () => {
         <FAB
           title="Completed"
           size="small"
-          color="#FF8C32"
+          color="#8f73f6"
           style={styles.fab}
-          onPress={() => Alert.alert("Completed")}
+          onPress={() => Alert.alert("thành công")}
+        />
+        <FAB
+          title="Thêm công việc"
+          size="small"
+          color="#8f73f6"
+          style={styles.fab}
+          onPress={() => navigation.navigate("Thêm công việc")}
         />
       </View>
     </View>
