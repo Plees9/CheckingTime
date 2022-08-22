@@ -9,17 +9,15 @@ const createStyles = () =>
       marginTop: "3%",
     },
     viewbgr: {
-      backgroundColor: "#FFFFFF",
+      backgroundColor: "#f2f2f2",
     },
     textTop: {
       fontSize: 16,
-      //color: "#413F42",
       fontFamily: FONTS.vanSansSemiBold,
     },
     textTop2: {
-      marginTop: "3%",
+      marginBottom: "3%",
       fontSize: 16,
-      //color: "#413F42",
       fontFamily: FONTS.vanSansSemiBold,
     },
     text22: {
@@ -92,6 +90,37 @@ const createStyles = () =>
     inputSearchStyle: {
       height: 40,
       fontSize: 16,
+    },
+    filter_nhansuthamgia: {
+      marginLeft:10,
+      marginRight:10,
+      borderRadius: 10,
+      height: "49%",
+      backgroundColor: "#ffffff",
+
+    },
+    icon_add_task: {
+      flexDirection: "row",
+      margin: 10,
+      borderRadius: 10,
+      padding: 5,
+      backgroundColor: "#ffffff",
+      fontWeight: "bold",
+    },
+    icon3: {
+      padding: 5,
+      color: "gray",
+    },
+    text: {
+      fontSize: 18,
+      width: "80%",
+      marginLeft: "3%",
+    },
+    boder_nhansu: {
+      paddingBottom: 10,
+      borderWidth: 1,
+      borderRadius: 10,
+      borderColor: "#8F73F6",
     },
     
   });

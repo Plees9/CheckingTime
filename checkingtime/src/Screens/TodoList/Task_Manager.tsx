@@ -28,7 +28,7 @@ const Task_Manager = ( {item}) => {
           <View style={styles.view3}>
             <View style={styles.checkbox}>
             <Checkbox
-                color="#FFC23C"
+                color="#8f73f6"
                 status={completed ? "checked" : "unchecked"}
                 onPress={handleCheckbox}
 
@@ -58,7 +58,7 @@ const Task_Manager = ( {item}) => {
             </View>
             <Icon
               name="trash"
-              color="#f49218"
+              color="#8f73f6"
               size={20}
               style={styles.trash}
               onPress={async () => {await dispatch<any>(deleteTask(item._id))
@@ -66,7 +66,7 @@ const Task_Manager = ( {item}) => {
             />
             <Icon
               name="pencil"
-              color="#f49218"
+              color="#8f73f6"
               size={20}
               style={styles.pencil}
               onPress={() => navigation.navigate("Cập nhật công việc")}

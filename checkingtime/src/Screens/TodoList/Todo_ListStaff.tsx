@@ -59,7 +59,7 @@ const Todo_ListStaff = () => {
           <Icon
             name="angle-double-right"
             size={34}
-            color="#f49218"
+            color="#8f73f6"
             
           />
         </View>

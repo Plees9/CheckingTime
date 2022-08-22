@@ -28,6 +28,14 @@ import Toast from "react-native-toast-message";
 import Contributor_Add_Task from "./Contributor_Add_Task";
 import Loader from "../../navigation/Loader";
 import { useRoute } from "@react-navigation/native";
+import { Dropdown } from "react-native-element-dropdown";
+import AntDesign from "react-native-vector-icons/AntDesign";
+
+const data_Contributor_Test = [
+  { label: "Nguyễn Sơn Bá", value: "Nguyễn Sơn Bá" },
+  { label: "Cao Liên Quân", value: "Cao Liên Quân" },
+  { label: "Đinh Trọng Phúc", value: "Đinh Trọng Phúc" },
+];
 
 const Add_Todo = () => {
   const styles = useMemo(() => createStyles(), []);
@@ -40,7 +48,7 @@ const Add_Todo = () => {
   const [date, setDate] = useState(moment());
   const [status, setStatus] = useState(""); //Trạng thái của task
   const [manager, setManager] = useState(""); //Trạng thái của task
-  const [contributors, setContributors] = useState([]); //Trạng thái của task
+  const [contributors, setContributors] = useState(""); //Trạng thái của task
 
   const [userName, setUserName] = useState("");
   const [avatar, setAvatar] = useState(user.avatar.url);
@@ -70,104 +78,124 @@ const Add_Todo = () => {
     myForm.append("date", date_1.format("HH:mm, DD/MM/YYYY"));
     myForm.append("status", status);
     myForm.append("manager", manager);
-    myForm.append("contributors", JSON.stringify(contributors));
+    myForm.append("contributors", contributors);
     dispatch<any>(registerTask(myForm));
     dispatch<any>(loadAllTask());
     dispatch<any>(loadAlluser());
   };
 
+  const ToastAlertMessage = (message: any) => {
+    Toast.show({ text1: message, type: "success" });
+  };
+  const ToastAlertError = (error: any) => {
+    Toast.show({ text1: error, type: "error" });
+  };
+  const configToast = {
+    success: (internal: any) => (
+      <View
+        style={{
+          width: "95%",
+          height: 40,
+          backgroundColor: "green",
+          justifyContent: "center",
+          alignItems: "center",
+        }}
+      >
+        <Text style={{ fontSize: 15, color: "white" }}> {internal.text1}</Text>
+      </View>
+    ),
+    error: (internal: any) => (
+      <View
+        style={{
+          width: "95%",
+          height: 40,
+          backgroundColor: "red",
+          justifyContent: "center",
+          alignItems: "center",
+        }}
+      >
+        <Text style={{ fontSize: 15, color: "white" }}> {internal.text1}</Text>
+      </View>
+    ),
+  };
+
   useEffect(() => {
     dispatch<any>(loadAlluser());
+    // dispatch<any>(loadAllTask());
   }, []);
   const { message, error } = useSelector<any, any>((state) => state.message);
 
-   const ToastAlertMessage = (message: any) => {
-     Toast.show({ text1: message, type: "success" });
-   };
-   const ToastAlertError = (error: any) => {
-     Toast.show({ text1: error, type: "error" });
-   };
-   const configToast = {
-     success: (internal: any) => (
-       <View
-         style={{
-           width: "95%",
-           height: 40,
-           backgroundColor: "green",
-           justifyContent: "center",
-           alignItems: "center",
-         }}
-       >
-         <Text style={{ fontSize: 15, color: "white" }}> {internal.text1}</Text>
-       </View>
-     ),
-     error: (internal: any) => (
-       <View
-         style={{
-           width: "95%",
-           height: 40,
-           backgroundColor: "red",
-           justifyContent: "center",
-           alignItems: "center",
-         }}
-       >
-         <Text style={{ fontSize: 15, color: "white" }}> {internal.text1}</Text>
-       </View>
-     ),
-   };
   useEffect(() => {
-    if (message) {
-      ToastAlertMessage(message);
-      dispatch({ type: "clearMessage" });
-    }
-    if (error) {
-      ToastAlertError(error);
-      dispatch({ type: "clearError" });
-    }
-    if (message == "Tạo tài khoản thành công") {
+    if (message == "Tạo thành công") {
       setName("");
       setDescription("");
       setDeadline(moment());
       setTime_Task(moment());
       setDate(moment());
-      setStatus("");
-      setManager("");
-      setContributors([]);
+      setContributors("");
     }
-  }, [alert, dispatch, error, message]);
+    if (error == "Tạo thất bại") {
+      ToastAlertError(error);
+      dispatch({ type: "clearError" });
+    }
+    if (message) {
+      ToastAlertMessage(message);
+      dispatch({ type: "clearMessage" });
+    }
+  }, [ToastAlertError, ToastAlertMessage, message, error]);
+
+  //   if (message) {
+  //     ToastAlertMessage(message);
+  //     dispatch({ type: "clearMessage" });
+  //   }
+  //   if (error) {
+  //     ToastAlertError(error);
+  //     dispatch({ type: "clearError" });
+  //   }
+  // } , [ToastAlertError, ToastAlertMessage, message, error]);
 
   return (
     <View style={styles.viewAdd_todo}>
-      <View>
+      <View style={{height:"92%"}}>
         <View
           style={{
-            flexDirection: "row",
-            alignItems: "center",
+            marginTop: 10,
             marginLeft: 10,
             marginRight: 10,
           }}
         >
-          <Text>Tên công việc: </Text>
-          <TextInput
-            placeholder="Nhập tên công việc"
-            returnKeyType="done"
-            value={name}
-            secureTextEntry={false}
-            onChangeText={(text) => setName(text)}
-          ></TextInput>
+          <View
+            style={{
+              width: "100%",
+              height: 50,
+              borderRadius: 5,
+              backgroundColor: "#ffffff", 
+              justifyContent: "center",
+              marginBottom: 10,
+            }}
+          >
+            <TextInput
+              placeholder="Nhập tên công việc"
+              returnKeyType="done"
+              value={name}
+              secureTextEntry={false}
+              onChangeText={setName}
+              style={{ marginLeft: 10, padding: 5,}}
+            ></TextInput>
+          </View>
         </View>
-
+       
         <View style={styles.text_Content_Todo}>
           <TextInput
             placeholder="Mô tả nội dung công việc"
             returnKeyType="done"
             value={description}
-            onChangeText={(text) => setDescription(text)}
+            onChangeText={setDescription}
             style={styles.text_Description}
           ></TextInput>
         </View>
         <View>
-          <Text style={{ marginLeft: 10, marginRight: 10 }}>
+          <Text style={{ marginLeft: 10, marginRight: 10, marginTop:10 }}>
             Thời gian cần hoàn thành:
           </Text>
           <View style={styles.viewTime}>
@@ -255,6 +283,41 @@ const Add_Todo = () => {
               value={search}
             ></TextInput>
           </View>
+          {/* <TextInput
+            placeholder="nhap ten nhan vien"
+            returnKeyType="done"
+            value={contributors}
+            onChangeText={setContributors}
+            style={{ marginLeft: 10, marginRight: 10}}
+          ></TextInput> */}
+          {/* <View style={styles.style}>
+          <Dropdown
+            style={styles.dropdown}
+            placeholderStyle={styles.placeholderStyle}
+            selectedTextStyle={styles.selectedTextStyle}
+            inputSearchStyle={styles.inputSearchStyle}
+            iconStyle={styles.iconStyle}
+            data={data_Contributor_Test}
+            search
+            maxHeight={300}
+            searchPlaceholder="Search..."
+            labelField="label"
+            valueField="value"
+            placeholder="Chọn nhân viên"
+            value={contributors}
+            onChange={(item) => {
+              setContributors(item.value);
+            }}
+            renderLeftIcon={() => (
+              <AntDesign
+                style={styles.icon_addtask}
+                color="orange"
+                name="Safety"
+                size={20}
+              />
+            )}
+          />
+        </View> */}
           <ScrollView style={styles.style_add_task}>
             {allUser &&
               allUser.array.map((item: any) => (
@@ -280,5 +343,3 @@ const Add_Todo = () => {
 };
 
 export default React.memo(Add_Todo);
-
-

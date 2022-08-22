@@ -87,7 +87,7 @@ const Staff_Manager = () => {
           <Icon
             name="list"
             size={18}
-            color="#f49218"
+            color="#8f73f6"
             style={styles.icon}
           ></Icon>
           <Text style={styles.text}> Quản lý công việc:</Text>

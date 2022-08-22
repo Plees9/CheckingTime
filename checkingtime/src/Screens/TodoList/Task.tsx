@@ -38,7 +38,7 @@ const Task = ( {item}) => {
         <View style={styles.view3}>
           <View style={styles.checkbox}>
             <Checkbox
-              color="#FFC23C"
+              color="#8f73f6"
               status={completed ? "checked" : "unchecked"}
                 onPress={handleCheckbox}
             />
@@ -67,7 +67,7 @@ const Task = ( {item}) => {
           </View>
           <Icon
             name="pencil"
-            color="#f49218"
+            color="#8f73f6"
             size={20}
             style={styles.pencil}
             onPress={() => navigation.navigate("Cập nhật công việc")}

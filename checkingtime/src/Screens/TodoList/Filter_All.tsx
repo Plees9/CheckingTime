@@ -1,5 +1,5 @@
 import React, { useState, useMemo, useEffect } from "react";
-import { View, Text, TouchableOpacity, ScrollView } from "react-native";
+import { View, Text, TouchableOpacity, ScrollView, TextInput } from "react-native";
 
 import { useNavigation, useRoute } from "@react-navigation/native";
 import { LinearGradient } from "expo-linear-gradient";
@@ -9,23 +9,9 @@ import AntDesign from "react-native-vector-icons/AntDesign";
 import { queryUser } from "../../../redux/action";
 import { useDispatch, useSelector } from "react-redux";
 import createStyles from "./styles_filterStaff";
+import Contributor_Add_Task from "./Contributor_Add_Task";
+import Icon from "react-native-vector-icons/FontAwesome";
 
-
-const data_Name_Task = [
-  { label: "cv2", value: "Người dùng" },
-  { label: "cv3", value: "Quản lý" },
-  { label: "Quản trị viên", value: "Quản trị viên" },
-];
-const data_Contributor = [
-  { label: "hehhe ", value: "1" },
-  { label: "kkasa", value: "2" },
-  { label: "asas", value: "Thực tập sinh" },
-];
-const data_WorkDone_All = [
-  { label: "1", value: "1" },
-  { label: "2", value: "2" },
-  { label: "Thực tập sinh", value: "Thực tập sinh" },
-];
 
 const Filter_All = () => {
   const styles = useMemo(() => createStyles(), []);
@@ -33,6 +19,7 @@ const Filter_All = () => {
   const route = useRoute();
   const dispatch = useDispatch();
   const [name, setName] = useState("");
+  const [search, setSearch] = useState("");
   const [contributor, setContributor] = useState("");
   const [value_WorkDone, setValue_WorkDone] = useState("");
   const { allUser } = useSelector<any, any>((state) => state.allUser);
@@ -58,67 +45,54 @@ const Filter_All = () => {
   }, [route]);
   console.log(route.params);
   return (
-    <ScrollView style={styles.viewbgr}>
+    <View style={styles.viewbgr}>
       <View style={styles.view}>
         <Text style={styles.textTop2}>Nhân sự tham gia: </Text>
-        <View style={styles.style}>
-          <Dropdown
-            style={styles.dropdown}
-            placeholderStyle={styles.placeholderStyle}
-            selectedTextStyle={styles.selectedTextStyle}
-            inputSearchStyle={styles.inputSearchStyle}
-            iconStyle={styles.iconStyle}
-            data={data_Contributor}
-            search
-            maxHeight={300}
-            searchPlaceholder="Search..."
-            labelField="label"
-            valueField="value"
-            placeholder="Nhân sự tham gia"
-            value={contributor}
-            onChange={(item) => {
-              setContributor(item.value);
-            }}
-            renderLeftIcon={() => (
-              <AntDesign
-                style={styles.icon}
-                color="orange"
-                name="Safety"
-                size={20}
-              />
-            )}
-          />
-        </View>
+        <View style={styles.boder_nhansu}>
+        <View style={styles.icon_add_task}>
+            <Icon
+              name="search"
+              size={20}
+              color="#8f73f6"
+              style={styles.icon3}
+            />
+            <TextInput
+              style={styles.text}
+              placeholder="Tìm kiếm"
+              returnKeyType="done"
+              onChangeText={(text) => {
+                if (route.params) {
+                  dispatch<any>(
+                    queryUser(
+                      text,
+                      route.params.value_4,
+                      route.params.value_5,
+                      route.params.value_6,
+                      route.params.value_7
+                    )
+                  );
+                } else {
+                  dispatch<any>(queryUser(text, "", "", "", ""));
+                }
+                setSearch(text);
+              }}
+              value={search}
+            ></TextInput>
+          </View>
+        
+        <ScrollView style={styles.filter_nhansuthamgia}>
+            {allUser &&
+              allUser.array.map((item: any) => (
+                <Contributor_Add_Task key={item._id} item={item} />
+              ))}
+          </ScrollView>
 
-        <Text style={styles.textTop2}>Người quản lý:</Text>
-        <View style={styles.style}>
-          <Dropdown
-            style={styles.dropdown}
-            placeholderStyle={styles.placeholderStyle}
-            selectedTextStyle={styles.selectedTextStyle}
-            inputSearchStyle={styles.inputSearchStyle}
-            iconStyle={styles.iconStyle}
-            data={data_WorkDone_All}
-            search
-            maxHeight={300}
-            searchPlaceholder="Search..."
-            labelField="label"
-            valueField="value"
-            placeholder="Người quản lý"
-            value={value_WorkDone}
-            onChange={(item) => {
-              setValue_WorkDone(item.value);
-            }}
-            renderLeftIcon={() => (
-              <AntDesign
-                style={styles.icon}
-                color="orange"
-                name="Safety"
-                size={20}
-              />
-            )}
-          />
         </View>
+       
+       
+        <Text style={styles.textTop2}>Người quản lý:</Text>
+        
+       
         <LinearGradient
           start={{ x: 0, y: 0 }}
           end={{ x: 1, y: 0 }}
@@ -135,7 +109,7 @@ const Filter_All = () => {
           </TouchableOpacity>
         </LinearGradient>
       </View>
-    </ScrollView>
+    </View>
   );
 };
 

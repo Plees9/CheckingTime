@@ -30,7 +30,6 @@ import { useDispatch, useSelector } from "react-redux";
 import { loadAlluser, register } from "../../../redux/action";
 import Toast from "react-native-toast-message";
 
-//import PassMeter from "../../../node_modules/react-native-passmeter";
 
 const data_1 = [
   { label: "Người dùng", value: "Người dùng" },
@@ -142,7 +141,6 @@ const AddStaff = () => {
     ),
   };
    
-  
 
   useEffect(() => {
    
@@ -228,15 +226,7 @@ const AddStaff = () => {
             />
           </TouchableOpacity>
         </View>
-        {/* <View>
-          <PassMeter
-            showLabels
-            password={password}
-            maxLength={MAX_LEN}
-            minLength={MIN_LEN}
-            labels={PASS_LABELS}
-          />
-        </View> */}
+       
         <View style={styles.styleTT}>
           <TextInput
             placeholder={"Nhập lại mật khẩu"}

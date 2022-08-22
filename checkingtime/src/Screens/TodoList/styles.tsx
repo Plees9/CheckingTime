@@ -144,17 +144,17 @@ const createStyles = () =>
       alignSelf: "center",
       width: "96%",
       height: 100,
-      borderColor: "#CFD2CF",
-      borderWidth: 1,
       borderRadius: 10,
+      backgroundColor: "#FFFFFF",
     },
 
     viewTime: {
       flexDirection: "row",
       justifyContent: "space-between",
+      alignItems: "center",
       marginBottom: "1%",
-      borderColor: "#A2B5BB",
-      borderWidth: 1,
+      backgroundColor: "#FFFFFF",
+      height:40,
       padding: "2%",
       borderRadius: 10,
       marginTop: 5,
@@ -163,13 +163,13 @@ const createStyles = () =>
     },
     textTime: {
       width: "50%",
-      //smarginLeft: "3%",
     },
     kedoc: {
       marginLeft: "2%",
       marginRight: "2%",
-      borderColor: "#A2B5BB",
-      borderWidth: 0.5,
+      height: "100%",
+      borderColor: "#7F8487",
+      borderWidth: 1,
     },
     textDate: {
       width: "70%",
@@ -299,10 +299,63 @@ const createStyles = () =>
       alignItems: "center",
       alignSelf: "center",
       justifyContent: "center",
-      //marginTop: "3%",
+      //marginTop: "5%",
       borderRadius: 20,
-      height: "10%",
+      height: "8%",
       width: "70%",
+    },
+    dropdown: {
+      //margin: 16,
+      height: 50,
+      backgroundColor: "#f2f2f2",
+      borderRadius: 10,
+      padding: 12,
+      shadowColor: '#000',
+      shadowOffset: {
+        width: 0,
+        height: 1,
+      },
+      shadowOpacity: 0.2,
+      shadowRadius: 1.41,
+      elevation: 2,
+    },
+    icon_addtask: {
+      marginRight: 5,
+    },
+    item: {
+      padding: 17,
+      flexDirection: 'row',
+      justifyContent: 'space-between',
+      alignItems: 'center',
+    },
+    textItem: {
+      flex: 1,
+      fontSize: 16,
+      
+    },
+    placeholderStyle: {
+      fontSize: 16,
+      
+    },
+    selectedTextStyle: {
+      fontSize: 16,
+      
+    },
+    iconStyle: {
+      width: 20,
+      height: 20,
+    },
+    inputSearchStyle: {
+      height: 40,
+      fontSize: 16,
+    },
+    style : {
+      marginTop: "3%",
+      marginLeft: "8%",
+      marginRight: "8%",
+      width: "100%",
+      justifyContent: "center",
+      alignSelf: "center",
     },
 
   });
