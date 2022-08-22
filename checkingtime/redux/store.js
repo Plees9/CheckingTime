@@ -7,10 +7,6 @@ import {
   timesheetReducer,
   allReducer,
   taskReducer,
-  taskAllReducer,
-  searchReducer,
-  loadTaskManager,
-  loadTaskContributor, 
   taskMessageReducer
 } from "./reducer";
 
@@ -24,7 +20,6 @@ const store = configureStore({
     allUser: allReducer,
     task: taskReducer,
     taskMessage: taskMessageReducer,
-    search: searchReducer,
   },
 });
 

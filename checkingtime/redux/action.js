@@ -180,13 +180,14 @@ export const updateAdmin = (formData) => async (dispatch) => {
 export const updatePassword = (formData) => async (dispatch) => {
   try {
     dispatch({ type: "updatePasswordRequest" });
+    console.log("ayyo")
 
     const { data } = await axios.put(`${serverUrl}/user/updatepassword`, formData, {
       headers: {
         "Content-Type": "multipart/form-data",
       },
     });
-    dispatch({ type: "updatePasswordSuccess", payload: data.message });
+    dispatch({ type: "updatePasswordSuccess", payload: data });
   } catch (error) {
     dispatch({
       type: "updatePasswordFailure",

@@ -204,7 +204,19 @@ export const authReducer = createReducer(
 );
   export const passwordReducer = createReducer (
     {} ,
-    {forgetPasswordRequest: (state) => {
+    { updatePasswordRequest: (state) => {
+      state.loading = true;
+    },
+    updatePasswordSuccess: (state, action) => {
+      state.loading = false;
+      state.message = action.payload;
+    },
+    updatePasswordFailure: (state, action) => {
+      state.loading = false;
+      state.error = action.payload;
+    },
+
+      forgetPasswordRequest: (state) => {
       state.loading = true;
     },
     forgetPasswordSuccess: (state, action) => {
