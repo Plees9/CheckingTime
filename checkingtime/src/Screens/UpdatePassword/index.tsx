@@ -14,7 +14,8 @@ import Toast from "react-native-toast-message";
 const UpdatePassword = () => {
   const route = useRoute() 
   const dispatch = useDispatch();
-  const { message, error } = useSelector<any, any>((state) => state.message);
+  const { message, error } = useSelector<any, any>((state) => state.password);
+  console.log(error)
   const styles = useMemo(() => createStyles(), []);
   const [oldPassword, setoldPassword] = useState("");
   const [newPassword, setnewPassword] = useState("");
@@ -72,7 +73,7 @@ const UpdatePassword = () => {
       ToastAlertError(error);
       dispatch({ type: "clearError" });
     }
-  }, [ToastAlertError, ToastAlertMessage, dispatch, error]);
+  }, [ToastAlertError, ToastAlertMessage, dispatch, error, message]);
 
   const navigation = useNavigation<any>();
 

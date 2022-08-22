@@ -19,7 +19,9 @@ import TodoModal from "../../component/TodoModal";
 import { AnimatedCircularProgress } from "react-native-circular-progress";
 import {
   checking,
-  
+  loadTask,
+  loadTimesheetFilter,
+  loadTimesheetPoint,
   loadUser,
   ranking,
 } from "../../../redux/action";
@@ -95,7 +97,7 @@ const HomeScreen = () => {
   ) {
     actualPoint = timesheetFilter.timesheetData.point.actual;
     maxPoint = timesheetFilter.timesheetData.point.max;
-    processBoard = actualPoint / maxPoint * 100;
+    processBoard = (actualPoint / maxPoint) * 100;
     numLate = timesheetFilter.timesheetData.checkinLate.number;
   }
   if (typeof array !== "undefined" && array !== null) {
@@ -192,6 +194,7 @@ const HomeScreen = () => {
       dispatch<any>(loadTimesheet());
       dispatch<any>(getmyrank());
       dispatch<any>(ranking());
+      dispatch<any>(loadTimesheetFilter())
     });
   }, []);
 
