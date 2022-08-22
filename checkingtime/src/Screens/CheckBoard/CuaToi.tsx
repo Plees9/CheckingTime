@@ -59,7 +59,7 @@ const BangCong_Cuatoi = () => {
 
   let data_date: any = [];
   let data_board: any = [];
-  if (typeof timesheetFilter !== "undefined") {
+  if (typeof timesheetFilter !== "undefined" && typeof timesheetFilter !== null) {
     for (var i = 0; i < timesheetFilter.timesheetTable.length; i++) {
       let object_board = [];
       object_board.push(timesheetFilter.timesheetTable[i].checkinTime);
