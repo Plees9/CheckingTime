@@ -1,10 +1,12 @@
-import { StyleSheet, StatusBar } from "react-native";
+import { StyleSheet, StatusBar, Platform } from 'react-native';
 import { FONTS } from "../../../constants/theme";
 
 const createStyles = () =>
   StyleSheet.create({
     bgr: {
       backgroundColor: "#FFFFFF",
+      flex: 1,
+      paddingBottom: Platform.OS === "android" ? StatusBar.currentHeight : 0,
     },
     icon1: {
       flexDirection: "row",
@@ -126,6 +128,7 @@ const createStyles = () =>
       textAlign: "center",
       fontSize: 14,
       width: "100%",
+      
       backgroundColor: "#ebe0ea",
       padding: 5,
       fontFamily: FONTS.vanSansMedium,
@@ -210,6 +213,34 @@ const createStyles = () =>
       width: "12%",
       alignSelf: "center",
     },
+    // Table_Board 
+    with_id : {
+      width: "10%",
+      marginLeft: "1%"
+    },
+    with_name : {
+      width: "30%",
+      marginLeft: "1%"
+    },
+    with_lateValue : {
+      width: "10%",
+      marginLeft: "1%"
+    },
+    with_earlyValue : {
+      width: "10%",
+      marginLeft: "1%"
+    },
+    with_otValue : {
+      width: "10%",
+      marginLeft: "1%"
+    },
+    with_point : {
+      width: "10%",
+      marginLeft: "1%"
+    },
+
+
+   
   });
 
 export default createStyles;

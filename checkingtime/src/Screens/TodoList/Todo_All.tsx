@@ -5,6 +5,7 @@ import {
   ScrollView,
   Alert,
   SafeAreaView,
+  TextInput,
 } from "react-native";
 import React, { useMemo, useState, Component, useEffect } from "react";
 import createStyles from "./styles";
@@ -12,16 +13,25 @@ import Icon from "react-native-vector-icons/FontAwesome";
 import CheckBox from "expo-checkbox";
 import { FAB, Input } from "react-native-elements";
 import { FlatList } from "react-native-gesture-handler";
-import { useNavigation } from "@react-navigation/native";
+import { useNavigation, useRoute } from "@react-navigation/native";
 import { useDispatch, useSelector } from "react-redux";
-import { loadAlluser, loadAllTask } from "../../../redux/action";
+import { loadAlluser, loadAllTask, queryUser } from "../../../redux/action";
 import moment from "moment";
 import Task_Admin from "./Task_Admin.";
 import Loader from "../../navigation/Loader";
 
 const Todo_All = () => {
   const styles = useMemo(() => createStyles(), []);
+  const { user} = useSelector<any, any>((state) => state.auth);
   const navigation = useNavigation<any>();
+
+  const [userName, setUserName] = useState(user.name); //name
+
+  const [checked, setChecked] = useState(false);
+  const [search, setSearch] = useState("");
+  const route = useRoute () 
+
+
   const { allUser } = useSelector<any, any>((state) => state.allUser);
 
   const dispatch = useDispatch();
@@ -49,8 +59,7 @@ const Todo_All = () => {
   useEffect(() => {
     dispatch<any>(loadAllTask());
   }, []);
-  const { allTask, loading} = useSelector<any, any>((state) => state.task);
-  const { message, error} = useSelector<any, any>((state) => state.taskMessage);
+  const { allTask, loading } = useSelector<any, any>((state) => state.task);
   let data_all: any = [];
   if (typeof allTask !== "undefined") {
     for (var i = 0; i < allTask.tasks.length; i++) {
@@ -94,20 +103,57 @@ const Todo_All = () => {
       },
     ]);
   };
-  useEffect(() => {
-    if (message) {
-      alert(message);
-      dispatch({ type: "clearMessage" });
-    }
-    if (error) {
-      alert(error);
-      dispatch({ type: "clearError" });
-    }
-  }, [alert, dispatch, error, message]);
   return (
     loading ? <Loader /> :
     <View>
       <SafeAreaView style={styles.view}>
+      <View style={styles.row}>
+        <View style={styles.icon_NV}>
+          <Icon
+            name="bars"
+            size={20}
+            color="#8f73f6"
+            onPress={() => {
+              if  (route.params) {
+              let privilege = route.params.value_4  
+              let typeOfEmployee =  route.params.value_5 
+              let role = route.params.value_6 
+              let contractStatus = route.params.value_7
+              navigation.navigate("Bộ lọc tất cả công việc", {privilege,typeOfEmployee, role, contractStatus})
+            }
+              else {
+                let privilege = "" 
+                let typeOfEmployee =  "" 
+                let role = "" 
+                let contractStatus = ""
+                navigation.navigate("Bộ lọc tất cả công việc", {privilege,typeOfEmployee, role, contractStatus})
+              }
+            }}
+              
+          />
+        </View>
+        <View style={styles.icon1}>
+          <Icon name="search" size={20} color= "#8f73f6" style={styles.icon3} />
+          <TextInput
+            style={styles.text}
+            placeholder="Tìm kiếm"
+            returnKeyType="done"
+            onChangeText={(text) => { 
+            if (route.params) {
+            dispatch<any>(queryUser(text, route.params.value_4, route.params.value_5, route.params.value_6, route.params.value_7))
+            } else {
+            dispatch<any>(queryUser(text, "", "", "", ""))
+            }
+            setSearch(text)}}
+            value={search}
+
+          ></TextInput>
+          
+        </View>
+       
+      </View>
+        
+
         <View style={styles.view1}>
           <Icon
             name="list"
@@ -118,9 +164,13 @@ const Todo_All = () => {
           <Text style={styles.text}>Task List:</Text>
         </View>
         <View style={styles.kengang}></View>
+        <ScrollView>
         {allTask && allTask.tasks.map((item : any) => (
                             <Task_Admin key={item._id} item={item}/>
                         ))} 
+
+        </ScrollView>
+        
       </SafeAreaView>
       <View style={styles.btnFab}>
         <FAB

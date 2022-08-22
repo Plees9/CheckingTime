@@ -9,23 +9,23 @@ import { useNavigation } from '@react-navigation/native'
 import moment from 'moment'
 import DateTimePicker from "@react-native-community/datetimepicker";
 import { checkingTask, deleteTask, loadAllTask, loadTaskContributor, loadTaskManager } from '../../../redux/action';
-const Task_Admin = ( {item}) => {
-    const {user} = useSelector<any, any>(state => state.auth)
+const Task_Manager = ( {item}) => {
     const dispatch = useDispatch()
-    let index = 0
     const [completed, setCompleted] = useState(false);
     const styles = useMemo(() => createStyles(), []);
     const navigation = useNavigation<any>();
     const [show_1, setShow_1] = useState(false);
-    console.log(item._id)
     const handleCheckbox = () => {
         setCompleted(!completed);
     }
 
+
     return (
         <View style={styles.render}>
-        <View style={{ flexDirection: "row", backgroundColor: "#f2f2f2" }}>
-          <View style={styles.view2}>
+        <View
+          style={{ flexDirection: "row", backgroundColor: "#f2f2f2", flex: 1 }}
+        >
+          <View style={styles.view3}>
             <View style={styles.checkbox}>
             <Checkbox
                 color="#FFC23C"
@@ -34,19 +34,35 @@ const Task_Admin = ( {item}) => {
 
               />
             </View>
-            <View style={styles.colomn}>
+            <View style={styles.colomn1}>
               <Text style={styles.task}>{item.name}</Text>
-              <Text style={styles.text1}>{ item.contributors + " "  } </Text>
-              <Text style={styles.text1}>Manager: {item.manager}</Text>
+              <View style={styles.textTime}>
+                <Pressable>
+                  <View
+                    style={{ justifyContent: "center", alignContent: "center" }}
+                  >
+                    <Text>
+                      {moment(item.deadline).format("HH:mm, DD/MM/YYYY")}
+                    </Text>
+                    {show_1 && (
+                      <DateTimePicker
+                        value={new Date(item.deadline.format("YYYY/MM/DD"))}
+                        mode={"time"}
+                        display="default"
+                        is24Hour={true}
+                      />
+                    )}
+                  </View>
+                </Pressable>
+              </View>
             </View>
-  
             <Icon
               name="trash"
               color="#f49218"
               size={20}
               style={styles.trash}
               onPress={async () => {await dispatch<any>(deleteTask(item._id))
-                                await dispatch<any>(loadAllTask())}}
+                                await dispatch<any>(loadTaskManager())}}
             />
             <Icon
               name="pencil"
@@ -61,4 +77,4 @@ const Task_Admin = ( {item}) => {
     );
     }  
 
-export default Task_Admin
+export default Task_Manager

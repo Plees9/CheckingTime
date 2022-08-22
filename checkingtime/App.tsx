@@ -3,18 +3,11 @@ import React from "react";
 
 import SNavigation from "./src/navigation";
 
-import AddStaff from "./src/Screens/AddStaff/AddStaff";
 import { useFonts } from "expo-font";
 import { Provider } from "react-redux";
 import store from "./redux/store";
 import { NavigationContainer } from "@react-navigation/native";
-import UpdateStaff from "./src/Screens/UpdateInfoStaff/UpdateStaff";
-import UpdateInfoStaff_NV from "./src/Screens/UpdateInFoStaff_NV/UpdateInfoStaff_NV";
-import ListStaff from "./src/Screens/ListStaff/ListStaff";
-import Todo_Admin from "./src/Screens/TodoList/Todo_All";
-import Todo_Staff from "./src/Screens/TodoList/Todo_Staff";
-import Add_Todo from "./src/Screens/TodoList/Add_Todo";
-import { NativeRouter, Router } from "react-router-native";
+
 
 
 const App = () => {
@@ -41,17 +34,16 @@ const App = () => {
   }
 
   return (
-    // <NativeRouter>
     <Provider store={store}>
 
     <SafeAreaView style={styles.root}>
        <SNavigation /> 
        {/* <NavigationContainer>
-        <Add_Todo/>
+        </>
+        
        </NavigationContainer> */}
       </SafeAreaView>
     </Provider>
-    // </NativeRouter>
   );
 };
 const styles = StyleSheet.create({

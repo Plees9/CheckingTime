@@ -361,6 +361,19 @@ export const registerTask = (formData) => async (dispatch) => {
     });
   }
 }
+export const updateTask = (taskId) => async (dispatch) => {
+  try {
+    dispatch({ type: "updateTaskRequest" });
+
+    const { data } = await axios.get(`${serverUrl}/user/updatetask/${taskId}`);
+    dispatch({ type: "updateTaskSuccess", payload: data.message });
+  } catch (error) {
+    dispatch({
+      type: "updateTaskFailure",
+      payload: error.response.data.message,
+    });
+  }
+};
 
 
   export const loadAllTask = () => async (dispatch) => {
