@@ -19,8 +19,7 @@ import TodoModal from "../../component/TodoModal";
 import { AnimatedCircularProgress } from "react-native-circular-progress";
 import {
   checking,
-  loadTask,
-  loadTimesheetPoint,
+  
   loadUser,
   ranking,
 } from "../../../redux/action";
@@ -28,7 +27,7 @@ import { FAB, Input } from "react-native-elements";
 import { useDispatch, useSelector } from "react-redux";
 import { getmyrank, loadTimesheet, loadCompany } from "../../../redux/action";
 import { LinearGradient } from "expo-linear-gradient";
-
+import Toast from "react-native-toast-message";
 import publicIP from "react-native-public-ip";
 import * as Device from "expo-device";
 import moment from "moment";
@@ -36,6 +35,7 @@ const wait = (timeout: number | undefined) => {
   return new Promise((resolve) => setTimeout(resolve, timeout));
 };
 const HomeScreen = () => {
+  const ref = React.useRef<HTMLButtonElement>(null);
   const { user } = useSelector<any, any>((state) => state.auth);
   const [networkIp, setNetworkIp] = useState("");
   let processBoard : number = 0
@@ -92,7 +92,6 @@ const HomeScreen = () => {
     typeof timesheetFilter !== "undefined" &&
     timesheetFilter !== null
   ) {
-    console.log(timesheetFilter)
     actualPoint = timesheetFilter.timesheetData.point.actual;
     maxPoint = timesheetFilter.timesheetData.point.max;
     numLate = timesheetFilter.timesheetData.checkinLate.number;
@@ -130,29 +129,59 @@ const HomeScreen = () => {
   const companyHandler = async () => {
     navigation.navigate("Thông tin Công Ty");
   };
-  useEffect(() => {
   
+  const ToastAlertMessage = (message: any) => {
+    Toast.show({ text1: message, type: "success" });
+  };
+  const ToastAlertError = (error: any) => {
+    Toast.show({ text1: error, type: "error" });
+  };
+  const configToast = {
+    success: (internal: any) => (
+      <View
+        style={{
+          width: "95%",
+          height: 40,
+          backgroundColor: "green",
+          justifyContent: "center",
+          alignItems: "center",
+        }}
+      >
+        <Text style={{ fontSize: 15, color: "white" }}> {internal.text1}</Text>
+      </View>
+    ),
+    error: (internal: any) => (
+      <View
+        style={{
+          width: "95%",
+          height: 40,
+          backgroundColor: "red",
+          justifyContent: "center",
+          alignItems: "center",
+        }}
+      >
+        <Text style={{ fontSize: 15, color: "white" }}> {internal.text1}</Text>
+      </View>
+    ),
+    
+  };
+  useEffect(() => {
     if (message) {
-      alert(message);
+      ToastAlertMessage(message);
       dispatch({ type: "clearMessage" });
     }
     if (error) {
-      alert(error);
+      ToastAlertError(error);
       dispatch({ type: "clearError" });
     }
-  }, [alert, dispatch, error, message]);
+  }, [ToastAlertMessage, ToastAlertError, dispatch, error, message]);
+  
   const pressHandler = async () => {
     await dispatch<any>(checking(networkIp, deviceId));
     dispatch<any>(loadTimesheet());
     dispatch<any>(getmyrank());
     dispatch<any>(ranking());
 
-    //show toast android and ios
-    if (Platform.OS === "android") {
-      ToastAndroid.show(userName + " " + "đã chấm công!", ToastAndroid.SHORT);
-    } else {
-      Alert.alert(userName + " " + "đã chấm công!");
-    }
   };
   const onRefresh = React.useCallback(() => {
     setRefreshing(true);
@@ -364,9 +393,7 @@ const HomeScreen = () => {
             <Text style={styles.checkin2}>{checkin5}</Text>
           </View>
         </View>
-        <View style={{ height: 50}} />
-         
-        
+        <View style={{ height: 60, justifyContent: "center" }}></View>
       </ScrollView>
       <FAB
         title="Chấm công"
@@ -376,8 +403,12 @@ const HomeScreen = () => {
         buttonStyle={styles.fab}
         onPress={pressHandler}
       />
+      <Toast
+        config={configToast}
+        ref={ref  => Toast.setRef(ref)}
+      />
     </View>
   );
 };
 
-export default HomeScreen;
+export default React.forwardRef(HomeScreen);

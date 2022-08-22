@@ -24,6 +24,7 @@ import {
   queryUser,
   registerTask,
 } from "../../../redux/action";
+import Toast from "react-native-toast-message";
 import Contributor_Add_Task from "./Contributor_Add_Task";
 import Loader from "../../navigation/Loader";
 import { useRoute } from "@react-navigation/native";
@@ -78,13 +79,47 @@ const Add_Todo = () => {
     dispatch<any>(loadAlluser());
   }, []);
   const { message, error } = useSelector<any, any>((state) => state.message);
+   const ToastAlertMessage = (message: any) => {
+     Toast.show({ text1: message, type: "success" });
+   };
+   const ToastAlertError = (error: any) => {
+     Toast.show({ text1: error, type: "error" });
+   };
+   const configToast = {
+     success: (internal: any) => (
+       <View
+         style={{
+           width: "95%",
+           height: 40,
+           backgroundColor: "green",
+           justifyContent: "center",
+           alignItems: "center",
+         }}
+       >
+         <Text style={{ fontSize: 15, color: "white" }}> {internal.text1}</Text>
+       </View>
+     ),
+     error: (internal: any) => (
+       <View
+         style={{
+           width: "95%",
+           height: 40,
+           backgroundColor: "red",
+           justifyContent: "center",
+           alignItems: "center",
+         }}
+       >
+         <Text style={{ fontSize: 15, color: "white" }}> {internal.text1}</Text>
+       </View>
+     ),
+   };
   useEffect(() => {
     if (message) {
-      alert(message);
+      ToastAlertMessage(message);
       dispatch({ type: "clearMessage" });
     }
     if (error) {
-      alert(error);
+      ToastAlertError(error);
       dispatch({ type: "clearError" });
     }
     if (message == "Tạo tài khoản thành công") {
@@ -237,8 +272,11 @@ const Add_Todo = () => {
           <Text style={styles.textComfirm}>Thêm Task</Text>
         </TouchableOpacity>
       </LinearGradient>
+      <Toast config={configToast} ref={(ref) => Toast.setRef(ref)} />
     </View>
   );
 };
 
 export default React.memo(Add_Todo);
+
+

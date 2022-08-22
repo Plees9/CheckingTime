@@ -6,6 +6,7 @@ import { LinearGradient } from "expo-linear-gradient";
 import { useDispatch, useSelector } from "react-redux";
 import { forgetPassword } from "../../../redux/action";
 import { FONTS } from "../../../constants/theme";
+import Toast from "react-native-toast-message";
 const ForgotPasswordScreen = () => {
   const image = require("../../../assets/images/forgot-password.png");
   const { message, error } = useSelector<any, any>((state) => state.password);
@@ -14,16 +15,50 @@ const ForgotPasswordScreen = () => {
   const navigation = useNavigation<any>();
   const dispatch = useDispatch();
   let check = ""
+  const ToastAlertMessage = (message: any) => {
+    Toast.show({ text1: message, type: "success" });
+  };
+  const ToastAlertError = (error: any) => {
+    Toast.show({ text1: error, type: "error" });
+  };
+  const configToast = {
+    success: (internal: any) => (
+      <View
+        style={{
+          width: "95%",
+          height: 40,
+          backgroundColor: "green",
+          justifyContent: "center",
+          alignItems: "center",
+        }}
+      >
+        <Text style={{ fontSize: 15, color: "white" }}> {internal.text1}</Text>
+      </View>
+    ),
+    error: (internal: any) => (
+      <View
+        style={{
+          width: "95%",
+          height: 40,
+          backgroundColor: "red",
+          justifyContent: "center",
+          alignItems: "center",
+        }}
+      >
+        <Text style={{ fontSize: 15, color: "white" }}> {internal.text1}</Text>
+      </View>
+    ),
+  };
   useEffect(() => {
     if (message) {
-      alert(message);
+      ToastAlertMessage(message);
       dispatch({ type: "clearMessage" });
     }
     if (error) {
-      alert(error);
+      ToastAlertError(error);
       dispatch({ type: "clearError" });
     }
-  }, [alert, dispatch, error]);
+  }, [ToastAlertMessage, ToastAlertError, dispatch, error, message]);
   if (message != null || message != "Email không đúng") {
     check = message
   }
@@ -34,7 +69,9 @@ const ForgotPasswordScreen = () => {
     navigation.navigate("Cài lại mật khẩu", {email});
   }
   return (
+    <View style={{flex :1}}>
     <View style={styles.view}>
+      
       <Image style={styles.image} source={image} />
       <Text style={styles.textnote}>
         Vui lòng cung cấp thông tin cần thiết để yêu cầu cấp lại mật khẩu.
@@ -60,6 +97,8 @@ const ForgotPasswordScreen = () => {
           </TouchableOpacity>
         </LinearGradient>
       </View>
+    </View>
+    <Toast config={configToast} ref={(ref :any) => Toast.setRef(ref)} />
     </View>
   );
 };
