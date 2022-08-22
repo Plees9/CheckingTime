@@ -16,7 +16,8 @@ const createStyles = () =>
       fontFamily: FONTS.vanSansSemiBold,
     },
     textTop2: {
-      marginBottom: "3%",
+      marginTop: "2%",
+      marginBottom: "1%",
       fontSize: 16,
       fontFamily: FONTS.vanSansSemiBold,
     },
@@ -49,7 +50,7 @@ const createStyles = () =>
     dropdown: {
       //margin: 16,
       height: 50,
-      backgroundColor: "#f2f2f2",
+      backgroundColor: "#ffffff",
       borderRadius: 10,
       padding: 12,
       shadowColor: '#000',

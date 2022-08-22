@@ -53,7 +53,7 @@ const Todo_ListStaff = () => {
         </View>
         <View style={styles.text_staff}>
           <Text style={styles.text_processTotal}>{name_1}</Text>
-          <Text style={styles.num_rest}>Hoàn thành: 3/{taskContributor.tasks.length}</Text>
+          <Text style={styles.num_rest}>Mã nhân viên: {id}</Text>
         </View>
         <View style={styles.icon_staff}>
           <Icon

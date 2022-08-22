@@ -31,7 +31,6 @@ const Todo_All = () => {
   const [search, setSearch] = useState("");
   const route = useRoute () 
 
-
   const { allUser } = useSelector<any, any>((state) => state.allUser);
 
   const dispatch = useDispatch();
@@ -80,7 +79,6 @@ const Todo_All = () => {
   }
 
   const [data_allTask, setData_all] = useState(data_all);
-
   
   return (
     loading ? <Loader /> :
@@ -108,7 +106,6 @@ const Todo_All = () => {
                 navigation.navigate("Bộ lọc tất cả công việc", {privilege,typeOfEmployee, role, contractStatus})
               }
             }}
-              
           />
         </View>
         <View style={styles.icon1}>
@@ -125,14 +122,9 @@ const Todo_All = () => {
             }
             setSearch(text)}}
             value={search}
-
           ></TextInput>
-          
         </View>
-       
       </View>
-        
-
         <View style={styles.view1}>
           <Icon
             name="list"
@@ -150,10 +142,6 @@ const Todo_All = () => {
                         ))} 
 
         </ScrollView>
-
-       
-        
-        
       </SafeAreaView>
       <View style={styles.btnFab}>
         <FAB
