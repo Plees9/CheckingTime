@@ -32,6 +32,7 @@ const Task_Admin = ( {item}) => {
                 status={completed ? "checked" : "unchecked"}
                 onPress={handleCheckbox}
 
+
               />
             </View>
             <View style={styles.colomn}>

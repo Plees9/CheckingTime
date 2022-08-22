@@ -213,7 +213,7 @@ const Update_Todo = () => {
         style={styles.btnFab_add_task}
       >
         <TouchableOpacity onPress={registerHandlerTask}>
-          <Text style={styles.textComfirm}>Thêm Task</Text>
+          <Text style={styles.textComfirm}> Update </Text>
         </TouchableOpacity>
       </LinearGradient>
     </View>

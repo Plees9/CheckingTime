@@ -50,6 +50,7 @@ const Add_Todo = () => {
   const [show, setShow] = useState(false);
   const [show_1, setShow_1] = useState(false);
   const { allUser } = useSelector<any, any>((state) => state.allUser);
+  console.log(allUser);
   const { allTask } = useSelector<any, any>((state) => state.task);
   const { task } = useSelector<any, any>((state) => state.task);
   if (typeof allTask == "undefined") {
@@ -79,6 +80,7 @@ const Add_Todo = () => {
     dispatch<any>(loadAlluser());
   }, []);
   const { message, error } = useSelector<any, any>((state) => state.message);
+
    const ToastAlertMessage = (message: any) => {
      Toast.show({ text1: message, type: "success" });
    };
@@ -269,10 +271,10 @@ const Add_Todo = () => {
         style={styles.btnFab_add_task}
       >
         <TouchableOpacity onPress={registerHandlerTask}>
-          <Text style={styles.textComfirm}>Thêm Task</Text>
+          <Text style={styles.textComfirm}>Thêm công việc</Text>
         </TouchableOpacity>
       </LinearGradient>
-      <Toast config={configToast} ref={(ref) => Toast.setRef(ref)} />
+      <Toast config={configToast} ref={(ref: any) => Toast.setRef(ref)} />
     </View>
   );
 };

@@ -81,28 +81,7 @@ const Todo_All = () => {
 
   const [data_allTask, setData_all] = useState(data_all);
 
-  const onChangeValue = (item: { id: any }, index: any, newValue: boolean) => {
-    const newData = data_allTask.map((newItem: { id: any }) => {
-      if (newItem.id == item.id) {
-        return {
-          ...newItem,
-          selected: newValue,
-        };
-      }
-      return newItem;
-    });
-    setData_all(newData);
-  };
-  const trash = () => {
-    Alert.alert("Thông báo", "Bạn có chắc chắn muốn xóa không?", [
-      { text: "Hủy", style: "cancel" },
-      {
-        text: "Xóa",
-        onPress: () =>
-          setData_all(data_allTask.filter((item: { id: string }) => item.id !== "")),
-      },
-    ]);
-  };
+  
   return (
     loading ? <Loader /> :
     <View>
