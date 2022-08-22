@@ -36,6 +36,11 @@ export const timesheetReducer = createReducer({}, {
     state.loading = false;
     state.error = action.payload;
   },
+  logouttimesheetFilter: (state) => {
+    state.loading = false
+    state.timesheetFilter = null
+
+  } ,
   timesheetSuccess: (state, action) => {
     state.loading = false;
     state.timesheet = action.payload;

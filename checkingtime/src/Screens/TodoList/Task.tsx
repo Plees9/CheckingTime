@@ -38,7 +38,7 @@ const Task = ( {item}) => {
         <View style={styles.view3}>
           <View style={styles.checkbox}>
             <Checkbox
-              color="#FFC23C"
+              color="#8f73f6"
               status={completed ? "checked" : "unchecked"}
                 onPress={handleCheckbox}
             />

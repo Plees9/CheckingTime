@@ -31,7 +31,6 @@ const Todo_All = () => {
   const [search, setSearch] = useState("");
   const route = useRoute () 
 
-
   const { allUser } = useSelector<any, any>((state) => state.allUser);
 
   const dispatch = useDispatch();
@@ -83,29 +82,6 @@ const Todo_All = () => {
 
   const [data_allTask, setData_all] = useState(data_all);
   
-
-  const onChangeValue = (item: { id: any }, index: any, newValue: boolean) => {
-    const newData = data_allTask.map((newItem: { id: any }) => {
-      if (newItem.id == item.id) {
-        return {
-          ...newItem,
-          selected: newValue,
-        };
-      }
-      return newItem;
-    });
-    setData_all(newData);
-  };
-  const trash = () => {
-    Alert.alert("Thông báo", "Bạn có chắc chắn muốn xóa không?", [
-      { text: "Hủy", style: "cancel" },
-      {
-        text: "Xóa",
-        onPress: () =>
-          setData_all(data_allTask.filter((item: { id: string }) => item.id !== "")),
-      },
-    ]);
-  };
   return (
     loading ? <Loader /> :
     <View>
@@ -132,7 +108,6 @@ const Todo_All = () => {
                 navigation.navigate("Bộ lọc tất cả công việc", {privilege,typeOfEmployee, role, contractStatus})
               }
             }}
-              
           />
         </View>
         <View style={styles.icon1}>
@@ -149,14 +124,9 @@ const Todo_All = () => {
             }
             setSearch(text)}}
             value={search}
-
           ></TextInput>
-          
         </View>
-       
       </View>
-        
-
         <View style={styles.view1}>
           <Icon
             name="list"
@@ -167,24 +137,25 @@ const Todo_All = () => {
           <Text style={styles.text}>Task List:</Text>
         </View>
         <View style={styles.kengang}></View>
+        
         <ScrollView>
         {allTask && allTask.tasks.map((item : any) => (
                             <Task_Admin key={item._id} item={item}/>
                         ))} 
 
         </ScrollView>
-        
       </SafeAreaView>
       <View style={styles.btnFab}>
         <FAB
           title="Save"
           size="small"
-          onPress={() => Alert.alert("Add Task")}
+          color="#8f73f6"
+          onPress={() => Alert.alert("Lưu thành công")}
         />
         <FAB
           title="Add Task"
           size="small"
-          color="#FF8C32"
+          color="#8f73f6"
           style={styles.fab}
           onPress={() => navigation.navigate("Thêm công việc")}
         />

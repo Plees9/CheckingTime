@@ -36,7 +36,6 @@ const BangCong_Cuatoi = () => {
 
   const CONTENT = {
     tableHead: ["Ngày"],
-    tableHead1: ["01/08", "02/08", "03/08", "04/08", "05/08", "06/08", "07/08"],
     tableHead2: ["Check in", "Check out","Công ngày","Tăng ca(Phút)"],
 
     tableData: [
@@ -59,7 +58,7 @@ const BangCong_Cuatoi = () => {
 
   let data_date: any = [];
   let data_board: any = [];
-  if (typeof timesheetFilter !== "undefined") {
+  if (typeof timesheetFilter !== "undefined" && typeof timesheetFilter !== null) {
     for (var i = 0; i < timesheetFilter.timesheetTable.length; i++) {
       let object_board = [];
       object_board.push(timesheetFilter.timesheetTable[i].checkinTime);

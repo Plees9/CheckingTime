@@ -185,6 +185,7 @@ const HomeScreen = () => {
     dispatch<any>(loadTimesheet());
     dispatch<any>(getmyrank());
     dispatch<any>(ranking());
+    dispatch<any>(loadTimesheetFilter())
 
   };
   const onRefresh = React.useCallback(() => {

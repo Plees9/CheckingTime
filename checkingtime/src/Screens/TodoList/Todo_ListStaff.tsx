@@ -48,15 +48,12 @@ const Todo_ListStaff = () => {
   let data: any = [];
   if (typeof allUser !== "undefined"  ) {
     for (var i = 0; i < allUser.array.length; i++) {
-      let strAvatar = allUser.array[i].avatar.url;
+      
       let object = {
         id: i + 1,
         _id: allUser.array[i]._id,
         name_1: allUser.array[i].name,
         avatar_1: allUser.array[i].avatar.url,
-
-        // sumWork_1: allUser.array[i].sumWork,
-        // workDone_1: allUser.array[i].workDone,
       };
       data.push(object);
     }
