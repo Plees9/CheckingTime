@@ -9,6 +9,7 @@ import { loadAlluser, loadTaskById, queryUser } from "../../../redux/action";
 import { FlatList } from "react-native-gesture-handler";
 
 import Loader from '../../navigation/Loader';
+import { findIndex } from 'lodash';
 const Todo_ListStaff = () => {
   const { user, loading } = useSelector<any, any>((state) => state.auth);
   const styles = useMemo(() => createStyles(), []);
@@ -20,16 +21,32 @@ const Todo_ListStaff = () => {
   
   const route = useRoute () 
 
-  const { allUser } = useSelector<any, any>((state) => state.allUser);
-  const { taskContributor } = useSelector<any, any>((state) => state.task);
-  console.log(taskContributor) ;
+  const { allUser, taskContributor } = useSelector<any, any>(
+    (state) => state.allUser
+  );
+  console.log(taskContributor);
+
   const dispatch = useDispatch();
   
   useEffect(() => {
     dispatch<any>(loadAlluser());
   }, []);
+  // let datatask = [] ;
+  // if (typeof taskContributor !== "undefined"  ) {
+  //     for (var i = 0; i < taskContributor.tasks.length; i++) {
+  //       for (var i = 0; i < allUser.array.length; i++) {
+        
+  //       let workDone = 0 ;
+  //       let index = taskContributor.tasks.contributorIds.findIndex(x => x.equals(allUser.array[i]._id))
+  //        for (var j = 0; j < taskContributor.tasks.contributors.length; i++) {
+  //         if(allUser.array[i].name === taskContributor.tasks[i].contribu ) {
+
+  //         }
+
+
+  // 
   let data: any = [];
-  if (typeof allUser !== "undefined") {
+  if (typeof allUser !== "undefined"  ) {
     for (var i = 0; i < allUser.array.length; i++) {
       
       let object = {
@@ -59,7 +76,7 @@ const Todo_ListStaff = () => {
           <Icon
             name="angle-double-right"
             size={34}
-            color="#8f73f6"
+            color="#8f37f6"
             
           />
         </View>

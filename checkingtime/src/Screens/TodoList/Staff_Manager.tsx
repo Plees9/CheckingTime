@@ -189,6 +189,6 @@ const Staff_Manager = () => {
       </View>
     </View>
   );
-};
+};;
 
 export default Staff_Manager;

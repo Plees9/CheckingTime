@@ -65,13 +65,7 @@ const Task = ( {item}) => {
               </Pressable>
             </View>
           </View>
-          <Icon
-            name="pencil"
-            color="#8f73f6"
-            size={20}
-            style={styles.pencil}
-            onPress={() => navigation.navigate("Cập nhật công việc")}
-          />
+         
         </View>
       </View>
     </View>

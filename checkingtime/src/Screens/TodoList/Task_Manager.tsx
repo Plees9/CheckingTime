@@ -18,10 +18,17 @@ const Task_Manager = ( {item}) => {
     const handleCheckbox = () => {
         setCompleted(!completed);
     }
+    const Edit = async (
+      name: any,
+      _id:any ,
+      description :any,
 
-
+      deadline :any ,
+    ) => {
+      navigation.navigate("Cập nhật công việc", {name , _id ,description,deadline});
+    };
     return (
-        <View style={styles.render}>
+      <View style={styles.render}>
         <View
           style={{ flexDirection: "row", backgroundColor: "#f2f2f2", flex: 1 }}
         >
@@ -31,7 +38,6 @@ const Task_Manager = ( {item}) => {
                 color="#8f73f6"
                 status={completed ? "checked" : "unchecked"}
                 onPress={handleCheckbox}
-
               />
             </View>
             <View style={styles.colomn1}>
@@ -58,18 +64,25 @@ const Task_Manager = ( {item}) => {
             </View>
             <Icon
               name="trash"
-              color="#8f73f6"
+              color="#8f37f6"
               size={20}
               style={styles.trash}
-              onPress={async () => {await dispatch<any>(deleteTask(item._id))
-                                await dispatch<any>(loadTaskManager())}}
+              onPress={async () => {
+                await dispatch<any>(deleteTask(item._id));
+                await dispatch<any>(loadTaskManager());
+              }}
             />
             <Icon
               name="pencil"
-              color="#8f73f6"
+              color="#8f37f6"
               size={20}
               style={styles.pencil}
-              onPress={() => navigation.navigate("Cập nhật công việc")}
+              onPress={() => {
+                Edit(
+                 item.name , item._id , item.description , item.deadline
+                 
+                );
+              }}
             />
           </View>
         </View>

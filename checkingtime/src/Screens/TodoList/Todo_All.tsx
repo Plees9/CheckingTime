@@ -57,6 +57,8 @@ const Todo_All = () => {
 
   useEffect(() => {
     dispatch<any>(loadAllTask());
+    
+
   }, []);
   const { allTask, loading } = useSelector<any, any>((state) => state.task);
   let data_all: any = [];
@@ -129,7 +131,7 @@ const Todo_All = () => {
           <Icon
             name="list"
             size={18}
-            color="#8f73f6"
+            color="#8f37f6"
             style={styles.icon}
           ></Icon>
           <Text style={styles.text}>Task List:</Text>

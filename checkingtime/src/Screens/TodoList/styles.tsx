@@ -39,10 +39,11 @@ const createStyles = () =>
 
     view3: {
       flexDirection: "row",
+      justifyContent: "space-around",
       alignItems: "center",
       textAlign: "center",
       backgroundColor:"#FFFFFF" ,
-      justifyContent: "center",
+      //justifyContent: "center",
       borderRadius: 10,
       width: "98%",
       padding:"2%",
