@@ -233,6 +233,7 @@ export const logout = () => async (dispatch) => {
     dispatch({type: "logoutTimesheet"})
     dispatch({type: "logoutCompany"})
     dispatch({ type: "logoutSuccess" });
+    dispatch({type: "logouttimesheetFilter"})
   } catch (error) {
     dispatch({
       type: "logoutFailure",
