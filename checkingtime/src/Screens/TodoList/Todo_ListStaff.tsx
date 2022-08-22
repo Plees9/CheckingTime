@@ -21,6 +21,7 @@ const Todo_ListStaff = () => {
   const route = useRoute () 
 
   const { allUser } = useSelector<any, any>((state) => state.allUser);
+  const { taskContributor } = useSelector<any, any>((state) => state.task);
   const dispatch = useDispatch();
   
   useEffect(() => {
@@ -29,14 +30,12 @@ const Todo_ListStaff = () => {
   let data: any = [];
   if (typeof allUser !== "undefined") {
     for (var i = 0; i < allUser.array.length; i++) {
-      let strAvatar = allUser.array[i].avatar.url;
+      
       let object = {
         id: i + 1,
         _id: allUser.array[i]._id,
         name_1: allUser.array[i].name,
         avatar_1: allUser.array[i].avatar.url,
-        // sumWork_1: allUser.array[i].sumWork,
-        // workDone_1: allUser.array[i].workDone,
       };
       data.push(object);
     }
@@ -53,7 +52,7 @@ const Todo_ListStaff = () => {
         </View>
         <View style={styles.text_staff}>
           <Text style={styles.text_processTotal}>{name_1}</Text>
-          <Text style={styles.num_rest}>Hoàn thành: 3/5</Text>
+          <Text style={styles.num_rest}>Hoàn thành: 3/{taskContributor.tasks.length}</Text>
         </View>
         <View style={styles.icon_staff}>
           <Icon
