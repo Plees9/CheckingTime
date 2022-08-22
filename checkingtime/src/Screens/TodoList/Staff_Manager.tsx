@@ -50,7 +50,7 @@ const Staff_Manager = () => {
         date: moment(new Date(taskManager.tasks[i].date)).format("DD/MM/YYYY"),
         manager: taskManager.tasks[i].manager,
       };
-      console.log(task_user);
+      // console.log(task_user);
       data_manager.push(task_user);
     }
   }
