@@ -22,6 +22,7 @@ const Todo_ListStaff = () => {
 
   const { allUser } = useSelector<any, any>((state) => state.allUser);
   const { taskContributor } = useSelector<any, any>((state) => state.task);
+  console.log(taskContributor) ;
   const dispatch = useDispatch();
   
   useEffect(() => {
