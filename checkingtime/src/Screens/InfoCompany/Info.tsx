@@ -8,11 +8,14 @@ import {
   Linking,
   Platform,
 } from "react-native";
-import React, { useMemo, useState } from "react";
+import React, { useMemo, useState, useEffect } from "react";
 import createStyles from "./styles";
 import { useDispatch, useSelector } from "react-redux";
 import { IconButton } from "react-native-paper";
+import { loadCompany } from "../../../redux/action";
+
 const InfoScreen = () => {
+  
 
   const { company, loading } = useSelector<any, any>((state) =>state.company)
   const styles = useMemo(() => createStyles(), []);
