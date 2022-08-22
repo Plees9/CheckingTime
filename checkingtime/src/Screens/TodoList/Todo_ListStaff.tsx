@@ -75,27 +75,6 @@ const Todo_ListStaff = () => {
   return (
     <SafeAreaView style={{flex:1}}>
         <View style={styles.row}>
-        <View style={styles.icon_NV}>
-          <Icon
-            name="bars"
-            size={20}
-            color="#8f73f6"
-            onPress={() => {
-              if  (route.params) {
-              let name = route.params.value_Name
-              let workDone =  route.params.value_WorkDone // workDone chua xong
-             
-              navigation.navigate("Bộ lọc công việc hoàn thành", {name, workDone})
-            }
-              else {
-                let name = "" 
-                let workDone =  "" 
-                navigation.navigate("Bộ lọc công việc hoàn thành", {name, workDone})
-              }
-            }}
-              
-          />
-        </View>
         <View style={styles.icon1}>
           <Icon name="search" size={20} color= "#8f73f6" style={styles.icon3} />
           <TextInput

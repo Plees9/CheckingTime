@@ -113,7 +113,7 @@ import Loader from "../../navigation/Loader";
       </View>
     );
     useEffect(() => {
-        if (typeof task != "undefined") {
+        if (typeof task != "undefined" && task == "null") {
         if (task.message === "Công việc") {
             dispatch({ type: "loadTaskByIdReset" });
         }
