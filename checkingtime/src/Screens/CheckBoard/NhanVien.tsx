@@ -40,20 +40,7 @@ const BangCong_NhanVien = () => {
       data.push(object);
     }
   }
-  // const { timesheetFilter } = useSelector<any, any>((state) => state.timesheet);
-  // console.log(timesheetFilter);
-  // if (typeof timesheetFilter !== "undefined" && timesheetFilter !== null)
-  // {
-  //   for (var i = 0; i < timesheetFilter.timesheetTable.length; i++) {
-  //     let object = {
-  //     lateNumber: timesheetFilter.timesheetData[i].checkinLate.number,
-  //     earlyNumber: timesheetFilter.timesheetData[i].checkoutEarly.number,
-  //     otNumber: timesheetFilter.timesheetData[i].overtime.number,
-  //     actualPoint: timesheetFilter.timesheetData[i].point.actual,
-  //     maxPoint: timesheetFilter.timesheetData[i].point.max,
-  //   };
-  //   data.push(object);
-  // }
+
   const ItemRender = ({ id, userId_1, _id, name_1, avatar_1 }) => (
     <View>
       <TouchableOpacity

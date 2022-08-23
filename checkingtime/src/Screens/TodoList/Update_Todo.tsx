@@ -177,7 +177,7 @@ const Update_Todo = () => {
                 <View
                   style={{ justifyContent: "center", alignContent: "center" }}
                 >
-                  <Text style={{fontFamily:FONTS.vanSansRegular}}>{time_task.format("HH:mm")}</Text>
+                  <Text style={{fontFamily:FONTS.vanSansRegular}}>{deadlineTime.format("HH:mm")}</Text>
                   {show_1 && (
                     <DateTimePicker
                       value={new Date(deadlineTime.format("YYYY/MM/DD"))}
@@ -204,7 +204,7 @@ const Update_Todo = () => {
                     width: "50%",
                   }}
                 >
-                  <Text style={{fontFamily:FONTS.vanSansRegular}}>{date.format("DD/MM/YYYY")}</Text>
+                  <Text style={{fontFamily:FONTS.vanSansRegular}}>{deadlineDate.format("DD/MM/YYYY")}</Text>
                   {show && (
                     <DateTimePicker
                       value={new Date(deadlineDate.format("YYYY/MM/DD"))}

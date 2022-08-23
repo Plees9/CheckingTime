@@ -31,20 +31,7 @@ const Todo_ListStaff = () => {
   useEffect(() => {
     dispatch<any>(loadAlluser());
   }, []);
-  // let datatask = [] ;
-  // if (typeof taskContributor !== "undefined"  ) {
-  //     for (var i = 0; i < taskContributor.tasks.length; i++) {
-  //       for (var i = 0; i < allUser.array.length; i++) {
-        
-  //       let workDone = 0 ;
-  //       let index = taskContributor.tasks.contributorIds.findIndex(x => x.equals(allUser.array[i]._id))
-  //        for (var j = 0; j < taskContributor.tasks.contributors.length; i++) {
-  //         if(allUser.array[i].name === taskContributor.tasks[i].contribu ) {
 
-  //         }
-
-
-  // 
   let data: any = [];
   if (typeof allUser !== "undefined"  ) {
     for (var i = 0; i < allUser.array.length; i++) {
