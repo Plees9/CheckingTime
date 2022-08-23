@@ -234,6 +234,7 @@ export const logout = () => async (dispatch) => {
     dispatch({type: "logoutTimesheet"})
     dispatch({type: "logoutCompany"})
     dispatch({ type: "logoutSuccess" });
+    dispatch({type: "logouttimesheetFilter"})
   } catch (error) {
     dispatch({
       type: "logoutFailure",
@@ -453,5 +454,16 @@ export const deleteTask = (taskId) => async (dispatch) => {
     dispatch({ type: "deleteTaskSuccess", payload: data });
   } catch (error) {
     dispatch({ type: "deleteTaskFailure", payload: error.response.data.message });
+  }
+}
+
+export const loadCheckPoint = () => async (dispatch) => {
+  try {
+    dispatch({ type: "checkPointRequest" });
+
+    const { data } = await axios.get(`${serverUrl}/user/gettimesheetboard`);
+    dispatch({ type: "checkPointSuccess", payload: data });
+  } catch (error) {
+    dispatch({ type: "checkPointFailure", payload: error.response.data.message });
   }
 }

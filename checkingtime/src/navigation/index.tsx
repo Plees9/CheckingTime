@@ -14,7 +14,7 @@ import FormCreated from "../Screens/FormCreated";
 import Jobs from "../Screens/Jobs";
 import InfoScreen from "../Screens/InfoCompany/Info";
 import Account from "../Screens/Account/Account";
-import { getmyrank, loadCompany, loadTaskContributor, loadTimesheet, loadTimesheetFilter, loadUser, ranking } from '../../redux/action'
+import { getmyrank, loadCheckPoint, loadCompany, loadTaskContributor, loadTimesheet, loadTimesheetFilter, loadUser, ranking } from '../../redux/action'
 import ResetPasswordScreen from "../Screens/ResetPasswordScreen/ResetPasswordScreen";
 import TabDonTusNavigation from "./TabDonTu";
 import CuaToi from "../Screens/DonTu/CuaToi/CuaToi";
@@ -162,13 +162,13 @@ const Add_TodoNavigation = () => {
     </Stack.Navigator>
   );
 }
-const Update_TodoNavigation = () => {
-  return (
-    <Stack.Navigator screenOptions={{ headerShown: false }}>
-      <Stack.Screen name="Update_Todo" component={Update_Todo} />
-    </Stack.Navigator>
-  );
-}
+// const Update_TodoNavigation = () => {
+//   return (
+//     <Stack.Navigator screenOptions={{ headerShown: false }}>
+//       <Stack.Screen name="Update_Todo" component={Update_Todo} />
+//     </Stack.Navigator>
+//   );
+// }
 
 const Staff_ManagerNavigation = () => {
   return (
@@ -203,6 +203,7 @@ const SNavigation = () => {
       dispatch<any>(getmyrank());
       dispatch<any>(ranking());
       dispatch<any>(loadCompany());
+      dispatch<any>(loadCheckPoint())
       dispatch<any>(loadTaskContributor());
   }, [dispatch])
   const { isAuthenticated, loading } = useSelector<any, any>(state => state.auth)
@@ -329,7 +330,7 @@ const SNavigation = () => {
         />
       <Stack.Screen
           name="Cập nhật công việc"
-          component={Update_TodoNavigation}
+          component={Update_Todo}
           options={{ headerShown: true }}
         />
     

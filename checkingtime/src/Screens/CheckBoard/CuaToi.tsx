@@ -7,11 +7,7 @@ import {
   SafeAreaView,
   TouchableOpacity,
 } from "react-native";
-import {
-  loadTimesheet,
-  loadTimesheetFilter,
-  
-} from "../../../redux/action";
+import { loadTimesheet, loadTimesheetFilter } from "../../../redux/action";
 import { useDispatch, useSelector } from "react-redux";
 import React, { useMemo, useEffect } from "react";
 
@@ -26,7 +22,7 @@ const BangCong_Cuatoi = () => {
   const dispatch = useDispatch();
   let actualPoint: any;
   let maxPoint: any;
-  let processBoard : number = 0;
+  let processBoard: number = 0;
   let lateNumber;
   let lateValue;
   let earlyNumber;
@@ -36,11 +32,12 @@ const BangCong_Cuatoi = () => {
 
   const CONTENT = {
     tableHead: ["Ngày"],
-    tableHead1: ["01/08", "02/08", "03/08", "04/08", "05/08", "06/08", "07/08"],
     tableHead2: ["Check in", "Check out","Công ngày","Tăng ca(Phút)"],
 
     tableData: [
-      ["-", "-", "-"],
+      ["-", "-", "-", "-"],
+      ["-", "-", "-", "-"],
+      ["-", "-", "-", "-"],
     ],
   };
 
@@ -59,13 +56,16 @@ const BangCong_Cuatoi = () => {
 
   let data_date: any = [];
   let data_board: any = [];
-  if (typeof timesheetFilter !== "undefined") {
+  if (
+    typeof timesheetFilter !== "undefined" &&
+    typeof timesheetFilter !== null
+  ) {
     for (var i = 0; i < timesheetFilter.timesheetTable.length; i++) {
       let object_board = [];
       object_board.push(timesheetFilter.timesheetTable[i].checkinTime);
       object_board.push(timesheetFilter.timesheetTable[i].checkoutTime);
       object_board.push(timesheetFilter.timesheetTable[i].point);
-      object_board.push(timesheetFilter.timesheetTable[i].overtime)
+      object_board.push(timesheetFilter.timesheetTable[i].overtime);
       data_date.push(timesheetFilter.timesheetTable[i].date);
       data_board.push(object_board);
       CONTENT.tableData.push(data_board);
@@ -103,6 +103,38 @@ const BangCong_Cuatoi = () => {
       </ScrollView>
     </View>
   );
+  const Table_Board1 = () => {
+    const dispatch = useDispatch();
+    const styles = useMemo(() => createStyles(), []);
+    //const navigation = useNavigation<any>();
+
+    return (
+      <View style={styles.row}>
+        <View style={styles.column}>
+          <View>
+            <Text style={styles.chu3}>Ngày</Text>
+          </View>
+          <Col data={data_date} style={styles.chu4} textStyle={styles.chu5} />
+        </View>
+        <ScrollView horizontal={true}>
+          <Table>
+            <ScrollView>
+              <Row
+                data={CONTENT.tableHead2}
+                style={styles.chu2}
+                textStyle={styles.chu2}
+              />
+              <Rows
+                data={data_board}
+                style={styles.chu4}
+                textStyle={styles.chu4}
+              />
+            </ScrollView>
+          </Table>
+        </ScrollView>
+      </View>
+    );
+  };
 
   return (
     <View style={styles.bgr}>
@@ -128,8 +160,6 @@ const BangCong_Cuatoi = () => {
               >
                 <Text style={styles.chu11}>Tổng hợp ngày công</Text>
               </View>
-
-              
 
               <View style={styles.row2}>
                 <View style={styles.icon2}>
@@ -162,7 +192,7 @@ const BangCong_Cuatoi = () => {
                 <View style={styles.icon5}>
                   <View style={{ flexDirection: "column" }}>
                     <Text style={styles.textTop4}>
-                       {actualPoint}/{maxPoint}
+                      {actualPoint}/{maxPoint}
                     </Text>
                     <TextInput style={styles.textTop2}>Điểm công</TextInput>
                   </View>

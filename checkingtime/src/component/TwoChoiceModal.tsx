@@ -41,19 +41,19 @@ export default class TwoChoiceModal extends React.Component<TwoChoiceModalProps>
   };
   render() {
     return (
-       <Modal
-      transparent={true}
-      visible={this.props.visible}
-      animationType="fade"
-      onRequestClose={this.props.onCancel}>
-        <View style={styles.container_2}/>
+      
       <Modal
         transparent={true}
         visible={this.props.visible}
         animationType="slide"
         onRequestClose={this.props.onCancel}
       >
-       
+        <Modal
+      transparent={true}
+      visible={this.props.visible}
+      animationType="fade"
+      onRequestClose={this.props.onCancel}>
+        <View style={styles.container_2}/></Modal>
         <TouchableOpacity onPress={this.props.onCancel} style={styles.container}>
           <TouchableWithoutFeedback>
           <View style={styles.box}>
@@ -72,12 +72,19 @@ export default class TwoChoiceModal extends React.Component<TwoChoiceModalProps>
                 onPress={this.props.onLeftClick}
               >
                 <View style={{ alignContent: "center" }}>
+
                   <IconButton
+
                     icon={this.props.iconLeft}
+
                     size={this.props.size}
+
                     color="#716df2"
+
                   />
+
                 </View>
+
                 <View style={styles.viewText}>
                   <Text style={styles.text1}>{this.props.txtLeft}</Text>
                 </View>
@@ -89,12 +96,19 @@ export default class TwoChoiceModal extends React.Component<TwoChoiceModalProps>
                 onPress={this.props.onRightClick}
               >
                 <View style={{ alignContent: "center" }}>
+
                   <IconButton
+
                     icon={this.props.iconRight}
+
                     size={this.props.size}
+
                     color="#716df2"
+
                   />
+
                 </View>
+
                 <View style={styles.viewText}>
                   <Text style={styles.text1}>{this.props.txtRight}</Text>
                 </View>
@@ -103,7 +117,6 @@ export default class TwoChoiceModal extends React.Component<TwoChoiceModalProps>
           </View>
           </TouchableWithoutFeedback>
         </TouchableOpacity>
-      </Modal>
       </Modal>
     );
   }
@@ -120,12 +133,20 @@ const styles = StyleSheet.create({
     backgroundColor:'#000000AA',
     justifyContent: "flex-end",
     alignItems: "center",
+
   },
 
+
+
+
   Touch1: {
+
     backgroundColor: "#bcd7f2",
+
     borderRadius: 10,
+
     flex : 0.5,
+
     marginTop: 5,
     marginBottom: 5,
     marginHorizontal: 10,
@@ -143,12 +164,20 @@ const styles = StyleSheet.create({
     width: '100%',
     backgroundColor: "#fff",
     borderRadius: 10,
+
   },
 
+
+
+
   text1: {
+
     fontSize: 14,
+
     textAlign: "center",
+
     fontFamily: FONTS.vanSansMedium,
+
   },
   box_button: {
     width: "100%",
@@ -161,12 +190,19 @@ const styles = StyleSheet.create({
   cancel_button: {
     marginHorizontal: 10,
     height: 30,
+
     width: 60,
+
     justifyContent: "center",
+
     borderRadius: 8,
+
     backgroundColor: "#716DF2",
+
     flex: 1,
+
     marginBottom: 10, 
+
   },
   text_button: {
     alignSelf: "center",

@@ -48,28 +48,6 @@ const CONTENT = {
 
 const Table_Board = () => {
   const dispatch = useDispatch();
-
-  //  let lateNumber;
-  //  let lateValue;
-  //  let earlyNumber;
-  //  let earlyValue;
-  //  let otNumber;
-  //  let otValue;
-
-  //  useEffect(() => {
-  //    dispatch<any>(loadTimesheetFilter());
-  //  }, [dispatch]);
-
-  //  const { timesheetFilter } = useSelector<any, any>((state) => state.timesheet);
-  //  console.log(timesheetFilter);
-  //  if (typeof timesheetFilter !== "undefined" && timesheetFilter !== null) {
-  //    lateNumber = timesheetFilter.Object.checkinLate.number;
-  //    lateValue = timesheetFilter.Object.checkinLate.value;
-  //    earlyNumber = timesheetFilter.Object.checkoutEarly.number;
-  //    earlyValue = timesheetFilter.Object.checkoutEarly.value;
-  //    otNumber = timesheetFilter.Object.overtime.number;
-  //    otValue = timesheetFilter.Object.overtime.value;
-  //  }
   const styles = useMemo(() => createStyles(), []);
   //const navigation = useNavigation<any>();
 

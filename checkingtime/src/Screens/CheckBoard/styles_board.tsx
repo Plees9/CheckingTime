@@ -26,7 +26,7 @@ const createStyles = () =>
     row1_staff:{
       width:"50%" , 
     },
-    rơw2_staff:{
+    row2_staff:{
       width:"50%" , 
       alignItems:"center",
       alignSelf:"center",

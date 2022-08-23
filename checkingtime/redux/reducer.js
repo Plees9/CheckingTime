@@ -11,6 +11,18 @@ export const timesheetReducer = createReducer({}, {
     state.loading = false;
     state.error = action.payload;
   },
+  checkPointRequest: (state) => {
+    state.loading = true;
+  },
+  checkPointSuccess: (state, action) => {
+    state.loading = false;
+    state.checkpoint = action.payload;
+  },
+  checkPointFailure: (state, action) => {
+    state.loading = false;
+    state.error = action.payload;
+  },
+  
   checkingRequest: (state) => {
     state.loading = true;
   },
@@ -36,6 +48,11 @@ export const timesheetReducer = createReducer({}, {
     state.loading = false;
     state.error = action.payload;
   },
+  logouttimesheetFilter: (state) => {
+    state.loading = false
+    state.timesheetFilter = null
+
+  } ,
   timesheetSuccess: (state, action) => {
     state.loading = false;
     state.timesheet = action.payload;

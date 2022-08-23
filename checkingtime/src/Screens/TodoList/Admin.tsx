@@ -1,76 +1,89 @@
 import {
-    Text,
-    StyleSheet,
-    View,
-    ScrollView,
-    Alert,
-    SafeAreaView,
-    Pressable,
-    ActivityIndicator,
-  } from "react-native";
-  import React, { useEffect, useMemo, useState } from "react";
-  import createStyles from "./styles";
-  import Icon from "react-native-vector-icons/FontAwesome";
-  import CheckBox from "expo-checkbox";
-  import { FAB, Input } from "react-native-elements";
-  
-  import moment from "moment";
-  import DateTimePicker from "@react-native-community/datetimepicker";
-  import { useNavigation, useRoute } from "@react-navigation/native";
-  import { useDispatch, useSelector } from "react-redux";
-  import { loadAllTask, loadAlluser, loadTaskById } from "../../../redux/action";
-  import { FlatList } from "react-native-gesture-handler";
-  import { AnimatedCircularProgress } from "react-native-circular-progress";
+  Text,
+  StyleSheet,
+  View,
+  ScrollView,
+  Alert,
+  SafeAreaView,
+  Pressable,
+  ActivityIndicator,
+} from "react-native";
+import React, { useEffect, useMemo, useState } from "react";
+import createStyles from "./styles";
+import Icon from "react-native-vector-icons/FontAwesome";
+import CheckBox from "expo-checkbox";
+import { FAB, Input } from "react-native-elements";
+
+import moment from "moment";
+import DateTimePicker from "@react-native-community/datetimepicker";
+import { useNavigation, useRoute } from "@react-navigation/native";
+import { useDispatch, useSelector } from "react-redux";
+import { loadAllTask, loadAlluser, loadTaskById } from "../../../redux/action";
+import { FlatList } from "react-native-gesture-handler";
+import { AnimatedCircularProgress } from "react-native-circular-progress";
 import Loader from "../../navigation/Loader";
-  
-  const Admin_Manage = () => {
-    const styles = useMemo(() => createStyles(), []);
-    const navigation = useNavigation<any>();
-    const [checked, setChecked] = useState(false);
-    const [time_task, setTime_Task] = useState(moment());
-  
-    const [show_1, setShow_1] = useState(false);
-    const route = useRoute();
-    const {task, loading} = useSelector<any, any>(state => state.task)
-    console.log(task)
-     const [userName, setUserName] = useState("")
-     const [description, setDescription] = useState("")
-     const [deadline, setDeadline] = useState("")
-     const [date, setDate] = useState("")
-     const [sumWork, setSumWork] = useState("")
-     const [workDone, setworkDone] = useState(0)
-    const dispatch = useDispatch();
-    useEffect(() => {
-        if (route.params) {
-            if (route.params._id) {
-                dispatch<any>(loadTaskById(route.params._id));
-              }
-          if (route.params.name_1) {
-            setUserName(route.params.name_1);
-          }
+
+const Admin_Manage = () => {
+  const styles = useMemo(() => createStyles(), []);
+  const navigation = useNavigation<any>();
+  const [checked, setChecked] = useState(false);
+  const [time_task, setTime_Task] = useState(moment());
+
+  const [show_1, setShow_1] = useState(false);
+  const route = useRoute();
+  const {task, loading} = useSelector<any, any>(state => state.task)
+  console.log(task)
+   const [userName, setUserName] = useState("")
+   const [description, setDescription] = useState("")
+   const [deadline, setDeadline] = useState("")
+   const [date, setDate] = useState("")
+   const [sumWork, setSumWork] = useState("")
+  let workDone = 0 ;
+  let workNotDone = 0 ;
+  let workOutOf = 0 ;
+  const dispatch = useDispatch();
+  useEffect(() => {
+      if (route.params) {
+          if (route.params._id) {
+              dispatch<any>(loadTaskById(route.params._id));
+            }
+        if (route.params.name_1) {
+          setUserName(route.params.name_1);
         }
-      }, [route]);
-    let data_2: any = [];
-    const loadView = () => {
-    if (typeof task !== "undefined" && task !== null) {
-      for (var i = 0; i < task.tasks.length; i++) {
-        let task_user = {
-            id: i+1 ,
-          _id: task.tasks[i]._id,
-          name: task.tasks[i].name,
-          description: task.tasks[i].description,
-          deadline: moment(task.tasks[i].deadline, "HH:mm, DD/MM/YYYY"),
-          status: task.tasks[i].status,
-          date: moment(new Date(task.tasks[i].date)).format("DD/MM/YYYY"),
-          manager: task.tasks[i].manager,
-          sumWork_1: task.tasks[i].sumWork,
-          workDone_1: task.tasks[i].workDone,
-        };
-        //console.log(task_user);
-        data_2.push(task_user);
       }
+    }, [route]);
+  let data_2: any = [];
+  const loadView = () => {
+  if (typeof task !== "undefined" && task !== null) {
+    for (var i = 0; i < task.tasks.length; i++) {
       
+  if(task.tasks[i].status === "Đã hoàn thành"){
+
+    workDone++;
+  }else if(task.tasks[i].status === "Chưa hoàn thành"){
+    workNotDone++;
+  }else{
+    workOutOf++;
+  }
+
+
+      let task_user = {
+          id: i+1 ,
+        _id: task.tasks[i]._id,
+        name: task.tasks[i].name,
+        description: task.tasks[i].description,
+        deadline: moment(task.tasks[i].deadline, "HH:mm, DD/MM/YYYY"),
+        status: task.tasks[i].status,
+        date: moment(new Date(task.tasks[i].date)).format("DD/MM/YYYY"),
+        manager: task.tasks[i].manager,
+        sumWork_1: task.tasks[i].sumWork,
+        workDone_1: task.tasks[i].workDone,
+      };
+      //console.log(task_user);
+      data_2.push(task_user);
     }
+    
+  }
 }
     loadView()
     const ItemRender = ({ item, index }) => (

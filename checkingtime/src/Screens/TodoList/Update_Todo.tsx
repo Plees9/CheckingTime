@@ -124,7 +124,6 @@ const Update_Todo = () => {
 
   useEffect(() => {
     dispatch<any>(loadAlluser());
-    // dispatch<any>(loadAllTask());
   }, []);
   const { message, error } = useSelector<any, any>((state) => state.message);
 
@@ -147,16 +146,7 @@ const Update_Todo = () => {
     }
   }, [ToastAlertError, ToastAlertMessage, message, error]);
 
-  //   if (message) {
-  //     ToastAlertMessage(message);
-  //     dispatch({ type: "clearMessage" });
-  //   }
-  //   if (error) {
-  //     ToastAlertError(error);
-  //     dispatch({ type: "clearError" });
-  //   }
-  // } , [ToastAlertError, ToastAlertMessage, message, error]);
-
+ 
   return (
     <View style={styles.viewAdd_todo}>
       <View style={{height:"92%"}}>
@@ -338,4 +328,4 @@ const Update_Todo = () => {
   );
 };
 
-export default Update_Todo;
+export default React.memo(Update_Todo);
