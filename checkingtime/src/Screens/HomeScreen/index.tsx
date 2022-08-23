@@ -19,6 +19,7 @@ import TodoModal from "../../component/TodoModal";
 import { AnimatedCircularProgress } from "react-native-circular-progress";
 import {
   checking,
+  loadCheckPoint,
   loadTimesheetFilter,
   loadUser,
   ranking,
@@ -186,6 +187,9 @@ const HomeScreen = () => {
     if (company === null) {
       dispatch<any>(loadCompany());
     }
+    if (checkpoint === null) {
+      dispatch<any>(loadCheckPoint());
+    }
 
     if (message) {
       ToastAlertMessage(message);
@@ -202,7 +206,8 @@ const HomeScreen = () => {
     dispatch<any>(loadTimesheet());
     dispatch<any>(getmyrank());
     dispatch<any>(ranking());
-    dispatch<any>(loadTimesheetFilter())
+    dispatch<any>(loadTimesheetFilter());
+    dispatch<any>(loadCheckPoint());
 
   };
   const onRefresh = React.useCallback(() => {
@@ -212,7 +217,8 @@ const HomeScreen = () => {
       dispatch<any>(loadTimesheet());
       dispatch<any>(getmyrank());
       dispatch<any>(ranking());
-      dispatch<any>(loadTimesheetFilter())
+      dispatch<any>(loadTimesheetFilter());
+      dispatch<any>(loadCheckPoint());
     });
   }, []);
 
