@@ -60,7 +60,7 @@ const AddStaff = () => {
   const dispatch = useDispatch();
   const { message, error } = useSelector<any, any>((state) => state.message);
   const [count, setCount] = useState(0);
-
+  console.log(message, error)
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
 
@@ -159,6 +159,7 @@ const AddStaff = () => {
       if (message) {
         ToastAlertMessage(message);
         dispatch({ type: "clearMessage" });
+
       }
       if (error) {
         ToastAlertError(error);
@@ -416,4 +417,4 @@ const AddStaff = () => {
   );
 };
 
-export default React.memo(AddStaff);
+export default AddStaff;

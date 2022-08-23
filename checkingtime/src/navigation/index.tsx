@@ -202,7 +202,6 @@ const SNavigation = () => {
       dispatch<any>(loadTimesheetFilter());
       dispatch<any>(getmyrank());
       dispatch<any>(ranking());
-      dispatch<any>(loadTimesheetFilter())
       dispatch<any>(loadCompany());
       dispatch<any>(loadCheckPoint())
       dispatch<any>(loadTaskContributor());

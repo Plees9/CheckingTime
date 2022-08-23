@@ -1,50 +1,45 @@
-import { View, Text } from "react-native";
-import React, { useMemo, useState } from "react";
-
-import { Checkbox } from "react-native-paper";
-import createStyles from "./styles";
+import { View, Text, TouchableOpacity } from 'react-native'
+import React, { useMemo, useState } from 'react'
 import { Avatar } from "@rneui/themed";
+import { Checkbox } from 'react-native-paper'
+import createStyles from './styles'
 
-const Contributor_Add_Task = ({ item }) => {
-  const [completed, setCompleted] = useState(false);
-  const styles = useMemo(() => createStyles(), []);
-
-  console.log(item.userId);
-  const handleCheckbox = () => {
-    setCompleted(!completed);
-  };
-
-  return (
-    <View style={styles.view_addTask}>
-      <View style={styles.view_btn_add_task}>
-        <View style={styles.checkbox}>
-          <Checkbox
-            color="#8f73f6"
-            status={completed ? "checked" : "unchecked"}
-            onPress={handleCheckbox}
+const Contributor_Add_Task = ( {item, userList, setUserList, userName, setUserName} : any) => {
+    const addUserHandler = (_id : any, name : any) => {
+      if (userList.includes(_id)) {
+        return;
+      }
+      let object = {
+        _id: _id ,
+        name: name
+      }
+      setUserList([...userList, _id]);
+      setUserName([...userName, object])
+    }
+    const [completed, setCompleted] = useState(false);
+    const styles = useMemo(() => createStyles(), []);
+    return (
+      <TouchableOpacity onPress={() => {addUserHandler(item._id, item.name)}}>
+        <View style={styles.view_addTask}>
+        
+          <View style={styles.view_btn_add_task}>
+          <Avatar
+            size={70}
+            rounded
+            source={{ uri: item.avatar.url }}
+            containerStyle={{ backgroundColor: "orange" }}
           />
-        </View>
-        <View
-          style={{
-            flexDirection: "row",
-            justifyContent: "space-between",
-            alignItems: "center",
-            alignSelf: "center",
-            margin: 8,
-          }}
-        >
-          <Avatar rounded source={{ uri: item.avatar.url }} size={36} />
-          <View style={styles.colomn}>
+            <View style={styles.colomn}>
             <Text style={styles.text1}>{item.name} </Text>
-            <Text style={styles.text1}>Mã nhân viên: {item.userId}</Text>
+            <Text style={styles.text1}>Mã nhân viên: {item.userId}</Text> 
+              
+            </View>
+  
           </View>
-        </View>
+        
       </View>
-      <View
-        style={{ borderBottomColor: "gray", borderBottomWidth: 0.5 }}
-      ></View>
-    </View>
-  );
-};
+      </TouchableOpacity>
+    );
+    }  
 
 export default Contributor_Add_Task;

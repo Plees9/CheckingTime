@@ -7,7 +7,7 @@ import {
   timesheetReducer,
   allReducer,
   taskReducer,
-  taskMessageReducer
+  taskMessageReducer,
 } from "./reducer";
 
 const store = configureStore({
