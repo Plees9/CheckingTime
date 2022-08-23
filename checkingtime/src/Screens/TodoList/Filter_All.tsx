@@ -11,6 +11,7 @@ import { useDispatch, useSelector } from "react-redux";
 import createStyles from "./styles_filterStaff";
 import Contributor_Add_Task from "./Contributor_Add_Task";
 import Icon from "react-native-vector-icons/FontAwesome";
+import BadgeModal from "../../component/BadgeModal";
 
 
 const Filter_All = () => {
@@ -22,6 +23,8 @@ const Filter_All = () => {
   const [search, setSearch] = useState("");
   const [contributor, setContributor] = useState("");
   const [value_WorkDone, setValue_WorkDone] = useState("");
+  const [userList, setUserList] = useState([]);
+  const [userName, setUserName] = useState([]);
   const { allUser } = useSelector<any, any>((state) => state.allUser);
 
   let data: any = [];
@@ -80,10 +83,20 @@ const Filter_All = () => {
             ></TextInput>
           </View>
         
-        <ScrollView style={styles.filter_nhansuthamgia}>
+        {/* <ScrollView style={styles.filter_nhansuthamgia}>
             {allUser &&
               allUser.array.map((item: any) => (
                 <Contributor_Add_Task key={item._id} item={item} />
+              ))}
+          </ScrollView> */}
+          {userList &&
+              userName.map((item: any) => (
+                <BadgeModal key={item._id} item={item} userList={userList} setUserList={setUserList} userName={userName} setUserName={setUserName}  />
+              ))}
+          <ScrollView style={styles.style_add_task}>
+            {allUser &&
+              allUser.array.map((item: any) => (
+                <Contributor_Add_Task key={item._id} item={item} userList={userList} setUserList={setUserList} userName={userName} setUserName={setUserName} />
               ))}
           </ScrollView>
 
@@ -91,6 +104,56 @@ const Filter_All = () => {
        
        
         <Text style={styles.textTop2}>Người quản lý:</Text>
+        <View style={styles.boder_nhansu}>
+        <View style={styles.icon_add_task}>
+            <Icon
+              name="search"
+              size={20}
+              color="#8f73f6"
+              style={styles.icon3}
+            />
+            <TextInput
+              style={styles.text}
+              placeholder="Tìm kiếm"
+              returnKeyType="done"
+              onChangeText={(text) => {
+                if (route.params) {
+                  dispatch<any>(
+                    queryUser(
+                      text,
+                      route.params.value_4,
+                      route.params.value_5,
+                      route.params.value_6,
+                      route.params.value_7
+                    )
+                  );
+                } else {
+                  dispatch<any>(queryUser(text, "", "", "", ""));
+                }
+                setSearch(text);
+              }}
+              value={search}
+            ></TextInput>
+          </View>
+        
+        {/* <ScrollView style={styles.filter_nhansuthamgia}>
+            {allUser &&
+              allUser.array.map((item: any) => (
+                <Contributor_Add_Task key={item._id} item={item} />
+              ))}
+          </ScrollView> */}
+          {userList &&
+              userName.map((item: any) => (
+                <BadgeModal key={item._id} item={item} userList={userList} setUserList={setUserList} userName={userName} setUserName={setUserName}  />
+              ))}
+          <ScrollView style={styles.style_add_task}>
+            {allUser &&
+              allUser.array.map((item: any) => (
+                <Contributor_Add_Task key={item._id} item={item} userList={userList} setUserList={setUserList} userName={userName} setUserName={setUserName} />
+              ))}
+          </ScrollView>
+
+        </View>
         
        
         <LinearGradient

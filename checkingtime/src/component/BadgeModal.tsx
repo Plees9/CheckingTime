@@ -16,13 +16,13 @@ const UserBadgeItem = ({item, userList, setUserList, userName, setUserName} : an
       setUserList(userList)
   };
   return (
-    <View style={{flex:1}}>
-    <Badge value={<View style={{flexDirection:'row', margin:5}}>
-        <Text style={{fontFamily:FONTS.vanSansBold, textAlign:"center", color:'#fff'}} >{item.name}</Text>
+    <View style={{flex:1,flexDirection:"row",justifyContent:"space-around",}}>
+    <Badge value={<View style={{flexDirection:'row',  margin:5}}>
+        <Text style={{fontFamily:FONTS.vanSansBold, textAlign:"center", color:'#fff'}} >{item.name} {''} </Text>
     <TouchableOpacity onPress={() => handleDelete(item)} >
     <Icon name="close" color={'#fff'} size={15} style={{marginLeft:5,alignSelf:'center'}}/>
     </TouchableOpacity></View>} 
-    badgeStyle={{height:35
+    badgeStyle={{height:35, backgroundColor:"#8f73f6", flexDirection:'row', 
         }} />
     </View>
   );

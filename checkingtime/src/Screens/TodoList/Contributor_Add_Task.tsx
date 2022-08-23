@@ -24,7 +24,7 @@ const Contributor_Add_Task = ( {item, userList, setUserList, userName, setUserNa
         
           <View style={styles.view_btn_add_task}>
           <Avatar
-            size={70}
+            size={35}
             rounded
             source={{ uri: item.avatar.url }}
             containerStyle={{ backgroundColor: "orange" }}
@@ -36,6 +36,9 @@ const Contributor_Add_Task = ( {item, userList, setUserList, userName, setUserNa
             </View>
   
           </View>
+          <View style={{  marginTop:5,borderBottomColor: "gray",
+      borderBottomWidth: 0.5,
+      }}></View>
         
       </View>
       </TouchableOpacity>
