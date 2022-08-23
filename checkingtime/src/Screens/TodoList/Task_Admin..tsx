@@ -36,7 +36,7 @@ const Task_Admin = ({ item }) => {
 
     deadline: any
   ) => {
-    navigation.navigate("Cập nhật công việc Admin", {
+    navigation.navigate("Cập nhật công việc quản quản trị viên", {
       name,
       _id,
       description,

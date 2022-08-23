@@ -5,11 +5,11 @@ const createStyles = () =>
   StyleSheet.create({
     view: {
       backgroundColor: "#F2F2F2",
-      //height: "90%",
+      height: "90%",
       //paddingTop: Platform.OS === "android" ? StatusBar.currentHeight : 0,
     },
     view1: {
-      marginTop: "3%",
+      marginTop: "1%",
       flexDirection: "row",
       alignItems: "center",
     },
@@ -110,7 +110,8 @@ const createStyles = () =>
     },
 
     fab: {
-      marginLeft: "4%",
+      marginBottom: "4%",
+      
     },
     btnFab: {
       flexDirection: "row",
@@ -129,6 +130,7 @@ const createStyles = () =>
     },
     textComfirm: {
       fontFamily:FONTS.vanSansRegular,
+      color: "#FFFFFF",
       fontSize: 18,
       textAlign: "center",
       padding: "3%",
@@ -303,10 +305,10 @@ const createStyles = () =>
       alignItems: "center",
       alignSelf: "center",
       justifyContent: "center",
-      //marginTop: "5%",
+      marginTop: "2%",
       borderRadius: 20,
       height: "8%",
-      width: "70%",
+      width: "60%",
     },
     dropdown: {
       //margin: 16,

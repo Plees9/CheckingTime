@@ -27,7 +27,7 @@ const Task_Manager = ( {item}) => {
 
       deadline :any ,
     ) => {
-      navigation.navigate("Cập nhật công việc", {name , _id ,description,deadline});
+      navigation.navigate("Cập nhật công việc quản lý", {name , _id ,description,deadline});
     };
     return (
       <View style={styles.render}>

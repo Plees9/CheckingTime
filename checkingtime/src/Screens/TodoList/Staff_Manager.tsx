@@ -22,6 +22,7 @@ import { FlatList } from "react-native-gesture-handler";
 import { AnimatedCircularProgress } from "react-native-circular-progress";
 import Task_Manager from "./Task_Manager";
 import Loader from "../../navigation/Loader";
+import { ScrollView } from 'react-native';
 
 const Staff_Manager = () => {
   const styles = useMemo(() => createStyles(), []);
@@ -99,7 +100,7 @@ const Staff_Manager = () => {
     <Loader />
   ) : (
     <View>
-      <SafeAreaView style={styles.view}>
+      <View style={styles.view}>
         <View style={styles.view1}>
           <Icon
             name="list"
@@ -165,28 +166,24 @@ const Staff_Manager = () => {
           </View>
         </View>
         <View style={styles.kengang}></View>
-
+        <ScrollView>
         {taskManager &&
           taskManager.tasks.map((item: any) => (
             <Task_Manager key={item._id} item={item} />
           ))}
-      </SafeAreaView>
-      <View style={styles.btnFab}>
-        <FAB
-          title="Completed"
-          size="small"
-          color="#8f73f6"
-          style={styles.fab}
-          onPress={() => Alert.alert("thành công")}
-        />
+
+        </ScrollView>
+      </View>
+     
+       
         <FAB
           title="Thêm công việc"
           size="small"
           color="#8f73f6"
           style={styles.fab}
-          onPress={() => navigation.navigate("Thêm công việc Manager")}
+          onPress={() => navigation.navigate("Thêm công việc quản lý")}
         />
-      </View>
+      
     </View>
   );
 };;
