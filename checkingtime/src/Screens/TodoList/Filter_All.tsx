@@ -14,6 +14,7 @@ import Icon from "react-native-vector-icons/FontAwesome";
 import BadgeModal from "../../component/BadgeModal";
 
 
+
 const Filter_All = () => {
   const styles = useMemo(() => createStyles(), []);
   const navigation = useNavigation<any>();
@@ -21,6 +22,7 @@ const Filter_All = () => {
   const dispatch = useDispatch();
   const [name, setName] = useState("");
   const [search, setSearch] = useState("");
+  const [search_Admin, setSearch_Admin] = useState("");
   const [contributor, setContributor] = useState("");
   const [value_WorkDone, setValue_WorkDone] = useState("");
   const [userList, setUserList] = useState([]);
@@ -93,7 +95,7 @@ const Filter_All = () => {
               userName.map((item: any) => (
                 <BadgeModal key={item._id} item={item} userList={userList} setUserList={setUserList} userName={userName} setUserName={setUserName}  />
               ))}
-          <ScrollView style={styles.style_add_task}>
+          <ScrollView style={styles.filter_nhansuthamgia}>
             {allUser &&
               allUser.array.map((item: any) => (
                 <Contributor_Add_Task key={item._id} item={item} userList={userList} setUserList={setUserList} userName={userName} setUserName={setUserName} />
@@ -130,23 +132,17 @@ const Filter_All = () => {
                 } else {
                   dispatch<any>(queryUser(text, "", "", "", ""));
                 }
-                setSearch(text);
+                setSearch_Admin(text);
               }}
-              value={search}
+              value={search_Admin}
             ></TextInput>
           </View>
         
-        {/* <ScrollView style={styles.filter_nhansuthamgia}>
-            {allUser &&
-              allUser.array.map((item: any) => (
-                <Contributor_Add_Task key={item._id} item={item} />
-              ))}
-          </ScrollView> */}
           {userList &&
               userName.map((item: any) => (
                 <BadgeModal key={item._id} item={item} userList={userList} setUserList={setUserList} userName={userName} setUserName={setUserName}  />
               ))}
-          <ScrollView style={styles.style_add_task}>
+          <ScrollView style={styles.filter_nhansuthamgia}>
             {allUser &&
               allUser.array.map((item: any) => (
                 <Contributor_Add_Task key={item._id} item={item} userList={userList} setUserList={setUserList} userName={userName} setUserName={setUserName} />
