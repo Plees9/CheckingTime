@@ -95,6 +95,8 @@ const Task_Manager = ( {item}) => {
             onConfirm={async () => {
               await dispatch<any>(deleteTask(item._id));
               await dispatch<any>(loadTaskManager());
+              dispatch<any>(loadAllTask());
+              dispatch<any>(loadTaskContributor())
             }}
             onCancel={() => {
               setVisible(false);

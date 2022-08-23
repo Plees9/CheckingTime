@@ -39,6 +39,8 @@ import UpdateStaff_Admin from "../Screens/UpdateInFoStaff_NV/UpdateInfoStaff_NV"
 import Camera from "../Screens/UpdateInfoStaff/Camera"
 import PhonePasswordScreen from "../Screens/PhonePassword/PhonePasswordScreen";
 import Admin_Manage from "../Screens/TodoList/Admin";
+import UpdateAdmin_Todo from "../Screens/TodoList/UpdateAdmin_Todo";
+import Add_Admin from "../Screens/TodoList/Add_Admin";
 
 
 const Stack = createNativeStackNavigator();
@@ -324,15 +326,28 @@ const SNavigation = () => {
           options={{ headerShown: true }}
         />
       <Stack.Screen
-          name="Thêm công việc"
+          name="Thêm công việc Manager"
           component={Add_TodoNavigation}
           options={{ headerShown: true }}
         />
+         <Stack.Screen
+          name="Thêm công việc Admin"
+          component={Add_Admin}
+          options={{ headerShown: true }}
+        />
+
+
       <Stack.Screen
           name="Cập nhật công việc"
           component={Update_Todo}
           options={{ headerShown: true }}
         />
+         <Stack.Screen
+          name="Cập nhật công việc Admin"
+          component={UpdateAdmin_Todo}
+          options={{ headerShown: true }}
+        />
+
     
         <Stack.Screen
           name="Công việc của nhân viên"

@@ -45,7 +45,8 @@ const CameraComponent = () => {
 
   //     const data = await camera.takePictureAsync();
   //     if (route.params.updateProfile) return navigation.navigate("profile", { image: data.uri })
-  //     else return navigation.navigate("register", { image: data.uri })
+  //     else return navigation.navigate("
+ // ", { image: data.uri});
 
   // }
 

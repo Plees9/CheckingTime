@@ -65,7 +65,7 @@ const ForgotPasswordScreen = () => {
   const forgetHandler = async () => {
     await dispatch<any>(forgetPassword(email));
   };
-  if (email != "" && check ==  `OTP đã được gửi đến ${email}` ) {
+  if (email != "" && check ==  `OTP đã được gửi tới ${email}` ) {
     navigation.navigate("Cài lại mật khẩu", {email});
   }
   return (

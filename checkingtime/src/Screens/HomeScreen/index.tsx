@@ -80,7 +80,6 @@ const HomeScreen = () => {
   const {timesheet, number, array, timesheetFilter, checkpoint } = useSelector<any, any>(
     (state) => state.timesheet
   );
-  console.log(checkpoint)
   const {company} = useSelector<any, any> ((state) => state.company);
   if (
     typeof timesheet !== "undefined" &&

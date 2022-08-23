@@ -22,7 +22,6 @@ const Todo_Staff = () => {
   const { taskContributor, loading } = useSelector<any, any>(
     (state) => state.task
   );
-  console.log(taskContributor);
 
   let workDone = 0;
   let workNotDone = 0;

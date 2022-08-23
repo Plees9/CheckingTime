@@ -36,7 +36,7 @@ const Task_Admin = ({ item }) => {
 
     deadline: any
   ) => {
-    navigation.navigate("Cập nhật công việc", {
+    navigation.navigate("Cập nhật công việc Admin", {
       name,
       _id,
       description,
@@ -88,6 +88,8 @@ const Task_Admin = ({ item }) => {
         onConfirm={async () => {
           await dispatch<any>(deleteTask(item._id));
           await dispatch<any>(loadAllTask());
+          dispatch<any>(loadTaskContributor())
+          dispatch<any>(loadTaskManager())
         }}
         onCancel={() => {
           setVisible(false);

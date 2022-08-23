@@ -157,7 +157,7 @@ const Todo_All = () => {
           size="small"
           color="#8f73f6"
           style={styles.fab}
-          onPress={() => navigation.navigate("Thêm công việc")}
+          onPress={() => navigation.navigate("Thêm công việc Admin")}
         />
       </View>
     </View>

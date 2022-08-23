@@ -18,14 +18,17 @@ import { useDispatch, useSelector } from "react-redux";
 import {
   loadAllTask,
   loadAlluser,
+  loadTaskContributor,
+  loadTaskManager,
   queryUser,
   registerTask,
-  search
+  search,
+  updateTask
 } from "../../../redux/action";
 import Toast from "react-native-toast-message";
 import Contributor_Add_Task from "./Contributor_Add_Task";
 import Loader from "../../navigation/Loader";
-import { useRoute } from "@react-navigation/native";
+import { useNavigation, useRoute } from "@react-navigation/native";
 import BadgeModal from "../../component/BadgeModal";
 
 
@@ -33,22 +36,22 @@ const Update_Todo = () => {
   Platform.OS === 'android' ? TouchableNativeFeedback : TouchableOpacity
   const styles = useMemo(() => createStyles(), []);
   const { user, loading } = useSelector<any, any>((state) => state.auth);
-
-  const [name, setName] = useState("");
-  const [description, setDescription] = useState(""); //Mô tả task
-  const [deadline, setDeadline] = useState(moment()); //Deadline của task\
-  const [time_task, setTime_Task] = useState(moment());
-  const [date, setDate] = useState(moment());
+  const route = useRoute()
+  const [ taskId, setTaskId] = useState(route.params._id) 
+  const [name, setName] = useState(route.params.name);
+  const [description, setDescription] = useState(route.params.description); //Mô tả task
+  const [deadlineDate, setDeadlineDate] = useState(moment(route.params.deadline, "HH:mm, DD/MM/YYYY")); //Deadline của task\
+  const [deadlineTime, setDeadlineTime] = useState(moment(route.params.deadline, "HH:mm, DD/MM/YYYY"));
   const [status, setStatus] = useState(""); //Trạng thái của task
   const [manager, setManager] = useState(""); //Trạng thái của task
   const [contributors, setContributors] = useState(""); //Trạng thái của task
   const [avatar, setAvatar] = useState(user.avatar.url);
-  const route = useRoute();
   const [searchUser, setSearch] = useState("");
   const [userName, setUserName] = useState([]);
   const [userList, setUserList] = useState([]);
   const [show, setShow] = useState(false);
   const [show_1, setShow_1] = useState(false);
+  const navigation = useNavigation<any>()
   const { allUser } = useSelector<any, any>((state) => state.allUser);
   const { allTask } = useSelector<any, any>((state) => state.task);
   const { task } = useSelector<any, any>((state) => state.task);
@@ -58,22 +61,20 @@ const Update_Todo = () => {
 
   const dispatch = useDispatch();
 
-  const registerHandlerTask = () => {
+  const UpdateHandlerTask = async () => {
     const myForm = new FormData();
+    myForm.append("taskId", taskId);
     myForm.append("name", name);
-    myForm.append("description", description);
-    const deadline_1 = moment(deadline);
-    myForm.append("deadline", deadline_1.format("HH:mm, DD/MM/YYYY"));
-    const time_task_1 = moment(time_task);
-    myForm.append("time_task", time_task_1.format("HH:mm, DD/MM/YYYY"));
-    const date_1 = moment(date);
-    myForm.append("date", date_1.format("HH:mm, DD/MM/YYYY"));
-    myForm.append("status", status);
-    myForm.append("manager", manager);
-    myForm.append("contributors", contributors);
-    dispatch<any>(registerTask(myForm));
+    myForm.append("description", description)
+    let deadline = deadlineTime.format("HH:mm")+", "+deadlineDate.format("DD/MM/YYYY");
+    myForm.append("deadline", deadline);
+    for (let i = 0 ; i < userList.length; i++) {
+      myForm.append("contributorIds", userList[i])
+    }
+    await dispatch<any>(updateTask(myForm));
     dispatch<any>(loadAllTask());
-    dispatch<any>(loadAlluser());
+    dispatch<any>(loadTaskContributor());
+    dispatch<any>(loadTaskManager());
   };
 
   const ToastAlertMessage = (message: any) => {
@@ -110,22 +111,12 @@ const Update_Todo = () => {
       </View>
     ),
   };
-
-  useEffect(() => {
-    dispatch<any>(loadAlluser());
-  }, []);
   const { message, error } = useSelector<any, any>((state) => state.message);
-
   useEffect(() => {
-    if (message == "Tạo thành công") {
-      setName("");
-      setDescription("");
-      setDeadline(moment());
-      setTime_Task(moment());
-      setDate(moment());
-      setContributors("");
+    if (message == "Cập nhật công việc thành công") {
+      navigation.navigate("Quản lý")
     }
-    if (error == "Tạo thất bại") {
+    if (error) {
       ToastAlertError(error);
       dispatch({ type: "clearError" });
     }
@@ -185,15 +176,15 @@ const Update_Todo = () => {
                 <View
                   style={{ justifyContent: "center", alignContent: "center" }}
                 >
-                  <Text>{time_task.format("HH:mm")}</Text>
+                  <Text>{moment(deadlineTime).format("HH:mm")}</Text>
                   {show_1 && (
                     <DateTimePicker
-                      value={new Date(time_task.format("YYYY/MM/DD"))}
+                      value={new Date(deadlineTime.format("YYYY/MM/DD"))}
                       mode={"time"}
                       display="default"
                       is24Hour={true}
                       onChange={(event, selectedDate) => {
-                        setTime_Task(moment(selectedDate));
+                        setDeadlineTime(moment(selectedDate));
                         setShow_1(false);
                       }}
                     />
@@ -212,14 +203,14 @@ const Update_Todo = () => {
                     width: "50%",
                   }}
                 >
-                  <Text>{date.format("DD/MM/YYYY")}</Text>
+                  <Text>{moment(deadlineDate).format("DD/MM/YYYY")}</Text>
                   {show && (
                     <DateTimePicker
-                      value={new Date(date.format("YYYY/MM/DD"))}
+                      value={new Date(deadlineDate.format("YYYY/MM/DD"))}
                       mode={"date"}
                       display="default"
                       onChange={(event, selectedDate) => {
-                        setDate(moment(selectedDate));
+                        setDeadlineDate(moment(selectedDate));
                         setShow(false);
                       }}
                     />
@@ -272,7 +263,7 @@ const Update_Todo = () => {
         colors={["#8f73f6", "#8f73f6"]}
         style={styles.btnFab_add_task}
       >
-        <TouchableOpacity onPress={registerHandlerTask}>
+        <TouchableOpacity onPress={UpdateHandlerTask}>
           <Text style={styles.textComfirm}>Cập nhật</Text>
         </TouchableOpacity>
       </LinearGradient>

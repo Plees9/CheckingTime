@@ -18,35 +18,39 @@ import { useDispatch, useSelector } from "react-redux";
 import {
   loadAllTask,
   loadAlluser,
+  loadTaskContributor,
+  loadTaskManager,
+  queryUser,
   registerTask,
+  search,
+  updateTask
 } from "../../../redux/action";
 import Toast from "react-native-toast-message";
 import Contributor_Add_Task from "./Contributor_Add_Task";
 import Loader from "../../navigation/Loader";
-import { useRoute } from "@react-navigation/native";
+import { useNavigation, useRoute } from "@react-navigation/native";
 import BadgeModal from "../../component/BadgeModal";
 
 
-const Add_Todo = () => {
+const Update_Todo = () => {
   Platform.OS === 'android' ? TouchableNativeFeedback : TouchableOpacity
   const styles = useMemo(() => createStyles(), []);
   const { user, loading } = useSelector<any, any>((state) => state.auth);
-
+  const route = useRoute()
   const [name, setName] = useState("");
   const [description, setDescription] = useState(""); //Mô tả task
-  const [deadline, setDeadline] = useState(moment()); //Deadline của task\
-  const [time_task, setTime_Task] = useState(moment());
-  const [date, setDate] = useState(moment());
+  const [deadlineDate, setDeadlineDate] = useState(moment()); //Deadline của task\
+  const [deadlineTime, setDeadlineTime] = useState(moment());
   const [status, setStatus] = useState(""); //Trạng thái của task
   const [manager, setManager] = useState(""); //Trạng thái của task
   const [contributors, setContributors] = useState(""); //Trạng thái của task
   const [avatar, setAvatar] = useState(user.avatar.url);
-  const route = useRoute();
   const [searchUser, setSearch] = useState("");
   const [userName, setUserName] = useState([]);
   const [userList, setUserList] = useState([]);
   const [show, setShow] = useState(false);
   const [show_1, setShow_1] = useState(false);
+  const navigation = useNavigation<any>()
   const { allUser } = useSelector<any, any>((state) => state.allUser);
   const { allTask } = useSelector<any, any>((state) => state.task);
   const { task } = useSelector<any, any>((state) => state.task);
@@ -56,22 +60,19 @@ const Add_Todo = () => {
 
   const dispatch = useDispatch();
 
-  const registerHandlerTask = () => {
+  const registerHandlerTask = async () => {
     const myForm = new FormData();
     myForm.append("name", name);
-    myForm.append("description", description);
-    const deadline_1 = moment(deadline);
-    myForm.append("deadline", deadline_1.format("HH:mm, DD/MM/YYYY"));
-    const time_task_1 = moment(time_task);
-    myForm.append("time_task", time_task_1.format("HH:mm, DD/MM/YYYY"));
-    const date_1 = moment(date);
-    myForm.append("date", date_1.format("HH:mm, DD/MM/YYYY"));
-    myForm.append("status", status);
-    myForm.append("manager", manager);
-    myForm.append("contributors", contributors);
-    dispatch<any>(registerTask(myForm));
+    myForm.append("description", description)
+    let deadline = deadlineTime.format("HH:mm")+", "+deadlineDate.format("DD/MM/YYYY");
+    myForm.append("deadline", deadline);
+    for (let i = 0 ; i < userList.length; i++) {
+      myForm.append("contributorIds", userList[i])
+    }
+    await dispatch<any>(registerTask(myForm));
     dispatch<any>(loadAllTask());
-    dispatch<any>(loadAlluser());
+    dispatch<any>(loadTaskContributor());
+    dispatch<any>(loadTaskManager());
   };
 
   const ToastAlertMessage = (message: any) => {
@@ -108,22 +109,12 @@ const Add_Todo = () => {
       </View>
     ),
   };
-
-  useEffect(() => {
-    dispatch<any>(loadAlluser());
-  }, []);
   const { message, error } = useSelector<any, any>((state) => state.message);
-
   useEffect(() => {
-    if (message == "Tạo thành công") {
-      setName("");
-      setDescription("");
-      setDeadline(moment());
-      setTime_Task(moment());
-      setDate(moment());
-      setContributors("");
+    if (message == "Tạo công việc thành công") {
+      navigation.navigate("Quản lý")
     }
-    if (error == "Tạo thất bại") {
+    if (error) {
       ToastAlertError(error);
       dispatch({ type: "clearError" });
     }
@@ -183,15 +174,15 @@ const Add_Todo = () => {
                 <View
                   style={{ justifyContent: "center", alignContent: "center" }}
                 >
-                  <Text>{time_task.format("HH:mm")}</Text>
+                  <Text>{moment(deadlineTime).format("HH:mm")}</Text>
                   {show_1 && (
                     <DateTimePicker
-                      value={new Date(time_task.format("YYYY/MM/DD"))}
+                      value={new Date(deadlineTime.format("YYYY/MM/DD"))}
                       mode={"time"}
                       display="default"
                       is24Hour={true}
                       onChange={(event, selectedDate) => {
-                        setTime_Task(moment(selectedDate));
+                        setDeadlineTime(moment(selectedDate));
                         setShow_1(false);
                       }}
                     />
@@ -210,14 +201,14 @@ const Add_Todo = () => {
                     width: "50%",
                   }}
                 >
-                  <Text>{date.format("DD/MM/YYYY")}</Text>
+                  <Text>{moment(deadlineDate).format("DD/MM/YYYY")}</Text>
                   {show && (
                     <DateTimePicker
-                      value={new Date(date.format("YYYY/MM/DD"))}
+                      value={new Date(deadlineDate.format("YYYY/MM/DD"))}
                       mode={"date"}
                       display="default"
                       onChange={(event, selectedDate) => {
-                        setDate(moment(selectedDate));
+                        setDeadlineDate(moment(selectedDate));
                         setShow(false);
                       }}
                     />
@@ -271,7 +262,7 @@ const Add_Todo = () => {
         style={styles.btnFab_add_task}
       >
         <TouchableOpacity onPress={registerHandlerTask}>
-          <Text style={styles.textComfirm}>Thêm công việc</Text>
+          <Text style={styles.textComfirm}>Cập nhật</Text>
         </TouchableOpacity>
       </LinearGradient>
       <Toast config={configToast} ref={(ref: any) => Toast.setRef(ref)} />
@@ -279,4 +270,4 @@ const Add_Todo = () => {
   );
 };
 
-export default React.memo(Add_Todo);
+export default React.memo(Update_Todo);

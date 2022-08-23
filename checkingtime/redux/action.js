@@ -180,7 +180,6 @@ export const updateAdmin = (formData) => async (dispatch) => {
 export const updatePassword = (formData) => async (dispatch) => {
   try {
     dispatch({ type: "updatePasswordRequest" });
-    console.log("ayyo")
 
     const { data } = await axios.put(`${serverUrl}/user/updatepassword`, formData, {
       headers: {
@@ -355,7 +354,7 @@ export const registerTask = (formData) => async (dispatch) => {
         "Content-Type": "multipart/form-data",
       },
     });
-    dispatch({ type: "registerTaskSuccess", payload: data });
+    dispatch({ type: "registerTaskSuccess", payload: data.message });
   } catch (error) {
     dispatch({
       type: "registerTaskFailure",
@@ -363,11 +362,14 @@ export const registerTask = (formData) => async (dispatch) => {
     });
   }
 }
-export const updateTask = (taskId) => async (dispatch) => {
+export const updateTask = (formData) => async (dispatch) => {
   try {
     dispatch({ type: "updateTaskRequest" });
-
-    const { data } = await axios.get(`${serverUrl}/user/updatetask/${taskId}`);
+    const { data } = await axios.put(`${serverUrl}/user/updatetask`, formData, {
+      headers: {
+        "Content-Type": "multipart/form-data",
+      },
+    });
     dispatch({ type: "updateTaskSuccess", payload: data.message });
   } catch (error) {
     dispatch({
@@ -422,14 +424,14 @@ export const updateTask = (taskId) => async (dispatch) => {
 
 export const search = (name) => async (dispatch) => {
   try {
-    dispatch({ type: "searchUserTaskRequest" });
+    dispatch({ type: "queryUserTaskRequest" });
 
     const { data } = await axios.get(`${serverUrl}/user/searchusertask/?name=${name}`);
-    dispatch({ type: "searchUserTaskSuccess", payload: data });
+    dispatch({ type: "queryUserTaskSuccess", payload: data });
     
   } catch (error) {
     dispatch({
-      type: "searchUserTaskFailure",
+      type: "queryUserTaskFailure",
       payload: error.response.data.message,
     });
   }
