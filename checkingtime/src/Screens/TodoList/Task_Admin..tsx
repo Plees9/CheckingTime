@@ -9,6 +9,7 @@ import { useNavigation } from "@react-navigation/native";
 import moment from "moment";
 import DateTimePicker from "@react-native-community/datetimepicker";
 import {
+    checkingApporved,
   checkingTask,
   deleteTask,
   loadAllTask,
@@ -20,14 +21,16 @@ const Task_Admin = ({ item }) => {
   const { user } = useSelector<any, any>((state) => state.auth);
   const dispatch = useDispatch();
   const [visible, setVisible] = useState(false);
-  let index = 0;
-  const [completed, setCompleted] = useState(false);
+  const [completed, setCompleted] = useState(item.isApproved);
   const styles = useMemo(() => createStyles(), []);
   const navigation = useNavigation<any>();
   const [show_1, setShow_1] = useState(false);
   console.log(item._id);
-  const handleCheckbox = () => {
+  const handleCheckbox = async() => {
     setCompleted(!completed);
+    await dispatch<any>(checkingApporved(item._id))
+    await dispatch<any>(loadAllTask())
+
   };
   const Edit = async (
     name: any,

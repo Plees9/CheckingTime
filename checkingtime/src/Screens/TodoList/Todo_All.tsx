@@ -15,7 +15,7 @@ import { FAB, Input } from "react-native-elements";
 import { FlatList } from "react-native-gesture-handler";
 import { useNavigation, useRoute } from "@react-navigation/native";
 import { useDispatch, useSelector } from "react-redux";
-import { loadAlluser, loadAllTask, queryUser } from "../../../redux/action";
+import { loadAlluser, loadAllTask, queryUser, searchTask } from "../../../redux/action";
 import moment from "moment";
 import Task_Admin from "./Task_Admin.";
 import Loader from "../../navigation/Loader";
@@ -81,9 +81,10 @@ const Todo_All = () => {
   }
 
   const [data_allTask, setData_all] = useState(data_all);
-  
+  if (typeof allUser === "undefined") {
+    return <Loader />
+  }
   return (
-    loading ? <Loader /> :
     <View>
       <SafeAreaView style={styles.view}>
       <View style={styles.row}>
@@ -117,11 +118,7 @@ const Todo_All = () => {
             placeholder="Tìm kiếm"
             returnKeyType="done"
             onChangeText={(text) => { 
-            if (route.params) {
-            dispatch<any>(queryUser(text, route.params.value_4, route.params.value_5, route.params.value_6, route.params.value_7))
-            } else {
-            dispatch<any>(queryUser(text, "", "", "", ""))
-            }
+            dispatch<any>(searchTask(text))
             setSearch(text)}}
             value={search}
           ></TextInput>

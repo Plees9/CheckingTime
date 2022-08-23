@@ -57,7 +57,7 @@ const Todo_ListStaff = () => {
       };
       data.push(object);
     }
-  }  const ItemRender = ({ id,_id, name_1, avatar_1 }) => (
+  }  const ItemRender = ({ id,_id, name_1, avatar_1 } : any) => (
     <View>
       {/* <Link to={`${serverUrl}/user/${_id}`} > */}
       <TouchableOpacity onPress={() => { 

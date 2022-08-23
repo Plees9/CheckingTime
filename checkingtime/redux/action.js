@@ -60,6 +60,16 @@ export const checkingTask = (taskId ) => async (dispatch) => {
     dispatch({ type: "checkingTaskFailure", payload: error.response.data.message });
   }
 }
+export const checkingApporved = (taskId ) => async (dispatch) => {
+  try {
+    dispatch({ type: "checkingApprovedRequest" });
+    
+    const { data } = await axios.post(`${serverUrl}/user/approvingtask`, { taskId },);
+    dispatch({ type: "checkingApprovedSuccess", payload: data.message });
+  } catch (error) {
+    dispatch({ type: "checkingApprovedFailure", payload: error.response.data.message });
+  }
+}
 export const updateAvatar = (formData) => async (dispatch) => {
   try {
     dispatch({ type: "updateAvatarRequest" });
@@ -436,7 +446,20 @@ export const search = (name) => async (dispatch) => {
     });
   }
 }
+export const searchTask = (name) => async (dispatch) => {
+  try {
+    dispatch({ type: "queryTaskRequest" });
 
+    const { data } = await axios.get(`${serverUrl}/user/searchtask/?name=${name}`);
+    dispatch({ type: "queryTaskSuccess", payload: data });
+    
+  } catch (error) {
+    dispatch({
+      type: "queryTaskFailure",
+      payload: error.response.data.message,
+    });
+  }
+}
 
 export const loadTimesheetFilter = () => async (dispatch) => {
   try {

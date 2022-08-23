@@ -412,6 +412,17 @@ state.isUpdated = false ;
     export const taskReducer = createReducer(
       {},
       {
+        queryTaskRequest: (state) => {
+          state.loading = true;
+        },
+        queryTaskSuccess: (state, action) => {
+          state.loading = false;
+          state.allTask = action.payload;
+        },
+        queryTaskFailure: (state, action) => {
+          state.loading = false;
+          state.error = action.payload;
+        },
        
         loadAllTaskRequest: (state) => {
           state.loading = true;
@@ -484,6 +495,17 @@ state.isUpdated = false ;
           state.message = action.payload;
         },
         checkingTaskFailure: (state, action) => {
+          state.loadingTask = false;
+          state.error = action.payload;
+        },
+        checkingApprovedRequest: (state) => {
+          state.loadingTask = true;
+        },
+        checkingApporvedSuccess: (state, action) => {
+          state.loadingTask = false;
+          state.message = action.payload;
+        },
+        checkingApporvedFailure: (state, action) => {
           state.loadingTask = false;
           state.error = action.payload;
         },

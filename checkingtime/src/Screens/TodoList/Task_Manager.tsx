@@ -8,16 +8,19 @@ import createStyles from './styles'
 import { useNavigation } from '@react-navigation/native'
 import moment from 'moment'
 import DateTimePicker from "@react-native-community/datetimepicker";
-import { checkingTask, deleteTask, loadAllTask, loadTaskContributor, loadTaskManager } from '../../../redux/action';
+import { checkingApporved, checkingTask, deleteTask, loadAllTask, loadTaskContributor, loadTaskManager } from '../../../redux/action';
 import PopupModal from '../../component/PopupModal';
 const Task_Manager = ( {item}) => {
+    const { user } = useSelector<any, any>((state) => state.auth);
     const dispatch = useDispatch()
-    const [completed, setCompleted] = useState(false);
+    const [completed, setCompleted] = useState(item.isApproved);
     const styles = useMemo(() => createStyles(), []);
     const navigation = useNavigation<any>();
     const [show_1, setShow_1] = useState(false);
-    const handleCheckbox = () => {
+    const handleCheckbox = async() => {
         setCompleted(!completed);
+        await dispatch<any>(checkingApporved(item._id))
+        await dispatch<any>(loadTaskManager())
     }
     const [visible,setVisible] = useState(false);
     const Edit = async (
