@@ -30,6 +30,7 @@ import Contributor_Add_Task from "./Contributor_Add_Task";
 import Loader from "../../navigation/Loader";
 import { useNavigation, useRoute } from "@react-navigation/native";
 import BadgeModal from "../../component/BadgeModal";
+import { FONTS } from "../../../constants/theme";
 
 
 const Update_Todo = () => {
@@ -152,7 +153,7 @@ const Update_Todo = () => {
               value={name}
               secureTextEntry={false}
               onChangeText={setName}
-              style={{ marginLeft: 10, padding: 5,}}
+              style={{ marginLeft: 10, padding: 5, fontFamily:FONTS.vanSansRegular}}
             ></TextInput>
           </View>
         </View>
@@ -167,7 +168,7 @@ const Update_Todo = () => {
           ></TextInput>
         </View>
         <View>
-          <Text style={{ marginLeft: 10, marginRight: 10, marginTop:10 }}>
+          <Text style={{ marginLeft: 10, marginRight: 10, marginTop:10 , fontFamily:FONTS.vanSansBold}}>
             Thời gian cần hoàn thành:
           </Text>
           <View style={styles.viewTime}>
@@ -176,7 +177,7 @@ const Update_Todo = () => {
                 <View
                   style={{ justifyContent: "center", alignContent: "center" }}
                 >
-                  <Text>{moment(deadlineTime).format("HH:mm")}</Text>
+                  <Text style={{fontFamily:FONTS.vanSansRegular}}>{time_task.format("HH:mm")}</Text>
                   {show_1 && (
                     <DateTimePicker
                       value={new Date(deadlineTime.format("YYYY/MM/DD"))}
@@ -203,7 +204,7 @@ const Update_Todo = () => {
                     width: "50%",
                   }}
                 >
-                  <Text>{moment(deadlineDate).format("DD/MM/YYYY")}</Text>
+                  <Text style={{fontFamily:FONTS.vanSansRegular}}>{date.format("DD/MM/YYYY")}</Text>
                   {show && (
                     <DateTimePicker
                       value={new Date(deadlineDate.format("YYYY/MM/DD"))}
@@ -222,7 +223,7 @@ const Update_Todo = () => {
         </View>
 
         <View>
-          <Text style={{ marginLeft: 10, marginRight: 10 }}>
+          <Text style={{ marginLeft: 10, marginRight: 10, fontFamily:FONTS.vanSansBold }}>
             Nhân viên phụ trách:
           </Text>
           <View style={styles.icon_add_task}>

@@ -6,7 +6,7 @@ const createStyles = () =>
     view: {
       marginRight: "6%",
       marginLeft: "6%",
-      marginTop: "3%",
+      marginTop: "1%",
     },
     viewbgr: {
       backgroundColor: "#f2f2f2",
@@ -16,7 +16,6 @@ const createStyles = () =>
       fontFamily: FONTS.vanSansSemiBold,
     },
     textTop2: {
-      marginTop: "2%",
       marginBottom: "1%",
       fontSize: 16,
       fontFamily: FONTS.vanSansSemiBold,
@@ -96,13 +95,15 @@ const createStyles = () =>
       marginLeft:10,
       marginRight:10,
       borderRadius: 10,
-      height: "49%",
+      height: "31%",
       backgroundColor: "#ffffff",
 
     },
     icon_add_task: {
       flexDirection: "row",
-      margin: 10,
+      marginLeft: 10,
+      marginRight: 10,
+      marginBottom: 10,
       borderRadius: 10,
       padding: 5,
       backgroundColor: "#ffffff",
@@ -125,7 +126,7 @@ const createStyles = () =>
       marginLeft: 10,
       marginRight: 10,
       borderRadius: 10,
-      height: 200,
+      height: "45%",
       backgroundColor: "#ffffff",
 
     },
