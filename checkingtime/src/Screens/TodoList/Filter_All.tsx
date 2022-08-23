@@ -104,7 +104,6 @@ const Filter_All = () => {
 
         </View>
        
-       
         <Text style={styles.textTop2}>Người quản lý:</Text>
         <View style={styles.boder_nhansu}>
         <View style={styles.icon_add_task}>
