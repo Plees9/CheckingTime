@@ -86,7 +86,7 @@ const Todo_All = () => {
   }
   return (
     <View>
-      <SafeAreaView style={styles.view}>
+      <View style={styles.view}>
       <View style={styles.row}>
         <View style={styles.icon_NV}>
           <Icon
@@ -125,7 +125,7 @@ const Todo_All = () => {
         </View>
       </View>
         <View style={styles.view1}>
-          <Text style={styles.text}>Task List:</Text>
+          <Text style={styles.text}>Danh sách công việc:</Text>
         </View>
         <View style={styles.kengang}></View>
         
@@ -135,22 +135,16 @@ const Todo_All = () => {
                         ))} 
 
         </ScrollView>
-      </SafeAreaView>
-      <View style={styles.btnFab}>
+      </View>
         <FAB
-          title="Save"
-          size="small"
-          color="#8f73f6"
-          onPress={() => Alert.alert("Lưu thành công")}
-        />
-        <FAB
-          title="Add Task"
+          title="Thêm công việc"
+          
           size="small"
           color="#8f73f6"
           style={styles.fab}
-          onPress={() => navigation.navigate("Thêm công việc Admin")}
+          onPress={() => navigation.navigate("Thêm công việc quản quản trị viên")}
         />
-      </View>
+      
     </View>
   );
 };

@@ -175,7 +175,7 @@ const Update_Todo = () => {
                 <View
                   style={{ justifyContent: "center", alignContent: "center" }}
                 >
-                  <Text style={{fontFamily:FONTS.vanSansRegular}}>{time_task.format("HH:mm")}</Text>
+                  <Text style={{fontFamily:FONTS.vanSansRegular}}>{deadlineTime.format("HH:mm")}</Text>
                   {show_1 && (
                     <DateTimePicker
                       value={new Date(deadlineTime.format("YYYY/MM/DD"))}
@@ -202,7 +202,7 @@ const Update_Todo = () => {
                     width: "50%",
                   }}
                 >
-                  <Text style={{fontFamily:FONTS.vanSansRegular}}>{date.format("DD/MM/YYYY")}</Text>
+                  <Text style={{fontFamily:FONTS.vanSansRegular}}>{deadlineDate.format("DD/MM/YYYY")}</Text>
                   {show && (
                     <DateTimePicker
                       value={new Date(deadlineDate.format("YYYY/MM/DD"))}
@@ -263,7 +263,7 @@ const Update_Todo = () => {
         style={styles.btnFab_add_task}
       >
         <TouchableOpacity onPress={registerHandlerTask}>
-          <Text style={styles.textComfirm}>Cập nhật</Text>
+          <Text style={styles.textComfirm}>Thêm công việc</Text>
         </TouchableOpacity>
       </LinearGradient>
       <Toast config={configToast} ref={(ref: any) => Toast.setRef(ref)} />

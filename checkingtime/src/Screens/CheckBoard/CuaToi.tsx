@@ -32,7 +32,7 @@ const BangCong_Cuatoi = () => {
 
   const CONTENT = {
     tableHead: ["Ngày"],
-    tableHead2: ["Check in", "Check out","Công ngày","Tăng ca(Phút)"],
+    tableHead2: ["Check in", "Check out","Công ngày","Tăng ca(giờ)"],
 
     tableData: [
       ["-", "-", "-", "-"],
@@ -141,7 +141,7 @@ const BangCong_Cuatoi = () => {
       <View style={{ height: 60, justifyContent: "center" }}>
         <TouchableOpacity
           style={styles.icon1}
-          onPress={() => Alert.alert("Simple Button")}
+          
         >
           <Icon name="bars" size={18} style={styles.icon3}></Icon>
           <Text style={styles.text}>Tháng này</Text>

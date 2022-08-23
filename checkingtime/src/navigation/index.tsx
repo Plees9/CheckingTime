@@ -326,24 +326,24 @@ const SNavigation = () => {
           options={{ headerShown: true }}
         />
       <Stack.Screen
-          name="Thêm công việc Manager"
+          name="Thêm công việc quản lý"
           component={Add_TodoNavigation}
           options={{ headerShown: true }}
         />
          <Stack.Screen
-          name="Thêm công việc Admin"
+          name="Thêm công việc quản quản trị viên"
           component={Add_Admin}
           options={{ headerShown: true }}
         />
 
 
       <Stack.Screen
-          name="Cập nhật công việc"
+          name="Cập nhật công việc quản lý"
           component={Update_Todo}
           options={{ headerShown: true }}
         />
          <Stack.Screen
-          name="Cập nhật công việc Admin"
+          name="Cập nhật công việc quản quản trị viên"
           component={UpdateAdmin_Todo}
           options={{ headerShown: true }}
         />

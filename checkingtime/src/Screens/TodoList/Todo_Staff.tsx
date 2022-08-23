@@ -1,4 +1,4 @@
-import { Text, View, Alert, SafeAreaView } from "react-native";
+import { Text, View, Alert, SafeAreaView, ScrollView } from "react-native";
 import React, { useEffect, useMemo, useState } from "react";
 import createStyles from "./styles";
 import Icon from "react-native-vector-icons/FontAwesome";
@@ -136,11 +136,12 @@ const Todo_Staff = () => {
           </View>
         </View>
         <View style={styles.kengang} />
-
+        <ScrollView>
         {taskContributor &&
           taskContributor.tasks.map((item: any) => (
             <Task key={item._id} item={item} />
           ))}
+        </ScrollView>
       </SafeAreaView>
      
     </View>
