@@ -19,9 +19,7 @@ import TodoModal from "../../component/TodoModal";
 import { AnimatedCircularProgress } from "react-native-circular-progress";
 import {
   checking,
-  loadTask,
   loadTimesheetFilter,
-  loadTimesheetPoint,
   loadUser,
   ranking,
 } from "../../../redux/action";
@@ -78,9 +76,11 @@ const HomeScreen = () => {
   let userName5;
   let checkin5;
   const navigation = useNavigation<any>();
-  const { timesheet, number, array, timesheetFilter } = useSelector<any, any>(
+  const {timesheet, number, array, timesheetFilter, checkpoint } = useSelector<any, any>(
     (state) => state.timesheet
   );
+  console.log(checkpoint)
+  const {company} = useSelector<any, any> ((state) => state.company);
   if (
     typeof timesheet !== "undefined" &&
     typeof number !== "undefined" &&
@@ -92,13 +92,14 @@ const HomeScreen = () => {
     numberstr = number.rank;
   }
   if (
-    typeof timesheetFilter !== "undefined" &&
-    timesheetFilter !== null
+    typeof checkpoint !== "undefined" &&
+    checkpoint !== null
   ) {
-    actualPoint = timesheetFilter.timesheetData.point.actual;
-    maxPoint = timesheetFilter.timesheetData.point.max;
+
+    actualPoint = checkpoint.timesheetBoard.actualPoint;
+    maxPoint = checkpoint.timesheetBoard.maxPoint;
     processBoard = (actualPoint / maxPoint) * 100;
-    numLate = timesheetFilter.timesheetData.checkinLate.number;
+    numLate = checkpoint.timesheetBoard.checkinLateNumber;
   }
   if (typeof array !== "undefined" && array !== null) {
     if (typeof array.ranking[0] !== "undefined") {
@@ -170,6 +171,22 @@ const HomeScreen = () => {
     
   };
   useEffect(() => {
+    if (timesheetFilter === null) {
+      dispatch<any>(loadTimesheetFilter());
+    }
+    if (timesheet === null) {
+      dispatch<any>(loadTimesheet());
+    }
+    if (number === null) {
+      dispatch<any>(getmyrank());
+    }
+    if (array === null) {
+      dispatch<any>(ranking());
+    }
+    if (company === null) {
+      dispatch<any>(loadCompany());
+    }
+
     if (message) {
       ToastAlertMessage(message);
       dispatch({ type: "clearMessage" });
@@ -411,7 +428,7 @@ const HomeScreen = () => {
       />
       <Toast
         config={configToast}
-        ref={ref  => Toast.setRef(ref)}
+        ref={(ref) => Toast.setRef(ref)}
       />
     </View>
   );

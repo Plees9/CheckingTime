@@ -9,6 +9,7 @@ import { useNavigation } from '@react-navigation/native'
 import moment from 'moment'
 import DateTimePicker from "@react-native-community/datetimepicker";
 import { checkingTask, deleteTask, loadAllTask, loadTaskContributor, loadTaskManager } from '../../../redux/action';
+import PopupModal from '../../component/PopupModal';
 const Task_Manager = ( {item}) => {
     const dispatch = useDispatch()
     const [completed, setCompleted] = useState(false);
@@ -18,6 +19,7 @@ const Task_Manager = ( {item}) => {
     const handleCheckbox = () => {
         setCompleted(!completed);
     }
+    const [visible,setVisible] = useState(false);
     const Edit = async (
       name: any,
       _id:any ,
@@ -67,10 +69,8 @@ const Task_Manager = ( {item}) => {
               color="#8f37f6"
               size={20}
               style={styles.trash}
-              onPress={async () => {
-                await dispatch<any>(deleteTask(item._id));
-                await dispatch<any>(loadTaskManager());
-              }}
+              onPress={() => setVisible(true)
+              }
             />
             <Icon
               name="pencil"
@@ -86,6 +86,20 @@ const Task_Manager = ( {item}) => {
             />
           </View>
         </View>
+        <PopupModal
+            visible={visible}
+            title="Xóa công việc"
+            message="Bạn có chắc chắn muốn xóa không?"
+            confirmText={"Xóa"}
+            cancelText={"Hủy"}
+            onConfirm={async () => {
+              await dispatch<any>(deleteTask(item._id));
+              await dispatch<any>(loadTaskManager());
+            }}
+            onCancel={() => {
+              setVisible(false);
+            }}
+          />
       </View>
     );
     }  

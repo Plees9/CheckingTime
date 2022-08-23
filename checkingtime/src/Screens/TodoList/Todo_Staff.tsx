@@ -1,12 +1,4 @@
-import {
-  Text,
- 
-  View,
- 
-  Alert,
-  SafeAreaView,
- 
-} from "react-native";
+import { Text, View, Alert, SafeAreaView } from "react-native";
 import React, { useEffect, useMemo, useState } from "react";
 import createStyles from "./styles";
 import Icon from "react-native-vector-icons/FontAwesome";
@@ -16,9 +8,7 @@ import { FAB, Input } from "react-native-elements";
 import moment from "moment";
 import { useNavigation } from "@react-navigation/native";
 import { useDispatch, useSelector } from "react-redux";
-import {
-  loadTaskContributor,
-} from "../../../redux/action";
+import { loadTaskContributor } from "../../../redux/action";
 
 import { AnimatedCircularProgress } from "react-native-circular-progress";
 import Loader from "../../navigation/Loader";
