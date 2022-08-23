@@ -3,20 +3,17 @@ import {
   Text,
   TextInput,
   Pressable,
-  Button,
-  Alert,
   TouchableOpacity,
   ScrollView,
+  Platform,
+  TouchableNativeFeedback,
 } from "react-native";
 import React, { useEffect, useMemo, useState } from "react";
-
 import createStyles from "./styles";
 import DateTimePicker from "@react-native-community/datetimepicker";
 import moment from "moment";
 import Icon from "react-native-vector-icons/FontAwesome";
 import { LinearGradient } from "expo-linear-gradient";
-import { Avatar } from "@rneui/themed";
-import { FlatList } from "react-native-gesture-handler";
 import { useDispatch, useSelector } from "react-redux";
 import {
   loadAllTask,
@@ -29,19 +26,11 @@ import Toast from "react-native-toast-message";
 import Contributor_Add_Task from "./Contributor_Add_Task";
 import Loader from "../../navigation/Loader";
 import { useRoute } from "@react-navigation/native";
-import { Dropdown } from "react-native-element-dropdown";
-import AntDesign from "react-native-vector-icons/AntDesign";
-import { Platform, StatusBar } from 'react-native';
-import UserBadgeItem from "../UserAvatar/UserBadgeItem";
 import BadgeModal from "../../component/BadgeModal";
 
-const data_Contributor_Test = [
-  { label: "Nguyễn Sơn Bá", value: "Nguyễn Sơn Bá" },
-  { label: "Cao Liên Quân", value: "Cao Liên Quân" },
-  { label: "Đinh Trọng Phúc", value: "Đinh Trọng Phúc" },
-];
 
 const Update_Todo = () => {
+  Platform.OS === 'android' ? TouchableNativeFeedback : TouchableOpacity
   const styles = useMemo(() => createStyles(), []);
   const { user, loading } = useSelector<any, any>((state) => state.auth);
 
@@ -146,7 +135,6 @@ const Update_Todo = () => {
     }
   }, [ToastAlertError, ToastAlertMessage, message, error]);
 
- 
   return (
     <View style={styles.viewAdd_todo}>
       <View style={{height:"92%"}}>
@@ -265,41 +253,6 @@ const Update_Todo = () => {
               value={searchUser}
             ></TextInput>
           </View>
-          {/* <TextInput
-            placeholder="nhap ten nhan vien"
-            returnKeyType="done"
-            value={contributors}
-            onChangeText={setContributors}
-            style={{ marginLeft: 10, marginRight: 10}}
-          ></TextInput> */}
-          {/* <View style={styles.style}>
-          <Dropdown
-            style={styles.dropdown}
-            placeholderStyle={styles.placeholderStyle}
-            selectedTextStyle={styles.selectedTextStyle}
-            inputSearchStyle={styles.inputSearchStyle}
-            iconStyle={styles.iconStyle}
-            data={data_Contributor_Test}
-            search
-            maxHeight={300}
-            searchPlaceholder="Search..."
-            labelField="label"
-            valueField="value"
-            placeholder="Chọn nhân viên"
-            value={contributors}
-            onChange={(item) => {
-              setContributors(item.value);
-            }}
-            renderLeftIcon={() => (
-              <AntDesign
-                style={styles.icon_addtask}
-                color="orange"
-                name="Safety"
-                size={20}
-              />
-            )}
-          />
-        </View> */}
         {userList &&
               userName.map((item: any) => (
                 <BadgeModal key={item._id} item={item} userList={userList} setUserList={setUserList} userName={userName} setUserName={setUserName}  />
@@ -320,7 +273,7 @@ const Update_Todo = () => {
         style={styles.btnFab_add_task}
       >
         <TouchableOpacity onPress={registerHandlerTask}>
-          <Text style={styles.textComfirm}>Update</Text>
+          <Text style={styles.textComfirm}>Cập nhật</Text>
         </TouchableOpacity>
       </LinearGradient>
       <Toast config={configToast} ref={(ref: any) => Toast.setRef(ref)} />

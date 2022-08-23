@@ -119,9 +119,15 @@ const createStyles = () =>
     },
     boder_nhansu: {
       paddingBottom: 10,
-      borderWidth: 1,
       borderRadius: 10,
-      borderColor: "#8F73F6",
+    },
+    style_add_task: {
+      marginLeft: 10,
+      marginRight: 10,
+      borderRadius: 10,
+      height: 200,
+      backgroundColor: "#ffffff",
+
     },
     
   });

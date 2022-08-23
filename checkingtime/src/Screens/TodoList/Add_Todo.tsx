@@ -3,41 +3,32 @@ import {
   Text,
   TextInput,
   Pressable,
-  Button,
-  Alert,
   TouchableOpacity,
   ScrollView,
+  Platform,
+  TouchableNativeFeedback,
 } from "react-native";
 import React, { useEffect, useMemo, useState } from "react";
-
 import createStyles from "./styles";
 import DateTimePicker from "@react-native-community/datetimepicker";
 import moment from "moment";
 import Icon from "react-native-vector-icons/FontAwesome";
 import { LinearGradient } from "expo-linear-gradient";
-import { Avatar } from "@rneui/themed";
-import { FlatList } from "react-native-gesture-handler";
 import { useDispatch, useSelector } from "react-redux";
 import {
   loadAllTask,
   loadAlluser,
-  queryUser,
   registerTask,
 } from "../../../redux/action";
 import Toast from "react-native-toast-message";
 import Contributor_Add_Task from "./Contributor_Add_Task";
 import Loader from "../../navigation/Loader";
 import { useRoute } from "@react-navigation/native";
-import { Dropdown } from "react-native-element-dropdown";
-import AntDesign from "react-native-vector-icons/AntDesign";
+import BadgeModal from "../../component/BadgeModal";
 
-const data_Contributor_Test = [
-  { label: "Nguyễn Sơn Bá", value: "Nguyễn Sơn Bá" },
-  { label: "Cao Liên Quân", value: "Cao Liên Quân" },
-  { label: "Đinh Trọng Phúc", value: "Đinh Trọng Phúc" },
-];
 
 const Add_Todo = () => {
+  Platform.OS === 'android' ? TouchableNativeFeedback : TouchableOpacity
   const styles = useMemo(() => createStyles(), []);
   const { user, loading } = useSelector<any, any>((state) => state.auth);
 
@@ -49,16 +40,14 @@ const Add_Todo = () => {
   const [status, setStatus] = useState(""); //Trạng thái của task
   const [manager, setManager] = useState(""); //Trạng thái của task
   const [contributors, setContributors] = useState(""); //Trạng thái của task
-
-  const [userName, setUserName] = useState("");
   const [avatar, setAvatar] = useState(user.avatar.url);
   const route = useRoute();
-  const [search, setSearch] = useState("");
-
+  const [searchUser, setSearch] = useState("");
+  const [userName, setUserName] = useState([]);
+  const [userList, setUserList] = useState([]);
   const [show, setShow] = useState(false);
   const [show_1, setShow_1] = useState(false);
   const { allUser } = useSelector<any, any>((state) => state.allUser);
-  console.log(allUser);
   const { allTask } = useSelector<any, any>((state) => state.task);
   const { task } = useSelector<any, any>((state) => state.task);
   if (typeof allTask == "undefined") {
@@ -66,6 +55,7 @@ const Add_Todo = () => {
   }
 
   const dispatch = useDispatch();
+
   const registerHandlerTask = () => {
     const myForm = new FormData();
     myForm.append("name", name);
@@ -121,7 +111,6 @@ const Add_Todo = () => {
 
   useEffect(() => {
     dispatch<any>(loadAlluser());
-    // dispatch<any>(loadAllTask());
   }, []);
   const { message, error } = useSelector<any, any>((state) => state.message);
 
@@ -143,16 +132,6 @@ const Add_Todo = () => {
       dispatch({ type: "clearMessage" });
     }
   }, [ToastAlertError, ToastAlertMessage, message, error]);
-
-  //   if (message) {
-  //     ToastAlertMessage(message);
-  //     dispatch({ type: "clearMessage" });
-  //   }
-  //   if (error) {
-  //     ToastAlertError(error);
-  //     dispatch({ type: "clearError" });
-  //   }
-  // } , [ToastAlertError, ToastAlertMessage, message, error]);
 
   return (
     <View style={styles.viewAdd_todo}>
@@ -266,62 +245,20 @@ const Add_Todo = () => {
               returnKeyType="done"
               onChangeText={(text) => {
                 if (route.params) {
-                  dispatch<any>(
-                    queryUser(
-                      text,
-                      route.params.value_4,
-                      route.params.value_5,
-                      route.params.value_6,
-                      route.params.value_7
-                    )
-                  );
-                } else {
-                  dispatch<any>(queryUser(text, "", "", "", ""));
-                }
+                  dispatch<any>(search(text))
                 setSearch(text);
-              }}
-              value={search}
+              }}}
+              value={searchUser}
             ></TextInput>
           </View>
-          {/* <TextInput
-            placeholder="nhap ten nhan vien"
-            returnKeyType="done"
-            value={contributors}
-            onChangeText={setContributors}
-            style={{ marginLeft: 10, marginRight: 10}}
-          ></TextInput> */}
-          {/* <View style={styles.style}>
-          <Dropdown
-            style={styles.dropdown}
-            placeholderStyle={styles.placeholderStyle}
-            selectedTextStyle={styles.selectedTextStyle}
-            inputSearchStyle={styles.inputSearchStyle}
-            iconStyle={styles.iconStyle}
-            data={data_Contributor_Test}
-            search
-            maxHeight={300}
-            searchPlaceholder="Search..."
-            labelField="label"
-            valueField="value"
-            placeholder="Chọn nhân viên"
-            value={contributors}
-            onChange={(item) => {
-              setContributors(item.value);
-            }}
-            renderLeftIcon={() => (
-              <AntDesign
-                style={styles.icon_addtask}
-                color="orange"
-                name="Safety"
-                size={20}
-              />
-            )}
-          />
-        </View> */}
+        {userList &&
+              userName.map((item: any) => (
+                <BadgeModal key={item._id} item={item} userList={userList} setUserList={setUserList} userName={userName} setUserName={setUserName}  />
+              ))}
           <ScrollView style={styles.style_add_task}>
             {allUser &&
               allUser.array.map((item: any) => (
-                <Contributor_Add_Task key={item._id} item={item} />
+                <Contributor_Add_Task key={item._id} item={item} userList={userList} setUserList={setUserList} userName={userName} setUserName={setUserName} />
               ))}
           </ScrollView>
         </View>
