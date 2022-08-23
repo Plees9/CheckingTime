@@ -82,6 +82,7 @@ const createStyles = () =>
       fontSize: 18,
       width: "80%",
       marginLeft: "3%",
+      fontFamily: FONTS.vanSansBold,
       
     },
     kengang: {
@@ -127,6 +128,7 @@ const createStyles = () =>
       width: "70%",
     },
     textComfirm: {
+      fontFamily:FONTS.vanSansRegular,
       fontSize: 18,
       textAlign: "center",
       padding: "3%",
@@ -181,6 +183,7 @@ const createStyles = () =>
     text_Description: {
       width: "100%",
       height: "100%",
+      fontFamily:FONTS.vanSansRegular,
     },
     // Style man cong viec nhan vien
     view_staff1:{

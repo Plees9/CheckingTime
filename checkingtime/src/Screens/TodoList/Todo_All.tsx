@@ -128,12 +128,6 @@ const Todo_All = () => {
         </View>
       </View>
         <View style={styles.view1}>
-          <Icon
-            name="list"
-            size={18}
-            color="#8f37f6"
-            style={styles.icon}
-          ></Icon>
           <Text style={styles.text}>Task List:</Text>
         </View>
         <View style={styles.kengang}></View>
