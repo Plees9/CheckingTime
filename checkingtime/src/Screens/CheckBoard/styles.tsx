@@ -112,8 +112,7 @@ const createStyles = () =>
     },
     chu3: {
       fontSize: 14,
-      width: 100,
-      alignSelf: 'center',
+      width: "112%",
       backgroundColor: "#ebe0ea",
       padding: 10,
 

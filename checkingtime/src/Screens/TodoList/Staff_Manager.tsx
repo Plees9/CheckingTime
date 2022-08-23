@@ -171,7 +171,22 @@ const Staff_Manager = () => {
             <Task_Manager key={item._id} item={item} />
           ))}
       </SafeAreaView>
-     
+      <View style={styles.btnFab}>
+        <FAB
+          title="Completed"
+          size="small"
+          color="#8f73f6"
+          style={styles.fab}
+          onPress={() => Alert.alert("thành công")}
+        />
+        <FAB
+          title="Thêm công việc"
+          size="small"
+          color="#8f73f6"
+          style={styles.fab}
+          onPress={() => navigation.navigate("Thêm công việc")}
+        />
+      </View>
     </View>
   );
 };;

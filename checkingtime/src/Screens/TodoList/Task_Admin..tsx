@@ -1,5 +1,5 @@
-import { View, Text, Pressable } from "react-native";
-import React, { useMemo, useState } from "react";
+import { View, Text, Pressable, ScrollView } from 'react-native'
+import React, { useMemo, useState } from 'react'
 import Icon from "react-native-vector-icons/FontAwesome";
 import { Checkbox } from "react-native-paper";
 import { useDispatch, useSelector } from "react-redux";
@@ -50,7 +50,7 @@ const Task_Admin = ({ item }) => {
         <View style={styles.view2}>
           <View style={styles.checkbox}>
             <Checkbox
-              color="#FFC23C"
+              color="#8f37f6"
               status={completed ? "checked" : "unchecked"}
               onPress={handleCheckbox}
             />
