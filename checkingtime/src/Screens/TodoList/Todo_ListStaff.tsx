@@ -9,6 +9,7 @@ import { loadAlluser, loadTaskById, queryUser } from "../../../redux/action";
 import { FlatList } from "react-native-gesture-handler";
 
 import Loader from '../../navigation/Loader';
+import { findIndex } from 'lodash';
 const Todo_ListStaff = () => {
   const { user, loading } = useSelector<any, any>((state) => state.auth);
   const styles = useMemo(() => createStyles(), []);
@@ -20,14 +21,32 @@ const Todo_ListStaff = () => {
   
   const route = useRoute () 
 
-  const { allUser } = useSelector<any, any>((state) => state.allUser);
+  const { allUser, taskContributor } = useSelector<any, any>(
+    (state) => state.allUser
+  );
+  console.log(taskContributor);
+
   const dispatch = useDispatch();
   
   useEffect(() => {
     dispatch<any>(loadAlluser());
   }, []);
+  // let datatask = [] ;
+  // if (typeof taskContributor !== "undefined"  ) {
+  //     for (var i = 0; i < taskContributor.tasks.length; i++) {
+  //       for (var i = 0; i < allUser.array.length; i++) {
+        
+  //       let workDone = 0 ;
+  //       let index = taskContributor.tasks.contributorIds.findIndex(x => x.equals(allUser.array[i]._id))
+  //        for (var j = 0; j < taskContributor.tasks.contributors.length; i++) {
+  //         if(allUser.array[i].name === taskContributor.tasks[i].contribu ) {
+
+  //         }
+
+
+  // 
   let data: any = [];
-  if (typeof allUser !== "undefined") {
+  if (typeof allUser !== "undefined"  ) {
     for (var i = 0; i < allUser.array.length; i++) {
       let strAvatar = allUser.array[i].avatar.url;
       let object = {
@@ -35,6 +54,7 @@ const Todo_ListStaff = () => {
         _id: allUser.array[i]._id,
         name_1: allUser.array[i].name,
         avatar_1: allUser.array[i].avatar.url,
+
         // sumWork_1: allUser.array[i].sumWork,
         // workDone_1: allUser.array[i].workDone,
       };
@@ -53,13 +73,13 @@ const Todo_ListStaff = () => {
         </View>
         <View style={styles.text_staff}>
           <Text style={styles.text_processTotal}>{name_1}</Text>
-          <Text style={styles.num_rest}>Hoàn thành: 3/5</Text>
+          <Text style={styles.num_rest}>Mã nhân viên: {id}</Text>
         </View>
         <View style={styles.icon_staff}>
           <Icon
             name="angle-double-right"
             size={34}
-            color="#f49218"
+            color="#8f37f6"
             
           />
         </View>

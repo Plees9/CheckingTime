@@ -9,6 +9,7 @@ import { useNavigation } from '@react-navigation/native'
 import moment from 'moment'
 import DateTimePicker from "@react-native-community/datetimepicker";
 import { checkingTask, deleteTask, loadAllTask, loadTaskContributor, loadTaskManager } from '../../../redux/action';
+import PopupModal from '../../component/PopupModal';
 const Task_Manager = ( {item}) => {
     const dispatch = useDispatch()
     const [completed, setCompleted] = useState(false);
@@ -18,18 +19,27 @@ const Task_Manager = ( {item}) => {
     const handleCheckbox = () => {
         setCompleted(!completed);
     }
+    const [visible,setVisible] = useState(false);
+    const Edit = async (
+      name: any,
+      _id:any ,
+      description :any,
+
+      deadline :any ,
+    ) => {
+      navigation.navigate("Cập nhật công việc", {name , _id ,description,deadline});
+    };
     return (
-        <View style={styles.render}>
+      <View style={styles.render}>
         <View
           style={{ flexDirection: "row", backgroundColor: "#f2f2f2", flex: 1 }}
         >
           <View style={styles.view3}>
             <View style={styles.checkbox}>
-            <Checkbox
+              <Checkbox
                 color="#FFC23C"
                 status={completed ? "checked" : "unchecked"}
                 onPress={handleCheckbox}
-
               />
             </View>
             <View style={styles.colomn1}>
@@ -40,7 +50,9 @@ const Task_Manager = ( {item}) => {
                     style={{ justifyContent: "center", alignContent: "center" }}
                   >
                     <Text>
-                      {moment(item.deadline, "HH:mm, DD/MM/YYYY").format("HH:mm, DD/MM/YYYY")}
+                      {moment(item.deadline, "HH:mm, DD/MM/YYYY").format(
+                        "HH:mm, DD/MM/YYYY"
+                      )}
                     </Text>
                     {show_1 && (
                       <DateTimePicker
@@ -56,21 +68,40 @@ const Task_Manager = ( {item}) => {
             </View>
             <Icon
               name="trash"
-              color="#f49218"
+              color="#8f37f6"
               size={20}
               style={styles.trash}
-              onPress={async () => {await dispatch<any>(deleteTask(item._id))
-                                await dispatch<any>(loadTaskManager())}}
+              onPress={() => setVisible(true)
+              }
             />
             <Icon
               name="pencil"
-              color="#f49218"
+              color="#8f37f6"
               size={20}
               style={styles.pencil}
-              onPress={() => navigation.navigate("Cập nhật công việc")}
+              onPress={() => {
+                Edit(
+                 item.name , item._id , item.description , item.deadline
+                 
+                );
+              }}
             />
           </View>
         </View>
+        <PopupModal
+            visible={visible}
+            title="Xóa công việc"
+            message="Bạn có chắc chắn muốn xóa không?"
+            confirmText={"Xóa"}
+            cancelText={"Hủy"}
+            onConfirm={async () => {
+              await dispatch<any>(deleteTask(item._id));
+              await dispatch<any>(loadTaskManager());
+            }}
+            onCancel={() => {
+              setVisible(false);
+            }}
+          />
       </View>
     );
     }  

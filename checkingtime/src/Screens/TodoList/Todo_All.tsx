@@ -58,6 +58,8 @@ const Todo_All = () => {
 
   useEffect(() => {
     dispatch<any>(loadAllTask());
+    
+
   }, []);
   const { allTask, loading } = useSelector<any, any>((state) => state.task);
   let data_all: any = [];
@@ -80,6 +82,7 @@ const Todo_All = () => {
   }
 
   const [data_allTask, setData_all] = useState(data_all);
+  
 
   const onChangeValue = (item: { id: any }, index: any, newValue: boolean) => {
     const newData = data_allTask.map((newItem: { id: any }) => {
@@ -158,7 +161,7 @@ const Todo_All = () => {
           <Icon
             name="list"
             size={18}
-            color="#f49218"
+            color="#8f37f6"
             style={styles.icon}
           ></Icon>
           <Text style={styles.text}>Task List:</Text>

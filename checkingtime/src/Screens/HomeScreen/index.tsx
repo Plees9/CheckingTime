@@ -428,7 +428,7 @@ const HomeScreen = () => {
       />
       <Toast
         config={configToast}
-        ref={ref  => Toast.setRef(ref)}
+        ref={(ref) => Toast.setRef(ref)}
       />
     </View>
   );

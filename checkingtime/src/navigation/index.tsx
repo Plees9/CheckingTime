@@ -162,13 +162,13 @@ const Add_TodoNavigation = () => {
     </Stack.Navigator>
   );
 }
-const Update_TodoNavigation = () => {
-  return (
-    <Stack.Navigator screenOptions={{ headerShown: false }}>
-      <Stack.Screen name="Update_Todo" component={Update_Todo} />
-    </Stack.Navigator>
-  );
-}
+// const Update_TodoNavigation = () => {
+//   return (
+//     <Stack.Navigator screenOptions={{ headerShown: false }}>
+//       <Stack.Screen name="Update_Todo" component={Update_Todo} />
+//     </Stack.Navigator>
+//   );
+// }
 
 const Staff_ManagerNavigation = () => {
   return (
@@ -331,7 +331,7 @@ const SNavigation = () => {
         />
       <Stack.Screen
           name="Cập nhật công việc"
-          component={Update_TodoNavigation}
+          component={Update_Todo}
           options={{ headerShown: true }}
         />
     

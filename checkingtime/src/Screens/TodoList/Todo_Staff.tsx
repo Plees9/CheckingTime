@@ -18,13 +18,29 @@ const Todo_Staff = () => {
   const styles = useMemo(() => createStyles(), []);
   const navigation = useNavigation<any>();
 
-  const [workDone, setworkDone] = useState(0);
   const dispatch = useDispatch();
   const { taskContributor, loading } = useSelector<any, any>(
     (state) => state.task
   );
-
   console.log(taskContributor);
+
+  let workDone = 0;
+  let workNotDone = 0;
+  let workOutOf = 0;
+  if (typeof taskContributor !== "undefined") {
+  for(let i = 0; i < taskContributor.tasks.length; i++){
+    if(taskContributor.tasks[i].status === "Đã hoàn thành"){
+
+      workDone++;
+    }else if(taskContributor.tasks[i].status === "Chưa hoàn thành"){
+      workNotDone++;
+    }else{
+      workOutOf++;
+    }
+  }
+  };
+
+  // console.log(taskContributor);
   if (typeof taskContributor == "undefined") {
     return <Loader />;
   }
@@ -37,7 +53,7 @@ const Todo_Staff = () => {
           <Icon
             name="list"
             size={18}
-            color="#f49218"
+            color="#8f37f6"
             style={styles.icon}
           ></Icon>
           <Text style={styles.text}>Your Task List:</Text>
@@ -100,7 +116,7 @@ const Todo_Staff = () => {
               />
               <Text style={styles.text_processTask}>Công việc đã quá hạn:</Text>
             </View>
-            <Text style={styles.num_overtime}>{workDone}</Text>
+            <Text style={styles.num_overtime}>{workOutOf}</Text>
           </View>
           <View style={styles.view1_2}>
             <View style={{ flexDirection: "row" }}>
@@ -117,7 +133,7 @@ const Todo_Staff = () => {
                 Công việc chưa hoàn thành:
               </Text>
             </View>
-            <Text style={styles.num_rest}>{workDone}</Text>
+            <Text style={styles.num_rest}>{workNotDone}</Text>
           </View>
         </View>
         <View style={styles.kengang} />
@@ -127,18 +143,7 @@ const Todo_Staff = () => {
             <Task key={item._id} item={item} />
           ))}
       </SafeAreaView>
-      <View style={styles.btnFab}>
-        <FAB
-          title="Completed"
-          size="small"
-          color="#FF8C32"
-          style={styles.fab}
-          onPress={() => {
-            dispatch<any>(loadTaskContributor());
-            Alert.alert("Bạn đã cập nhật thành công");
-          }}
-        />
-      </View>
+     
     </View>
   );
 };

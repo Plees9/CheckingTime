@@ -38,7 +38,9 @@ import Loader from "../../navigation/Loader";
      const [deadline, setDeadline] = useState("")
      const [date, setDate] = useState("")
      const [sumWork, setSumWork] = useState("")
-     const [workDone, setworkDone] = useState(0)
+    let workDone = 0 ;
+    let workNotDone = 0 ;
+    let workOutOf = 0 ;
     const dispatch = useDispatch();
     useEffect(() => {
         if (route.params) {
@@ -54,6 +56,17 @@ import Loader from "../../navigation/Loader";
     const loadView = () => {
     if (typeof task !== "undefined" && task !== null) {
       for (var i = 0; i < task.tasks.length; i++) {
+        
+    if(task.tasks[i].status === "Đã hoàn thành"){
+
+      workDone++;
+    }else if(task.tasks[i].status === "Chưa hoàn thành"){
+      workNotDone++;
+    }else{
+      workOutOf++;
+    }
+  
+  
         let task_user = {
             id: i+1 ,
           _id: task.tasks[i]._id,
@@ -103,7 +116,7 @@ import Loader from "../../navigation/Loader";
             </View>
             <Icon
               name="pencil"
-              color="#f49218"
+              color="#8f37f6"
               size={20}
               style={styles.pencil}
               onPress={() => navigation.navigate("Cập nhật công việc")}
@@ -130,7 +143,7 @@ import Loader from "../../navigation/Loader";
             <Icon
               name="list"
               size={18}
-              color="#f49218"
+              color="#8f37f6"
               style={styles.icon}
             ></Icon>
             <Text style={styles.text}>{userName} Task List:</Text>
@@ -159,7 +172,7 @@ import Loader from "../../navigation/Loader";
   
           <View style={styles.view1_1}>
             <View style={styles.view1_2}>
-              <Text style={styles.text_processTotal}>Tổng số công việc hôm nay:</Text>
+              <Text style={styles.text_processTotal}>Tổng số công việc :</Text>
               <Text style={styles.num_total}>{data_2.length}</Text>
             </View>
   

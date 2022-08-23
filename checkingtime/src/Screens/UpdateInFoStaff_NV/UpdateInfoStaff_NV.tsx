@@ -136,7 +136,7 @@ const UpdateStaff_Admin = () => {
     myForm.append("role", value_role) 
     myForm.append("privilege", value_privilege)
     myForm.append("password", password)
-    await dispatch<any>(updateAdmin(myForm))
+    await dispatch<any>((myForm))
     setVisible(false)
   }
 
