@@ -9,7 +9,7 @@ import { useNavigation } from '@react-navigation/native'
 import moment from 'moment'
 import DateTimePicker from "@react-native-community/datetimepicker";
 import { checkingTask, deleteTask, loadAllTask, loadTaskContributor, loadTaskManager } from '../../../redux/action';
-const Task_Manager = ( {item}) => {
+const Task_Manager = ( {item} : any) => {
     const dispatch = useDispatch()
     const [completed, setCompleted] = useState(false);
     const styles = useMemo(() => createStyles(), []);

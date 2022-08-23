@@ -1,30 +1,34 @@
-import { View, Text } from 'react-native'
+import { View, Text, TouchableOpacity } from 'react-native'
 import React, { useMemo, useState } from 'react'
-
+import { Avatar } from "@rneui/themed";
 import { Checkbox } from 'react-native-paper'
 import createStyles from './styles'
 
-const Contributor_Add_Task = ( {item}) => {
-  
+const Contributor_Add_Task = ( {item, userList, setUserList, userName, setUserName} : any) => {
+    const addUserHandler = (_id : any, name : any) => {
+      if (userList.includes(_id)) {
+        return;
+      }
+      let object = {
+        _id: _id ,
+        name: name
+      }
+      setUserList([...userList, _id]);
+      setUserName([...userName, object])
+    }
     const [completed, setCompleted] = useState(false);
     const styles = useMemo(() => createStyles(), []);
-    
-    console.log(item.userId)
-    const handleCheckbox = () => {
-        setCompleted(!completed);
-    }
-
     return (
+      <TouchableOpacity onPress={() => {addUserHandler(item._id, item.name)}}>
         <View style={styles.view_addTask}>
         
           <View style={styles.view_btn_add_task}>
-            <View style={styles.checkbox}>
-            <Checkbox
-                color="#FFC23C"
-                status={completed ? "checked" : "unchecked"}
-                onPress={handleCheckbox}
-              />
-            </View>
+          <Avatar
+            size={70}
+            rounded
+            source={{ uri: item.avatar.url }}
+            containerStyle={{ backgroundColor: "orange" }}
+          />
             <View style={styles.colomn}>
             <Text style={styles.text1}>{item.name} </Text>
             <Text style={styles.text1}>Mã nhân viên: {item.userId}</Text> 
@@ -34,6 +38,7 @@ const Contributor_Add_Task = ( {item}) => {
           </View>
         
       </View>
+      </TouchableOpacity>
     );
     }  
 

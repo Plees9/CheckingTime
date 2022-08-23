@@ -10,7 +10,7 @@ import moment from 'moment'
 import DateTimePicker from "@react-native-community/datetimepicker";
 import { checkingTask, loadTaskContributor } from '../../../redux/action';
 import Loader from '../../navigation/Loader';
-const Task = ( {item}) => {
+const Task = ( {item} : any) => {
     const {user} = useSelector<any, any>(state => state.auth)
     const dispatch = useDispatch()
     let index = 0
