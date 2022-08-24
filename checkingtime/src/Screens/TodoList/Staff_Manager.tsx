@@ -23,6 +23,7 @@ import { AnimatedCircularProgress } from "react-native-circular-progress";
 import Task_Manager from "./Task_Manager";
 import Loader from "../../navigation/Loader";
 import { ScrollView } from 'react-native';
+import Toast from "react-native-toast-message";
 
 const Staff_Manager = () => {
   const styles = useMemo(() => createStyles(), []);
@@ -34,10 +35,6 @@ const Staff_Manager = () => {
     (state) => state.taskMessage
   );
   const dispatch = useDispatch();
-
-  useEffect(() => {
-    dispatch<any>(loadTaskManager());
-  }, []);
   const { taskManager, loading } = useSelector<any, any>((state) => state.task);
   //console.log(taskManager);
   let data_manager: any = [];
@@ -86,16 +83,51 @@ const Staff_Manager = () => {
     });
     setdata_manager3(newData);
   };
+  const ToastAlertMessage = (message: any) => {
+    Toast.show({ text1: message, type: "success" });
+  };
+  const ToastAlertError = (error: any) => {
+    Toast.show({ text1: error, type: "error" });
+  };
+  const configToast = {
+    success: (internal: any) => (
+      <View
+        style={{
+          width: "95%",
+          height: 40,
+          backgroundColor: "green",
+          justifyContent: "center",
+          alignItems: "center",
+        }}
+      >
+        <Text style={{ fontSize: 15, color: "white" }}> {internal.text1}</Text>
+      </View>
+    ),
+    error: (internal: any) => (
+      <View
+        style={{
+          width: "95%",
+          height: 40,
+          backgroundColor: "red",
+          justifyContent: "center",
+          alignItems: "center",
+        }}
+      >
+        <Text style={{ fontSize: 15, color: "white" }}> {internal.text1}</Text>
+      </View>
+    ),
+    
+  };
   useEffect(() => {
     if (message) {
-      alert(message);
+      ToastAlertMessage(message);
       dispatch({ type: "clearMessage" });
     }
     if (error) {
-      alert(error);
+      ToastAlertError(error);
       dispatch({ type: "clearError" });
     }
-  }, [alert, dispatch, error, message]);
+  }, [ToastAlertError,ToastAlertMessage, dispatch, error, message]);
   return loading ? (
     <Loader />
   ) : (
@@ -183,7 +215,7 @@ const Staff_Manager = () => {
           style={styles.fab}
           onPress={() => navigation.navigate("Thêm công việc quản lý")}
         />
-      
+       <Toast config={configToast} ref={(ref) => Toast.setRef(ref)} />
     </View>
   );
 };;

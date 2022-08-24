@@ -42,7 +42,6 @@ const BangCong_Cuatoi = () => {
   };
 
   const { timesheetFilter } = useSelector<any, any>((state) => state.timesheet);
-  console.log(timesheetFilter);
   if (typeof timesheetFilter !== "undefined" && timesheetFilter !== null) {
     lateNumber = timesheetFilter.timesheetData.checkinLate.number;
     lateValue = timesheetFilter.timesheetData.checkinLate.value;

@@ -244,6 +244,8 @@ export const logout = () => async (dispatch) => {
     dispatch({type: "logoutCompany"})
     dispatch({ type: "logoutSuccess" });
     dispatch({type: "logouttimesheetFilter"})
+    dispatch({type: "logoutTaskContributor"})
+    dispatch({type: "logoutTaskManager"})
   } catch (error) {
     dispatch({
       type: "logoutFailure",
@@ -469,6 +471,17 @@ export const loadTimesheetFilter = () => async (dispatch) => {
     dispatch({ type: "timesheetFilterSuccess", payload: data });
   } catch (error) {
     dispatch({ type: "timesheetFilterFailure", payload: error.response.data.message });
+  }
+}
+export const loadTimesheetFilterByUser = (userId) => async (dispatch) => {
+  try {
+    dispatch({ type: "timesheetFilterByUserRequest" });
+    console.log("ayyo")
+    const { data } = await axios.post(`${serverUrl}/user/filtertimesheetbythismonthbyuser`, {userId});
+    console.log(data)
+    dispatch({ type: "timesheetFilterByUserSuccess", payload: data });
+  } catch (error) {
+    dispatch({ type: "timesheetFilterByUserFailure", payload: error.response.data.message });
   }
 }
 export const deleteTask = (taskId) => async (dispatch) => {

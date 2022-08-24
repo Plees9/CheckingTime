@@ -20,6 +20,7 @@ import { deleteProfile, loadAlluser, loadProfile, queryUser } from "../../../red
 import { SearchBar } from "react-native-elements";
 import Loader from "../../navigation/Loader";
 import Toast from "react-native-toast-message";
+import UserBadgeItem from "../../component/BadgeModal";
 
 const ListStaff  = () => {
   const styles = useMemo(() => createStyles(), []);
@@ -27,6 +28,7 @@ const ListStaff  = () => {
   const { message, error } = useSelector<any, any>((state) => state.message)
   const navigation = useNavigation<any>();
   const route = useRoute () 
+  const {user} = useSelector<any, any>(state => state.auth)
   const dialCall = (numberPhone_1: any) => {
     let phoneNumber = "";
     if (Platform.OS === "android") {
@@ -219,7 +221,7 @@ loadView()
     numberPhone_1,
     gender_1,
     avatar_1,
-  }) => (
+  } : any) => (
     <SafeAreaView style={{ padding: 10, backgroundColor: "#f2f2f2" }}>
       {/* nhan vien  */}
       {/*  */}
@@ -262,7 +264,7 @@ loadView()
             name="trash"
             size={25}
             style={styles.trash}
-            onPress={() =>
+            onPress={() => {if (user.privilege == "Quản trị viên") {
               Trash(
                 id,
                 _id,
@@ -277,29 +279,38 @@ loadView()
                 gender_1
               )
             }
+              else {
+                ToastAlertError("Bạn không có quyền truy cập tính năng này")
+              }
+              }}
           ></Icon>
           <Icon
             name="edit"
             size={25}
             style={styles.trash}
             onPress={() => {
-              Edit(
-                id,
-                _id,
-                name_1,
-                email_1,
-                role_1,
-                userID_1,
-                typeOfEmployee_1,
-                contractStatus_1,
-                privilege_1,
-                date_1,
-                date_Birth_1,
-                numberPhone_1,
-                gender_1 ,
-                avatar_1
-              ) }
-            }
+              if (user.privilege == "Quản trị viên") {
+                Edit(
+                  id,
+                  _id,
+                  name_1,
+                  email_1,
+                  role_1,
+                  userID_1,
+                  typeOfEmployee_1,
+                  contractStatus_1,
+                  privilege_1,
+                  date_1,
+                  date_Birth_1,
+                  numberPhone_1,
+                  gender_1 ,
+                  avatar_1
+                )
+              }
+                else {
+                  ToastAlertError("Bạn không có quyền truy cập tính năng này")
+                }
+                }}
           ></Icon>
         </View>
         <View style={styles.hang3}>
@@ -385,7 +396,12 @@ loadView()
             name="plus-circle"
             size={40}
             color="#8f73f6"
-            onPress={() => navigation.navigate("Thêm nhân viên")}
+            onPress={() => {if (user.privilege == "Quản trị viên") {
+              navigation.navigate("Thêm nhân viên")}
+              else {
+               ToastAlertError("Bạn không có quyền truy cập tính năng này")
+              }
+              }}
           />
         </View>
       </View>

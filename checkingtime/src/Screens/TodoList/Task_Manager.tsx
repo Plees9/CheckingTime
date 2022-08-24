@@ -105,6 +105,7 @@ const Task_Manager = ( {item}) => {
               setVisible(false);
             }}
           />
+          
       </View>
     );
     }  

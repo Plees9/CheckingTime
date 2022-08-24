@@ -8,16 +8,40 @@ import { IconButton } from "react-native-paper";
 import { useNavigation } from "@react-navigation/native";
 import { loadAlluser, loadCompany } from "../../../redux/action";
 import { useDispatch, useSelector } from "react-redux";
+import UserBadgeItem from "../../component/BadgeModal";
+import Toast from "react-native-toast-message";
 const Jobs = () => {
   const navigation = useNavigation<any>();
   const dispatch = useDispatch();
-
+  const {user} = useSelector<any, any>(state => state.auth)
   const companyHandler = async () => {
     navigation.navigate("Thông tin Công Ty");
+    
+
   };
-  return (
-    <ScrollView style={styles.container}>
+  const configToast = {
+    error: (internal: any) => (
       <View
+        style={{
+          width: "95%",
+          height: 40,
+          backgroundColor: "red",
+          justifyContent: "center",
+          alignItems: "center",
+        }}
+      >
+        <Text style={{ fontSize: 15, color: "white" }}> {internal.text1}</Text>
+      </View>
+    ),
+      }
+
+   
+      const ToastAlertMessage = (message: any) => {
+        Toast.show({ text1: message, type: "error" });
+      };
+  return (
+    <View style={styles.container}>
+      <ScrollView
         style={{ backgroundColor: "#f2f2f2", margin: 10, borderRadius: 20 }}
       >
         <TouchableOpacity
@@ -33,7 +57,14 @@ const Jobs = () => {
         </TouchableOpacity>
         <TouchableOpacity
           style={styles.Touch1}
-          onPress={() => navigation.navigate("Công việc")}
+          onPress={() => {
+            if (user.privilege === "Quản trị viên") {
+            navigation.navigate("Công việc")}
+            else {
+              ToastAlertMessage("Bạn không có quyền truy cập tính năng này")
+            }
+          }}
+          
         >
           <View style={{ alignContent: "center" }}>
             <IconButton icon="clipboard-list" color="#716DF2" size={50} />
@@ -115,8 +146,9 @@ const Jobs = () => {
             </View>
           </TouchableOpacity>
         </View>
-      </View>
-    </ScrollView>
+      </ScrollView>
+      <Toast config={configToast} ref={(ref) => Toast.setRef(ref)} />
+    </View>
   );
 };
 

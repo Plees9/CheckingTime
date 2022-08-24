@@ -14,7 +14,7 @@ import FormCreated from "../Screens/FormCreated";
 import Jobs from "../Screens/Jobs";
 import InfoScreen from "../Screens/InfoCompany/Info";
 import Account from "../Screens/Account/Account";
-import { getmyrank, loadCheckPoint, loadCompany, loadTaskContributor, loadTimesheet, loadTimesheetFilter, loadUser, ranking } from '../../redux/action'
+import { getmyrank, loadAllTask, loadCheckPoint, loadCompany, loadTaskContributor, loadTaskManager, loadTimesheet, loadTimesheetFilter, loadUser, ranking } from '../../redux/action'
 import ResetPasswordScreen from "../Screens/ResetPasswordScreen/ResetPasswordScreen";
 import TabDonTusNavigation from "./TabDonTu";
 import CuaToi from "../Screens/DonTu/CuaToi/CuaToi";
@@ -41,6 +41,7 @@ import PhonePasswordScreen from "../Screens/PhonePassword/PhonePasswordScreen";
 import Admin_Manage from "../Screens/TodoList/Admin";
 import UpdateAdmin_Todo from "../Screens/TodoList/UpdateAdmin_Todo";
 import Add_Admin from "../Screens/TodoList/Add_Admin";
+import Admin_Board from "../Screens/CheckBoard/Admin_Board";
 
 
 const Stack = createNativeStackNavigator();
@@ -201,14 +202,25 @@ const SNavigation = () => {
   useEffect(() => {
       dispatch<any>(loadUser())
       dispatch<any>(loadTimesheet());
-      dispatch<any>(loadTimesheetFilter());
+      dispatch<any>(loadCheckPoint())
       dispatch<any>(getmyrank());
       dispatch<any>(ranking());
       dispatch<any>(loadCompany());
-      dispatch<any>(loadCheckPoint())
+      dispatch<any>(loadTimesheetFilter());
       dispatch<any>(loadTaskContributor());
   }, [dispatch])
-  const { isAuthenticated, loading } = useSelector<any, any>(state => state.auth)
+  const { isAuthenticated, loading, user } = useSelector<any, any>(state => state.auth)
+  useEffect(() => {
+    if (typeof user !== "undefined" && user !== null) {
+      if (user.privilege === "Quản trị viên") {
+        dispatch<any>(loadAllTask())
+      }
+      if (user.privilege === "Quản lý" || user.privilege === "Quản trị viên" ) {
+        dispatch<any>(loadTaskManager());
+      }
+    }
+
+  })
   const { loadingCompany}  = useSelector<any, any>(state => state.company)
   console.log(loadingCompany)
   return (
@@ -347,7 +359,11 @@ const SNavigation = () => {
           component={UpdateAdmin_Todo}
           options={{ headerShown: true }}
         />
-
+         <Stack.Screen
+          name="Bảng công của nhân viên"
+          component={Admin_Board}
+          options={{ headerShown: true }}
+        />
     
         <Stack.Screen
           name="Công việc của nhân viên"

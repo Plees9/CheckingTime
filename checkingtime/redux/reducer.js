@@ -48,6 +48,17 @@ export const timesheetReducer = createReducer({}, {
     state.loading = false;
     state.error = action.payload;
   },
+  timesheetFilterByUserRequest: (state) => {
+    state.loading = true;
+  } ,
+  timesheetFilterByUserSuccess: (state, action) => {
+    state.loading = false;
+    state.timesheetFilterByUser = action.payload;
+  } ,
+  timesheetFilterByUserFailure: (state, action) => {
+    state.loading = false;
+    state.error = action.payload;
+  },
   logouttimesheetFilter: (state) => {
     state.loading = false
     state.timesheetFilter = null
@@ -112,6 +123,7 @@ export const companyReducer = createReducer({}, {
   },
 });
 export const allReducer = createReducer({}, {
+  
   loadAllUserRequest: (state) => {
     state.loading = true;
   },
@@ -412,6 +424,14 @@ state.isUpdated = false ;
     export const taskReducer = createReducer(
       {},
       {
+        logoutTaskContributor: (state) => {
+          state.loading = false
+          state.taskContributor = null;
+        },
+        logoutTaskManager: (state) => {
+          state.loading = false
+          state.taskManager = null;
+        },
         queryTaskRequest: (state) => {
           state.loading = true;
         },
@@ -499,14 +519,14 @@ state.isUpdated = false ;
           state.error = action.payload;
         },
         checkingApprovedRequest: (state) => {
-          state.loadingTask = true;
+          state.loading = true;
         },
         checkingApporvedSuccess: (state, action) => {
-          state.loadingTask = false;
+          state.loading = false;
           state.message = action.payload;
         },
         checkingApporvedFailure: (state, action) => {
-          state.loadingTask = false;
+          state.loading = false;
           state.error = action.payload;
         },
         // den day

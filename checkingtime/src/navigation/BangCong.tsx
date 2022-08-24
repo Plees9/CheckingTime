@@ -7,11 +7,15 @@ import { createMaterialTopTabNavigator } from '@react-navigation/material-top-ta
 import BangCong_Cuatoi from "../Screens/CheckBoard/CuaToi";
 import BangCong_Nhanvien from "../Screens/CheckBoard/NhanVien";
 import { FONTS } from "../../constants/theme";
+import { useSelector } from "react-redux";
 
 
 const BangCong = createMaterialTopTabNavigator();
 
 const BangCong_Navigation = () => {
+  const {user} = useSelector<any, any> (state => state.auth)
+  if (typeof user !== "undefined") {
+    if (user.privilege === "Quản trị viên" || user.privilege === "Quản lý") {
   return (
     <BangCong.Navigator initialRouteName="back"
     screenOptions={{
@@ -30,4 +34,19 @@ const BangCong_Navigation = () => {
     </BangCong.Navigator>
   );
 };
+  }
+  return (
+    <BangCong.Navigator initialRouteName="back"
+    screenOptions={{
+      tabBarStyle:  { height: 45 },
+      tabBarLabelStyle: { fontSize: 13,  alignItems: 'center', fontFamily: FONTS.vanSansSemiBold },
+    }}>
+      
+      <BangCong.Screen
+         name="Của tôi"
+         component={BangCong_Cuatoi}
+      />
+      </BangCong.Navigator>
+    )
+  }
 export default BangCong_Navigation;

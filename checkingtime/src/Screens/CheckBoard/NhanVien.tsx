@@ -41,11 +41,11 @@ const BangCong_NhanVien = () => {
     }
   }
 
-  const ItemRender = ({ id, userId_1, _id, name_1, avatar_1 }) => (
+  const ItemRender = ({ id, userId_1, _id, name_1, avatar_1 } : any) => (
     <View>
       <TouchableOpacity
         onPress={() => {
-          navigation.navigate("Công việc của nhân viên", { name_1, _id });
+          navigation.navigate("Bảng công của nhân viên", {  _id });
         }}
       >
         <View style={styles.view_staff2}>
