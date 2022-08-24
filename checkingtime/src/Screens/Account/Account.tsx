@@ -239,7 +239,7 @@ const Account = () => {
               updateId();
             }}
           >
-            <Text style={styles.chu}> Thay đổi DeviceId</Text>
+            <Text style={styles.chu}> Thay đổi mã thiết bị</Text>
           </TouchableOpacity>
           <TouchableOpacity
             style={styles.khoangcach}
@@ -247,9 +247,10 @@ const Account = () => {
               companyIpHandler();
             }}
           >
-            <Text style={styles.chu}> Thay đổi CompanyIp</Text>
+            <Text style={styles.chu}> Thay đổi IP Công ty</Text>
           </TouchableOpacity>
           <TouchableOpacity
+          style={styles.khoangcach}
             onPress={() => {
               setVisible(true);
             }}

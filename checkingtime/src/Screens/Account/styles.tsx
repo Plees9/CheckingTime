@@ -70,7 +70,6 @@ const createStyles = () =>
 
     khoangcach: {
       marginTop: 10,
-      marginBottom: 10,
     },
 
     chu: {
