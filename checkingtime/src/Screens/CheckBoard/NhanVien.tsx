@@ -44,6 +44,7 @@ const BangCong_NhanVien = () => {
   const ItemRender = ({ id, userId_1, _id, name_1, avatar_1 } : any) => (
     <View>
       <TouchableOpacity
+      style={{flexDirection:'row'}}
         onPress={() => {
           navigation.navigate("Bảng công của nhân viên", {  _id });
         }}
@@ -56,15 +57,6 @@ const BangCong_NhanVien = () => {
             <View >
               <Text style={styles.user_staff}>{name_1}</Text>
               <Text style={styles.id_staff}>ID: {userId_1}</Text>
-            </View>
-          </View>
-
-          <View style={styles.row2_staff}>
-            <View>
-              <Text>OT: 03 lần</Text>
-              <Text>Về sớm: 02 lần</Text>
-              <Text>Đi muộn: 02 lần</Text>
-              <Text>Công tháng: 01/22 </Text>
             </View>
           </View>
         </View>

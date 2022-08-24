@@ -9,12 +9,11 @@ const createStyles = () =>
       
     },
     view_staff2:{
-      backgroundColor: "#ffffff",
+      backgroundColor: "#fff",
       flexDirection: "row",
       borderRadius:10,
       width:"96%",
       alignItems:"center",
-      justifyContent:"center",
       alignSelf:"center",
       textAlign:"center",
       padding:10,
