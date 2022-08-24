@@ -26,7 +26,7 @@ const Todo_Staff = () => {
   let workDone = 0;
   let workNotDone = 0;
   let workOutOf = 0;
-  if (typeof taskContributor !== "undefined" || taskContributor === null) {
+  if (typeof taskContributor !== "undefined" || taskContributor !== null) {
   for(let i = 0; i < taskContributor.tasks.length; i++){
     if(taskContributor.tasks[i].status === "Đã hoàn thành"){
 
