@@ -13,9 +13,6 @@ const createStyles = () =>
       flexDirection: "row",
       borderRadius:10,
       width:"96%",
-      alignItems:"center",
-      alignSelf:"center",
-      textAlign:"center",
       padding:10,
       marginLeft:"2%",
       marginTop:"2%",
@@ -24,6 +21,7 @@ const createStyles = () =>
     },
     row1_staff:{
       width:"50%" , 
+      flexDirection:"row"
     },
     row2_staff:{
       width:"50%" , 
@@ -33,7 +31,6 @@ const createStyles = () =>
       justifyContent:"center",
     },
     avatar_staff:{
-      justifyContent:"center",
       alignItems:"center",
       marginBottom:"3%",
     },
@@ -45,16 +42,17 @@ const createStyles = () =>
       padding:"2%",
     },
     user_staff:{
-      width:"90%",
+      width:"100%",
       alignItems:"center",
       alignSelf:"center",
       textAlign:"center",
+      marginLeft: 10,
       
     },
     id_staff:{
-      width:"30%",
       alignItems:"center",
-      alignSelf:"center",
+      marginLeft: 10,
+      
       
     },
     icon4: {
