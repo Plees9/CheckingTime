@@ -19,7 +19,10 @@ import TodoModal from "../../component/TodoModal";
 import { AnimatedCircularProgress } from "react-native-circular-progress";
 import {
   checking,
+  loadAllTask,
   loadCheckPoint,
+  loadTaskContributor,
+  loadTaskManager,
   loadTimesheetFilter,
   loadUser,
   ranking,
@@ -81,6 +84,7 @@ const HomeScreen = () => {
     (state) => state.timesheet
   );
   const {company} = useSelector<any, any> ((state) => state.company);
+  const {taskContributor, taskManager, allTask} = useSelector<any, any> ((state) => state.task);
   if (
     typeof timesheet !== "undefined" &&
     typeof number !== "undefined" &&
@@ -171,22 +175,31 @@ const HomeScreen = () => {
     
   };
   useEffect(() => {
-    if (timesheetFilter === null) {
+    if (typeof timesheetFilter === "undefined" || timesheetFilter === null) {
       dispatch<any>(loadTimesheetFilter());
     }
-    if (timesheet === null) {
+    if (typeof timesheet === "undefined" || timesheet === null) {
       dispatch<any>(loadTimesheet());
     }
-    if (number === null) {
+    if (typeof number === "undefined" || number === null) {
       dispatch<any>(getmyrank());
     }
-    if (array === null) {
+    if (typeof array === "undefined" ||array === null) {
       dispatch<any>(ranking());
     }
-    if (company === null) {
+    if (typeof company === "undefined" || company === null) {
       dispatch<any>(loadCompany());
     }
-    if (checkpoint === null) {
+    if (typeof taskContributor === "undefined" || taskContributor === null) {
+      dispatch<any>(loadTaskContributor());
+    }
+    if (typeof taskManager === "undefined" || taskManager === null) {
+      dispatch<any>(loadTaskManager());
+    }
+    if (typeof allTask === "undefined" || allTask === null) {
+      dispatch<any>(loadAllTask());
+    }
+    if (typeof checkpoint === "undefined" || checkpoint === null) {
       dispatch<any>(loadCheckPoint());
     }
 
