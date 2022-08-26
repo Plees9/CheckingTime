@@ -61,6 +61,9 @@ const UpdateStaff = () => {
       if (route.params.image) {
         setAvatar(route.params.image)
       }
+      if (route.params.date_Birth_1) {
+        setDate_Birth(moment(route.params.date_Birth_1, "DD/MM/YYYY"))
+      }
     }
   }, [route]);
   const updateHandler = async () => {
@@ -75,13 +78,13 @@ const UpdateStaff = () => {
         })
       )
     );
-    const Sdate = moment(date_Birth)
+    const s_Date_Birth = moment(date_Birth)
     myForm.append("name", userName)
     myForm.append("email", email)
     myForm.append("password", password)
     myForm.append("phoneNumber", numberPhone)
     myForm.append("address", address)
-    myForm.append("dateOfBirth", date_Birth.toISOString())
+    myForm.append("birth", String(s_Date_Birth))
     myForm.append("gender", value_2)
     await dispatch<any>(updateProfile(myForm))
     if (message == "Cập nhật tài khoản thành công") {
@@ -201,10 +204,10 @@ const UpdateStaff = () => {
         <View style={styles.row1}>
           <Pressable style={styles.row2} onPress={() => setShow_birth(true)}>
             <View style={{ justifyContent: "center", alignContent: "center" }}>
-              <Text>{moment(date_Birth).format("DD/MM/YYYY")}</Text>
+              <Text>{date_Birth.format("DD/MM/YYYY")}</Text>
               {show_birth && (
                 <DateTimePicker
-                  value={new Date(date_Birth.format("YYYY/MM/DD"))}
+                value={new Date(date_Birth.format("YYYY/MM/DD"))}
                   mode={"date"}
                   display="default"
                   onChange={(event, selectedDate) => {
