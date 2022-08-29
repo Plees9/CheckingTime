@@ -17,27 +17,24 @@ import { LinearGradient } from "expo-linear-gradient";
 import { useDispatch, useSelector } from "react-redux";
 import {
   loadAllTask,
-  loadAlluser,
   loadTaskContributor,
   loadTaskManager,
-  queryUser,
   registerTask,
   search,
-  updateTask
 } from "../../../redux/action";
 import Toast from "react-native-toast-message";
 import Contributor_Add_Task from "./Contributor_Add_Task";
 import Loader from "../../navigation/Loader";
 import { useNavigation, useRoute } from "@react-navigation/native";
 import BadgeModal from "../../component/BadgeModal";
-import { FONTS } from '../../../constants/theme';
+import { FONTS } from "../../../constants/theme";
 
 
 const Update_Todo = () => {
-  Platform.OS === 'android' ? TouchableNativeFeedback : TouchableOpacity
+  Platform.OS === "android" ? TouchableNativeFeedback : TouchableOpacity;
   const styles = useMemo(() => createStyles(), []);
   const { user, loading } = useSelector<any, any>((state) => state.auth);
-  const route = useRoute()
+  const route = useRoute();
   const [name, setName] = useState("");
   const [description, setDescription] = useState(""); //Mô tả task
   const [deadlineDate, setDeadlineDate] = useState(moment()); //Deadline của task\
@@ -51,7 +48,7 @@ const Update_Todo = () => {
   const [userList, setUserList] = useState([]);
   const [show, setShow] = useState(false);
   const [show_1, setShow_1] = useState(false);
-  const navigation = useNavigation<any>()
+  const navigation = useNavigation<any>();
   const { allUser } = useSelector<any, any>((state) => state.allUser);
   const { allTask } = useSelector<any, any>((state) => state.task);
   const { task } = useSelector<any, any>((state) => state.task);
@@ -64,11 +61,12 @@ const Update_Todo = () => {
   const registerHandlerTask = async () => {
     const myForm = new FormData();
     myForm.append("name", name);
-    myForm.append("description", description)
-    let deadline = deadlineTime.format("HH:mm")+", "+deadlineDate.format("DD/MM/YYYY");
+    myForm.append("description", description);
+    let deadline =
+      deadlineTime.format("HH:mm") + ", " + deadlineDate.format("DD/MM/YYYY");
     myForm.append("deadline", deadline);
-    for (let i = 0 ; i < userList.length; i++) {
-      myForm.append("contributorIds", userList[i])
+    for (let i = 0; i < userList.length; i++) {
+      myForm.append("contributorIds", userList[i]);
     }
     await dispatch<any>(registerTask(myForm));
     dispatch<any>(loadAllTask());
@@ -113,7 +111,7 @@ const Update_Todo = () => {
   const { message, error } = useSelector<any, any>((state) => state.message);
   useEffect(() => {
     if (message == "Tạo công việc thành công") {
-      navigation.navigate("Quản lý")
+      navigation.navigate("Quản lý");
     }
     if (error) {
       ToastAlertError(error);
@@ -127,7 +125,7 @@ const Update_Todo = () => {
 
   return (
     <View style={styles.viewAdd_todo}>
-      <View style={{height:"92%"}}>
+      <View style={{ height: "92%" }}>
         <View
           style={{
             marginTop: 10,
@@ -140,7 +138,7 @@ const Update_Todo = () => {
               width: "100%",
               height: 50,
               borderRadius: 5,
-              backgroundColor: "#ffffff", 
+              backgroundColor: "#ffffff",
               justifyContent: "center",
               marginBottom: 10,
             }}
@@ -151,11 +149,15 @@ const Update_Todo = () => {
               value={name}
               secureTextEntry={false}
               onChangeText={setName}
-              style={{ marginLeft: 10, padding: 5, fontFamily:FONTS.vanSansRegular}}
+              style={{
+                marginLeft: 10,
+                padding: 5,
+                fontFamily: FONTS.vanSansRegular,
+              }}
             ></TextInput>
           </View>
         </View>
-       
+
         <View style={styles.text_Content_Todo}>
           <TextInput
             placeholder="Mô tả nội dung công việc"
@@ -166,7 +168,14 @@ const Update_Todo = () => {
           ></TextInput>
         </View>
         <View>
-          <Text style={{ marginLeft: 10, marginRight: 10, marginTop:10 , fontFamily:FONTS.vanSansBold}}>
+          <Text
+            style={{
+              marginLeft: 10,
+              marginRight: 10,
+              marginTop: 10,
+              fontFamily: FONTS.vanSansBold,
+            }}
+          >
             Thời gian cần hoàn thành:
           </Text>
           <View style={styles.viewTime}>
@@ -175,7 +184,9 @@ const Update_Todo = () => {
                 <View
                   style={{ justifyContent: "center", alignContent: "center" }}
                 >
-                  <Text style={{fontFamily:FONTS.vanSansRegular}}>{deadlineTime.format("HH:mm")}</Text>
+                  <Text style={{ fontFamily: FONTS.vanSansRegular }}>
+                    {deadlineTime.format("HH:mm")}
+                  </Text>
                   {show_1 && (
                     <DateTimePicker
                       value={new Date(deadlineTime.format("YYYY/MM/DD"))}
@@ -202,7 +213,9 @@ const Update_Todo = () => {
                     width: "50%",
                   }}
                 >
-                  <Text style={{fontFamily:FONTS.vanSansRegular}}>{deadlineDate.format("DD/MM/YYYY")}</Text>
+                  <Text style={{ fontFamily: FONTS.vanSansRegular }}>
+                    {deadlineDate.format("DD/MM/YYYY")}
+                  </Text>
                   {show && (
                     <DateTimePicker
                       value={new Date(deadlineDate.format("YYYY/MM/DD"))}
@@ -221,7 +234,13 @@ const Update_Todo = () => {
         </View>
 
         <View>
-          <Text style={{ marginLeft: 10, marginRight: 10, fontFamily:FONTS.vanSansBold }}>
+          <Text
+            style={{
+              marginLeft: 10,
+              marginRight: 10,
+              fontFamily: FONTS.vanSansBold,
+            }}
+          >
             Nhân viên phụ trách:
           </Text>
           <View style={styles.icon_add_task}>
@@ -237,20 +256,37 @@ const Update_Todo = () => {
               returnKeyType="done"
               onChangeText={(text) => {
                 if (route.params) {
-                  dispatch<any>(search(text))
-                setSearch(text);
-              }}}
+                  dispatch<any>(search(text));
+                  setSearch(text);
+                }
+              }}
               value={searchUser}
             ></TextInput>
           </View>
-        {userList &&
+          <Text style={{marginHorizontal:10, marginVertical: 5}}>
+            {userList &&
               userName.map((item: any) => (
-                <BadgeModal key={item._id} item={item} userList={userList} setUserList={setUserList} userName={userName} setUserName={setUserName}  />
-              ))}
+                <BadgeModal
+                  key={item._id}
+                  item={item}
+                  userList={userList}
+                  setUserList={setUserList}
+                  userName={userName}
+                  setUserName={setUserName}
+                />
+              ))} 
+          </Text>
           <ScrollView style={styles.style_add_task}>
             {allUser &&
               allUser.array.map((item: any) => (
-                <Contributor_Add_Task key={item._id} item={item} userList={userList} setUserList={setUserList} userName={userName} setUserName={setUserName} />
+                <Contributor_Add_Task
+                  key={item._id}
+                  item={item}
+                  userList={userList}
+                  setUserList={setUserList}
+                  userName={userName}
+                  setUserName={setUserName}
+                />
               ))}
           </ScrollView>
         </View>

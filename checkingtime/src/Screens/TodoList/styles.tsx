@@ -270,7 +270,8 @@ const createStyles = () =>
     },
     icon_add_task: {
       flexDirection: "row",
-      margin: 10,
+      marginTop: 10,
+      marginHorizontal: 10,
       borderRadius: 10,
       padding: 5,
       backgroundColor: "#ffffff",

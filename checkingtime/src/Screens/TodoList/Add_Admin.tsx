@@ -17,13 +17,10 @@ import { LinearGradient } from "expo-linear-gradient";
 import { useDispatch, useSelector } from "react-redux";
 import {
   loadAllTask,
-  loadAlluser,
   loadTaskContributor,
   loadTaskManager,
-  queryUser,
   registerTask,
   search,
-  updateTask,
 } from "../../../redux/action";
 import Toast from "react-native-toast-message";
 import Contributor_Add_Task from "./Contributor_Add_Task";
@@ -245,17 +242,21 @@ const UpdateAdmin_Todo = () => {
               value={searchUser}
             ></TextInput>
           </View>
-          {userList &&
-            userName.map((item: any) => (
-              <BadgeModal
-                key={item._id}
-                item={item}
-                userList={userList}
-                setUserList={setUserList}
-                userName={userName}
-                setUserName={setUserName}
-              />
-            ))}
+          <Text>
+            {userList &&
+              userName.map((item: any) => (
+                <BadgeModal
+                  key={item._id}
+                  item={item}
+                  userList={userList}
+                  setUserList={setUserList}
+                  userName={userName}
+                  setUserName={setUserName}
+                />
+              ))}
+            {""}{" "}
+          </Text>
+
           <ScrollView style={styles.style_add_task}>
             {allUser &&
               allUser.array.map((item: any) => (

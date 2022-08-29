@@ -7,6 +7,7 @@ import { useFonts } from "expo-font";
 import { Provider } from "react-redux";
 import store from "./redux/store";
 import { NavigationContainer } from "@react-navigation/native";
+import UserBadItem from "./src/component/BadModal";
 
 
 
@@ -39,7 +40,7 @@ const App = () => {
     <SafeAreaView style={styles.root}>
        <SNavigation /> 
        {/* <NavigationContainer>
-        </>
+       
         
        </NavigationContainer> */}
       </SafeAreaView>
